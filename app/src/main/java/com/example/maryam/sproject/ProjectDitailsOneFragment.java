@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
@@ -18,7 +19,7 @@ import android.widget.TextView;
 public class ProjectDitailsOneFragment extends Fragment implements View.OnClickListener {
 
 
-    private View view;
+
     /** التصميم الداخلي  */
     private TextView mName;
     /** شقة سكنية - تصميم داخلي */
@@ -59,9 +60,36 @@ public class ProjectDitailsOneFragment extends Fragment implements View.OnClickL
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-
+        initView();
+        fragmentType();
     }
+
+    private void initView() {
+        mName = getView().findViewById(R.id.name);
+        mInType = getView().findViewById(R.id.in_type);
+        mChooeseStyle = getView().findViewById(R.id.chooese_style);
+        mDesignColor = getView().findViewById(R.id.design_color);
+        mUploadImage = getView().findViewById(R.id.upload_image);
+        mArea2 = getView().findViewById(R.id.area2);
+        mUploadLikeImage = getView().findViewById(R.id.upload_like_image);
+        mCity = getView().findViewById(R.id.city);
+        mMap = getView().findViewById(R.id.map);
+        mBalance = getView().findViewById(R.id.balance);
+        mProjectDetailes = getView().findViewById(R.id.project_detailes);
+        mAttachmentIn = getView().findViewById(R.id.attachment_in);
+        mSendIn = getView().findViewById(R.id.send_in);
+    }
+
+    private void fragmentType() {
+        Bundle bundle = getArguments();
+        if (!bundle.isEmpty()){
+          mName.setText(bundle.getString("address"));
+          mInType.setText(bundle.getString("button_type"));
+        }else {
+            Toast.makeText(getContext(), "no data arrived", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
     @Override
     public void onClick(View v) {

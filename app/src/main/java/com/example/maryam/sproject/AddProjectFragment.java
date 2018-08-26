@@ -54,9 +54,14 @@ public class AddProjectFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
+         ProjectDitailsOneFragment ditailsOneFragment = new ProjectDitailsOneFragment();
+         Bundle bundle = new Bundle();
         int id = v.getId();
         switch (id){
             case R.id.in_side:
+                bundle.putString("address","تصميم داخلي");
+                bundle.putString("button_type","شقق سكنية - تصميم داخلي");
+                ditailsOneFragment.setArguments(bundle);
                 FragmentsUtil.replaceFragment(getActivity(),R.layout.fragment_project_ditails_one,new ProjectDitailsOneFragment());
                 break;
             case R.id.mostion:
@@ -69,6 +74,9 @@ public class AddProjectFragment extends Fragment implements View.OnClickListener
                 FragmentsUtil.replaceFragment(getActivity(),R.layout.fragment_project_ditailes_graphics,new ProjectDitailesGraphicsFragment());
                 break;
             case R.id.arch:
+                bundle.putString("address","تصميم معماري");
+                bundle.putString("button_type","رسومات هندسية - تصميم معماري");
+                ditailsOneFragment.setArguments(bundle);
                 FragmentsUtil.replaceFragment(getActivity(),R.layout.fragment_project_ditails_one,new ProjectDitailsOneFragment());
                 break;
             case R.id.search_designer:
