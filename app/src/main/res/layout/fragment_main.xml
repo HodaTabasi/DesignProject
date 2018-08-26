@@ -70,7 +70,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
-            android:src="@drawable/ic_edit" />
+            android:src="@drawable/ic_edit"
+            tools:ignore="RtlHardcoded" />
 
     </FrameLayout>
 
@@ -100,9 +101,10 @@
                 android:textColor="@color/gray_icon"
                 android:textSize="17sp" />
 
-            <view
+            <View
                 android:layout_width="1dp"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:background="@color/gray_icon"/>
 
             <TextView
                 android:id="@+id/tv_budget"
@@ -119,9 +121,10 @@
 
         </LinearLayout>
 
-        <view
+        <View
             android:layout_width="match_parent"
-            android:layout_height="1dp" />
+            android:layout_height="1dp"
+            android:background="@color/gray_icon"/>
 
 
         <LinearLayout
@@ -142,9 +145,10 @@
                 android:textColor="@color/gray_icon"
                 android:textSize="17sp" />
 
-            <view
+            <View
                 android:layout_width="1dp"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:background="@color/gray_icon"/>
 
             <TextView
                 android:id="@+id/tv_proposals"
@@ -160,9 +164,10 @@
 
         </LinearLayout>
 
-        <view
+        <View
             android:layout_width="match_parent"
-            android:layout_height="1dp" />
+            android:layout_height="1dp"
+            android:background="@color/gray_icon"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -183,9 +188,10 @@
                 android:textColor="@color/gray_icon"
                 android:textSize="17sp" />
 
-            <view
+            <View
                 android:layout_width="1dp"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:background="@color/gray_icon"/>
 
             <TextView
                 android:id="@+id/tv_search"
