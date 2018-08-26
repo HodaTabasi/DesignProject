@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CallUsFragment">
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/title_shape"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="11dp"
+        android:textAlignment="center"
+        android:paddingTop="5dp"
+        android:text="اتصل بنا  "
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/subject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/report_layout_shap"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="11dp"
+        android:textAlignment="textStart"
+        android:paddingTop="5dp"
+        android:hint="الموضوع"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:gravity="start" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/report_layout_shap"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_margin="16dp"
+        android:background="@drawable/title_shape"
+        android:text="ارسال"
+        android:textColor="@android:color/white"
+        android:textSize="18dp"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

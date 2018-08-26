@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".MyAccountFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/report"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="التقارير "
+                android:paddingBottom="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                android:textColor="@android:color/black"
+                android:textSize="23sp"/>
+
+
+        </LinearLayout>
+        <view
+            android:layout_width="1dp"
+            android:layout_height="match_parent"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/account"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="رصيدي الحالي "
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="8dp"
+                android:paddingBottom="8dp"
+                android:layout_gravity="center"
+                android:textColor="@android:color/black"
+                android:textSize="23sp"
+                android:layout_marginEnd="8dp" />
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+    <view
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="50dp"
+            android:layout_marginTop="46dp"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/recharge"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="شحن رصيد "
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="8dp"
+                android:paddingBottom="8dp"
+                android:layout_gravity="center"
+                android:textColor="@android:color/black"
+                android:textSize="23sp"
+                android:layout_marginEnd="8dp" />
+
+
+        </LinearLayout>
+        <view
+            android:layout_width="1dp"
+            android:layout_height="match_parent"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="50dp"
+            android:layout_marginTop="32dp"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bank"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="سحب رصيد"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="8dp"
+                android:paddingBottom="8dp"
+                android:layout_gravity="center"
+                android:textColor="@android:color/black"
+                android:textSize="23sp"
+                android:layout_marginEnd="8dp" />
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</LinearLayout>
