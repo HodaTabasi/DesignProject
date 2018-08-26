@@ -20,7 +20,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".Home_Activity" />
     </application>
 
 </manifest>
