@@ -11,20 +11,28 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-public class ConfirmationFragment extends Fragment {
+public class RegisterFragment extends Fragment {
 
-
-    public ConfirmationFragment() {
+    public RegisterFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_confirmation, container, false);
+        View view = inflater.inflate(R.layout.fragment_registration, container, false);
 
-        TextView tv_confirm = view.findViewById(R.id.tv_confirm);
-        tv_confirm.setOnClickListener(new View.OnClickListener() {
+        TextView tv_next = view.findViewById(R.id.tv_next);
+        TextView tv_skip = view.findViewById(R.id.tv_skip);
+
+        tv_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentsUtil.replaceFragment(getActivity(), R.id.register_container, new ConfirmationFragment());
+            }
+        });
+
+        tv_skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ContainerActivity.class);
@@ -35,5 +43,6 @@ public class ConfirmationFragment extends Fragment {
 
         return view;
     }
+
 
 }
