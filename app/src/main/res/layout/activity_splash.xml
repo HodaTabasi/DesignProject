@@ -24,7 +24,7 @@
         android:layout_marginTop="20dp"
         android:text="وظف مصممين محترفين"
         android:textColor="@color/white"
-        android:textSize="20sp" />
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/tv2"
@@ -34,7 +34,7 @@
         android:layout_centerHorizontal="true"
         android:text="للعمل على مشروعك"
         android:textColor="@color/white"
-        android:textSize="20sp" />
+        android:textSize="16sp" />
 
     <ImageView
         android:id="@+id/img_reg"
