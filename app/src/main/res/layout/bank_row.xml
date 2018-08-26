@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_bankName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_bank"
+        android:layout_marginRight="20dp"
+        android:text="@string/bankName"
+        android:textColor="@color/gray"
+        android:textSize="17sp" />
+
+    <EditText
+        android:id="@+id/et_bankName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_bankName"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/square_corner_shape"
+        android:padding="3dp"
+        android:text="البنك العربي" />
+
+    <TextView
+        android:id="@+id/tv_bankNum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_bankName"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/bankNum"
+        android:textColor="@color/gray"
+        android:textSize="17sp" />
+
+    <EditText
+        android:id="@+id/et_bankNum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_bankNum"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/square_corner_shape"
+        android:padding="3dp"
+        android:text="55555555555" />
+
+    <TextView
+        android:id="@+id/tv_Num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_bankNum"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/EbanNum"
+        android:textColor="@color/gray"
+        android:textSize="17sp" />
+
+    <EditText
+        android:id="@+id/et_kNum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_Num"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/square_corner_shape"
+        android:padding="3dp"
+        android:text="55555555555" />
+
+    <TextView
+        android:id="@+id/tv_addAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_bankNum"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/EbanNum"
+        android:textColor="@color/gray"
+        android:textSize="17sp" />
+</RelativeLayout>
