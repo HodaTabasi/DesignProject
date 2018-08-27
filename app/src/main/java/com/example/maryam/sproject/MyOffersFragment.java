@@ -53,8 +53,8 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initView();
-        Bundle bundle = getArguments();
-        int flag = bundle.getInt("flag");
+       // Bundle bundle = getArguments();
+       /* int flag = bundle.getInt("flag");
         if (flag == 0){
             Toast.makeText(getContext(), "done recycle", Toast.LENGTH_SHORT).show();
         }else  if (flag == 1){
@@ -63,7 +63,7 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
             Toast.makeText(getContext(), "excluded recycle", Toast.LENGTH_SHORT).show();
         }else if (flag == 3){
             Toast.makeText(getContext(), "underway recycle", Toast.LENGTH_SHORT).show();
-        }
+        }*/
     }
 
 
