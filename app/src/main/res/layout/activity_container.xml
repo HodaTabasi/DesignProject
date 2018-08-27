@@ -10,9 +10,8 @@
         android:id="@+id/container_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/bottom_bar">
+        android:layout_above="@+id/bottom_bar" />
 
-    </FrameLayout>
 
     <include
         android:id="@+id/bottom_bar"
