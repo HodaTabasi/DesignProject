@@ -8,6 +8,7 @@
     tools:context=".MyProjectFragment">
 
     <Switch
+        android:id="@+id/switch_offer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
@@ -18,13 +19,14 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/one"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:visibility="gone"
+            android:visibility="visible"
             android:orientation="vertical">
 
             <LinearLayout
@@ -34,6 +36,7 @@
                 android:weightSum="3">
 
                 <TextView
+                    android:id="@+id/my_project_excluded"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
@@ -44,9 +47,10 @@
                     android:padding="5dp"
                     android:text="المستبعدة"
                     android:textColor="@android:color/white"
-                    android:textSize="15dp" />
+                    android:textSize="15sp" />
 
                 <TextView
+                    android:id="@+id/my_project_underway"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
@@ -60,6 +64,7 @@
                     android:textSize="15dp" />
 
                 <TextView
+                    android:id="@+id/my_project_done"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -73,7 +78,7 @@
             </LinearLayout>
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/res1"
+                android:id="@+id/my_project_res"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="8dp"
@@ -81,9 +86,10 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/two"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="visible"
+            android:visibility="gone"
             android:orientation="vertical">
 
             <TextView
@@ -106,9 +112,10 @@
                 app:civ_border_width="1dp"
                 app:civ_border_color="#FF000000"/>
 
-            <view
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"/>
+                android:layout_height="1dp"
+                android:background="@color/gray_icon"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -117,6 +124,7 @@
                 android:layout_marginTop="16dp">
 
                 <LinearLayout
+                    android:id="@+id/l_wait_project"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:orientation="vertical"
@@ -144,11 +152,13 @@
                         android:textSize="20sp" />
 
                 </LinearLayout>
-                <view
+                <View
                     android:layout_width="1dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:background="@color/gray_icon"/>
 
                 <LinearLayout
+                    android:id="@+id/l_underway_project"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_marginBottom="16dp"
@@ -180,9 +190,10 @@
 
 
             </LinearLayout>
-            <view
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"/>
+                android:layout_height="1dp"
+                android:background="@color/gray_icon"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -190,6 +201,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/l_excluded_project"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:orientation="vertical"
@@ -218,11 +230,13 @@
                         android:textSize="20sp" />
 
                 </LinearLayout>
-                <view
+                <View
                     android:layout_width="1dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:background="@color/gray_icon"/>
 
                 <LinearLayout
+                    android:id="@+id/l_done_project"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_marginBottom="16dp"
@@ -256,7 +270,5 @@
 
             </LinearLayout>
         </LinearLayout>
-
-
     </FrameLayout>
 </LinearLayout>

@@ -30,6 +30,7 @@
             android:weightSum="4">
 
             <TextView
+                android:id="@+id/all_offer_excluded"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -44,6 +45,7 @@
                 android:textSize="15dp" />
 
             <TextView
+                android:id="@+id/all_offer_done"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -58,6 +60,7 @@
                 android:textSize="15dp" />
 
             <TextView
+                android:id="@+id/all_offer_underway"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -72,6 +75,7 @@
                 android:textSize="15dp" />
 
             <TextView
+                android:id="@+id/all_offer_wait"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -86,7 +90,7 @@
         </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/res1"
+            android:id="@+id/all_offer_res"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="8dp"

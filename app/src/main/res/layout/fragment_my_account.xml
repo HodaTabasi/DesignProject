@@ -3,79 +3,86 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".MyAccountFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/report"
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
             android:layout_marginTop="16dp"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:layout_weight="1"
+            android:orientation="vertical">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/report"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:src="@drawable/report" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="التقارير "
-                android:paddingBottom="8dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:layout_gravity="center"
+                android:paddingBottom="8dp"
+                android:text="التقارير "
                 android:textColor="@android:color/black"
-                android:textSize="23sp"/>
+                android:textSize="23sp" />
 
 
         </LinearLayout>
-        <view
+
+        <View
             android:layout_width="1dp"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:background="@color/gray_icon" />
 
         <LinearLayout
+            android:id="@+id/current_account"
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
             android:layout_marginTop="16dp"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:layout_weight="1"
+            android:orientation="vertical">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/account"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:src="@drawable/account" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="رصيدي الحالي "
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="8dp"
-                android:paddingBottom="8dp"
                 android:layout_gravity="center"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:paddingBottom="8dp"
+                android:text="رصيدي الحالي "
                 android:textColor="@android:color/black"
-                android:textSize="23sp"
-                android:layout_marginEnd="8dp" />
+                android:textSize="23sp" />
 
 
         </LinearLayout>
-
 
 
     </LinearLayout>
-    <view
+
+    <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"/>
+        android:layout_height="1dp"
+        android:background="@color/gray_icon" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -83,64 +90,69 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/recharge_balance"
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
             android:layout_marginTop="46dp"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:layout_weight="1"
+            android:orientation="vertical">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/recharge"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:src="@drawable/recharge" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="شحن رصيد "
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="8dp"
-                android:paddingBottom="8dp"
                 android:layout_gravity="center"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:paddingBottom="8dp"
+                android:text="شحن رصيد "
                 android:textColor="@android:color/black"
-                android:textSize="23sp"
-                android:layout_marginEnd="8dp" />
+                android:textSize="23sp" />
 
 
         </LinearLayout>
-        <view
+
+        <View
             android:layout_width="1dp"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:background="@color/gray_icon" />
 
         <LinearLayout
+            android:id="@+id/drop_balance"
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
             android:layout_marginTop="32dp"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:layout_weight="1"
+            android:orientation="vertical">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/bank"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:src="@drawable/bank" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="سحب رصيد"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="8dp"
-                android:paddingBottom="8dp"
                 android:layout_gravity="center"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:paddingBottom="8dp"
+                android:text="سحب رصيد"
                 android:textColor="@android:color/black"
-                android:textSize="23sp"
-                android:layout_marginEnd="8dp" />
+                android:textSize="23sp" />
 
 
         </LinearLayout>
-
 
 
     </LinearLayout>
