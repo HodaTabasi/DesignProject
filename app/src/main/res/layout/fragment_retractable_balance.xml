@@ -3,55 +3,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".RetractableBalanceFragment">
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:paddingBottom="8dp"
         android:text=" الرصيد القابل للسحب "
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="8dp"
-        android:paddingBottom="8dp"
-        android:layout_gravity="center"
         android:textColor="@android:color/black"
-        android:textSize="30sp"
-        android:layout_marginEnd="8dp" />
+        android:textSize="30sp" />
 
     <TextView
+        android:id="@+id/retractable_ret_balance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:paddingBottom="8dp"
         android:text="0.00"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="8dp"
-        android:paddingBottom="8dp"
-        android:layout_gravity="center"
         android:textColor="@android:color/black"
-        android:textSize="25sp"
-        android:layout_marginEnd="8dp" />
+        android:textSize="25sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" المبلغ المتبقي من الأرباح التي حققتها  "
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="8dp"
-        android:paddingBottom="8dp"
         android:layout_gravity="center"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:paddingBottom="8dp"
+        android:text=" المبلغ المتبقي من الأرباح التي حققتها  "
         android:textColor="@android:color/darker_gray"
-        android:textSize="18sp"
-        android:layout_marginEnd="8dp" />
+        android:textSize="18sp" />
 
     <Button
+        android:id="@+id/send_retractable_ret_balance"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_margin="16dp"
         android:background="@drawable/title_shape"
+        android:padding="8dp"
         android:text="إرسال إلى حسابك البنكي"
         android:textColor="@android:color/white"
-        android:padding="8dp"
-        android:textSize="18dp"
-        android:layout_gravity="center"
-        android:layout_height="wrap_content" />
+        android:textSize="18dp" />
 </LinearLayout>

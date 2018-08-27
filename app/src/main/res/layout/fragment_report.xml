@@ -7,38 +7,40 @@
     tools:context=".ReportFragment">
 
     <RelativeLayout
-        android:layout_margin="8dp"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         android:background="@drawable/title_shape"
-        android:gravity="center"
-        android:layout_height="wrap_content">
+        android:gravity="center">
+
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
             android:layout_margin="8dp"
+            android:text="التقارير "
             android:textColor="@android:color/white"
-            android:text="التقارير "/>
+            android:textSize="18dp" />
 
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:tint="@android:color/white"
             android:layout_toEndOf="@+id/name"
+            android:layout_toRightOf="@+id/name"
             android:src="@drawable/report"
-            android:layout_toRightOf="@+id/name" />
+            android:tint="@android:color/white" />
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_margin="8dp"
+        android:orientation="horizontal"
         android:weightSum="3">
 
 
         <TextView
+            android:id="@+id/payments"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -46,13 +48,14 @@
             android:layout_weight="1"
             android:background="@drawable/dark_blue_shap"
             android:gravity="center"
-            android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:text="المعاملات"
+            android:paddingTop="5dp"
+            android:text="المدفوعات"
             android:textColor="@android:color/white"
             android:textSize="15dp" />
 
         <TextView
+            android:id="@+id/revenue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -60,20 +63,21 @@
             android:layout_weight="1"
             android:background="@drawable/dark_blue_shap"
             android:gravity="center"
-            android:paddingTop="5dp"
             android:paddingBottom="5dp"
+            android:paddingTop="5dp"
             android:text="الايداعات"
             android:textColor="@android:color/white"
             android:textSize="15dp" />
 
         <TextView
+            android:id="@+id/all_transactions"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/dark_blue_shap"
             android:gravity="center"
-            android:paddingTop="5dp"
             android:paddingBottom="5dp"
+            android:paddingTop="5dp"
             android:text="كل المعاملات "
             android:textColor="@android:color/white"
             android:textSize="15dp" />
@@ -81,8 +85,9 @@
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:layout_margin="8dp"
+        android:id="@+id/report_res"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_margin="8dp" />
 
 </LinearLayout>

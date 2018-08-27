@@ -3,119 +3,126 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".CurrentAccountFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
             android:layout_marginTop="20dp"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:paddingBottom="8dp"
                 android:text="رصيدك المعلق "
-                android:paddingBottom="8dp"
-                android:layout_marginTop="5dp"
-                android:layout_gravity="center"
                 android:textColor="@android:color/black"
-                android:textSize="23sp"/>
+                android:textSize="23sp" />
 
             <TextView
+                android:id="@+id/hanging_cu_balance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:paddingBottom="8dp"
                 android:text="0.00"
-                android:paddingBottom="8dp"
-                android:layout_marginTop="5dp"
-                android:layout_gravity="center"
                 android:textColor="@android:color/darker_gray"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="يتضمن ميزانية مشاريعك قيد التنفيذ "
-                android:layout_marginTop="16dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:text="يتضمن ميزانية مشاريعك قيد التنفيذ "
                 android:textColor="@android:color/black"
-                android:textSize="11sp"/>
+                android:textSize="11sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="وأي مبلغ طلبت سحبه ولا زال قيد التحويل"
                 android:layout_gravity="center"
+                android:text="وأي مبلغ طلبت سحبه ولا زال قيد التحويل"
                 android:textColor="@android:color/black"
-                android:textSize="11sp"/>
+                android:textSize="11sp" />
 
 
         </LinearLayout>
-        <view
+
+        <View
             android:layout_width="1dp"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:background="@color/gray_icon" />
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
             android:layout_marginTop="20dp"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:paddingBottom="8dp"
                 android:text="رصيدك الكلي "
-                android:paddingBottom="8dp"
-                android:layout_marginTop="5dp"
-                android:layout_gravity="center"
                 android:textColor="@android:color/black"
-                android:textSize="23sp"/>
+                android:textSize="23sp" />
 
             <TextView
+                android:id="@+id/total_cu_balance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:paddingBottom="8dp"
                 android:text="0.00"
-                android:paddingBottom="8dp"
-                android:layout_marginTop="5dp"
-                android:layout_gravity="center"
                 android:textColor="@android:color/darker_gray"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="كامل الرصيد الكلي في حسابك "
-                android:layout_marginTop="16dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:text="كامل الرصيد الكلي في حسابك "
                 android:textColor="@android:color/black"
-                android:textSize="11sp"/>
+                android:textSize="11sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" يتضمن الارباح والرصيد المعلق"
                 android:layout_gravity="center"
+                android:text=" يتضمن الارباح والرصيد المعلق"
                 android:textColor="@android:color/black"
-                android:textSize="11sp"/>
+                android:textSize="11sp" />
 
 
         </LinearLayout>
-
 
 
     </LinearLayout>
-    <view
+
+    <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"/>
+        android:layout_height="1dp"
+        android:background="@color/gray_icon" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -124,87 +131,90 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
             android:layout_marginTop="20dp"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:paddingBottom="8dp"
                 android:text="الرصيد القابل للسحب "
-                android:paddingBottom="8dp"
-                android:layout_marginTop="5dp"
-                android:layout_gravity="center"
                 android:textColor="@android:color/black"
-                android:textSize="23sp"/>
+                android:textSize="23sp" />
 
             <TextView
+                android:id="@+id/retractable_cu_balance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:paddingBottom="8dp"
                 android:text="0.00"
-                android:paddingBottom="8dp"
-                android:layout_marginTop="5dp"
-                android:layout_gravity="center"
                 android:textColor="@android:color/darker_gray"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="المبلغ المتبقي من الأرباح التي حققتها "
-                android:layout_marginTop="16dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:text="المبلغ المتبقي من الأرباح التي حققتها "
                 android:textColor="@android:color/black"
-                android:textSize="11sp"/>
+                android:textSize="11sp" />
 
 
         </LinearLayout>
-        <view
+
+        <View
             android:layout_width="1dp"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:background="@color/gray_icon" />
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
             android:layout_marginTop="20dp"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:paddingBottom="8dp"
                 android:text="رصيدك المتاح "
-                android:paddingBottom="8dp"
-                android:layout_marginTop="5dp"
-                android:layout_gravity="center"
                 android:textColor="@android:color/black"
-                android:textSize="23sp"/>
+                android:textSize="23sp" />
 
             <TextView
+                android:id="@+id/available_cu_balance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:paddingBottom="8dp"
                 android:text="0.00"
-                android:paddingBottom="8dp"
-                android:layout_marginTop="5dp"
-                android:layout_gravity="center"
                 android:textColor="@android:color/darker_gray"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="الرصيد الذي يمكنك استخدامه لفتح مشاريع جديدة"
-                android:layout_marginTop="16dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:text="الرصيد الذي يمكنك استخدامه لفتح مشاريع جديدة"
                 android:textColor="@android:color/black"
-                android:textSize="10.5sp"/>
+                android:textSize="10.5sp" />
 
 
         </LinearLayout>
-
 
 
     </LinearLayout>
