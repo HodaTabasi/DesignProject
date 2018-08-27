@@ -90,7 +90,6 @@ public class ProjectDitailsOneFragment extends Fragment implements View.OnClickL
         }
     }
 
-
     @Override
     public void onClick(View v) {
         int id = getId();
