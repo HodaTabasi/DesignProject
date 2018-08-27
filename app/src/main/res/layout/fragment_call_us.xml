@@ -6,13 +6,48 @@
     android:orientation="vertical"
     tools:context=".CallUsFragment">
 
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="#09102D" />
+
+        <TextView
+            android:id="@+id/tv_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawablePadding="15dp"
+            android:drawableRight="@drawable/ic_add_black"
+
+            android:gravity="center"
+            android:text="اضف مشروع"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/ic_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/ic_arrow" />
+    </RelativeLayout>
+
     <TextView
         android:id="@+id/title1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/title_shape"
         android:paddingBottom="5dp"
         android:paddingLeft="10dp"
@@ -43,7 +78,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="320dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"

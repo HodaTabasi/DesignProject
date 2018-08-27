@@ -50,11 +50,18 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
         one = getView().findViewById(R.id.sh_one);
         two = getView().findViewById(R.id.sh_two);
     }
+    private void addListeners() {
+        mBankShTransfer.setOnClickListener(this);
+        mCreditShCard.setOnClickListener(this);
+        mSendBank.setOnClickListener(this);
+        mSendBank1.setOnClickListener(this);
+    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initView();
+        addListeners();
     }
 
     @Override

@@ -14,8 +14,7 @@ import android.widget.Toast;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MyAccountFragment extends Fragment implements View.OnClickListener{
-
+public class MyAccountFragment extends Fragment implements View.OnClickListener {
 
 
     private LinearLayout mReport;
@@ -41,7 +40,8 @@ public class MyAccountFragment extends Fragment implements View.OnClickListener{
         mRechargeBalance = getView().findViewById(R.id.recharge_balance);
         mDropBalance = getView().findViewById(R.id.drop_balance);
     }
-    private void addListeners(){
+
+    private void addListeners() {
         mReport.setOnClickListener(this);
         mCurrentAccount.setOnClickListener(this);
         mRechargeBalance.setOnClickListener(this);
@@ -58,18 +58,18 @@ public class MyAccountFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        switch (id){
+        switch (id) {
             case R.id.report:
-                FragmentsUtil.replaceFragment(getActivity(),R.layout.activity_container,new ReportFragment());
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ReportFragment());
                 break;
             case R.id.current_account:
-                FragmentsUtil.replaceFragment(getActivity(),R.layout.activity_container,new CurrentAccountFragment());
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new CurrentAccountFragment());
                 break;
             case R.id.recharge_balance:
-                FragmentsUtil.replaceFragment(getActivity(),R.layout.activity_container,new ShippingBalanceFragment());
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ShippingBalanceFragment());
                 break;
             case R.id.drop_balance:
-                FragmentsUtil.replaceFragment(getActivity(),R.layout.activity_container,new RetractableBalanceFragment());
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new RetractableBalanceFragment());
                 break;
         }
     }

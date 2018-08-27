@@ -96,6 +96,7 @@ public class ProjectDitailsOneFragment extends Fragment implements View.OnClickL
 
         switch (id){
             case R.id.send_in:
+                Toast.makeText(getContext(), "done", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

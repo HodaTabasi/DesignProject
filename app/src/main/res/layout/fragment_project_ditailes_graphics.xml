@@ -3,11 +3,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layoutDirection="ltr"
     tools:context=".ProjectDitailesGraphicsFragment">
+
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="#09102D" />
+
+        <TextView
+            android:id="@+id/tv_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawablePadding="15dp"
+            android:drawableRight="@drawable/ic_add_black"
+
+            android:gravity="center"
+            android:text="اضف مشروع"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/ic_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/ic_arrow" />
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -24,7 +61,7 @@
                 android:layout_margin="8dp"
                 android:text="تصاميم الجرافيكس"
                 android:textColor="@android:color/white"
-                android:textSize="18dp" />
+                android:textSize="16sp" />
 
             <ImageView
                 android:layout_width="40dp"
@@ -48,7 +85,7 @@
             android:padding="3dp"
             android:text="تصميم هوية بصرية - تصميم شعار"
             android:textColor="@android:color/black"
-            android:textSize="18dp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/project_name_gh"
@@ -62,7 +99,7 @@
             android:padding="3dp"
             android:text="اسم المشروع"
             android:textColor="@android:color/black"
-            android:textSize="18dp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/about_activity"
@@ -76,7 +113,7 @@
             android:padding="3dp"
             android:text="عن النشاط "
             android:textColor="@android:color/black"
-            android:textSize="18dp" />
+            android:textSize="16sp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -87,7 +124,7 @@
             android:text="ارفع صورة لتصاميم اعجبتك"
             android:textAlignment="textStart"
             android:textColor="@android:color/secondary_text_light"
-            android:textSize="17dp" />
+            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/gh_upload_image_like"
@@ -95,7 +132,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:background="@drawable/account_shape"
-            android:padding="16dp"
+            android:padding="8dp"
             android:src="@drawable/add" />
 
         <LinearLayout
@@ -120,11 +157,11 @@
                     android:padding="5dp"
                     android:text="ابتكار"
                     android:textColor="@android:color/black"
-                    android:textSize="15dp" />
+                    android:textSize="14sp" />
 
                 <View
                     android:layout_width="1.5dp"
-                    android:layout_height="30dp"
+                    android:layout_height="match_parent"
                     android:background="@color/gray_icon" />
 
                 <TextView
@@ -135,11 +172,11 @@
                     android:padding="5dp"
                     android:text="تطوير"
                     android:textColor="@android:color/black"
-                    android:textSize="15dp" />
+                    android:textSize="14sp" />
 
                 <View
                     android:layout_width="1.5dp"
-                    android:layout_height="30dp"
+                    android:layout_height="match_parent"
                     android:background="@color/gray_icon" />
 
                 <TextView
@@ -150,7 +187,7 @@
                     android:padding="5dp"
                     android:text="طلب تصميم"
                     android:textColor="@android:color/black"
-                    android:textSize="15dp" />
+                    android:textSize="14sp" />
 
 
             </LinearLayout>
@@ -171,7 +208,7 @@
                     android:padding="5dp"
                     android:text="لا"
                     android:textColor="@android:color/black"
-                    android:textSize="15dp" />
+                    android:textSize="14sp" />
 
                 <View
                     android:layout_width="1.5dp"
@@ -186,11 +223,11 @@
                     android:padding="5dp"
                     android:text="نعم"
                     android:textColor="@android:color/black"
-                    android:textSize="15dp" />
+                    android:textSize="14sp" />
 
                 <View
                     android:layout_width="1.5dp"
-                    android:layout_height="30dp"
+                    android:layout_height="match_parent"
                     android:background="@color/gray_icon" />
 
                 <TextView
@@ -201,7 +238,7 @@
                     android:padding="5dp"
                     android:text="المشروع جديد"
                     android:textColor="@android:color/black"
-                    android:textSize="15dp" />
+                    android:textSize="14sp" />
 
 
             </LinearLayout>
@@ -219,7 +256,7 @@
             android:padding="3dp"
             android:text="الميزانية"
             android:textColor="@android:color/black"
-            android:textSize="18dp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/project_deitails_gh"
@@ -233,7 +270,7 @@
             android:padding="3dp"
             android:text="تفاصيل عن المشروع"
             android:textColor="@android:color/black"
-            android:textSize="18dp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/gh_attachment"
@@ -249,7 +286,7 @@
             android:padding="8dp"
             android:text="المرفقات"
             android:textColor="@android:color/black"
-            android:textSize="18dp" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/send_gh"
@@ -259,7 +296,7 @@
             android:background="@drawable/title_shape"
             android:text="ارسل الطلب"
             android:textColor="@android:color/white"
-            android:textSize="18dp" />
+            android:textSize="16sp" />
     </LinearLayout>
 
 </RelativeLayout>

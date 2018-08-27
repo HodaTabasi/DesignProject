@@ -3,9 +3,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layoutDirection="ltr"
     tools:context=".ProjectDitailsPaintingWallFragment">
 
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="#09102D" />
+
+        <TextView
+            android:id="@+id/tv_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawablePadding="15dp"
+            android:drawableRight="@drawable/ic_add_black"
+
+            android:gravity="center"
+            android:text="اضف مشروع"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/ic_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/ic_arrow" />
+    </RelativeLayout>
+
     <LinearLayout
+        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -19,7 +56,7 @@
                 android:id="@+id/name_wall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:textSize="16sp"
                 android:layout_margin="8dp"
                 android:textColor="@android:color/white"
                 android:text="الرسم الجداري  "/>
@@ -44,7 +81,7 @@
             android:text="ثلاثي ابعاد - رسم جداري "
             android:padding="3dp"
             android:gravity="center"
-            android:textSize="18dp"
+            android:textSize="16sp"
             android:textColor="@android:color/black"
             android:layout_marginBottom="8dp"/>
 
@@ -67,7 +104,7 @@
                     android:gravity="end"
                     android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
-                    android:textSize="17dp"
+                    android:textSize="16sp"
                     android:textColor="@android:color/secondary_text_light"/>
                 <ImageView
                     android:id="@+id/wall_upload_image"
@@ -76,7 +113,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="27dp"
-                    android:padding="16dp"
+                    android:padding="8dp"
                     android:background="@drawable/account_shape"
                     android:src="@drawable/add"
                     android:layout_marginLeft="8dp"
@@ -90,7 +127,7 @@
                     android:textAlignment="center"
                     android:gravity="center"
                     android:layout_margin="8dp"
-                    android:textSize="17dp"
+                    android:textSize="16sp"
                     android:background="@drawable/account_shape"
                     android:padding="5dp"
                     android:textColor="@android:color/secondary_text_light"/>
@@ -113,7 +150,7 @@
                     android:textAlignment="textStart"
                     android:gravity="start"
                     android:layout_marginEnd="8dp"
-                    android:textSize="17dp"
+                    android:textSize="16sp"
                     android:textColor="@android:color/secondary_text_light"
                     android:layout_marginRight="8dp" />
                 <ImageView
@@ -123,7 +160,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginStart="27dp"
                     android:layout_marginEnd="8dp"
-                    android:padding="16dp"
+                    android:padding="8dp"
                     android:background="@drawable/account_shape"
                     android:src="@drawable/add"
                     android:layout_marginLeft="27dp"
@@ -137,7 +174,7 @@
                     android:id="@+id/wall_city"
                     android:gravity="center"
                     android:layout_margin="8dp"
-                    android:textSize="17dp"
+                    android:textSize="16sp"
                     android:background="@drawable/account_shape"
                     android:padding="5dp"
                     android:textColor="@android:color/secondary_text_light"/>
@@ -155,7 +192,7 @@
             android:text="خرائط - موقع المشروع "
             android:padding="3dp"
             android:gravity="center"
-            android:textSize="18dp"
+            android:textSize="16sp"
             android:textColor="@android:color/black"
             android:layout_marginBottom="8dp"/>
 
@@ -169,7 +206,7 @@
             android:id="@+id/wall_balance"
             android:padding="3dp"
             android:gravity="center"
-            android:textSize="18dp"
+            android:textSize="16sp"
             android:textColor="@android:color/black"
             android:layout_marginBottom="8dp"/>
 
@@ -183,7 +220,7 @@
             android:padding="3dp"
             android:gravity="center"
             android:id="@+id/wall_project_dietails"
-            android:textSize="18dp"
+            android:textSize="16sp"
             android:textColor="@android:color/black"
             android:layout_marginBottom="8dp"/>
 
@@ -197,7 +234,7 @@
             android:id="@+id/wall_attachment"
             android:padding="8dp"
             android:layout_gravity="end"
-            android:textSize="18dp"
+            android:textSize="16sp"
             android:textColor="@android:color/black"
             android:drawableEnd="@drawable/upload"
             android:drawableRight="@drawable/upload"
@@ -210,7 +247,7 @@
             android:id="@+id/wall_send"
             android:text="ارسل الطلب"
             android:textColor="@android:color/white"
-            android:textSize="18dp"
+            android:textSize="16sp"
             android:layout_height="wrap_content" />
     </LinearLayout>
 

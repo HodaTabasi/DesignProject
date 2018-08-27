@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
@@ -18,7 +19,7 @@ import android.widget.TextView;
 public class ProjectDitailsMotionFragment extends Fragment {
 
 
-    private View view;
+
     /** تصاميم الموشن */
     private TextView mNameM;
     /** انفوجرافيك - تصميم فيديو */
@@ -51,8 +52,24 @@ public class ProjectDitailsMotionFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_project_ditails_motion, container, false);
     }
 
+    private void initView() {
+        mSendMotion = getView().findViewById(R.id.send_motion);
+    }
+
+    private void onClickMethod(){
+
+        mSendMotion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "done", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        initView();
+        onClickMethod();
     }
 }

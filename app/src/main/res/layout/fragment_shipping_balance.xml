@@ -4,7 +4,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layoutDirection="ltr"
     tools:context=".ShippingBalanceFragment">
+
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="#09102D" />
+
+        <TextView
+            android:id="@+id/tv_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawablePadding="15dp"
+            android:drawableRight="@drawable/ic_add_black"
+
+            android:gravity="center"
+            android:text="رصيدي"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/ic_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/ic_arrow" />
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -129,9 +165,10 @@
                         android:background="@drawable/white_shap"
                         android:textColor="@android:color/black" />
 
-                    <view
+                    <View
                         android:layout_width="1dp"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:background="@color/gray_icon" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -144,9 +181,10 @@
                         android:textSize="14sp" />
                 </LinearLayout>
 
-                <view
+                <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp" />
+                    android:layout_height="1dp"
+                    android:background="@color/gray_icon" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -161,9 +199,10 @@
                         android:background="@drawable/white_shap"
                         android:textColor="@android:color/black" />
 
-                    <view
+                    <View
                         android:layout_width="1dp"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:background="@color/gray_icon" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -176,9 +215,10 @@
                         android:textSize="14sp" />
                 </LinearLayout>
 
-                <view
+                <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp" />
+                    android:layout_height="1dp"
+                    android:background="@color/gray_icon" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -192,9 +232,10 @@
                         android:background="@drawable/white_shap"
                         android:textColor="@android:color/black" />
 
-                    <view
+                    <View
                         android:layout_width="1dp"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:background="@color/gray_icon" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -207,9 +248,10 @@
                         android:textSize="14sp" />
                 </LinearLayout>
 
-                <view
+                <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp" />
+                    android:layout_height="1dp"
+                    android:background="@color/gray_icon" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -223,9 +265,10 @@
                         android:background="@drawable/white_shap"
                         android:textColor="@android:color/black" />
 
-                    <view
+                    <View
                         android:layout_width="1dp"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:background="@color/gray_icon" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -238,9 +281,10 @@
                         android:textSize="14sp" />
                 </LinearLayout>
 
-                <view
+                <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp" />
+                    android:layout_height="1dp"
+                    android:background="@color/gray_icon" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -254,9 +298,10 @@
                         android:background="@drawable/white_shap"
                         android:textColor="@android:color/black" />
 
-                    <view
+                    <View
                         android:layout_width="1dp"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:background="@color/gray_icon" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -269,9 +314,10 @@
                         android:textSize="14sp" />
                 </LinearLayout>
 
-                <view
+                <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp" />
+                    android:layout_height="1dp"
+                    android:background="@color/gray_icon" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -299,9 +345,10 @@
                         android:text="ارفق صورة"
                         android:textColor="@android:color/black" />
 
-                    <view
+                    <View
                         android:layout_width="1dp"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:background="@color/gray_icon" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -384,9 +431,10 @@
                         android:background="@drawable/white_shap"
                         android:textColor="@android:color/black" />
 
-                    <view
+                    <View
                         android:layout_width="1dp"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:background="@color/gray_icon" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -399,9 +447,10 @@
                         android:textSize="14sp" />
                 </LinearLayout>
 
-                <view
+                <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp" />
+                    android:layout_height="1dp"
+                    android:background="@color/gray_icon" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -416,9 +465,10 @@
                         android:background="@drawable/white_shap"
                         android:textColor="@android:color/black" />
 
-                    <view
+                    <View
                         android:layout_width="1dp"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:background="@color/gray_icon" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -431,9 +481,10 @@
                         android:textSize="14sp" />
                 </LinearLayout>
 
-                <view
+                <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp" />
+                    android:layout_height="1dp"
+                    android:background="@color/gray_icon" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -447,9 +498,10 @@
                         android:background="@drawable/white_shap"
                         android:textColor="@android:color/black" />
 
-                    <view
+                    <View
                         android:layout_width="1dp"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:background="@color/gray_icon" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -462,9 +514,10 @@
                         android:textSize="14sp" />
                 </LinearLayout>
 
-                <view
+                <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp" />
+                    android:layout_height="1dp"
+                    android:background="@color/gray_icon" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -478,9 +531,10 @@
                         android:background="@drawable/white_shap"
                         android:textColor="@android:color/black" />
 
-                    <view
+                    <View
                         android:layout_width="1dp"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:background="@color/gray_icon" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -493,9 +547,10 @@
                         android:textSize="14sp" />
                 </LinearLayout>
 
-                <view
+                <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp" />
+                    android:layout_height="1dp"
+                    android:background="@color/gray_icon" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
