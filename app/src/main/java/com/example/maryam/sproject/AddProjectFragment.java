@@ -71,25 +71,25 @@ public class AddProjectFragment extends Fragment implements View.OnClickListener
                 bundle.putString("address", "تصميم داخلي");
                 bundle.putString("button_type", "شقق سكنية - تصميم داخلي");
                 ditailsOneFragment.setArguments(bundle);
-                FragmentsUtil.replaceFragment(getActivity(), R.layout.activity_container, new ProjectDitailsOneFragment());
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, ditailsOneFragment,true);
                 break;
             case R.id.mostion:
-                FragmentsUtil.replaceFragment(getActivity(), R.layout.activity_container, new ProjectDitailsMotionFragment());
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProjectDitailsMotionFragment(),true);
                 break;
             case R.id.draw_wall:
-                FragmentsUtil.replaceFragment(getActivity(), R.layout.activity_container, new ProjectDitailsPaintingWallFragment());
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProjectDitailsPaintingWallFragment(),true);
                 break;
             case R.id.graphic:
-                FragmentsUtil.replaceFragment(getActivity(), R.layout.activity_container, new ProjectDitailesGraphicsFragment());
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProjectDitailesGraphicsFragment(),true);
                 break;
             case R.id.arch:
                 bundle.putString("address", "تصميم معماري");
                 bundle.putString("button_type", "رسومات هندسية - تصميم معماري");
                 ditailsOneFragment.setArguments(bundle);
-                FragmentsUtil.replaceFragment(getActivity(), R.layout.activity_container, new ProjectDitailsOneFragment());
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, ditailsOneFragment,true);
                 break;
             case R.id.search_designer:
-                FragmentsUtil.replaceFragment(getActivity(), R.layout.activity_container, new SearchFragment());
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new SearchFragment(),true);
                 break;
         }
     }
