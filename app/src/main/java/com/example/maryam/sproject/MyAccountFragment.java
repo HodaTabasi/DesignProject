@@ -60,16 +60,16 @@ public class MyAccountFragment extends Fragment implements View.OnClickListener 
         int id = v.getId();
         switch (id) {
             case R.id.report:
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ReportFragment());
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ReportFragment(),true);
                 break;
             case R.id.current_account:
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new CurrentAccountFragment());
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new CurrentAccountFragment(),true);
                 break;
             case R.id.recharge_balance:
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ShippingBalanceFragment());
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ShippingBalanceFragment(),true);
                 break;
             case R.id.drop_balance:
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new RetractableBalanceFragment());
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new RetractableBalanceFragment(),true);
                 break;
         }
     }
