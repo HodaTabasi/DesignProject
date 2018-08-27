@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 
 public class BankFragment extends Fragment {
 
+    public BankFragment() {
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

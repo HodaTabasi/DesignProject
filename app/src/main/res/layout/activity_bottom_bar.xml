@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ebebeb"
+    android:gravity="center_vertical"
+    android:layoutDirection="ltr"
+    tools:context=".BottomBar">
+
+    <TextView
+        android:id="@+id/tv_msgs"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawablePadding="5dp"
+        android:drawableTop="@drawable/ic_bar_msgs"
+        android:gravity="center"
+        android:padding="3dp"
+        android:text="الرسائل"
+        android:textColor="@color/blue"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/tv_projects"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawablePadding="5dp"
+        android:drawableTop="@drawable/ic_bar_projects"
+        android:gravity="center"
+        android:padding="3dp"
+        android:text="@string/browseProjects"
+        android:textColor="@color/blue"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/tv_home"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawablePadding="5dp"
+        android:drawableTop="@drawable/ic_bar_home"
+        android:gravity="center"
+        android:padding="3dp"
+        android:text="الرئيسية"
+        android:textColor="@color/blue"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/tv_portfolio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawablePadding="5dp"
+        android:drawableTop="@drawable/ic_bar_portfolio"
+        android:gravity="center"
+        android:padding="3dp"
+        android:text="تصفح الاعمال"
+        android:textColor="@color/blue"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/tv_profile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawablePadding="5dp"
+        android:drawableTop="@drawable/ic_bar_profile"
+        android:gravity="center"
+        android:padding="3dp"
+        android:text="حسابي"
+        android:textColor="@color/blue"
+        android:textSize="10sp" />
+
+
+</LinearLayout>

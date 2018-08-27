@@ -10,6 +10,6 @@ public class ContainerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container);
 
-        FragmentsUtil.addFragment(ContainerActivity.this, R.id.container_activity, new MainFragment());
+        FragmentsUtil.addFragment(ContainerActivity.this, R.id.container_activity, new MainFragment(),false);
     }
 }

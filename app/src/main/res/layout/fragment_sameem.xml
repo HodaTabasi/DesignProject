@@ -7,70 +7,75 @@
     tools:context=".SameemFragment">
 
     <TextView
+        android:id="@+id/tv_sammem_bio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="72dp"
         android:background="@drawable/account_shape"
+        android:gravity="center"
+        android:padding="3dp"
         android:text="نبدة عن صمم"
-        android:padding="3dp"
-        android:gravity="center"
-        android:textSize="18dp"
         android:textColor="@android:color/black"
-        android:layout_marginBottom="8dp"/>
+        android:textSize="18dp" />
 
     <TextView
+        android:id="@+id/tv_ques"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:background="@drawable/account_shape"
+        android:gravity="center"
+        android:padding="3dp"
         android:text="الاسئلة الشائعة "
-        android:padding="3dp"
-        android:gravity="center"
-        android:textSize="18dp"
         android:textColor="@android:color/black"
-        android:layout_marginBottom="8dp"/>
+        android:textSize="18dp" />
 
     <TextView
+        android:id="@+id/tv_rights"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:background="@drawable/account_shape"
+        android:gravity="center"
+        android:padding="3dp"
         android:text="ضمان حقوقك"
-        android:padding="3dp"
-        android:gravity="center"
-        android:textSize="18dp"
         android:textColor="@android:color/black"
-        android:layout_marginBottom="8dp"/>
+        android:textSize="18dp" />
 
     <TextView
+        android:id="@+id/tv_conditions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:background="@drawable/account_shape"
+        android:gravity="center"
+        android:padding="3dp"
         android:text="شروط الاستخدام"
-        android:padding="3dp"
-        android:gravity="center"
-        android:textSize="18dp"
         android:textColor="@android:color/black"
-        android:layout_marginBottom="8dp"/>
+        android:textSize="18dp" />
 
     <TextView
+        android:id="@+id/tv_call_us"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:background="@drawable/account_shape"
-        android:text="اتصل بنا"
-        android:padding="3dp"
         android:gravity="center"
-        android:textSize="18dp"
+        android:padding="3dp"
+        android:text="اتصل بنا"
         android:textColor="@android:color/black"
-        android:layout_marginBottom="8dp"/>
+        android:textSize="18dp" />
 
 
 </LinearLayout>

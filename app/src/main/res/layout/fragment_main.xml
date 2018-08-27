@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/header"
-    tools:context=".MainFragment">
+    tools:context=".MainFragment"
+    android:layoutDirection="ltr">
 
     <ImageView
         android:id="@+id/img_power"
@@ -26,7 +27,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="30dp"
         android:layout_toRightOf="@+id/img_notification"
         android:gravity="right"
@@ -38,7 +39,7 @@
             android:layout_height="wrap_content"
             android:text="حسام اليماني"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tv_specialization"
@@ -52,17 +53,17 @@
     </LinearLayout>
 
     <FrameLayout
-        android:id="@+id/frame_layout"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginRight="-25dp"
+        android:id="@+id/profile_frame_layout"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginRight="-20dp"
         android:layout_marginTop="15dp"
         android:layout_toLeftOf="@+id/img_power">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_user"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_gravity="bottom|center_horizontal"
             android:src="@mipmap/ic_launcher" />
 
@@ -79,7 +80,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/frame_layout"
+        android:layout_below="@+id/profile_frame_layout"
         android:layout_marginTop="30dp"
         android:orientation="vertical">
 
@@ -97,14 +98,15 @@
                 android:layout_weight="1"
                 android:drawableTop="@drawable/ic_my_portfolio"
                 android:gravity="center"
+                android:padding="5dp"
                 android:text="معرض اعمالي"
                 android:textColor="@color/gray_icon"
-                android:textSize="17sp" />
+                android:textSize="16sp" />
 
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="@color/gray_icon"/>
+                android:background="@color/gray_icon" />
 
             <TextView
                 android:id="@+id/tv_budget"
@@ -114,17 +116,17 @@
                 android:layout_weight="1"
                 android:drawableTop="@drawable/ic_my_budget"
                 android:gravity="center"
-                android:padding="6dp"
+                android:padding="5dp"
                 android:text="رصيدي"
                 android:textColor="@color/gray_icon"
-                android:textSize="17sp" />
+                android:textSize="16sp" />
 
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/gray_icon"/>
+            android:background="@color/gray_icon" />
 
 
         <LinearLayout
@@ -141,14 +143,15 @@
                 android:layout_weight="1"
                 android:drawableTop="@drawable/ic_add"
                 android:gravity="center"
+                android:padding="5dp"
                 android:text="اضف مشروع"
                 android:textColor="@color/gray_icon"
-                android:textSize="17sp" />
+                android:textSize="16sp" />
 
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="@color/gray_icon"/>
+                android:background="@color/gray_icon" />
 
             <TextView
                 android:id="@+id/tv_proposals"
@@ -158,16 +161,17 @@
                 android:layout_weight="1"
                 android:drawableTop="@drawable/ic_my_proposals"
                 android:gravity="center"
+                android:padding="5dp"
                 android:text="عروضي"
                 android:textColor="@color/gray_icon"
-                android:textSize="17sp" />
+                android:textSize="16sp" />
 
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/gray_icon"/>
+            android:background="@color/gray_icon" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -184,14 +188,15 @@
                 android:drawableTint="#a4a4a4"
                 android:drawableTop="@drawable/ic_about"
                 android:gravity="center"
+                android:padding="5dp"
                 android:text="عن صمم"
                 android:textColor="@color/gray_icon"
-                android:textSize="17sp" />
+                android:textSize="16sp" />
 
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="@color/gray_icon"/>
+                android:background="@color/gray_icon" />
 
             <TextView
                 android:id="@+id/tv_search"
@@ -201,10 +206,10 @@
                 android:layout_weight="1"
                 android:drawableTop="@drawable/ic_search2"
                 android:gravity="center"
-                android:padding="10dp"
                 android:text="بحث"
+                android:padding="5dp"
                 android:textColor="@color/gray_icon"
-                android:textSize="17sp" />
+                android:textSize="16sp" />
 
         </LinearLayout>
 

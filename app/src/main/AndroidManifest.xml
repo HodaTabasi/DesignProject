@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegistrationActivity" />
-        <activity android:name=".ContainerActivity"></activity>
+        <activity android:name=".ContainerActivity" />
+        <activity android:name=".BottomBar"></activity>
     </application>
 
 </manifest>

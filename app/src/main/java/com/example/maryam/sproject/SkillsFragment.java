@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 
 public class SkillsFragment extends Fragment {
 
+    public SkillsFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
