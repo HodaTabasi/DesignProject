@@ -3,9 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    tools:context=".AddProjectFragment"
-    >
+    android:layoutDirection="ltr"
+    tools:context=".AddProjectFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,31 +21,16 @@
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/p1"
+                android:background="@drawable/img2"
                 android:id="@+id/in_side"
                 android:layout_weight="1">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#4fbeb6be"/>
-
-                <ImageView
-                    android:id="@+id/vso"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/vector_smart_object"
-                    android:tint="#4f454245"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="45dp"
-                    android:scaleType="fitXY"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_below="@+id/vso"
-                    android:textSize="28dp"
+                    android:layout_marginTop="120dp"
+                    android:textSize="20dp"
                     android:textColor="@android:color/black"
                     android:text="تصميم داخلى"/>
 
@@ -55,36 +39,22 @@
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/p2"
+                android:background="@drawable/img1"
                 android:id="@+id/arch"
                 android:layout_weight="1">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#4f9c989c"/>
-
-                <ImageView
-                    android:id="@+id/vso6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/architecture"
-                    android:tint="#4f454245"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="45dp"
-                    android:scaleType="fitXY"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_below="@+id/vso6"
-                    android:textSize="28dp"
+                    android:layout_marginTop="120dp"
+                    android:textSize="20dp"
                     android:textColor="@android:color/black"
                     android:text="تصميم معماري"/>
 
             </RelativeLayout>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -94,31 +64,16 @@
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/p3"
+                android:background="@drawable/img4"
                 android:id="@+id/graphic"
                 android:layout_weight="1">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#4fbeb6be"/>
-
-                <ImageView
-                    android:id="@+id/vso2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/graphique"
-                    android:tint="#4f454245"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="45dp"
-                    android:scaleType="fitXY"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_below="@+id/vso2"
-                    android:textSize="25dp"
+                    android:layout_marginTop="120dp"
+                    android:textSize="20dp"
                     android:textColor="@android:color/black"
                     android:text="تصاميم الجرافيكس"/>
 
@@ -127,36 +82,23 @@
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/p4"
+                android:background="@drawable/img3"
                 android:id="@+id/draw_wall"
                 android:layout_weight="1">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#4f9c989c"/>
 
-                <ImageView
-                    android:id="@+id/vso3"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/peinturemurale"
-                    android:tint="#4f454245"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="45dp"
-                    android:scaleType="fitXY"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_below="@+id/vso3"
-                    android:textSize="28dp"
+                    android:textSize="20dp"
+                    android:layout_marginTop="120dp"
                     android:textColor="@android:color/black"
                     android:text="الرسم الجداري"/>
 
             </RelativeLayout>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -170,24 +112,24 @@
                 android:id="@+id/search_designer"
                 android:layout_weight="1">
 
-
                 <ImageView
                     android:id="@+id/vso5"
-                    android:layout_width="100dp"
-                    android:layout_height="88dp"
-                    android:src="@drawable/ic_search_black_24dp"
-                    android:tint="#4f454245"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_search2"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="45dp"
-                    android:scaleType="fitXY"/>
+                    android:layout_marginTop="50dp"
+                    android:tint="#a4a4a4"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
                     android:layout_below="@+id/vso5"
-                    android:textSize="28dp"
+                    android:textSize="20dp"
+                    android:layout_centerHorizontal="true"
                     android:textColor="@android:color/black"
+                    android:layout_marginTop="10dp"
                     android:text="بحث عن مصمم"/>
 
             </RelativeLayout>
@@ -195,31 +137,16 @@
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/p5"
+                android:background="@drawable/img5"
                 android:id="@+id/mostion"
                 android:layout_weight="1">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#4f9c989c"/>
-
-                <ImageView
-                    android:id="@+id/vso4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/motion"
-                    android:tint="#4f454245"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="45dp"
-                    android:scaleType="fitXY"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_below="@+id/vso4"
-                    android:textSize="28dp"
+                    android:layout_marginTop="120dp"
+                    android:textSize="20dp"
                     android:textColor="@android:color/black"
                     android:text="تصاميم موشن"/>
 
