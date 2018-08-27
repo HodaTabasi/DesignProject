@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 
 /**
@@ -40,11 +41,18 @@ public class MyAccountFragment extends Fragment implements View.OnClickListener{
         mRechargeBalance = getView().findViewById(R.id.recharge_balance);
         mDropBalance = getView().findViewById(R.id.drop_balance);
     }
+    private void addListeners(){
+        mReport.setOnClickListener(this);
+        mCurrentAccount.setOnClickListener(this);
+        mRechargeBalance.setOnClickListener(this);
+        mDropBalance.setOnClickListener(this);
+    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initView();
+        addListeners();
     }
 
     @Override
