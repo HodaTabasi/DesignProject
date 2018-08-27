@@ -41,214 +41,227 @@
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_below="@+id/toolbar"
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <RelativeLayout
-            android:layout_margin="8dp"
-            android:layout_width="match_parent"
-            android:background="@drawable/title_shape"
-            android:gravity="center"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/name_wall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:layout_margin="8dp"
-                android:textColor="@android:color/white"
-                android:text="الرسم الجداري  "/>
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:tint="@android:color/white"
-                android:layout_marginTop="5dp"
-                android:layout_toEndOf="@+id/name_wall"
-                android:src="@drawable/peinturemurale"
-                android:layout_toRightOf="@+id/name" />
-        </RelativeLayout>
-
-        <TextView
-            android:id="@+id/wall_type"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/account_shape"
-            android:text="ثلاثي ابعاد - رسم جداري "
-            android:padding="3dp"
-            android:gravity="center"
-            android:textSize="16sp"
-            android:textColor="@android:color/black"
-            android:layout_marginBottom="8dp"/>
-
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/title_shape"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/name_wall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="الرسم الجداري  "
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@+id/name_wall"
+                    android:layout_toRightOf="@+id/name"
+                    android:src="@drawable/peinturemurale"
+                    android:tint="@android:color/white" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/wall_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/account_shape"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="ثلاثي ابعاد - رسم جداري "
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="ارفع صور من ارض الواقع"
-                    android:textAlignment="textEnd"
-                    android:gravity="end"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:textSize="16sp"
-                    android:textColor="@android:color/secondary_text_light"/>
-                <ImageView
-                    android:id="@+id/wall_upload_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="27dp"
-                    android:padding="8dp"
-                    android:background="@drawable/account_shape"
-                    android:src="@drawable/add"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="16dp" />
+                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="المساحة م2"
-                    android:id="@+id/wall_area"
-                    android:textAlignment="center"
-                    android:gravity="center"
-                    android:layout_margin="8dp"
-                    android:textSize="16sp"
-                    android:background="@drawable/account_shape"
-                    android:padding="5dp"
-                    android:textColor="@android:color/secondary_text_light"/>
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:gravity="end"
+                        android:text="ارفع صور من ارض الواقع"
+                        android:textAlignment="textEnd"
+                        android:textColor="@android:color/secondary_text_light"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/wall_upload_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="27dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/account_shape"
+                        android:padding="8dp"
+                        android:src="@drawable/add" />
+
+                    <TextView
+                        android:id="@+id/wall_area"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/account_shape"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="المساحة م2"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/secondary_text_light"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="10dp"
+                    android:layout_weight="0.11" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:gravity="start"
+                        android:text="ارفع صورة لتصاميم اعجبتك"
+                        android:textAlignment="textStart"
+                        android:textColor="@android:color/secondary_text_light"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/wall_like_upload_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="27dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="27dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/account_shape"
+                        android:padding="8dp"
+                        android:src="@drawable/add" />
+
+                    <TextView
+                        android:id="@+id/wall_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/account_shape"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="المدينة"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/secondary_text_light"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
 
             </LinearLayout>
-            <View
-                android:layout_width="0dp"
-                android:layout_weight="0.11"
-                android:layout_height="10dp"/>
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
+            <TextView
+                android:id="@+id/wall_map"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="ارفع صورة لتصاميم اعجبتك"
-                    android:textAlignment="textStart"
-                    android:gravity="start"
-                    android:layout_marginEnd="8dp"
-                    android:textSize="16sp"
-                    android:textColor="@android:color/secondary_text_light"
-                    android:layout_marginRight="8dp" />
-                <ImageView
-                    android:id="@+id/wall_like_upload_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginStart="27dp"
-                    android:layout_marginEnd="8dp"
-                    android:padding="8dp"
-                    android:background="@drawable/account_shape"
-                    android:src="@drawable/add"
-                    android:layout_marginLeft="27dp"
-                    android:layout_marginRight="8dp" />
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/account_shape"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="خرائط - موقع المشروع "
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="المدينة"
-                    android:textAlignment="center"
-                    android:id="@+id/wall_city"
-                    android:gravity="center"
-                    android:layout_margin="8dp"
-                    android:textSize="16sp"
-                    android:background="@drawable/account_shape"
-                    android:padding="5dp"
-                    android:textColor="@android:color/secondary_text_light"/>
+            <TextView
+                android:id="@+id/wall_balance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/account_shape"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="الميزانية"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
 
-            </LinearLayout>
+            <TextView
+                android:id="@+id/wall_project_dietails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/account_shape"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="تفاصيل عن المشروع"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
 
+            <TextView
+                android:id="@+id/wall_attachment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/account_shape"
+                android:drawableEnd="@drawable/upload"
+                android:drawablePadding="8dp"
+                android:drawableRight="@drawable/upload"
+                android:padding="8dp"
+                android:text="المرفقات"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/wall_send"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/title_shape"
+                android:text="ارسل الطلب"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
         </LinearLayout>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/account_shape"
-            android:id="@+id/wall_map"
-            android:text="خرائط - موقع المشروع "
-            android:padding="3dp"
-            android:gravity="center"
-            android:textSize="16sp"
-            android:textColor="@android:color/black"
-            android:layout_marginBottom="8dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/account_shape"
-            android:text="الميزانية"
-            android:id="@+id/wall_balance"
-            android:padding="3dp"
-            android:gravity="center"
-            android:textSize="16sp"
-            android:textColor="@android:color/black"
-            android:layout_marginBottom="8dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/account_shape"
-            android:text="تفاصيل عن المشروع"
-            android:padding="3dp"
-            android:gravity="center"
-            android:id="@+id/wall_project_dietails"
-            android:textSize="16sp"
-            android:textColor="@android:color/black"
-            android:layout_marginBottom="8dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/account_shape"
-            android:text="المرفقات"
-            android:id="@+id/wall_attachment"
-            android:padding="8dp"
-            android:layout_gravity="end"
-            android:textSize="16sp"
-            android:textColor="@android:color/black"
-            android:drawableEnd="@drawable/upload"
-            android:drawableRight="@drawable/upload"
-            android:drawablePadding="8dp"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_margin="8dp"
-            android:background="@drawable/title_shape"
-            android:id="@+id/wall_send"
-            android:text="ارسل الطلب"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-
+    </ScrollView>
 </RelativeLayout>

@@ -25,7 +25,6 @@
             android:layout_centerInParent="true"
             android:drawablePadding="15dp"
             android:drawableRight="@drawable/ic_add_black"
-
             android:gravity="center"
             android:text="اضف مشروع"
             android:textColor="@color/white"
@@ -41,251 +40,260 @@
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_below="@+id/toolbar"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@drawable/title_shape"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="التصميم الداخلي "
-                android:textColor="@android:color/white"
-                android:textSize="16sp" />
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_toEndOf="@+id/name"
-                android:layout_toRightOf="@+id/name"
-                android:src="@drawable/vector_smart_object"
-                android:tint="@android:color/white" />
-        </RelativeLayout>
-
-        <TextView
-            android:id="@+id/in_type"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/account_shape"
-            android:gravity="center"
-            android:padding="3dp"
-            android:text="شقة سكنية - تصميم داخلي"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/chooese_style"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/account_shape"
-            android:gravity="center"
-            android:padding="3dp"
-            android:text="اختر الاستايل"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/design_color"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/account_shape"
-            android:gravity="center"
-            android:padding="3dp"
-            android:text="ادخل الالوان التى ترغبها في التصميم"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="0dp"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_margin="8dp"
+                android:background="@drawable/title_shape"
+                android:gravity="center">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginStart="8dp"
-                    android:gravity="end"
-                    android:text="ارفع صور من ارض الواقع"
-                    android:textAlignment="textEnd"
-                    android:textColor="@android:color/secondary_text_light"
-                    android:textSize="15sp" />
-
-                <ImageView
-                    android:id="@+id/upload_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="27dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/account_shape"
-                    android:padding="8dp"
-                    android:src="@drawable/add" />
-
-                <TextView
-                    android:id="@+id/area2"
-                    android:layout_width="match_parent"
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:background="@drawable/account_shape"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:text="المساحة م2"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/secondary_text_light"
+                    android:text="التصميم الداخلي "
+                    android:textColor="@android:color/white"
                     android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_toEndOf="@+id/name"
+                    android:layout_toRightOf="@+id/name"
+                    android:src="@drawable/vector_smart_object"
+                    android:tint="@android:color/white" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/in_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/account_shape"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="شقة سكنية - تصميم داخلي"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/chooese_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/account_shape"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="اختر الاستايل"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/design_color"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/account_shape"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="ادخل الالوان التى ترغبها في التصميم"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:gravity="end"
+                        android:text="ارفع صور من ارض الواقع"
+                        android:textAlignment="textEnd"
+                        android:textColor="@android:color/secondary_text_light"
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:id="@+id/upload_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="27dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/account_shape"
+                        android:padding="8dp"
+                        android:src="@drawable/add" />
+
+                    <TextView
+                        android:id="@+id/area2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/account_shape"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="المساحة م2"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/secondary_text_light"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="10dp"
+                    android:layout_weight="0.11" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:gravity="start"
+                        android:text="ارفع صورة لتصاميم اعجبتك"
+                        android:textAlignment="textStart"
+                        android:textColor="@android:color/secondary_text_light"
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:id="@+id/upload_like_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="27dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="27dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/account_shape"
+                        android:padding="8dp"
+                        android:src="@drawable/add" />
+
+                    <TextView
+                        android:id="@+id/city"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/account_shape"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="المدينة"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/secondary_text_light"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="10dp"
-                android:layout_weight="0.11" />
-
-            <LinearLayout
-                android:layout_width="0dp"
+            <TextView
+                android:id="@+id/map"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/account_shape"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="خرائط - موقع المشروع "
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
-                    android:gravity="start"
-                    android:text="ارفع صورة لتصاميم اعجبتك"
-                    android:textAlignment="textStart"
-                    android:textColor="@android:color/secondary_text_light"
-                    android:textSize="15sp" />
+            <TextView
+                android:id="@+id/balance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/account_shape"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="الميزانية"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
 
-                <ImageView
-                    android:id="@+id/upload_like_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="27dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="27dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/account_shape"
-                    android:padding="8dp"
-                    android:src="@drawable/add" />
+            <TextView
+                android:id="@+id/project_detailes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/account_shape"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="تفاصيل عن المشروع"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/city"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/account_shape"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:text="المدينة"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/secondary_text_light"
-                    android:textSize="16sp" />
+            <TextView
+                android:id="@+id/attachment_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/account_shape"
+                android:drawableEnd="@drawable/upload"
+                android:drawablePadding="8dp"
+                android:drawableRight="@drawable/upload"
+                android:padding="5dp"
+                android:text="المرفقات"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
 
-            </LinearLayout>
-
+            <Button
+                android:id="@+id/send_in"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/title_shape"
+                android:text="ارسل الطلب"
+                android:textColor="@android:color/white"
+                android:textSize="18dp" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/map"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/account_shape"
-            android:gravity="center"
-            android:padding="3dp"
-            android:text="خرائط - موقع المشروع "
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/balance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/account_shape"
-            android:gravity="center"
-            android:padding="3dp"
-            android:text="الميزانية"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
+    </ScrollView>
 
-        <TextView
-            android:id="@+id/project_detailes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/account_shape"
-            android:gravity="center"
-            android:padding="3dp"
-            android:text="تفاصيل عن المشروع"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/attachment_in"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/account_shape"
-            android:drawableEnd="@drawable/upload"
-            android:drawablePadding="8dp"
-            android:drawableRight="@drawable/upload"
-            android:padding="5dp"
-            android:text="المرفقات"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-
-        <Button
-            android:id="@+id/send_in"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="5dp"
-            android:layout_margin="8dp"
-            android:background="@drawable/title_shape"
-            android:text="ارسل الطلب"
-            android:textColor="@android:color/white"
-            android:textSize="18dp" />
-    </LinearLayout>
 
 </RelativeLayout>

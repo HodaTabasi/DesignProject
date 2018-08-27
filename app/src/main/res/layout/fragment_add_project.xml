@@ -25,7 +25,6 @@
             android:layout_centerInParent="true"
             android:drawablePadding="15dp"
             android:drawableRight="@drawable/ic_add_black"
-
             android:gravity="center"
             android:text="اضف مشروع"
             android:textColor="@color/white"
@@ -42,51 +41,51 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
         android:orientation="vertical"
         android:weightSum="3">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="horizontal"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/img2"
                 android:id="@+id/in_side"
-                android:layout_weight="1">
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/img2">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="120dp"
-                    android:textSize="20dp"
+                    android:text="تصميم داخلى"
                     android:textColor="@android:color/black"
-                    android:text="تصميم داخلى"/>
+                    android:textSize="20dp" />
 
             </RelativeLayout>
 
             <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/img1"
                 android:id="@+id/arch"
-                android:layout_weight="1">
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/img1">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="120dp"
-                    android:textSize="20dp"
+                    android:text="تصميم معماري"
                     android:textColor="@android:color/black"
-                    android:text="تصميم معماري"/>
+                    android:textSize="20dp" />
 
             </RelativeLayout>
         </LinearLayout>
@@ -94,43 +93,43 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="horizontal"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/img4"
                 android:id="@+id/graphic"
-                android:layout_weight="1">
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/img4">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="120dp"
-                    android:textSize="20dp"
+                    android:text="تصاميم الجرافيكس"
                     android:textColor="@android:color/black"
-                    android:text="تصاميم الجرافيكس"/>
+                    android:textSize="20dp" />
 
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/draw_wall"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/img3"
-                android:id="@+id/draw_wall"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:background="@drawable/img3">
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:textSize="20dp"
                     android:layout_marginTop="120dp"
+                    android:text="الرسم الجداري"
                     android:textColor="@android:color/black"
-                    android:text="الرسم الجداري"/>
+                    android:textSize="20dp" />
 
             </RelativeLayout>
         </LinearLayout>
@@ -138,53 +137,52 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="horizontal"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <RelativeLayout
+                android:id="@+id/search_designer"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@android:color/white"
-                android:id="@+id/search_designer"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:background="@android:color/white">
 
                 <ImageView
                     android:id="@+id/vso5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_search2"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="50dp"
-                    android:tint="#a4a4a4"
-                    />
+                    android:src="@drawable/ic_search2"
+                    android:tint="#a4a4a4" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/vso5"
-                    android:textSize="20dp"
                     android:layout_centerHorizontal="true"
-                    android:textColor="@android:color/black"
                     android:layout_marginTop="10dp"
-                    android:text="بحث عن مصمم"/>
+                    android:text="بحث عن مصمم"
+                    android:textColor="@android:color/black"
+                    android:textSize="20dp" />
 
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/mostion"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/img5"
-                android:id="@+id/mostion"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:background="@drawable/img5">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="120dp"
-                    android:textSize="20dp"
+                    android:text="تصاميم موشن"
                     android:textColor="@android:color/black"
-                    android:text="تصاميم موشن"/>
+                    android:textSize="20dp" />
 
             </RelativeLayout>
         </LinearLayout>
