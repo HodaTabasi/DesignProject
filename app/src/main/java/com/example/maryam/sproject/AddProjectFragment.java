@@ -41,6 +41,7 @@ public class AddProjectFragment extends Fragment implements View.OnClickListener
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initView();
+        addListeners();
     }
 
     private void initView() {
@@ -52,6 +53,14 @@ public class AddProjectFragment extends Fragment implements View.OnClickListener
         mSearchDesigner = getView().findViewById(R.id.search_designer);
     }
 
+    private void addListeners(){
+        mInSide.setOnClickListener(this);
+        mArch.setOnClickListener(this);
+        mGraphic.setOnClickListener(this);
+        mMostion.setOnClickListener(this);
+        mDrawWall.setOnClickListener(this);
+        mSearchDesigner.setOnClickListener(this);
+    }
 
     @Override
     public void onClick(View v) {
