@@ -1,12 +1,19 @@
 package com.example.maryam.sproject;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainFragment extends Fragment {
 
@@ -18,20 +25,22 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
-        FrameLayout profile_frame_layout = view.findViewById(R.id.profile_frame_layout);
+        CircleImageView img_user = view.findViewById(R.id.img_user);
         TextView tv_portfolio = view.findViewById(R.id.tv_portfolio);
         TextView tv_budget = view.findViewById(R.id.tv_budget);
         TextView tv_addProject = view.findViewById(R.id.tv_addProject);
         TextView tv_proposals = view.findViewById(R.id.tv_proposals);
         TextView tv_about = view.findViewById(R.id.tv_about);
         TextView tv_search = view.findViewById(R.id.tv_search);
+        ImageView img_power = view.findViewById(R.id.img_power);
+        ImageView img_notification = view.findViewById(R.id.img_notification);
 
 
-        profile_frame_layout.setOnClickListener(new View.OnClickListener() {
+        img_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AccountFragment());
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AccountFragment(), true);
 
             }
         });
@@ -40,7 +49,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new PortfolioFragment());
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AddNewWork2Fragment(), true);
 
             }
         });
@@ -49,7 +58,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new MyAccountFragment());
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new MyAccountFragment(), true);
 
             }
         });
@@ -58,7 +67,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AddProjectFragment());
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AddProjectFragment(), true);
 
             }
         });
@@ -67,7 +76,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new MyOffersFragment());
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new MyOffersFragment(), true);
 
 
             }
@@ -76,6 +85,7 @@ public class MainFragment extends Fragment {
         tv_about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new SameemFragment(), true);
 
             }
         });
@@ -83,6 +93,32 @@ public class MainFragment extends Fragment {
         tv_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new SearchFragment(), true);
+
+            }
+        });
+
+        img_power.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                new AlertDialog.Builder(getActivity())
+                        .setMessage("هل تريد الخروج من التطبيق؟").setCancelable(false)
+                        .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                getActivity().finish();
+                            }
+                        })
+                        .setNegativeButton("لا", null)
+                        .show();
+
+            }
+        });
+
+        img_notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new NotificationFragment(), true);
 
             }
         });

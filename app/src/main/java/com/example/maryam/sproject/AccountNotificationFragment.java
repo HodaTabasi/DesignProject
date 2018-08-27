@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 
 public class AccountNotificationFragment extends Fragment {
 
+    public AccountNotificationFragment() {
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

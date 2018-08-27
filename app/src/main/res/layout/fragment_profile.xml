@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:layoutDirection="ltr"
     tools:context=".ProfileFragment">
 
     <!--<include layout="@layout/account_toolbar" />-->
@@ -40,327 +41,353 @@
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/tv_profile"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/square_corner_shape"
-        android:gravity="center"
-        android:padding="5dp"
-        android:text="@string/profile"
-        android:textColor="@color/gray"
-        android:textSize="20sp" />
+        android:layout_below="@+id/toolbar">
 
-    <LinearLayout
-        android:id="@+id/linaer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_profile"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp">
-
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/square_corner_shape"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="@string/client"
-            android:textColor="@color/gray"
-            android:textSize="17sp" />
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/solid_account_shape"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="@string/designer"
-            android:textColor="@color/lightgray"
-            android:textSize="17sp" />
-    </LinearLayout>
-
-    <EditText
-        android:id="@+id/tv_specialization"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linaer"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="7dp"
-        android:background="@drawable/square_corner_shape"
-        android:gravity="center"
-        android:hint="التخصص"
-        android:padding="5dp"
-        android:textColor="@color/gray"
-        android:textColorHint="@color/gray"
-        android:textSize="17sp" />
-
-    <LinearLayout
-        android:id="@+id/linear2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_specialization"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="7dp">
-
-        <TextView
-            android:id="@+id/tv_individual"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/square_corner_shape"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="@string/individual"
-            android:textColor="@color/gray"
-            android:textSize="17sp" />
-
-        <TextView
-            android:id="@+id/tv_company"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/solid_account_shape"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="@string/company"
-            android:textColor="@color/lightgray"
-            android:textSize="17sp" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/tv_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/linear2"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="7dp"
-        android:text="الاسم"
-        android:textColor="@color/gray"
-        android:textSize="17sp" />
-
-    <EditText
-        android:id="@+id/et_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_name"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/square_corner_shape"
-        android:padding="5dp"
-        android:text="ننننننننن"
-        android:textColor="@color/gray"
-        android:textColorHint="@color/gray" />
-
-    <TextView
-        android:id="@+id/tv_bio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/et_name"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="7dp"
-        android:text="نبذة تعريفية"
-        android:textColor="@color/gray"
-        android:textSize="17sp" />
-
-    <EditText
-        android:id="@+id/et_bio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_bio"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/square_corner_shape"
-        android:gravity="clip_vertical"
-        android:padding="5dp"
-        android:text="ننننننننن"
-        android:textColor="@color/gray"
-        android:textColorHint="@color/gray" />
-
-    <TextView
-        android:id="@+id/tv_mobile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/et_bio"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="7dp"
-        android:text="رقم الجوال"
-        android:textColor="@color/gray"
-        android:textSize="17sp" />
-
-    <RelativeLayout
-        android:id="@+id/relative3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_mobile"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
-
-        <EditText
-            android:id="@+id/et_mobile1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/half_right_corner_shape"
-            android:hint="1234567"
-            android:inputType="number"
-            android:padding="5dp"
-            android:textColor="@color/gray"
-            android:textColorHint="@color/gray"
-            android:textSize="17sp" />
-
-        <EditText
-            android:id="@+id/et_mobile2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/et_mobile1"
-            android:background="@drawable/half_left_corner_shape"
-            android:hint="059"
-            android:inputType="number"
-            android:padding="5dp"
-            android:textColor="@color/gray"
-            android:textColorHint="@color/gray"
-            android:textSize="17sp" />
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/tv_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/relative3"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="7dp"
-        android:text="الايميل"
-        android:textColor="@color/gray"
-        android:textSize="17sp" />
-
-    <EditText
-        android:id="@+id/et_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_email"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/square_corner_shape"
-        android:inputType="textEmailAddress"
-        android:padding="5dp"
-        android:text="maryam@hotmail.com"
-        android:textColor="@color/gray"
-        android:textColorHint="@color/gray" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
 
-    <RelativeLayout
-        android:id="@+id/relative4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/et_email"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="7dp">
+            <TextView
+                android:id="@+id/tv_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
 
-        <TextView
-            android:id="@+id/tv_sex"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:text="الجنس"
-            android:textColor="@color/gray"
-            android:textSize="17sp" />
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/square_corner_shape"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/profile"
+                android:textColor="@color/gray"
+                android:textSize="20sp" />
 
-        <EditText
-            android:id="@+id/et_sex"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/tv_sex"
-            android:background="@drawable/square_corner_shape"
-            android:hint="أنثى"
-            android:inputType="textEmailAddress"
-            android:padding="5dp"
-            android:textColor="@color/gray"
-            android:textColorHint="@color/gray"
-            android:textSize="17sp" />
+            <LinearLayout
+                android:id="@+id/linaer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_profile"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/square_corner_shape"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="@string/client"
+                    android:textColor="@color/gray"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/solid_account_shape"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="@string/designer"
+                    android:textColor="@color/lightgray"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/tv_specialization"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linaer"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/square_corner_shape"
+                android:gravity="center"
+                android:hint="التخصص"
+                android:padding="5dp"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/gray"
+                android:textSize="17sp" />
+
+            <LinearLayout
+                android:id="@+id/linear2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_specialization"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="7dp">
+
+                <TextView
+                    android:id="@+id/tv_individual"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/square_corner_shape"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="@string/individual"
+                    android:textColor="@color/gray"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tv_company"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/solid_account_shape"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="@string/company"
+                    android:textColor="@color/lightgray"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/linear2"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="7dp"
+                android:text="الاسم"
+                android:textColor="@color/gray"
+                android:textSize="17sp" />
+
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_name"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/square_corner_shape"
+                android:padding="5dp"
+                android:text="ننننننننن"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/gray" />
+
+            <TextView
+                android:id="@+id/tv_bio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/et_name"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="7dp"
+                android:text="نبذة تعريفية"
+                android:textColor="@color/gray"
+                android:textSize="17sp" />
+
+            <EditText
+                android:id="@+id/et_bio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_bio"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/square_corner_shape"
+                android:gravity="clip_vertical"
+                android:padding="5dp"
+                android:text="ننننننننن"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/gray" />
+
+            <TextView
+                android:id="@+id/tv_mobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/et_bio"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="7dp"
+                android:text="رقم الجوال"
+                android:textColor="@color/gray"
+                android:textSize="17sp" />
+
+            <RelativeLayout
+                android:id="@+id/relative3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_mobile"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <EditText
+                    android:id="@+id/et_mobile1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/half_right_corner_shape"
+                    android:hint="1234567"
+                    android:inputType="number"
+                    android:padding="5dp"
+                    android:textColor="@color/gray"
+                    android:textColorHint="@color/gray"
+                    android:textSize="17sp" />
+
+                <EditText
+                    android:id="@+id/et_mobile2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/et_mobile1"
+                    android:background="@drawable/half_left_corner_shape"
+                    android:hint="059"
+                    android:inputType="number"
+                    android:padding="5dp"
+                    android:textColor="@color/gray"
+                    android:textColorHint="@color/gray"
+                    android:textSize="17sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/relative3"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="7dp"
+                android:text="الايميل"
+                android:textColor="@color/gray"
+                android:textSize="17sp" />
+
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_email"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/square_corner_shape"
+                android:inputType="textEmailAddress"
+                android:padding="5dp"
+                android:text="maryam@hotmail.com"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/gray" />
 
 
-        <TextView
-            android:id="@+id/tv_dob"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="120dp"
-            android:layout_toLeftOf="@+id/tv_sex"
-            android:text="تاريخ الميلاد"
-            android:textColor="@color/lightgray"
-            android:textSize="17sp" />
+            <RelativeLayout
+                android:id="@+id/relative4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_email"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="7dp">
 
-        <EditText
-            android:id="@+id/et_dob1"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_dob"
-            android:layout_marginRight="60dp"
-            android:layout_toLeftOf="@+id/et_sex"
-            android:background="@drawable/half_right_corner_shape"
-            android:inputType="number"
-            android:padding="5dp"
-            android:text="1996"
-            android:textSize="17sp" />
+                <TextView
+                    android:id="@+id/tv_sex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="الجنس"
+                    android:textColor="@color/gray"
+                    android:textSize="17sp" />
 
-        <EditText
-            android:id="@+id/et_dob2"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_dob"
-            android:layout_toLeftOf="@+id/et_dob1"
-            android:background="@drawable/square_shape"
-            android:inputType="number"
-            android:padding="5dp"
-            android:text="1"
-            android:textSize="17sp" />
+                <EditText
+                    android:id="@+id/et_sex"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/tv_sex"
+                    android:background="@drawable/square_corner_shape"
+                    android:hint="أنثى"
+                    android:inputType="textEmailAddress"
+                    android:padding="5dp"
+                    android:textColor="@color/gray"
+                    android:textColorHint="@color/gray"
+                    android:textSize="17sp" />
 
-        <EditText
-            android:id="@+id/et_dob3"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_dob"
-            android:layout_toLeftOf="@+id/et_dob2"
-            android:background="@drawable/half_left_corner_shape"
-            android:inputType="number"
-            android:padding="5dp"
-            android:text="30"
-            android:textSize="17sp" />
 
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/tv_dob"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="120dp"
+                    android:layout_toLeftOf="@+id/tv_sex"
+                    android:text="تاريخ الميلاد"
+                    android:textColor="@color/lightgray"
+                    android:textSize="17sp" />
 
-    <TextView
-        android:id="@+id/tv_save"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/relative4"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/blue_corner_shape"
-        android:gravity="center"
-        android:padding="5dp"
-        android:text="@string/save"
-        android:textColor="@color/white"
-        android:textSize="17sp" />
+                <EditText
+                    android:id="@+id/et_dob1"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_dob"
+                    android:layout_marginRight="60dp"
+                    android:layout_toLeftOf="@+id/et_sex"
+                    android:background="@drawable/half_right_corner_shape"
+                    android:inputType="number"
+                    android:padding="5dp"
+                    android:text="1996"
+                    android:textSize="17sp" />
+
+                <EditText
+                    android:id="@+id/et_dob2"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_dob"
+                    android:layout_toLeftOf="@+id/et_dob1"
+                    android:background="@drawable/square_shape"
+                    android:inputType="number"
+                    android:padding="5dp"
+                    android:text="1"
+                    android:textSize="17sp" />
+
+                <EditText
+                    android:id="@+id/et_dob3"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_dob"
+                    android:layout_toLeftOf="@+id/et_dob2"
+                    android:background="@drawable/half_left_corner_shape"
+                    android:inputType="number"
+                    android:padding="5dp"
+                    android:text="30"
+                    android:textSize="17sp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_save"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relative4"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/blue_corner_shape"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/save"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                android:layout_marginBottom="10dp"/>
+
+
+
+
+
+
+
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+
 
 
 </RelativeLayout>

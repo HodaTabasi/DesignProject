@@ -28,7 +28,7 @@ public class RegisterFragment extends Fragment {
         tv_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentsUtil.replaceFragment(getActivity(), R.id.register_container, new ConfirmationFragment());
+                FragmentsUtil.replaceFragment(getActivity(), R.id.register_container, new ConfirmationFragment(),true);
             }
         });
 

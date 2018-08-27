@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 
 public class FavoriteFragment extends Fragment {
 
+    public FavoriteFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

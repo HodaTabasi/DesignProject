@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".addNewWorkFragment">
+    android:layoutDirection="ltr"
+    tools:context=".AddNewWorkFragment">
 
     <TextView
         android:id="@+id/title1"
@@ -39,7 +40,7 @@
             android:textColor="@android:color/black"
             android:layout_margin="5dp"/>
 
-        <view
+        <View
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
 
@@ -51,7 +52,7 @@
             android:textColor="@android:color/black"
             android:layout_margin="5dp"/>
 
-        <view
+        <View
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
 
@@ -63,7 +64,7 @@
             android:textColor="@android:color/black"
             android:layout_margin="5dp"/>
 
-        <view
+        <View
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
 
@@ -75,7 +76,7 @@
         android:textColor="@android:color/black"
         android:layout_margin="5dp"/>
 
-        <view
+        <View
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
 
@@ -87,7 +88,7 @@
             android:textColor="@android:color/black"
             android:layout_margin="5dp"/>
 
-        <view
+        <View
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
 
