@@ -15,7 +15,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
             android:background="#09102D" />
 
         <TextView
@@ -46,8 +46,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/square_corner_shape"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/report_layout_shap"
         android:gravity="right"
         android:orientation="horizontal">
 
@@ -63,15 +63,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="منال القرشي"
-                android:textColor="@color/gray"
-                android:textSize="17sp" />
+                android:textColor="@color/textGray"
+                android:textSize="16sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="عميل صاحب مشاريع"
-                android:textColor="@color/gray"
-                android:textSize="17sp" />
+                android:textColor="@color/textGray"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -91,7 +91,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/square_corner_shape"
+        android:background="@drawable/report_layout_shap"
         android:gravity="right"
         android:orientation="horizontal">
 
@@ -242,14 +242,14 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/bold_blue_corner_shape"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/dark_blue_shap"
         android:gravity="center"
         android:padding="5dp"
         android:text="اضف عرض"
         android:textColor="@color/white"
-        android:textSize="17sp" />
+        android:textSize="16sp" />
 
 </LinearLayout>

@@ -15,7 +15,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
             android:background="#09102D" />
 
         <TextView
@@ -46,7 +46,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="30dp"
-        android:background="@drawable/square_corner_shape"
+        android:background="@drawable/report_layout_shap"
         android:gravity="center"
         android:padding="5dp"
         android:text="اضف عرض"
@@ -59,7 +59,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/square_corner_shape"
+        android:background="@drawable/report_layout_shap"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:padding="5dp">
@@ -85,7 +85,8 @@
                     android:background="@drawable/half_square_corner_shape"
                     android:padding="5dp"
                     android:text="مستحقاتك"
-                    android:textSize="15sp" />
+                    android:textColor="@color/gray1"
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="100dp"
@@ -99,11 +100,13 @@
                         android:layout_height="wrap_content"
                         android:padding="5dp"
                         android:text="ريال"
-                        android:textSize="15sp" />
+                        android:textSize="16sp"
+                        android:textColor="@color/gray1"/>
 
-                    <view
+                    <View
                         android:layout_width="1dp"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:background="@color/gray"/>
 
                     <EditText
                         android:layout_width="match_parent"
@@ -112,7 +115,7 @@
                         android:gravity="center_horizontal"
                         android:padding="5dp"
                         android:text="يوم"
-                        android:textSize="15sp" />
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -121,7 +124,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="بعد خصمم نسبة المصمم"
-                    android:textSize="10sp" />
+                    android:textColor="@color/gray1"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
@@ -139,7 +143,8 @@
                     android:background="@drawable/half_square_corner_shape"
                     android:padding="5dp"
                     android:text="قيمة العرض"
-                    android:textSize="15sp" />
+                    android:textColor="@color/gray1"
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="100dp"
@@ -153,9 +158,10 @@
                         android:layout_height="wrap_content"
                         android:padding="5dp"
                         android:text="ريال"
-                        android:textSize="15sp" />
+                        android:textColor="@color/gray1"
+                        android:textSize="16sp" />
 
-                    <view
+                    <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent" />
 
@@ -166,7 +172,7 @@
                         android:gravity="center_horizontal"
                         android:padding="5dp"
                         android:text="يوم"
-                        android:textSize="15sp" />
+                        android:textSize="16sp" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -183,7 +189,8 @@
                     android:background="@drawable/half_square_corner_shape"
                     android:padding="5dp"
                     android:text="مدة التسليم"
-                    android:textSize="15sp" />
+                    android:textColor="@color/gray1"
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="100dp"
@@ -197,9 +204,10 @@
                         android:layout_height="wrap_content"
                         android:padding="5dp"
                         android:text="ريال"
-                        android:textSize="15sp" />
+                        android:textColor="@color/gray1"
+                        android:textSize="16sp" />
 
-                    <view
+                    <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent" />
 
@@ -210,7 +218,7 @@
                         android:gravity="center_horizontal"
                         android:padding="5dp"
                         android:text="يوم"
-                        android:textSize="15sp" />
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -222,6 +230,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/gray1"
+            android:textSize="14sp"
             android:text="تفاصيل العرض" />
 
         <EditText
@@ -245,24 +255,28 @@
                 android:id="@+id/tv1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/gray1"
                 android:text="يمنع استخدام وسائل تواصل خارجية"
-                android:textSize="13sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tv2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv1"
+                android:textColor="@color/gray1"
                 android:text="سيتم وضع معرض اعمالك مع العرض"
-                android:textSize="13sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv2"
-                android:background="@drawable/square_corner_shape"
+                android:background="@drawable/report_layout_shap"
                 android:gravity="center_horizontal"
                 android:padding="3dp"
+                android:textSize="15sp"
+                android:textColor="@color/gray1"
                 android:text="ارفق ملف" />
         </RelativeLayout>
 
@@ -270,7 +284,7 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bold_blue_corner_shape"
+            android:background="@drawable/dark_blue_shap"
             android:gravity="center"
             android:padding="5dp"
             android:text="اضف عرضك"

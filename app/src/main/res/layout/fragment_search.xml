@@ -51,7 +51,7 @@
         android:drawableStart="@drawable/ic_search_black_24dp"
         android:hint="بحث عن مصمم"
         android:padding="5dp"
-        android:textColorHint="@android:color/black" />
+        android:textColorHint="@color/textGray" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -69,7 +69,7 @@
             android:maxLines="1"
             android:padding="5dp"
             android:text="موشن"
-            android:textColor="@android:color/black"
+            android:textColor="@color/textGray"
             android:textSize="12dp" />
 
         <TextView
@@ -81,7 +81,7 @@
             android:maxLines="1"
             android:padding="8dp"
             android:text="تصاميم جرافيكس"
-            android:textColor="@android:color/black"
+            android:textColor="@color/textGray"
             android:textSize="10dp" />
 
         <TextView
@@ -93,7 +93,7 @@
             android:maxLines="1"
             android:padding="5dp"
             android:text="رسم جداري"
-            android:textColor="@android:color/black"
+            android:textColor="@color/textGray"
             android:textSize="12dp" />
 
         <TextView
@@ -105,7 +105,7 @@
             android:maxLines="1"
             android:padding="5dp"
             android:text="تصميم معماري"
-            android:textColor="@android:color/black"
+            android:textColor="@color/textGray"
             android:textSize="12dp" />
 
         <TextView
@@ -119,7 +119,7 @@
             android:maxLines="1"
             android:padding="5dp"
             android:text="تصميم داخلي"
-            android:textColor="@android:color/black"
+            android:textColor="@color/textGray"
             android:textSize="12dp" />
     </LinearLayout>
 
@@ -148,7 +148,7 @@
             android:layout_weight="0.5"
             android:padding="5dp"
             android:text="التقييم"
-            android:textColor="@android:color/black"
+            android:textColor="@color/textGray"
             android:textSize="18dp" />
 
 

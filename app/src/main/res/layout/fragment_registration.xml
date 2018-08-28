@@ -13,11 +13,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:background="@drawable/square_corner_shape"
+        android:background="@drawable/report_layout_shap"
         android:gravity="center"
         android:padding="5dp"
         android:text="تسجيل الدخول"
-        android:textColor="@color/gray"
+        android:textColor="@color/textGray"
         android:textSize="20sp" />
 
     <TextView
@@ -27,7 +27,7 @@
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="@string/reg1"
-        android:textColor="@color/gray"
+        android:textColor="@color/gray1"
         android:textSize="17sp" />
 
     <TextView
@@ -36,7 +36,7 @@
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:text="@string/reg2"
-        android:textColor="@color/gray"
+        android:textColor="@color/gray1"
         android:textSize="17sp" />
 
     <LinearLayout
@@ -57,19 +57,19 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/mobile"
-                android:textColor="@color/gray"
-                android:textSize="17sp" />
+                android:textColor="@color/gray1"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/et_mobile"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/square_corner_shape"
+                android:background="@drawable/report_layout_shap"
                 android:gravity="center_horizontal"
                 android:inputType="number"
                 android:padding="5dp"
                 android:text="0598521466"
-                android:textSize="17sp" />
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -85,14 +85,14 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/country"
-                android:textColor="@color/gray"
-                android:textSize="17sp" />
+                android:textColor="@color/gray1"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/et_country"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/square_corner_shape"
+                android:background="@drawable/report_layout_shap"
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="فلسطين"
@@ -109,11 +109,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:background="@drawable/square_corner_shape"
+        android:background="@drawable/report_layout_shap"
         android:gravity="center"
         android:padding="5dp"
         android:text="@string/next"
-        android:textColor="@color/gray"
+        android:textColor="@color/textGray"
         android:textSize="17sp" />
 
     <TextView
@@ -122,11 +122,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="5dp"
-        android:background="@drawable/square_corner_shape"
+        android:background="@drawable/report_layout_shap"
         android:gravity="center"
         android:padding="5dp"
         android:text="@string/notNow"
-        android:textColor="@color/gray"
+        android:textColor="@color/textGray"
         android:textSize="17sp" />
 
 </LinearLayout>

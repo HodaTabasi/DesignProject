@@ -47,7 +47,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/square_corner_shape">
+        android:background="@drawable/report_layout_shap">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profileImg"
@@ -65,8 +65,8 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
             android:text="حسام اليماني"
-            android:textColor="@color/gray"
-            android:textSize="20sp" />
+            android:textColor="@color/textGray"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tv_title"
@@ -75,11 +75,15 @@
             android:layout_below="@+id/tv_name"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
-            android:background="@drawable/square_corner_shape"
+            android:background="@drawable/report_layout_shap"
             android:gravity="center"
-            android:padding="5dp"
+            android:textColor="@color/textGray"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:layout_gravity="center"
+            android:paddingStart="8dp"
+            android:paddingEnd="8sp"
             android:text="مصمم معماري"
-            android:textColor="@color/gray"
             android:textSize="16sp" />
 
     </RelativeLayout>

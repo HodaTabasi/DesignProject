@@ -14,7 +14,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
             android:background="#09102D" />
 
         <TextView
@@ -48,22 +48,22 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/square_corner_shape"
-        android:drawableLeft="@drawable/ic_gray_search"
+        android:background="@drawable/report_layout_shap"
+        android:drawableLeft="@drawable/ic_search_black_24dp"
         android:hint="بحث عن عمل"
         android:padding="5dp"
-        android:textColor="@color/gray"
-        android:textColorHint="@color/gray"
-        android:textSize="17sp" />
+        android:textColor="@color/gray1"
+        android:textColorHint="@color/gray1"
+        android:textSize="18sp" />
 
 
     <LinearLayout
         android:id="@+id/linear"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/search"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginTop="5dp"
         android:orientation="horizontal">
 
@@ -72,67 +72,69 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:background="@drawable/square_corner_shape"
+            android:background="@drawable/report_layout_shap"
             android:gravity="center"
             android:text="موشن"
             android:padding="5dp"
-            android:textColor="@color/gray"
-            android:textSize="17sp" />
+            android:textColor="@color/textGray"
+            android:textSize="12sp" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:background="@drawable/square_corner_shape"
+            android:background="@drawable/report_layout_shap"
             android:gravity="center"
-            android:padding="5dp"
-            android:text="تصميم جرافيكس"
-            android:textColor="@color/gray"
-            android:textSize="17sp" />
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="تصميم جرافيك"
+            android:textColor="@color/textGray"
+            android:textSize="12sp" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:background="@drawable/square_corner_shape"
+            android:background="@drawable/report_layout_shap"
             android:gravity="center"
             android:padding="5dp"
             android:text="رسم جداري"
-            android:textColor="@color/gray"
-            android:textSize="17sp" />
+            android:textColor="@color/textGray"
+            android:textSize="12sp" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:background="@drawable/square_corner_shape"
+            android:background="@drawable/report_layout_shap"
             android:gravity="center"
-            android:padding="5dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:text="تصميم معماري"
-            android:textColor="@color/gray"
-            android:textSize="17sp" />
+            android:textColor="@color/textGray"
+            android:textSize="12sp" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/square_corner_shape"
+            android:background="@drawable/report_layout_shap"
             android:gravity="center"
             android:padding="5dp"
             android:text="تصميم داخلي"
-            android:textColor="@color/gray"
-            android:textSize="17sp" />
+            android:textColor="@color/textGray"
+            android:textSize="12sp" />
 
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/linear"
-        android:layout_marginTop="10dp" />
+        android:layout_margin="8dp" />
 
 
 </RelativeLayout>

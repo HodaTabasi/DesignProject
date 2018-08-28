@@ -19,7 +19,7 @@
             android:drawableRight="@drawable/ic_add_menu"
             android:drawableTint="#666666"
             android:text="@string/add_project"
-            android:textColor="@color/gray"
+            android:textColor="@color/gray1"
             android:textSize="15sp" />
 
         <TextView
@@ -30,7 +30,7 @@
             android:drawablePadding="5dp"
             android:drawableRight="@drawable/ic_favorite"
             android:text="@string/add_fav"
-            android:textColor="@color/gray"
+            android:textColor="@color/gray1"
             android:textSize="15sp" />
 
         <TextView
@@ -41,7 +41,7 @@
             android:drawablePadding="5dp"
             android:drawableRight="@drawable/ic_flag"
             android:text="@string/add_report"
-            android:textColor="@color/gray"
+            android:textColor="@color/gray1"
             android:textSize="15sp" />
 
     </LinearLayout>

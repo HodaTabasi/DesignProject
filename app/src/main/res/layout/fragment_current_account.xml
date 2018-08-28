@@ -62,7 +62,7 @@
                 android:layout_marginTop="5dp"
                 android:paddingBottom="8dp"
                 android:text="رصيدك المعلق "
-                android:textColor="@android:color/black"
+                android:textColor="@color/textGray"
                 android:textSize="23sp" />
 
             <TextView
@@ -82,7 +82,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
                 android:text="يتضمن ميزانية مشاريعك قيد التنفيذ "
-                android:textColor="@android:color/black"
+                android:textColor="@color/textGray"
                 android:textSize="11sp" />
 
             <TextView
@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="وأي مبلغ طلبت سحبه ولا زال قيد التحويل"
-                android:textColor="@android:color/black"
+                android:textColor="@color/textGray"
                 android:textSize="11sp" />
 
 
@@ -116,7 +116,7 @@
                 android:layout_marginTop="5dp"
                 android:paddingBottom="8dp"
                 android:text="رصيدك الكلي "
-                android:textColor="@android:color/black"
+                android:textColor="@color/textGray"
                 android:textSize="23sp" />
 
             <TextView
@@ -136,7 +136,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
                 android:text="كامل الرصيد الكلي في حسابك "
-                android:textColor="@android:color/black"
+                android:textColor="@color/textGray"
                 android:textSize="11sp" />
 
             <TextView
@@ -144,7 +144,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text=" يتضمن الارباح والرصيد المعلق"
-                android:textColor="@android:color/black"
+                android:textColor="@color/textGray"
                 android:textSize="11sp" />
 
 
@@ -178,7 +178,7 @@
                 android:layout_marginTop="5dp"
                 android:paddingBottom="8dp"
                 android:text="الرصيد القابل للسحب "
-                android:textColor="@android:color/black"
+                android:textColor="@color/textGray"
                 android:textSize="23sp" />
 
             <TextView
@@ -198,7 +198,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
                 android:text="المبلغ المتبقي من الأرباح التي حققتها "
-                android:textColor="@android:color/black"
+                android:textColor="@color/textGray"
                 android:textSize="11sp" />
 
 
@@ -224,7 +224,7 @@
                 android:layout_marginTop="5dp"
                 android:paddingBottom="8dp"
                 android:text="رصيدك المتاح "
-                android:textColor="@android:color/black"
+                android:textColor="@color/textGray"
                 android:textSize="23sp" />
 
             <TextView
@@ -244,7 +244,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
                 android:text="الرصيد الذي يمكنك استخدامه لفتح مشاريع جديدة"
-                android:textColor="@android:color/black"
+                android:textColor="@color/textGray"
                 android:textSize="10.5sp" />
 
 

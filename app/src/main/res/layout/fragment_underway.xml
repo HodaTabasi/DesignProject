@@ -273,7 +273,7 @@
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:layout_marginRight="13dp"
-                    android:src="@drawable/p1" />
+                    android:src="@drawable/img1" />
 
 
                 <TextView
@@ -328,7 +328,7 @@
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:layout_marginRight="13dp"
-                    android:src="@drawable/p1" />
+                    android:src="@drawable/img1" />
 
 
                 <TextView

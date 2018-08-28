@@ -15,7 +15,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
             android:background="#09102D" />
 
         <TextView
@@ -92,7 +92,7 @@
                 android:gravity="center"
                 android:padding="3dp"
                 android:text="انفوجرافيك - تصميم فيديو"
-                android:textColor="@android:color/black"
+                android:textColor="@color/textGray"
                 android:textSize="16sp" />
 
             <TextView
@@ -106,7 +106,7 @@
                 android:gravity="center"
                 android:padding="3dp"
                 android:text="اسم المشروع"
-                android:textColor="@android:color/black"
+                android:textColor="@color/textGray"
                 android:textSize="16sp" />
 
             <TextView
@@ -120,7 +120,7 @@
                 android:gravity="center"
                 android:padding="3dp"
                 android:text="مدة المشروع "
-                android:textColor="@android:color/black"
+                android:textColor="@color/textGray"
                 android:textSize="16sp" />
 
             <TextView
@@ -134,7 +134,7 @@
                 android:gravity="center"
                 android:padding="3dp"
                 android:text="عن النشاط والخدمات "
-                android:textColor="@android:color/black"
+                android:textColor="@color/textGray"
                 android:textSize="16sp" />
 
             <TextView
@@ -145,7 +145,7 @@
                 android:gravity="start"
                 android:text="ارفع صورة لتصاميم اعجبتك"
                 android:textAlignment="textStart"
-                android:textColor="@android:color/secondary_text_light"
+                android:textColor="@color/gray1"
                 android:textSize="16sp" />
 
             <ImageView
@@ -168,7 +168,7 @@
                 android:gravity="center"
                 android:padding="3dp"
                 android:text="الميزانية"
-                android:textColor="@android:color/black"
+                android:textColor="@color/textGray"
                 android:textSize="16sp" />
 
             <TextView
@@ -182,7 +182,7 @@
                 android:gravity="center"
                 android:padding="3dp"
                 android:text="تفاصيل عن المشروع"
-                android:textColor="@android:color/black"
+                android:textColor="@color/textGray"
                 android:textSize="16sp" />
 
             <TextView
@@ -198,7 +198,7 @@
                 android:drawableRight="@drawable/upload"
                 android:padding="8dp"
                 android:text="المرفقات"
-                android:textColor="@android:color/black"
+                android:textColor="@color/textGray"
                 android:textSize="16sp" />
 
             <Button

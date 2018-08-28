@@ -20,7 +20,7 @@
         android:layout_below="@+id/tv_bankName"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/square_corner_shape"
+        android:background="@drawable/report_layout_shap"
         android:padding="3dp"
         android:text="البنك العربي" />
 
@@ -42,7 +42,7 @@
         android:layout_below="@+id/tv_bankNum"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/square_corner_shape"
+        android:background="@drawable/report_layout_shap"
         android:padding="3dp"
         android:text="55555555555" />
 
@@ -64,7 +64,7 @@
         android:layout_below="@+id/tv_Num"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/square_corner_shape"
+        android:background="@drawable/report_layout_shap"
         android:padding="3dp"
         android:text="55555555555" />
 

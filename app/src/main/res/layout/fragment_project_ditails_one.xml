@@ -15,7 +15,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
             android:background="#09102D" />
 
         <TextView
@@ -87,7 +87,7 @@
                 android:gravity="center"
                 android:padding="3dp"
                 android:text="شقة سكنية - تصميم داخلي"
-                android:textColor="@android:color/black"
+                android:textColor="@color/textGray"
                 android:textSize="16sp" />
 
             <TextView
@@ -101,7 +101,7 @@
                 android:gravity="center"
                 android:padding="3dp"
                 android:text="اختر الاستايل"
-                android:textColor="@android:color/black"
+                android:textColor="@color/textGray"
                 android:textSize="16sp" />
 
             <TextView
@@ -115,7 +115,7 @@
                 android:gravity="center"
                 android:padding="3dp"
                 android:text="ادخل الالوان التى ترغبها في التصميم"
-                android:textColor="@android:color/black"
+                android:textColor="@color/textGray"
                 android:textSize="16sp" />
 
             <LinearLayout
@@ -137,7 +137,7 @@
                         android:gravity="end"
                         android:text="ارفع صور من ارض الواقع"
                         android:textAlignment="textEnd"
-                        android:textColor="@android:color/secondary_text_light"
+                        android:textColor="@color/gray1"
                         android:textSize="15sp" />
 
                     <ImageView
@@ -163,7 +163,7 @@
                         android:padding="5dp"
                         android:text="المساحة م2"
                         android:textAlignment="center"
-                        android:textColor="@android:color/secondary_text_light"
+                        android:textColor="@color/textGray"
                         android:textSize="16sp" />
 
                 </LinearLayout>
@@ -187,7 +187,7 @@
                         android:gravity="start"
                         android:text="ارفع صورة لتصاميم اعجبتك"
                         android:textAlignment="textStart"
-                        android:textColor="@android:color/secondary_text_light"
+                        android:textColor="@color/gray1"
                         android:textSize="15sp" />
 
                     <ImageView
@@ -213,7 +213,7 @@
                         android:padding="5dp"
                         android:text="المدينة"
                         android:textAlignment="center"
-                        android:textColor="@android:color/secondary_text_light"
+                        android:textColor="@color/textGray"
                         android:textSize="16sp" />
 
                 </LinearLayout>
@@ -231,7 +231,7 @@
                 android:gravity="center"
                 android:padding="3dp"
                 android:text="خرائط - موقع المشروع "
-                android:textColor="@android:color/black"
+                android:textColor="@color/textGray"
                 android:textSize="16sp" />
 
             <TextView
@@ -245,7 +245,7 @@
                 android:gravity="center"
                 android:padding="3dp"
                 android:text="الميزانية"
-                android:textColor="@android:color/black"
+                android:textColor="@color/textGray"
                 android:textSize="16sp" />
 
             <TextView
@@ -259,7 +259,7 @@
                 android:gravity="center"
                 android:padding="3dp"
                 android:text="تفاصيل عن المشروع"
-                android:textColor="@android:color/black"
+                android:textColor="@color/textGray"
                 android:textSize="16sp" />
 
             <TextView
@@ -275,7 +275,7 @@
                 android:drawableRight="@drawable/upload"
                 android:padding="5dp"
                 android:text="المرفقات"
-                android:textColor="@android:color/black"
+                android:textColor="@color/textGray"
                 android:textSize="16sp" />
 
             <Button
@@ -289,7 +289,7 @@
                 android:background="@drawable/title_shape"
                 android:text="ارسل الطلب"
                 android:textColor="@android:color/white"
-                android:textSize="18dp" />
+                android:textSize="16dp" />
         </LinearLayout>
 
 

@@ -196,7 +196,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_margin="8dp"
-            android:src="@drawable/p1" />
+            android:src="@drawable/img1" />
 
         <ImageView
             android:id="@+id/img2"
@@ -209,7 +209,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:scaleType="fitXY"
-            android:src="@drawable/p1" />
+            android:src="@drawable/img1" />
 
         <ImageView
             android:id="@+id/img3"
@@ -224,6 +224,6 @@
             android:layout_toEndOf="@+id/img2"
             android:layout_toRightOf="@+id/img2"
             android:scaleType="fitXY"
-            android:src="@drawable/p1" />
+            android:src="@drawable/img1" />
     </RelativeLayout>
 </LinearLayout>

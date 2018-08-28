@@ -14,7 +14,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
             android:background="#09102D" />
 
         <TextView
@@ -48,7 +48,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/square_corner_shape"
+        android:background="@drawable/report_layout_shap"
         android:padding="5dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -66,8 +66,8 @@
             android:layout_centerHorizontal="true"
             android:padding="5dp"
             android:text="حسام اليماني"
-            android:textColor="@color/gray"
-            android:textSize="17sp" />
+            android:textColor="@color/textGray"
+            android:textSize="16sp" />
 
         <RatingBar
             android:id="@+id/rate_bar"
@@ -87,12 +87,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/rate_bar"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/square_corner_shape"
+            android:background="@drawable/report_layout_shap"
             android:gravity="center"
             android:padding="5dp"
             android:text="مصمم معماري"
-            android:textColor="@color/gray"
-            android:textSize="17sp" />
+            android:textColor="@color/textGray"
+            android:textSize="16sp" />
 
     </RelativeLayout>
 
@@ -106,8 +106,8 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="7dp"
         android:text="نبذة تعريفية"
-        android:textColor="@color/gray"
-        android:textSize="17sp" />
+        android:textColor="@color/gray1"
+        android:textSize="15sp" />
 
     <EditText
         android:id="@+id/et_bio"
@@ -116,13 +116,13 @@
         android:layout_below="@+id/tv_bio"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/square_corner_shape"
+        android:background="@drawable/report_layout_shap"
         android:gravity="center_vertical"
         android:hint="نبذة"
         android:padding="5dp"
         android:textColor="@color/gray"
-        android:textColorHint="@color/gray"
-        android:textSize="17sp" />
+        android:textColorHint="@color/textGray"
+        android:textSize="16sp" />
 
     <LinearLayout
         android:id="@+id/linear2"
@@ -139,24 +139,24 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
-            android:background="@drawable/square_corner_shape"
+            android:background="@drawable/report_layout_shap"
             android:gravity="center"
             android:padding="5dp"
             android:text="@string/comments"
-            android:textColor="@color/gray"
-            android:textSize="17sp" />
+            android:textColor="@color/gray1"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_portfolio"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/square_corner_shape"
+            android:background="@drawable/report_layout_shap"
             android:gravity="center"
             android:padding="5dp"
             android:text="@string/portfolio"
-            android:textColor="@color/gray"
-            android:textSize="17sp" />
+            android:textColor="@color/gray1"
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -168,7 +168,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="7dp"
-        android:background="@drawable/square_corner_shape"
+        android:background="@drawable/report_layout_shap"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -184,24 +184,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="11"
-                android:textColor="@color/gray"
-                android:textSize="17sp" />
+                android:textColor="@color/gray1"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="11"
-                android:textColor="@color/gray"
-                android:textSize="17sp" />
+                android:textColor="@color/gray1"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="90%"
-                android:textColor="@color/gray"
-                android:textSize="17sp" />
+                android:textColor="@color/gray1"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -223,24 +223,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="المشاريع المكتملة"
-                android:textColor="@color/gray"
-                android:textSize="17sp" />
+                android:textColor="@color/gray1"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="مشاريع قيد التنفيذ"
-                android:textColor="@color/gray"
-                android:textSize="17sp" />
+                android:textColor="@color/gray1"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="معدل اكمال المشاريع"
-                android:textColor="@color/gray"
-                android:textSize="17sp" />
+                android:textColor="@color/gray1"
+                android:textSize="16sp" />
         </LinearLayout>
 
     </LinearLayout>
@@ -254,8 +254,8 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="7dp"
         android:text="مهاراتي"
-        android:textColor="@color/gray"
-        android:textSize="17sp" />
+        android:textColor="@color/gray1"
+        android:textSize="15sp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_fav"
@@ -265,7 +265,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="7dp"
-        android:background="@drawable/square_corner_shape" />
+        android:background="@drawable/report_layout_shap" />
 
     <TextView
         android:id="@+id/tv_fav"
@@ -275,12 +275,12 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/square_corner_shape"
+        android:background="@drawable/report_layout_shap"
         android:gravity="center"
         android:padding="5dp"
         android:text="أضف للمفضلة"
-        android:textColor="@color/gray"
-        android:textSize="17sp" />
+        android:textColor="@color/gray1"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/tv_save"
@@ -291,12 +291,12 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"
-        android:background="@drawable/blue_corner_shape"
+        android:background="@drawable/title_shape"
         android:gravity="center"
         android:padding="5dp"
         android:text="اختارني للعمل"
         android:textColor="@color/white"
-        android:textSize="17sp" />
+        android:textSize="16sp" />
 
 
 </RelativeLayout>

@@ -47,16 +47,16 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/square_corner_shape"
+        android:background="@drawable/report_layout_shap"
         android:gravity="center"
         android:padding="5dp"
         android:text="@string/comments"
-        android:textColor="@color/gray"
+        android:textColor="@color/textGray"
         android:textSize="20sp" />
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/tv_comments"
-        android:layout_marginTop="7dp" />
+        android:layout_margin="8dp" />
 </RelativeLayout>

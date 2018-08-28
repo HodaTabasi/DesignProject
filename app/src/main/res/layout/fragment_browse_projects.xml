@@ -48,8 +48,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/square_corner_shape"
-        android:drawableLeft="@drawable/ic_gray_search"
+        android:background="@drawable/report_layout_shap"
+        android:drawableLeft="@drawable/ic_search_black_24dp"
         android:hint="بحث عن مشروع"
         android:padding="5dp"
         android:textColor="@color/gray"
@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:background="@drawable/blue_corner_shape"
+            android:background="@drawable/title_shape"
             android:gravity="center"
             android:padding="5dp"
             android:text="موشن"
@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:background="@drawable/square_corner_shape"
+            android:background="@drawable/report_layout_shap"
             android:gravity="center"
 
             android:padding="5dp"
@@ -96,7 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:background="@drawable/square_corner_shape"
+            android:background="@drawable/report_layout_shap"
             android:gravity="center"
             android:padding="5dp"
             android:text="رسم جداري"
@@ -108,7 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:background="@drawable/square_corner_shape"
+            android:background="@drawable/report_layout_shap"
             android:gravity="center"
             android:padding="5dp"
             android:text="تصميم داخلي"
@@ -120,7 +120,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/square_corner_shape"
+            android:background="@drawable/report_layout_shap"
             android:gravity="center"
             android:padding="5dp"
             android:text="تصميم معماري"
@@ -135,7 +135,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/square_corner_shape" />
+        android:background="@drawable/report_layout_shap" />
 
 
 </RelativeLayout>

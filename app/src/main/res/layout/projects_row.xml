@@ -13,8 +13,8 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
         android:text="تصميم معماري لشقة سكنية .."
-        android:textColor="@color/gray"
-        android:textSize="20sp" />
+        android:textColor="@color/textGray"
+        android:textSize="18sp" />
 
     <LinearLayout
         android:id="@+id/linaer"
@@ -51,7 +51,7 @@
             android:layout_marginRight="20dp"
             android:layout_weight="1"
             android:text="12 عرض"
-            android:textColor="@color/gray"
+            android:textColor="@color/gray1"
             android:textSize="15sp" />
 
         <TextView
@@ -62,7 +62,7 @@
             android:drawablePadding="5dp"
             android:drawableRight="@drawable/ic_calender2"
             android:text="قل ساعتين"
-            android:textColor="@color/gray"
+            android:textColor="@color/gray1"
             android:textSize="15sp" />
 
         <TextView
@@ -72,7 +72,7 @@
             android:drawablePadding="5dp"
             android:drawableRight="@drawable/ic_solid_person2"
             android:text="محمد العليمي"
-            android:textColor="@color/gray"
+            android:textColor="@color/gray1"
             android:textSize="15sp" />
     </LinearLayout>
 
