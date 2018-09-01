@@ -6,7 +6,7 @@
     android:layoutDirection="ltr"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".MyProjectFragment">
+    tools:context=".Fragments.MyProjectFragment">
     <RelativeLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"

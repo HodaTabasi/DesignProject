@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layoutDirection="ltr"
     android:orientation="vertical"
-    tools:context=".AddNewWorkFragment">
+    tools:context=".Fragments.AddNewWorkFragment">
 
     <RelativeLayout
         android:id="@+id/toolbar"

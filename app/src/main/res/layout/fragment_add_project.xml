@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="ltr"
-    tools:context=".AddProjectFragment">
+    tools:context=".Fragments.AddProjectFragment">
 
     <RelativeLayout
         android:id="@+id/toolbar"
@@ -63,7 +63,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="18dp"
                     android:layout_marginTop="120dp"
                     android:text="تصميم داخلى"
                     android:textColor="@android:color/black"
@@ -81,7 +83,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="18dp"
                     android:layout_marginTop="120dp"
                     android:text="تصميم معماري"
                     android:textColor="@android:color/black"
@@ -106,7 +110,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="18dp"
                     android:layout_marginTop="120dp"
                     android:text="تصاميم الجرافيكس"
                     android:textColor="@android:color/black"
@@ -125,7 +131,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="18dp"
                     android:layout_marginTop="120dp"
                     android:text="الرسم الجداري"
                     android:textColor="@android:color/black"
@@ -159,8 +167,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
                     android:layout_below="@+id/vso5"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="18dp"
                     android:layout_marginTop="10dp"
                     android:text="بحث عن مصمم"
                     android:textColor="@android:color/black"
@@ -178,7 +188,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="18dp"
                     android:layout_marginTop="120dp"
                     android:text="تصاميم موشن"
                     android:textColor="@android:color/black"

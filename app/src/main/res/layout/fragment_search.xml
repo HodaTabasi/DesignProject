@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layoutDirection="ltr"
     android:orientation="vertical"
-    tools:context=".SearchFragment">
+    tools:context=".Fragments.SearchFragment">
 
     <RelativeLayout
         android:id="@+id/toolbar"

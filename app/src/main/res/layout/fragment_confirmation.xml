@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:layoutDirection="ltr"
     android:orientation="vertical"
-    tools:context=".ConfirmationFragment">
+    tools:context=".Fragments.ConfirmationFragment">
 
     <TextView
         android:layout_width="wrap_content"

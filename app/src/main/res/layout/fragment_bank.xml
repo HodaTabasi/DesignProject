@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:layoutDirection="ltr"
-    tools:context=".BankFragment">
+    tools:context=".Fragments.BankFragment">
 
     <RelativeLayout
         android:id="@+id/toolbar"

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layoutDirection="ltr"
-    tools:context=".UnderwayFragment">
+    tools:context=".Fragments.UnderwayFragment">
 
     <RelativeLayout
         android:id="@+id/toolbar"

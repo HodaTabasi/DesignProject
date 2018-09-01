@@ -6,7 +6,7 @@
     android:background="@color/white"
     android:layoutDirection="ltr"
     android:orientation="vertical"
-    tools:context=".RegisterFragment">
+    tools:context=".Fragments.RegisterFragment">
 
     <TextView
         android:layout_width="150dp"

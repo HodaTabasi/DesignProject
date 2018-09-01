@@ -5,7 +5,7 @@
         android:layout_height="match_parent"
         android:visibility="visible"
         android:orientation="vertical"
-        tools:context=".MyOffersFragment">
+        tools:context=".Fragments.MyOffersFragment">
     <RelativeLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"

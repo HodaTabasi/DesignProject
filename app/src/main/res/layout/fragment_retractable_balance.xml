@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layoutDirection="ltr"
-    tools:context=".RetractableBalanceFragment">
+    tools:context=".Fragments.RetractableBalanceFragment">
 
     <RelativeLayout
         android:id="@+id/toolbar"
