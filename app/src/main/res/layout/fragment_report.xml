@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layoutDirection="ltr"
+    android:orientation="vertical"
     tools:context=".Fragments.ReportFragment">
 
     <RelativeLayout
@@ -24,13 +24,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:drawablePadding="15dp"
-            android:drawableRight="@drawable/ic_add_black"
-
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/ic_my_budget_toolbar"
+            android:drawableTint="@color/white"
             android:gravity="center"
             android:text="رصيدي"
             android:textColor="@color/white"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -47,45 +47,38 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:background="@drawable/title_shape"
-        android:gravity="center">
+        android:gravity="center"
+        android:padding="5dp">
 
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="التقارير "
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/ic_reports_2"
+            android:gravity="center"
+            android:text="تقارير"
             android:textColor="@android:color/white"
-            android:textSize="18dp" />
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_toEndOf="@+id/name"
-            android:layout_toRightOf="@+id/name"
-            android:src="@drawable/report"
-            android:tint="@android:color/white" />
+            android:textSize="15dp" />
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:orientation="horizontal"
         android:weightSum="3">
-
 
         <TextView
             android:id="@+id/payments"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
             android:background="@drawable/dark_blue_shap"
             android:gravity="center"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
+            android:padding="5dp"
             android:text="المدفوعات"
             android:textColor="@android:color/white"
             android:textSize="15dp" />
@@ -94,13 +87,11 @@
             android:id="@+id/revenue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
             android:background="@drawable/dark_blue_shap"
             android:gravity="center"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
+            android:padding="5dp"
             android:text="الايداعات"
             android:textColor="@android:color/white"
             android:textSize="15dp" />
@@ -112,8 +103,7 @@
             android:layout_weight="1"
             android:background="@drawable/dark_blue_shap"
             android:gravity="center"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
+            android:padding="5dp"
             android:text="كل المعاملات "
             android:textColor="@android:color/white"
             android:textSize="15dp" />

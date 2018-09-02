@@ -65,7 +65,7 @@ public class ProjectDitailsOneFragment extends Fragment implements View.OnClickL
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initView();
-        fragmentType();
+        //fragmentType();
     }
 
     private void initView() {
@@ -84,14 +84,14 @@ public class ProjectDitailsOneFragment extends Fragment implements View.OnClickL
         mSendIn = getView().findViewById(R.id.send_in);
     }
 
-    private void fragmentType() {
-        if (!bundle.isEmpty()){
-          mName.setText(bundle.getString("address"));
-          mInType.setText(bundle.getString("button_type"));
-        }else {
-            Toast.makeText(getContext(), "no data arrived", Toast.LENGTH_SHORT).show();
-        }
-    }
+//    private void fragmentType() {
+//        if (!bundle.isEmpty()){
+//          mName.setText(bundle.getString("address"));
+//          mInType.setText(bundle.getString("button_type"));
+//        }else {
+//            Toast.makeText(getContext(), "no data arrived", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 
     @Override
     public void onClick(View v) {

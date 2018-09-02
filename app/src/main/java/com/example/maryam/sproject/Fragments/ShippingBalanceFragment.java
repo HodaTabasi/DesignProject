@@ -28,9 +28,9 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
     /** التحويل البنكي   */
     private TextView mTitle;
     /** ارسال  */
-    private Button mSendBank;
+    private TextView mSendBank;
     /** ارسال  */
-    private Button mSendBank1;
+    private TextView mSendBank1;
     RelativeLayout one ,two;
 
     public ShippingBalanceFragment() {

@@ -23,7 +23,7 @@ public class RetractableBalanceFragment extends Fragment {
     /** 0.00 */
     private TextView mRetractableRetBalance;
     /** إرسال إلى حسابك البنكي */
-    private Button mSendRetractableRetBalance;
+    private TextView mSendRetractableRetBalance;
 
     public RetractableBalanceFragment() {
         // Required empty public constructor

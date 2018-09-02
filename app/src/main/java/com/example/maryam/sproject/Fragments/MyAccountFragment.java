@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.maryam.sproject.HelperClass.FragmentsUtil;
 import com.example.maryam.sproject.R;
@@ -19,10 +20,10 @@ import com.example.maryam.sproject.R;
 public class MyAccountFragment extends Fragment implements View.OnClickListener {
 
 
-    private LinearLayout mReport;
-    private LinearLayout mCurrentAccount;
-    private LinearLayout mRechargeBalance;
-    private LinearLayout mDropBalance;
+    private TextView mReport;
+    private TextView mCurrentAccount;
+    private TextView mRechargeBalance;
+    private TextView mDropBalance;
 
     public MyAccountFragment() {
         // Required empty public constructor

@@ -23,13 +23,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:drawablePadding="15dp"
-            android:drawableRight="@drawable/ic_add_black"
-
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/ic_notification_toolbar"
             android:gravity="center"
             android:text="التنبيهات"
             android:textColor="@color/white"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <ImageView
             android:id="@+id/ic_back"
