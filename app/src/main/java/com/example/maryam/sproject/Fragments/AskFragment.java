@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 
 import com.example.maryam.sproject.R;
 
+import me.anwarshahriar.calligrapher.Calligrapher;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,5 +40,7 @@ public class AskFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         recyclerView = getView().findViewById(R.id.ask_us);
+        Calligrapher calligrapher = new Calligrapher(getContext());
+        calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
     }
 }

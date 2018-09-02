@@ -30,4 +30,5 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'com.bigbangbutton:editcodeview:1.0.5'
     implementation 'com.squareup.okhttp3:okhttp:3.11.0'
+    implementation 'me.anwarshahriar:calligrapher:1.0'
 }

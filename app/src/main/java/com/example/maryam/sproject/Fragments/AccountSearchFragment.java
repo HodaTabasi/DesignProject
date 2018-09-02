@@ -3,12 +3,15 @@ package com.example.maryam.sproject.Fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.maryam.sproject.R;
+
+import me.anwarshahriar.calligrapher.Calligrapher;
 
 
 public class AccountSearchFragment extends Fragment {
@@ -19,5 +22,13 @@ public class AccountSearchFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_search_account, container, false);
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        Calligrapher calligrapher = new Calligrapher(getContext());
+        calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
     }
 }

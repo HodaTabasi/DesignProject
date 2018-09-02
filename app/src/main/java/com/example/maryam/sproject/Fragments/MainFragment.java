@@ -2,6 +2,7 @@ package com.example.maryam.sproject.Fragments;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import com.example.maryam.sproject.HelperClass.FragmentsUtil;
 import com.example.maryam.sproject.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import me.anwarshahriar.calligrapher.Calligrapher;
 
 public class MainFragment extends Fragment {
 
@@ -24,6 +26,8 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
+
+
 
         CircleImageView img_user = view.findViewById(R.id.img_user);
         TextView tv_portfolio = view.findViewById(R.id.tv_portfolio);
@@ -125,5 +129,12 @@ public class MainFragment extends Fragment {
 
 
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Calligrapher calligrapher = new Calligrapher(getContext());
+        calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
     }
 }

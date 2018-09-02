@@ -1,6 +1,7 @@
 package com.example.maryam.sproject.Fragments;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 
 import com.example.maryam.sproject.HelperClass.FragmentsUtil;
 import com.example.maryam.sproject.R;
+
+import me.anwarshahriar.calligrapher.Calligrapher;
 
 
 public class AccountFragment extends Fragment {
@@ -68,5 +71,10 @@ public class AccountFragment extends Fragment {
         return view;
     }
 
-
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Calligrapher calligrapher = new Calligrapher(getContext());
+        calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
+    }
 }

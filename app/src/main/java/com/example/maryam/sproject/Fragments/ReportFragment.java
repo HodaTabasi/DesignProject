@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.example.maryam.sproject.R;
 
+import me.anwarshahriar.calligrapher.Calligrapher;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -56,6 +58,8 @@ public class ReportFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        Calligrapher calligrapher = new Calligrapher(getContext());
+        calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
     }
 

@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 
 import com.example.maryam.sproject.R;
 
+import me.anwarshahriar.calligrapher.Calligrapher;
+
 public class NotificationFragment extends Fragment {
 
 
@@ -37,6 +39,8 @@ public class NotificationFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        Calligrapher calligrapher = new Calligrapher(getContext());
+        calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
     }
 }

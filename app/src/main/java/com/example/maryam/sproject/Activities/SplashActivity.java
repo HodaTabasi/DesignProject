@@ -8,12 +8,17 @@ import android.widget.ImageView;
 
 import com.example.maryam.sproject.R;
 
+import me.anwarshahriar.calligrapher.Calligrapher;
+
 public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        Calligrapher calligrapher = new Calligrapher(this);
+        calligrapher.setFont(this, "JFFlatregular.ttf", true);
 
         ImageView reg_img = findViewById(R.id.img_reg);
         ImageView skip_img = findViewById(R.id.img_skip);

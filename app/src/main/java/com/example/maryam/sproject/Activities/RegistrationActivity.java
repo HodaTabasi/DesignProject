@@ -7,6 +7,8 @@ import com.example.maryam.sproject.Fragments.RegisterFragment;
 import com.example.maryam.sproject.HelperClass.FragmentsUtil;
 import com.example.maryam.sproject.R;
 
+import me.anwarshahriar.calligrapher.Calligrapher;
+
 public class RegistrationActivity extends AppCompatActivity {
 
     @Override
@@ -15,6 +17,7 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
 
         FragmentsUtil.addFragment(RegistrationActivity.this, R.id.register_container, new RegisterFragment());
-
+        Calligrapher calligrapher = new Calligrapher(this);
+        calligrapher.setFont(this, "JFFlatregular.ttf", true);
     }
 }

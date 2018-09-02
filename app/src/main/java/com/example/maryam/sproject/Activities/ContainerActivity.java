@@ -13,6 +13,8 @@ import com.example.maryam.sproject.Fragments.NotificationFragment;
 import com.example.maryam.sproject.HelperClass.FragmentsUtil;
 import com.example.maryam.sproject.R;
 
+import me.anwarshahriar.calligrapher.Calligrapher;
+
 public class ContainerActivity extends AppCompatActivity {
 
     @Override
@@ -22,6 +24,8 @@ public class ContainerActivity extends AppCompatActivity {
 
         FragmentsUtil.addFragment(ContainerActivity.this, R.id.container_activity, new MainFragment(),false);
 
+        Calligrapher calligrapher = new Calligrapher(this);
+        calligrapher.setFont(this, "JFFlatregular.ttf", true);
         TextView tv_msgs = findViewById(R.id.tv_msgs);
         TextView tv_projects = findViewById(R.id.tv_projects);
         TextView tv_home = findViewById(R.id.tv_home);
