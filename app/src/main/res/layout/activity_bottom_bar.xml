@@ -12,7 +12,7 @@
     <TextView
         android:id="@+id/tv_msgs"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:drawablePadding="5dp"
         android:drawableTop="@drawable/ic_bar_msgs"
@@ -25,7 +25,7 @@
     <TextView
         android:id="@+id/tv_projects"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:drawablePadding="5dp"
         android:drawableTop="@drawable/ic_bar_projects"
@@ -38,7 +38,7 @@
     <TextView
         android:id="@+id/tv_home"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:drawablePadding="5dp"
         android:drawableTop="@drawable/ic_bar_home"
@@ -51,12 +51,13 @@
     <TextView
         android:id="@+id/tv_portfolio"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:drawablePadding="5dp"
         android:drawableTop="@drawable/ic_bar_portfolio"
         android:gravity="center"
         android:padding="3dp"
+        android:background="@drawable/main_shape"
         android:text="تصفح الاعمال"
         android:textColor="@color/blue"
         android:textSize="10sp" />
@@ -64,7 +65,7 @@
     <TextView
         android:id="@+id/tv_profile"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:drawablePadding="5dp"
         android:drawableTop="@drawable/ic_bar_profile"

@@ -48,15 +48,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="8dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/title1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/title_shape"
                 android:padding="5dp"
                 android:text="اتصل بنا "
@@ -68,6 +68,8 @@
                 android:id="@+id/subject"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/report_layout_shap"
                 android:gravity="start"
@@ -83,18 +85,19 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="320dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/report_layout_shap" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_margin="16dp"
                 android:background="@drawable/title_shape"
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="ارسال"
-                android:layout_margin="8dp"
                 android:textColor="@android:color/white"
                 android:textSize="18dp" />
         </LinearLayout>
