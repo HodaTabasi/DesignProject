@@ -56,7 +56,8 @@
             android:text="هوية بصرية لشركة تهتم بمجال النظر"
             android:textAlignment="textStart"
             android:textColor="@android:color/secondary_text_light"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            />
 
         <RelativeLayout
             android:layout_width="match_parent"
