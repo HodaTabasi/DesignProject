@@ -15,7 +15,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
             android:background="#09102D" />
 
         <TextView
@@ -80,7 +80,7 @@
                     android:padding="5dp"
                     android:text="المستبعدة"
                     android:textColor="@android:color/white"
-                    android:textSize="15sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/my_project_underway"
@@ -94,7 +94,7 @@
                     android:padding="5dp"
                     android:text="قيد التنفيذ"
                     android:textColor="@android:color/white"
-                    android:textSize="15dp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/my_project_done"
@@ -106,7 +106,7 @@
                     android:padding="5dp"
                     android:text="المكتملة"
                     android:textColor="@android:color/white"
-                    android:textSize="15dp" />
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
@@ -132,7 +132,7 @@
                 android:text="العروض المقدمة كاملة"
                 android:padding="5dp"
                 android:layout_gravity="center"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textColor="@android:color/black"/>
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -170,7 +170,7 @@
                         android:text="بانتظار الموافقة"
                         android:layout_gravity="center"
                         android:textColor="@android:color/black"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -182,7 +182,7 @@
                         android:padding="8dp"
                         android:text="15 عرض "
                         android:textColor="@android:color/white"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                 </LinearLayout>
                 <View
@@ -204,7 +204,7 @@
                         android:text="قيد التشغيل "
                         android:layout_gravity="center"
                         android:textColor="@android:color/black"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -216,7 +216,7 @@
                         android:padding="8dp"
                         android:text="15 عرض "
                         android:textColor="@android:color/white"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
@@ -248,7 +248,7 @@
                         android:text="المستبعد"
                         android:layout_gravity="center"
                         android:textColor="@android:color/black"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -260,7 +260,7 @@
                         android:padding="8dp"
                         android:text="15 عرض "
                         android:textColor="@android:color/white"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                 </LinearLayout>
                 <View
@@ -283,7 +283,7 @@
                         android:text="المكتملة"
                         android:layout_gravity="center"
                         android:textColor="@android:color/black"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -295,7 +295,7 @@
                         android:padding="8dp"
                         android:text="15 عرض "
                         android:textColor="@android:color/white"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 

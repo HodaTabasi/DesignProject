@@ -54,7 +54,7 @@
         android:padding="5dp"
         android:textColor="@color/gray1"
         android:textColorHint="@color/gray1"
-        android:textSize="18sp" />
+        android:textSize="16sp" />
 
 
     <LinearLayout

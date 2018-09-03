@@ -53,7 +53,7 @@
         android:padding="5dp"
         android:text="@string/skills"
         android:textColor="@color/textGray"
-        android:textSize="20sp" />
+        android:textSize="18sp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_skills"

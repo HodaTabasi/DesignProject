@@ -28,7 +28,7 @@
             android:gravity="center"
             android:text="@string/browseProjects"
             android:textColor="@color/white"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -131,7 +131,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="اسم المشروع" />
+                android:text="اسم المشروع"
+                android:textColor="@color/textGray"
+                android:textSize="14sp" />
 
             <view
                 android:layout_width="match_parent"
@@ -141,7 +143,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="نوع المشروع" />
+                android:text="نوع المشروع"
+                android:textColor="@color/textGray"
+                android:textSize="14sp" />
 
             <view
                 android:layout_width="match_parent"
@@ -151,7 +155,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="استايل المشروع" />
+                android:text="استايل المشروع"
+                android:textColor="@color/textGray"
+                android:textSize="14sp" />
 
             <view
                 android:layout_width="match_parent"
@@ -161,7 +167,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="الألوان المقترحة" />
+                android:text="الألوان المقترحة"
+                android:textColor="@color/textGray"
+                android:textSize="14sp" />
 
             <view
                 android:layout_width="match_parent"
@@ -171,7 +179,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="المدينة" />
+                android:text="المدينة"
+                android:textColor="@color/textGray"
+                android:textSize="14sp" />
 
             <view
                 android:layout_width="match_parent"
@@ -181,7 +191,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="تصاميم أعجبتك" />
+                android:text="تصاميم أعجبتك"
+                android:textColor="@color/textGray"
+                android:textSize="14sp" />
 
             <view
                 android:layout_width="match_parent"
@@ -191,7 +203,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="صور المشروع" />
+                android:text="صور المشروع"
+                android:textColor="@color/textGray"
+                android:textSize="14sp" />
 
             <view
                 android:layout_width="match_parent"
@@ -201,7 +215,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="مساحةالمشروع" />
+                android:text="مساحةالمشروع"
+                android:textColor="@color/textGray"
+                android:textSize="14sp" />
 
             <view
                 android:layout_width="match_parent"
@@ -211,7 +227,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="ميزانية المشروع" />
+                android:text="ميزانية المشروع"
+                android:textColor="@color/textGray"
+                android:textSize="14sp" />
 
             <view
                 android:layout_width="match_parent"
@@ -222,7 +240,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="نيذة عن المشروع" />
+                android:text="نيذة عن المشروع"
+                android:textColor="@color/textGray"
+                android:textSize="14sp" />
 
             <view
                 android:layout_width="match_parent"
@@ -232,7 +252,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="المرفقات" />
+                android:text="المرفقات"
+                android:textColor="@color/textGray"
+                android:textSize="14sp" />
 
         </LinearLayout>
 

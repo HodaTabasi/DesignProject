@@ -54,7 +54,7 @@
         android:padding="3dp"
         android:text="نبدة عن صمم"
         android:textColor="@color/textGray"
-        android:textSize="18dp" />
+        android:textSize="16dp" />
 
     <TextView
         android:id="@+id/tv_ques"
@@ -68,7 +68,7 @@
         android:padding="3dp"
         android:text="الاسئلة الشائعة "
         android:textColor="@color/textGray"
-        android:textSize="18dp" />
+        android:textSize="16dp" />
 
     <TextView
         android:id="@+id/tv_rights"
@@ -82,7 +82,7 @@
         android:padding="3dp"
         android:text="ضمان حقوقك"
         android:textColor="@color/textGray"
-        android:textSize="18dp" />
+        android:textSize="16dp" />
 
     <TextView
         android:id="@+id/tv_conditions"
@@ -96,7 +96,7 @@
         android:padding="3dp"
         android:text="شروط الاستخدام"
         android:textColor="@color/textGray"
-        android:textSize="18dp" />
+        android:textSize="16dp" />
 
     <TextView
         android:id="@+id/tv_call_us"
@@ -110,7 +110,7 @@
         android:padding="3dp"
         android:text="اتصل بنا"
         android:textColor="@color/textGray"
-        android:textSize="18dp" />
+        android:textSize="16dp" />
 
 
 </LinearLayout>

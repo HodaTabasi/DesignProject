@@ -64,7 +64,7 @@
                 android:padding="5dp"
                 android:text="@string/profile"
                 android:textColor="@color/textGray"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <LinearLayout
                 android:id="@+id/linaer"
@@ -162,7 +162,7 @@
                 android:layout_marginTop="7dp"
                 android:text="الاسم"
                 android:textColor="@color/gray1"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
 
             <EditText
                 android:id="@+id/et_name"
@@ -187,7 +187,7 @@
                 android:layout_marginTop="7dp"
                 android:text="نبذة تعريفية"
                 android:textColor="@color/gray1"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
 
             <EditText
                 android:id="@+id/et_bio"
@@ -213,7 +213,7 @@
                 android:layout_marginTop="7dp"
                 android:text="رقم الجوال"
                 android:textColor="@color/gray1"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
 
             <RelativeLayout
                 android:id="@+id/relative3"
@@ -260,7 +260,7 @@
                 android:layout_marginTop="7dp"
                 android:text="الايميل"
                 android:textColor="@color/gray1"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
 
             <EditText
                 android:id="@+id/et_email"
@@ -293,7 +293,7 @@
                     android:layout_alignParentRight="true"
                     android:text="الجنس"
                     android:textColor="@color/gray1"
-                    android:textSize="17sp" />
+                    android:textSize="15sp" />
 
                 <EditText
                     android:id="@+id/et_sex"
@@ -318,7 +318,7 @@
                     android:layout_toLeftOf="@+id/tv_sex"
                     android:text="تاريخ الميلاد"
                     android:textColor="@color/gray1"
-                    android:textSize="16sp" />
+                    android:textSize="15sp" />
 
                 <EditText
                     android:id="@+id/et_dob1"
@@ -372,7 +372,7 @@
                 android:padding="5dp"
                 android:text="@string/save"
                 android:textColor="@color/white"
-                android:textSize="17sp" />
+                android:textSize="16sp" />
 
 
         </RelativeLayout>

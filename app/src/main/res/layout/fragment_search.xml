@@ -51,6 +51,7 @@
         android:drawableStart="@drawable/ic_search_black_24dp"
         android:hint="بحث عن مصمم"
         android:padding="5dp"
+        android:textSize="16dp"
         android:textColorHint="@color/textGray" />
 
     <LinearLayout
