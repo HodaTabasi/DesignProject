@@ -52,7 +52,7 @@
         android:padding="5dp"
         android:text="@string/comments"
         android:textColor="@color/textGray"
-        android:textSize="18sp" />
+        android:textSize="16sp" />
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"

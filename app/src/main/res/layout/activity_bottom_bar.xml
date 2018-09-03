@@ -20,7 +20,7 @@
         android:padding="3dp"
         android:text="الرسائل"
         android:textColor="@color/blue"
-        android:textSize="10sp" />
+        android:textSize="8sp" />
 
     <TextView
         android:id="@+id/tv_projects"
@@ -33,7 +33,7 @@
         android:padding="3dp"
         android:text="@string/browseProjects"
         android:textColor="@color/blue"
-        android:textSize="10sp" />
+        android:textSize="8sp" />
 
     <TextView
         android:id="@+id/tv_home"
@@ -46,7 +46,7 @@
         android:padding="3dp"
         android:text="الرئيسية"
         android:textColor="@color/blue"
-        android:textSize="10sp" />
+        android:textSize="8sp" />
 
     <TextView
         android:id="@+id/tv_portfolio"
@@ -60,20 +60,20 @@
         android:background="@drawable/main_shape"
         android:text="تصفح الاعمال"
         android:textColor="@color/blue"
-        android:textSize="10sp" />
+        android:textSize="8sp" />
 
     <TextView
         android:id="@+id/tv_profile"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:drawablePadding="5dp"
+        android:drawablePadding="3dp"
         android:drawableTop="@drawable/ic_bar_profile"
         android:gravity="center"
         android:padding="3dp"
         android:text="حسابي"
         android:textColor="@color/blue"
-        android:textSize="10sp" />
+        android:textSize="8sp" />
 
 
 </LinearLayout>

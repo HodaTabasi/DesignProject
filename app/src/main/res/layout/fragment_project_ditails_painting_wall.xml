@@ -28,7 +28,7 @@
             android:gravity="center"
             android:text="اضف مشروع"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -89,7 +89,7 @@
                 android:padding="3dp"
                 android:text="ثلاثي ابعاد - رسم جداري "
                 android:textColor="@color/textGray"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
 
             <LinearLayout
@@ -112,7 +112,7 @@
                         android:text="ارفع صور من ارض الواقع"
                         android:textAlignment="textEnd"
                         android:textColor="@color/gray1"
-                        android:textSize="16sp" />
+                        android:textSize="12sp" />
 
                     <ImageView
                         android:id="@+id/wall_upload_image"
@@ -138,7 +138,7 @@
                         android:text="المساحة م2"
                         android:textAlignment="center"
                         android:textColor="@color/textGray"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
@@ -162,7 +162,7 @@
                         android:text="ارفع صورة لتصاميم اعجبتك"
                         android:textAlignment="textStart"
                         android:textColor="@color/gray1"
-                        android:textSize="16sp" />
+                        android:textSize="12sp" />
 
                     <ImageView
                         android:id="@+id/wall_like_upload_image"
@@ -188,7 +188,7 @@
                         android:text="المدينة"
                         android:textAlignment="center"
                         android:textColor="@color/textGray"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
@@ -206,7 +206,7 @@
                 android:padding="3dp"
                 android:text="خرائط - موقع المشروع "
                 android:textColor="@color/textGray"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/wall_balance"
@@ -220,7 +220,7 @@
                 android:padding="3dp"
                 android:text="الميزانية"
                 android:textColor="@color/textGray"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/wall_project_dietails"
@@ -234,7 +234,7 @@
                 android:padding="3dp"
                 android:text="تفاصيل عن المشروع"
                 android:textColor="@color/textGray"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/wall_attachment"
@@ -250,7 +250,7 @@
                 android:padding="8dp"
                 android:text="المرفقات"
                 android:textColor="@color/textGray"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <Button
                 android:id="@+id/wall_send"
@@ -260,7 +260,7 @@
                 android:background="@drawable/title_shape"
                 android:text="ارسل الطلب"
                 android:textColor="@android:color/white"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

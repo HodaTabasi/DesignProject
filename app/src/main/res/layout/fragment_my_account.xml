@@ -62,7 +62,7 @@
                 android:padding="30dp"
                 android:text="التقارير "
                 android:textColor="@color/textGray"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <View
                 android:layout_width="1dp"
@@ -79,7 +79,7 @@
                 android:padding="30dp"
                 android:text="رصيدي الحالي "
                 android:textColor="@color/textGray"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
         </LinearLayout>
 
@@ -107,7 +107,7 @@
                 android:padding="30dp"
                 android:text="شحن رصيد "
                 android:textColor="@color/textGray"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <View
                 android:layout_width="1dp"
@@ -125,7 +125,7 @@
                 android:padding="30dp"
                 android:text="سحب رصيد"
                 android:textColor="@color/textGray"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
         </LinearLayout>
     </RelativeLayout>
 
