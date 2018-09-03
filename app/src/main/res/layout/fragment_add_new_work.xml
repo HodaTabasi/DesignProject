@@ -16,7 +16,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
             android:background="#09102D" />
 
         <TextView
@@ -30,7 +30,7 @@
             android:gravity="center"
             android:text="معرض اعمالي"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -55,7 +55,7 @@
         android:text="اضف عمل جديد  "
         android:textAlignment="center"
         android:textColor="@android:color/white"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
 
     <LinearLayout
         android:layout_width="match_parent"

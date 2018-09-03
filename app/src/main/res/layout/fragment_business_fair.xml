@@ -29,7 +29,7 @@
             android:gravity="center"
             android:text="معرض اعمالي"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -56,7 +56,7 @@
             android:text="هوية بصرية لشركة تهتم بمجال النظر"
             android:textAlignment="textStart"
             android:textColor="@android:color/secondary_text_light"
-            android:textSize="17sp"
+            android:textSize="14sp"
             />
 
         <RelativeLayout
@@ -158,7 +158,7 @@
             android:paddingBottom="16dp"
             android:paddingEnd="8dp"
             android:paddingRight="8dp"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:text="تفاصيل" />
     </LinearLayout>
 
@@ -182,7 +182,7 @@
         android:paddingTop="3dp"
         android:text="رابط العمل "
         android:textColor="@android:color/black"
-        android:textSize="15sp" />
+        android:textSize="14sp" />
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -28,7 +28,7 @@
             android:gravity="center"
             android:text="اضف مشروع"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -68,7 +68,7 @@
                     android:layout_marginBottom="25dp"
                     android:text="تصميم داخلى"
                     android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
             </RelativeLayout>
 
@@ -87,7 +87,7 @@
                     android:layout_marginBottom="25dp"
                     android:text="تصميم معماري"
                     android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
             </RelativeLayout>
         </LinearLayout>
@@ -113,7 +113,7 @@
                     android:layout_marginBottom="25dp"
                     android:text="تصاميم الجرافيكس"
                     android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
             </RelativeLayout>
 
@@ -132,7 +132,7 @@
                     android:layout_marginBottom="25dp"
                     android:text="الرسم الجداري"
                     android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
             </RelativeLayout>
         </LinearLayout>
@@ -168,7 +168,7 @@
                     android:layout_marginTop="5dp"
                     android:text="بحث عن مصمم"
                     android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
             </RelativeLayout>
 
@@ -187,7 +187,7 @@
                     android:layout_marginBottom="25dp"
                     android:text="تصاميم موشن"
                     android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
             </RelativeLayout>
         </LinearLayout>

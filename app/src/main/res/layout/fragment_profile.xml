@@ -16,7 +16,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
             android:background="#09102D" />
 
         <TextView
@@ -29,7 +29,7 @@
             android:gravity="center"
             android:text="@string/account"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -64,7 +64,7 @@
                 android:padding="5dp"
                 android:text="@string/profile"
                 android:textColor="@color/textGray"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
 
             <LinearLayout
                 android:id="@+id/linaer"
@@ -86,7 +86,7 @@
                     android:padding="5dp"
                     android:text="@string/client"
                     android:textColor="@color/textGray"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/title"
@@ -98,7 +98,7 @@
                     android:padding="5dp"
                     android:text="@string/designer"
                     android:textColor="@color/white"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <EditText
@@ -115,7 +115,7 @@
                 android:padding="5dp"
                 android:textColor="@color/gray"
                 android:textColorHint="@color/gray"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <LinearLayout
                 android:id="@+id/linear2"
@@ -137,7 +137,7 @@
                     android:padding="5dp"
                     android:text="@string/individual"
                     android:textColor="@color/textGray"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tv_company"
@@ -149,7 +149,7 @@
                     android:padding="5dp"
                     android:text="@string/company"
                     android:textColor="@color/white"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <TextView
@@ -162,7 +162,7 @@
                 android:layout_marginTop="7dp"
                 android:text="الاسم"
                 android:textColor="@color/gray1"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/et_name"
@@ -173,6 +173,7 @@
                 android:layout_marginRight="20dp"
                 android:background="@drawable/report_layout_shap"
                 android:padding="5dp"
+                android:textSize="14sp"
                 android:text="ننننننننن"
                 android:textColor="@color/textGray"
                 android:textColorHint="@color/gray" />
@@ -187,7 +188,7 @@
                 android:layout_marginTop="7dp"
                 android:text="نبذة تعريفية"
                 android:textColor="@color/gray1"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/et_bio"
@@ -200,6 +201,7 @@
                 android:gravity="clip_vertical"
                 android:padding="5dp"
                 android:text="ننننننننن"
+                android:textSize="14sp"
                 android:textColor="@color/textGray"
                 android:textColorHint="@color/gray" />
 
@@ -213,7 +215,7 @@
                 android:layout_marginTop="7dp"
                 android:text="رقم الجوال"
                 android:textColor="@color/gray1"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
             <RelativeLayout
                 android:id="@+id/relative3"
@@ -234,7 +236,7 @@
                     android:padding="5dp"
                     android:textColor="@color/gray"
                     android:textColorHint="@color/textGray"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <EditText
                     android:id="@+id/et_mobile2"
@@ -247,7 +249,7 @@
                     android:padding="5dp"
                     android:textColor="@color/textGray"
                     android:textColorHint="@color/gray"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
             </RelativeLayout>
 
             <TextView
@@ -260,7 +262,7 @@
                 android:layout_marginTop="7dp"
                 android:text="الايميل"
                 android:textColor="@color/gray1"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/et_email"
@@ -272,6 +274,7 @@
                 android:background="@drawable/report_layout_shap"
                 android:inputType="textEmailAddress"
                 android:padding="5dp"
+                android:textSize="14sp"
                 android:text="maryam@hotmail.com"
                 android:textColor="@color/textGray"
                 android:textColorHint="@color/gray" />
@@ -293,7 +296,7 @@
                     android:layout_alignParentRight="true"
                     android:text="الجنس"
                     android:textColor="@color/gray1"
-                    android:textSize="15sp" />
+                    android:textSize="14sp" />
 
                 <EditText
                     android:id="@+id/et_sex"
@@ -307,7 +310,7 @@
                     android:padding="5dp"
                     android:textColor="@color/textGray"
                     android:textColorHint="@color/gray"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
 
                 <TextView
@@ -318,7 +321,7 @@
                     android:layout_toLeftOf="@+id/tv_sex"
                     android:text="تاريخ الميلاد"
                     android:textColor="@color/gray1"
-                    android:textSize="15sp" />
+                    android:textSize="14sp" />
 
                 <EditText
                     android:id="@+id/et_dob1"
@@ -331,7 +334,7 @@
                     android:inputType="number"
                     android:padding="5dp"
                     android:text="1996"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <EditText
                     android:id="@+id/et_dob2"
@@ -343,7 +346,7 @@
                     android:inputType="number"
                     android:padding="5dp"
                     android:text="1"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <EditText
                     android:id="@+id/et_dob3"
@@ -355,7 +358,7 @@
                     android:inputType="number"
                     android:padding="5dp"
                     android:text="30"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
             </RelativeLayout>
 
@@ -372,7 +375,7 @@
                 android:padding="5dp"
                 android:text="@string/save"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
 
         </RelativeLayout>

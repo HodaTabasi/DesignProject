@@ -15,7 +15,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
             android:background="#09102D" />
 
         <TextView
@@ -29,7 +29,7 @@
             android:gravity="center"
             android:text="رصيدي"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -88,7 +88,7 @@
                     android:padding="10dp"
                     android:text="يتضمن ميزانية مشاريعك قيد التنفيذ وأي مبلغ طلبت سحبه ولا زال قيد التحويل "
                     android:textColor="@color/textGray"
-                    android:textSize="11sp" />
+                    android:textSize="10sp" />
 
             </LinearLayout>
 
@@ -133,7 +133,7 @@
                     android:padding="10dp"
                     android:text="كامل الرصيد الكلي في حسابك  يتضمن الارباح والرصيد المعلق "
                     android:textColor="@color/textGray"
-                    android:textSize="11sp" />
+                    android:textSize="10sp" />
 
 
             </LinearLayout>
@@ -188,7 +188,7 @@
                     android:padding="10dp"
                     android:text="المبلغ المتبقي من الأرباح التي حققتها "
                     android:textColor="@color/textGray"
-                    android:textSize="11sp" />
+                    android:textSize="10sp" />
 
 
             </LinearLayout>
@@ -234,7 +234,7 @@
                     android:padding="10dp"
                     android:text="الرصيد الذي يمكنك استخدامه لفتح مشاريع جديدة"
                     android:textColor="@color/textGray"
-                    android:textSize="11sp" />
+                    android:textSize="10sp" />
 
 
             </LinearLayout>

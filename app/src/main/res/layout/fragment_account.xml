@@ -16,7 +16,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
             android:background="#09102D" />
 
         <TextView
@@ -29,7 +29,7 @@
             android:gravity="center"
             android:text="@string/account"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -93,7 +93,7 @@
                     android:padding="5dp"
                     android:text="مصمم معمارى"
                     android:textColor="@color/textGray"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/title"
@@ -105,7 +105,7 @@
                     android:padding="5dp"
                     android:text="حسام اليماني"
                     android:textColor="@color/textGray"
-                    android:textSize="16sp"/>
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -161,7 +161,7 @@
                 android:padding="5dp"
                 android:text="@string/profile"
                 android:textColor="@color/textGray"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tv_skills"
@@ -176,7 +176,7 @@
                 android:padding="5dp"
                 android:text="@string/skills"
                 android:textColor="@color/textGray"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tv_fav"
@@ -191,7 +191,7 @@
                 android:padding="5dp"
                 android:text="@string/fav"
                 android:textColor="@color/textGray"
-                android:textSize="16sp"/>
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tv_notification"
@@ -206,7 +206,7 @@
                 android:padding="5dp"
                 android:text="@string/notification"
                 android:textColor="@color/textGray"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tv_bankAccount"
@@ -221,7 +221,7 @@
                 android:padding="5dp"
                 android:text="@string/bankAccount"
                 android:textColor="@color/textGray"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
 
         </RelativeLayout>

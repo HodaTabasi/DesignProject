@@ -28,7 +28,7 @@
             android:gravity="center"
             android:text="عن صمم"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -62,7 +62,7 @@
                 android:text="اتصل بنا "
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/subject"
@@ -80,7 +80,7 @@
                 android:paddingTop="5dp"
                 android:textAlignment="textStart"
                 android:textColor="@android:color/white"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -99,7 +99,7 @@
                 android:padding="5dp"
                 android:text="ارسال"
                 android:textColor="@android:color/white"
-                android:textSize="16dp" />
+                android:textSize="14dp" />
         </LinearLayout>
 
     </ScrollView>

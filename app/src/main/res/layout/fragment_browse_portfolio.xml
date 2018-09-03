@@ -26,7 +26,7 @@
             android:gravity="center"
             android:text="@string/browseProjects"
             android:textColor="@color/white"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -66,7 +66,7 @@
             android:layout_marginTop="5dp"
             android:text="حسام اليماني"
             android:textColor="@color/textGray"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tv_title"
@@ -84,7 +84,7 @@
             android:paddingStart="8dp"
             android:paddingEnd="8sp"
             android:text="مصمم معماري"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
     </RelativeLayout>
 

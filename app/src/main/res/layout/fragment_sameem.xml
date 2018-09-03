@@ -29,7 +29,7 @@
             android:gravity="center"
             android:text="عن صمم"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -54,7 +54,7 @@
         android:padding="3dp"
         android:text="نبدة عن صمم"
         android:textColor="@color/textGray"
-        android:textSize="16dp" />
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/tv_ques"
@@ -68,7 +68,7 @@
         android:padding="3dp"
         android:text="الاسئلة الشائعة "
         android:textColor="@color/textGray"
-        android:textSize="16dp" />
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/tv_rights"
@@ -82,7 +82,7 @@
         android:padding="3dp"
         android:text="ضمان حقوقك"
         android:textColor="@color/textGray"
-        android:textSize="16dp" />
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/tv_conditions"
@@ -96,7 +96,7 @@
         android:padding="3dp"
         android:text="شروط الاستخدام"
         android:textColor="@color/textGray"
-        android:textSize="16dp" />
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/tv_call_us"
@@ -110,7 +110,7 @@
         android:padding="3dp"
         android:text="اتصل بنا"
         android:textColor="@color/textGray"
-        android:textSize="16dp" />
+        android:textSize="14sp" />
 
 
 </LinearLayout>

@@ -28,7 +28,7 @@
             android:gravity="center"
             android:text="@string/portfolio"
             android:textColor="@color/white"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -58,7 +58,7 @@
             android:layout_marginRight="5dp"
             android:text="تصميم معماري لفيلا واجهة خارجية"
             android:textColor="@color/textGray"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
 
         <LinearLayout
@@ -83,7 +83,7 @@
                 android:padding="5dp"
                 android:text="150"
                 android:textColor="@color/gray1"
-                android:textSize="13sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tv_shows"
@@ -98,7 +98,7 @@
                 android:padding="5dp"
                 android:text="1200"
                 android:textColor="@color/gray1"
-                android:textSize="13sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tv_calender"
@@ -112,7 +112,7 @@
                 android:padding="5dp"
                 android:text="10/4/2019"
                 android:textColor="@color/gray1"
-                android:textSize="13sp" />
+                android:textSize="12sp" />
 
         </LinearLayout>
 
@@ -133,7 +133,7 @@
             android:layout_marginRight="5dp"
             android:text="واجهة فيلا بتصميم جميلومودرن وتم تنفيذه بالشكل الاحترافي"
             android:textColor="@color/textGray"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
     </LinearLayout>
 
@@ -158,7 +158,7 @@
             android:padding="5dp"
             android:text="أعجبني"
             android:textColor="@color/gray1"
-            android:textSize="13sp" />
+            android:textSize="12sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -171,7 +171,7 @@
             android:padding="5dp"
             android:text="رابط العمل"
             android:textColor="@color/gray1"
-            android:textSize="13sp" />
+            android:textSize="12sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -183,7 +183,7 @@
             android:padding="5dp"
             android:text="أضف عمل مشابه"
             android:textColor="@color/gray1"
-            android:textSize="13sp" />
+            android:textSize="12sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -194,7 +194,7 @@
             android:padding="5dp"
             android:text="أضف للمفضلة"
             android:textColor="@color/gray1"
-            android:textSize="13sp" />
+            android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout

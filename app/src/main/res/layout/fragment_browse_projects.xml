@@ -28,7 +28,7 @@
             android:gravity="center"
             android:text="@string/browseProjects"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -54,7 +54,7 @@
         android:padding="5dp"
         android:textColor="@color/gray"
         android:textColorHint="@color/gray"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
     <LinearLayout
         android:id="@+id/linear"
         android:layout_width="match_parent"
@@ -75,7 +75,7 @@
             android:padding="5dp"
             android:text="موشن"
             android:textColor="@color/white"
-            android:textSize="13sp" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/gh_button"
@@ -99,7 +99,7 @@
             android:padding="5dp"
             android:text="رسم جداري"
             android:textColor="@color/textGray"
-            android:textSize="12sp" />
+            android:textSize="11sp" />
 
         <TextView
             android:id="@+id/arch_button"
@@ -111,7 +111,7 @@
             android:padding="5dp"
             android:text="تصميم معماري"
             android:textColor="@color/textGray"
-            android:textSize="12sp" />
+            android:textSize="11sp" />
 
         <TextView
             android:id="@+id/in_button"
@@ -125,7 +125,7 @@
             android:padding="5dp"
             android:text="تصميم داخلي"
             android:textColor="@color/textGray"
-            android:textSize="12sp" />
+            android:textSize="11sp" />
     </LinearLayout>
     <!--<LinearLayout-->
         <!--android:id="@+id/linear"-->

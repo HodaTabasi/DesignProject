@@ -28,7 +28,7 @@
             android:gravity="center"
             android:text="@string/account"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -53,7 +53,7 @@
         android:padding="5dp"
         android:text="@string/skills"
         android:textColor="@color/textGray"
-        android:textSize="18sp" />
+        android:textSize="14sp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_skills"
@@ -76,6 +76,6 @@
         android:padding="5dp"
         android:text="@string/save"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
 
 </RelativeLayout>

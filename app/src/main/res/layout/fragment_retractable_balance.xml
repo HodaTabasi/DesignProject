@@ -30,7 +30,7 @@
             android:gravity="center"
             android:text="رصيدي"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -84,5 +84,5 @@
         android:paddingTop="3dp"
         android:text="إرسال إلى حسابك البنكي "
         android:textColor="@android:color/white"
-        android:textSize="15dp" />
+        android:textSize="14dp" />
 </LinearLayout>

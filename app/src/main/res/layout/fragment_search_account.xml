@@ -27,7 +27,7 @@
             android:gravity="center"
             android:text="@string/search"
             android:textColor="@color/white"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
 
         <ImageView
@@ -67,7 +67,7 @@
             android:padding="5dp"
             android:text="حسام اليماني"
             android:textColor="@color/textGray"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <RatingBar
             android:id="@+id/rate_bar"
@@ -92,7 +92,7 @@
             android:padding="5dp"
             android:text="مصمم معماري"
             android:textColor="@color/textGray"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
     </RelativeLayout>
 
@@ -107,7 +107,7 @@
         android:layout_marginTop="7dp"
         android:text="نبذة تعريفية"
         android:textColor="@color/gray1"
-        android:textSize="15sp" />
+        android:textSize="14sp" />
 
     <EditText
         android:id="@+id/et_bio"
@@ -122,7 +122,7 @@
         android:padding="5dp"
         android:textColor="@color/gray"
         android:textColorHint="@color/textGray"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
 
     <LinearLayout
         android:id="@+id/linear2"
@@ -144,7 +144,7 @@
             android:padding="5dp"
             android:text="@string/comments"
             android:textColor="@color/gray1"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tv_portfolio"
@@ -156,7 +156,7 @@
             android:padding="5dp"
             android:text="@string/portfolio"
             android:textColor="@color/gray1"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
     </LinearLayout>
 
@@ -185,7 +185,7 @@
                 android:layout_height="wrap_content"
                 android:text="11"
                 android:textColor="@color/gray1"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tv5"
@@ -193,7 +193,7 @@
                 android:layout_height="wrap_content"
                 android:text="11"
                 android:textColor="@color/gray1"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tv6"
@@ -201,7 +201,7 @@
                 android:layout_height="wrap_content"
                 android:text="90%"
                 android:textColor="@color/gray1"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
         </LinearLayout>
 
@@ -224,7 +224,7 @@
                 android:layout_height="wrap_content"
                 android:text="المشاريع المكتملة"
                 android:textColor="@color/gray1"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tv2"
@@ -232,7 +232,7 @@
                 android:layout_height="wrap_content"
                 android:text="مشاريع قيد التنفيذ"
                 android:textColor="@color/gray1"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tv3"
@@ -240,7 +240,7 @@
                 android:layout_height="wrap_content"
                 android:text="معدل اكمال المشاريع"
                 android:textColor="@color/gray1"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
         </LinearLayout>
 
     </LinearLayout>
@@ -255,7 +255,7 @@
         android:layout_marginTop="7dp"
         android:text="مهاراتي"
         android:textColor="@color/gray1"
-        android:textSize="15sp" />
+        android:textSize="14sp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_fav"

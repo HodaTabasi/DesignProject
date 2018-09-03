@@ -27,7 +27,7 @@
             android:gravity="center"
             android:text="@string/portfolio"
             android:textColor="@color/white"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -54,7 +54,7 @@
         android:padding="5dp"
         android:textColor="@color/gray1"
         android:textColorHint="@color/gray1"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
 
 
     <LinearLayout
@@ -77,7 +77,7 @@
             android:text="موشن"
             android:padding="5dp"
             android:textColor="@color/textGray"
-            android:textSize="12sp" />
+            android:textSize="11sp" />
 
         <TextView
             android:layout_width="0dp"
@@ -90,7 +90,7 @@
             android:paddingBottom="5dp"
             android:text="تصميم جرافيك"
             android:textColor="@color/textGray"
-            android:textSize="12sp" />
+            android:textSize="11sp" />
 
         <TextView
             android:layout_width="0dp"
@@ -102,7 +102,7 @@
             android:padding="5dp"
             android:text="رسم جداري"
             android:textColor="@color/textGray"
-            android:textSize="12sp" />
+            android:textSize="11sp" />
 
         <TextView
             android:layout_width="0dp"
@@ -115,7 +115,7 @@
             android:paddingBottom="5dp"
             android:text="تصميم معماري"
             android:textColor="@color/textGray"
-            android:textSize="12sp" />
+            android:textSize="11sp" />
 
         <TextView
             android:layout_width="0dp"
@@ -126,7 +126,7 @@
             android:padding="5dp"
             android:text="تصميم داخلي"
             android:textColor="@color/textGray"
-            android:textSize="12sp" />
+            android:textSize="11sp" />
 
     </LinearLayout>
 

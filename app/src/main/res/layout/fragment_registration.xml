@@ -18,7 +18,7 @@
         android:padding="5dp"
         android:text="تسجيل الدخول"
         android:textColor="@color/textGray"
-        android:textSize="18sp" />
+        android:textSize="14sp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
         android:gravity="center"
         android:text="@string/reg1"
         android:textColor="@color/gray1"
-        android:textSize="16sp" />
+        android:textSize="12sp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -37,7 +37,7 @@
         android:gravity="center"
         android:text="@string/reg2"
         android:textColor="@color/gray1"
-        android:textSize="16sp" />
+        android:textSize="12sp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -58,7 +58,7 @@
                 android:gravity="center"
                 android:text="@string/mobile"
                 android:textColor="@color/gray1"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/et_mobile"
@@ -69,7 +69,7 @@
                 android:inputType="number"
                 android:padding="5dp"
                 android:text="0598521466"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
 
         </LinearLayout>
 
@@ -86,7 +86,7 @@
                 android:gravity="center"
                 android:text="@string/country"
                 android:textColor="@color/gray1"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/et_country"
@@ -96,7 +96,7 @@
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="فلسطين"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
 
         </LinearLayout>
 
@@ -114,7 +114,7 @@
         android:padding="5dp"
         android:text="@string/next"
         android:textColor="@color/textGray"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/tv_skip"
@@ -127,6 +127,6 @@
         android:padding="5dp"
         android:text="@string/notNow"
         android:textColor="@color/textGray"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
 
 </LinearLayout>

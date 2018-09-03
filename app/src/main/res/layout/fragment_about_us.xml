@@ -30,7 +30,7 @@
             android:gravity="center"
             android:text="عن صمم"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -54,15 +54,15 @@
         android:text="نبذة عن صمم "
         android:textAlignment="center"
         android:textColor="@android:color/white"
-        android:textSize="17sp" />
+        android:textSize="14sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="8dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         android:background="@drawable/report_layout_shap" />
 
 </LinearLayout>
