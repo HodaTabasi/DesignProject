@@ -16,7 +16,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
             android:background="#09102D" />
 
         <TextView
@@ -29,7 +29,7 @@
             android:gravity="center"
             android:text="بحث"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -51,7 +51,7 @@
         android:drawableStart="@drawable/ic_search_black_24dp"
         android:hint="بحث عن مصمم"
         android:padding="5dp"
-        android:textSize="16dp"
+        android:textSize="14dp"
         android:textColorHint="@color/textGray" />
 
     <LinearLayout
@@ -71,7 +71,7 @@
             android:padding="5dp"
             android:text="موشن"
             android:textColor="@color/textGray"
-            android:textSize="12dp" />
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/gh_button"
@@ -83,7 +83,7 @@
             android:padding="8dp"
             android:text="تصاميم جرافيكس"
             android:textColor="@color/textGray"
-            android:textSize="10dp" />
+            android:textSize="8sp" />
 
         <TextView
             android:id="@+id/wall_button"
@@ -95,7 +95,7 @@
             android:padding="5dp"
             android:text="رسم جداري"
             android:textColor="@color/textGray"
-            android:textSize="12dp" />
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/arch_button"
@@ -107,7 +107,7 @@
             android:padding="5dp"
             android:text="تصميم معماري"
             android:textColor="@color/textGray"
-            android:textSize="12dp" />
+            android:textSize="10dp" />
 
         <TextView
             android:id="@+id/in_button"
@@ -121,7 +121,7 @@
             android:padding="5dp"
             android:text="تصميم داخلي"
             android:textColor="@color/textGray"
-            android:textSize="12dp" />
+            android:textSize="10sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -150,7 +150,7 @@
             android:padding="5dp"
             android:text="التقييم"
             android:textColor="@color/textGray"
-            android:textSize="18dp" />
+            android:textSize="14dp" />
 
 
     </LinearLayout>

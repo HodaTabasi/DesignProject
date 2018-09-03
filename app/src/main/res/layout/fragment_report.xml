@@ -81,7 +81,7 @@
             android:padding="5dp"
             android:text="المدفوعات"
             android:textColor="@android:color/white"
-            android:textSize="15dp" />
+            android:textSize="12dp" />
 
         <TextView
             android:id="@+id/revenue"
@@ -94,7 +94,7 @@
             android:padding="5dp"
             android:text="الايداعات"
             android:textColor="@android:color/white"
-            android:textSize="15dp" />
+            android:textSize="12dp" />
 
         <TextView
             android:id="@+id/all_transactions"
@@ -106,7 +106,7 @@
             android:padding="5dp"
             android:text="كل المعاملات "
             android:textColor="@android:color/white"
-            android:textSize="15dp" />
+            android:textSize="12dp" />
 
     </LinearLayout>
 

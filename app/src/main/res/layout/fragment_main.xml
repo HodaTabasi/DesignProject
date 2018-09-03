@@ -27,7 +27,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
         android:layout_toRightOf="@+id/img_notification"
         android:gravity="right"
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:text="حسام اليماني"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_specialization"
@@ -49,14 +49,14 @@
             android:layout_centerHorizontal="true"
             android:text="مصمم معماري"
             android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:textSize="12sp" />
     </LinearLayout>
 
     <FrameLayout
         android:id="@+id/profile_frame_layout"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginRight="-20dp"
+        android:layout_marginRight="-1dp"
         android:layout_marginTop="15dp"
         android:layout_toLeftOf="@+id/img_power">
 
@@ -101,7 +101,7 @@
                 android:padding="5dp"
                 android:text="معرض اعمالي"
                 android:textColor="@color/gray_icon"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <View
                 android:layout_width="1dp"
@@ -119,7 +119,7 @@
                 android:padding="5dp"
                 android:text="رصيدي"
                 android:textColor="@color/gray_icon"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
         </LinearLayout>
 
@@ -146,7 +146,7 @@
                 android:padding="5dp"
                 android:text="اضف مشروع"
                 android:textColor="@color/gray_icon"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <View
                 android:layout_width="1dp"
@@ -164,7 +164,7 @@
                 android:padding="5dp"
                 android:text="عروضي"
                 android:textColor="@color/gray_icon"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
         </LinearLayout>
 
@@ -191,7 +191,7 @@
                 android:padding="5dp"
                 android:text="عن صمم"
                 android:textColor="@color/gray_icon"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <View
                 android:layout_width="1dp"
@@ -209,7 +209,7 @@
                 android:text="بحث"
                 android:padding="5dp"
                 android:textColor="@color/gray_icon"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
         </LinearLayout>
 

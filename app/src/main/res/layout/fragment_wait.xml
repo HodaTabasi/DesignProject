@@ -23,7 +23,7 @@
             android:padding="8dp"
             android:text="بانتظار الموافقة "
             android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
 
         <Switch
             android:id="@+id/switch1"
