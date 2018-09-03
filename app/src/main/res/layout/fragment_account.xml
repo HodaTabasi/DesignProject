@@ -91,9 +91,9 @@
                     android:background="@drawable/report_layout_shap"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="حسام اليماني"
-                    android:textColor="@color/gray"
-                    android:textSize="17sp" />
+                    android:text="مصمم معمارى"
+                    android:textColor="@color/textGray"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/title"
@@ -103,9 +103,9 @@
                     android:background="@drawable/report_layout_shap"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="مصمم معماري"
-                    android:textColor="@color/gray"
-                    android:textSize="17sp" />
+                    android:text="حسام اليماني"
+                    android:textColor="@color/textGray"
+                    android:textSize="16sp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -135,8 +135,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginRight="20dp"
                     android:text="@string/rate"
-                    android:textColor="@color/gray"
-                    android:textSize="17sp" />
+                    android:textColor="@color/textGray"
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -160,8 +160,8 @@
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="@string/profile"
-                android:textColor="@color/gray"
-                android:textSize="17sp" />
+                android:textColor="@color/textGray"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_skills"
@@ -175,8 +175,8 @@
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="@string/skills"
-                android:textColor="@color/gray"
-                android:textSize="17sp" />
+                android:textColor="@color/textGray"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_fav"
@@ -190,8 +190,8 @@
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="@string/fav"
-                android:textColor="@color/gray"
-                android:textSize="17sp" />
+                android:textColor="@color/textGray"
+                android:textSize="16sp"/>
 
             <TextView
                 android:id="@+id/tv_notification"
@@ -205,8 +205,8 @@
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="@string/notification"
-                android:textColor="@color/gray"
-                android:textSize="17sp" />
+                android:textColor="@color/textGray"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_bankAccount"
@@ -220,8 +220,8 @@
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="@string/bankAccount"
-                android:textColor="@color/gray"
-                android:textSize="17sp" />
+                android:textColor="@color/textGray"
+                android:textSize="16sp" />
 
 
         </RelativeLayout>
