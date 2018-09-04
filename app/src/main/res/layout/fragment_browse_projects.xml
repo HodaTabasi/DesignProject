@@ -52,14 +52,16 @@
         android:drawableLeft="@drawable/ic_search_black_24dp"
         android:hint="بحث عن مشروع"
         android:padding="5dp"
-        android:textColor="@color/gray"
-        android:textColorHint="@color/gray"
+        android:textColorHint="@color/textGray"
         android:textSize="14sp" />
+
     <LinearLayout
         android:id="@+id/linear"
         android:layout_width="match_parent"
-        android:layout_below="@+id/search"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/search"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:orientation="horizontal">
 
@@ -67,137 +69,66 @@
             android:id="@+id/motion_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginRight="2dp"
             android:layout_weight="0.6"
             android:background="@drawable/title_shape"
-            android:maxLines="1"
-            android:padding="5dp"
+            android:gravity="center"
+            android:padding="3dp"
             android:text="موشن"
             android:textColor="@color/white"
-            android:textSize="12sp" />
+            android:textSize="9sp" />
 
         <TextView
             android:id="@+id/gh_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginRight="2dp"
+            android:layout_weight="1.2"
             android:background="@drawable/account_shape"
-            android:maxLines="1"
-            android:padding="8dp"
-            android:text="تصاميم جرافيكس"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="تصاميم جرافكس"
             android:textColor="@color/textGray"
-            android:textSize="10sp" />
+            android:textSize="8sp" />
 
         <TextView
             android:id="@+id/wall_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginRight="2dp"
+            android:layout_weight="0.9"
             android:background="@drawable/account_shape"
-            android:maxLines="1"
+            android:gravity="center"
             android:padding="5dp"
             android:text="رسم جداري"
             android:textColor="@color/textGray"
-            android:textSize="11sp" />
+            android:textSize="8sp" />
 
         <TextView
             android:id="@+id/arch_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginRight="2dp"
+            android:layout_weight="1.2"
             android:background="@drawable/account_shape"
-            android:maxLines="1"
+            android:gravity="center"
             android:padding="5dp"
             android:text="تصميم معماري"
             android:textColor="@color/textGray"
-            android:textSize="11sp" />
+            android:textSize="8sp" />
 
         <TextView
             android:id="@+id/in_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_weight="1"
+            android:layout_weight="1.1"
             android:background="@drawable/account_shape"
-            android:maxLines="1"
+            android:gravity="center"
             android:padding="5dp"
             android:text="تصميم داخلي"
             android:textColor="@color/textGray"
-            android:textSize="11sp" />
+            android:textSize="8sp" />
     </LinearLayout>
-    <!--<LinearLayout-->
-        <!--android:id="@+id/linear"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@+id/search"-->
-        <!--android:layout_marginLeft="10dp"-->
-        <!--android:layout_marginRight="10dp"-->
-        <!--android:layout_marginTop="5dp"-->
-        <!--android:orientation="horizontal">-->
-
-        <!--<TextView-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginRight="5dp"-->
-            <!--android:layout_weight="1"-->
-            <!--android:background="@drawable/title_shape"-->
-            <!--android:gravity="center"-->
-            <!--android:padding="5dp"-->
-            <!--android:text="موشن"-->
-            <!--android:textColor="@color/white"-->
-            <!--android:textSize="17sp" />-->
-
-        <!--<TextView-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginRight="5dp"-->
-            <!--android:layout_weight="1"-->
-            <!--android:background="@drawable/report_layout_shap"-->
-            <!--android:gravity="center"-->
-
-            <!--android:padding="5dp"-->
-            <!--android:text="تصميم جرافيكس"-->
-            <!--android:textColor="@color/gray"-->
-            <!--android:textSize="17sp" />-->
-
-        <!--<TextView-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginRight="5dp"-->
-            <!--android:layout_weight="1"-->
-            <!--android:background="@drawable/report_layout_shap"-->
-            <!--android:gravity="center"-->
-            <!--android:padding="5dp"-->
-            <!--android:text="رسم جداري"-->
-            <!--android:textColor="@color/gray"-->
-            <!--android:textSize="17sp" />-->
-
-        <!--<TextView-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginRight="5dp"-->
-            <!--android:layout_weight="1"-->
-            <!--android:background="@drawable/report_layout_shap"-->
-            <!--android:gravity="center"-->
-            <!--android:padding="5dp"-->
-            <!--android:text="تصميم داخلي"-->
-            <!--android:textColor="@color/gray"-->
-
-            <!--android:textSize="17sp" />-->
-
-        <!--<TextView-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"-->
-            <!--android:background="@drawable/report_layout_shap"-->
-            <!--android:gravity="center"-->
-            <!--android:padding="5dp"-->
-            <!--android:text="تصميم معماري"-->
-            <!--android:textColor="@color/gray"-->
-            <!--android:textSize="12sp" />-->
-    <!--</LinearLayout>-->
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"

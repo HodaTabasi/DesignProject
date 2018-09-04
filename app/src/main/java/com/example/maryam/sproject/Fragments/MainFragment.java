@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.maryam.sproject.HelperClass.FragmentsUtil;
 import com.example.maryam.sproject.R;
@@ -28,9 +29,8 @@ public class MainFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
 
-
         CircleImageView img_user = view.findViewById(R.id.img_user);
-        TextView tv_portfolio = view.findViewById(R.id.tv_portfolio);
+        TextView tv_portfolio = view.findViewById(R.id.tv_portfolio_main);
         TextView tv_budget = view.findViewById(R.id.tv_budget);
         TextView tv_addProject = view.findViewById(R.id.tv_addProject);
         TextView tv_proposals = view.findViewById(R.id.tv_proposals);
@@ -38,7 +38,6 @@ public class MainFragment extends Fragment {
         TextView tv_search = view.findViewById(R.id.tv_search);
         ImageView img_power = view.findViewById(R.id.img_power);
         ImageView img_notification = view.findViewById(R.id.img_notification);
-
 
         img_user.setOnClickListener(new View.OnClickListener() {
             @Override

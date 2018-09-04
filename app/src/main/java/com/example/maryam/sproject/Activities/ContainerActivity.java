@@ -1,5 +1,6 @@
 package com.example.maryam.sproject.Activities;
 
+import android.app.Fragment;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
@@ -24,7 +25,7 @@ public class ContainerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container);
 
-        FragmentsUtil.addFragment(ContainerActivity.this, R.id.container_activity, new MainFragment(),false);
+        FragmentsUtil.addFragment(ContainerActivity.this, R.id.container_activity, new MainFragment(), false);
 
         Calligrapher calligrapher = new Calligrapher(this);
         calligrapher.setFont(this, "JFFlatregular.ttf", true);
