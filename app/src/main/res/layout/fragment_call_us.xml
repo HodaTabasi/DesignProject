@@ -99,7 +99,7 @@
                 android:padding="5dp"
                 android:text="ارسال"
                 android:textColor="@android:color/white"
-                android:textSize="14dp" />
+                android:textSize="14sp" />
         </LinearLayout>
 
     </ScrollView>
