@@ -1,5 +1,7 @@
 package com.example.maryam.sproject.Activities;
 
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -26,17 +28,22 @@ public class ContainerActivity extends AppCompatActivity {
 
         Calligrapher calligrapher = new Calligrapher(this);
         calligrapher.setFont(this, "JFFlatregular.ttf", true);
-        TextView tv_msgs = findViewById(R.id.tv_msgs);
-        TextView tv_projects = findViewById(R.id.tv_projects);
-        TextView tv_home = findViewById(R.id.tv_home);
-        TextView tv_portfolio = findViewById(R.id.tv_portfolio);
-        TextView tv_profile = findViewById(R.id.tv_profile);
+        final TextView tv_msgs = findViewById(R.id.tv_msgs);
+        final TextView tv_projects = findViewById(R.id.tv_projects);
+        final TextView tv_home = findViewById(R.id.tv_home);
+        final TextView tv_portfolio = findViewById(R.id.tv_portfolio);
+        final TextView tv_profile = findViewById(R.id.tv_profile);
 
 
         tv_msgs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new NotificationFragment(), true);
+                tv_msgs.setBackground(getResources().getDrawable(R.drawable.main_shape));
+                tv_projects.setBackgroundResource(0);
+                tv_home.setBackgroundResource(0);
+                tv_portfolio.setBackgroundResource(0);
+                tv_profile.setBackgroundResource(0);
 
             }
         });
@@ -45,7 +52,11 @@ public class ContainerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new BrowseProjectsFragment(), true);
-
+                tv_projects.setBackground(getResources().getDrawable(R.drawable.main_shape));
+                tv_msgs.setBackgroundResource(0);
+                tv_home.setBackgroundResource(0);
+                tv_portfolio.setBackgroundResource(0);
+                tv_profile.setBackgroundResource(0);
             }
         });
 
@@ -53,6 +64,11 @@ public class ContainerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new MainFragment(), true);
+                tv_home.setBackground(getResources().getDrawable(R.drawable.main_shape));
+                tv_msgs.setBackgroundResource(0);
+                tv_projects.setBackgroundResource(0);
+                tv_portfolio.setBackgroundResource(0);
+                tv_profile.setBackgroundResource(0);
 
             }
         });
@@ -61,6 +77,11 @@ public class ContainerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new AddNewWork2Fragment(), true);
+                tv_portfolio.setBackground(getResources().getDrawable(R.drawable.main_shape));
+                tv_msgs.setBackgroundResource(0);
+                tv_projects.setBackgroundResource(0);
+                tv_home.setBackgroundResource(0);
+                tv_profile.setBackgroundResource(0);
 
             }
         });
@@ -69,6 +90,11 @@ public class ContainerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new AccountFragment(), true);
+                tv_profile.setBackground(getResources().getDrawable(R.drawable.main_shape));
+                tv_msgs.setBackgroundResource(0);
+                tv_projects.setBackgroundResource(0);
+                tv_home.setBackgroundResource(0);
+                tv_portfolio.setBackgroundResource(0);
 
             }
         });
