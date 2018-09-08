@@ -14,7 +14,12 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.example.maryam.sproject.Adapters.DesignProfileAdapter;
+import com.example.maryam.sproject.Models.DesignProfile;
 import com.example.maryam.sproject.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import me.anwarshahriar.calligrapher.Calligrapher;
 
@@ -36,6 +41,8 @@ public class SearchFragment extends Fragment {
     /** تصميم داخلي */
     private TextView mInButton;
     private RatingBar mRattingDesigner;
+
+    List<DesignProfile> profiles;
 
     public SearchFragment() {
         // Required empty public constructor
@@ -59,6 +66,8 @@ public class SearchFragment extends Fragment {
         resSearch = getView().findViewById(R.id.res_search);
         gridLayoutManager = new GridLayoutManager(getContext(),2);
         resSearch.setLayoutManager(gridLayoutManager);
+        profiles = new ArrayList<>();
+        resSearch.setAdapter(new DesignProfileAdapter(getContext(),R.layout.item_layout_profile,profiles));
     }
 
     @Override

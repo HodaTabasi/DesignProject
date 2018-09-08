@@ -41,19 +41,19 @@
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:layout_margin="8dp"
         android:id="@+id/notification_attention"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="لايوجد تنبيهات اخرى"
-        android:gravity="center"
         android:layout_margin="16dp"
+        android:gravity="center"
+        android:text="لايوجد تنبيهات اخرى"
         android:textColor="@color/blue"
-        android:textSize="14dp"/>
+        android:textSize="14dp" />
 
 
 </LinearLayout>

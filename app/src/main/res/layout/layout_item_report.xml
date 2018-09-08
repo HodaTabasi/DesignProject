@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-   android:background="@drawable/report_layout_shap"
+    android:layoutDirection="ltr"
+    android:background="@drawable/report_layout_shap"
     android:orientation="vertical">
 
     <LinearLayout
@@ -12,13 +13,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <EditText
+        <TextView
+            android:id="@+id/operation_number"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_margin="1dp"
-            android:background="@drawable/white_shap"
-            android:textColor="@android:color/black" />
+            android:layout_weight="1"
+            android:padding="3dp"
+            android:textColor="@color/textGray"
+            android:textSize="14sp" />
 
         <view
             android:layout_width="1dp"
@@ -29,9 +32,9 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
-            android:layout_weight="0.7"
+            android:layout_weight="0.5"
             android:text="رقم العملية"
-            android:textColor="@android:color/black"
+            android:textColor="@color/textGray"
             android:textSize="14sp" />
     </LinearLayout>
 
@@ -45,13 +48,15 @@
 
         android:orientation="horizontal">
 
-        <EditText
+        <TextView
+            android:id="@+id/operation_value"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_margin="1dp"
-            android:background="@drawable/white_shap"
-            android:textColor="@android:color/black" />
+            android:layout_weight="1"
+            android:padding="3dp"
+            android:textColor="@color/textGray"
+            android:textSize="14sp" />
 
         <view
             android:layout_width="1dp"
@@ -62,9 +67,9 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
-            android:layout_weight="0.7"
+            android:layout_weight="0.5"
             android:text="القيمة"
-            android:textColor="@android:color/black"
+            android:textColor="@color/textGray"
             android:textSize="14sp" />
     </LinearLayout>
 
@@ -77,13 +82,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <EditText
+        <TextView
+            android:id="@+id/operation_desc"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_margin="1dp"
-            android:background="@drawable/white_shap"
-            android:textColor="@android:color/black" />
+            android:layout_weight="1"
+            android:padding="3dp"
+            android:textColor="@color/textGray"
+            android:textSize="14sp" />
 
         <view
             android:layout_width="1dp"
@@ -94,9 +101,9 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
-            android:layout_weight="0.7"
+            android:layout_weight="0.5"
             android:text="التفاصيل"
-            android:textColor="@android:color/black"
+            android:textColor="@color/textGray"
             android:textSize="14sp" />
     </LinearLayout>
 
@@ -109,13 +116,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <EditText
+        <TextView
+            android:id="@+id/operation_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_margin="1dp"
-            android:background="@drawable/white_shap"
-            android:textColor="@android:color/black" />
+            android:layout_weight="1"
+            android:padding="3dp"
+            android:textColor="@color/textGray"
+            android:textSize="14sp" />
 
         <view
             android:layout_width="1dp"
@@ -126,9 +135,9 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
-            android:layout_weight="0.7"
+            android:layout_weight="0.5"
             android:text="تاريخ العملية"
-            android:textColor="@android:color/black"
+            android:textColor="@color/textGray"
             android:textSize="14sp" />
     </LinearLayout>
 

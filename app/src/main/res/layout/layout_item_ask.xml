@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -9,30 +8,31 @@
         android:id="@+id/title1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
         android:background="@drawable/title_shape"
         android:paddingBottom="5dp"
         android:paddingLeft="10dp"
         android:paddingRight="11dp"
-        android:textAlignment="center"
         android:paddingTop="5dp"
         android:text="نبذة عن صمم "
+        android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="14sp" />
 
     <TextView
+        android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="اختر الاستايلاختر الاستايلاختر الاستايلاختر الاستايلاختر الاستا"
-        android:textSize="14sp"
         android:layout_marginBottom="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        android:background="@drawable/report_layout_shap"
+        android:text="اختر الاستايلاختر الاستايلاختر الاستايلاختر الاستايلاختر الاستا"
         android:textColor="@color/textGray"
-        android:background="@drawable/report_layout_shap"/>
+        android:textSize="14sp" />
 
 
 </LinearLayout>
