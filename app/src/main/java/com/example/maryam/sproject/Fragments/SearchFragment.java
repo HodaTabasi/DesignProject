@@ -57,6 +57,8 @@ public class SearchFragment extends Fragment {
         mInButton = getView().findViewById(R.id.in_button);
         mRattingDesigner = getView().findViewById(R.id.ratting_designer);
         resSearch = getView().findViewById(R.id.res_search);
+        gridLayoutManager = new GridLayoutManager(getContext(),2);
+        resSearch.setLayoutManager(gridLayoutManager);
     }
 
     @Override
