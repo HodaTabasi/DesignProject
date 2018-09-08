@@ -4,6 +4,7 @@ package com.example.maryam.sproject.Fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +14,13 @@ import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.example.maryam.sproject.Adapters.MyProjectsProposalsAdapter;
 import com.example.maryam.sproject.HelperClass.FragmentsUtil;
+import com.example.maryam.sproject.Models.MyProjectsProposals;
 import com.example.maryam.sproject.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import me.anwarshahriar.calligrapher.Calligrapher;
@@ -43,6 +49,9 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
     private LinearLayout mLDoneProject;
     private LinearLayout mTwo;
 
+    LinearLayoutManager layoutManager;
+    List<MyProjectsProposals> projectsProposals;
+
     public MyProjectFragment() {
         // Required empty public constructor
     }
@@ -60,7 +69,6 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         mMyProjectExcluded = getView().findViewById(R.id.my_project_excluded);
         mMyProjectUnderway = getView().findViewById(R.id.my_project_underway);
         mMyProjectDone = getView().findViewById(R.id.my_project_done);
-        mMyProjectRes = getView().findViewById(R.id.my_project_res);
         mOne = getView().findViewById(R.id.one);
         mProfileImage = getView().findViewById(R.id.profile_image);
         mLWaitProject = getView().findViewById(R.id.l_wait_project);
@@ -68,6 +76,13 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         mLExcludedProject = getView().findViewById(R.id.l_excluded_project);
         mLDoneProject = getView().findViewById(R.id.l_done_project);
         mTwo = getView().findViewById(R.id.two);
+
+        mMyProjectRes = getView().findViewById(R.id.my_project_res);
+        layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+        mMyProjectRes.setLayoutManager(layoutManager);
+        projectsProposals = new ArrayList<>();
+        mMyProjectRes.setAdapter(new MyProjectsProposalsAdapter(getContext(),R.layout.fav_row,projectsProposals));
+
     }
 
     private void onClickMethod(){

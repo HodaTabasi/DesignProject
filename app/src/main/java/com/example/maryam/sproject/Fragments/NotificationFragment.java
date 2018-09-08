@@ -1,15 +1,22 @@
 package com.example.maryam.sproject.Fragments;
 
 
+import android.app.Notification;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.maryam.sproject.Adapters.NotificationAdapter;
+import com.example.maryam.sproject.Models.Notifications;
 import com.example.maryam.sproject.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import me.anwarshahriar.calligrapher.Calligrapher;
 
@@ -18,6 +25,8 @@ public class NotificationFragment extends Fragment {
 
 
     private RecyclerView mNotificationAttention;
+    private LinearLayoutManager layoutManager;
+    List<Notifications> notifications;
 
     public NotificationFragment() {
         // Required empty public constructor
@@ -34,6 +43,11 @@ public class NotificationFragment extends Fragment {
 
     private void initView() {
         mNotificationAttention = getView().findViewById(R.id.notification_attention);
+
+        layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        mNotificationAttention.setLayoutManager(layoutManager);
+        notifications = new ArrayList<>();
+        mNotificationAttention.setAdapter(new NotificationAdapter(getContext(), R.layout.layout_item_notification, notifications));
     }
 
     @Override

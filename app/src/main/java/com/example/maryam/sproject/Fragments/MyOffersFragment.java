@@ -4,6 +4,7 @@ package com.example.maryam.sproject.Fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.maryam.sproject.Adapters.MyProjectsProposalsAdapter;
+import com.example.maryam.sproject.Models.MyProjectsProposals;
 import com.example.maryam.sproject.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import me.anwarshahriar.calligrapher.Calligrapher;
 
@@ -33,6 +39,9 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
     private TextView mAllOfferWait;
     private RecyclerView mAllOfferRes;
 
+    LinearLayoutManager layoutManager;
+    List<MyProjectsProposals> projectsProposals;
+
     public MyOffersFragment() {
         // Required empty public constructor
     }
@@ -51,6 +60,10 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
         mAllOfferUnderway = getView().findViewById(R.id.all_offer_underway);
         mAllOfferWait = getView().findViewById(R.id.all_offer_wait);
         mAllOfferRes = getView().findViewById(R.id.all_offer_res);
+        layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+        mAllOfferRes.setLayoutManager(layoutManager);
+        projectsProposals = new ArrayList<>();
+        mAllOfferRes.setAdapter(new MyProjectsProposalsAdapter(getContext(),R.layout.fav_row,projectsProposals));
     }
 
     @Override
