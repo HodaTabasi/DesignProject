@@ -1,8 +1,8 @@
 package com.example.maryam.sproject.Activities;
 
-import android.app.Fragment;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +20,8 @@ import me.anwarshahriar.calligrapher.Calligrapher;
 
 public class ContainerActivity extends AppCompatActivity {
 
+    Fragment currentFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +31,8 @@ public class ContainerActivity extends AppCompatActivity {
 
         Calligrapher calligrapher = new Calligrapher(this);
         calligrapher.setFont(this, "JFFlatregular.ttf", true);
+
+        //Bottom_bar
         final TextView tv_msgs = findViewById(R.id.tv_msgs);
         final TextView tv_projects = findViewById(R.id.tv_projects);
         final TextView tv_home = findViewById(R.id.tv_home);
@@ -58,6 +62,7 @@ public class ContainerActivity extends AppCompatActivity {
                 tv_home.setBackgroundResource(0);
                 tv_portfolio.setBackgroundResource(0);
                 tv_profile.setBackgroundResource(0);
+
             }
         });
 
@@ -83,6 +88,7 @@ public class ContainerActivity extends AppCompatActivity {
                 tv_projects.setBackgroundResource(0);
                 tv_home.setBackgroundResource(0);
                 tv_profile.setBackgroundResource(0);
+
 
             }
         });

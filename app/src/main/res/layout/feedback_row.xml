@@ -2,10 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:layout_marginTop="10dp"
     android:background="@drawable/report_layout_shap"
+    android:layoutDirection="ltr"
     android:orientation="vertical">
 
 
@@ -36,8 +34,8 @@
             android:layout_marginRight="5dp"
             android:layout_weight="0.5"
             android:text="التواصل والمتابعة"
-            android:textColor="@color/gray"
-            android:textSize="17sp" />
+            android:textColor="@color/textGray"
+            android:textSize="12sp" />
 
     </LinearLayout>
 
@@ -68,8 +66,8 @@
             android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:text="جودة العمل"
-            android:textColor="@color/gray"
-            android:textSize="17sp" />
+            android:textColor="@color/textGray"
+            android:textSize="12sp" />
 
     </LinearLayout>
 
@@ -98,8 +96,8 @@
             android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:text="الخبرة بمجال المشروع"
-            android:textColor="@color/gray"
-            android:textSize="17sp" />
+            android:textColor="@color/textGray"
+            android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -126,8 +124,8 @@
             android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:text="التسليم بالوقت المحدد"
-            android:textColor="@color/gray"
-            android:textSize="17sp" />
+            android:textColor="@color/textGray"
+            android:textSize="12sp" />
 
 
     </LinearLayout>
@@ -157,8 +155,8 @@
             android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:text="التعامل مرة أخرى"
-            android:textColor="@color/gray"
-            android:textSize="17sp" />
+            android:textColor="@color/textGray"
+            android:textSize="12sp" />
     </LinearLayout>
 
     <TextView
@@ -169,8 +167,8 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
         android:text="التعليق"
-        android:textColor="@color/gray"
-        android:textSize="17sp" />
+        android:textColor="@color/textGray"
+        android:textSize="12sp" />
 
     <EditText
         android:id="@+id/et_comment"
@@ -178,7 +176,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/tv6"
-        android:layout_marginBottom="3dp"
+        android:layout_marginBottom="5dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="3dp"
@@ -186,6 +184,8 @@
         android:gravity="clip_vertical"
         android:padding="5dp"
         android:text="ننننننننن"
-        android:textDirection="rtl" />
+        android:textColor="@color/gray"
+        android:textDirection="rtl"
+        android:textSize="12sp" />
 
 </LinearLayout>

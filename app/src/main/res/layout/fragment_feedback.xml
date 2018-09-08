@@ -55,8 +55,11 @@
         android:textSize="14sp" />
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycel_feedback"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/tv_comments"
-        android:layout_margin="8dp" />
+        android:layout_margin="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
 </RelativeLayout>

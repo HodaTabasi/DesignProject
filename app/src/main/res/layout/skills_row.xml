@@ -2,13 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
-    android:background="@color/white">
+    android:layout_marginTop="2dp"
+    android:background="@color/white"
+    android:layoutDirection="ltr">
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
         android:layout_weight="1"
         android:gravity="right"
         android:orientation="vertical">
@@ -18,26 +18,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="سنوات الخبرة"
-            android:textColor="@color/gray1"
-            android:textSize="17sp" />
+            android:textColor="@color/textGray"
+            android:textSize="12sp" />
 
         <EditText
             android:id="@+id/et_experience"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/report_layout_shap"
-            android:hint="ننننييييييييين"
+            android:gravity="right"
+            android:hint="سنوات الخبرة"
             android:padding="5dp"
-            android:textColor="@color/textGray"
-            android:textColorHint="@color/gray"
-            android:textSize="16sp" />
+            android:textColor="@color/gray"
+            android:textSize="12sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
         android:layout_weight="1"
         android:gravity="right"
         android:orientation="vertical">
@@ -47,19 +46,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="المهارة"
-            android:textColor="@color/gray1"
-            android:textSize="16sp" />
+            android:textColor="@color/textGray"
+            android:textSize="12sp" />
 
         <EditText
             android:id="@+id/et_skill"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/report_layout_shap"
-            android:hint="ننببببببببننن"
+            android:gravity="right"
+            android:hint="المهارة"
             android:padding="5dp"
-            android:textColor="@color/textGray"
-            android:textColorHint="@color/gray"
-            android:textSize="17sp" />
+            android:textColor="@color/gray"
+            android:textSize="12sp" />
     </LinearLayout>
 
 </LinearLayout>

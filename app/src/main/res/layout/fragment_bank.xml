@@ -61,16 +61,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_bank"
-        android:layout_marginTop="20dp" />
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp" />
 
     <TextView
-        android:id="@+id/tv_add"
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_add_account"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/recycler_bank"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/report_layout_shap"
         android:gravity="center"
         android:padding="5dp"
@@ -80,9 +82,9 @@
 
     <TextView
         android:id="@+id/tv_save"
-        android:layout_width="250dp"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_add"
+        android:layout_below="@+id/tv_add_account"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:background="@drawable/title_shape"

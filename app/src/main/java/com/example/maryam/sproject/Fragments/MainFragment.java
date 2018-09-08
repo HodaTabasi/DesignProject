@@ -39,6 +39,8 @@ public class MainFragment extends Fragment {
         ImageView img_power = view.findViewById(R.id.img_power);
         ImageView img_notification = view.findViewById(R.id.img_notification);
 
+        //Toast.makeText(getActivity(),"ffffffff",Toast.LENGTH_LONG).show();
+
         img_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
