@@ -26,7 +26,6 @@ public class BankAdapter extends RecyclerView.Adapter<BankAdapter.BankHolder> {
     @NonNull
     @Override
     public BankHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.bank_row, parent, false);
         return new BankHolder(view);
     }
