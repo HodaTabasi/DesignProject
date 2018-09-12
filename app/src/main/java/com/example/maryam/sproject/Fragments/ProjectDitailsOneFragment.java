@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,23 +28,23 @@ public class ProjectDitailsOneFragment extends Fragment implements View.OnClickL
     /** التصميم الداخلي  */
     private TextView mName;
     /** شقة سكنية - تصميم داخلي */
-    private TextView mInType;
+    private EditText mInType;
     /** اختر الاستايل */
-    private TextView mChooeseStyle;
+    private EditText mChooeseStyle;
     /** ادخل الالوان التى ترغبها في التصميم */
-    private TextView mDesignColor;
+    private EditText mDesignColor;
     private ImageView mUploadImage;
     /** المساحة م2 */
-    private TextView mArea2;
+    private EditText mArea2;
     private ImageView mUploadLikeImage;
     /** المدينة */
-    private TextView mCity;
+    private EditText mCity;
     /** خرائط - موقع المشروع  */
-    private TextView mMap;
+    private EditText mMap;
     /** الميزانية */
-    private TextView mBalance;
+    private EditText mBalance;
     /** تفاصيل عن المشروع */
-    private TextView mProjectDetailes;
+    private EditText mProjectDetailes;
     /** المرفقات */
     private TextView mAttachmentIn;
     /** ارسل الطلب */

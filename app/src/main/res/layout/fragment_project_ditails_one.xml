@@ -76,7 +76,7 @@
                     android:tint="@android:color/white" />
             </RelativeLayout>
 
-            <TextView
+            <EditText
                 android:id="@+id/in_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -85,12 +85,13 @@
                 android:layout_marginStart="8dp"
                 android:background="@drawable/account_shape"
                 android:gravity="center"
+                android:hint="شقة سكنية - تصميم داخلي"
                 android:padding="3dp"
-                android:text="شقة سكنية - تصميم داخلي"
                 android:textColor="@color/textGray"
+                android:textColorHint="@color/textGray"
                 android:textSize="14sp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/chooese_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -99,12 +100,13 @@
                 android:layout_marginStart="8dp"
                 android:background="@drawable/account_shape"
                 android:gravity="center"
+                android:hint="اختر الاستايل"
                 android:padding="3dp"
-                android:text="اختر الاستايل"
                 android:textColor="@color/textGray"
+                android:textColorHint="@color/textGray"
                 android:textSize="14sp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/design_color"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -113,9 +115,10 @@
                 android:layout_marginStart="8dp"
                 android:background="@drawable/account_shape"
                 android:gravity="center"
+                android:hint="ادخل الالوان التى ترغبها في التصميم"
                 android:padding="3dp"
-                android:text="ادخل الالوان التى ترغبها في التصميم"
                 android:textColor="@color/textGray"
+                android:textColorHint="@color/textGray"
                 android:textSize="14sp" />
 
             <LinearLayout
@@ -153,17 +156,18 @@
                         android:padding="8dp"
                         android:src="@drawable/add" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/area2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         android:background="@drawable/account_shape"
                         android:gravity="center"
+                        android:hint="المساحة م2"
                         android:padding="5dp"
-                        android:text="المساحة م2"
                         android:textAlignment="center"
                         android:textColor="@color/textGray"
+                        android:textColorHint="@color/textGray"
                         android:textSize="14sp" />
 
                 </LinearLayout>
@@ -203,24 +207,25 @@
                         android:padding="8dp"
                         android:src="@drawable/add" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/city"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         android:background="@drawable/account_shape"
                         android:gravity="center"
+                        android:hint="المدينة"
                         android:padding="5dp"
-                        android:text="المدينة"
                         android:textAlignment="center"
                         android:textColor="@color/textGray"
+                        android:textColorHint="@color/textGray"
                         android:textSize="14sp" />
 
                 </LinearLayout>
 
             </LinearLayout>
 
-            <TextView
+            <EditText
                 android:id="@+id/map"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -229,12 +234,13 @@
                 android:layout_marginStart="8dp"
                 android:background="@drawable/account_shape"
                 android:gravity="center"
+                android:hint="خرائط - موقع المشروع "
                 android:padding="3dp"
-                android:text="خرائط - موقع المشروع "
                 android:textColor="@color/textGray"
+                android:textColorHint="@color/textGray"
                 android:textSize="14sp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/balance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -243,12 +249,13 @@
                 android:layout_marginStart="8dp"
                 android:background="@drawable/account_shape"
                 android:gravity="center"
+                android:hint="الميزانية"
                 android:padding="3dp"
-                android:text="الميزانية"
                 android:textColor="@color/textGray"
+                android:textColorHint="@color/textGray"
                 android:textSize="14sp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/project_detailes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -257,9 +264,10 @@
                 android:layout_marginStart="8dp"
                 android:background="@drawable/account_shape"
                 android:gravity="center"
+                android:hint="تفاصيل عن المشروع"
                 android:padding="3dp"
-                android:text="تفاصيل عن المشروع"
                 android:textColor="@color/textGray"
+                android:textColorHint="@color/textGray"
                 android:textSize="14sp" />
 
             <TextView
