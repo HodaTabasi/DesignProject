@@ -19,6 +19,8 @@ import com.example.maryam.sproject.OkHttpCallback;
 import com.example.maryam.sproject.R;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import me.anwarshahriar.calligrapher.Calligrapher;
@@ -48,23 +50,19 @@ public class MainFragment extends Fragment {
 
 
         MyRequest myRequest = new MyRequest();
-        myRequest.GetCall("http://mustafa.smmim.com/waell/public/api/myprojects?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9." +
-                "eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvb" +
-                "S93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2NzM5Njg2LC" +
-                "JleHAiOjQ4MDgxNzYwNDU5MzI0NjQ0ODYsIm5iZiI6MTUzNjczOTY4NiwianRp" +
-                "IjoiNFZqQlRaaGRDVFpXRGlmayJ9.CWnsMw0g" +
-                "R4YBuz6IR5JiWYkcccgHanRNxlh8UWVSg2Q", new OkHttpCallback() {
+        Map<String, String> stringMap = new HashMap<>();
+        stringMap.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2NzQzMDE4LCJleHAiOjQ4MDgxNzYwNDU5MzI0Njc4MTgsIm5iZiI6MTUzNjc0MzAxOCwianRpIjoiV0txVVNXbEpoTGJxWExjTSJ9.ZYuUC1GeUACff3noDtr_dY51LIAO5R5hrQ1s6VcFM7I");
+        myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/myprofile", stringMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.v("tagg", e.getMessage());
+                Log.e("tag", e.getMessage());
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                Log.v("tag", response.body().string());
+                Log.e("tag1", response.body().string());
             }
         });
-
 
         img_user.setOnClickListener(new View.OnClickListener() {
             @Override
