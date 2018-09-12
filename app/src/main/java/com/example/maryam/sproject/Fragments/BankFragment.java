@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +16,18 @@ import android.widget.TextView;
 
 import com.example.maryam.sproject.Adapters.BankAdapter;
 import com.example.maryam.sproject.Models.BankModel;
+import com.example.maryam.sproject.MyRequest;
+import com.example.maryam.sproject.OkHttpCallback;
 import com.example.maryam.sproject.R;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import me.anwarshahriar.calligrapher.Calligrapher;
+import okhttp3.Call;
+import okhttp3.Response;
 
 
 public class BankFragment extends Fragment {
@@ -44,7 +52,6 @@ public class BankFragment extends Fragment {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        arrayList.add(new BankModel("البنك العربي","2138","1534"));
 
         adapter = new BankAdapter(getActivity(), arrayList);
         recyclerView.setAdapter(adapter);

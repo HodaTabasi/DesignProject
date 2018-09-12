@@ -32,9 +32,7 @@ public class BankAdapter extends RecyclerView.Adapter<BankAdapter.BankHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull BankHolder holder, int position) {
-        holder.et_bankName.setText(bankList.get(position).getBankName());
-        holder.et_bankName.setText(bankList.get(position).getBankName());
-        holder.et_bankName.setText(bankList.get(position).getBankName());
+
     }
 
     @Override

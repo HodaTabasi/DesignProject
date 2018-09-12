@@ -1,5 +1,7 @@
 package com.example.maryam.sproject;
 
+import org.json.JSONException;
+
 import java.io.IOException;
 
 import okhttp3.Call;
@@ -9,5 +11,5 @@ public interface OkHttpCallback {
 
     void onFailure(Call call, IOException e);
 
-    void onResponse(Call call, Response response) throws IOException;
+    void onResponse(Call call, Response response) throws IOException, JSONException;
 }

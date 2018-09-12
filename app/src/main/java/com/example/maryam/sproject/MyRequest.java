@@ -1,5 +1,7 @@
 package com.example.maryam.sproject;
 
+import org.json.JSONException;
+
 import java.io.IOException;
 import java.util.Map;
 
@@ -29,7 +31,11 @@ public class MyRequest {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                callback.onResponse(call, response);
+                try {
+                    callback.onResponse(call, response);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
@@ -59,7 +65,11 @@ public class MyRequest {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                callback.onResponse(call, response);
+                try {
+                    callback.onResponse(call, response);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
