@@ -46,6 +46,7 @@ public class MainFragment extends Fragment {
         ImageView img_power = view.findViewById(R.id.img_power);
         ImageView img_notification = view.findViewById(R.id.img_notification);
 
+        ////
         MyRequest myRequest = new MyRequest();
         myRequest.GetCall("http://mustafa.smmim.com/waell/public/api/myprojects?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9." +
                 "eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvb" +
