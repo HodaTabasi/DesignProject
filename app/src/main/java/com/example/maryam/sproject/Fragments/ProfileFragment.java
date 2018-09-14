@@ -73,8 +73,6 @@ public class ProfileFragment extends Fragment {
         linear2 = view.findViewById(R.id.linear2);
         tv_bio = view.findViewById(R.id.tv_bio);
 
-//        st_gender = "male";
-//        st_specialization = "arch";
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
                 R.array.spinner_items, android.R.layout.simple_spinner_item);
@@ -85,25 +83,28 @@ public class ProfileFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
                 switch (position) {
                     case 0:
-                        st_specialization = "inter";
+                        //st_specialization = "inter";
+                        getSpecialization("inter");
                         break;
                     case 1:
-                        st_specialization = "arch";
+                        getSpecialization("arch");
+                        //st_specialization = "arch";
                         break;
                     case 2:
-                        st_specialization = "graphic";
+                        getSpecialization("graphic");
+                        //st_specialization = "graphic";
                         break;
                     case 3:
-                        st_specialization = "wall";
+                        getSpecialization("wall");
+                        //st_specialization = "wall";
                         break;
                     case 4:
-                        st_specialization = "moshen";
+                        getSpecialization("moshen");
+                        //st_specialization = "moshen";
                         break;
-//                    default:
-//                        st_specialization = "inter";
+
                 }
 
-                Log.e("ttttt", st_specialization);
             }
 
             @Override
@@ -122,13 +123,13 @@ public class ProfileFragment extends Fragment {
                 switch (position) {
                     case 0:
 //                        st_gender = "male";
-                        Log.e("f",sp_gender.getId()+" ");
-                        getReturnValue("male");
+                        Log.e("f", sp_gender.getId() + " ");
+                        getGender("male");
                         break;
                     case 1:
 //                        st_gender = "female";
-                        Log.e("f1",sp_gender.getId()+" ");
-                        getReturnValue("female");
+                        Log.e("f1", sp_gender.getId() + " ");
+                        getGender("female");
                         break;
                 }
             }
@@ -139,7 +140,8 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        Log.e("qqqqq", " "+st_gender);
+        Log.e("qqqqq", "" + st_gender);
+//        Log.e("wwwww", "" + st_specialization);
 
         calendar = Calendar.getInstance();
         date = new DatePickerDialog.OnDateSetListener() {
@@ -304,9 +306,15 @@ public class ProfileFragment extends Fragment {
         return view;
     }
 
-    private void getReturnValue(String st_gender) {
+    private void getGender(String st_gender) {
         this.st_gender = st_gender;
         Log.v("rrrrre", st_gender);
+    }
+
+
+
+    private void getSpecialization(String st_specialization) {
+        this.st_specialization = st_specialization;
     }
 
     @Override
