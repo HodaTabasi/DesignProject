@@ -1,5 +1,9 @@
 package com.example.maryam.sproject.Models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserModel {
@@ -54,7 +58,7 @@ public class UserModel {
     private Object busniess_type;
     private String created_at;
     private String updated_at;
-    private List<BanksBean> banks;
+    private ArrayList<BanksBean> banks;
     private List<?> skills;
     private List<?> pworks;
     private List<?> likes;
@@ -228,11 +232,11 @@ public class UserModel {
         this.updated_at = updated_at;
     }
 
-    public List<BanksBean> getBanks() {
+    public ArrayList<BanksBean> getBanks() {
         return banks;
     }
 
-    public void setBanks(List<BanksBean> banks) {
+    public void setBanks(ArrayList<BanksBean> banks) {
         this.banks = banks;
     }
 
@@ -268,7 +272,7 @@ public class UserModel {
         this.comments = comments;
     }
 
-    public static class BanksBean {
+    public static class BanksBean implements Parcelable {
         /**
          * id : 1
          * name : alahly
@@ -286,6 +290,28 @@ public class UserModel {
         private String user_id;
         private String created_at;
         private String updated_at;
+
+        protected BanksBean(Parcel in) {
+            id = in.readInt();
+            name = in.readString();
+            number = in.readString();
+            iban = in.readString();
+            user_id = in.readString();
+            created_at = in.readString();
+            updated_at = in.readString();
+        }
+
+        public static final Creator<BanksBean> CREATOR = new Creator<BanksBean>() {
+            @Override
+            public BanksBean createFromParcel(Parcel in) {
+                return new BanksBean(in);
+            }
+
+            @Override
+            public BanksBean[] newArray(int size) {
+                return new BanksBean[size];
+            }
+        };
 
         public int getId() {
             return id;
@@ -341,6 +367,22 @@ public class UserModel {
 
         public void setUpdated_at(String updated_at) {
             this.updated_at = updated_at;
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeInt(id);
+            dest.writeString(name);
+            dest.writeString(number);
+            dest.writeString(iban);
+            dest.writeString(user_id);
+            dest.writeString(created_at);
+            dest.writeString(updated_at);
         }
     }
 }

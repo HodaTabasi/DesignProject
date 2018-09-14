@@ -65,7 +65,7 @@
         android:background="@drawable/report_layout_shap"
         android:gravity="right"
         android:textColor="@color/gray"
-        android:padding="3dp"
+        android:padding="5dp"
         android:textSize="12sp"
         android:text="55555555555" />
 

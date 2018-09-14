@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.example.maryam.sproject.Models.BankModel;
+import com.example.maryam.sproject.Models.UserModel;
 import com.example.maryam.sproject.R;
 
 import java.util.List;
@@ -16,9 +17,9 @@ import java.util.List;
 public class BankAdapter extends RecyclerView.Adapter<BankAdapter.BankHolder> {
 
     private Context context;
-    private List<BankModel> bankList;
+    private List<UserModel.BanksBean> bankList;
 
-    public BankAdapter(Context context, List<BankModel> bankList) {
+    public BankAdapter(Context context, List<UserModel.BanksBean> bankList) {
         this.context = context;
         this.bankList = bankList;
     }
@@ -32,7 +33,9 @@ public class BankAdapter extends RecyclerView.Adapter<BankAdapter.BankHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull BankHolder holder, int position) {
-
+        holder.et_bankName.setText(bankList.get(position).getName());
+        holder.et_bankNum.setText(bankList.get(position).getNumber());
+        holder.et_kNum.setText(bankList.get(position).getIban());
     }
 
     @Override

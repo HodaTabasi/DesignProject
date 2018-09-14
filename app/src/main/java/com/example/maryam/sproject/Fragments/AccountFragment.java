@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.maryam.sproject.HelperClass.FragmentsUtil;
+import com.example.maryam.sproject.HelperClass.MyProgressDialog;
 import com.example.maryam.sproject.Models.UserModel;
 import com.example.maryam.sproject.MyRequest;
 import com.example.maryam.sproject.OkHttpCallback;
@@ -31,21 +32,42 @@ import okhttp3.Response;
 public class AccountFragment extends Fragment {
     UserModel userModel;
 
+    TextView tv_profile;
+    TextView tv_skills;
+    TextView tv_fav;
+    TextView tv_notification ;
+    TextView tv_bankAccount;
+
     public AccountFragment() {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_account, container, false);
+        return view;
+    }
 
-        TextView tv_profile = view.findViewById(R.id.tv_profile);
-        TextView tv_skills = view.findViewById(R.id.tv_skills);
-        TextView tv_fav = view.findViewById(R.id.tv_fav);
-        TextView tv_notification = view.findViewById(R.id.tv_notification);
-        TextView tv_bankAccount = view.findViewById(R.id.tv_bankAccount);
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Calligrapher calligrapher = new Calligrapher(getContext());
+        calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
 
+        init();
+        onClickMethod();
+        getProfileDataRequest();
+    }
+
+    private void init(){
+         tv_profile = getView().findViewById(R.id.tv_profile);
+         tv_skills = getView().findViewById(R.id.tv_skills);
+         tv_fav = getView().findViewById(R.id.tv_fav);
+         tv_notification = getView().findViewById(R.id.tv_notification);
+         tv_bankAccount = getView().findViewById(R.id.tv_bankAccount);
+    }
+
+    private void onClickMethod(){
         tv_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,38 +101,37 @@ public class AccountFragment extends Fragment {
         tv_bankAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentsUtil.replaceFragment(getActivity(),R.id.container_activity, new BankFragment(),true);
-
+                BankFragment fragment = new BankFragment();
+                Bundle bundle = new Bundle();
+                bundle.putParcelableArrayList("bankInfo",userModel.getBanks());
+                fragment.setArguments(bundle);
+                FragmentsUtil.replaceFragment(getActivity(),R.id.container_activity, fragment,true);
             }
         });
 
-        return view;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Calligrapher calligrapher = new Calligrapher(getContext());
-        calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
-
+    private void getProfileDataRequest(){
         MyRequest myRequest = new MyRequest();
+        MyProgressDialog.showDialog(getContext());
         Map<String, String> stringMap = new HashMap<>();
-        stringMap.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2NzQzMDE4LCJleHAiOjQ4MDgxNzYwNDU5MzI0Njc4MTgsIm5iZiI6MTUzNjc0MzAxOCwianRpIjoiV0txVVNXbEpoTGJxWExjTSJ9.ZYuUC1GeUACff3noDtr_dY51LIAO5R5hrQ1s6VcFM7I");
+        stringMap.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2ODMxMDU3LCJleHAiOjQ4MDgxNzYwNDU5MzI1NTU4NTcsIm5iZiI6MTUzNjgzMTA1NywianRpIjoiN3FmUXZVQW1lNWxLaWdBeSJ9.JaZRD1eLJ6It2DuR6Qn1F5kNL8lyMWhYz_NYsjRW-qs");
         myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/myprofile", stringMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
+                MyProgressDialog.dismissDialog();
                 Log.e("tag", e.getMessage());
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException, JSONException {
+                MyProgressDialog.dismissDialog();
 //                Log.e("tag1", response.body().string());
                 JSONObject jsonObject = new JSONObject(response.body().string());
                 Gson gson = new Gson();
                 userModel = gson.fromJson(jsonObject.getString("user"),UserModel.class);
-                Log.e("tag1", userModel.getBio() + " ");
+//                Log.e("tag1", userModel.getBanks().get(0).getNumber() + " ");
             }
         });
-
     }
 }
