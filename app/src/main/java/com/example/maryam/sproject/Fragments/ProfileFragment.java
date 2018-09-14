@@ -41,7 +41,7 @@ public class ProfileFragment extends Fragment {
     EditText et_name, et_bio, et_mobile1, et_mobile2, et_email;
     LinearLayout linear2;
     Spinner sp_specialization, sp_gender;
-    String type, busniess_type, myFormat, date_format, st_specialization, st_gender;
+    String type, busniess_type, myFormat, date_format, st_specialization, st_gender, st_mobile;
     SimpleDateFormat sdf;
     Calendar calendar;
     DatePickerDialog.OnDateSetListener date;
@@ -140,7 +140,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        Log.e("qqqqq", "" + st_gender);
+//        Log.e("qqqqq", "" + st_gender);
 //        Log.e("wwwww", "" + st_specialization);
 
         calendar = Calendar.getInstance();
@@ -239,10 +239,13 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+
         tv_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                st_mobile = et_mobile2.getText().toString() + et_mobile1.getText().toString();
+                Log.v("mobile", st_mobile);
 
                 MyRequest myRequest = new MyRequest();
                 Map<String, String> stringMap = new HashMap<>();
@@ -251,11 +254,12 @@ public class ProfileFragment extends Fragment {
                             "MDQsIm5iZiI6MTUzNjg1MTkwNCwianRpIjoiWWFsQUt0cmxDOFFhc3MxNiJ9.ti8XrIO453w789YLVLu-EqVmZZm3GXVC6O9KNwloSsI");
                     stringMap.put("name", et_name.getText().toString());
                     stringMap.put("email", et_email.getText().toString());
-                    //stringMap.put("gender", et_gender.getText().toString());
-                    //stringMap.put("job_type", sp_specialization.getText().toString());
+                    stringMap.put("gender", st_gender);
+                    stringMap.put("job_type", st_specialization);
                     stringMap.put("bio", et_bio.getText().toString());
                     stringMap.put("dob", date_format);
                     stringMap.put("busniess_type", busniess_type);
+                    stringMap.put("phone", st_mobile);
                     stringMap.put("type", type);
 
                     myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/updateProfile", stringMap, new OkHttpCallback() {
@@ -280,9 +284,9 @@ public class ProfileFragment extends Fragment {
                             "RpIjoiWWFsQUt0cmxDOFFhc3MxNiJ9.ti8XrIO453w789YLVLu-EqVmZZm3GXVC6O9KNwloSsI");
                     stringMap.put("name", et_name.getText().toString());
                     stringMap.put("email", et_email.getText().toString());
-                    //stringMap.put("gender", et_gender.getText().toString());
-                    //stringMap.put("job_type", et_specialization.getText().toString());
+                    stringMap.put("gender", st_gender);
                     stringMap.put("dob", date_format);
+                    stringMap.put("phone", st_mobile);
                     stringMap.put("type", type);
 
                     myRequest.PostCall("https://mustafa.smmim.com/waell/public/api/updateProfile", stringMap, new OkHttpCallback() {
@@ -310,7 +314,6 @@ public class ProfileFragment extends Fragment {
         this.st_gender = st_gender;
         Log.v("rrrrre", st_gender);
     }
-
 
 
     private void getSpecialization(String st_specialization) {
