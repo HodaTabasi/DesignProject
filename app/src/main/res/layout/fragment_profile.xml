@@ -55,7 +55,6 @@
                 android:id="@+id/tv_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="10dp"
@@ -76,22 +75,10 @@
                 android:layout_marginTop="10dp">
 
                 <TextView
-                    android:id="@+id/name"
+                    android:id="@+id/tv_worker"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/report_layout_shap"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:text="@string/client"
-                    android:textColor="@color/textGray"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/title"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
                     android:layout_weight="1"
                     android:background="@drawable/solid_account_shape"
                     android:gravity="center"
@@ -99,10 +86,22 @@
                     android:text="@string/designer"
                     android:textColor="@color/white"
                     android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_client"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/report_layout_shap"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="@string/client"
+                    android:textColor="@color/textGray"
+                    android:textSize="14sp" />
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/tv_specialization"
+            <Spinner
+                android:id="@+id/sp_specialization"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/linaer"
@@ -110,10 +109,8 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="7dp"
                 android:background="@drawable/report_layout_shap"
-                android:gravity="center"
-                android:hint="التخصص"
                 android:padding="5dp"
-                android:textColor="@color/gray"
+                android:textColor="@color/textGray"
                 android:textColorHint="@color/gray"
                 android:textSize="14sp" />
 
@@ -121,34 +118,34 @@
                 android:id="@+id/linear2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_specialization"
+                android:layout_below="@+id/sp_specialization"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="7dp">
 
                 <TextView
+                    android:id="@+id/tv_company"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/report_layout_shap"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="@string/company"
+                    android:textColor="@color/textGray"
+                    android:textSize="14sp" />
+
+                <TextView
                     android:id="@+id/tv_individual"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/report_layout_shap"
                     android:gravity="center"
                     android:padding="5dp"
                     android:text="@string/individual"
                     android:textColor="@color/textGray"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/tv_company"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/solid_account_shape"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:text="@string/company"
-                    android:textColor="@color/white"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -173,10 +170,10 @@
                 android:layout_marginRight="20dp"
                 android:background="@drawable/report_layout_shap"
                 android:padding="5dp"
-                android:textSize="14sp"
                 android:text="ننننننننن"
                 android:textColor="@color/textGray"
-                android:textColorHint="@color/gray" />
+                android:textColorHint="@color/gray"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tv_bio"
@@ -201,9 +198,8 @@
                 android:gravity="clip_vertical"
                 android:padding="5dp"
                 android:text="ننننننننن"
-                android:textSize="14sp"
                 android:textColor="@color/textGray"
-                android:textColorHint="@color/gray" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tv_mobile"
@@ -217,7 +213,7 @@
                 android:textColor="@color/gray1"
                 android:textSize="14sp" />
 
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/relative3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -226,31 +222,29 @@
                 android:layout_marginRight="20dp">
 
                 <EditText
-                    android:id="@+id/et_mobile1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:background="@drawable/half_right_corner_shape"
-                    android:hint="1234567"
-                    android:inputType="number"
-                    android:padding="5dp"
-                    android:textColor="@color/gray"
-                    android:textColorHint="@color/textGray"
-                    android:textSize="14sp" />
-
-                <EditText
                     android:id="@+id/et_mobile2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@+id/et_mobile1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@drawable/half_left_corner_shape"
-                    android:hint="059"
                     android:inputType="number"
                     android:padding="5dp"
                     android:textColor="@color/textGray"
-                    android:textColorHint="@color/gray"
                     android:textSize="14sp" />
-            </RelativeLayout>
+
+                <EditText
+                    android:id="@+id/et_mobile1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="@drawable/half_right_corner_shape"
+                    android:inputType="number"
+                    android:padding="5dp"
+                    android:textColor="@color/textGray"
+                    android:textSize="14sp" />
+
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_email"
@@ -274,10 +268,8 @@
                 android:background="@drawable/report_layout_shap"
                 android:inputType="textEmailAddress"
                 android:padding="5dp"
-                android:textSize="14sp"
-                android:text="maryam@hotmail.com"
                 android:textColor="@color/textGray"
-                android:textColorHint="@color/gray" />
+                android:textSize="14sp" />
 
 
             <RelativeLayout
@@ -298,18 +290,15 @@
                     android:textColor="@color/gray1"
                     android:textSize="14sp" />
 
-                <EditText
-                    android:id="@+id/et_sex"
+                <Spinner
+                    android:id="@+id/sp_gender"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_below="@+id/tv_sex"
                     android:background="@drawable/report_layout_shap"
-                    android:hint="أنثى"
-                    android:inputType="textEmailAddress"
                     android:padding="5dp"
                     android:textColor="@color/textGray"
-                    android:textColorHint="@color/gray"
                     android:textSize="14sp" />
 
 
@@ -323,41 +312,38 @@
                     android:textColor="@color/gray1"
                     android:textSize="14sp" />
 
-                <EditText
-                    android:id="@+id/et_dob1"
-                    android:layout_width="60dp"
+                <TextView
+                    android:id="@+id/tv_dob1"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_dob"
-                    android:layout_marginRight="60dp"
-                    android:layout_toLeftOf="@+id/et_sex"
+                    android:layout_marginRight="55dp"
+                    android:layout_toLeftOf="@+id/sp_gender"
                     android:background="@drawable/half_right_corner_shape"
-                    android:inputType="number"
+                    android:gravity="center"
                     android:padding="5dp"
-                    android:text="1996"
                     android:textSize="14sp" />
 
-                <EditText
-                    android:id="@+id/et_dob2"
-                    android:layout_width="60dp"
+                <TextView
+                    android:id="@+id/tv_dob2"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_dob"
-                    android:layout_toLeftOf="@+id/et_dob1"
+                    android:layout_toLeftOf="@+id/tv_dob1"
                     android:background="@drawable/square_shape"
-                    android:inputType="number"
+                    android:gravity="center"
                     android:padding="5dp"
-                    android:text="1"
                     android:textSize="14sp" />
 
-                <EditText
-                    android:id="@+id/et_dob3"
-                    android:layout_width="100dp"
+                <TextView
+                    android:id="@+id/tv_dob3"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_dob"
-                    android:layout_toLeftOf="@+id/et_dob2"
+                    android:layout_toLeftOf="@+id/tv_dob2"
                     android:background="@drawable/half_left_corner_shape"
-                    android:inputType="number"
+                    android:gravity="center"
                     android:padding="5dp"
-                    android:text="30"
                     android:textSize="14sp" />
 
             </RelativeLayout>

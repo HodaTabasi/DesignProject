@@ -49,21 +49,6 @@ public class MainFragment extends Fragment {
         ImageView img_notification = view.findViewById(R.id.img_notification);
 
 
-        MyRequest myRequest = new MyRequest();
-        Map<String, String> stringMap = new HashMap<>();
-        stringMap.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2NzQzMDE4LCJleHAiOjQ4MDgxNzYwNDU5MzI0Njc4MTgsIm5iZiI6MTUzNjc0MzAxOCwianRpIjoiV0txVVNXbEpoTGJxWExjTSJ9.ZYuUC1GeUACff3noDtr_dY51LIAO5R5hrQ1s6VcFM7I");
-        myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/myprofile", stringMap, new OkHttpCallback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                Log.e("tag", e.getMessage());
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                Log.e("tag1", response.body().string());
-            }
-        });
-
         img_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

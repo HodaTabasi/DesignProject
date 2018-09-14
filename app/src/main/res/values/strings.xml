@@ -35,4 +35,21 @@
     <string name="mobile">رقم الجوال</string>
     <string name="notNow">ليس الآن</string>
     <string name="next">التالي</string>
+
+
+    <string-array name="spinner_items">
+        <item>التصميم الداخلي</item>
+        <item>التصميم المعماري</item>
+        <item>تصميم الجرافكس</item>
+        <item>الرسم الجداري</item>
+        <item>تصاميم الموشن</item>
+    </string-array>
+
+    <string-array name="gender_items">
+        <item>ذكر</item>
+        <item>أنثى</item>
+
+    </string-array>
+
+
 </resources>

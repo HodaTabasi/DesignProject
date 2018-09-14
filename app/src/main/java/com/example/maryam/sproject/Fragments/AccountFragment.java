@@ -30,6 +30,7 @@ import okhttp3.Response;
 
 public class AccountFragment extends Fragment {
     UserModel userModel;
+    MyRequest myRequest;
 
     public AccountFragment() {
     }
@@ -49,21 +50,23 @@ public class AccountFragment extends Fragment {
         tv_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentsUtil.replaceFragment(getActivity(),R.id.container_activity, new ProfileFragment(),true);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProfileFragment(), true);
+                getProfile();
             }
+
         });
 
         tv_skills.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentsUtil.replaceFragment(getActivity(),R.id.container_activity, new SkillsFragment(),true);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new SkillsFragment(), true);
 
             }
         });
         tv_fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentsUtil.replaceFragment(getActivity(),R.id.container_activity, new FavoriteFragment(),true);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new FavoriteFragment(), true);
 
             }
         });
@@ -71,7 +74,7 @@ public class AccountFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                FragmentsUtil.replaceFragment(getActivity(),R.id.container_activity, new AccountNotificationFragment(),true);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AccountNotificationFragment(), true);
 
             }
         });
@@ -79,12 +82,16 @@ public class AccountFragment extends Fragment {
         tv_bankAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentsUtil.replaceFragment(getActivity(),R.id.container_activity, new BankFragment(),true);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new BankFragment(), true);
 
             }
         });
 
         return view;
+    }
+
+    private void getProfile() {
+
     }
 
     @Override
@@ -93,7 +100,7 @@ public class AccountFragment extends Fragment {
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
 
-        MyRequest myRequest = new MyRequest();
+        myRequest = new MyRequest();
         Map<String, String> stringMap = new HashMap<>();
         stringMap.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2NzQzMDE4LCJleHAiOjQ4MDgxNzYwNDU5MzI0Njc4MTgsIm5iZiI6MTUzNjc0MzAxOCwianRpIjoiV0txVVNXbEpoTGJxWExjTSJ9.ZYuUC1GeUACff3noDtr_dY51LIAO5R5hrQ1s6VcFM7I");
         myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/myprofile", stringMap, new OkHttpCallback() {
@@ -104,10 +111,10 @@ public class AccountFragment extends Fragment {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException, JSONException {
-//                Log.e("tag1", response.body().string());
+
                 JSONObject jsonObject = new JSONObject(response.body().string());
                 Gson gson = new Gson();
-                userModel = gson.fromJson(jsonObject.getString("user"),UserModel.class);
+                userModel = gson.fromJson(jsonObject.getString("user"), UserModel.class);
                 Log.e("tag1", userModel.getBio() + " ");
             }
         });
