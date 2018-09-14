@@ -103,7 +103,7 @@ public class ProfileFragment extends Fragment {
 //                        st_specialization = "inter";
                 }
 
-                //Log.v("ttttt", st_specialization);
+                Log.e("ttttt", st_specialization);
             }
 
             @Override
@@ -121,10 +121,14 @@ public class ProfileFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
                 switch (position) {
                     case 0:
-                        st_gender = "male";
+//                        st_gender = "male";
+                        Log.e("f",sp_gender.getId()+" ");
+                        getReturnValue("male");
                         break;
                     case 1:
-                        st_gender = "female";
+//                        st_gender = "female";
+                        Log.e("f1",sp_gender.getId()+" ");
+                        getReturnValue("female");
                         break;
                 }
             }
@@ -135,7 +139,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        //Log.v("qqqqq", st_gender);
+        Log.e("qqqqq", " "+st_gender);
 
         calendar = Calendar.getInstance();
         date = new DatePickerDialog.OnDateSetListener() {
@@ -298,6 +302,11 @@ public class ProfileFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private void getReturnValue(String st_gender) {
+        this.st_gender = st_gender;
+        Log.v("rrrrre", st_gender);
     }
 
     @Override
