@@ -3,10 +3,12 @@ package com.example.maryam.sproject.Adapters;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.maryam.sproject.Models.FinancialMovementReports;
 import com.example.maryam.sproject.R;
@@ -34,7 +36,14 @@ public class FinancialMovementReportAdapter extends RecyclerView.Adapter<Financi
 
     @Override
     public void onBindViewHolder(@NonNull FinancialMovementReportVH holder, int position) {
-
+        if (reports.size() == 0){
+            Toast.makeText(context, "لا يوجد بيانات لعرضها", Toast.LENGTH_SHORT).show();
+        }else {
+            holder.operationDate.setText(reports.get(position).getCreated_at());
+            holder.operationDesc.setText(reports.get(position).getDescr());
+            holder.operationValue.setText(reports.get(position).getTotal());
+            holder.operationNumber.setText(reports.get(position).getId()+"");
+        }
     }
 
     @Override

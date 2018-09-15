@@ -23,9 +23,10 @@
             android:textColor="@color/textGray"
             android:textSize="14sp" />
 
-        <view
+        <View
             android:layout_width="1dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:background="@color/gray"/>
 
         <TextView
             android:layout_width="0dp"
@@ -38,9 +39,10 @@
             android:textSize="14sp" />
     </LinearLayout>
 
-    <view
+    <View
         android:layout_width="match_parent"
-        android:layout_height="1dp" />
+        android:layout_height="1dp"
+        android:background="@color/gray"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -58,9 +60,10 @@
             android:textColor="@color/textGray"
             android:textSize="14sp" />
 
-        <view
+        <View
             android:layout_width="1dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:background="@color/gray"/>
 
         <TextView
             android:layout_width="0dp"
@@ -73,9 +76,10 @@
             android:textSize="14sp" />
     </LinearLayout>
 
-    <view
+    <View
         android:layout_width="match_parent"
-        android:layout_height="1dp" />
+        android:layout_height="1dp"
+        android:background="@color/gray"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -92,9 +96,10 @@
             android:textColor="@color/textGray"
             android:textSize="14sp" />
 
-        <view
+        <View
             android:layout_width="1dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:background="@color/gray"/>
 
         <TextView
             android:layout_width="0dp"
@@ -107,9 +112,10 @@
             android:textSize="14sp" />
     </LinearLayout>
 
-    <view
+    <View
         android:layout_width="match_parent"
-        android:layout_height="1dp" />
+        android:layout_height="1dp"
+        android:background="@color/gray"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -126,9 +132,10 @@
             android:textColor="@color/textGray"
             android:textSize="14sp" />
 
-        <view
+        <View
             android:layout_width="1dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:background="@color/gray"/>
 
         <TextView
             android:layout_width="0dp"

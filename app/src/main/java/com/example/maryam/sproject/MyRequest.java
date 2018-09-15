@@ -74,6 +74,38 @@ public class MyRequest {
         });
 
     }
+
+    public void PostCallWithAttachment(String URL, Map<String, String> parameter, Map<String, String> attchParameter, final OkHttpCallback callback) {
+
+        FormBody.Builder formBuilder = new FormBody.Builder();
+
+        for (Map.Entry<String, String> entry : parameter.entrySet()) {
+            formBuilder.add(entry.getKey(), entry.getValue());
+        }
+        RequestBody body = formBuilder.build();
+        Request request = new Request.Builder()
+                .url(URL)
+                .post(body)
+                .build();
+
+        OkHttpClient okHttpClient = new OkHttpClient();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                callback.onFailure(call, e);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                try {
+                    callback.onResponse(call, response);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+    }
 }
 
 

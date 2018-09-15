@@ -61,8 +61,8 @@ public class UserModel {
     private ArrayList<BanksBean> banks;
     private List<?> skills;
     private List<?> pworks;
-    private List<?> likes;
-    private List<?> comments;
+    private List<Likes> likes;
+    private List<Comments> comments;
 
     public int getId() {
         return id;
@@ -256,19 +256,19 @@ public class UserModel {
         this.pworks = pworks;
     }
 
-    public List<?> getLikes() {
+    public List<Likes> getLikes() {
         return likes;
     }
 
-    public void setLikes(List<?> likes) {
+    public void setLikes(List<Likes> likes) {
         this.likes = likes;
     }
 
-    public List<?> getComments() {
+    public List<Comments> getComments() {
         return comments;
     }
 
-    public void setComments(List<?> comments) {
+    public void setComments(List<Comments> comments) {
         this.comments = comments;
     }
 
