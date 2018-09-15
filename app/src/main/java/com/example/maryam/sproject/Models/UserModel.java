@@ -59,8 +59,8 @@ public class UserModel {
     private String created_at;
     private String updated_at;
     private ArrayList<BanksBean> banks;
-    private List<?> skills;
-    private List<?> pworks;
+    private List<Skills> skills;
+    private List<PWorks> pworks;
     private List<Likes> likes;
     private List<Comments> comments;
 
@@ -240,19 +240,19 @@ public class UserModel {
         this.banks = banks;
     }
 
-    public List<?> getSkills() {
+    public List<Skills> getSkills() {
         return skills;
     }
 
-    public void setSkills(List<?> skills) {
+    public void setSkills(List<Skills> skills) {
         this.skills = skills;
     }
 
-    public List<?> getPworks() {
+    public List<PWorks> getPworks() {
         return pworks;
     }
 
-    public void setPworks(List<?> pworks) {
+    public void setPworks(List<PWorks> pworks) {
         this.pworks = pworks;
     }
 
