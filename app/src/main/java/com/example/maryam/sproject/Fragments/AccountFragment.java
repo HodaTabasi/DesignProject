@@ -121,7 +121,7 @@ public class AccountFragment extends Fragment {
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
         Map<String, String> stringMap = new HashMap<>();
-        stringMap.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2ODMxMDU3LCJleHAiOjQ4MDgxNzYwNDU5MzI1NTU4NTcsIm5iZiI6MTUzNjgzMTA1NywianRpIjoiN3FmUXZVQW1lNWxLaWdBeSJ9.JaZRD1eLJ6It2DuR6Qn1F5kNL8lyMWhYz_NYsjRW-qs");
+        stringMap.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2NTYyNjExLCJleHAiOjQ4MDgxNzYwNDU5MzIyODc0MTEsIm5iZiI6MTUzNjU2MjYxMSwianRpIjoiQ2NHRFlQOW4wcno4cjJCMCJ9.8fOb9OQliz0Z63t-SiZcTnRdExskt_Xtx68AWYy4hWU");
         myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/myprofile", stringMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {

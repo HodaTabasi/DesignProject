@@ -9,16 +9,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.maryam.sproject.Adapters.SkillsAdapter;
 import com.example.maryam.sproject.HelperClass.MyProgressDialog;
 import com.example.maryam.sproject.Models.SkillsModel;
-import com.example.maryam.sproject.Models.UserModel;
 import com.example.maryam.sproject.MyRequest;
 import com.example.maryam.sproject.OkHttpCallback;
 import com.example.maryam.sproject.R;
-import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,6 +40,8 @@ public class SkillsFragment extends Fragment {
     TextView tv_add_new, tv_save;
     ArrayList<SkillsModel> arrayList = new ArrayList<>();
     SkillsAdapter adapter;
+    FrameLayout add_skills;
+    EditText et_skill, et_experience ;
 
     public SkillsFragment() {
     }
@@ -48,40 +51,42 @@ public class SkillsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_skills, container, false);
+        return view;
+    }
 
-        recyclerView = view.findViewById(R.id.recycler_skills);
-        tv_add_new = view.findViewById(R.id.tv_add_new);
-        tv_save = view.findViewById(R.id.tv_save);
+    private void init(){
+        recyclerView = getView().findViewById(R.id.recycler_skills);
+        tv_add_new = getView().findViewById(R.id.tv_add_new);
+        tv_save = getView().findViewById(R.id.tv_save);
+        add_skills = getView().findViewById(R.id.add_skills);
+        et_skill = getView().findViewById(R.id.et_skill);
+        et_experience = getView().findViewById(R.id.et_experience);
 
-
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         adapter = new SkillsAdapter(getActivity(), arrayList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
+    }
 
+    private void onClickMethod(){
         tv_add_new.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                add_skills.setVisibility(View.VISIBLE);
             }
         });
         tv_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addNewSkill();
+                SkillsModel model = new SkillsModel(et_skill.getText().toString(),et_experience.getText().toString());
+                arrayList.add(model);
+                putParameter();
+                add_skills.setVisibility(View.GONE);
             }
         });
-
-        return view;
     }
 
-    private void addNewSkill() {
+    private void addNewSkill(Map<String, String> stringMap) {
         MyRequest myRequest = new MyRequest();
-        MyProgressDialog.showDialog(getContext());
-        Map<String, String> stringMap = new HashMap<>();
-        stringMap.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbW" +
-                "ltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2NTYyNjExLCJleHAiOjQ4MDgxNzYwNDU5MzIyODc0MTEsI" +
-                "m5iZiI6MTUzNjU2MjYxMSwianRpIjoiQ2NHRFlQOW4wcno4cjJCMCJ9.8fOb9OQliz0Z63t-SiZcTnRdExskt_Xtx68AWYy4hWU");
-
 
         myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/addskills", stringMap, new OkHttpCallback() {
             @Override
@@ -93,9 +98,37 @@ public class SkillsFragment extends Fragment {
             @Override
             public void onResponse(Call call, Response response) throws IOException, JSONException {
                 MyProgressDialog.dismissDialog();
-                Log.e("tag", response.body().string());
+                JSONObject object = new JSONObject(response.body().string());
+                JSONObject jsonObject = object.getJSONObject("status");
+                if (jsonObject.getBoolean("success")){
+//                    Toast.makeText(getContext(), ""+jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                    Log.e("dd",jsonObject.getString("message"));
+                    notifys();
+                }else {
+//                    Toast.makeText(getContext(), ""+jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                    Log.e("dd",jsonObject.getString("message"));
+//                    arrayList.remove(arrayList.size());
+                }
             }
         });
+    }
+
+    private void notifys() {
+        adapter.notifyDataSetChanged();
+    }
+
+    private void putParameter() {
+        MyProgressDialog.showDialog(getContext());
+        Map<String, String> stringMap = new HashMap<>();
+        stringMap.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbW" +
+                "ltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2NTYyNjExLCJleHAiOjQ4MDgxNzYwNDU5MzIyODc0MTEsI" +
+                "m5iZiI6MTUzNjU2MjYxMSwianRpIjoiQ2NHRFlQOW4wcno4cjJCMCJ9.8fOb9OQliz0Z63t-SiZcTnRdExskt_Xtx68AWYy4hWU");
+
+        for (int i= 0; i<arrayList.size(); i++){
+            stringMap.put("years["+i+"]",arrayList.get(i).getYears());
+            stringMap.put("name["+i+"]",arrayList.get(i).getName());
+        }
+        addNewSkill(stringMap);
     }
 
     @Override
@@ -106,6 +139,9 @@ public class SkillsFragment extends Fragment {
 
         Bundle bundle = getArguments();
         arrayList = bundle.getParcelableArrayList("skillsInfo");
+        Log.e("fff",arrayList.get(0).getName());
 
+        init();
+        onClickMethod();
     }
 }

@@ -21,6 +21,11 @@ public class SkillsModel implements Parcelable {
     private String created_at;
     private String updated_at;
 
+    public SkillsModel(String name, String years) {
+        this.name = name;
+        this.years = years;
+    }
+
     protected SkillsModel(Parcel in) {
         id = in.readInt();
         name = in.readString();
