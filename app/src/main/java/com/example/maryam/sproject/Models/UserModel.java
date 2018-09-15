@@ -59,10 +59,10 @@ public class UserModel {
     private String created_at;
     private String updated_at;
     private ArrayList<BanksBean> banks;
-    private List<Skills> skills;
-    private List<PWorks> pworks;
-    private List<Likes> likes;
-    private List<Comments> comments;
+    private ArrayList<SkillsModel> skills;
+    private ArrayList<PWorks> pworks;
+    private ArrayList<Likes> likes;
+    private ArrayList<Comments> comments;
 
     public int getId() {
         return id;
@@ -240,35 +240,35 @@ public class UserModel {
         this.banks = banks;
     }
 
-    public List<Skills> getSkills() {
+    public ArrayList<SkillsModel> getSkills() {
         return skills;
     }
 
-    public void setSkills(List<Skills> skills) {
+    public void setSkills(ArrayList<SkillsModel> skills) {
         this.skills = skills;
     }
 
-    public List<PWorks> getPworks() {
+    public ArrayList<PWorks> getPworks() {
         return pworks;
     }
 
-    public void setPworks(List<PWorks> pworks) {
+    public void setPworks(ArrayList<PWorks> pworks) {
         this.pworks = pworks;
     }
 
-    public List<Likes> getLikes() {
+    public ArrayList<Likes> getLikes() {
         return likes;
     }
 
-    public void setLikes(List<Likes> likes) {
+    public void setLikes(ArrayList<Likes> likes) {
         this.likes = likes;
     }
 
-    public List<Comments> getComments() {
+    public ArrayList<Comments> getComments() {
         return comments;
     }
 
-    public void setComments(List<Comments> comments) {
+    public void setComments(ArrayList<Comments> comments) {
         this.comments = comments;
     }
 

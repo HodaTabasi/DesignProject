@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.maryam.sproject.HelperClass.FragmentsUtil;
 import com.example.maryam.sproject.HelperClass.MyProgressDialog;
+import com.example.maryam.sproject.Models.SkillsModel;
 import com.example.maryam.sproject.Models.UserModel;
 import com.example.maryam.sproject.MyRequest;
 import com.example.maryam.sproject.OkHttpCallback;
@@ -35,7 +36,7 @@ public class AccountFragment extends Fragment {
     TextView tv_profile;
     TextView tv_skills;
     TextView tv_fav;
-    TextView tv_notification ;
+    TextView tv_notification;
     TextView tv_bankAccount;
 
     public AccountFragment() {
@@ -59,33 +60,38 @@ public class AccountFragment extends Fragment {
         getProfileDataRequest();
     }
 
-    private void init(){
-         tv_profile = getView().findViewById(R.id.tv_profile);
-         tv_skills = getView().findViewById(R.id.tv_skills);
-         tv_fav = getView().findViewById(R.id.tv_fav);
-         tv_notification = getView().findViewById(R.id.tv_notification);
-         tv_bankAccount = getView().findViewById(R.id.tv_bankAccount);
+    private void init() {
+        tv_profile = getView().findViewById(R.id.tv_profile);
+        tv_skills = getView().findViewById(R.id.tv_skills);
+        tv_fav = getView().findViewById(R.id.tv_fav);
+        tv_notification = getView().findViewById(R.id.tv_notification);
+        tv_bankAccount = getView().findViewById(R.id.tv_bankAccount);
     }
 
-    private void onClickMethod(){
+    private void onClickMethod() {
         tv_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentsUtil.replaceFragment(getActivity(),R.id.container_activity, new ProfileFragment(),true);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProfileFragment(), true);
             }
         });
 
         tv_skills.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentsUtil.replaceFragment(getActivity(),R.id.container_activity, new SkillsFragment(),true);
+                SkillsFragment skillsFragment = new SkillsFragment();
+                Bundle bundle = new Bundle();
+                bundle.putParcelableArrayList("skillsInfo", userModel.getSkills());
+                skillsFragment.setArguments(bundle);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, skillsFragment, true);
+
 
             }
         });
         tv_fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentsUtil.replaceFragment(getActivity(),R.id.container_activity, new FavoriteFragment(),true);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new FavoriteFragment(), true);
 
             }
         });
@@ -93,7 +99,7 @@ public class AccountFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                FragmentsUtil.replaceFragment(getActivity(),R.id.container_activity, new AccountNotificationFragment(),true);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AccountNotificationFragment(), true);
 
             }
         });
@@ -103,15 +109,15 @@ public class AccountFragment extends Fragment {
             public void onClick(View view) {
                 BankFragment fragment = new BankFragment();
                 Bundle bundle = new Bundle();
-                bundle.putParcelableArrayList("bankInfo",userModel.getBanks());
+                bundle.putParcelableArrayList("bankInfo", userModel.getBanks());
                 fragment.setArguments(bundle);
-                FragmentsUtil.replaceFragment(getActivity(),R.id.container_activity, fragment,true);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
             }
         });
 
     }
 
-    private void getProfileDataRequest(){
+    private void getProfileDataRequest() {
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
         Map<String, String> stringMap = new HashMap<>();
@@ -129,7 +135,7 @@ public class AccountFragment extends Fragment {
 //                Log.e("tag1", response.body().string());
                 JSONObject jsonObject = new JSONObject(response.body().string());
                 Gson gson = new Gson();
-                userModel = gson.fromJson(jsonObject.getString("user"),UserModel.class);
+                userModel = gson.fromJson(jsonObject.getString("user"), UserModel.class);
 //                Log.e("tag1", userModel.getBanks().get(0).getNumber() + " ");
             }
         });

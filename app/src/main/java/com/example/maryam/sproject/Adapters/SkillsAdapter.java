@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+
 import com.example.maryam.sproject.Models.SkillsModel;
 import com.example.maryam.sproject.R;
 
@@ -33,8 +34,6 @@ public class SkillsAdapter extends RecyclerView.Adapter<SkillsAdapter.SkillsHold
     @Override
     public void onBindViewHolder(@NonNull SkillsHolder holder, int position) {
 
-        holder.et_skill.setText(skillsList.get(position).getSkill());
-        holder.et_experience.setText(skillsList.get(position).getExperienceYears());
 
     }
 

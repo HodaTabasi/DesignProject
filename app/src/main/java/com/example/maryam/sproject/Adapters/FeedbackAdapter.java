@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.example.maryam.sproject.Models.FeedbackModel;
-import com.example.maryam.sproject.Models.SkillsModel;
 import com.example.maryam.sproject.R;
 
 import java.util.List;
