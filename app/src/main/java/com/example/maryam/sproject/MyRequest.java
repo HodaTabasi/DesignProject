@@ -2,6 +2,9 @@ package com.example.maryam.sproject;
 
 import org.json.JSONException;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Map;
 
@@ -9,6 +12,7 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
 import okhttp3.HttpUrl;
+import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -75,14 +79,38 @@ public class MyRequest {
 
     }
 
-    public void PostCallWithAttachment(String URL, Map<String, String> parameter, Map<String, String> attchParameter, final OkHttpCallback callback) {
+    public void PostCallWithAttachment(String URL, Map<String, String> parameter, String filePath, final OkHttpCallback callback) {
 
-        FormBody.Builder formBuilder = new FormBody.Builder();
+        final MediaType MEDIA_TYPE = MediaType.parse("image/*");
+        File sourceFile = new File(filePath);
+
+        byte[] b;
+        b = new byte[(int) sourceFile.length()];
+        try {
+            FileInputStream fileInputStream = new FileInputStream(sourceFile);
+            fileInputStream.read(b);
+            for (int i = 0; i < b.length; i++) {
+                System.out.print((char) b[i]);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File Not Found.");
+            e.printStackTrace();
+        } catch (IOException e1) {
+            System.out.println("Error Reading The File.");
+            e1.printStackTrace();
+        }
+
+        MultipartBody.Builder buildernew = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("photo_link", filePath, RequestBody.create(MEDIA_TYPE, b));
+
 
         for (Map.Entry<String, String> entry : parameter.entrySet()) {
-            formBuilder.add(entry.getKey(), entry.getValue());
+            buildernew.addFormDataPart(entry.getKey(), entry.getValue());
         }
-        RequestBody body = formBuilder.build();
+
+        MultipartBody  body = buildernew.build();
+
         Request request = new Request.Builder()
                 .url(URL)
                 .post(body)
