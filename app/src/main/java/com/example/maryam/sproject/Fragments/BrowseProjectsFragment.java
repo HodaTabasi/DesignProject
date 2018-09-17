@@ -82,6 +82,7 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
 
         View view = inflater.inflate(R.layout.fragment_browse_projects, container, false);
         return view;
+
     }
 
     @Override
