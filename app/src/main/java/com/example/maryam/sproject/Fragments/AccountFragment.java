@@ -39,6 +39,8 @@ public class AccountFragment extends Fragment {
     TextView tv_notification;
     TextView tv_bankAccount;
 
+    ////
+
     public AccountFragment() {
     }
 
