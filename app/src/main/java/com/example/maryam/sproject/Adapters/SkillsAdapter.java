@@ -33,8 +33,8 @@ public class SkillsAdapter extends RecyclerView.Adapter<SkillsAdapter.SkillsHold
 
     @Override
     public void onBindViewHolder(@NonNull SkillsHolder holder, int position) {
-
-
+        holder.et_skill.setText(skillsList.get(position).getName());
+        holder.et_experience.setText(skillsList.get(position).getYears());
     }
 
     @Override
