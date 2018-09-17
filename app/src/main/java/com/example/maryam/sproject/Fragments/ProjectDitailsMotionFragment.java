@@ -8,13 +8,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.maryam.sproject.MyRequest;
+import com.example.maryam.sproject.OkHttpCallback;
 import com.example.maryam.sproject.R;
 
+import org.json.JSONException;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import me.anwarshahriar.calligrapher.Calligrapher;
+import okhttp3.Call;
+import okhttp3.Response;
 
 
 /**
@@ -23,29 +34,18 @@ import me.anwarshahriar.calligrapher.Calligrapher;
 public class ProjectDitailsMotionFragment extends Fragment {
 
 
-
-    /** تصاميم الموشن */
-    private TextView mNameM;
-    /** انفوجرافيك - تصميم فيديو */
-    private TextView mMotionType;
-    /** اسم المشروع */
-    private TextView mProjectName;
-    /** مدة المشروع  */
-    private TextView mProjectTime;
-    /** عن النشاط والخدمات  */
-    private TextView mAboutActivity;
+    private EditText mMotionType;
+    private EditText mProjectName;
+    private EditText mProjectTime;
+    private EditText mAboutActivity;
     private ImageView mMotionLikeImage;
-    /** الميزانية */
-    private TextView mMotionBalance;
-    /** تفاصيل عن المشروع */
-    private TextView mProjectDetiailsMotion;
-    /** المرفقات */
+    private EditText mMotionBalance;
+    private EditText mProjectDetiailsMotion;
     private TextView mAttachmentMotion;
-    /** ارسل الطلب */
     private Button mSendMotion;
 
     public ProjectDitailsMotionFragment() {
-        // Required empty public constructor
+
     }
 
 
@@ -57,18 +57,17 @@ public class ProjectDitailsMotionFragment extends Fragment {
     }
 
     private void initView() {
+        mMotionType = getView().findViewById(R.id.motion_type);
+        mProjectName = getView().findViewById(R.id.project_name);
+        mProjectTime = getView().findViewById(R.id.project_time);
+        mAboutActivity = getView().findViewById(R.id.about_activity);
+        mMotionLikeImage = getView().findViewById(R.id.motion_like_image);
+        mMotionBalance = getView().findViewById(R.id.motion_balance);
+        mProjectDetiailsMotion = getView().findViewById(R.id.project_detiails_motion);
+        mAttachmentMotion = getView().findViewById(R.id.attachment_motion);
         mSendMotion = getView().findViewById(R.id.send_motion);
     }
 
-    private void onClickMethod(){
-
-        mSendMotion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "done", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -76,6 +75,37 @@ public class ProjectDitailsMotionFragment extends Fragment {
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
-        onClickMethod();
+
+        mSendMotion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendMotionRequest();
+            }
+        });
+    }
+
+    private void sendMotionRequest() {
+
+        MyRequest myRequest = new MyRequest();
+        Map<String, String> map = new HashMap<>();
+        map.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2NTYyNjExLCJleHAiOjQ4MDgxNzYwNDU5MzIyODc0MTEsIm5iZiI6MTUzNjU2MjYxMSwianRpIjoiQ2NHRFlQOW4wcno4cjJCMCJ9.8fOb9OQliz0Z63t-SiZcTnRdExskt_Xtx68AWYy4hWU");
+        //map.put("name", mMotionType.getText().toString());
+        map.put("name", mProjectName.getText().toString());
+        map.put("dur", mProjectTime.getText().toString());
+        map.put("about", mAboutActivity.getText().toString());
+        map.put("balance", mMotionBalance.getText().toString());
+        map.put("descr", mProjectDetiailsMotion.getText().toString());
+
+        myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/projectmakemoshen", map, new OkHttpCallback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException, JSONException {
+
+            }
+        });
     }
 }

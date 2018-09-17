@@ -69,7 +69,7 @@
 
                 <ImageView
                     android:layout_width="40dp"
-                    android:layout_height="30dp"
+                    android:layout_height="25dp"
                     android:layout_alignParentTop="true"
                     android:layout_marginLeft="5dp"
                     android:layout_marginStart="5dp"
@@ -80,7 +80,7 @@
                     android:tint="@android:color/white" />
             </RelativeLayout>
 
-            <TextView
+            <EditText
                 android:id="@+id/motion_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -89,12 +89,13 @@
                 android:layout_marginStart="8dp"
                 android:background="@drawable/account_shape"
                 android:gravity="center"
+                android:hint="انفوجرافيك - تصميم فيديو"
                 android:padding="3dp"
-                android:text="انفوجرافيك - تصميم فيديو"
                 android:textColor="@color/textGray"
+                android:textColorHint="@color/gray"
                 android:textSize="14sp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/project_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -103,12 +104,13 @@
                 android:layout_marginStart="8dp"
                 android:background="@drawable/account_shape"
                 android:gravity="center"
+                android:hint="اسم المشروع"
                 android:padding="3dp"
-                android:text="اسم المشروع"
                 android:textColor="@color/textGray"
+                android:textColorHint="@color/gray"
                 android:textSize="14sp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/project_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -117,12 +119,13 @@
                 android:layout_marginStart="8dp"
                 android:background="@drawable/account_shape"
                 android:gravity="center"
+                android:hint="مدة المشروع"
                 android:padding="3dp"
-                android:text="مدة المشروع "
                 android:textColor="@color/textGray"
+                android:textColorHint="@color/gray"
                 android:textSize="14sp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/about_activity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -131,9 +134,10 @@
                 android:layout_marginStart="8dp"
                 android:background="@drawable/account_shape"
                 android:gravity="center"
+                android:hint="عن النشاط والخدمات"
                 android:padding="3dp"
-                android:text="عن النشاط والخدمات "
                 android:textColor="@color/textGray"
+                android:textColorHint="@color/gray"
                 android:textSize="14sp" />
 
             <TextView
@@ -156,7 +160,7 @@
                 android:padding="8dp"
                 android:src="@drawable/add" />
 
-            <TextView
+            <EditText
                 android:id="@+id/motion_balance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -165,12 +169,13 @@
                 android:layout_marginStart="8dp"
                 android:background="@drawable/account_shape"
                 android:gravity="center"
+                android:hint="الميزانية"
                 android:padding="3dp"
-                android:text="الميزانية"
                 android:textColor="@color/textGray"
+                android:textColorHint="@color/gray"
                 android:textSize="14sp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/project_detiails_motion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -179,9 +184,10 @@
                 android:layout_marginStart="8dp"
                 android:background="@drawable/account_shape"
                 android:gravity="center"
+                android:hint="تفاصيل عن المشروع"
                 android:padding="3dp"
-                android:text="تفاصيل عن المشروع"
                 android:textColor="@color/textGray"
+                android:textColorHint="@color/gray"
                 android:textSize="14sp" />
 
             <TextView

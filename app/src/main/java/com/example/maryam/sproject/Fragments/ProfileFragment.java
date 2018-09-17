@@ -45,6 +45,8 @@ public class ProfileFragment extends Fragment {
     SimpleDateFormat sdf;
     Calendar calendar;
     DatePickerDialog.OnDateSetListener date;
+    String st_type, st_job_type, st_busniess_type, st_name, st_bio, mobile, st_email, gender, st_dob;
+    int position;
 
     public ProfileFragment() {
     }
@@ -72,7 +74,6 @@ public class ProfileFragment extends Fragment {
         tv_dob3 = view.findViewById(R.id.tv_dob3);
         linear2 = view.findViewById(R.id.linear2);
         tv_bio = view.findViewById(R.id.tv_bio);
-
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
                 R.array.spinner_items, android.R.layout.simple_spinner_item);
@@ -122,13 +123,9 @@ public class ProfileFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
                 switch (position) {
                     case 0:
-//                        st_gender = "male";
-                        Log.e("f", sp_gender.getId() + " ");
                         getGender("male");
                         break;
                     case 1:
-//                        st_gender = "female";
-                        Log.e("f1", sp_gender.getId() + " ");
                         getGender("female");
                         break;
                 }
@@ -140,8 +137,6 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-//        Log.e("qqqqq", "" + st_gender);
-//        Log.e("wwwww", "" + st_specialization);
 
         calendar = Calendar.getInstance();
         date = new DatePickerDialog.OnDateSetListener() {
@@ -170,14 +165,8 @@ public class ProfileFragment extends Fragment {
 
                 new DatePickerDialog(getContext(), date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
                         calendar.get(Calendar.DAY_OF_MONTH)).show();
-
-                Log.v("ooo", calendar.get(Calendar.YEAR) + "");
             }
         });
-
-
-        type = "worker";
-        busniess_type = "";
 
         tv_client.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -192,7 +181,6 @@ public class ProfileFragment extends Fragment {
                 et_bio.setVisibility(View.GONE);
 
                 type = "client";
-                busniess_type = "";
             }
         });
 
@@ -277,8 +265,6 @@ public class ProfileFragment extends Fragment {
                         }
                     });
 
-                    Log.v("rrrrr", type + busniess_type);
-
                 } else {
                     stringMap.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2ODUxOTA0LCJleHAiOjQ4MDgxNzYwNDU5MzI1NzY3MDQsIm5iZiI6MTUzNjg1MTkwNCwian" +
                             "RpIjoiWWFsQUt0cmxDOFFhc3MxNiJ9.ti8XrIO453w789YLVLu-EqVmZZm3GXVC6O9KNwloSsI");
@@ -312,7 +298,6 @@ public class ProfileFragment extends Fragment {
 
     private void getGender(String st_gender) {
         this.st_gender = st_gender;
-        Log.v("rrrrre", st_gender);
     }
 
 
@@ -325,5 +310,97 @@ public class ProfileFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
+
+        Bundle bundle = getArguments();
+        st_type = bundle.getString("type");
+        st_job_type = bundle.getString("job_type");
+        st_busniess_type = bundle.getString("busniess_type");
+        st_name = bundle.getString("name");
+        st_bio = bundle.getString("bio");
+        mobile = bundle.getString("mobile");
+        st_email = bundle.getString("email");
+        gender = bundle.getString("gender");
+        st_dob = bundle.getString("dob");
+
+        Log.e("po", st_busniess_type);
+        getProfileData();
+    }
+
+    private void getProfileData() {
+        MyRequest myRequest = new MyRequest();
+        Map<String, String> map = new HashMap<>();
+        map.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM3MDQzNjEzLCJleHAiOjQ4MDgxNzYwNDU5MzI3Njg0MTMsIm5iZiI6MTUzNzA0MzYxMywianRpIjoiNXdSR0t3RXZnVUhNNFRadyJ9.cA0Xkr3RaQjEFQK7e48DyLGWYrMVwKWkfvelnIs_aM8");
+        myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/myprofile", map, new OkHttpCallback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.v("eeeeeeeeee", e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException, JSONException {
+                Log.v("response", response.body().string());
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        if (st_type.equals("worker")) {
+                            tv_worker.setBackground(getResources().getDrawable(R.drawable.solid_account_shape));
+                            tv_worker.setTextColor(Color.WHITE);
+                            tv_client.setBackground(getResources().getDrawable(R.drawable.report_layout_shap));
+                            tv_client.setTextColor(getResources().getColor(R.color.textGray));
+                        } else {
+                            tv_client.setBackground(getResources().getDrawable(R.drawable.solid_account_shape));
+                            tv_client.setTextColor(Color.WHITE);
+                            tv_worker.setBackground(getResources().getDrawable(R.drawable.report_layout_shap));
+                            tv_worker.setTextColor(getResources().getColor(R.color.textGray));
+                        }
+
+                        if (st_job_type.equals("arch")) {
+                            sp_specialization.setSelection(1);
+                        } else if (st_job_type.equals("graphic")) {
+                            sp_specialization.setSelection(2);
+                        } else if (st_job_type.equals("inter")) {
+                            sp_specialization.setSelection(0);
+                        } else if (st_job_type.equals("moshen")) {
+                            sp_specialization.setSelection(4);
+                        } else if (st_job_type.equals("wall")) {
+                            sp_specialization.setSelection(3);
+                        }
+
+
+                        if (st_busniess_type.equals("individual")) {
+                            tv_individual.setBackground(getResources().getDrawable(R.drawable.solid_account_shape));
+                            tv_individual.setTextColor(Color.WHITE);
+                            tv_company.setBackground(getResources().getDrawable(R.drawable.report_layout_shap));
+                            tv_company.setTextColor(getResources().getColor(R.color.textGray));
+                        } else if (st_busniess_type.equals("company")) {
+                            tv_company.setBackground(getResources().getDrawable(R.drawable.solid_account_shape));
+                            tv_company.setTextColor(Color.WHITE);
+                            tv_individual.setBackground(getResources().getDrawable(R.drawable.report_layout_shap));
+                            tv_individual.setTextColor(getResources().getColor(R.color.textGray));
+                        }
+
+
+                        et_name.setText(st_name);
+                        et_bio.setText(st_bio);
+                        et_mobile2.setText(mobile.substring(0, 3));
+                        et_mobile1.setText(mobile.substring(4));
+                        et_email.setText(st_email);
+                        if (gender.equals("female")) {
+                            sp_gender.setSelection(1);
+
+                        } else if (gender.equals("male")) {
+                            sp_gender.setSelection(0);
+                        }
+
+                        String[] s = st_dob.split("/");
+                        tv_dob3.setText(s[0]);
+                        tv_dob2.setText(s[1]);
+                        tv_dob1.setText(s[2]);
+                    }
+                });
+            }
+        });
     }
 }

@@ -8,57 +8,40 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.maryam.sproject.MyRequest;
+import com.example.maryam.sproject.OkHttpCallback;
 import com.example.maryam.sproject.R;
 
+import org.json.JSONException;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import me.anwarshahriar.calligrapher.Calligrapher;
+import okhttp3.Call;
+import okhttp3.Response;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ProjectDitailsPaintingWallFragment extends Fragment implements View.OnClickListener {
+public class ProjectDitailsPaintingWallFragment extends Fragment {
 
-    /**
-     * الرسم الجداري
-     */
-    private TextView mNameWall;
-    /**
-     * ثلاثي ابعاد - رسم جداري
-     */
-    private TextView mWallType;
+    private EditText mWallType;
     private ImageView mWallUploadImage;
-    /**
-     * المساحة م2
-     */
-    private TextView mWallArea;
+    private EditText mWallArea;
     private ImageView mWallLikeUploadImage;
-    /**
-     * المدينة
-     */
-    private TextView mWallCity;
-    /**
-     * خرائط - موقع المشروع
-     */
-    private TextView mWallMap;
-    /**
-     * الميزانية
-     */
-    private TextView mWallBalance;
-    /**
-     * تفاصيل عن المشروع
-     */
-    private TextView mWallProjectDietails;
-    /**
-     * المرفقات
-     */
+    private EditText mWallCity;
+    private EditText mWallMap;
+    private EditText mWallBalance;
+    private EditText mWallProjectDietails;
     private TextView mWallAttachment;
-    /**
-     * ارسل الطلب
-     */
     private Button mWallSend;
 
     public ProjectDitailsPaintingWallFragment() {
@@ -74,11 +57,18 @@ public class ProjectDitailsPaintingWallFragment extends Fragment implements View
     }
 
     private void initView() {
+        mWallType = getView().findViewById(R.id.wall_type);
+        mWallUploadImage = getView().findViewById(R.id.wall_upload_image);
+        mWallLikeUploadImage = getView().findViewById(R.id.wall_like_upload_image);
+        mWallCity = getView().findViewById(R.id.wall_city);
+        mWallArea = getView().findViewById(R.id.wall_area);
+        mWallMap = getView().findViewById(R.id.wall_map);
+        mWallBalance = getView().findViewById(R.id.wall_balance);
+        mWallProjectDietails = getView().findViewById(R.id.wall_project_dietails);
+        mWallAttachment = getView().findViewById(R.id.wall_attachment);
         mWallSend = getView().findViewById(R.id.wall_send);
     }
-    private void addListener(){
-        mWallSend.setOnClickListener(this);
-    }
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -86,16 +76,40 @@ public class ProjectDitailsPaintingWallFragment extends Fragment implements View
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
-        addListener();
+        mWallSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendWallRequest();
+
+            }
+        });
     }
 
-    @Override
-    public void onClick(View v) {
-        int id = v.getId();
-        switch (id) {
-            case R.id.wall_send:
-                Toast.makeText(getContext(), "done", Toast.LENGTH_SHORT).show();
-                break;
-        }
+    private void sendWallRequest() {
+
+        MyRequest myRequest = new MyRequest();
+        Map<String, String> map = new HashMap<>();
+        map.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2NTYyNjExLCJleHAiOjQ4MDgxNzYwNDU5MzIyODc0MTEsIm5iZiI6MTUzNjU2MjYxMSwianRpIjoiQ2NHRFlQOW4wcno4cjJCMCJ9.8fOb9OQliz0Z63t-SiZcTnRdExskt_Xtx68AWYy4hWU");
+//        map.put("name", mMotionType.getText().toString());
+        map.put("city", mWallCity.getText().toString());
+        map.put("area", mWallArea.getText().toString());
+//        map.put("lng", "");
+//        map.put("lat", "");
+//        attachment
+        map.put("balance", mWallBalance.getText().toString());
+        map.put("descr", mWallProjectDietails.getText().toString());
+
+        myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/projectmakewall", map, new OkHttpCallback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException, JSONException {
+
+            }
+        });
     }
 }
+

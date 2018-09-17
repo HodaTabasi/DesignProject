@@ -70,7 +70,7 @@
 
                 <ImageView
                     android:layout_width="40dp"
-                    android:layout_height="30dp"
+                    android:layout_height="25dp"
                     android:layout_marginTop="5dp"
                     android:layout_toEndOf="@+id/name_graphics"
                     android:layout_toRightOf="@+id/name_graphics"
@@ -78,7 +78,7 @@
                     android:tint="@android:color/white" />
             </RelativeLayout>
 
-            <TextView
+            <EditText
                 android:id="@+id/gh_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -87,12 +87,13 @@
                 android:layout_marginStart="8dp"
                 android:background="@drawable/account_shape"
                 android:gravity="center"
+                android:hint="تصميم هوية بصرية - تصميم شعار"
                 android:padding="3dp"
-                android:text="تصميم هوية بصرية - تصميم شعار"
                 android:textColor="@color/textGray"
+                android:textColorHint="@color/gray"
                 android:textSize="14sp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/project_name_gh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -101,12 +102,13 @@
                 android:layout_marginStart="8dp"
                 android:background="@drawable/account_shape"
                 android:gravity="center"
+                android:hint="اسم المشروع"
                 android:padding="3dp"
-                android:text="اسم المشروع"
                 android:textColor="@color/textGray"
+                android:textColorHint="@color/gray"
                 android:textSize="14sp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/about_activity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -115,9 +117,10 @@
                 android:layout_marginStart="8dp"
                 android:background="@drawable/account_shape"
                 android:gravity="center"
+                android:hint="عن النشاط و الخدمات"
                 android:padding="3dp"
-                android:text="عن النشاط "
                 android:textColor="@color/textGray"
+                android:textColorHint="@color/gray"
                 android:textSize="14sp" />
 
             <TextView
@@ -156,9 +159,9 @@
 
                     <TextView
                         android:id="@+id/innovation"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:gravity="center"
                         android:padding="5dp"
                         android:text="ابتكار"
                         android:textColor="@color/textGray"
@@ -171,9 +174,9 @@
 
                     <TextView
                         android:id="@+id/develop"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:gravity="center"
                         android:padding="5dp"
                         android:text="تطوير"
                         android:textColor="@color/textGray"
@@ -186,22 +189,20 @@
 
                     <TextView
                         android:id="@+id/ask_for_design"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1.5"
+                        android:gravity="center"
                         android:padding="5dp"
                         android:text="طلب تصميم"
                         android:textColor="@color/textGray"
                         android:textSize="12sp" />
-
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/account_shape">
 
@@ -209,7 +210,8 @@
                         android:id="@+id/no"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
+                        android:layout_weight="0.4"
+                        android:gravity="center"
                         android:padding="5dp"
                         android:text="لا"
                         android:textColor="@color/textGray"
@@ -217,7 +219,7 @@
 
                     <View
                         android:layout_width="1.5dp"
-                        android:layout_height="30dp"
+                        android:layout_height="match_parent"
                         android:background="@color/gray_icon" />
 
                     <TextView
@@ -225,6 +227,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.7"
+                        android:gravity="center"
                         android:padding="5dp"
                         android:text="نعم"
                         android:textColor="@color/textGray"
@@ -239,7 +242,8 @@
                         android:id="@+id/new_project"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1.2"
+                        android:layout_weight="1.6"
+                        android:gravity="center"
                         android:padding="5dp"
                         android:text="المشروع جديد"
                         android:textColor="@color/textGray"
@@ -249,7 +253,7 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <TextView
+            <EditText
                 android:id="@+id/gh_balance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -258,12 +262,13 @@
                 android:layout_marginStart="8dp"
                 android:background="@drawable/account_shape"
                 android:gravity="center"
+                android:hint="الميزانية"
                 android:padding="3dp"
-                android:text="الميزانية"
                 android:textColor="@color/textGray"
+                android:textColorHint="@color/gray"
                 android:textSize="14sp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/project_deitails_gh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -272,9 +277,10 @@
                 android:layout_marginStart="8dp"
                 android:background="@drawable/account_shape"
                 android:gravity="center"
+                android:hint="تفاصيل عن المشروع"
                 android:padding="3dp"
-                android:text="تفاصيل عن المشروع"
                 android:textColor="@color/textGray"
+                android:textColorHint="@color/gray"
                 android:textSize="14sp" />
 
             <TextView

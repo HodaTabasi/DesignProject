@@ -4,17 +4,29 @@ package com.example.maryam.sproject.Fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.maryam.sproject.MyRequest;
+import com.example.maryam.sproject.OkHttpCallback;
 import com.example.maryam.sproject.R;
 
+import org.json.JSONException;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import me.anwarshahriar.calligrapher.Calligrapher;
+import okhttp3.Call;
+import okhttp3.Response;
 
 
 /**
@@ -22,37 +34,23 @@ import me.anwarshahriar.calligrapher.Calligrapher;
  */
 public class ProjectDitailesGraphicsFragment extends Fragment {
 
-
-
-    /** تصاميم الجرافيكس */
-    private TextView mNameGraphics;
-    /** تصميم هوية بصرية - تصميم شعار */
-    private TextView mGhType;
-    /** اسم المشروع */
-    private TextView mProjectNameGh;
-    /** عن النشاط  */
-    private TextView mAboutActivity;
+    private EditText mGhType;
+    private EditText mProjectNameGh;
+    private EditText mAboutActivity;
     private ImageView mGhUploadImageLike;
-    /** ابتكار */
     private TextView mInnovation;
-    /** تطوير */
     private TextView mDevelop;
-    /** طلب تصميم */
     private TextView mAskForDesign;
-    /** لا */
     private TextView mNo;
-    /** نعم */
     private TextView mYes;
-    /** المشروع جديد */
     private TextView mNewProject;
-    /** الميزانية */
-    private TextView mGhBalance;
-    /** تفاصيل عن المشروع */
-    private TextView mProjectDeitailsGh;
-    /** المرفقات */
+    private EditText mGhBalance;
+    private EditText mProjectDeitailsGh;
     private TextView mGhAttachment;
-    /** ارسل الطلب */
     private Button mSendGh;
+
+    String savedValue1, savedValue2;
+
 
     public ProjectDitailesGraphicsFragment() {
         // Required empty public constructor
@@ -67,18 +65,22 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
     }
 
     private void initView() {
+        mGhType = getView().findViewById(R.id.gh_type);
+        mProjectNameGh = getView().findViewById(R.id.project_name_gh);
+        mAboutActivity = getView().findViewById(R.id.about_activity);
+        mGhUploadImageLike = getView().findViewById(R.id.gh_upload_image_like);
+        mInnovation = getView().findViewById(R.id.innovation);
+        mDevelop = getView().findViewById(R.id.develop);
+        mAskForDesign = getView().findViewById(R.id.ask_for_design);
+        mNo = getView().findViewById(R.id.no);
+        mYes = getView().findViewById(R.id.yes);
+        mNewProject = getView().findViewById(R.id.new_project);
+        mGhBalance = getView().findViewById(R.id.gh_balance);
+        mProjectDeitailsGh = getView().findViewById(R.id.project_deitails_gh);
+        mGhAttachment = getView().findViewById(R.id.gh_attachment);
         mSendGh = getView().findViewById(R.id.send_gh);
     }
 
-    private void onClickMethod(){
-
-        mSendGh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "done", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -86,6 +88,72 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
-        onClickMethod();
+
+
+        mSendGh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendGraphicRequest();
+
+            }
+        });
+
+//        mNo.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                savedValue1 = "no";
+//            }
+//        });
+//
+//        mYes.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                savedValue1 = "yes";
+//            }
+//        });
+//
+//        mInnovation.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                savedValue2 = "innovation";
+//            }
+//        });
+//
+//        mDevelop.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                savedValue2 = "develop";
+//            }
+//        });
+
     }
+
+    private void sendGraphicRequest() {
+
+        MyRequest myRequest = new MyRequest();
+        Map<String, String> map = new HashMap<>();
+        map.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2NTYyNjExLCJleHAiOjQ4MDgxNzYwNDU5MzIyODc0MTEsIm5iZiI6MTUzNjU2MjYxMSwianRpIjoiQ2NHRFlQOW4wcno4cjJCMCJ9.8fOb9OQliz0Z63t-SiZcTnRdExskt_Xtx68AWYy4hWU");
+        //map.put("name", mMotionType.getText().toString());
+        map.put("name", mProjectNameGh.getText().toString());
+        //map.put("about", mAboutActivity.getText().toString());
+//        map.put("newp", );
+//        map.put("d_type", );
+        map.put("balance", mGhBalance.getText().toString());
+        map.put("descr", mProjectDeitailsGh.getText().toString());
+
+        myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/projectmakegraphic", map, new OkHttpCallback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException, JSONException {
+
+            }
+        });
+
+    }
+
+
 }

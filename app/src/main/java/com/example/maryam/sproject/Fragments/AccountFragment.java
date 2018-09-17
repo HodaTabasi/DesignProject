@@ -72,7 +72,20 @@ public class AccountFragment extends Fragment {
         tv_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProfileFragment(), true);
+                ProfileFragment fragment = new ProfileFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("type", userModel.getType());
+                bundle.putString("job_type", userModel.getJob_type());
+                bundle.putString("busniess_type", userModel.getBusniess_type());
+                bundle.putString("name", userModel.getName());
+                bundle.putString("bio", userModel.getBio());
+                bundle.putString("mobile", userModel.getPhone());
+                bundle.putString("email", userModel.getEmail());
+                bundle.putString("gender", userModel.getGender());
+                bundle.putString("dob", userModel.getDob());
+
+                fragment.setArguments(bundle);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
             }
         });
 
@@ -121,7 +134,7 @@ public class AccountFragment extends Fragment {
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
         Map<String, String> stringMap = new HashMap<>();
-        stringMap.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2ODMxMDU3LCJleHAiOjQ4MDgxNzYwNDU5MzI1NTU4NTcsIm5iZiI6MTUzNjgzMTA1NywianRpIjoiN3FmUXZVQW1lNWxLaWdBeSJ9.JaZRD1eLJ6It2DuR6Qn1F5kNL8lyMWhYz_NYsjRW-qs");
+        stringMap.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM3MDQzNjEzLCJleHAiOjQ4MDgxNzYwNDU5MzI3Njg0MTMsIm5iZiI6MTUzNzA0MzYxMywianRpIjoiNXdSR0t3RXZnVUhNNFRadyJ9.cA0Xkr3RaQjEFQK7e48DyLGWYrMVwKWkfvelnIs_aM8");
         myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/myprofile", stringMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -132,11 +145,9 @@ public class AccountFragment extends Fragment {
             @Override
             public void onResponse(Call call, Response response) throws IOException, JSONException {
                 MyProgressDialog.dismissDialog();
-//                Log.e("tag1", response.body().string());
                 JSONObject jsonObject = new JSONObject(response.body().string());
                 Gson gson = new Gson();
-                userModel = gson.fromJson(jsonObject.getString("user"), UserModel.class);
-//                Log.e("tag1", userModel.getBanks().get(0).getNumber() + " ");
+                userModel = gson.fromJson(jsonObject.getJSONObject("user").toString(), UserModel.class);
             }
         });
     }

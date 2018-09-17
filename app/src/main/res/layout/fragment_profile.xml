@@ -80,11 +80,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
                     android:layout_weight="1"
-                    android:background="@drawable/solid_account_shape"
+                    android:background="@drawable/report_layout_shap"
                     android:gravity="center"
                     android:padding="5dp"
                     android:text="@string/designer"
-                    android:textColor="@color/white"
+                    android:textColor="@color/textGray"
                     android:textSize="14sp" />
 
                 <TextView
@@ -170,7 +170,7 @@
                 android:layout_marginRight="20dp"
                 android:background="@drawable/report_layout_shap"
                 android:padding="5dp"
-                android:text="ننننننننن"
+                android:text=""
                 android:textColor="@color/textGray"
                 android:textColorHint="@color/gray"
                 android:textSize="14sp" />
@@ -197,7 +197,7 @@
                 android:background="@drawable/report_layout_shap"
                 android:gravity="clip_vertical"
                 android:padding="5dp"
-                android:text="ننننننننن"
+                android:text=""
                 android:textColor="@color/textGray"
                 android:textSize="14sp" />
 

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="ltr"
-    tools:context=".Fragments.ProjectDitailsOneFragment">
+    tools:context=".Fragments.ProjectDetailsInterFragment">
 
     <RelativeLayout
         android:id="@+id/toolbar"
@@ -63,16 +63,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:text="التصميم الداخلي "
+                    android:text="التصميم المعماري "
                     android:textColor="@android:color/white"
                     android:textSize="14sp" />
 
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:layout_toEndOf="@+id/name"
                     android:layout_toRightOf="@+id/name"
-                    android:src="@drawable/vector_smart_object"
+                    android:src="@drawable/architecture"
                     android:tint="@android:color/white" />
             </RelativeLayout>
 
@@ -85,10 +86,10 @@
                 android:layout_marginStart="8dp"
                 android:background="@drawable/account_shape"
                 android:gravity="center"
-                android:hint="شقة سكنية - تصميم داخلي"
+                android:hint="رسومات هندسية - تصميم معماري"
                 android:padding="3dp"
                 android:textColor="@color/textGray"
-                android:textColorHint="@color/textGray"
+                android:textColorHint="@color/gray"
                 android:textSize="14sp" />
 
             <EditText
@@ -103,7 +104,7 @@
                 android:hint="اختر الاستايل"
                 android:padding="3dp"
                 android:textColor="@color/textGray"
-                android:textColorHint="@color/textGray"
+                android:textColorHint="@color/gray"
                 android:textSize="14sp" />
 
             <EditText
@@ -118,7 +119,7 @@
                 android:hint="ادخل الالوان التى ترغبها في التصميم"
                 android:padding="3dp"
                 android:textColor="@color/textGray"
-                android:textColorHint="@color/textGray"
+                android:textColorHint="@color/gray"
                 android:textSize="14sp" />
 
             <LinearLayout
@@ -167,7 +168,7 @@
                         android:padding="5dp"
                         android:textAlignment="center"
                         android:textColor="@color/textGray"
-                        android:textColorHint="@color/textGray"
+                        android:textColorHint="@color/gray"
                         android:textSize="14sp" />
 
                 </LinearLayout>
@@ -218,7 +219,7 @@
                         android:padding="5dp"
                         android:textAlignment="center"
                         android:textColor="@color/textGray"
-                        android:textColorHint="@color/textGray"
+                        android:textColorHint="@color/gray"
                         android:textSize="14sp" />
 
                 </LinearLayout>
@@ -237,7 +238,7 @@
                 android:hint="خرائط - موقع المشروع "
                 android:padding="3dp"
                 android:textColor="@color/textGray"
-                android:textColorHint="@color/textGray"
+                android:textColorHint="@color/gray"
                 android:textSize="14sp" />
 
             <EditText
@@ -252,7 +253,7 @@
                 android:hint="الميزانية"
                 android:padding="3dp"
                 android:textColor="@color/textGray"
-                android:textColorHint="@color/textGray"
+                android:textColorHint="@color/gray"
                 android:textSize="14sp" />
 
             <EditText
@@ -267,7 +268,7 @@
                 android:hint="تفاصيل عن المشروع"
                 android:padding="3dp"
                 android:textColor="@color/textGray"
-                android:textColorHint="@color/textGray"
+                android:textColorHint="@color/gray"
                 android:textSize="14sp" />
 
             <TextView
@@ -283,7 +284,7 @@
                 android:drawableRight="@drawable/upload"
                 android:padding="5dp"
                 android:text="المرفقات"
-                android:textColor="@color/textGray"
+                android:textColor="@color/gray"
                 android:textSize="14sp" />
 
             <Button

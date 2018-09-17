@@ -59,7 +59,7 @@ public class AddProjectFragment extends Fragment implements View.OnClickListener
         mSearchDesigner = getView().findViewById(R.id.search_designer);
     }
 
-    private void addListeners(){
+    private void addListeners() {
         mInSide.setOnClickListener(this);
         mArch.setOnClickListener(this);
         mGraphic.setOnClickListener(this);
@@ -70,35 +70,25 @@ public class AddProjectFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        ProjectDitailsOneFragment ditailsOneFragment = new ProjectDitailsOneFragment();
-        Bundle bundle = new Bundle();
         int id = v.getId();
         switch (id) {
             case R.id.in_side:
-                bundle.putInt("flag",0);
-                bundle.putString("address", "تصميم داخلي");
-                bundle.putString("button_type", "شقق سكنية - تصميم داخلي");
-                ditailsOneFragment.setArguments(bundle);
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, ditailsOneFragment,true);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProjectDetailsInterFragment(), true);
                 break;
             case R.id.mostion:
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProjectDitailsMotionFragment(),true);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProjectDitailsMotionFragment(), true);
                 break;
             case R.id.draw_wall:
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProjectDitailsPaintingWallFragment(),true);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProjectDitailsPaintingWallFragment(), true);
                 break;
             case R.id.graphic:
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProjectDitailesGraphicsFragment(),true);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProjectDitailesGraphicsFragment(), true);
                 break;
             case R.id.arch:
-                bundle.putInt("flag",1);
-                bundle.putString("address", "تصميم معماري");
-                bundle.putString("button_type", "رسومات هندسية - تصميم معماري");
-                ditailsOneFragment.setArguments(bundle);
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, ditailsOneFragment,true);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProjectDetailsArchFragment(), true);
                 break;
             case R.id.search_designer:
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new SearchFragment(),true);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new SearchFragment(), true);
                 break;
         }
     }

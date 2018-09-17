@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="ltr"
-    tools:context=".Fragments.ProjectDitailsPaintingWallFragment">
+    tools:context=".Fragments.ProjectDetailsInterFragment">
 
     <RelativeLayout
         android:id="@+id/toolbar"
@@ -40,11 +40,11 @@
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -59,39 +59,67 @@
                 android:gravity="center">
 
                 <TextView
-                    android:id="@+id/name_wall"
+                    android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:text="الرسم الجداري  "
+                    android:text="التصميم الداخلي "
                     android:textColor="@android:color/white"
                     android:textSize="14sp" />
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_toEndOf="@+id/name_wall"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_toEndOf="@+id/name"
                     android:layout_toRightOf="@+id/name"
-                    android:src="@drawable/peinturemurale"
+                    android:src="@drawable/vector_smart_object"
                     android:tint="@android:color/white" />
             </RelativeLayout>
 
             <EditText
-                android:id="@+id/wall_type"
+                android:id="@+id/in_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="5dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/account_shape"
                 android:gravity="center"
-                android:hint="ثلاثي ابعاد - رسم جداري "
+                android:hint="شقة سكنية - تصميم داخلي"
                 android:padding="3dp"
                 android:textColor="@color/textGray"
                 android:textColorHint="@color/gray"
                 android:textSize="14sp" />
 
+            <EditText
+                android:id="@+id/chooese_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/account_shape"
+                android:gravity="center"
+                android:hint="اختر الاستايل"
+                android:padding="3dp"
+                android:textColor="@color/textGray"
+                android:textColorHint="@color/gray"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/design_color"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/account_shape"
+                android:gravity="center"
+                android:hint="ادخل الالوان التى ترغبها في التصميم"
+                android:padding="3dp"
+                android:textColor="@color/textGray"
+                android:textColorHint="@color/gray"
+                android:textSize="14sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -116,7 +144,7 @@
                         android:textSize="12sp" />
 
                     <ImageView
-                        android:id="@+id/wall_upload_image"
+                        android:id="@+id/upload_image"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="27dp"
@@ -129,7 +157,7 @@
                         android:src="@drawable/add" />
 
                     <EditText
-                        android:id="@+id/wall_area"
+                        android:id="@+id/area2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
@@ -167,7 +195,7 @@
                         android:textSize="12sp" />
 
                     <ImageView
-                        android:id="@+id/wall_like_upload_image"
+                        android:id="@+id/upload_like_image"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -180,7 +208,7 @@
                         android:src="@drawable/add" />
 
                     <EditText
-                        android:id="@+id/wall_city"
+                        android:id="@+id/city"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
@@ -198,25 +226,25 @@
             </LinearLayout>
 
             <EditText
-                android:id="@+id/wall_map"
+                android:id="@+id/map"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="5dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/account_shape"
                 android:gravity="center"
-                android:hint="خرائط - موقع المشروع"
+                android:hint="خرائط - موقع المشروع "
                 android:padding="3dp"
                 android:textColor="@color/textGray"
                 android:textColorHint="@color/gray"
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/wall_balance"
+                android:id="@+id/balance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="5dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/account_shape"
@@ -228,10 +256,10 @@
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/wall_project_dietails"
+                android:id="@+id/project_detailes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="5dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/account_shape"
@@ -243,7 +271,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/wall_attachment"
+                android:id="@+id/attachment_in"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -253,20 +281,27 @@
                 android:drawableEnd="@drawable/upload"
                 android:drawablePadding="8dp"
                 android:drawableRight="@drawable/upload"
-                android:padding="8dp"
+                android:padding="5dp"
                 android:text="المرفقات"
-                android:textColor="@color/textGray"
+                android:textColor="@color/gray"
                 android:textSize="14sp" />
 
             <Button
-                android:id="@+id/wall_send"
+                android:id="@+id/send_in"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/title_shape"
                 android:text="ارسل الطلب"
                 android:textColor="@android:color/white"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
         </LinearLayout>
+
+
     </ScrollView>
+
+
 </RelativeLayout>

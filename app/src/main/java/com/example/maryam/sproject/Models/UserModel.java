@@ -55,7 +55,7 @@ public class UserModel {
     private String dob;
     private String gender;
     private String active;
-    private Object busniess_type;
+    private String busniess_type;
     private String created_at;
     private String updated_at;
     private ArrayList<BanksBean> banks;
@@ -208,11 +208,11 @@ public class UserModel {
         this.active = active;
     }
 
-    public Object getBusniess_type() {
+    public String getBusniess_type() {
         return busniess_type;
     }
 
-    public void setBusniess_type(Object busniess_type) {
+    public void setBusniess_type(String busniess_type) {
         this.busniess_type = busniess_type;
     }
 
@@ -256,7 +256,7 @@ public class UserModel {
         this.pworks = pworks;
     }
 
-    public ArrayList<Likes> getLikes() {
+    public List<Likes> getLikes() {
         return likes;
     }
 
@@ -264,7 +264,7 @@ public class UserModel {
         this.likes = likes;
     }
 
-    public ArrayList<Comments> getComments() {
+    public List<Comments> getComments() {
         return comments;
     }
 
