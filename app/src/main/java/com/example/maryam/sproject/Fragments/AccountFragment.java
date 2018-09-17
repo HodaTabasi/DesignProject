@@ -135,7 +135,7 @@ public class AccountFragment extends Fragment {
 //                Log.e("tag1", response.body().string());
                 JSONObject jsonObject = new JSONObject(response.body().string());
                 Gson gson = new Gson();
-                userModel = gson.fromJson(jsonObject.getString("user"), UserModel.class);
+                userModel = gson.fromJson(jsonObject.getJSONObject("user").toString(), UserModel.class);
 //                Log.e("tag1", userModel.getBanks().get(0).getNumber() + " ");
             }
         });

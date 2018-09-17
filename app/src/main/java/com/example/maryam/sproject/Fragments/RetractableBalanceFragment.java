@@ -1,18 +1,34 @@
 package com.example.maryam.sproject.Fragments;
 
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.maryam.sproject.HelperClass.MyProgressDialog;
+import com.example.maryam.sproject.MyRequest;
+import com.example.maryam.sproject.OkHttpCallback;
 import com.example.maryam.sproject.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import me.anwarshahriar.calligrapher.Calligrapher;
+import okhttp3.Call;
+import okhttp3.Response;
 
 
 /**
@@ -26,6 +42,8 @@ public class RetractableBalanceFragment extends Fragment {
     private TextView mRetractableRetBalance;
     /** إرسال إلى حسابك البنكي */
     private TextView mSendRetractableRetBalance;
+
+    EditText et_uName,et_bNumber,et_bName,et_balance;
 
     public RetractableBalanceFragment() {
         // Required empty public constructor
@@ -44,12 +62,123 @@ public class RetractableBalanceFragment extends Fragment {
         mSendRetractableRetBalance = getView().findViewById(R.id.send_retractable_ret_balance);
     }
 
+    private void getRetractableRetBalance() {
+        MyRequest myRequest = new MyRequest();
+        MyProgressDialog.showDialog(getContext());
+        Map<String, String> stringMap = new HashMap<>();
+        stringMap.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2ODMxMDU3LCJleHAiOjQ4MDgxNzYwNDU5MzI1NTU4NTcsIm5iZiI6MTUzNjgzMTA1NywianRpIjoiN3FmUXZVQW1lNWxLaWdBeSJ9.JaZRD1eLJ6It2DuR6Qn1F5kNL8lyMWhYz_NYsjRW-qs");
+
+        myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/mycredit", stringMap, new OkHttpCallback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                MyProgressDialog.dismissDialog();
+                Log.e("tag", e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, final Response response) throws IOException, JSONException {
+                MyProgressDialog.dismissDialog();
+//                Log.e("tagr", response.body().string());
+                final JSONObject object = new JSONObject(response.body().string());
+                final JSONObject statusObject = object.getJSONObject("status");
+                getActivity().runOnUiThread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        try {
+                            if (statusObject.getBoolean("success")) {
+                                mRetractableRetBalance.setText(object.getString("drawable"));
+                                Toast.makeText(getContext(), " " + statusObject.getString("message"), Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getContext(), " " + statusObject.getString("message"), Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
+        });
+    }
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
+        getRetractableRetBalance();
+
+        mSendRetractableRetBalance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog dialog = new Dialog(getContext());
+                dialog.setContentView(R.layout.fragment_withdraw_balance);
+                 et_uName =  dialog.findViewById(R.id.user_name_w);
+                 et_bNumber =  dialog.findViewById(R.id.bank_number_w);
+                 et_bName = dialog.findViewById(R.id.bank_name_w);
+                 et_balance = dialog.findViewById(R.id.balance_w);
+                TextView cancel = dialog.findViewById(R.id.send_bank1);
+                TextView send  = dialog.findViewById(R.id.cancl_bank1);
+
+                et_balance.setText(mRetractableRetBalance.getText().toString());
+
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
+                send.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        sendWithDraowBalancerequest();
+                    }
+                });
+                dialog.show();
+            }
+        });
+
     }
 
+    private void sendWithDraowBalancerequest() {
+        MyRequest myRequest = new MyRequest();
+        MyProgressDialog.showDialog(getContext());
+        Map<String, String> stringMap = new HashMap<>();
+        stringMap.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2ODMxMDU3LCJleHAiOjQ4MDgxNzYwNDU5MzI1NTU4NTcsIm5iZiI6MTUzNjgzMTA1NywianRpIjoiN3FmUXZVQW1lNWxLaWdBeSJ9.JaZRD1eLJ6It2DuR6Qn1F5kNL8lyMWhYz_NYsjRW-qs");
+        stringMap.put("userbank_id",et_bNumber.getText().toString());
+        stringMap.put("total", et_balance.getText().toString());
+
+        myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/withdrawmycredit", stringMap, new OkHttpCallback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                MyProgressDialog.dismissDialog();
+                Log.e("tag", e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, final Response response) throws IOException, JSONException {
+                MyProgressDialog.dismissDialog();
+//                Log.e("tagr", response.body().string());
+                final JSONObject object = new JSONObject(response.body().string());
+                final JSONObject statusObject = object.getJSONObject("status");
+                getActivity().runOnUiThread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        try {
+                            if (statusObject.getBoolean("success")) {
+                                Toast.makeText(getContext(), " " + statusObject.getString("message"), Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getContext(), " " + statusObject.getString("error"), Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
+        });
+    }
 }
