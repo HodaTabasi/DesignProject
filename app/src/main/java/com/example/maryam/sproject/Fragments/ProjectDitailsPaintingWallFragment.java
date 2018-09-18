@@ -79,7 +79,7 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
         mWallSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendWallRequest();
+                //sendWallRequest();
 
             }
         });
@@ -90,7 +90,7 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
         MyRequest myRequest = new MyRequest();
         Map<String, String> map = new HashMap<>();
         map.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2NTYyNjExLCJleHAiOjQ4MDgxNzYwNDU5MzIyODc0MTEsIm5iZiI6MTUzNjU2MjYxMSwianRpIjoiQ2NHRFlQOW4wcno4cjJCMCJ9.8fOb9OQliz0Z63t-SiZcTnRdExskt_Xtx68AWYy4hWU");
-//        map.put("name", mMotionType.getText().toString());
+        map.put("name", mWallType.getText().toString());
         map.put("city", mWallCity.getText().toString());
         map.put("area", mWallArea.getText().toString());
 //        map.put("lng", "");

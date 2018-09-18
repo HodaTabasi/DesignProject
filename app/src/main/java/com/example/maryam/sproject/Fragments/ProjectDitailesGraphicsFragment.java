@@ -93,7 +93,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
         mSendGh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendGraphicRequest();
+                //sendGraphicRequest();
 
             }
         });

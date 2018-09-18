@@ -67,7 +67,7 @@ public class ProjectDetailsInterFragment extends Fragment {
         mSendIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendInterDesignRequest();
+                //sendInterDesignRequest();
             }
         });
 

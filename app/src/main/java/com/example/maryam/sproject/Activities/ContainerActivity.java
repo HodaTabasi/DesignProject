@@ -12,7 +12,9 @@ import com.example.maryam.sproject.Fragments.AccountFragment;
 import com.example.maryam.sproject.Fragments.AddNewWork2Fragment;
 import com.example.maryam.sproject.Fragments.BrowseProjectsFragment;
 import com.example.maryam.sproject.Fragments.MainFragment;
+import com.example.maryam.sproject.Fragments.MessagesFragment;
 import com.example.maryam.sproject.Fragments.NotificationFragment;
+import com.example.maryam.sproject.Fragments.PortfolioFragment;
 import com.example.maryam.sproject.HelperClass.FragmentsUtil;
 import com.example.maryam.sproject.R;
 
@@ -43,7 +45,7 @@ public class ContainerActivity extends AppCompatActivity {
         tv_msgs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new NotificationFragment(), true);
+                FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new MessagesFragment(), true);
                 tv_msgs.setBackground(getResources().getDrawable(R.drawable.main_shape));
                 tv_projects.setBackgroundResource(0);
                 tv_home.setBackgroundResource(0);
@@ -82,7 +84,7 @@ public class ContainerActivity extends AppCompatActivity {
         tv_portfolio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new AddNewWork2Fragment(), true);
+                FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new PortfolioFragment(), true);
                 tv_portfolio.setBackground(getResources().getDrawable(R.drawable.main_shape));
                 tv_msgs.setBackgroundResource(0);
                 tv_projects.setBackgroundResource(0);

@@ -62,7 +62,7 @@ public class ProjectDetailsArchFragment extends Fragment {
         mSendIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendArchDesignRequest();
+                //sendArchDesignRequest();
             }
         });
     }

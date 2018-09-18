@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layoutDirection="ltr"
     android:orientation="vertical"
-    tools:context=".Fragments.NotificationFragment">
+    tools:context=".Fragments.MessagesFragment">
 
     <RelativeLayout
         android:id="@+id/toolbar"
@@ -24,9 +25,9 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:drawablePadding="5dp"
-            android:drawableRight="@drawable/ic_notification_toolbar"
+            android:drawableRight="@drawable/ic_msgs"
             android:gravity="center"
-            android:text="التنبيهات"
+            android:text="الرسائل"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -45,15 +46,4 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:gravity="center"
-        android:text="لايوجد تنبيهات اخرى"
-        android:textColor="@color/blue"
-        android:textSize="14dp"
-         />
-
 </LinearLayout>
