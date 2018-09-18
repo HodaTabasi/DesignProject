@@ -57,59 +57,71 @@
         android:textSize="14sp" />
 
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_bank"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_below="@+id/tv_bank"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp" />
+        android:layout_height="wrap_content">
 
-    <FrameLayout
-        android:id="@+id/add_bank"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone">
-
-        <include
-            layout="@layout/bank_row"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp" />
-    </FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
 
-    <TextView
-        android:id="@+id/tv_add_account"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/recycler_bank"
-        android:layout_gravity="end"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/report_layout_shap"
-        android:gravity="center"
-        android:padding="5dp"
-        android:text="@string/addAccount"
-        android:textColor="@color/textGray"
-        android:textSize="14sp" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_bank"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@+id/tv_bank"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp" />
 
-    <TextView
-        android:id="@+id/tv_save"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_add_account"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/title_shape"
-        android:gravity="center"
-        android:padding="8dp"
-        android:text="@string/save"
-        android:textColor="@color/white"
-        android:textSize="14sp" />
+            <FrameLayout
+                android:id="@+id/add_bank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
+                <include
+                    layout="@layout/bank_row"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp" />
+            </FrameLayout>
+
+
+            <TextView
+                android:id="@+id/tv_add_account"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/recycler_bank"
+                android:layout_gravity="end"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/report_layout_shap"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/addAccount"
+                android:textColor="@color/textGray"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_save"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_add_account"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/title_shape"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/save"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

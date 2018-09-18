@@ -233,11 +233,13 @@ public class ProfileFragment extends Fragment {
             public void onClick(View view) {
 
                 st_mobile = et_mobile2.getText().toString() + et_mobile1.getText().toString();
-                Log.v("mobile", st_mobile);
-
+                Log.e("ttt", type);
                 MyRequest myRequest = new MyRequest();
                 Map<String, String> stringMap = new HashMap<>();
+
+
                 if (type.equals("worker")) {
+                    Log.e("yes", "yes");
                     stringMap.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2ODUxOTA0LCJleHAiOjQ4MDgxNzYwNDU5MzI1NzY3" +
                             "MDQsIm5iZiI6MTUzNjg1MTkwNCwianRpIjoiWWFsQUt0cmxDOFFhc3MxNiJ9.ti8XrIO453w789YLVLu-EqVmZZm3GXVC6O9KNwloSsI");
                     stringMap.put("name", et_name.getText().toString());
@@ -266,6 +268,8 @@ public class ProfileFragment extends Fragment {
                     });
 
                 } else {
+
+                    Log.e("no", "no");
                     stringMap.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2ODUxOTA0LCJleHAiOjQ4MDgxNzYwNDU5MzI1NzY3MDQsIm5iZiI6MTUzNjg1MTkwNCwian" +
                             "RpIjoiWWFsQUt0cmxDOFFhc3MxNiJ9.ti8XrIO453w789YLVLu-EqVmZZm3GXVC6O9KNwloSsI");
                     stringMap.put("name", et_name.getText().toString());
@@ -275,34 +279,23 @@ public class ProfileFragment extends Fragment {
                     stringMap.put("phone", st_mobile);
                     stringMap.put("type", type);
 
-                    myRequest.PostCall("https://mustafa.smmim.com/waell/public/api/updateProfile", stringMap, new OkHttpCallback() {
-                        @Override
-                        public void onFailure(Call call, IOException e) {
-                            Log.v("f2", e.getMessage());
-                        }
-
-                        @Override
-                        public void onResponse(Call call, Response response) throws IOException, JSONException {
-                            Log.v("r2", response.body().string());
-                        }
-                    });
-
-                    Log.v("rrrrr", type);
+//                    myRequest.PostCall("https://mustafa.smmim.com/waell/public/api/updateProfile", stringMap, new OkHttpCallback() {
+//                        @Override
+//                        public void onFailure(Call call, IOException e) {
+//                            Log.v("f2", e.getMessage());
+//                        }
+//
+//                        @Override
+//                        public void onResponse(Call call, Response response) throws IOException, JSONException {
+//                            Log.v("r2", response.body().string());
+//                        }
+//                    });
                 }
 
             }
         });
 
         return view;
-    }
-
-    private void getGender(String st_gender) {
-        this.st_gender = st_gender;
-    }
-
-
-    private void getSpecialization(String st_specialization) {
-        this.st_specialization = st_specialization;
     }
 
     @Override
@@ -322,7 +315,8 @@ public class ProfileFragment extends Fragment {
         gender = bundle.getString("gender");
         st_dob = bundle.getString("dob");
 
-        Log.e("po", st_busniess_type);
+        type = getType(st_type);
+
         getProfileData();
     }
 
@@ -349,11 +343,13 @@ public class ProfileFragment extends Fragment {
                             tv_worker.setTextColor(Color.WHITE);
                             tv_client.setBackground(getResources().getDrawable(R.drawable.report_layout_shap));
                             tv_client.setTextColor(getResources().getColor(R.color.textGray));
+                            type = "worker";
                         } else {
                             tv_client.setBackground(getResources().getDrawable(R.drawable.solid_account_shape));
                             tv_client.setTextColor(Color.WHITE);
                             tv_worker.setBackground(getResources().getDrawable(R.drawable.report_layout_shap));
                             tv_worker.setTextColor(getResources().getColor(R.color.textGray));
+                            type = "client";
                         }
 
                         if (st_job_type.equals("arch")) {
@@ -402,5 +398,18 @@ public class ProfileFragment extends Fragment {
                 });
             }
         });
+    }
+
+    private void getGender(String st_gender) {
+        this.st_gender = st_gender;
+    }
+
+    private void getSpecialization(String st_specialization) {
+        this.st_specialization = st_specialization;
+    }
+
+    private String getType(String st_type) {
+        this.type = st_type;
+        return type;
     }
 }

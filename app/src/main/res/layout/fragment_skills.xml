@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical"
     android:layoutDirection="ltr"
+    android:orientation="vertical"
     tools:context=".Fragments.SkillsFragment">
 
     <RelativeLayout
@@ -56,56 +56,71 @@
         android:textColor="@color/textGray"
         android:textSize="14sp" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_skills"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_skills"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp">
-
-    </android.support.v7.widget.RecyclerView>
-
-    <FrameLayout
-        android:id="@+id/add_skills"
-        android:visibility="gone"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <include layout="@layout/skills_row" android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:layout_margin="8dp"/>
-    </FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_add_new"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/recycler_skills"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/report_layout_shap"
-        android:gravity="center"
-        android:layout_gravity="end"
-        android:padding="5dp"
-        android:text="أضف مهارة أخرى"
-        android:textColor="@android:color/black"
-        android:textSize="14sp" />
 
-    <TextView
-        android:id="@+id/tv_save"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_add_new"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/title_shape"
-        android:gravity="center"
-        android:padding="5dp"
-        android:layout_gravity="center"
-        android:text="@string/save"
-        android:textColor="@color/white"
-        android:textSize="14sp" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_skills"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_skills"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp" />
+
+            <FrameLayout
+                android:id="@+id/add_skills"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:visibility="gone">
+
+                <include
+                    layout="@layout/skills_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_add_new"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/recycler_skills"
+                android:layout_gravity="end"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/report_layout_shap"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="أضف مهارة أخرى"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_save"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_add_new"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/title_shape"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/save"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

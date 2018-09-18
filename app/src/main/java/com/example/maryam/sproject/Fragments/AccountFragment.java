@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.maryam.sproject.HelperClass.FragmentsUtil;
@@ -38,8 +39,11 @@ public class AccountFragment extends Fragment {
     TextView tv_fav;
     TextView tv_notification;
     TextView tv_bankAccount;
+    TextView tv_name;
+    TextView tv_title;
+    RatingBar ratingBar;
 
-    ////
+    String name, title;
 
     public AccountFragment() {
     }
@@ -68,6 +72,10 @@ public class AccountFragment extends Fragment {
         tv_fav = getView().findViewById(R.id.tv_fav);
         tv_notification = getView().findViewById(R.id.tv_notification);
         tv_bankAccount = getView().findViewById(R.id.tv_bankAccount);
+        tv_name = getView().findViewById(R.id.name);
+        tv_title = getView().findViewById(R.id.title);
+        ratingBar = getView().findViewById(R.id.account_rate);
+
     }
 
     private void onClickMethod() {
@@ -150,6 +158,29 @@ public class AccountFragment extends Fragment {
                 JSONObject jsonObject = new JSONObject(response.body().string());
                 Gson gson = new Gson();
                 userModel = gson.fromJson(jsonObject.getJSONObject("user").toString(), UserModel.class);
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        tv_name.setText(userModel.getName());
+
+                        if (userModel.getJob_type().equals("arch")) {
+                            tv_title.setText("تصميم معماري");
+                        } else if (userModel.getJob_type().equals("graphic")) {
+                            tv_title.setText("تصميم جرافيكس");
+                        } else if (userModel.getJob_type().equals("inter")) {
+                            tv_title.setText("تصميم داخلي");
+                        } else if (userModel.getJob_type().equals("moshen")) {
+                            tv_title.setText("تصاميم موشن");
+                        } else if (userModel.getJob_type().equals("wall")) {
+                            tv_title.setText("الرسم الجداري");
+                        }
+
+                        Log.e("rate", userModel.getRate());
+
+                        ratingBar.setRating(Float.valueOf(userModel.getRate()));
+                    }
+                });
             }
         });
     }

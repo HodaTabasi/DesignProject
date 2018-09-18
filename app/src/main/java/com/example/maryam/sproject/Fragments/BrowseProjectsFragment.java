@@ -50,13 +50,9 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
      * بحث عن مشروع
      */
     private EditText mSearch;
-    /**
-     * موشن
-     */
+
     private TextView mMotionButton;
-    /**
-     * تصاميم جرافكس
-     */
+
     private TextView mGhButton;
     /**
      * رسم جداري
