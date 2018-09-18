@@ -1,5 +1,7 @@
 package com.example.maryam.sproject;
 
+import android.util.Log;
+
 import org.json.JSONException;
 
 import java.io.File;
@@ -20,6 +22,8 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class MyRequest {
+
+
 
     public void GetCall(String URL, final OkHttpCallback callback) {
         OkHttpClient client = new OkHttpClient();
@@ -79,34 +83,41 @@ public class MyRequest {
 
     }
 
-    public void PostCallWithAttachment(String URL, Map<String, String> parameter, String filePath, final OkHttpCallback callback) {
-
-        final MediaType MEDIA_TYPE = MediaType.parse("image/*");
-        File sourceFile = new File(filePath);
-
-        byte[] b;
-        b = new byte[(int) sourceFile.length()];
-        try {
-            FileInputStream fileInputStream = new FileInputStream(sourceFile);
-            fileInputStream.read(b);
-            for (int i = 0; i < b.length; i++) {
-                System.out.print((char) b[i]);
+    public void PostCallWithAttachment(String URL, Map<String, String> parameter, String filePath,String key, final OkHttpCallback callback) {
+        MultipartBody.Builder buildernew;
+        final MediaType MEDIA_TYPE = MediaType.parse("file/*");
+        if (filePath != null){
+            File sourceFile = new File(filePath);
+            byte[] b;
+            b = new byte[(int) sourceFile.length()];
+            try {
+                FileInputStream fileInputStream = new FileInputStream(sourceFile);
+                fileInputStream.read(b);
+                for (int i = 0; i < b.length; i++) {
+                    System.out.print((char) b[i]);
+                }
+            } catch (FileNotFoundException e) {
+                System.out.println("File Not Found.");
+                e.printStackTrace();
+            } catch (IOException e1) {
+                System.out.println("Error Reading The File.");
+                e1.printStackTrace();
             }
-        } catch (FileNotFoundException e) {
-            System.out.println("File Not Found.");
-            e.printStackTrace();
-        } catch (IOException e1) {
-            System.out.println("Error Reading The File.");
-            e1.printStackTrace();
+            buildernew = new MultipartBody.Builder()
+                    .setType(MultipartBody.FORM)
+                    .addFormDataPart(key, filePath, RequestBody.create(MEDIA_TYPE, b));
+        }else {
+            buildernew = new MultipartBody.Builder()
+                    .setType(MultipartBody.FORM);
         }
 
-        MultipartBody.Builder buildernew = new MultipartBody.Builder()
-                .setType(MultipartBody.FORM)
-                .addFormDataPart("photo_link", filePath, RequestBody.create(MEDIA_TYPE, b));
+
+
 
 
         for (Map.Entry<String, String> entry : parameter.entrySet()) {
             buildernew.addFormDataPart(entry.getKey(), entry.getValue());
+            Log.e(entry.getKey(),entry.getValue() + " ");
         }
 
         MultipartBody  body = buildernew.build();

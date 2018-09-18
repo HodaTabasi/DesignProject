@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:layoutDirection="ltr"
     android:orientation="vertical"
     tools:context=".Fragments.AddProposalFragment">
 
@@ -109,6 +110,7 @@
                         android:background="@color/gray"/>
 
                     <EditText
+                        android:id="@+id/receivable_p"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
@@ -166,12 +168,13 @@
                         android:layout_height="match_parent" />
 
                     <EditText
+                        android:id="@+id/balance_p"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
                         android:gravity="center_horizontal"
                         android:padding="5dp"
-                        android:text="يوم"
+                        android:text="500"
                         android:textSize="14sp" />
 
                 </LinearLayout>
@@ -212,12 +215,13 @@
                         android:layout_height="match_parent" />
 
                     <EditText
+                        android:id="@+id/dur_p"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
                         android:gravity="center_horizontal"
                         android:padding="5dp"
-                        android:text="يوم"
+                        android:text="30"
                         android:textSize="14sp" />
 
                 </LinearLayout>
@@ -235,12 +239,14 @@
             android:text="تفاصيل العرض" />
 
         <EditText
+            android:id="@+id/proposal_p"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/square_shape"
             android:gravity="right"
             android:hint="مممممم"
+            android:text="vkdjps pojfd [few[ [fkew"
             android:padding="5dp"
             android:textColor="@color/gray"
             android:textColorHint="@color/gray" />
@@ -269,6 +275,7 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/attch_p"
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv2"
@@ -281,6 +288,7 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/add_proposal_p"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

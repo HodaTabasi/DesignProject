@@ -140,7 +140,7 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
         stringMap.put("bank_name", bankNameShp.getText().toString());
         stringMap.put("total", balance.getText().toString());
         stringMap.put("date", transferDateSh.getText().toString());
-        myRequest.PostCallWithAttachment("http://mustafa.smmim.com/waell/public/api/chargemycredit", stringMap, filePath, new OkHttpCallback() {
+        myRequest.PostCallWithAttachment("http://mustafa.smmim.com/waell/public/api/chargemycredit", stringMap, filePath,"photo_link", new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();

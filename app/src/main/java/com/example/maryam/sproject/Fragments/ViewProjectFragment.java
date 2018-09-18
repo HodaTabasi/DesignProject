@@ -3,6 +3,7 @@ package com.example.maryam.sproject.Fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +12,9 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.maryam.sproject.Adapters.ProjectAttachmentAdapter;
+import com.example.maryam.sproject.Adapters.ProjectPhotoAdapter;
+import com.example.maryam.sproject.HelperClass.FragmentsUtil;
 import com.example.maryam.sproject.Models.ProjectsModels;
 import com.example.maryam.sproject.R;
 import com.squareup.picasso.Picasso;
@@ -41,6 +45,8 @@ public class ViewProjectFragment extends Fragment {
     private EditText mPBio;
     private RecyclerView mPAttachment;
     Bundle bundle;
+    private TextView addOffer;
+    ProjectsModels models;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,6 +65,17 @@ public class ViewProjectFragment extends Fragment {
 
         initView(getView());
         putData();
+        addOffer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddProposalFragment fragment = new AddProposalFragment();
+                Bundle bundle1 = new Bundle();
+                bundle1.putInt("id",models.getId());
+                Log.e("from",models.getId() + " ");
+                fragment.setArguments(bundle1);
+                FragmentsUtil.replaceFragment(getActivity(),R.id.container_activity,fragment,true);
+            }
+        });
     }
 
     private void initView(View view) {
@@ -76,21 +93,36 @@ public class ViewProjectFragment extends Fragment {
         mPBalance = (EditText) view.findViewById(R.id.p_balance);
         mPBio = (EditText) view.findViewById(R.id.p_bio);
         mPAttachment = (RecyclerView) view.findViewById(R.id.p_attachment);
+        addOffer = view.findViewById(R.id.add_offer);
     }
     private void putData(){
         bundle = getArguments();
-        ProjectsModels models = bundle.getParcelable("theProject");
+        models = bundle.getParcelable("theProject");
         mUserName.setText(models.getUser().getName());
         mUserType.setText(models.getUser().getType());
         Picasso.get().load(models.getUser().getPhoto_link()).into(mUserPhoto);
-
         mPName.setText(models.getName());
         mPType.setText(models.getType());
-        mPStyle.setText(models.getAddtion_info().getStyle());
-        mPColors.setText(models.getAddtion_info().getColors());
-        mPCity.setText(models.getAddtion_info().getCity());
-        mPArea.setText(models.getAddtion_info().getArea());
+        if (models.getAddtion_info() != null){
+            mPStyle.setText(models.getAddtion_info().getStyle());
+            mPColors.setText(models.getAddtion_info().getColors());
+            mPCity.setText(models.getAddtion_info().getCity());
+            mPArea.setText(models.getAddtion_info().getArea());
+        }
         mPBalance.setText(models.getBalance());
         mPBio.setText(models.getDescr());
+
+        mPProjectPhoto.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+        ProjectPhotoAdapter adapter = new ProjectPhotoAdapter(getContext(),R.layout.layout_item_photos,models.getPhotos());
+        mPProjectPhoto.setAdapter(adapter);
+
+//        mPProjectPhoto.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+//        ProjectPhotoAdapter adapter1 = new ProjectPhotoAdapter(getContext(),R.layout.layout_item_photos,models.getSimilars());
+//        mPProjectPhoto.setAdapter(adapter);
+
+        mPAttachment.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+        ProjectAttachmentAdapter adapter2 = new ProjectAttachmentAdapter(getContext(),R.layout.layout_item_attachment,models.getAttachs());
+        mPAttachment.setAdapter(adapter2);
+
     }
 }
