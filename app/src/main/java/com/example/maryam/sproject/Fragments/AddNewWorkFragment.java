@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.maryam.sproject.R;
 
@@ -17,6 +18,7 @@ import me.anwarshahriar.calligrapher.Calligrapher;
  * A simple {@link Fragment} subclass.
  */
 public class AddNewWorkFragment extends Fragment {
+    TextView tv_save;
 
 
     public AddNewWorkFragment() {
@@ -28,7 +30,11 @@ public class AddNewWorkFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_new_work, container, false);
+        View view = inflater.inflate(R.layout.fragment_add_new_work, container, false);
+
+        tv_save = view.findViewById(R.id.tv_save);
+
+        return view;
     }
 
     @Override

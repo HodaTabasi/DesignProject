@@ -36,6 +36,7 @@ public class BankAdapter extends RecyclerView.Adapter<BankAdapter.BankHolder> {
         holder.et_bankName.setText(bankList.get(position).getName());
         holder.et_bankNum.setText(bankList.get(position).getNumber());
         holder.et_kNum.setText(bankList.get(position).getIban());
+
     }
 
     @Override

@@ -58,6 +58,16 @@ public class UserModel {
     private String busniess_type;
     private String created_at;
     private String updated_at;
+
+    public String getRate() {
+        return rate;
+    }
+
+    public void setRate(String rate) {
+        this.rate = rate;
+    }
+
+    private String rate;
     private ArrayList<BanksBean> banks;
     private ArrayList<SkillsModel> skills;
     private ArrayList<PWorks> pworks;
