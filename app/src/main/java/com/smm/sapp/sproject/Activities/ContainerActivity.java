@@ -1,22 +1,18 @@
-package com.example.maryam.sproject.Activities;
+package com.smm.sapp.sproject.Activities;
 
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.maryam.sproject.Fragments.AccountFragment;
-import com.example.maryam.sproject.Fragments.AddNewWork2Fragment;
-import com.example.maryam.sproject.Fragments.BrowseProjectsFragment;
-import com.example.maryam.sproject.Fragments.MainFragment;
-import com.example.maryam.sproject.Fragments.MessagesFragment;
-import com.example.maryam.sproject.Fragments.NotificationFragment;
-import com.example.maryam.sproject.Fragments.PortfolioFragment;
-import com.example.maryam.sproject.HelperClass.FragmentsUtil;
-import com.example.maryam.sproject.R;
+import com.smm.sapp.sproject.Fragments.AccountFragment;
+import com.smm.sapp.sproject.Fragments.AddNewWork2Fragment;
+import com.smm.sapp.sproject.Fragments.BrowseProjectsFragment;
+import com.smm.sapp.sproject.Fragments.MainFragment;
+import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
+import com.smm.sapp.sproject.Fragments.MyMessageFragment;
+import com.smm.sapp.sproject.R;
 
 import me.anwarshahriar.calligrapher.Calligrapher;
 
@@ -45,13 +41,12 @@ public class ContainerActivity extends AppCompatActivity {
         tv_msgs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new MessagesFragment(), true);
+                FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new MyMessageFragment(), true);
                 tv_msgs.setBackground(getResources().getDrawable(R.drawable.main_shape));
                 tv_projects.setBackgroundResource(0);
                 tv_home.setBackgroundResource(0);
                 tv_portfolio.setBackgroundResource(0);
                 tv_profile.setBackgroundResource(0);
-
             }
         });
 
@@ -64,7 +59,6 @@ public class ContainerActivity extends AppCompatActivity {
                 tv_home.setBackgroundResource(0);
                 tv_portfolio.setBackgroundResource(0);
                 tv_profile.setBackgroundResource(0);
-
             }
         });
 
@@ -84,7 +78,7 @@ public class ContainerActivity extends AppCompatActivity {
         tv_portfolio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new PortfolioFragment(), true);
+                FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new AddNewWork2Fragment(), true);
                 tv_portfolio.setBackground(getResources().getDrawable(R.drawable.main_shape));
                 tv_msgs.setBackgroundResource(0);
                 tv_projects.setBackgroundResource(0);
