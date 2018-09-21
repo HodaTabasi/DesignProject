@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.example.maryam.sproject"
+        applicationId "com.smm.sapp.sproject"
         minSdkVersion 17
         targetSdkVersion 27
         versionCode 1
@@ -33,4 +33,5 @@ dependencies {
     implementation 'me.anwarshahriar:calligrapher:1.0'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.obsez.android.lib.filechooser:filechooser:1.1.10'
 }
