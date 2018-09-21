@@ -1,7 +1,5 @@
 package com.smm.sapp.sproject.Activities;
 
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,8 +10,8 @@ import com.smm.sapp.sproject.Fragments.AccountFragment;
 import com.smm.sapp.sproject.Fragments.AddNewWork2Fragment;
 import com.smm.sapp.sproject.Fragments.BrowseProjectsFragment;
 import com.smm.sapp.sproject.Fragments.MainFragment;
-import com.smm.sapp.sproject.Fragments.NotificationFragment;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
+import com.smm.sapp.sproject.Fragments.MyMessageFragment;
 import com.smm.sapp.sproject.R;
 
 import me.anwarshahriar.calligrapher.Calligrapher;
@@ -43,13 +41,12 @@ public class ContainerActivity extends AppCompatActivity {
         tv_msgs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new NotificationFragment(), true);
+                FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new MyMessageFragment(), true);
                 tv_msgs.setBackground(getResources().getDrawable(R.drawable.main_shape));
                 tv_projects.setBackgroundResource(0);
                 tv_home.setBackgroundResource(0);
                 tv_portfolio.setBackgroundResource(0);
                 tv_profile.setBackgroundResource(0);
-
             }
         });
 
@@ -62,7 +59,6 @@ public class ContainerActivity extends AppCompatActivity {
                 tv_home.setBackgroundResource(0);
                 tv_portfolio.setBackgroundResource(0);
                 tv_profile.setBackgroundResource(0);
-
             }
         });
 

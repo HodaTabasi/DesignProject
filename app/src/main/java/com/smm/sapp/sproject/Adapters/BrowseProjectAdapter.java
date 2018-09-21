@@ -4,18 +4,18 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.smm.sapp.sproject.Fragments.AddProjectFragment;
 import com.smm.sapp.sproject.Fragments.ViewProjectFragment;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
-import com.smm.sapp.sproject.Models.BankModel;
-import com.smm.sapp.sproject.Models.BrowseProjectsModel;
 import com.smm.sapp.sproject.Models.ProjectsModels;
 import com.smm.sapp.sproject.R;
 
@@ -39,7 +39,7 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BrowseProjectHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final BrowseProjectHolder holder, final int position) {
         holder.tv_description.setText(projectsList.get(position).getName());
         holder.tv_name.setText(projectsList.get(position).getUser().getName());
         holder.tv_proposals.setText(projectsList.get(position).getOffers().size() + " ");
@@ -54,6 +54,43 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
                 FragmentsUtil.replaceFragment((FragmentActivity) context,R.id.container_activity,fragment);
             }
         });
+        holder.img_arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopUpMenu(holder.img_arrow);
+            }
+        });
+        holder.img_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopUpMenu(holder.img_setting);
+            }
+        });
+    }
+
+    private void showPopUpMenu(ImageView img) {
+        PopupMenu popup = new PopupMenu(context,img);
+
+        popup.inflate(R.menu.custom_menu);
+
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.new_one:
+                        FragmentsUtil.replaceFragment((FragmentActivity) context,R.id.container_activity,new AddProjectFragment());
+                        return true;
+                    case R.id.new_fav:
+
+                        return true;
+                    case R.id.report:
+                        return true;
+                }
+                return false;
+            }
+        });
+
+        popup.show();
     }
 
     @Override

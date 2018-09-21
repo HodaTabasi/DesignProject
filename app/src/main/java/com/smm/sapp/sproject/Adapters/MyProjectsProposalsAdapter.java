@@ -3,9 +3,11 @@ package com.smm.sapp.sproject.Adapters;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.smm.sapp.sproject.Models.MyProjectsProposals;
@@ -42,8 +44,9 @@ public class MyProjectsProposalsAdapter extends RecyclerView.Adapter<MyProjectsP
         return proposals.size();
     }
 
-    public class MyProjectsProposalVH extends RecyclerView.ViewHolder {
+    public class MyProjectsProposalVH extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
         TextView tvName,tvMoney,tvCalender,tv1,tv2;
+        ImageView img_setting;
         public MyProjectsProposalVH(View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tv_name);
@@ -51,6 +54,12 @@ public class MyProjectsProposalsAdapter extends RecyclerView.Adapter<MyProjectsP
             tvCalender = itemView.findViewById(R.id.tv_calender);
             tv1 = itemView.findViewById(R.id.tv1);
             tv2 = itemView.findViewById(R.id.tv2);
+            img_setting = itemView.findViewById(R.id.img_setting);
+        }
+
+        @Override
+        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+
         }
     }
 }
