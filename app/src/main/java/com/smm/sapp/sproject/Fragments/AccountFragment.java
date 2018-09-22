@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -42,6 +43,7 @@ public class AccountFragment extends Fragment {
     TextView tv_name;
     TextView tv_title;
     RatingBar ratingBar;
+    LinearLayout linear_rate;
 
     String name, title;
 
@@ -75,10 +77,21 @@ public class AccountFragment extends Fragment {
         tv_name = getView().findViewById(R.id.name);
         tv_title = getView().findViewById(R.id.title);
         ratingBar = getView().findViewById(R.id.account_rate);
-
+        linear_rate = getView().findViewById(R.id.linear_rate);
     }
 
     private void onClickMethod() {
+        linear_rate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FeedbackFragment commentsFragment = new FeedbackFragment();
+                Bundle bundle = new Bundle();
+                bundle.putParcelableArrayList("commentsInfo", userModel.getComments());
+                commentsFragment.setArguments(bundle);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, commentsFragment, true);
+            }
+        });
+
         tv_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

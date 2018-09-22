@@ -266,7 +266,7 @@ public class UserModel {
         this.pworks = pworks;
     }
 
-    public List<Likes> getLikes() {
+    public ArrayList<Likes> getLikes() {
         return likes;
     }
 
@@ -274,7 +274,7 @@ public class UserModel {
         this.likes = likes;
     }
 
-    public List<Comments> getComments() {
+    public ArrayList<Comments> getComments() {
         return comments;
     }
 

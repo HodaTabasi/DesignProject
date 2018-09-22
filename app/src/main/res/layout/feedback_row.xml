@@ -17,12 +17,14 @@
         android:gravity="center_vertical">
 
         <RatingBar
+            android:id="@+id/rate1"
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/tv1"
-            android:layout_weight="0.5"
+            android:layout_weight="0.15"
             android:numStars="5"
+            android:max="5"
             android:rating="5.0"
             android:stepSize="1.0" />
 
@@ -49,10 +51,12 @@
         android:gravity="center_vertical">
 
         <RatingBar
+            android:id="@+id/rate2"
             style="?android:attr/ratingBarStyleSmall"
-            android:layout_width="0dp"
+            android:layout_width="41dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.15"
+            android:max="5"
             android:numStars="5"
             android:rating="5.0"
             android:stepSize="1.0" />
@@ -81,10 +85,12 @@
         android:gravity="center_vertical">
 
         <RatingBar
+            android:id="@+id/rate3"
             style="?android:attr/ratingBarStyleSmall"
-            android:layout_width="0dp"
+            android:layout_width="42dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.15"
+            android:max="5"
             android:numStars="5"
             android:rating="5.0"
             android:stepSize="1.0" />
@@ -110,12 +116,15 @@
         android:gravity="center_vertical">
 
         <RatingBar
+            android:id="@+id/rate4"
             style="?android:attr/ratingBarStyleSmall"
-            android:layout_width="0dp"
+            android:layout_width="42dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.15"
+            android:max="5"
             android:numStars="5"
-            android:rating="5.0" />
+            android:rating="5.0"
+            android:stepSize="1.0" />
 
         <TextView
             android:id="@+id/tv4"
@@ -141,12 +150,15 @@
         android:gravity="center_vertical">
 
         <RatingBar
+            android:id="@+id/rate5"
             style="?android:attr/ratingBarStyleSmall"
-            android:layout_width="0dp"
+            android:layout_width="41dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.15"
+            android:max="5"
             android:numStars="5"
-            android:rating="5.0" />
+            android:rating="5.0"
+            android:stepSize="1.0" />
 
         <TextView
             android:id="@+id/tv5"
@@ -170,7 +182,7 @@
         android:textColor="@color/textGray"
         android:textSize="12sp" />
 
-    <EditText
+    <TextView
         android:id="@+id/et_comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -186,6 +198,6 @@
         android:text="ننننننننن"
         android:textColor="@color/gray"
         android:textDirection="rtl"
-        android:textSize="12sp" />
+        android:textSize="14sp" />
 
 </LinearLayout>
