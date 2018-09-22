@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +44,7 @@ public class AccountFragment extends Fragment {
     TextView tv_name;
     TextView tv_title;
     RatingBar ratingBar;
+    LinearLayout linear_rate;
 
     String name, title;
     String s_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6Ly9zbW0uc21taW0uY29tL3dhZWxsL3B1YmxpYy9hcGkvTG9naW4iLCJpYXQiOjE1Mzc2MTI1MzEsImV4cCI6NDgwODE3NjA0NTkzMzMzNzMzMSwibmJmIjoxNTM3NjEyNTMxLCJqdGkiOiJjYVZDSHRmUW9WOVhsalBwIn0.3f7a7F9sDyow1ZV90dec235qiXQNiUcKwU71LCMvF3k";
@@ -77,10 +79,21 @@ public class AccountFragment extends Fragment {
         tv_name = getView().findViewById(R.id.name);
         tv_title = getView().findViewById(R.id.title);
         ratingBar = getView().findViewById(R.id.account_rate);
-
+        linear_rate = getView().findViewById(R.id.linear_rate);
     }
 
     private void onClickMethod() {
+        linear_rate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FeedbackFragment commentsFragment = new FeedbackFragment();
+                Bundle bundle = new Bundle();
+                bundle.putParcelableArrayList("commentsInfo", userModel.getComments());
+                commentsFragment.setArguments(bundle);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, commentsFragment, true);
+            }
+        });
+
         tv_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

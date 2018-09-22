@@ -13,10 +13,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -38,7 +40,10 @@ public class MainFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
 
+
         CircleImageView img_user = view.findViewById(R.id.img_user);
+        TextView _name = view.findViewById(R.id.tv_name);
+        TextView _specialization = view.findViewById(R.id.tv_specialization);
         TextView tv_portfolio = view.findViewById(R.id.tv_portfolio_main);
         TextView tv_budget = view.findViewById(R.id.tv_budget);
         TextView tv_addProject = view.findViewById(R.id.tv_addProject);
@@ -48,6 +53,14 @@ public class MainFragment extends Fragment {
         ImageView img_power = view.findViewById(R.id.img_power);
         ImageView img_notification = view.findViewById(R.id.img_notification);
 
+        _name.setText(ConstantInterFace.USER.getName());
+        Picasso.get().load(ConstantInterFace.USER.getPhoto_link()).into(img_user);
+
+        if (ConstantInterFace.USER.getType().equals("worker")) {
+            _specialization.setText(ConstantInterFace.USER.getJob_type());
+        } else {
+            _specialization.setText("صاحب مشاريع");
+        }
 
         img_user.setOnClickListener(new View.OnClickListener() {
             @Override

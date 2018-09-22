@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.smm.sapp.sproject.Adapters.FeedbackAdapter;
+import com.smm.sapp.sproject.Models.Comments;
 import com.smm.sapp.sproject.Models.FeedbackModel;
 import com.smm.sapp.sproject.R;
 
@@ -21,7 +22,7 @@ import me.anwarshahriar.calligrapher.Calligrapher;
 public class FeedbackFragment extends Fragment {
 
     RecyclerView recyclerView;
-    ArrayList<FeedbackModel> arrayList = new ArrayList<>();
+    ArrayList<Comments> arrayList = new ArrayList<>();
     FeedbackAdapter adapter;
 
 
@@ -32,9 +33,7 @@ public class FeedbackFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_feedback, container, false);
 
         recyclerView = view.findViewById(R.id.recycel_feedback);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new FeedbackAdapter(getActivity(), arrayList);
-        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
         return view;
     }
 
@@ -43,5 +42,10 @@ public class FeedbackFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
+
+        Bundle bundle = getArguments();
+        arrayList = bundle.getParcelableArrayList("commentsInfo");
+        adapter = new FeedbackAdapter(getActivity(), arrayList);
+        recyclerView.setAdapter(adapter);
     }
 }
