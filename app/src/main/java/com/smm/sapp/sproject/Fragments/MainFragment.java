@@ -40,6 +40,7 @@ public class MainFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
 
+
         CircleImageView img_user = view.findViewById(R.id.img_user);
         TextView _name = view.findViewById(R.id.tv_name);
         TextView _specialization = view.findViewById(R.id.tv_specialization);
