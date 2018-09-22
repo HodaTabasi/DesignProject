@@ -58,7 +58,7 @@
         android:drawableTop="@drawable/ic_bar_portfolio"
         android:gravity="center"
         android:padding="3dp"
-        android:text="تصفح الاعمال"
+        android:text="معرض الاعمال"
         android:textColor="@color/blue"
         android:textSize="7sp" />
 

@@ -273,7 +273,6 @@ public class ProfileFragment extends Fragment {
 
                 } else {
 
-                    Log.e("no", "no");
                     stringMap.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2ODUxOTA0LCJleHAiOjQ4MDgxNzYwNDU5MzI1NzY3MDQsIm5iZiI6MTUzNjg1MTkwNCwian" +
                             "RpIjoiWWFsQUt0cmxDOFFhc3MxNiJ9.ti8XrIO453w789YLVLu-EqVmZZm3GXVC6O9KNwloSsI");
                     stringMap.put("name", et_name.getText().toString());

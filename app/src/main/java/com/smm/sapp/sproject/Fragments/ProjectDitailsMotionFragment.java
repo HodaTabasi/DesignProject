@@ -79,7 +79,7 @@ public class ProjectDitailsMotionFragment extends Fragment {
         mSendMotion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendMotionRequest();
+                //sendMotionRequest();
             }
         });
     }

@@ -1,9 +1,13 @@
 package com.smm.sapp.sproject.Fragments;
 
 
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +17,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
+import com.smm.sapp.sproject.Activities.MapActivity;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
@@ -38,11 +45,15 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
     private EditText mWallArea;
     private ImageView mWallLikeUploadImage;
     private EditText mWallCity;
-    private EditText mWallMap;
+    private TextView mWallMap;
     private EditText mWallBalance;
     private EditText mWallProjectDietails;
     private TextView mWallAttachment;
     private Button mWallSend;
+
+    private static final int ERROR_DIALOG_REQUEST = 9001;
+    private static final int REQUEST_CODE = 1;
+    String s_lat, s_lng;
 
     public ProjectDitailsPaintingWallFragment() {
         // Required empty public constructor
@@ -67,6 +78,14 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
         mWallProjectDietails = getView().findViewById(R.id.wall_project_dietails);
         mWallAttachment = getView().findViewById(R.id.wall_attachment);
         mWallSend = getView().findViewById(R.id.wall_send);
+
+        mWallMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), MapActivity.class);
+                startActivityForResult(intent, REQUEST_CODE);
+            }
+        });
     }
 
 
@@ -75,27 +94,47 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
-        initView();
+
+        if (isServicesOk()) {
+            initView();
+        }
+
         mWallSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendWallRequest();
+                //sendWallRequest();
 
             }
         });
     }
+
+    public boolean isServicesOk() {
+        int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(getActivity());
+        if (available == ConnectionResult.SUCCESS) {
+            //every thing is fine and the user can make map request
+            return true;
+
+        } else if (GoogleApiAvailability.getInstance().isUserResolvableError(available)) {
+            //error occur but we can resolve it
+            Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(getActivity(), available, ERROR_DIALOG_REQUEST);
+            dialog.show();
+        } else {
+            Toast.makeText(getActivity(), "you can't make map request", Toast.LENGTH_SHORT).show();
+        }
+        return false;
+    }
+
 
     private void sendWallRequest() {
 
         MyRequest myRequest = new MyRequest();
         Map<String, String> map = new HashMap<>();
         map.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2NTYyNjExLCJleHAiOjQ4MDgxNzYwNDU5MzIyODc0MTEsIm5iZiI6MTUzNjU2MjYxMSwianRpIjoiQ2NHRFlQOW4wcno4cjJCMCJ9.8fOb9OQliz0Z63t-SiZcTnRdExskt_Xtx68AWYy4hWU");
-//        map.put("name", mMotionType.getText().toString());
+        map.put("name", mWallType.getText().toString());
         map.put("city", mWallCity.getText().toString());
         map.put("area", mWallArea.getText().toString());
-//        map.put("lng", "");
-//        map.put("lat", "");
-//        attachment
+        map.put("lng", s_lng);
+        map.put("lat", s_lat);
         map.put("balance", mWallBalance.getText().toString());
         map.put("descr", mWallProjectDietails.getText().toString());
 
@@ -110,6 +149,26 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+                double lng = data.getDoubleExtra("lng", 0);
+                double lat = data.getDoubleExtra("lat", 0);
+
+                s_lat = String.valueOf(lat);
+                s_lng = String.valueOf(lng);
+
+                mWallMap.setText("خط الطول = " + s_lng + "\n" + "خط العرض = " + s_lat);
+                Log.d("lat", s_lat);
+
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                Toast.makeText(getActivity(), "no data moved", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }
 
