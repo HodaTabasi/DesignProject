@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.smm.sapp.sproject.Activities.MapActivity;
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
@@ -109,7 +110,7 @@ public class ProjectDetailsInterFragment extends Fragment {
 
         MyRequest myRequest = new MyRequest();
         Map<String, String> map = new HashMap<>();
-        map.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2NTYyNjExLCJleHAiOjQ4MDgxNzYwNDU5MzIyODc0MTEsIm5iZiI6MTUzNjU2MjYxMSwianRpIjoiQ2NHRFlQOW4wcno4cjJCMCJ9.8fOb9OQliz0Z63t-SiZcTnRdExskt_Xtx68AWYy4hWU");
+        map.put("token", ConstantInterFace.USER.getToken());
         map.put("name", mInType.getText().toString());
         map.put("style", mChooeseStyle.getText().toString());
         map.put("colors", mDesignColor.getText().toString());
@@ -120,7 +121,7 @@ public class ProjectDetailsInterFragment extends Fragment {
         map.put("balance", mBalance.getText().toString());
         map.put("descr", mProjectDetailes.getText().toString());
 
-        myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/projectmakeinter", map, new OkHttpCallback() {
+        myRequest.PostCall("http://smm.smmim.com/waell/public/api/projectmakeinter", map, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
 

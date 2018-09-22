@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.smm.sapp.sproject.Adapters.MyMessageAdapter;
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.Models.MyMessageModel;
 import com.smm.sapp.sproject.MyRequest;
@@ -65,8 +66,8 @@ public class MyMessageFragment extends Fragment {
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
         Map<String,String> stringMap = new HashMap<>();
-        stringMap.put("token","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODU4NS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM0NzcwMTA0LCJleHAiOjIxNDc0ODM2NDcsIm5iZiI6MTUzNDc3MDEwNCwianRpIjoiRnByN1h6aEI3SWtHb0xpVyJ9.HC4LMZ1_wioWsUfEeKOUa2RlkTkBh98bHYbT-RYHy5o");
-        myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/getmyconversations", stringMap, new OkHttpCallback() {
+        stringMap.put("token", ConstantInterFace.USER.getToken());
+        myRequest.PostCall("http://smm.smmim.com/waell/public/api/getmyconversations", stringMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();

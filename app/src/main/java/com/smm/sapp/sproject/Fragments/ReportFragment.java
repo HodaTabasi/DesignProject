@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.smm.sapp.sproject.Adapters.FinancialMovementReportAdapter;
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.Models.FinancialMovementReports;
 import com.smm.sapp.sproject.MyRequest;
@@ -96,8 +97,8 @@ public class ReportFragment extends Fragment implements View.OnClickListener {
     private void addNewBankRequest(String type) {
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
-        String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODU4NS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM0NzcwMTA0LCJleHAiOjIxNDc0ODM2NDcsIm5iZiI6MTUzNDc3MDEwNCwianRpIjoiRnByN1h6aEI3SWtHb0xpVyJ9.HC4LMZ1_wioWsUfEeKOUa2RlkTkBh98bHYbT-RYHy5o";
-        myRequest.GetCall("http://mustafa.smmim.com/waell/public/api/myreports" + "?token=" + token + "&type=" + type, new OkHttpCallback() {
+        String token = ConstantInterFace.USER.getToken();
+        myRequest.GetCall("http://smm.smmim.com/waell/public/api/myreports" + "?token=" + token + "&type=" + type, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();

@@ -16,6 +16,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.smm.sapp.sproject.Adapters.BankAdapter;
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.Models.BankModel;
 import com.smm.sapp.sproject.Models.UserModel;
@@ -93,11 +94,11 @@ public class BankFragment extends Fragment {
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
         Map<String, String> stringMap = new HashMap<>();
-        stringMap.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2ODMxMDU3LCJleHAiOjQ4MDgxNzYwNDU5MzI1NTU4NTcsIm5iZiI6MTUzNjgzMTA1NywianRpIjoiN3FmUXZVQW1lNWxLaWdBeSJ9.JaZRD1eLJ6It2DuR6Qn1F5kNL8lyMWhYz_NYsjRW-qs");
+        stringMap.put("token", ConstantInterFace.USER.getToken());
         stringMap.put("name", et_bankName.getText().toString());
         stringMap.put("iban", et_kNum.getText().toString());
         stringMap.put("number", et_bankNum.getText().toString());
-        myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/addbank", stringMap, new OkHttpCallback() {
+        myRequest.PostCall("http://smm.smmim.com/waell/public/api/addbank", stringMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();

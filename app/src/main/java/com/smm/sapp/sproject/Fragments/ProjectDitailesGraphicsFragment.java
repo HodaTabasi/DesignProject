@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
@@ -132,7 +133,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
 
         MyRequest myRequest = new MyRequest();
         Map<String, String> map = new HashMap<>();
-        map.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2NTYyNjExLCJleHAiOjQ4MDgxNzYwNDU5MzIyODc0MTEsIm5iZiI6MTUzNjU2MjYxMSwianRpIjoiQ2NHRFlQOW4wcno4cjJCMCJ9.8fOb9OQliz0Z63t-SiZcTnRdExskt_Xtx68AWYy4hWU");
+        map.put("token", ConstantInterFace.USER.getToken());
         //map.put("name", mMotionType.getText().toString());
         map.put("name", mProjectNameGh.getText().toString());
         //map.put("about", mAboutActivity.getText().toString());
@@ -141,7 +142,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
         map.put("balance", mGhBalance.getText().toString());
         map.put("descr", mProjectDeitailsGh.getText().toString());
 
-        myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/projectmakegraphic", map, new OkHttpCallback() {
+        myRequest.PostCall("http://smm.smmim.com/waell/public/api/projectmakegraphic", map, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
 

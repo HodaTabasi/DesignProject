@@ -124,7 +124,7 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
     private void getProjects(String url){
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
-        myRequest.GetCall("http://mustafa.smmim.com/waell/public/api/"+url, new OkHttpCallback() {
+        myRequest.GetCall("http://smm.smmim.com/waell/public/api/"+url, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();

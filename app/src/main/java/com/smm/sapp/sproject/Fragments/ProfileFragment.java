@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
@@ -240,8 +241,7 @@ public class ProfileFragment extends Fragment {
 
                 if (type.equals("worker")) {
                     Log.e("yes", "yes");
-                    stringMap.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2ODUxOTA0LCJleHAiOjQ4MDgxNzYwNDU5MzI1NzY3" +
-                            "MDQsIm5iZiI6MTUzNjg1MTkwNCwianRpIjoiWWFsQUt0cmxDOFFhc3MxNiJ9.ti8XrIO453w789YLVLu-EqVmZZm3GXVC6O9KNwloSsI");
+                    stringMap.put("token", ConstantInterFace.USER.getToken());
                     stringMap.put("name", et_name.getText().toString());
                     stringMap.put("email", et_email.getText().toString());
                     stringMap.put("gender", st_gender);
@@ -256,7 +256,7 @@ public class ProfileFragment extends Fragment {
                         Log.e(entry.getKey() + " ff",entry.getValue() + " 11");
                     }
 
-                    myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/updateProfile", stringMap, new OkHttpCallback() {
+                    myRequest.PostCall("http://smm.smmim.com/waell/public/api/updateProfile", stringMap, new OkHttpCallback() {
                         @Override
                         public void onFailure(Call call, IOException e) {
 
@@ -273,8 +273,7 @@ public class ProfileFragment extends Fragment {
 
                 } else {
 
-                    stringMap.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2ODUxOTA0LCJleHAiOjQ4MDgxNzYwNDU5MzI1NzY3MDQsIm5iZiI6MTUzNjg1MTkwNCwian" +
-                            "RpIjoiWWFsQUt0cmxDOFFhc3MxNiJ9.ti8XrIO453w789YLVLu-EqVmZZm3GXVC6O9KNwloSsI");
+                    stringMap.put("token", ConstantInterFace.USER.getToken());
                     stringMap.put("name", et_name.getText().toString());
                     stringMap.put("email", et_email.getText().toString());
                     stringMap.put("gender", st_gender);
@@ -326,8 +325,8 @@ public class ProfileFragment extends Fragment {
     private void getProfileData() {
         MyRequest myRequest = new MyRequest();
         Map<String, String> map = new HashMap<>();
-        map.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM3MDQzNjEzLCJleHAiOjQ4MDgxNzYwNDU5MzI3Njg0MTMsIm5iZiI6MTUzNzA0MzYxMywianRpIjoiNXdSR0t3RXZnVUhNNFRadyJ9.cA0Xkr3RaQjEFQK7e48DyLGWYrMVwKWkfvelnIs_aM8");
-        myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/myprofile", map, new OkHttpCallback() {
+        map.put("token",ConstantInterFace.USER.getToken());
+        myRequest.PostCall("http://smm.smmim.com/waell/public/api/myprofile", map, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.v("eeeeeeeeee", e.getMessage());

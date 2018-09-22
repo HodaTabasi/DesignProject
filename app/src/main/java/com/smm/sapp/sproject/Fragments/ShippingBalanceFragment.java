@@ -17,6 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.HelperClass.PathUtil;
 import com.smm.sapp.sproject.MyRequest;
@@ -134,13 +135,13 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
         MyRequest myRequest =new MyRequest();
         MyProgressDialog.showDialog(getContext());
         Map<String, String> stringMap = new HashMap<>();
-        stringMap.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODU4NS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM0NzcwMTA0LCJleHAiOjIxNDc0ODM2NDcsIm5iZiI6MTUzNDc3MDEwNCwianRpIjoiRnByN1h6aEI3SWtHb0xpVyJ9.HC4LMZ1_wioWsUfEeKOUa2RlkTkBh98bHYbT-RYHy5o");
+        stringMap.put("token", ConstantInterFace.USER.getToken());
         stringMap.put("name",userBankNameShp.getText().toString());
         stringMap.put("acc_number", bankNumberShp.getText().toString());
         stringMap.put("bank_name", bankNameShp.getText().toString());
         stringMap.put("total", balance.getText().toString());
         stringMap.put("date", transferDateSh.getText().toString());
-        myRequest.PostCallWithAttachment("http://mustafa.smmim.com/waell/public/api/chargemycredit", stringMap, filePath,"photo_link", new OkHttpCallback() {
+        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/chargemycredit", stringMap, filePath,"photo_link", new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();

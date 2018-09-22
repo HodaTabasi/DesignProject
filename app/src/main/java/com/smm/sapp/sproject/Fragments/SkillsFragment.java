@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.smm.sapp.sproject.Adapters.SkillsAdapter;
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.Models.SkillsModel;
 import com.smm.sapp.sproject.MyRequest;
@@ -88,7 +89,7 @@ public class SkillsFragment extends Fragment {
     private void addNewSkill(Map<String, String> stringMap) {
         MyRequest myRequest = new MyRequest();
 
-        myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/addskills", stringMap, new OkHttpCallback() {
+        myRequest.PostCall("http://smm.smmim.com/waell/public/api/addskills", stringMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
@@ -120,9 +121,7 @@ public class SkillsFragment extends Fragment {
     private void putParameter() {
         MyProgressDialog.showDialog(getContext());
         Map<String, String> stringMap = new HashMap<>();
-        stringMap.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbW" +
-                "ltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2NTYyNjExLCJleHAiOjQ4MDgxNzYwNDU5MzIyODc0MTEsI" +
-                "m5iZiI6MTUzNjU2MjYxMSwianRpIjoiQ2NHRFlQOW4wcno4cjJCMCJ9.8fOb9OQliz0Z63t-SiZcTnRdExskt_Xtx68AWYy4hWU");
+        stringMap.put("token", ConstantInterFace.USER.getToken());
 
         for (int i= 0; i<arrayList.size(); i++){
             stringMap.put("years["+i+"]",arrayList.get(i).getYears());
