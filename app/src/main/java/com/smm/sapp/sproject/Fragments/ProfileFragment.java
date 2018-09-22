@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.MyRequest;
@@ -48,6 +49,7 @@ public class ProfileFragment extends Fragment {
     DatePickerDialog.OnDateSetListener date;
     String st_type, st_job_type, st_busniess_type, st_name, st_bio, mobile, st_email, gender, st_dob;
     int position;
+    String s_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6Ly9zbW0uc21taW0uY29tL3dhZWxsL3B1YmxpYy9hcGkvTG9naW4iLCJpYXQiOjE1Mzc2MTI1MzEsImV4cCI6NDgwODE3NjA0NTkzMzMzNzMzMSwibmJmIjoxNTM3NjEyNTMxLCJqdGkiOiJjYVZDSHRmUW9WOVhsalBwIn0.3f7a7F9sDyow1ZV90dec235qiXQNiUcKwU71LCMvF3k";
 
     public ProfileFragment() {
     }
@@ -256,7 +258,7 @@ public class ProfileFragment extends Fragment {
                         Log.e(entry.getKey() + " ff",entry.getValue() + " 11");
                     }
 
-                    myRequest.PostCall("http://smm.smmim.com/waell/public/api/updateProfile", stringMap, new OkHttpCallback() {
+                    myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/updateProfile", stringMap, new OkHttpCallback() {
                         @Override
                         public void onFailure(Call call, IOException e) {
 
@@ -266,12 +268,18 @@ public class ProfileFragment extends Fragment {
                         @Override
                         public void onResponse(Call call, Response response) throws IOException, JSONException {
 
-                            Log.e("r1", response.body().string() +" d");
+                            Log.e("r1", response.body().string() + " d");
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(getContext(), "تم حفظ التعديلات", Toast.LENGTH_SHORT).show();
+                                }
+                            });
 
                         }
                     });
 
-                } else {
+                } else if (type.equals("client")) {
 
                     stringMap.put("token", ConstantInterFace.USER.getToken());
                     stringMap.put("name", et_name.getText().toString());
@@ -281,17 +289,17 @@ public class ProfileFragment extends Fragment {
                     stringMap.put("phone", st_mobile);
                     stringMap.put("type", type);
 
-//                    myRequest.PostCall("https://mustafa.smmim.com/waell/public/api/updateProfile", stringMap, new OkHttpCallback() {
-//                        @Override
-//                        public void onFailure(Call call, IOException e) {
-//                            Log.v("f2", e.getMessage());
-//                        }
-//
-//                        @Override
-//                        public void onResponse(Call call, Response response) throws IOException, JSONException {
-//                            Log.v("r2", response.body().string());
-//                        }
-//                    });
+                    myRequest.PostCall("https://mustafa.smmim.com/waell/public/api/updateProfile", stringMap, new OkHttpCallback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            Log.v("f2", e.getMessage());
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException, JSONException {
+                            Log.v("r2", response.body().string());
+                        }
+                    });
                 }
 
             }
@@ -330,6 +338,8 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.v("eeeeeeeeee", e.getMessage());
+                Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+
             }
 
             @Override
