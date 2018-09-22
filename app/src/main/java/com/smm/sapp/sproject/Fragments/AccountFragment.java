@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
@@ -44,6 +45,7 @@ public class AccountFragment extends Fragment {
     RatingBar ratingBar;
 
     String name, title;
+    String s_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6Ly9zbW0uc21taW0uY29tL3dhZWxsL3B1YmxpYy9hcGkvTG9naW4iLCJpYXQiOjE1Mzc2MTI1MzEsImV4cCI6NDgwODE3NjA0NTkzMzMzNzMzMSwibmJmIjoxNTM3NjEyNTMxLCJqdGkiOiJjYVZDSHRmUW9WOVhsalBwIn0.3f7a7F9sDyow1ZV90dec235qiXQNiUcKwU71LCMvF3k";
 
     public AccountFragment() {
     }
@@ -144,12 +146,20 @@ public class AccountFragment extends Fragment {
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
         Map<String, String> stringMap = new HashMap<>();
-        stringMap.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM3MDQzNjEzLCJleHAiOjQ4MDgxNzYwNDU5MzI3Njg0MTMsIm5iZiI6MTUzNzA0MzYxMywianRpIjoiNXdSR0t3RXZnVUhNNFRadyJ9.cA0Xkr3RaQjEFQK7e48DyLGWYrMVwKWkfvelnIs_aM8");
+        stringMap.put("token", s_token);
         myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/myprofile", stringMap, new OkHttpCallback() {
             @Override
-            public void onFailure(Call call, IOException e) {
+            public void onFailure(Call call, final IOException e) {
                 MyProgressDialog.dismissDialog();
-                Log.e("tag", e.getMessage());
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
+
+                    }
+                });
+
             }
 
             @Override
@@ -162,23 +172,31 @@ public class AccountFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        tv_name.setText(userModel.getName());
 
-                        if (userModel.getJob_type().equals("arch")) {
-                            tv_title.setText("تصميم معماري");
-                        } else if (userModel.getJob_type().equals("graphic")) {
-                            tv_title.setText("تصميم جرافيكس");
-                        } else if (userModel.getJob_type().equals("inter")) {
-                            tv_title.setText("تصميم داخلي");
-                        } else if (userModel.getJob_type().equals("moshen")) {
-                            tv_title.setText("تصاميم موشن");
-                        } else if (userModel.getJob_type().equals("wall")) {
-                            tv_title.setText("الرسم الجداري");
+                        if (userModel.getType().equals("worker")) {
+                            tv_name.setText(userModel.getName());
+                            if (userModel.getJob_type().equals("arch")) {
+                                tv_title.setText("تصميم معماري");
+                            } else if (userModel.getJob_type().equals("graphic")) {
+                                tv_title.setText("تصميم جرافيكس");
+                            } else if (userModel.getJob_type().equals("inter")) {
+                                tv_title.setText("تصميم داخلي");
+                            } else if (userModel.getJob_type().equals("moshen")) {
+                                tv_title.setText("تصاميم موشن");
+                            } else if (userModel.getJob_type().equals("wall")) {
+                                tv_title.setText("الرسم الجداري");
+                            }
+                            //ratingBar.setRating(Float.valueOf(userModel.getRate()));
+
+
+                        } else if (userModel.getType().equals("client")) {
+
+                            tv_name.setText(userModel.getName());
+                            tv_title.setText("صاحب مشاريع");
+                            ratingBar.setRating(Float.valueOf(userModel.getRate()));
+
                         }
 
-                        Log.e("rate", userModel.getRate());
-
-                        ratingBar.setRating(Float.valueOf(userModel.getRate()));
                     }
                 });
             }

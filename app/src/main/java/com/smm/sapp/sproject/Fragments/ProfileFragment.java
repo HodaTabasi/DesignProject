@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
@@ -47,6 +48,7 @@ public class ProfileFragment extends Fragment {
     DatePickerDialog.OnDateSetListener date;
     String st_type, st_job_type, st_busniess_type, st_name, st_bio, mobile, st_email, gender, st_dob;
     int position;
+    String s_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6Ly9zbW0uc21taW0uY29tL3dhZWxsL3B1YmxpYy9hcGkvTG9naW4iLCJpYXQiOjE1Mzc2MTI1MzEsImV4cCI6NDgwODE3NjA0NTkzMzMzNzMzMSwibmJmIjoxNTM3NjEyNTMxLCJqdGkiOiJjYVZDSHRmUW9WOVhsalBwIn0.3f7a7F9sDyow1ZV90dec235qiXQNiUcKwU71LCMvF3k";
 
     public ProfileFragment() {
     }
@@ -233,15 +235,13 @@ public class ProfileFragment extends Fragment {
             public void onClick(View view) {
 
                 st_mobile = et_mobile2.getText().toString() + et_mobile1.getText().toString();
-                Log.e("ttt", type);
+
                 MyRequest myRequest = new MyRequest();
                 Map<String, String> stringMap = new HashMap<>();
 
-
                 if (type.equals("worker")) {
                     Log.e("yes", "yes");
-                    stringMap.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2ODUxOTA0LCJleHAiOjQ4MDgxNzYwNDU5MzI1NzY3" +
-                            "MDQsIm5iZiI6MTUzNjg1MTkwNCwianRpIjoiWWFsQUt0cmxDOFFhc3MxNiJ9.ti8XrIO453w789YLVLu-EqVmZZm3GXVC6O9KNwloSsI");
+                    stringMap.put("token", s_token);
                     stringMap.put("name", et_name.getText().toString());
                     stringMap.put("email", et_email.getText().toString());
                     stringMap.put("gender", st_gender);
@@ -252,9 +252,6 @@ public class ProfileFragment extends Fragment {
                     stringMap.put("phone", st_mobile);
                     stringMap.put("type", type);
 
-                    for (Map.Entry<String, String> entry : stringMap.entrySet()) {
-                        Log.e(entry.getKey() + " ff",entry.getValue() + " 11");
-                    }
 
                     myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/updateProfile", stringMap, new OkHttpCallback() {
                         @Override
@@ -266,15 +263,19 @@ public class ProfileFragment extends Fragment {
                         @Override
                         public void onResponse(Call call, Response response) throws IOException, JSONException {
 
-                            Log.e("r1", response.body().string() +" d");
+                            Log.e("r1", response.body().string() + " d");
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(getContext(), "تم حفظ التعديلات", Toast.LENGTH_SHORT).show();
+                                }
+                            });
 
                         }
                     });
 
-                } else {
-
-                    stringMap.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM2ODUxOTA0LCJleHAiOjQ4MDgxNzYwNDU5MzI1NzY3MDQsIm5iZiI6MTUzNjg1MTkwNCwian" +
-                            "RpIjoiWWFsQUt0cmxDOFFhc3MxNiJ9.ti8XrIO453w789YLVLu-EqVmZZm3GXVC6O9KNwloSsI");
+                } else if (type.equals("client")) {
+                    stringMap.put("token", s_token);
                     stringMap.put("name", et_name.getText().toString());
                     stringMap.put("email", et_email.getText().toString());
                     stringMap.put("gender", st_gender);
@@ -282,17 +283,17 @@ public class ProfileFragment extends Fragment {
                     stringMap.put("phone", st_mobile);
                     stringMap.put("type", type);
 
-//                    myRequest.PostCall("https://mustafa.smmim.com/waell/public/api/updateProfile", stringMap, new OkHttpCallback() {
-//                        @Override
-//                        public void onFailure(Call call, IOException e) {
-//                            Log.v("f2", e.getMessage());
-//                        }
-//
-//                        @Override
-//                        public void onResponse(Call call, Response response) throws IOException, JSONException {
-//                            Log.v("r2", response.body().string());
-//                        }
-//                    });
+                    myRequest.PostCall("https://mustafa.smmim.com/waell/public/api/updateProfile", stringMap, new OkHttpCallback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            Log.v("f2", e.getMessage());
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException, JSONException {
+                            Log.v("r2", response.body().string());
+                        }
+                    });
                 }
 
             }
@@ -326,11 +327,13 @@ public class ProfileFragment extends Fragment {
     private void getProfileData() {
         MyRequest myRequest = new MyRequest();
         Map<String, String> map = new HashMap<>();
-        map.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9tdXN0YWZhLnNtbWltLmNvbS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM3MDQzNjEzLCJleHAiOjQ4MDgxNzYwNDU5MzI3Njg0MTMsIm5iZiI6MTUzNzA0MzYxMywianRpIjoiNXdSR0t3RXZnVUhNNFRadyJ9.cA0Xkr3RaQjEFQK7e48DyLGWYrMVwKWkfvelnIs_aM8");
+        map.put("token", s_token);
         myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/myprofile", map, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.v("eeeeeeeeee", e.getMessage());
+                Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+
             }
 
             @Override
