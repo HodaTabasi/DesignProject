@@ -62,7 +62,6 @@ public class MainFragment extends Fragment {
             _specialization.setText("صاحب مشاريع");
         }
 
-
         img_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
