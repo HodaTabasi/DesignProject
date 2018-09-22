@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.bigbangbutton.editcodeview.EditCodeView;
 import com.google.gson.Gson;
 import com.smm.sapp.sproject.Activities.ContainerActivity;
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.Models.User;
@@ -52,9 +53,7 @@ public class ConfirmationFragment extends Fragment {
         tv_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), ContainerActivity.class);
-                startActivity(intent);
-                getActivity().finish();
+                getPhoneVerifyRequest();
             }
         });
 
@@ -100,13 +99,11 @@ public class ConfirmationFragment extends Fragment {
                     public void run() {
                         try {
                             if (object.getBoolean("success")){
-                                User user = gson.fromJson(jsonObject.getJSONObject("user").toString(),User.class);
-                                ConfirmationFragment fragment = new ConfirmationFragment();
-                                Bundle bundle = new Bundle();
-                                bundle.putString("phone",user.getPhone());
-                                bundle.putString("verify",user.getVerify());
-                                fragment.setArguments(bundle);
-                                FragmentsUtil.replaceFragment(getActivity(), R.id.register_container, fragment,true);
+                                ConstantInterFace.USER  = gson.fromJson(jsonObject.getJSONObject("user").toString(),User.class);
+                                Log.e("ff",ConstantInterFace.USER.getToken());
+                                Intent intent = new Intent(getActivity(), ContainerActivity.class);
+                                startActivity(intent);
+                                getActivity().finish();
                             }else {
                                 Toast.makeText(getActivity(), "لم يتم الارسال بشكل صحيح", Toast.LENGTH_SHORT).show();
                             }
