@@ -126,6 +126,7 @@ public class MessageDitailsFragment extends Fragment implements View.OnClickList
 
         ic_back = getView().findViewById(R.id.ic_back);
 
+
         ic_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
