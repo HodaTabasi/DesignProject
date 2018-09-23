@@ -30,6 +30,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import me.anwarshahriar.calligrapher.Calligrapher;
 import okhttp3.Call;
 import okhttp3.Response;
 
@@ -106,6 +107,8 @@ public class MyMessageFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        Calligrapher calligrapher = new Calligrapher(getContext());
+        calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView(getView());
         getMyConversationsRequest();
 

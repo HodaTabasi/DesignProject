@@ -7,12 +7,47 @@
     android:background="@drawable/white_shap"
     tools:context=".Fragments.MessageDitailsFragment">
 
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="#09102D" />
+
+        <TextView
+            android:id="@+id/tv_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/ic_msgs"
+            android:drawableTint="@color/white"
+            android:gravity="center"
+            android:text="الرسائل"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/ic_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/ic_arrow" />
+    </RelativeLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/message_details"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/ff"
-        android:layout_alignParentTop="true"/>
+        android:layout_below="@+id/toolbar" />
 
     <LinearLayout
         android:id="@+id/ff"
@@ -34,7 +69,9 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="4"
-            android:background="@drawable/ligtht_gray_shap" />
+            android:background="@drawable/ligtht_gray_shap"
+            android:padding="5dp"
+            android:textSize="12sp" />
 
         <ImageView
             android:id="@+id/send_messg"
