@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/square_shape"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:gravity="right"
+    android:textDirection="ltr">
+
+    <TextView
+        android:id="@+id/new_project"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="5dp"
+        android:drawableRight="@drawable/ic_add_menu"
+        android:text="أضف مشروع مماثل"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/add_fav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="5dp"
+        android:drawableRight="@drawable/ic_favorite"
+        android:text="أضف الى المفضلة"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="5dp"
+        android:drawableRight="@drawable/ic_flag"
+        android:text="تبليغ عن محتوى"
+        android:textSize="12sp" />
+
+</LinearLayout>

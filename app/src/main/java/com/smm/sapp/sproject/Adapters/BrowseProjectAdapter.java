@@ -1,9 +1,12 @@
 package com.smm.sapp.sproject.Adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.view.menu.MenuBuilder;
+import android.support.v7.view.menu.MenuPopupHelper;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.smm.sapp.sproject.ConstantInterFace;
@@ -26,6 +32,7 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
 
     private Context context;
     private List<ProjectsModels> projectsList;
+    PopupWindow mypopupWindow;
 
     public BrowseProjectAdapter(Context context, List<ProjectsModels> projectsList) {
         this.context = context;
@@ -43,7 +50,7 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
     public void onBindViewHolder(@NonNull final BrowseProjectHolder holder, final int position) {
         holder.tv_description.setText(projectsList.get(position).getName());
         holder.tv_name.setText(projectsList.get(position).getUser().getName());
-        holder.tv_proposals.setText(projectsList.get(position).getOffers().size() + " ");
+        holder.tv_proposals.setText(projectsList.get(position).getOffers().size() + " عرض ");
 //        holder.tv_time.setText();
 
         if (!ConstantInterFace.IS_REGISTER) {
@@ -57,49 +64,77 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
                     FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment);
                 }
             });
-            holder.img_arrow.setOnClickListener(new View.OnClickListener() {
+            holder.linear_setting.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPopUpMenu(holder.img_arrow);
-                }
-            });
-            holder.img_setting.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    showPopUpMenu(holder.img_setting);
+                    showPopUpMenu(v);
                 }
             });
         }
+
+        //to test if we in the last item in list
+        if (position == projectsList.size() - 1) {
+            holder.view.setVisibility(View.GONE);
+
+        }
+
+
+
     }
 
-    private void showPopUpMenu(ImageView img) {
-        PopupMenu popup = new PopupMenu(context, img);
-        popup.inflate(R.menu.custom_menu);
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.new_one:
-                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AddProjectFragment(),true);
-                        ConstantInterFace.tv_home.setBackgroundResource(0);
-                        ConstantInterFace.tv_msgs.setBackgroundResource(0);
-                        ConstantInterFace.tv_profile.setBackgroundResource(0);
-                        ConstantInterFace.tv_projects.setBackgroundResource(0);
-                        ConstantInterFace.tv_portfolio.setBackgroundResource(0);
-                        return true;
-                    case R.id.new_fav:
+    @SuppressLint("RestrictedApi")
+    private void showPopUpMenu(View v) {
 
-                        return true;
-                    case R.id.report:
-                        return true;
-                }
-                return false;
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.popup_menu, null);
+
+        TextView new_project = view.findViewById(R.id.new_project);
+        TextView add_fav = view.findViewById(R.id.add_fav);
+        TextView report = view.findViewById(R.id.report);
+
+        mypopupWindow = new PopupWindow(view, RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT, true);
+        mypopupWindow.showAsDropDown(v);
+
+        new_project.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mypopupWindow.dismiss();
+                FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AddProjectFragment(), true);
+                ConstantInterFace.tv_home.setBackgroundResource(0);
+                ConstantInterFace.tv_msgs.setBackgroundResource(0);
+                ConstantInterFace.tv_profile.setBackgroundResource(0);
+                ConstantInterFace.tv_projects.setBackgroundResource(0);
+                ConstantInterFace.tv_portfolio.setBackgroundResource(0);
             }
         });
 
-        popup.show();
+        add_fav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mypopupWindow.dismiss();
+//                FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AddProjectFragment(), true);
+//                ConstantInterFace.tv_home.setBackgroundResource(0);
+//                ConstantInterFace.tv_msgs.setBackgroundResource(0);
+//                ConstantInterFace.tv_profile.setBackgroundResource(0);
+//                ConstantInterFace.tv_projects.setBackgroundResource(0);
+//                ConstantInterFace.tv_portfolio.setBackgroundResource(0);
+            }
+        });
+
+        report.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mypopupWindow.dismiss();
+//                FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AddProjectFragment(), true);
+//                ConstantInterFace.tv_home.setBackgroundResource(0);
+//                ConstantInterFace.tv_msgs.setBackgroundResource(0);
+//                ConstantInterFace.tv_profile.setBackgroundResource(0);
+//                ConstantInterFace.tv_projects.setBackgroundResource(0);
+//                ConstantInterFace.tv_portfolio.setBackgroundResource(0);
+            }
+        });
     }
-//
+
     @Override
     public int getItemCount() {
         return projectsList.size();
@@ -109,6 +144,8 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
 
         TextView tv_description, tv_proposals, tv_time, tv_name;
         ImageView img_arrow, img_setting;
+        LinearLayout linear_setting;
+        View view;
 
 
         public BrowseProjectHolder(View itemView) {
@@ -120,6 +157,8 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
             tv_name = itemView.findViewById(R.id.tv_name);
             img_arrow = itemView.findViewById(R.id.img_arrow);
             img_setting = itemView.findViewById(R.id.img_setting);
+            linear_setting = itemView.findViewById(R.id.linear_setting);
+            view = itemView.findViewById(R.id.projects_view);
 
         }
     }
