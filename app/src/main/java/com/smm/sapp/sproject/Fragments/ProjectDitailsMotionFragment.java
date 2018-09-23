@@ -47,6 +47,7 @@ public class ProjectDitailsMotionFragment extends Fragment {
     ImageView ic_back;
     public ProjectDitailsMotionFragment() {
 
+
     }
 
 
