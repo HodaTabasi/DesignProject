@@ -37,9 +37,9 @@
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="حسام اليماني"
+            android:text="الاسم"
             android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tv_specialization"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_name"
             android:layout_centerHorizontal="true"
-            android:text="مصمم معماري"
+            android:text="التخصص"
             android:textColor="@color/white"
             android:textSize="12sp" />
     </LinearLayout>
@@ -56,16 +56,16 @@
         android:id="@+id/profile_frame_layout"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginRight="-10dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginRight="-12dp"
+        android:layout_marginTop="13dp"
         android:layout_toLeftOf="@+id/img_power">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_user"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_gravity="bottom|center_horizontal"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@drawable/img_user" />
 
         <ImageView
             android:layout_width="wrap_content"

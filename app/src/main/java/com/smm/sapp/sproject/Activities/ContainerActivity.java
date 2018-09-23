@@ -41,7 +41,8 @@ public class ContainerActivity extends AppCompatActivity {
         final TextView tv_portfolio = findViewById(R.id.tv_portfolio);
         final TextView tv_profile = findViewById(R.id.tv_profile);
 
-        if (!ConstantInterFace.IS_REGISTER){
+        if (!ConstantInterFace.IS_REGISTER) {
+
             tv_msgs.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -119,7 +120,6 @@ public class ContainerActivity extends AppCompatActivity {
 
             }
         });
-
 
 
     }

@@ -1,8 +1,10 @@
 package com.smm.sapp.sproject.Fragments;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.smm.sapp.sproject.Activities.ContainerActivity;
+import com.smm.sapp.sproject.Activities.RegistrationActivity;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.MyRequest;
@@ -31,17 +34,18 @@ import okhttp3.Call;
 import okhttp3.Response;
 
 public class MainFragment extends Fragment {
-    CircleImageView img_user ;
-    TextView _name ;
-    TextView _specialization ;
-    TextView tv_portfolio ;
-    TextView tv_budget ;
+    CircleImageView img_user;
+    TextView _name;
+    TextView _specialization;
+    TextView tv_portfolio;
+    TextView tv_budget;
     TextView tv_addProject;
     TextView tv_proposals;
-    TextView tv_about ;
-    TextView tv_search ;
-    ImageView img_power ;
+    TextView tv_about;
+    TextView tv_search;
+    ImageView img_power;
     ImageView img_notification;
+
     public MainFragment() {
     }
 
@@ -52,26 +56,36 @@ public class MainFragment extends Fragment {
         return view;
     }
 
-    private void init(View view){
-         img_user = view.findViewById(R.id.img_user);
-         _name = view.findViewById(R.id.tv_name);
-         _specialization = view.findViewById(R.id.tv_specialization);
-         tv_portfolio = view.findViewById(R.id.tv_portfolio_main);
-         tv_budget = view.findViewById(R.id.tv_budget);
-         tv_addProject = view.findViewById(R.id.tv_addProject);
-         tv_proposals = view.findViewById(R.id.tv_proposals);
-         tv_about = view.findViewById(R.id.tv_about);
-         tv_search = view.findViewById(R.id.tv_search);
-         img_power = view.findViewById(R.id.img_power);
-         img_notification = view.findViewById(R.id.img_notification);
+    private void init(View view) {
+        img_user = view.findViewById(R.id.img_user);
+        _name = view.findViewById(R.id.tv_name);
+        _specialization = view.findViewById(R.id.tv_specialization);
+        tv_portfolio = view.findViewById(R.id.tv_portfolio_main);
+        tv_budget = view.findViewById(R.id.tv_budget);
+        tv_addProject = view.findViewById(R.id.tv_addProject);
+        tv_proposals = view.findViewById(R.id.tv_proposals);
+        tv_about = view.findViewById(R.id.tv_about);
+        tv_search = view.findViewById(R.id.tv_search);
+        img_power = view.findViewById(R.id.img_power);
+        img_notification = view.findViewById(R.id.img_notification);
     }
 
-    private void onClickMethod(){
+    private void onClickMethod() {
         _name.setText(ConstantInterFace.USER.getName());
         Picasso.get().load(ConstantInterFace.USER.getPhoto_link()).into(img_user);
 
         if (ConstantInterFace.USER.getType().equals("worker")) {
-            _specialization.setText(ConstantInterFace.USER.getJob_type());
+            if (ConstantInterFace.USER.getJob_type().equals("arch")) {
+                _specialization.setText("مصمم معماري");
+            } else if (ConstantInterFace.USER.getJob_type().equals("wall")) {
+                _specialization.setText("مصمم جداري");
+            } else if (ConstantInterFace.USER.getJob_type().equals("graphic")) {
+                _specialization.setText("مصمم جرافكس");
+            } else if (ConstantInterFace.USER.getJob_type().equals("inter")) {
+                _specialization.setText("مصمم داخلي");
+            } else if (ConstantInterFace.USER.getJob_type().equals("moshen")) {
+                _specialization.setText("مصمم موشن");
+            }
         } else {
             _specialization.setText("صاحب مشاريع");
         }
@@ -165,8 +179,30 @@ public class MainFragment extends Fragment {
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
 
         init(getView());
-        if (!ConstantInterFace.IS_REGISTER){
+
+        //registered user
+        if (!ConstantInterFace.IS_REGISTER) {
             onClickMethod();
+        }
+        //unregistered user
+        else {
+
+            _name.setText("");
+            _specialization.setText("");
+
+            Snackbar snackbar = Snackbar
+                    .make(getView(), "أنت غير مسجل في صمم!", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("تسجيل", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(getActivity(), RegistrationActivity.class);
+                            startActivity(intent);
+                            getActivity().finish();
+                        }
+                    });
+
+            snackbar.show();
+
         }
 //        else {
 //            new AlertDialog.Builder(getActivity())
@@ -187,5 +223,6 @@ public class MainFragment extends Fragment {
 
             }
         });
+
     }
 }

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.R;
 
@@ -60,6 +61,7 @@ public class MyAccountFragment extends Fragment implements View.OnClickListener 
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
         addListeners();
+
     }
 
     @Override

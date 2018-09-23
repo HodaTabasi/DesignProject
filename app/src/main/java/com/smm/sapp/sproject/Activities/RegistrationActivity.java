@@ -1,5 +1,7 @@
 package com.smm.sapp.sproject.Activities;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -16,7 +18,7 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        FragmentsUtil.addFragment(RegistrationActivity.this, R.id.register_container, new RegisterFragment());
+        FragmentsUtil.addFragment(RegistrationActivity.this, R.id.register_container, new RegisterFragment(), false);
         Calligrapher calligrapher = new Calligrapher(this);
         calligrapher.setFont(this, "JFFlatregular.ttf", true);
     }
