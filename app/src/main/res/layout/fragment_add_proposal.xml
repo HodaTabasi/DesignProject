@@ -54,6 +54,7 @@
         android:textColor="@color/blue"
         android:textSize="14sp" />
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,246 +62,260 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/report_layout_shap"
-        android:gravity="center_horizontal"
         android:orientation="vertical"
         android:padding="5dp">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:orientation="horizontal"
-            android:padding="5dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/half_square_corner_shape"
-                    android:padding="5dp"
-                    android:text="مستحقاتك"
-                    android:textColor="@color/gray1"
-                    android:textSize="12sp" />
-
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/half_square_corner_shape"
-                    android:gravity="left"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:text="ريال"
-                        android:textSize="12sp"
-                        android:textColor="@color/gray1"/>
-
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/gray"/>
-
-                    <EditText
-                        android:id="@+id/receivable_p"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:gravity="center_horizontal"
-                        android:padding="5dp"
-                        android:text="يوم"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="بعد خصمم نسبة المصمم"
-                    android:textColor="@color/gray1"
-                    android:textSize="10sp" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/half_square_corner_shape"
-                    android:padding="5dp"
-                    android:text="قيمة العرض"
-                    android:textColor="@color/gray1"
-                    android:textSize="12sp" />
-
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/half_square_corner_shape"
-                    android:gravity="left"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:text="ريال"
-                        android:textColor="@color/gray1"
-                        android:textSize="12sp" />
-
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent" />
-
-                    <EditText
-                        android:id="@+id/balance_p"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:gravity="center_horizontal"
-                        android:padding="5dp"
-                        android:text="500"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/half_square_corner_shape"
-                    android:padding="5dp"
-                    android:text="مدة التسليم"
-                    android:textColor="@color/gray1"
-                    android:textSize="12sp" />
-
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/half_square_corner_shape"
-                    android:gravity="left"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:text="ريال"
-                        android:textColor="@color/gray1"
-                        android:textSize="12sp" />
-
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent" />
-
-                    <EditText
-                        android:id="@+id/dur_p"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:gravity="center_horizontal"
-                        android:padding="5dp"
-                        android:text="30"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/gray1"
-            android:textSize="10sp"
-            android:text="تفاصيل العرض" />
-
-        <EditText
-            android:id="@+id/proposal_p"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/square_shape"
-            android:gravity="right"
-            android:hint="مممممم"
-            android:text="vkdjps pojfd [few[ [fkew"
-            android:padding="5dp"
-            android:textColor="@color/gray"
-            android:textColorHint="@color/gray"
-            android:textSize="12sp"/>
+            android:layout_height="wrap_content">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginRight="10dp">
-
-            <TextView
-                android:id="@+id/tv1"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/gray1"
-                android:text="يمنع استخدام وسائل تواصل خارجية"
-                android:textSize="10sp" />
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv1"
-                android:textColor="@color/gray1"
-                android:text="سيتم وضع معرض اعمالك مع العرض"
-                android:textSize="10sp" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
 
-            <TextView
-                android:id="@+id/attch_p"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv2"
-                android:background="@drawable/report_layout_shap"
-                android:gravity="center_horizontal"
-                android:padding="3dp"
-                android:textSize="14sp"
-                android:textColor="@color/gray1"
-                android:text="ارفق ملف" />
-        </RelativeLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/add_proposal_p"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/dark_blue_shap"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="اضف عرضك"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/half_square_corner_shape"
+                            android:padding="5dp"
+                            android:text="مستحقاتك"
+                            android:textColor="@color/gray1"
+                            android:textSize="12sp" />
+
+                        <LinearLayout
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/half_square_corner_shape"
+                            android:gravity="left"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="5dp"
+                                android:text="ريال"
+                                android:textColor="@color/gray1"
+                                android:textSize="12sp" />
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/gray" />
+
+                            <EditText
+                                android:id="@+id/receivable_p"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@null"
+                                android:gravity="center_horizontal"
+                                android:padding="5dp"
+                                android:text="يوم"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="بعد خصمم نسبة المصمم"
+                            android:textColor="@color/gray1"
+                            android:textSize="8sp" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/half_square_corner_shape"
+                            android:padding="5dp"
+                            android:text="قيمة العرض"
+                            android:textColor="@color/gray1"
+                            android:textSize="12sp" />
+
+                        <LinearLayout
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/half_square_corner_shape"
+                            android:gravity="left"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="5dp"
+                                android:text="ريال"
+                                android:textColor="@color/gray1"
+                                android:textSize="12sp" />
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/gray" />
+
+                            <EditText
+                                android:id="@+id/balance_p"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@null"
+                                android:gravity="center_horizontal"
+                                android:padding="5dp"
+                                android:text="500"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/half_square_corner_shape"
+                            android:padding="5dp"
+                            android:text="مدة التسليم"
+                            android:textColor="@color/gray1"
+                            android:textSize="12sp" />
+
+                        <LinearLayout
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/half_square_corner_shape"
+                            android:gravity="left"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="5dp"
+                                android:text="ريال"
+                                android:textColor="@color/gray1"
+                                android:textSize="12sp" />
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/gray" />
+
+                            <EditText
+                                android:id="@+id/dur_p"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@null"
+                                android:gravity="center_horizontal"
+                                android:padding="5dp"
+                                android:text="30"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="تفاصيل العرض"
+                    android:textColor="@color/gray1"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/proposal_p"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/square_shape"
+                    android:gravity="right"
+                    android:hint="مممممم"
+                    android:padding="5dp"
+                    android:text="vkdjps pojfd [few[ [fkew"
+                    android:textColor="@color/gray"
+                    android:textColorHint="@color/gray"
+                    android:textSize="12sp" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="10dp">
+
+                    <TextView
+                        android:id="@+id/tv1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="يمنع استخدام وسائل تواصل خارجية"
+                        android:textColor="@color/gray1"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/tv2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv1"
+                        android:text="سيتم وضع معرض اعمالك مع العرض"
+                        android:textColor="@color/gray1"
+                        android:textSize="10sp" />
+
+                    <TextView
+
+                        android:id="@+id/attch_p"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv2"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/report_layout_shap"
+                        android:gravity="center_horizontal"
+                        android:padding="3dp"
+                        android:text="ارفق ملف"
+                        android:textColor="@color/gray1"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/add_proposal_p"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/dark_blue_shap"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="اضف عرضك"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
-
-
 </LinearLayout>

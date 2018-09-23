@@ -37,38 +37,13 @@ import okhttp3.Response;
 
 public class AddProposalFragment extends Fragment {
 
-
-    /**
-     * يوم
-     */
     private EditText mReceivableP;
-    /**
-     * يوم
-     */
     private EditText mBalanceP;
-    /**
-     * يوم
-     */
     private EditText mDurP;
-    /**
-     * مممممم
-     */
     private EditText mProposalP;
-    /**
-     * يمنع استخدام وسائل تواصل خارجية
-     */
     private TextView mTv1;
-    /**
-     * سيتم وضع معرض اعمالك مع العرض
-     */
     private TextView mTv2;
-    /**
-     * ارفق ملف
-     */
     private TextView mAttchP;
-    /**
-     * اضف عرضك
-     */
     private TextView mAddProposalP;
     private String filePath;
     private byte[] b;
