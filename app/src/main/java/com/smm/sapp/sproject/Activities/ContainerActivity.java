@@ -1,15 +1,19 @@
 package com.smm.sapp.sproject.Activities;
 
+import android.content.DialogInterface;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.Fragments.AccountFragment;
 import com.smm.sapp.sproject.Fragments.AddNewWork2Fragment;
 import com.smm.sapp.sproject.Fragments.BrowseProjectsFragment;
 import com.smm.sapp.sproject.Fragments.MainFragment;
+import com.smm.sapp.sproject.Fragments.RegisterFragment;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.Fragments.MyMessageFragment;
 import com.smm.sapp.sproject.R;
@@ -37,18 +41,59 @@ public class ContainerActivity extends AppCompatActivity {
         final TextView tv_portfolio = findViewById(R.id.tv_portfolio);
         final TextView tv_profile = findViewById(R.id.tv_profile);
 
+        if (!ConstantInterFace.IS_REGISTER){
+            tv_msgs.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new MyMessageFragment(), true);
+                    tv_msgs.setBackground(getResources().getDrawable(R.drawable.main_shape));
+                    tv_projects.setBackgroundResource(0);
+                    tv_home.setBackgroundResource(0);
+                    tv_portfolio.setBackgroundResource(0);
+                    tv_profile.setBackgroundResource(0);
+                }
+            });
 
-        tv_msgs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new MyMessageFragment(), true);
-                tv_msgs.setBackground(getResources().getDrawable(R.drawable.main_shape));
-                tv_projects.setBackgroundResource(0);
-                tv_home.setBackgroundResource(0);
-                tv_portfolio.setBackgroundResource(0);
-                tv_profile.setBackgroundResource(0);
-            }
-        });
+            tv_portfolio.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new AddNewWork2Fragment(), true);
+                    tv_portfolio.setBackground(getResources().getDrawable(R.drawable.main_shape));
+                    tv_msgs.setBackgroundResource(0);
+                    tv_projects.setBackgroundResource(0);
+                    tv_home.setBackgroundResource(0);
+                    tv_profile.setBackgroundResource(0);
+
+
+                }
+            });
+
+            tv_profile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new AccountFragment(), true);
+                    tv_profile.setBackground(getResources().getDrawable(R.drawable.main_shape));
+                    tv_msgs.setBackgroundResource(0);
+                    tv_projects.setBackgroundResource(0);
+                    tv_home.setBackgroundResource(0);
+                    tv_portfolio.setBackgroundResource(0);
+
+                }
+            });
+
+
+        }
+//        else {
+//            new AlertDialog.Builder(this)
+//                    .setMessage("انت غير مسجل هل تريد تسجيل الدخول ؟").setCancelable(false)
+//                    .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int id) {
+//                           FragmentsUtil.replaceFragment(ContainerActivity.this,R.id.container_activity,new  RegisterFragment());
+//                        }
+//                    })
+//                    .setNegativeButton("لا", null)
+//                    .show();
+//        }
 
         tv_projects.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,32 +120,7 @@ public class ContainerActivity extends AppCompatActivity {
             }
         });
 
-        tv_portfolio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new AddNewWork2Fragment(), true);
-                tv_portfolio.setBackground(getResources().getDrawable(R.drawable.main_shape));
-                tv_msgs.setBackgroundResource(0);
-                tv_projects.setBackgroundResource(0);
-                tv_home.setBackgroundResource(0);
-                tv_profile.setBackgroundResource(0);
 
-
-            }
-        });
-
-        tv_profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new AccountFragment(), true);
-                tv_profile.setBackground(getResources().getDrawable(R.drawable.main_shape));
-                tv_msgs.setBackgroundResource(0);
-                tv_projects.setBackgroundResource(0);
-                tv_home.setBackgroundResource(0);
-                tv_portfolio.setBackgroundResource(0);
-
-            }
-        });
 
     }
 }

@@ -23,9 +23,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.android.gms.maps.SupportMapFragment;
+//import com.google.android.gms.common.ConnectionResult;
+//import com.google.android.gms.common.GoogleApiAvailability;
+//import com.google.android.gms.maps.SupportMapFragment;
 import com.smm.sapp.sproject.Activities.MapActivity;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.MyRequest;
@@ -80,9 +80,9 @@ public class ProjectDetailsArchFragment extends Fragment {
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
 
-        if (isServicesOk()) {
-            initView();
-        }
+//        if (isServicesOk()) {
+//            initView();
+//        }
 
         mSendIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,21 +117,21 @@ public class ProjectDetailsArchFragment extends Fragment {
 
     }
 
-    public boolean isServicesOk() {
-        int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(getActivity());
-        if (available == ConnectionResult.SUCCESS) {
-            //every thing is fine and the user can make map request
-            return true;
-
-        } else if (GoogleApiAvailability.getInstance().isUserResolvableError(available)) {
-            //error occur but we can resolve it
-            Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(getActivity(), available, ERROR_DIALOG_REQUEST);
-            dialog.show();
-        } else {
-            Toast.makeText(getActivity(), "you can't make map request", Toast.LENGTH_SHORT).show();
-        }
-        return false;
-    }
+//    public boolean isServicesOk() {
+//        int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(getActivity());
+//        if (available == ConnectionResult.SUCCESS) {
+//            //every thing is fine and the user can make map request
+//            return true;
+//
+//        } else if (GoogleApiAvailability.getInstance().isUserResolvableError(available)) {
+//            //error occur but we can resolve it
+//            Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(getActivity(), available, ERROR_DIALOG_REQUEST);
+//            dialog.show();
+//        } else {
+//            Toast.makeText(getActivity(), "you can't make map request", Toast.LENGTH_SHORT).show();
+//        }
+//        return false;
+//    }
 
     private void sendArchDesignRequest() {
 

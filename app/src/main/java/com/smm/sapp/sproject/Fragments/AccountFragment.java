@@ -1,8 +1,10 @@
 package com.smm.sapp.sproject.Fragments;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,8 +50,6 @@ public class AccountFragment extends Fragment {
     LinearLayout linear_rate;
 
     String name, title;
-    String s_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6Ly9zbW0uc21taW0uY29tL3dhZWxsL3B1YmxpYy9hcGkvTG9naW4iLCJpYXQiOjE1Mzc2MTI1MzEsImV4cCI6NDgwODE3NjA0NTkzMzMzNzMzMSwibmJmIjoxNTM3NjEyNTMxLCJqdGkiOiJjYVZDSHRmUW9WOVhsalBwIn0.3f7a7F9sDyow1ZV90dec235qiXQNiUcKwU71LCMvF3k";
-
     public AccountFragment() {
     }
 
@@ -67,8 +67,22 @@ public class AccountFragment extends Fragment {
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
 
         init();
-        onClickMethod();
-        getProfileDataRequest();
+        if (!ConstantInterFace.IS_REGISTER){
+            onClickMethod();
+            getProfileDataRequest();
+        }
+//        else {
+//            new AlertDialog.Builder(getActivity())
+//                    .setMessage("انت غير مسجل هل تريد تسجيل الدخول ؟").setCancelable(false)
+//                    .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int id) {
+//                            FragmentsUtil.replaceFragment(getActivity(),R.id.container_activity,new  RegisterFragment());
+//                        }
+//                    })
+//                    .setNegativeButton("لا", null)
+//                    .show();
+//        }
+
     }
 
     private void init() {

@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.smm.sapp.sproject.Activities.ContainerActivity;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.MyRequest;
@@ -30,7 +31,17 @@ import okhttp3.Call;
 import okhttp3.Response;
 
 public class MainFragment extends Fragment {
-
+    CircleImageView img_user ;
+    TextView _name ;
+    TextView _specialization ;
+    TextView tv_portfolio ;
+    TextView tv_budget ;
+    TextView tv_addProject;
+    TextView tv_proposals;
+    TextView tv_about ;
+    TextView tv_search ;
+    ImageView img_power ;
+    ImageView img_notification;
     public MainFragment() {
     }
 
@@ -38,21 +49,24 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
+        return view;
+    }
 
+    private void init(View view){
+         img_user = view.findViewById(R.id.img_user);
+         _name = view.findViewById(R.id.tv_name);
+         _specialization = view.findViewById(R.id.tv_specialization);
+         tv_portfolio = view.findViewById(R.id.tv_portfolio_main);
+         tv_budget = view.findViewById(R.id.tv_budget);
+         tv_addProject = view.findViewById(R.id.tv_addProject);
+         tv_proposals = view.findViewById(R.id.tv_proposals);
+         tv_about = view.findViewById(R.id.tv_about);
+         tv_search = view.findViewById(R.id.tv_search);
+         img_power = view.findViewById(R.id.img_power);
+         img_notification = view.findViewById(R.id.img_notification);
+    }
 
-
-        CircleImageView img_user = view.findViewById(R.id.img_user);
-        TextView _name = view.findViewById(R.id.tv_name);
-        TextView _specialization = view.findViewById(R.id.tv_specialization);
-        TextView tv_portfolio = view.findViewById(R.id.tv_portfolio_main);
-        TextView tv_budget = view.findViewById(R.id.tv_budget);
-        TextView tv_addProject = view.findViewById(R.id.tv_addProject);
-        TextView tv_proposals = view.findViewById(R.id.tv_proposals);
-        TextView tv_about = view.findViewById(R.id.tv_about);
-        TextView tv_search = view.findViewById(R.id.tv_search);
-        ImageView img_power = view.findViewById(R.id.img_power);
-        ImageView img_notification = view.findViewById(R.id.img_notification);
-
+    private void onClickMethod(){
         _name.setText(ConstantInterFace.USER.getName());
         Picasso.get().load(ConstantInterFace.USER.getPhoto_link()).into(img_user);
 
@@ -108,13 +122,6 @@ public class MainFragment extends Fragment {
             }
         });
 
-        tv_about.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new SameemFragment(), true);
-
-            }
-        });
 
         tv_search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,8 +156,6 @@ public class MainFragment extends Fragment {
             }
         });
 
-
-        return view;
     }
 
     @Override
@@ -158,5 +163,29 @@ public class MainFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
+
+        init(getView());
+        if (!ConstantInterFace.IS_REGISTER){
+            onClickMethod();
+        }
+//        else {
+//            new AlertDialog.Builder(getActivity())
+//                    .setMessage("انت غير مسجل هل تريد تسجيل الدخول ؟").setCancelable(false)
+//                    .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int id) {
+//                            FragmentsUtil.replaceFragment(getActivity(),R.id.container_activity,new  RegisterFragment());
+//                        }
+//                    })
+//                    .setNegativeButton("لا", null)
+//                    .show();
+//        }
+
+        tv_about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new SameemFragment(), true);
+
+            }
+        });
     }
 }

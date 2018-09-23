@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.R;
 
 import me.anwarshahriar.calligrapher.Calligrapher;
@@ -35,6 +36,7 @@ public class SplashActivity extends AppCompatActivity {
         skip_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ConstantInterFace.IS_REGISTER = true;
                 Intent intent = new Intent(SplashActivity.this, ContainerActivity.class);
                 startActivity(intent);
                 finish();

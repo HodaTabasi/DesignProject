@@ -8,11 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
-import com.smm.sapp.sproject.MessageDitailsFragment;
+import com.smm.sapp.sproject.Fragments.MessageDitailsFragment;
 import com.smm.sapp.sproject.Models.MyMessageModel;
 import com.smm.sapp.sproject.R;
 import com.squareup.picasso.Picasso;

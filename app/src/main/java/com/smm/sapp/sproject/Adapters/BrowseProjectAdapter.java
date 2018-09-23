@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.Fragments.AddProjectFragment;
 import com.smm.sapp.sproject.Fragments.ViewProjectFragment;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
@@ -44,28 +45,31 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
         holder.tv_name.setText(projectsList.get(position).getUser().getName());
         holder.tv_proposals.setText(projectsList.get(position).getOffers().size() + " ");
 //        holder.tv_time.setText();
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ViewProjectFragment fragment = new ViewProjectFragment();
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("theProject",projectsList.get(position));
-                fragment.setArguments(bundle);
-                FragmentsUtil.replaceFragment((FragmentActivity) context,R.id.container_activity,fragment);
-            }
-        });
-        holder.img_arrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showPopUpMenu(holder.img_arrow);
-            }
-        });
-        holder.img_setting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showPopUpMenu(holder.img_setting);
-            }
-        });
+
+        if (!ConstantInterFace.IS_REGISTER){
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ViewProjectFragment fragment = new ViewProjectFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable("theProject",projectsList.get(position));
+                    fragment.setArguments(bundle);
+                    FragmentsUtil.replaceFragment((FragmentActivity) context,R.id.container_activity,fragment);
+                }
+            });
+            holder.img_arrow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showPopUpMenu(holder.img_arrow);
+                }
+            });
+            holder.img_setting.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showPopUpMenu(holder.img_setting);
+                }
+            });
+        }
     }
 
     private void showPopUpMenu(ImageView img) {

@@ -1,4 +1,4 @@
-package com.smm.sapp.sproject;
+package com.smm.sapp.sproject.Fragments;
 
 
 import android.os.Bundle;
@@ -19,8 +19,12 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.smm.sapp.sproject.Adapters.MyMessageAdapter;
 import com.smm.sapp.sproject.Adapters.MyMessageDetailAdapter;
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.Models.MessageDetails;
+import com.smm.sapp.sproject.MyRequest;
+import com.smm.sapp.sproject.OkHttpCallback;
+import com.smm.sapp.sproject.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -65,9 +69,9 @@ public class MessageDitailsFragment extends Fragment implements View.OnClickList
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
         Map<String,String> stringMap = new HashMap<>();
-        stringMap.put("token","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODU4NS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM0NzcwMTA0LCJleHAiOjIxNDc0ODM2NDcsIm5iZiI6MTUzNDc3MDEwNCwianRpIjoiRnByN1h6aEI3SWtHb0xpVyJ9.HC4LMZ1_wioWsUfEeKOUa2RlkTkBh98bHYbT-RYHy5o");
+        stringMap.put("token", ConstantInterFace.USER.getToken());
         stringMap.put("user_id",userId);
-        myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/getAconversation", stringMap, new OkHttpCallback() {
+        myRequest.PostCall("http://smm.smmim.com/waell/public/api/getAconversation", stringMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
@@ -136,10 +140,10 @@ public class MessageDitailsFragment extends Fragment implements View.OnClickList
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
         Map<String,String> stringMap = new HashMap<>();
-        stringMap.put("token","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODU4NS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM0NzcwMTA0LCJleHAiOjIxNDc0ODM2NDcsIm5iZiI6MTUzNDc3MDEwNCwianRpIjoiRnByN1h6aEI3SWtHb0xpVyJ9.HC4LMZ1_wioWsUfEeKOUa2RlkTkBh98bHYbT-RYHy5o");
+        stringMap.put("token",ConstantInterFace.USER.getToken());
         stringMap.put("msg",mMessageEx.getText().toString());
         stringMap.put("seconed_id",userId);
-        myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/sendmsg", stringMap, new OkHttpCallback() {
+        myRequest.PostCall("http://smm.smmim.com/waell/public/api/sendmsg", stringMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();

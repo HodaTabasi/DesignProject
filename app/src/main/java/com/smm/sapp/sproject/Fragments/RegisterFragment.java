@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.smm.sapp.sproject.Activities.ContainerActivity;
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.Models.User;
@@ -61,6 +62,7 @@ public class RegisterFragment extends Fragment {
         tv_skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ConstantInterFace.IS_REGISTER = true;
                 Intent intent = new Intent(getActivity(), ContainerActivity.class);
                 startActivity(intent);
                 getActivity().finish();

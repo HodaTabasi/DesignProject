@@ -57,7 +57,6 @@ public class ConfirmationFragment extends Fragment {
             }
         });
 
-
         return view;
     }
 
