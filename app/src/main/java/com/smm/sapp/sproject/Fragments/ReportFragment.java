@@ -42,17 +42,8 @@ import okhttp3.Response;
  */
 public class ReportFragment extends Fragment implements View.OnClickListener {
 
-    /**
-     * المدفوعات
-     */
     private TextView mPayments;
-    /**
-     * الايداعات
-     */
     private TextView mRevenue;
-    /**
-     * كل المعاملات
-     */
     private TextView mAllTransactions;
     private RecyclerView mReportRes;
     LinearLayoutManager layoutManager;

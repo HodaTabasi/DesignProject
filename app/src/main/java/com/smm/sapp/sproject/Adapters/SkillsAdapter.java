@@ -1,12 +1,14 @@
 package com.smm.sapp.sproject.Adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.smm.sapp.sproject.Models.SkillsModel;
 import com.smm.sapp.sproject.R;
@@ -47,12 +49,23 @@ public class SkillsAdapter extends RecyclerView.Adapter<SkillsAdapter.SkillsHold
 
         public EditText et_experience;
         public EditText et_skill;
+        TextView tv_experience, tv_skill;
 
         public SkillsHolder(View itemView) {
             super(itemView);
 
             et_experience = itemView.findViewById(R.id.et_experience);
             et_skill = itemView.findViewById(R.id.et_skill);
+            tv_experience = itemView.findViewById(R.id.tv_experience);
+            tv_skill = itemView.findViewById(R.id.tv_skill);
+
+
+            Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
+            et_experience.setTypeface(custom_font);
+            et_skill.setTypeface(custom_font);
+            tv_experience.setTypeface(custom_font);
+            tv_skill.setTypeface(custom_font);
+
 
         }
     }

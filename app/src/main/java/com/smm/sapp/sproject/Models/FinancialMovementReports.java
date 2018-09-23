@@ -2,17 +2,6 @@ package com.smm.sapp.sproject.Models;
 
 public class FinancialMovementReports {
 
-    /**
-     * id : 1
-     * total : 500
-     * descr : شحن رصيدي
-     * pay_from : 2
-     * pay_to : 2
-     * delivered : 1
-     * created_at : 2018-08-20 15:03:21
-     * updated_at : 2018-08-20 15:03:21
-     */
-
     private int id;
     private String total;
     private String descr;

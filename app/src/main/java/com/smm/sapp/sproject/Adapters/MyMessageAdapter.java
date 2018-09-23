@@ -1,6 +1,7 @@
 package com.smm.sapp.sproject.Adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
@@ -50,9 +51,9 @@ public class MyMessageAdapter extends RecyclerView.Adapter<MyMessageAdapter.MyMe
             public void onClick(View v) {
                 MessageDitailsFragment fragment = new MessageDitailsFragment();
                 Bundle bundle = new Bundle();
-                bundle.putString("userId",messageModelList.get(position).getUser().getId() + "");
+                bundle.putString("userId", messageModelList.get(position).getUser().getId() + "");
                 fragment.setArguments(bundle);
-                FragmentsUtil.replaceFragment((FragmentActivity) context,R.id.container_activity,fragment,true);
+                FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
             }
         });
 
@@ -65,12 +66,19 @@ public class MyMessageAdapter extends RecyclerView.Adapter<MyMessageAdapter.MyMe
 
     public class MyMessageVH extends RecyclerView.ViewHolder {
         CircleImageView clientImage;
-        TextView time ,address;
+        TextView time, address;
+
         public MyMessageVH(View itemView) {
             super(itemView);
-            clientImage =itemView.findViewById(R.id.profile_image1);
-            address =itemView.findViewById(R.id.q_title);
-            time =itemView.findViewById(R.id.time);
+            clientImage = itemView.findViewById(R.id.profile_image1);
+            address = itemView.findViewById(R.id.q_title);
+            time = itemView.findViewById(R.id.time);
+
+            Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
+            time.setTypeface(custom_font);
+            address.setTypeface(custom_font);
+
         }
+
     }
 }

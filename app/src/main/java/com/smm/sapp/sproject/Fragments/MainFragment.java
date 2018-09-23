@@ -2,6 +2,7 @@ package com.smm.sapp.sproject.Fragments;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -190,8 +191,7 @@ public class MainFragment extends Fragment {
             _name.setText("");
             _specialization.setText("");
 
-            Snackbar snackbar = Snackbar
-                    .make(getView(), "أنت غير مسجل في صمم!", Snackbar.LENGTH_INDEFINITE)
+            Snackbar snackbar = Snackbar.make(getView(), "أنت غير مسجل في صمم!", Snackbar.LENGTH_INDEFINITE)
                     .setAction("تسجيل", new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -203,18 +203,14 @@ public class MainFragment extends Fragment {
 
             snackbar.show();
 
+            TextView tv = (snackbar.getView()).findViewById(android.support.design.R.id.snackbar_text);
+            TextView tv2 = (snackbar.getView()).findViewById(android.support.design.R.id.snackbar_action);
+            tv.setTextSize(12f);
+            tv2.setTextSize(12f);
+            Typeface font = Typeface.createFromAsset(getContext().getAssets(), "JFFlatregular.ttf");
+            tv.setTypeface(font);
+            tv2.setTypeface(font);
         }
-//        else {
-//            new AlertDialog.Builder(getActivity())
-//                    .setMessage("انت غير مسجل هل تريد تسجيل الدخول ؟").setCancelable(false)
-//                    .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
-//                        public void onClick(DialogInterface dialog, int id) {
-//                            FragmentsUtil.replaceFragment(getActivity(),R.id.container_activity,new  RegisterFragment());
-//                        }
-//                    })
-//                    .setNegativeButton("لا", null)
-//                    .show();
-//        }
 
         tv_about.setOnClickListener(new View.OnClickListener() {
             @Override

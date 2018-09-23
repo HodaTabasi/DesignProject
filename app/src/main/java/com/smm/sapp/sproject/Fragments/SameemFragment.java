@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.R;
 
@@ -29,12 +30,17 @@ public class SameemFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_sameem, container, false);
 
 
-
         TextView tv_sammem_bio = view.findViewById(R.id.tv_sammem_bio);
         TextView tv_ques = view.findViewById(R.id.tv_ques);
         TextView tv_rights = view.findViewById(R.id.tv_rights);
         TextView tv_conditions = view.findViewById(R.id.tv_conditions);
         TextView tv_call_us = view.findViewById(R.id.tv_call_us);
+
+        ConstantInterFace.tv_home.setBackgroundResource(0);
+        ConstantInterFace.tv_msgs.setBackgroundResource(0);
+        ConstantInterFace.tv_profile.setBackgroundResource(0);
+        ConstantInterFace.tv_projects.setBackgroundResource(0);
+        ConstantInterFace.tv_portfolio.setBackgroundResource(0);
 
         tv_sammem_bio.setOnClickListener(new View.OnClickListener() {
             @Override

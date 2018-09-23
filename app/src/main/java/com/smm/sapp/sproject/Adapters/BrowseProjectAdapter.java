@@ -2,6 +2,7 @@ package com.smm.sapp.sproject.Adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
@@ -75,9 +76,10 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
         //to test if we in the last item in list
         if (position == projectsList.size() - 1) {
             holder.view.setVisibility(View.GONE);
-
+            //first item
+        } else if (position == 0) {
+            holder.view.setVisibility(View.VISIBLE);
         }
-
 
 
     }
@@ -91,6 +93,11 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
         TextView new_project = view.findViewById(R.id.new_project);
         TextView add_fav = view.findViewById(R.id.add_fav);
         TextView report = view.findViewById(R.id.report);
+
+        Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
+        new_project.setTypeface(custom_font);
+        add_fav.setTypeface(custom_font);
+        report.setTypeface(custom_font);
 
         mypopupWindow = new PopupWindow(view, RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT, true);
         mypopupWindow.showAsDropDown(v);
@@ -159,6 +166,12 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
             img_setting = itemView.findViewById(R.id.img_setting);
             linear_setting = itemView.findViewById(R.id.linear_setting);
             view = itemView.findViewById(R.id.projects_view);
+
+            Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
+            tv_description.setTypeface(custom_font);
+            tv_proposals.setTypeface(custom_font);
+            tv_time.setTypeface(custom_font);
+            tv_name.setTypeface(custom_font);
 
         }
     }

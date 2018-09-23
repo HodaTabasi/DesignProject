@@ -1,12 +1,14 @@
 package com.smm.sapp.sproject.Adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.smm.sapp.sproject.Models.BankModel;
 import com.smm.sapp.sproject.Models.UserModel;
@@ -49,6 +51,7 @@ public class BankAdapter extends RecyclerView.Adapter<BankAdapter.BankHolder> {
         EditText et_bankName;
         EditText et_bankNum;
         EditText et_kNum;
+        TextView tv_bankName, tv_bankNum, tv_Num;
 
         public BankHolder(View itemView) {
             super(itemView);
@@ -56,6 +59,18 @@ public class BankAdapter extends RecyclerView.Adapter<BankAdapter.BankHolder> {
             et_bankName = itemView.findViewById(R.id.et_bankName);
             et_bankNum = itemView.findViewById(R.id.et_bankNum);
             et_kNum = itemView.findViewById(R.id.et_kNum);
+            tv_bankName = itemView.findViewById(R.id.tv_bankName);
+            tv_bankNum = itemView.findViewById(R.id.tv_bankNum);
+            tv_Num = itemView.findViewById(R.id.tv_Num);
+
+            Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
+            tv_bankName.setTypeface(custom_font);
+            tv_bankNum.setTypeface(custom_font);
+            tv_Num.setTypeface(custom_font);
+            et_bankName.setTypeface(custom_font);
+            et_bankNum.setTypeface(custom_font);
+            et_kNum.setTypeface(custom_font);
+
         }
     }
 }

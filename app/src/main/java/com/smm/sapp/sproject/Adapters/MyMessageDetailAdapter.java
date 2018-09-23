@@ -1,6 +1,7 @@
 package com.smm.sapp.sproject.Adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -48,7 +49,7 @@ public class MyMessageDetailAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        MessageDetails message =  details.get(position);
+        MessageDetails message = details.get(position);
 
         switch (holder.getItemViewType()) {
             case VIEW_TYPE_MESSAGE_SENT:
@@ -67,7 +68,7 @@ public class MyMessageDetailAdapter extends RecyclerView.Adapter {
     // Determines the appropriate ViewType according to the sender of the message.
     @Override
     public int getItemViewType(int position) {
-        MessageDetails message =  details.get(position);
+        MessageDetails message = details.get(position);
 
         if (message.getSender_id().equals("2")) {
             // If the current user is the sender of the message
@@ -80,7 +81,8 @@ public class MyMessageDetailAdapter extends RecyclerView.Adapter {
 
     private class SentMessageHolder extends RecyclerView.ViewHolder {
         CircleImageView imageView;
-            TextView mBody;
+        TextView mBody;
+
         public SentMessageHolder(View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.image_message_profile_s);
@@ -95,12 +97,17 @@ public class MyMessageDetailAdapter extends RecyclerView.Adapter {
 
     private class ReceivedMessageHolder extends RecyclerView.ViewHolder {
         CircleImageView imageView;
-        TextView  mBody, mName;
+        TextView mBody, mName;
+
         public ReceivedMessageHolder(View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.image_message_profile);
             mBody = itemView.findViewById(R.id.text_message_body);
             mName = itemView.findViewById(R.id.text_message_name);
+
+            Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
+            mBody.setTypeface(custom_font);
+            mName.setTypeface(custom_font);
         }
 
         void bind(MessageDetails message) {

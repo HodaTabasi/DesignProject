@@ -15,6 +15,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.smm.sapp.sproject.Adapters.DesignProfileAdapter;
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.Models.DesignProfile;
 import com.smm.sapp.sproject.R;
 
@@ -28,17 +29,29 @@ public class SearchFragment extends Fragment {
     RecyclerView resSearch;
     GridLayoutManager gridLayoutManager;
     private View view;
-    /** بحث عن مصمم */
+    /**
+     * بحث عن مصمم
+     */
     private EditText mTxtSearch;
-    /** موشن */
+    /**
+     * موشن
+     */
     private TextView mMotionButton;
-    /** تصاميم جرافيكس */
+    /**
+     * تصاميم جرافيكس
+     */
     private TextView mGhButton;
-    /** رسم جداري */
+    /**
+     * رسم جداري
+     */
     private TextView mWallButton;
-    /** تصميم معماري */
+    /**
+     * تصميم معماري
+     */
     private TextView mArchButton;
-    /** تصميم داخلي */
+    /**
+     * تصميم داخلي
+     */
     private TextView mInButton;
     private RatingBar mRattingDesigner;
 
@@ -64,10 +77,17 @@ public class SearchFragment extends Fragment {
         mInButton = getView().findViewById(R.id.in_button);
         mRattingDesigner = getView().findViewById(R.id.ratting_designer);
         resSearch = getView().findViewById(R.id.res_search);
-        gridLayoutManager = new GridLayoutManager(getContext(),2);
+
+        ConstantInterFace.tv_home.setBackgroundResource(0);
+        ConstantInterFace.tv_msgs.setBackgroundResource(0);
+        ConstantInterFace.tv_profile.setBackgroundResource(0);
+        ConstantInterFace.tv_projects.setBackgroundResource(0);
+        ConstantInterFace.tv_portfolio.setBackgroundResource(0);
+
+        gridLayoutManager = new GridLayoutManager(getContext(), 2);
         resSearch.setLayoutManager(gridLayoutManager);
         profiles = new ArrayList<>();
-        resSearch.setAdapter(new DesignProfileAdapter(getContext(),R.layout.item_layout_profile,profiles));
+        resSearch.setAdapter(new DesignProfileAdapter(getContext(), R.layout.item_layout_profile, profiles));
     }
 
     @Override

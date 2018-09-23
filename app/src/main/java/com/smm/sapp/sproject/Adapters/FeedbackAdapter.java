@@ -1,6 +1,7 @@
 package com.smm.sapp.sproject.Adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -50,8 +51,8 @@ public class FeedbackAdapter extends RecyclerView.Adapter<FeedbackAdapter.Feedba
 
     public class FeedbackHolder extends RecyclerView.ViewHolder {
 
-        TextView et_comment;
-        RatingBar rate1,rate2,rate3,rate4 ,rate5;
+        TextView et_comment, tv1, tv2, tv3, tv4, tv5, tv6;
+        RatingBar rate1, rate2, rate3, rate4, rate5;
 
         public FeedbackHolder(View itemView) {
             super(itemView);
@@ -62,6 +63,22 @@ public class FeedbackAdapter extends RecyclerView.Adapter<FeedbackAdapter.Feedba
             rate3 = itemView.findViewById(R.id.rate3);
             rate4 = itemView.findViewById(R.id.rate4);
             rate5 = itemView.findViewById(R.id.rate5);
+            tv1 = itemView.findViewById(R.id.tv1);
+            tv2 = itemView.findViewById(R.id.tv2);
+            tv3 = itemView.findViewById(R.id.tv3);
+            tv4 = itemView.findViewById(R.id.tv4);
+            tv5 = itemView.findViewById(R.id.tv5);
+            tv6 = itemView.findViewById(R.id.tv6);
+
+
+            Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
+            et_comment.setTypeface(custom_font);
+            tv1.setTypeface(custom_font);
+            tv2.setTypeface(custom_font);
+            tv3.setTypeface(custom_font);
+            tv4.setTypeface(custom_font);
+            tv5.setTypeface(custom_font);
+            tv6.setTypeface(custom_font);
         }
     }
 }

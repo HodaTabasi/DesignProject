@@ -2,6 +2,7 @@ package com.smm.sapp.sproject.Adapters;
 
 import android.app.DownloadManager;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.annotation.NonNull;
@@ -36,11 +37,11 @@ public class ProjectAttachmentAdapter extends RecyclerView.Adapter<ProjectAttach
 
     @Override
     public void onBindViewHolder(@NonNull ProjectAttachmentVH holder, final int position) {
-        holder.attachments.setText(attachmentsList.get(position).getId() +" ");
+        holder.attachments.setText(attachmentsList.get(position).getId() + " ");
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dounloadAttachment(attachmentsList.get(position).getFile_link(),attachmentsList.get(position).getId());
+                dounloadAttachment(attachmentsList.get(position).getFile_link(), attachmentsList.get(position).getId());
             }
         });
     }
@@ -50,7 +51,7 @@ public class ProjectAttachmentAdapter extends RecyclerView.Adapter<ProjectAttach
         DownloadManager downloadManager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
         DownloadManager.Request request = new DownloadManager.Request(downloadUri);
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-        long id =  downloadManager.enqueue(request);
+        long id = downloadManager.enqueue(request);
     }
 
     @Override
@@ -58,11 +59,16 @@ public class ProjectAttachmentAdapter extends RecyclerView.Adapter<ProjectAttach
         return attachmentsList.size();
     }
 
-    public class ProjectAttachmentVH extends RecyclerView.ViewHolder{
+    public class ProjectAttachmentVH extends RecyclerView.ViewHolder {
         TextView attachments;
+
         public ProjectAttachmentVH(View itemView) {
             super(itemView);
             attachments = itemView.findViewById(R.id.attachments);
+
+            Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
+            attachments.setTypeface(custom_font);
+
         }
     }
 }

@@ -36,7 +36,7 @@ public class ProjectPhotoAdapter extends RecyclerView.Adapter<ProjectPhotoAdapte
     @Override
     public void onBindViewHolder(@NonNull ProjectPhotoVH holder, int position) {
         Picasso.get().load(photoModels.get(position).getPhoto_link()).into(holder.imageView);
-        Log.e("ff",photoModels.get(position).getPhoto_link());
+        Log.e("ff", photoModels.get(position).getPhoto_link());
     }
 
     @Override
@@ -46,6 +46,7 @@ public class ProjectPhotoAdapter extends RecyclerView.Adapter<ProjectPhotoAdapte
 
     public class ProjectPhotoVH extends RecyclerView.ViewHolder {
         ImageView imageView;
+
         public ProjectPhotoVH(View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.photo);
