@@ -61,7 +61,7 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
                     Bundle bundle = new Bundle();
                     bundle.putParcelable("theProject", projectsList.get(position));
                     fragment.setArguments(bundle);
-                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment);
+                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment,true);
                 }
             });
             holder.linear_setting.setOnClickListener(new View.OnClickListener() {

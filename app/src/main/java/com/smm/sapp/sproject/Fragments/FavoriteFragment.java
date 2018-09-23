@@ -77,7 +77,7 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
     private void getAllLikes(){
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
-        myRequest.GetCall("http://smm.smmim.com/waell/public/api/mylikes?token=" +"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODU4NS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM0Nzc1MjM5LCJleHAiOjIxNDc0ODM2NDcsIm5iZiI6MTUzNDc3NTIzOSwianRpIjoiR2c5UTQ1NElmNlN4S3FpaSJ9.lI9xos7m0v6B0BogGr0oQaapa1a5vYrWn_qMIL8_hAg", new OkHttpCallback() {
+        myRequest.GetCall("http://smm.smmim.com/waell/public/api/mylikes?token=" +ConstantInterFace.USER.getToken(), new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
