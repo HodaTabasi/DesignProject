@@ -9,6 +9,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -84,6 +85,7 @@ public class MyRequest {
     }
 
     public void PostCallWithAttachment(String URL, Map<String, String> parameter, String filePath,String key, final OkHttpCallback callback) {
+
         MultipartBody.Builder buildernew;
         final MediaType MEDIA_TYPE = MediaType.parse("file/*");
         if (filePath != null){
@@ -145,6 +147,76 @@ public class MyRequest {
         });
 
     }
+
+    public void PostCallWithAttachment(String URL, Map<String, String> parameter,Map<String, String> attachParameter, final OkHttpCallback callback) {
+
+        MultipartBody.Builder buildernew;
+        final MediaType MEDIA_TYPE = MediaType.parse("file/*");
+
+        buildernew = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM);
+
+        for (Map.Entry<String, String> entry : parameter.entrySet()) {
+            buildernew.addFormDataPart(entry.getKey(), entry.getValue());
+            Log.e(entry.getKey(),entry.getValue() + " ");
+        }
+
+        for (Map.Entry<String, String> entry : attachParameter.entrySet()) {
+            byte[] b = byteArray(entry.getValue());
+            buildernew.addFormDataPart(entry.getKey(), entry.getValue(),RequestBody.create(MEDIA_TYPE, b));
+            Log.e(entry.getKey(),entry.getValue() + " ");
+        }
+
+        MultipartBody  body = buildernew.build();
+
+        Request request = new Request.Builder()
+                .url(URL)
+                .post(body)
+                .build();
+
+        OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
+                .connectTimeout(260, TimeUnit.SECONDS)
+                .readTimeout(260, TimeUnit.SECONDS)
+                .writeTimeout(260, TimeUnit.SECONDS)
+                .build();
+
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                callback.onFailure(call, e);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                try {
+                    callback.onResponse(call, response);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+    }
+
+    private byte[] byteArray(String value) {
+        File sourceFile = new File(value);
+        byte[] b;
+        b = new byte[(int) sourceFile.length()];
+        try {
+            FileInputStream fileInputStream = new FileInputStream(sourceFile);
+            fileInputStream.read(b);
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File Not Found.");
+            e.printStackTrace();
+        } catch (IOException e1) {
+            System.out.println("Error Reading The File.");
+            e1.printStackTrace();
+        }
+
+        return b;
+    }
+
 }
 
 

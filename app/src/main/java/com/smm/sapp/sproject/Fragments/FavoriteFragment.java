@@ -1,6 +1,7 @@
 package com.smm.sapp.sproject.Fragments;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,24 +9,43 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.smm.sapp.sproject.Adapters.FavoritePortfolioAdapter;
+import com.smm.sapp.sproject.Adapters.LikesProjectAdapter;
+import com.smm.sapp.sproject.ConstantInterFace;
+import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.Models.FavoritePortfolioModel;
+import com.smm.sapp.sproject.Models.Likes;
+import com.smm.sapp.sproject.MyRequest;
+import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 import me.anwarshahriar.calligrapher.Calligrapher;
+import okhttp3.Call;
+import okhttp3.Response;
 
 
-public class FavoriteFragment extends Fragment {
+public class FavoriteFragment extends Fragment implements View.OnClickListener {
 
     RecyclerView recyclerView;
-    ArrayList<FavoritePortfolioModel> arrayList = new ArrayList<>();
-    FavoritePortfolioAdapter adapter;
+    ArrayList<Likes> projectList = new ArrayList<>();
+    ArrayList<Likes> workList = new ArrayList<>();
+    ArrayList<Likes> designList = new ArrayList<>();
+    TextView designs, pWork, project;
 
     public FavoriteFragment() {
     }
@@ -36,12 +56,71 @@ public class FavoriteFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_favorite, container, false);
 
+
+//        adapter = new FavoritePortfolioAdapter(getActivity(), arrayList);
+//        recyclerView.setAdapter(adapter);
+        return view;
+    }
+
+    private void init(View view){
         recyclerView = view.findViewById(R.id.recycler_fav);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        adapter = new FavoritePortfolioAdapter(getActivity(), arrayList);
-        recyclerView.setAdapter(adapter);
+        designs = view.findViewById(R.id.designs);
+        pWork = view.findViewById(R.id.works);
+        project = view.findViewById(R.id.projects);
 
-        return view;
+        designs.setOnClickListener(this);
+        pWork.setOnClickListener(this);
+        project.setOnClickListener(this);
+    }
+
+    private void getAllLikes(){
+        MyRequest myRequest = new MyRequest();
+        MyProgressDialog.showDialog(getContext());
+        myRequest.GetCall("http://smm.smmim.com/waell/public/api/mylikes?token=" +"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODU4NS93YWVsbC9wdWJsaWMvYXBpL0xvZ2luIiwiaWF0IjoxNTM0Nzc1MjM5LCJleHAiOjIxNDc0ODM2NDcsIm5iZiI6MTUzNDc3NTIzOSwianRpIjoiR2c5UTQ1NElmNlN4S3FpaSJ9.lI9xos7m0v6B0BogGr0oQaapa1a5vYrWn_qMIL8_hAg", new OkHttpCallback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                MyProgressDialog.dismissDialog();
+//                Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException, JSONException {
+                final JSONObject object = new JSONObject(response.body().string());
+                final JSONObject object1 = object.getJSONObject("status");
+                final Gson gson = new Gson();
+                MyProgressDialog.dismissDialog();
+                Log.e("26","dfsewe");
+                getActivity().runOnUiThread(new Runnable() {
+                    public void run() {
+                        try {
+                            if (object1.getBoolean("success")) {
+                                JSONArray jsonArray =  object.getJSONArray("likes");
+                                for (int i = 0; i<= jsonArray.length(); i++){
+                                    JSONObject object2 = jsonArray.getJSONObject(i);
+                                    Likes likes = gson.fromJson(object2.toString(),Likes.class);
+                                    switch (likes.getTarget_type()){
+                                        case "project":
+                                            projectList.add(likes);
+                                            break;
+                                        case "user":
+                                            designList.add(likes);
+                                            break;
+                                        case "pwork":
+                                            workList.add(likes);
+                                            break;
+                                    }
+                                }
+                            } else {
+                                Toast.makeText(getContext(), "" + object1.getBoolean("error"), Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
+        });
     }
 
     @Override
@@ -49,5 +128,45 @@ public class FavoriteFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
+
+        init(getView());
+        getAllLikes();
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id){
+            case R.id.designs:
+                designs.setTextColor(Color.parseColor("#ffffff"));
+                designs.setBackgroundResource(R.drawable.title_shape);
+                pWork.setTextColor(Color.parseColor("#000000"));
+                pWork.setBackgroundResource(R.drawable.account_shape);
+                project.setTextColor(Color.parseColor("#000000"));
+                project.setBackgroundResource(R.drawable.account_shape);
+                recyclerView.setVisibility(View.INVISIBLE);
+                break;
+            case R.id.works:
+                pWork.setTextColor(Color.parseColor("#ffffff"));
+                pWork.setBackgroundResource(R.drawable.title_shape);
+                designs.setTextColor(Color.parseColor("#000000"));
+                designs.setBackgroundResource(R.drawable.account_shape);
+                project.setTextColor(Color.parseColor("#000000"));
+                project.setBackgroundResource(R.drawable.account_shape);
+                recyclerView.setVisibility(View.INVISIBLE);
+                break;
+            case R.id.projects:
+                project.setTextColor(Color.parseColor("#ffffff"));
+                project.setBackgroundResource(R.drawable.title_shape);
+                pWork.setTextColor(Color.parseColor("#000000"));
+                pWork.setBackgroundResource(R.drawable.account_shape);
+                designs.setTextColor(Color.parseColor("#000000"));
+                designs.setBackgroundResource(R.drawable.account_shape);
+                LikesProjectAdapter projectAdapter = new LikesProjectAdapter(getContext(),R.layout.fav_row,projectList);
+                recyclerView.setAdapter(projectAdapter);
+                recyclerView.setVisibility(View.VISIBLE);
+                break;
+        }
+
     }
 }

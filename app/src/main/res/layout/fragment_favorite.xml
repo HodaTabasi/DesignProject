@@ -66,6 +66,7 @@
         android:layout_marginTop="5dp">
 
         <TextView
+            android:id="@+id/works"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
@@ -78,6 +79,7 @@
             android:textSize="12sp" />
 
         <TextView
+            android:id="@+id/designs"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
@@ -90,6 +92,7 @@
             android:textSize="12sp" />
 
         <TextView
+            android:id="@+id/projects"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -109,6 +112,6 @@
         android:layout_below="@+id/linaer"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="8dp" />
 
 </RelativeLayout>
