@@ -25,7 +25,6 @@ import okhttp3.Response;
 public class MyRequest {
 
 
-
     public void GetCall(String URL, final OkHttpCallback callback) {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
@@ -84,11 +83,11 @@ public class MyRequest {
 
     }
 
-    public void PostCallWithAttachment(String URL, Map<String, String> parameter, String filePath,String key, final OkHttpCallback callback) {
+    public void PostCallWithAttachment(String URL, Map<String, String> parameter, String filePath, String key, final OkHttpCallback callback) {
 
         MultipartBody.Builder buildernew;
         final MediaType MEDIA_TYPE = MediaType.parse("file/*");
-        if (filePath != null){
+        if (filePath != null) {
             File sourceFile = new File(filePath);
             byte[] b;
             b = new byte[(int) sourceFile.length()];
@@ -108,21 +107,17 @@ public class MyRequest {
             buildernew = new MultipartBody.Builder()
                     .setType(MultipartBody.FORM)
                     .addFormDataPart(key, filePath, RequestBody.create(MEDIA_TYPE, b));
-        }else {
+        } else {
             buildernew = new MultipartBody.Builder()
                     .setType(MultipartBody.FORM);
         }
 
-
-
-
-
         for (Map.Entry<String, String> entry : parameter.entrySet()) {
             buildernew.addFormDataPart(entry.getKey(), entry.getValue());
-            Log.e(entry.getKey(),entry.getValue() + " ");
+            Log.e(entry.getKey(), entry.getValue() + " ");
         }
 
-        MultipartBody  body = buildernew.build();
+        MultipartBody body = buildernew.build();
 
         Request request = new Request.Builder()
                 .url(URL)
@@ -148,7 +143,7 @@ public class MyRequest {
 
     }
 
-    public void PostCallWithAttachment(String URL, Map<String, String> parameter,Map<String, String> attachParameter, final OkHttpCallback callback) {
+    public void PostCallWithAttachment(String URL, Map<String, String> parameter, Map<String, String> attachParameter, final OkHttpCallback callback) {
 
         MultipartBody.Builder buildernew;
         final MediaType MEDIA_TYPE = MediaType.parse("file/*");
@@ -158,16 +153,16 @@ public class MyRequest {
 
         for (Map.Entry<String, String> entry : parameter.entrySet()) {
             buildernew.addFormDataPart(entry.getKey(), entry.getValue());
-            Log.e(entry.getKey(),entry.getValue() + " ");
+            Log.e(entry.getKey(), entry.getValue() + " ");
         }
 
         for (Map.Entry<String, String> entry : attachParameter.entrySet()) {
             byte[] b = byteArray(entry.getValue());
-            buildernew.addFormDataPart(entry.getKey(), entry.getValue(),RequestBody.create(MEDIA_TYPE, b));
-            Log.e(entry.getKey(),entry.getValue() + " ");
+            buildernew.addFormDataPart(entry.getKey(), entry.getValue(), RequestBody.create(MEDIA_TYPE, b));
+            Log.e(entry.getKey(), entry.getValue() + " ");
         }
 
-        MultipartBody  body = buildernew.build();
+        MultipartBody body = buildernew.build();
 
         Request request = new Request.Builder()
                 .url(URL)
@@ -175,9 +170,9 @@ public class MyRequest {
                 .build();
 
         OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
-                .connectTimeout(260, TimeUnit.SECONDS)
-                .readTimeout(260, TimeUnit.SECONDS)
-                .writeTimeout(260, TimeUnit.SECONDS)
+                .connectTimeout(460, TimeUnit.SECONDS)
+                .readTimeout(460, TimeUnit.SECONDS)
+                .writeTimeout(460, TimeUnit.SECONDS)
                 .build();
 
         okHttpClient.newCall(request).enqueue(new Callback() {
