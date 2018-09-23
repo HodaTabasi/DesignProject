@@ -37,6 +37,7 @@ import okhttp3.Response;
 public class RegisterFragment extends Fragment {
 
     EditText et_mobile;
+
     public RegisterFragment() {
     }
 
@@ -45,7 +46,6 @@ public class RegisterFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_registration, container, false);
-
 
 
         TextView tv_next = view.findViewById(R.id.tv_next);
@@ -83,19 +83,24 @@ public class RegisterFragment extends Fragment {
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
         Map<String, String> stringMap = new HashMap<>();
-        stringMap.put("phone",et_mobile.getText().toString() );
+        stringMap.put("phone", et_mobile.getText().toString());
         myRequest.PostCall("http://smm.smmim.com/waell/public/api/loginwithsms", stringMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
-                Log.e("tag", e.getMessage());
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException, JSONException {
                 MyProgressDialog.dismissDialog();
                 String s = response.body().string();
-                Log.e("Ffd",s);
+                Log.e("Ffd", s);
                 final JSONObject jsonObject = new JSONObject(s);
                 final JSONObject object = jsonObject.getJSONObject("status");
                 final Gson gson = new Gson();
@@ -104,15 +109,15 @@ public class RegisterFragment extends Fragment {
                     @Override
                     public void run() {
                         try {
-                            if (object.getBoolean("success")){
-                               User user = gson.fromJson(jsonObject.getJSONObject("user").toString(),User.class);
+                            if (object.getBoolean("success")) {
+                                User user = gson.fromJson(jsonObject.getJSONObject("user").toString(), User.class);
                                 ConfirmationFragment fragment = new ConfirmationFragment();
                                 Bundle bundle = new Bundle();
-                                bundle.putString("phone",user.getPhone());
-                                bundle.putString("verify",user.getVerify());
+                                bundle.putString("phone", user.getPhone());
+                                bundle.putString("verify", user.getVerify());
                                 fragment.setArguments(bundle);
-                                FragmentsUtil.replaceFragment(getActivity(), R.id.register_container, fragment,true);
-                            }else {
+                                FragmentsUtil.replaceFragment(getActivity(), R.id.register_container, fragment, true);
+                            } else {
                                 Toast.makeText(getActivity(), "لم يتم الارسال بشكل صحيح", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {

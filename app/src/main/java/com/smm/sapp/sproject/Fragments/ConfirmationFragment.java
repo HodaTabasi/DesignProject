@@ -37,8 +37,9 @@ import okhttp3.Response;
 public class ConfirmationFragment extends Fragment {
 
     EditCodeView editCodeView;
-    String  phone;
+    String phone;
     String verify;
+
     public ConfirmationFragment() {
     }
 
@@ -75,12 +76,18 @@ public class ConfirmationFragment extends Fragment {
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
         Map<String, String> stringMap = new HashMap<>();
-        stringMap.put("phone",phone);
-        stringMap.put("code",verify);
+        stringMap.put("phone", phone);
+        stringMap.put("code", verify);
         myRequest.PostCall("http://smm.smmim.com/waell/public/api/loginwithsms", stringMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
+                    }
+                });
                 Log.e("tag", e.getMessage());
             }
 
@@ -88,7 +95,7 @@ public class ConfirmationFragment extends Fragment {
             public void onResponse(Call call, Response response) throws IOException, JSONException {
                 MyProgressDialog.dismissDialog();
                 String s = response.body().string();
-                Log.e("Ffd",s);
+                Log.e("Ffd", s);
                 final JSONObject jsonObject = new JSONObject(s);
                 final JSONObject object = jsonObject.getJSONObject("status");
                 final Gson gson = new Gson();
@@ -97,13 +104,13 @@ public class ConfirmationFragment extends Fragment {
                     @Override
                     public void run() {
                         try {
-                            if (object.getBoolean("success")){
-                                ConstantInterFace.USER  = gson.fromJson(jsonObject.getJSONObject("user").toString(),User.class);
-                                Log.e("ff",ConstantInterFace.USER.getToken());
+                            if (object.getBoolean("success")) {
+                                ConstantInterFace.USER = gson.fromJson(jsonObject.getJSONObject("user").toString(), User.class);
+                                Log.e("ff", ConstantInterFace.USER.getToken());
                                 Intent intent = new Intent(getActivity(), ContainerActivity.class);
                                 startActivity(intent);
                                 getActivity().finish();
-                            }else {
+                            } else {
                                 Toast.makeText(getActivity(), "لم يتم الارسال بشكل صحيح", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {

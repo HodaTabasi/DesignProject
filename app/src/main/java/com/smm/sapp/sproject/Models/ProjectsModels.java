@@ -7,23 +7,6 @@ import java.util.List;
 
 public class ProjectsModels implements Parcelable {
 
-    /**
-     * id : 26
-     * name : عمل مخطط حساب كميات لخزان ارضي
-     * descr : كبير ي كبير
-     * type : inter
-     * balance : 500
-     * user_id : 3
-     * status : 0
-     * created_at : 2018-09-11 13:30:53
-     * updated_at : 2018-09-11 13:30:53
-     * addtion_info : {"id":10,"area":"250متر مربع","city":"جدة","colors":"احمر واخضر وبني","lat":"66,66","style":"ستايل جديد","project_id":"26","lng":"55,55","created_at":"2018-09-11 13:30:53","updated_at":"2018-09-11 13:30:53"}
-     * attachs : []
-     * offers : []
-     * photos : []
-     * similars : []
-     * user : {}
-     */
 
     private int id;
     private String name;

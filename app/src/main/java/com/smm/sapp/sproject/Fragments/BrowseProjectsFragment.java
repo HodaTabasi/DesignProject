@@ -127,7 +127,13 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
-                Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
+
+                    }
+                });
             }
 
             @Override

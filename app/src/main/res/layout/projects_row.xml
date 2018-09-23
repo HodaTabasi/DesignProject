@@ -25,9 +25,10 @@
         android:layout_marginTop="5dp">
 
         <LinearLayout
+            android:id="@+id/linear_setting"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
+            android:layout_marginRight="40dp"
             android:background="@drawable/square_shape"
             android:orientation="horizontal">
 
@@ -64,7 +65,7 @@
             android:layout_weight="1"
             android:drawablePadding="5dp"
             android:drawableRight="@drawable/ic_calender2"
-            android:text="قل ساعتين"
+            android:text="قبل ساعتين"
             android:textColor="@color/textGray"
             android:textSize="12sp" />
 
@@ -81,8 +82,9 @@
     </LinearLayout>
 
     <View
+        android:id="@+id/projects_view"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="10dp"
-        android:background="@color/gray"/>
+        android:background="@color/gray" />
 </LinearLayout>
