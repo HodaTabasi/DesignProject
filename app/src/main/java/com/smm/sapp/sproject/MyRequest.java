@@ -175,9 +175,9 @@ public class MyRequest {
                 .build();
 
         OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
-                .connectTimeout(260, TimeUnit.SECONDS)
-                .readTimeout(260, TimeUnit.SECONDS)
-                .writeTimeout(260, TimeUnit.SECONDS)
+                .connectTimeout(460, TimeUnit.SECONDS)
+                .readTimeout(460, TimeUnit.SECONDS)
+                .writeTimeout(460, TimeUnit.SECONDS)
                 .build();
 
         okHttpClient.newCall(request).enqueue(new Callback() {
