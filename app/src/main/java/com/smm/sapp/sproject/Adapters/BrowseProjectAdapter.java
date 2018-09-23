@@ -99,7 +99,7 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
 
         popup.show();
     }
-
+//
     @Override
     public int getItemCount() {
         return projectsList.size();
