@@ -99,17 +99,24 @@ public class SkillsFragment extends Fragment {
             @Override
             public void onResponse(Call call, Response response) throws IOException, JSONException {
                 MyProgressDialog.dismissDialog();
-                JSONObject object = new JSONObject(response.body().string());
-                JSONObject jsonObject = object.getJSONObject("status");
-                if (jsonObject.getBoolean("success")){
-//                    Toast.makeText(getContext(), ""+jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-                    Log.e("dd",jsonObject.getString("message"));
-                    notifys();
-                }else {
-//                    Toast.makeText(getContext(), ""+jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-                    Log.e("dd",jsonObject.getString("message"));
-//                    arrayList.remove(arrayList.size());
-                }
+                final JSONObject object = new JSONObject(response.body().string());
+                final JSONObject jsonObject = object.getJSONObject("status");
+                getActivity().runOnUiThread(new Runnable() {
+                    public void run() {
+                        try {
+                            if (jsonObject.getBoolean("success")){
+                        Toast.makeText(getContext(), ""+jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                                notifys();
+                            }else {
+                        Toast.makeText(getContext(), ""+jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+    //                    arrayList.remove(arrayList.size());
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
             }
         });
     }
