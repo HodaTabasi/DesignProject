@@ -29,6 +29,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import me.anwarshahriar.calligrapher.Calligrapher;
 import okhttp3.Call;
 import okhttp3.Response;
 
@@ -38,7 +39,6 @@ import okhttp3.Response;
  */
 
 public class MyMessageFragment extends Fragment {
-
 
 
     private RecyclerView mMyMessage;
@@ -57,15 +57,16 @@ public class MyMessageFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_my_masseages, container, false);
     }
 
-    private void initView(View view){
+    private void initView(View view) {
         mMyMessage = view.findViewById(R.id.my_message);
-        mMyMessage.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+        mMyMessage.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
     }
-    private void getMyConversationsRequest(){
+
+    private void getMyConversationsRequest() {
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
-        Map<String,String> stringMap = new HashMap<>();
+        Map<String, String> stringMap = new HashMap<>();
         stringMap.put("token", ConstantInterFace.USER.getToken());
         myRequest.PostCall("http://smm.smmim.com/waell/public/api/getmyconversations", stringMap, new OkHttpCallback() {
             @Override
@@ -83,11 +84,12 @@ public class MyMessageFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     public void run() {
                         try {
-                            if (object1.getBoolean("success")){
+                            if (object1.getBoolean("success")) {
                                 Gson gson = new Gson();
-                                TypeToken<List<MyMessageModel>> token = new TypeToken<List<MyMessageModel>>() {};
-                                myMessageModelList = gson.fromJson(object.getJSONArray("convs").toString(),token.getType());
-                                adapter = new MyMessageAdapter(getContext(),R.layout.layout_item_notification,myMessageModelList);
+                                TypeToken<List<MyMessageModel>> token = new TypeToken<List<MyMessageModel>>() {
+                                };
+                                myMessageModelList = gson.fromJson(object.getJSONArray("convs").toString(), token.getType());
+                                adapter = new MyMessageAdapter(getContext(), R.layout.layout_item_notification, myMessageModelList);
                                 mMyMessage.setAdapter(adapter);
 
                             }
@@ -103,6 +105,8 @@ public class MyMessageFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        Calligrapher calligrapher = new Calligrapher(getContext());
+        calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView(getView());
         getMyConversationsRequest();
     }

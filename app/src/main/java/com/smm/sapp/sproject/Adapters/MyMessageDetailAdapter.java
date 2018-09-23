@@ -87,6 +87,9 @@ public class MyMessageDetailAdapter extends RecyclerView.Adapter {
             super(itemView);
             imageView = itemView.findViewById(R.id.image_message_profile_s);
             mBody = itemView.findViewById(R.id.text_message_body_s);
+
+            Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
+            mBody.setTypeface(custom_font);
         }
 
         void bind(MessageDetails message) {
@@ -103,17 +106,17 @@ public class MyMessageDetailAdapter extends RecyclerView.Adapter {
             super(itemView);
             imageView = itemView.findViewById(R.id.image_message_profile);
             mBody = itemView.findViewById(R.id.text_message_body);
-            mName = itemView.findViewById(R.id.text_message_name);
+            //mName = itemView.findViewById(R.id.text_message_name);
 
             Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
             mBody.setTypeface(custom_font);
-            mName.setTypeface(custom_font);
+            //mName.setTypeface(custom_font);
         }
 
         void bind(MessageDetails message) {
             Picasso.get().load(message.getUser().getPhoto_link()).into(imageView);
             mBody.setText(message.getMessage());
-            mName.setText(message.getUser().getName());
+            //mName.setText(message.getUser().getName());
 
         }
     }
