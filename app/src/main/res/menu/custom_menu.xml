@@ -5,18 +5,18 @@
         android:iconTint="#666666"
         android:title="@string/add_project"
         android:textColor="@color/gray1"
-        android:textSize="15sp"/>
+        android:textSize="12sp"/>
 
     <item android:id="@+id/new_fav"
         android:icon="@drawable/ic_favorite"
         android:title="@string/add_fav"
         android:textColor="@color/gray1"
-        android:textSize="15sp"/>
+        android:textSize="12sp"/>
 
     <item android:id="@+id/report"
         android:icon="@drawable/ic_flag"
         android:iconTint="#666666"
         android:title="@string/add_report"
         android:textColor="@color/gray1"
-        android:textSize="15sp"/>
+        android:textSize="12sp"/>
 </menu>

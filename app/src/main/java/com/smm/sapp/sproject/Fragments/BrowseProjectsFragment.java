@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.smm.sapp.sproject.Adapters.BrowseProjectAdapter;
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.Models.BrowseProjectsModel;
 import com.smm.sapp.sproject.Models.ProjectsModels;
@@ -40,15 +41,11 @@ import me.anwarshahriar.calligrapher.Calligrapher;
 import okhttp3.Call;
 import okhttp3.Response;
 
-public class BrowseProjectsFragment extends Fragment implements View.OnClickListener{
+public class BrowseProjectsFragment extends Fragment implements View.OnClickListener {
 
 
     ArrayList<ProjectsModels> arrayList = new ArrayList<>();
     BrowseProjectAdapter adapter;
-
-    /**
-     * بحث عن مشروع
-     */
     private EditText mSearch;
 
     private TextView mMotionButton;
@@ -100,9 +97,10 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
         mArchButton = (TextView) getView().findViewById(R.id.arch_button);
         mInButton = (TextView) getView().findViewById(R.id.in_button);
         mProjectsRecycler = (RecyclerView) getView().findViewById(R.id.projects_recycler);
-        mProjectsRecycler.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+        mProjectsRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
     }
-    private void setListener(){
+
+    private void setListener() {
         mSearch.setOnClickListener(this);
         mMotionButton.setOnClickListener(this);
         mGhButton.setOnClickListener(this);
@@ -114,20 +112,22 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    Log.e("ff",mSearch.getText().toString());
+                    Log.e("ff", mSearch.getText().toString());
                     return true;
                 }
                 return false;
             }
         });
     }
-    private void getProjects(String url){
+
+    private void getProjects(String url) {
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
-        myRequest.GetCall("http://smm.smmim.com/waell/public/api/"+url, new OkHttpCallback() {
+        myRequest.GetCall("http://smm.smmim.com/waell/public/api/" + url, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
+                Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -138,14 +138,15 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
                 getActivity().runOnUiThread(new Runnable() {
                     public void run() {
                         try {
-                            if (object1.getBoolean("success")){
+                            if (object1.getBoolean("success")) {
                                 Gson gson = new Gson();
                                 arrayList.clear();
-                                TypeToken<List<ProjectsModels>> token = new TypeToken<List<ProjectsModels>>() {};
+                                TypeToken<List<ProjectsModels>> token = new TypeToken<List<ProjectsModels>>() {
+                                };
                                 arrayList = gson.fromJson(object.getJSONArray("projects").toString(), token.getType());
                                 adapter = new BrowseProjectAdapter(getActivity(), arrayList);
                                 mProjectsRecycler.setAdapter(adapter);
-                            }else {
+                            } else {
                                 Toast.makeText(getContext(), "" + object1.getBoolean("error"), Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
@@ -155,19 +156,25 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
                 });
 
 
-
             }
         });
+    }
+
+    private void setBottomBarShap() {
+        ConstantInterFace.tv_home.setBackgroundResource(0);
+        ConstantInterFace.tv_msgs.setBackgroundResource(0);
+        ConstantInterFace.tv_profile.setBackgroundResource(0);
+        ConstantInterFace.tv_projects.setBackground(getResources().getDrawable(R.drawable.main_shape));
+        ConstantInterFace.tv_portfolio.setBackgroundResource(0);
     }
 
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        switch (id){
+        switch (id) {
             case R.id.motion_button:
                 mMotionButton.setTextColor(Color.parseColor("#ffffff"));
                 mMotionButton.setBackgroundResource(R.drawable.title_shape);
-
                 mGhButton.setTextColor(Color.parseColor("#000000"));
                 mGhButton.setBackgroundResource(R.drawable.account_shape);
                 mWallButton.setTextColor(Color.parseColor("#000000"));
@@ -176,12 +183,14 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
                 mArchButton.setBackgroundResource(R.drawable.account_shape);
                 mInButton.setTextColor(Color.parseColor("#000000"));
                 mInButton.setBackgroundResource(R.drawable.account_shape);
+
+                setBottomBarShap();
                 getProjects("getallprojectsmoshen");
                 break;
+
             case R.id.gh_button:
                 mGhButton.setTextColor(Color.parseColor("#ffffff"));
                 mGhButton.setBackgroundResource(R.drawable.title_shape);
-
                 mMotionButton.setTextColor(Color.parseColor("#000000"));
                 mMotionButton.setBackgroundResource(R.drawable.account_shape);
                 mWallButton.setTextColor(Color.parseColor("#000000"));
@@ -190,12 +199,14 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
                 mArchButton.setBackgroundResource(R.drawable.account_shape);
                 mInButton.setTextColor(Color.parseColor("#000000"));
                 mInButton.setBackgroundResource(R.drawable.account_shape);
+
+                setBottomBarShap();
                 getProjects("getallprojectsgraphic");
                 break;
+
             case R.id.wall_button:
                 mWallButton.setTextColor(Color.parseColor("#ffffff"));
                 mWallButton.setBackgroundResource(R.drawable.title_shape);
-
                 mMotionButton.setTextColor(Color.parseColor("#000000"));
                 mMotionButton.setBackgroundResource(R.drawable.account_shape);
                 mGhButton.setTextColor(Color.parseColor("#000000"));
@@ -204,8 +215,11 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
                 mArchButton.setBackgroundResource(R.drawable.account_shape);
                 mInButton.setTextColor(Color.parseColor("#000000"));
                 mInButton.setBackgroundResource(R.drawable.account_shape);
+
+                setBottomBarShap();
                 getProjects("getallprojectswall");
                 break;
+
             case R.id.arch_button:
                 mArchButton.setTextColor(Color.parseColor("#ffffff"));
                 mArchButton.setBackgroundResource(R.drawable.title_shape);
@@ -218,12 +232,14 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
                 mWallButton.setBackgroundResource(R.drawable.account_shape);
                 mInButton.setTextColor(Color.parseColor("#000000"));
                 mInButton.setBackgroundResource(R.drawable.account_shape);
+
+                setBottomBarShap();
                 getProjects("getallprojectsarch");
                 break;
+
             case R.id.in_button:
                 mInButton.setTextColor(Color.parseColor("#ffffff"));
                 mInButton.setBackgroundResource(R.drawable.title_shape);
-
                 mMotionButton.setTextColor(Color.parseColor("#000000"));
                 mMotionButton.setBackgroundResource(R.drawable.account_shape);
                 mGhButton.setTextColor(Color.parseColor("#000000"));
@@ -232,6 +248,8 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
                 mWallButton.setBackgroundResource(R.drawable.account_shape);
                 mArchButton.setTextColor(Color.parseColor("#000000"));
                 mArchButton.setBackgroundResource(R.drawable.account_shape);
+
+                setBottomBarShap();
                 getProjects("getallprojectsinter");
                 break;
         }

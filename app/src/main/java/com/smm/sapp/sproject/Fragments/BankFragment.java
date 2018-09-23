@@ -131,7 +131,6 @@ public class BankFragment extends Fragment {
 
         Bundle bundle = getArguments();
         arrayList = bundle.getParcelableArrayList("bankInfo");
-        Log.e("log", arrayList.get(0).getNumber());
 
         init();
         onClickMethod();

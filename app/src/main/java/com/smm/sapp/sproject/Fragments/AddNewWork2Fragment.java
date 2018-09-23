@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.smm.sapp.sproject.Adapters.ClientJobAdapter;
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.Models.ClientJobs;
 import com.smm.sapp.sproject.R;
@@ -22,16 +23,12 @@ import java.util.List;
 import me.anwarshahriar.calligrapher.Calligrapher;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class AddNewWork2Fragment extends Fragment {
 
-    TextView title1 ;
+    TextView title1;
     RecyclerView mnewWorkRes;
     LinearLayoutManager layoutManager;
     List<ClientJobs> jobs;
-
 
     public AddNewWork2Fragment() {
         // Required empty public constructor
@@ -46,7 +43,7 @@ public class AddNewWork2Fragment extends Fragment {
     }
 
     private void initView() {
-         title1 = getView().findViewById(R.id.title1);
+        title1 = getView().findViewById(R.id.title1);
         mnewWorkRes = getView().findViewById(R.id.new_work_res);
 
         layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
@@ -60,6 +57,13 @@ public class AddNewWork2Fragment extends Fragment {
                 FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AddNewWorkFragment(), true);
             }
         });
+
+        ConstantInterFace.tv_home.setBackgroundResource(0);
+        ConstantInterFace.tv_msgs.setBackgroundResource(0);
+        ConstantInterFace.tv_profile.setBackgroundResource(0);
+        ConstantInterFace.tv_projects.setBackgroundResource(0);
+        ConstantInterFace.tv_portfolio.setBackgroundResource(0);
+
 
     }
 

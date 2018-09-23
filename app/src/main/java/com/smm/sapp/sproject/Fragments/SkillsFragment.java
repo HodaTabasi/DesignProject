@@ -42,7 +42,7 @@ public class SkillsFragment extends Fragment {
     ArrayList<SkillsModel> arrayList = new ArrayList<>();
     SkillsAdapter adapter;
     FrameLayout add_skills;
-    EditText et_skill, et_experience ;
+    EditText et_skill, et_experience;
 
     public SkillsFragment() {
     }
@@ -55,7 +55,7 @@ public class SkillsFragment extends Fragment {
         return view;
     }
 
-    private void init(){
+    private void init() {
         recyclerView = getView().findViewById(R.id.recycler_skills);
         tv_add_new = getView().findViewById(R.id.tv_add_new);
         tv_save = getView().findViewById(R.id.tv_save);
@@ -68,7 +68,7 @@ public class SkillsFragment extends Fragment {
         recyclerView.setAdapter(adapter);
     }
 
-    private void onClickMethod(){
+    private void onClickMethod() {
         tv_add_new.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,7 +78,7 @@ public class SkillsFragment extends Fragment {
         tv_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SkillsModel model = new SkillsModel(et_skill.getText().toString(),et_experience.getText().toString());
+                SkillsModel model = new SkillsModel(et_skill.getText().toString(), et_experience.getText().toString());
                 arrayList.add(model);
                 putParameter();
                 add_skills.setVisibility(View.GONE);
@@ -104,12 +104,12 @@ public class SkillsFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     public void run() {
                         try {
-                            if (jsonObject.getBoolean("success")){
-                        Toast.makeText(getContext(), ""+jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                            if (jsonObject.getBoolean("success")) {
+                                Toast.makeText(getContext(), "" + jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                                 notifys();
-                            }else {
-                        Toast.makeText(getContext(), ""+jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-    //                    arrayList.remove(arrayList.size());
+                            } else {
+                                Toast.makeText(getContext(), "" + jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                                //                    arrayList.remove(arrayList.size());
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -130,9 +130,9 @@ public class SkillsFragment extends Fragment {
         Map<String, String> stringMap = new HashMap<>();
         stringMap.put("token", ConstantInterFace.USER.getToken());
 
-        for (int i= 0; i<arrayList.size(); i++){
-            stringMap.put("years["+i+"]",arrayList.get(i).getYears());
-            stringMap.put("name["+i+"]",arrayList.get(i).getName());
+        for (int i = 0; i < arrayList.size(); i++) {
+            stringMap.put("years[" + i + "]", arrayList.get(i).getYears());
+            stringMap.put("name[" + i + "]", arrayList.get(i).getName());
         }
         addNewSkill(stringMap);
     }
@@ -145,7 +145,7 @@ public class SkillsFragment extends Fragment {
 
         Bundle bundle = getArguments();
         arrayList = bundle.getParcelableArrayList("skillsInfo");
-        Log.e("fff",arrayList.get(0).getName());
+        Log.e("fff", arrayList.get(0).getName());
 
         init();
         onClickMethod();

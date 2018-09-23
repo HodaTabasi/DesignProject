@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.R;
 
@@ -48,6 +49,8 @@ public class AddProjectFragment extends Fragment implements View.OnClickListener
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
         addListeners();
+        setBottomBarShap();
+
     }
 
     private void initView() {
@@ -66,6 +69,14 @@ public class AddProjectFragment extends Fragment implements View.OnClickListener
         mMostion.setOnClickListener(this);
         mDrawWall.setOnClickListener(this);
         mSearchDesigner.setOnClickListener(this);
+    }
+
+    private void setBottomBarShap() {
+        ConstantInterFace.tv_home.setBackgroundResource(0);
+        ConstantInterFace.tv_msgs.setBackgroundResource(0);
+        ConstantInterFace.tv_profile.setBackgroundResource(0);
+        ConstantInterFace.tv_projects.setBackgroundResource(0);
+        ConstantInterFace.tv_portfolio.setBackgroundResource(0);
     }
 
     @Override

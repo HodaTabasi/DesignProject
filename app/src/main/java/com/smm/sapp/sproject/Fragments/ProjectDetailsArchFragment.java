@@ -23,9 +23,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+//import com.google.android.gms.common.ConnectionResult;
+//import com.google.android.gms.common.GoogleApiAvailability;
+//import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.smm.sapp.sproject.Activities.MapActivity;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.MyRequest;

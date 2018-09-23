@@ -46,15 +46,15 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
         holder.tv_proposals.setText(projectsList.get(position).getOffers().size() + " ");
 //        holder.tv_time.setText();
 
-        if (!ConstantInterFace.IS_REGISTER){
+        if (!ConstantInterFace.IS_REGISTER) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     ViewProjectFragment fragment = new ViewProjectFragment();
                     Bundle bundle = new Bundle();
-                    bundle.putParcelable("theProject",projectsList.get(position));
+                    bundle.putParcelable("theProject", projectsList.get(position));
                     fragment.setArguments(bundle);
-                    FragmentsUtil.replaceFragment((FragmentActivity) context,R.id.container_activity,fragment);
+                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment);
                 }
             });
             holder.img_arrow.setOnClickListener(new View.OnClickListener() {
@@ -73,16 +73,19 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
     }
 
     private void showPopUpMenu(ImageView img) {
-        PopupMenu popup = new PopupMenu(context,img);
-
+        PopupMenu popup = new PopupMenu(context, img);
         popup.inflate(R.menu.custom_menu);
-
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.new_one:
-                        FragmentsUtil.replaceFragment((FragmentActivity) context,R.id.container_activity,new AddProjectFragment());
+                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AddProjectFragment(),true);
+                        ConstantInterFace.tv_home.setBackgroundResource(0);
+                        ConstantInterFace.tv_msgs.setBackgroundResource(0);
+                        ConstantInterFace.tv_profile.setBackgroundResource(0);
+                        ConstantInterFace.tv_projects.setBackgroundResource(0);
+                        ConstantInterFace.tv_portfolio.setBackgroundResource(0);
                         return true;
                     case R.id.new_fav:
 
