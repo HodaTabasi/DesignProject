@@ -52,6 +52,7 @@ public class MessageDitailsFragment extends Fragment implements View.OnClickList
     private ImageView mSendMessg;
     private List<MessageDetails> details;
     MyMessageDetailAdapter adapter;
+    ImageView ic_back;
 
     public MessageDitailsFragment() {
         // Required empty public constructor
@@ -122,6 +123,15 @@ public class MessageDitailsFragment extends Fragment implements View.OnClickList
         Log.e("ff",userId);
         initView(getView());
         getAConversationRequest();
+
+        ic_back = getView().findViewById(R.id.ic_back);
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
     }
 
     @Override
