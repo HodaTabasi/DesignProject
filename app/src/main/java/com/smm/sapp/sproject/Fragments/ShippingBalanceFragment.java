@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -59,7 +60,7 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
     RelativeLayout one ,two;
     TextView addPhotoShp;
     EditText userBankNameShp, bankNumberShp, bankNameShp, balance, transferDateSh;
-
+    ImageView ic_back;
     String filePath;
     public ShippingBalanceFragment() {
         // Required empty public constructor
@@ -101,6 +102,16 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
         addListeners();
+
+        ic_back = getView().findViewById(R.id.ic_back);
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
     }
 
     @Override

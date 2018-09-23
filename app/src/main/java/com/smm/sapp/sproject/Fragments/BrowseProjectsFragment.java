@@ -64,6 +64,7 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
      */
     private TextView mInButton;
     private RecyclerView mProjectsRecycler;
+    ImageView ic_back;
 
     public BrowseProjectsFragment() {
     }
@@ -98,6 +99,7 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
         mInButton = (TextView) getView().findViewById(R.id.in_button);
         mProjectsRecycler = (RecyclerView) getView().findViewById(R.id.projects_recycler);
         mProjectsRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        ic_back = getView().findViewById(R.id.ic_back);
     }
 
     private void setListener() {
@@ -118,6 +120,14 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
                 return false;
             }
         });
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
     }
 
     private void getProjects(String url) {

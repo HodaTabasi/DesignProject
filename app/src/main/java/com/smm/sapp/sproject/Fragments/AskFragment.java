@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.smm.sapp.sproject.Adapters.AskUsAdapter;
 import com.smm.sapp.sproject.Models.AskUs;
@@ -28,6 +29,7 @@ public class AskFragment extends Fragment {
     RecyclerView recyclerView;
     LinearLayoutManager layoutManager;
     List<AskUs> askUses;
+    ImageView ic_back;
 
     public AskFragment() {
         // Required empty public constructor
@@ -46,6 +48,7 @@ public class AskFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         recyclerView = getView().findViewById(R.id.ask_us);
+        ic_back = getView().findViewById(R.id.ic_back);
         layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         askUses = new ArrayList<>();
@@ -53,5 +56,13 @@ public class AskFragment extends Fragment {
 
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
     }
 }

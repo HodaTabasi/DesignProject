@@ -10,9 +10,11 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +48,7 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
     ArrayList<Likes> workList = new ArrayList<>();
     ArrayList<Likes> designList = new ArrayList<>();
     TextView designs, pWork, project;
+    ImageView ic_back;
 
     public FavoriteFragment() {
     }
@@ -68,6 +71,7 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
         designs = view.findViewById(R.id.designs);
         pWork = view.findViewById(R.id.works);
         project = view.findViewById(R.id.projects);
+        ic_back = getView().findViewById(R.id.ic_back);
 
         designs.setOnClickListener(this);
         pWork.setOnClickListener(this);
@@ -131,6 +135,13 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
 
         init(getView());
         getAllLikes();
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
     }
 
     @Override

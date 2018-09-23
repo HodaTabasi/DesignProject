@@ -59,6 +59,7 @@ public class ProjectDetailsInterFragment extends Fragment {
     private static final int ERROR_DIALOG_REQUEST = 9001;
     private static final int REQUEST_CODE = 1;
     String s_lat, s_lng;
+    ImageView ic_back;
 
 
     public ProjectDetailsInterFragment() {
@@ -87,6 +88,15 @@ public class ProjectDetailsInterFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //sendInterDesignRequest();
+            }
+        });
+
+        ic_back = getView().findViewById(R.id.ic_back);
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
             }
         });
 

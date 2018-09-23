@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.smm.sapp.sproject.Adapters.FeedbackAdapter;
 import com.smm.sapp.sproject.Models.Comments;
@@ -25,7 +26,7 @@ public class FeedbackFragment extends Fragment {
     ArrayList<Comments> arrayList = new ArrayList<>();
     FeedbackAdapter adapter;
 
-
+    ImageView ic_back;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -34,6 +35,7 @@ public class FeedbackFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recycel_feedback);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+        ic_back = view.findViewById(R.id.ic_back);
         return view;
     }
 
@@ -47,5 +49,13 @@ public class FeedbackFragment extends Fragment {
         arrayList = bundle.getParcelableArrayList("commentsInfo");
         adapter = new FeedbackAdapter(getActivity(), arrayList);
         recyclerView.setAdapter(adapter);
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
     }
 }

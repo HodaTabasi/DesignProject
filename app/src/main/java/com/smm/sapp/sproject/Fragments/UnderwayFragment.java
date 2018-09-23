@@ -50,6 +50,7 @@ public class UnderwayFragment extends Fragment {
     private EditText mMessageEx;
     private ImageView mSendMessg;
     private LinearLayout mFf;
+    ImageView ic_back;
 
     public UnderwayFragment() {
         // Required empty public constructor
@@ -86,5 +87,15 @@ public class UnderwayFragment extends Fragment {
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
+
+        ic_back = getView().findViewById(R.id.ic_back);
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
     }
 }

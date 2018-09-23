@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +44,7 @@ public class SkillsFragment extends Fragment {
     SkillsAdapter adapter;
     FrameLayout add_skills;
     EditText et_skill, et_experience;
+    ImageView ic_back;
 
     public SkillsFragment() {
     }
@@ -149,5 +151,15 @@ public class SkillsFragment extends Fragment {
 
         init();
         onClickMethod();
+
+        ic_back = getView().findViewById(R.id.ic_back);
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
     }
 }

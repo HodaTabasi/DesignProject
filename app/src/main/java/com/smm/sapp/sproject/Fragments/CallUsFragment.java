@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.smm.sapp.sproject.R;
 
@@ -18,6 +19,7 @@ import me.anwarshahriar.calligrapher.Calligrapher;
  */
 public class CallUsFragment extends Fragment {
 
+    ImageView ic_back;
 
     public CallUsFragment() {
         // Required empty public constructor
@@ -36,5 +38,15 @@ public class CallUsFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
+
+        ic_back = getView().findViewById(R.id.ic_back);
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
     }
 }

@@ -6,9 +6,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -48,6 +50,7 @@ public class AccountFragment extends Fragment {
     TextView tv_title;
     RatingBar ratingBar;
     LinearLayout linear_rate;
+    ImageView ic_back;
 
     String name, title;
     public AccountFragment() {
@@ -95,6 +98,7 @@ public class AccountFragment extends Fragment {
         tv_title = getView().findViewById(R.id.title);
         ratingBar = getView().findViewById(R.id.account_rate);
         linear_rate = getView().findViewById(R.id.linear_rate);
+        ic_back = getView().findViewById(R.id.ic_back);
     }
 
     private void onClickMethod() {
@@ -168,7 +172,15 @@ public class AccountFragment extends Fragment {
             }
         });
 
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
     }
+
+
 
     private void getProfileDataRequest() {
         MyRequest myRequest = new MyRequest();

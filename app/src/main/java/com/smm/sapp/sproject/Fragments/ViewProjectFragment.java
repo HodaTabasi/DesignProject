@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.smm.sapp.sproject.Adapters.ProjectAttachmentAdapter;
@@ -47,6 +48,7 @@ public class ViewProjectFragment extends Fragment {
     Bundle bundle;
     private TextView addOffer;
     ProjectsModels models;
+    ImageView ic_back;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -76,6 +78,16 @@ public class ViewProjectFragment extends Fragment {
                 FragmentsUtil.replaceFragment(getActivity(),R.id.container_activity,fragment,true);
             }
         });
+
+        ic_back = getView().findViewById(R.id.ic_back);
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
     }
 
     private void initView(View view) {

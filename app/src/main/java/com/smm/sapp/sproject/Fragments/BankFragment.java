@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.smm.sapp.sproject.Adapters.BankAdapter;
@@ -46,7 +47,7 @@ public class BankFragment extends Fragment {
     EditText et_bankName, et_bankNum, et_kNum;
     ArrayList<UserModel.BanksBean> arrayList = new ArrayList<>();
     BankAdapter adapter;
-
+    ImageView ic_back;
 
     public BankFragment() {
     }
@@ -64,6 +65,7 @@ public class BankFragment extends Fragment {
         tv_add_account = getView().findViewById(R.id.tv_add_account);
         tv_save = getView().findViewById(R.id.tv_save);
         frameLayout = getView().findViewById(R.id.add_bank);
+        ic_back = getView().findViewById(R.id.ic_back);
 
         et_bankName = getView().findViewById(R.id.et_bankName);
         et_bankNum = getView().findViewById(R.id.et_bankNum);
@@ -134,5 +136,13 @@ public class BankFragment extends Fragment {
 
         init();
         onClickMethod();
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
     }
 }

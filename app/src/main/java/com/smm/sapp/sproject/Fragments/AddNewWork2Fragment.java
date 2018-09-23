@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.smm.sapp.sproject.Adapters.ClientJobAdapter;
@@ -29,6 +30,7 @@ public class AddNewWork2Fragment extends Fragment {
     RecyclerView mnewWorkRes;
     LinearLayoutManager layoutManager;
     List<ClientJobs> jobs;
+    ImageView ic_back;
 
     public AddNewWork2Fragment() {
         // Required empty public constructor
@@ -45,7 +47,7 @@ public class AddNewWork2Fragment extends Fragment {
     private void initView() {
         title1 = getView().findViewById(R.id.title1);
         mnewWorkRes = getView().findViewById(R.id.new_work_res);
-
+        ic_back = getView().findViewById(R.id.ic_back);
         layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mnewWorkRes.setLayoutManager(layoutManager);
         jobs = new ArrayList<>();
@@ -73,5 +75,13 @@ public class AddNewWork2Fragment extends Fragment {
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
     }
 }

@@ -66,6 +66,8 @@ public class ProjectDetailsArchFragment extends Fragment {
     private static final int REQUEST_CODE = 1;
     String s_lat, s_lng;
 
+    ImageView ic_back;
+
 
     public ProjectDetailsArchFragment() {
     }
@@ -86,6 +88,16 @@ public class ProjectDetailsArchFragment extends Fragment {
         if (isServicesOk()) {
             initView();
         }
+
+        ic_back = getView().findViewById(R.id.ic_back);
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
 
         mSendIn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +46,7 @@ public class RetractableBalanceFragment extends Fragment {
     private TextView mSendRetractableRetBalance;
 
     EditText et_uName,et_bNumber,et_bName,et_balance;
+    ImageView ic_back;
 
     public RetractableBalanceFragment() {
         // Required empty public constructor
@@ -141,6 +143,14 @@ public class RetractableBalanceFragment extends Fragment {
             }
         });
 
+        ic_back = getView().findViewById(R.id.ic_back);
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
     }
 
     private void sendWithDraowBalancerequest() {

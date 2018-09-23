@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -27,6 +28,7 @@ public class MyAccountFragment extends Fragment implements View.OnClickListener 
     private TextView mCurrentAccount;
     private TextView mRechargeBalance;
     private TextView mDropBalance;
+    ImageView ic_back;
 
     public MyAccountFragment() {
         // Required empty public constructor
@@ -45,6 +47,7 @@ public class MyAccountFragment extends Fragment implements View.OnClickListener 
         mCurrentAccount = getView().findViewById(R.id.current_account);
         mRechargeBalance = getView().findViewById(R.id.recharge_balance);
         mDropBalance = getView().findViewById(R.id.drop_balance);
+        ic_back = getView().findViewById(R.id.ic_back);
 
         ConstantInterFace.tv_home.setBackgroundResource(0);
         ConstantInterFace.tv_msgs.setBackgroundResource(0);
@@ -68,6 +71,12 @@ public class MyAccountFragment extends Fragment implements View.OnClickListener 
         initView();
         addListeners();
 
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
     }
 
     @Override

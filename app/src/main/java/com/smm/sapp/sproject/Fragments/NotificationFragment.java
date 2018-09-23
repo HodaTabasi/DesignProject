@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.smm.sapp.sproject.Adapters.NotificationAdapter;
 import com.smm.sapp.sproject.Models.Notifications;
@@ -27,6 +28,7 @@ public class NotificationFragment extends Fragment {
     private RecyclerView mNotificationAttention;
     private LinearLayoutManager layoutManager;
     List<Notifications> notifications;
+    ImageView ic_back;
 
     public NotificationFragment() {
         // Required empty public constructor
@@ -48,6 +50,8 @@ public class NotificationFragment extends Fragment {
         mNotificationAttention.setLayoutManager(layoutManager);
         notifications = new ArrayList<>();
         mNotificationAttention.setAdapter(new NotificationAdapter(getContext(), R.layout.layout_item_notification, notifications));
+
+        ic_back = getView().findViewById(R.id.ic_back);
     }
 
     @Override
@@ -56,5 +60,13 @@ public class NotificationFragment extends Fragment {
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
     }
 }

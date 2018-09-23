@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +39,7 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
     /** بانتظار الموافقة */
     private TextView mAllOfferWait;
     private RecyclerView mAllOfferRes;
+    ImageView ic_back;
 
     LinearLayoutManager layoutManager;
     List<MyProjectsProposals> projectsProposals;
@@ -64,6 +66,7 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
         mAllOfferRes.setLayoutManager(layoutManager);
         projectsProposals = new ArrayList<>();
         mAllOfferRes.setAdapter(new MyProjectsProposalsAdapter(getContext(),R.layout.fav_row,projectsProposals));
+        ic_back = getView().findViewById(R.id.ic_back);
     }
 
     @Override
@@ -72,7 +75,16 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
-       // Bundle bundle = getArguments();
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
+
+        // Bundle bundle = getArguments();
        /* int flag = bundle.getInt("flag");
         if (flag == 0){
             Toast.makeText(getContext(), "done recycle", Toast.LENGTH_SHORT).show();

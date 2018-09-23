@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.smm.sapp.sproject.ConstantInterFace;
@@ -17,7 +18,7 @@ import me.anwarshahriar.calligrapher.Calligrapher;
 
 public class SameemFragment extends Fragment {
 
-
+    ImageView ic_back;
     public SameemFragment() {
         // Required empty public constructor
     }
@@ -96,5 +97,15 @@ public class SameemFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
+
+        ic_back = getView().findViewById(R.id.ic_back);
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
     }
 }

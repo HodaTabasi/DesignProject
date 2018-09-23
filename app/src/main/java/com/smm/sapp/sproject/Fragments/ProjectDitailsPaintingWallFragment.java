@@ -53,6 +53,7 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
     private EditText mWallProjectDietails;
     private TextView mWallAttachment;
     private Button mWallSend;
+    ImageView ic_back;
 
     private static final int ERROR_DIALOG_REQUEST = 9001;
     private static final int REQUEST_CODE = 1;
@@ -101,6 +102,16 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
         if (isServicesOk()) {
             initView();
         }
+
+        ic_back = getView().findViewById(R.id.ic_back);
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
 
         mWallSend.setOnClickListener(new View.OnClickListener() {
             @Override

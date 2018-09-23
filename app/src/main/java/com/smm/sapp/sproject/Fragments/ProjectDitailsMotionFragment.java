@@ -44,7 +44,7 @@ public class ProjectDitailsMotionFragment extends Fragment {
     private EditText mProjectDetiailsMotion;
     private TextView mAttachmentMotion;
     private Button mSendMotion;
-
+    ImageView ic_back;
     public ProjectDitailsMotionFragment() {
 
     }
@@ -83,6 +83,16 @@ public class ProjectDitailsMotionFragment extends Fragment {
                 //sendMotionRequest();
             }
         });
+
+        ic_back = getView().findViewById(R.id.ic_back);
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
     }
 
     private void sendMotionRequest() {

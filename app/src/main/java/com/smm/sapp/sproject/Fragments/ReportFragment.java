@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,6 +50,7 @@ public class ReportFragment extends Fragment implements View.OnClickListener {
     LinearLayoutManager layoutManager;
     List<FinancialMovementReports> reports;
     FinancialMovementReportAdapter adapter;
+    ImageView ic_back;
 
     public ReportFragment() {
         // Required empty public constructor
@@ -83,6 +85,16 @@ public class ReportFragment extends Fragment implements View.OnClickListener {
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
         addNewBankRequest("all");
+
+        ic_back = getView().findViewById(R.id.ic_back);
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
     }
 
     private void addNewBankRequest(String type) {

@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.smm.sapp.sproject.ConstantInterFace;
@@ -29,6 +30,7 @@ public class AddProjectFragment extends Fragment implements View.OnClickListener
     private RelativeLayout mDrawWall;
     private RelativeLayout mSearchDesigner;
     private RelativeLayout mMostion;
+    ImageView ic_back;
 
     public AddProjectFragment() {
         // Required empty public constructor
@@ -51,6 +53,13 @@ public class AddProjectFragment extends Fragment implements View.OnClickListener
         addListeners();
         setBottomBarShap();
 
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
     }
 
     private void initView() {
@@ -60,6 +69,7 @@ public class AddProjectFragment extends Fragment implements View.OnClickListener
         mMostion = getView().findViewById(R.id.mostion);
         mDrawWall = getView().findViewById(R.id.draw_wall);
         mSearchDesigner = getView().findViewById(R.id.search_designer);
+        ic_back = getView().findViewById(R.id.ic_back);
     }
 
     private void addListeners() {

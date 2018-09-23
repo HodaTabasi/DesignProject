@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,6 +52,8 @@ public class CurrentAccountFragment extends Fragment {
      */
     private TextView mAvailableCuBalance;
 
+    ImageView ic_back;
+
     public CurrentAccountFragment() {
         // Required empty public constructor
     }
@@ -68,6 +71,7 @@ public class CurrentAccountFragment extends Fragment {
         mTotalCuBalance = getView().findViewById(R.id.total_cu_balance);
         mRetractableCuBalance = getView().findViewById(R.id.retractable_cu_balance);
         mAvailableCuBalance = getView().findViewById(R.id.available_cu_balance);
+        ic_back = getView().findViewById(R.id.ic_back);
 
     }
 
@@ -120,6 +124,14 @@ public class CurrentAccountFragment extends Fragment {
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
         addCurrentAccountRequest();
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
     }
 
 

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +49,7 @@ public class AddProposalFragment extends Fragment {
     private String filePath;
     private byte[] b;
     int id;
+    ImageView ic_back;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -81,6 +83,14 @@ public class AddProposalFragment extends Fragment {
                 addOfferRequest();
             }
         });
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
     }
 
     private void addOfferRequest() {
@@ -142,5 +152,6 @@ public class AddProposalFragment extends Fragment {
         mTv2 = (TextView) view.findViewById(R.id.tv2);
         mAttchP = (TextView) view.findViewById(R.id.attch_p);
         mAddProposalP = (TextView) view.findViewById(R.id.add_proposal_p);
+        ic_back = getView().findViewById(R.id.ic_back);
     }
 }

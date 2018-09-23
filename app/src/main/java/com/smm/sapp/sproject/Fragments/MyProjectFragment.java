@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -49,6 +50,8 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
     private LinearLayout mLDoneProject;
     private LinearLayout mTwo;
 
+    ImageView ic_back;
+
     LinearLayoutManager layoutManager;
     List<MyProjectsProposals> projectsProposals;
 
@@ -83,6 +86,8 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         projectsProposals = new ArrayList<>();
         mMyProjectRes.setAdapter(new MyProjectsProposalsAdapter(getContext(),R.layout.fav_row,projectsProposals));
 
+        ic_back = getView().findViewById(R.id.ic_back);
+
     }
 
     private void onClickMethod(){
@@ -108,6 +113,14 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
         onClickMethod();
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
     }
 
     @Override

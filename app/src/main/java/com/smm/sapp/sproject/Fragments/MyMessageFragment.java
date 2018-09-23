@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -44,6 +45,7 @@ public class MyMessageFragment extends Fragment {
     private RecyclerView mMyMessage;
     MyMessageAdapter adapter;
     List<MyMessageModel> myMessageModelList;
+    ImageView ic_back;
 
     public MyMessageFragment() {
         // Required empty public constructor
@@ -60,6 +62,7 @@ public class MyMessageFragment extends Fragment {
     private void initView(View view){
         mMyMessage = view.findViewById(R.id.my_message);
         mMyMessage.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+        ic_back = getView().findViewById(R.id.ic_back);
 
     }
     private void getMyConversationsRequest(){
@@ -105,5 +108,12 @@ public class MyMessageFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         initView(getView());
         getMyConversationsRequest();
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
     }
 }

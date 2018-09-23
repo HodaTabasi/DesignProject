@@ -52,6 +52,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
 
     String savedValue1, savedValue2;
 
+    ImageView ic_back;
 
     public ProjectDitailesGraphicsFragment() {
         // Required empty public constructor
@@ -90,6 +91,14 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
 
+        ic_back = getView().findViewById(R.id.ic_back);
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
 
         mSendGh.setOnClickListener(new View.OnClickListener() {
             @Override
