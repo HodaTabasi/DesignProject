@@ -1,6 +1,7 @@
 package com.smm.sapp.sproject.Adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -56,6 +57,13 @@ public class FavoritePortfolioAdapter extends RecyclerView.Adapter<FavoritePortf
             tv_specialization = itemView.findViewById(R.id.tv_specialization);
             tv_fav = itemView.findViewById(R.id.tv_fav);
             tv_addProject = itemView.findViewById(R.id.tv_addProject);
+
+            Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
+            tv_name.setTypeface(custom_font);
+            tv_like.setTypeface(custom_font);
+            tv_show.setTypeface(custom_font);
+            tv_specialization.setTypeface(custom_font);
+            tv_addProject.setTypeface(custom_font);
 
         }
     }

@@ -15,7 +15,7 @@
         android:layout_marginTop="10dp"
         android:text="تصميم معماري لشقة سكنية .."
         android:textColor="@color/textGray"
-        android:textSize="14sp" />
+        android:textSize="12sp" />
 
     <LinearLayout
         android:id="@+id/linaer"
@@ -26,22 +26,24 @@
 
         <LinearLayout
             android:id="@+id/linear_setting"
-            android:layout_width="50dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="40dp"
+            android:gravity="center_vertical"
             android:background="@drawable/square_shape"
             android:orientation="horizontal">
 
-
             <ImageView
                 android:id="@+id/img_arrow"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_arrow_drop_down" />
 
             <ImageView
                 android:id="@+id/img_setting"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_settings" />
 
@@ -55,7 +57,7 @@
             android:layout_weight="1"
             android:text="12 عرض"
             android:textColor="@color/textGray"
-            android:textSize="12sp" />
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/tv_time"
@@ -67,7 +69,7 @@
             android:drawableRight="@drawable/ic_calender2"
             android:text="قبل ساعتين"
             android:textColor="@color/textGray"
-            android:textSize="12sp" />
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/tv_name"
@@ -78,7 +80,7 @@
             android:drawableRight="@drawable/ic_solid_person2"
             android:text="محمد العليمي"
             android:textColor="@color/textGray"
-            android:textSize="12sp" />
+            android:textSize="10sp" />
     </LinearLayout>
 
     <View

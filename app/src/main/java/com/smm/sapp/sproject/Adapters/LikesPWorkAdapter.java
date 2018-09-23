@@ -1,6 +1,7 @@
 package com.smm.sapp.sproject.Adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -57,12 +58,13 @@ public class LikesPWorkAdapter extends RecyclerView.Adapter<LikesPWorkAdapter.Li
 
     @Override
     public int getItemCount() {
-        return PworksLikes.size() ;
+        return PworksLikes.size();
     }
 
     public class LikesPWorkVH extends RecyclerView.ViewHolder {
         ImageView view;
         TextView show, like, specialization, addProject, fav, name;
+
         public LikesPWorkVH(View itemView) {
             super(itemView);
             show = itemView.findViewById(R.id.tv_show);
@@ -72,6 +74,16 @@ public class LikesPWorkAdapter extends RecyclerView.Adapter<LikesPWorkAdapter.Li
             addProject = itemView.findViewById(R.id.tv_add_project);
             fav = itemView.findViewById(R.id.tv_fav);
             view = itemView.findViewById(R.id.img);
+
+
+            Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
+            show.setTypeface(custom_font);
+            name.setTypeface(custom_font);
+            like.setTypeface(custom_font);
+            specialization.setTypeface(custom_font);
+            addProject.setTypeface(custom_font);
+            fav.setTypeface(custom_font);
+
         }
     }
 }

@@ -45,6 +45,12 @@ public class MyAccountFragment extends Fragment implements View.OnClickListener 
         mCurrentAccount = getView().findViewById(R.id.current_account);
         mRechargeBalance = getView().findViewById(R.id.recharge_balance);
         mDropBalance = getView().findViewById(R.id.drop_balance);
+
+        ConstantInterFace.tv_home.setBackgroundResource(0);
+        ConstantInterFace.tv_msgs.setBackgroundResource(0);
+        ConstantInterFace.tv_profile.setBackgroundResource(0);
+        ConstantInterFace.tv_projects.setBackgroundResource(0);
+        ConstantInterFace.tv_portfolio.setBackgroundResource(0);
     }
 
     private void addListeners() {

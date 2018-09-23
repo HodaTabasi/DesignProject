@@ -1,6 +1,7 @@
 package com.smm.sapp.sproject.Adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,7 +15,7 @@ import com.smm.sapp.sproject.R;
 
 import java.util.List;
 
-public class ClientJobAdapter extends RecyclerView.Adapter<ClientJobAdapter.ClientJobVH>{
+public class ClientJobAdapter extends RecyclerView.Adapter<ClientJobAdapter.ClientJobVH> {
     Context context;
     int layout;
     List<ClientJobs> jobs;
@@ -28,7 +29,7 @@ public class ClientJobAdapter extends RecyclerView.Adapter<ClientJobAdapter.Clie
     @NonNull
     @Override
     public ClientJobVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v =  LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
         return new ClientJobVH(v);
     }
 
@@ -44,7 +45,8 @@ public class ClientJobAdapter extends RecyclerView.Adapter<ClientJobAdapter.Clie
 
     public class ClientJobVH extends RecyclerView.ViewHolder {
         ImageView img;
-        TextView projectTitle,numSeen,numLike,updateWork,deleteWork;
+        TextView projectTitle, numSeen, numLike, updateWork, deleteWork;
+
         public ClientJobVH(View itemView) {
             super(itemView);
             img = itemView.findViewById(R.id.img);
@@ -53,6 +55,15 @@ public class ClientJobAdapter extends RecyclerView.Adapter<ClientJobAdapter.Clie
             numLike = itemView.findViewById(R.id.num_like);
             updateWork = itemView.findViewById(R.id.update_work);
             deleteWork = itemView.findViewById(R.id.delete_work);
+
+            Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
+            projectTitle.setTypeface(custom_font);
+            numSeen.setTypeface(custom_font);
+            numLike.setTypeface(custom_font);
+            updateWork.setTypeface(custom_font);
+            deleteWork.setTypeface(custom_font);
+
+
         }
     }
 }

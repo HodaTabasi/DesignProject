@@ -1,6 +1,7 @@
 package com.smm.sapp.sproject.Adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -59,6 +60,13 @@ public class DesignProfileAdapter extends RecyclerView.Adapter<DesignProfileAdap
             ChooeseMe = itemView.findViewById(R.id.chooses_me);
             rate = itemView.findViewById(R.id.d_layout_rate);
             profileImg = itemView.findViewById(R.id.d_layout_profile_image);
+
+            Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
+            name.setTypeface(custom_font);
+            addToFav.setTypeface(custom_font);
+            specialty.setTypeface(custom_font);
+            ChooeseMe.setTypeface(custom_font);
+
         }
     }
 }

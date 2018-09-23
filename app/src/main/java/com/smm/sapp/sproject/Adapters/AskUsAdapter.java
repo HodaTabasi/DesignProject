@@ -1,6 +1,7 @@
 package com.smm.sapp.sproject.Adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -48,6 +49,11 @@ public class AskUsAdapter extends RecyclerView.Adapter<AskUsAdapter.AskUsVH> {
             super(itemView);
             title = itemView.findViewById(R.id.title1);
             answer = itemView.findViewById(R.id.description);
+
+            Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
+            title.setTypeface(custom_font);
+            answer.setTypeface(custom_font);
+
         }
     }
 }

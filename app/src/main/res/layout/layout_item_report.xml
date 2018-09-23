@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:layoutDirection="ltr"
     android:background="@drawable/report_layout_shap"
+    android:layoutDirection="ltr"
     android:orientation="vertical">
 
     <LinearLayout
@@ -21,14 +21,15 @@
             android:layout_weight="1"
             android:padding="3dp"
             android:textColor="@color/textGray"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
 
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="@color/gray"/>
+            android:background="@color/gray" />
 
         <TextView
+            android:id="@+id/tv_opNO"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
@@ -36,18 +37,17 @@
             android:layout_weight="0.5"
             android:text="رقم العملية"
             android:textColor="@color/textGray"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/gray"/>
+        android:background="@color/gray" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:orientation="horizontal">
 
         <TextView
@@ -58,14 +58,15 @@
             android:layout_weight="1"
             android:padding="3dp"
             android:textColor="@color/textGray"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
 
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="@color/gray"/>
+            android:background="@color/gray" />
 
         <TextView
+            android:id="@+id/tv_value"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
@@ -73,13 +74,13 @@
             android:layout_weight="0.5"
             android:text="القيمة"
             android:textColor="@color/textGray"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/gray"/>
+        android:background="@color/gray" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -94,14 +95,15 @@
             android:layout_weight="1"
             android:padding="3dp"
             android:textColor="@color/textGray"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
 
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="@color/gray"/>
+            android:background="@color/gray" />
 
         <TextView
+            android:id="@+id/tv_details"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
@@ -109,13 +111,13 @@
             android:layout_weight="0.5"
             android:text="التفاصيل"
             android:textColor="@color/textGray"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/gray"/>
+        android:background="@color/gray" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -130,14 +132,15 @@
             android:layout_weight="1"
             android:padding="3dp"
             android:textColor="@color/textGray"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
 
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="@color/gray"/>
+            android:background="@color/gray" />
 
         <TextView
+            android:id="@+id/tv_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
@@ -145,7 +148,7 @@
             android:layout_weight="0.5"
             android:text="تاريخ العملية"
             android:textColor="@color/textGray"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
     </LinearLayout>
 
 </LinearLayout>
