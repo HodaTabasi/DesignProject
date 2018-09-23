@@ -258,7 +258,7 @@ public class ProfileFragment extends Fragment {
                         Log.e(entry.getKey() + " ff",entry.getValue() + " 11");
                     }
 
-                    myRequest.PostCall("http://mustafa.smmim.com/waell/public/api/updateProfile", stringMap, new OkHttpCallback() {
+                    myRequest.PostCall("http://smm.smmim.com/waell/public/api/updateProfile", stringMap, new OkHttpCallback() {
                         @Override
                         public void onFailure(Call call, IOException e) {
 
@@ -318,12 +318,14 @@ public class ProfileFragment extends Fragment {
         st_type = bundle.getString("type");
         st_job_type = bundle.getString("job_type");
         st_busniess_type = bundle.getString("busniess_type");
+        busniess_type = bundle.getString("busniess_type");
         st_name = bundle.getString("name");
         st_bio = bundle.getString("bio");
         mobile = bundle.getString("mobile");
         st_email = bundle.getString("email");
         gender = bundle.getString("gender");
         st_dob = bundle.getString("dob");
+        date_format = bundle.getString("dob");
 
         type = getType(st_type);
 
