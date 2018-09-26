@@ -65,7 +65,7 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
         return view;
     }
 
-    private void init(View view){
+    private void init(View view) {
         recyclerView = view.findViewById(R.id.recycler_fav);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         designs = view.findViewById(R.id.designs);
@@ -78,10 +78,10 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
         project.setOnClickListener(this);
     }
 
-    private void getAllLikes(){
+    private void getAllLikes() {
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
-        myRequest.GetCall("http://smm.smmim.com/waell/public/api/mylikes?token=" +ConstantInterFace.USER.getToken(), new OkHttpCallback() {
+        myRequest.GetCall("http://smm.smmim.com/waell/public/api/mylikes?token=" + ConstantInterFace.USER.getToken(), new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
@@ -94,16 +94,16 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
                 final JSONObject object1 = object.getJSONObject("status");
                 final Gson gson = new Gson();
                 MyProgressDialog.dismissDialog();
-                Log.e("26","dfsewe");
+                Log.e("26", "dfsewe");
                 getActivity().runOnUiThread(new Runnable() {
                     public void run() {
                         try {
                             if (object1.getBoolean("success")) {
-                                JSONArray jsonArray =  object.getJSONArray("likes");
-                                for (int i = 0; i<= jsonArray.length(); i++){
+                                JSONArray jsonArray = object.getJSONArray("likes");
+                                for (int i = 0; i <= jsonArray.length(); i++) {
                                     JSONObject object2 = jsonArray.getJSONObject(i);
-                                    Likes likes = gson.fromJson(object2.toString(),Likes.class);
-                                    switch (likes.getTarget_type()){
+                                    Likes likes = gson.fromJson(object2.toString(), Likes.class);
+                                    switch (likes.getTarget_type()) {
                                         case "project":
                                             projectList.add(likes);
                                             break;
@@ -147,7 +147,7 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        switch (id){
+        switch (id) {
             case R.id.designs:
                 designs.setTextColor(Color.parseColor("#ffffff"));
                 designs.setBackgroundResource(R.drawable.title_shape);
@@ -173,7 +173,7 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
                 pWork.setBackgroundResource(R.drawable.account_shape);
                 designs.setTextColor(Color.parseColor("#000000"));
                 designs.setBackgroundResource(R.drawable.account_shape);
-                LikesProjectAdapter projectAdapter = new LikesProjectAdapter(getContext(),R.layout.fav_row,projectList);
+                LikesProjectAdapter projectAdapter = new LikesProjectAdapter(getContext(), R.layout.fav_row, projectList);
                 recyclerView.setAdapter(projectAdapter);
                 recyclerView.setVisibility(View.VISIBLE);
                 break;

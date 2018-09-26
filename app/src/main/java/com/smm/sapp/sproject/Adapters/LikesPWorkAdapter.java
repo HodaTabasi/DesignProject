@@ -71,10 +71,9 @@ public class LikesPWorkAdapter extends RecyclerView.Adapter<LikesPWorkAdapter.Li
             name = itemView.findViewById(R.id.tv_name);
             like = itemView.findViewById(R.id.tv_like);
             specialization = itemView.findViewById(R.id.tv_specialization);
-            addProject = itemView.findViewById(R.id.tv_add_project);
+            addProject = itemView.findViewById(R.id.tv_addProject);
             fav = itemView.findViewById(R.id.tv_fav);
             view = itemView.findViewById(R.id.img);
-
 
             Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
             show.setTypeface(custom_font);
