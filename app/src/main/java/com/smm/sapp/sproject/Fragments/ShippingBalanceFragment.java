@@ -45,23 +45,34 @@ import static android.app.Activity.RESULT_OK;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ShippingBalanceFragment extends Fragment implements View.OnClickListener{
+public class ShippingBalanceFragment extends Fragment implements View.OnClickListener {
 
-    /** تحويل بنكي */
+    /**
+     * تحويل بنكي
+     */
     private TextView mBankShTransfer;
-    /** بطاقة ائتمانية */
+    /**
+     * بطاقة ائتمانية
+     */
     private TextView mCreditShCard;
-    /** التحويل البنكي   */
+    /**
+     * التحويل البنكي
+     */
     private TextView mTitle;
-    /** ارسال  */
+    /**
+     * ارسال
+     */
     private TextView mSendBank;
-    /** ارسال  */
+    /**
+     * ارسال
+     */
     private TextView mSendBank1;
-    RelativeLayout one ,two;
+    RelativeLayout one, two;
     TextView addPhotoShp;
     EditText userBankNameShp, bankNumberShp, bankNameShp, balance, transferDateSh;
     ImageView ic_back;
     String filePath;
+
     public ShippingBalanceFragment() {
         // Required empty public constructor
     }
@@ -87,6 +98,7 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
         one = getView().findViewById(R.id.sh_one);
         two = getView().findViewById(R.id.sh_two);
     }
+
     private void addListeners() {
         mBankShTransfer.setOnClickListener(this);
         mCreditShCard.setOnClickListener(this);
@@ -104,7 +116,6 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
         addListeners();
 
         ic_back = getView().findViewById(R.id.ic_back);
-
         ic_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,7 +128,7 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        switch (id){
+        switch (id) {
             case R.id.bank_sh_transfer:
                 mBankShTransfer.setBackgroundResource(R.drawable.dark_blue_shap);
                 mCreditShCard.setBackgroundResource(R.drawable.gray_shap);
@@ -138,21 +149,21 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
                 break;
             case R.id.add_photo_shp:
                 Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(pickPhoto , 1);//one can be replaced with any action code
+                startActivityForResult(pickPhoto, 1);//one can be replaced with any action code
         }
     }
 
     private void sendCardBank() {
-        MyRequest myRequest =new MyRequest();
+        MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
         Map<String, String> stringMap = new HashMap<>();
         stringMap.put("token", ConstantInterFace.USER.getToken());
-        stringMap.put("name",userBankNameShp.getText().toString());
+        stringMap.put("name", userBankNameShp.getText().toString());
         stringMap.put("acc_number", bankNumberShp.getText().toString());
         stringMap.put("bank_name", bankNameShp.getText().toString());
         stringMap.put("total", balance.getText().toString());
         stringMap.put("date", transferDateSh.getText().toString());
-        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/chargemycredit", stringMap, filePath,"photo_link", new OkHttpCallback() {
+        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/chargemycredit", stringMap, filePath, "photo_link", new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
@@ -163,9 +174,9 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
                 MyProgressDialog.dismissDialog();
                 JSONObject jsonObject = new JSONObject(response.body().string());
                 JSONObject object = jsonObject.getJSONObject("status");
-                if (object.getBoolean("success")){
-                    Log.e("ggg"," " + object.getString("message"));
-                }else {
+                if (object.getBoolean("success")) {
+                    Log.e("ggg", " " + object.getString("message"));
+                } else {
 
                 }
             }
@@ -175,12 +186,12 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1){
-            if(resultCode == RESULT_OK){
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
                 Uri selectedImage = data.getData();
                 try {
-                    filePath= PathUtil.getPath(getActivity(),selectedImage);
-                    Log.e("dd"," " +filePath);
+                    filePath = PathUtil.getPath(getActivity(), selectedImage);
+                    Log.e("dd", " " + filePath);
                     addPhotoShp.setText(filePath);
                 } catch (URISyntaxException e) {
                     e.printStackTrace();

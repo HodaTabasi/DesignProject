@@ -21,9 +21,6 @@ import java.util.List;
 import me.anwarshahriar.calligrapher.Calligrapher;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class AskFragment extends Fragment {
 
     RecyclerView recyclerView;

@@ -88,7 +88,7 @@ public class ConfirmationFragment extends Fragment {
                         Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
                     }
                 });
-                Log.e("tag", e.getMessage());
+
             }
 
             @Override

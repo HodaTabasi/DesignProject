@@ -58,12 +58,16 @@
         android:textSize="14sp" />
 
     <TextView
+        android:id="@+id/about"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/report_layout_shap" />
+        android:background="@drawable/report_layout_shap"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
 
 </LinearLayout>
