@@ -88,9 +88,10 @@
                         android:textColor="@android:color/black"
                         android:textSize="14sp" />
 
-                    <view
+                    <View
                         android:layout_width="1.5dp"
-                        android:layout_height="40dp" />
+                        android:layout_height="40dp"
+                        android:background="@color/gray"/>
 
                     <TextView
                         android:layout_width="0dp"
@@ -135,9 +136,10 @@
                         android:textColor="@android:color/black"
                         android:textSize="14dp" />
 
-                    <view
+                    <View
                         android:layout_width="1.5dp"
-                        android:layout_height="40dp" />
+                        android:layout_height="40dp"
+                        android:background="@color/gray"/>
 
                     <TextView
                         android:layout_width="0dp"
@@ -186,9 +188,10 @@
                         android:textColor="@android:color/black"
                         android:textSize="14sp" />
 
-                    <view
+                    <View
                         android:layout_width="1.5dp"
-                        android:layout_height="40dp" />
+                        android:layout_height="40dp"
+                        android:background="@color/gray"/>
 
                     <TextView
                         android:layout_width="0dp"
@@ -228,9 +231,10 @@
                         android:textColor="@android:color/black"
                         android:textSize="14dp" />
 
-                    <view
+                    <View
                         android:layout_width="1.5dp"
-                        android:layout_height="40dp" />
+                        android:layout_height="40dp"
+                        android:background="@color/gray"/>
 
                     <TextView
                         android:layout_width="0dp"

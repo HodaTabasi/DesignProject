@@ -64,12 +64,19 @@ public class AddProposalFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
-
+        
+        initView(getView());
         Bundle bundle = getArguments();
         assert bundle != null;
         id = bundle.getInt("id",0);
+        final OfferModel model = bundle.getParcelable("object");
 
-        initView(getView());
+        if (id == 0){
+            mBalanceP.setText(model.getBalance());
+            mProposalP.setText(model.getDescr());
+            mDurP.setText(model.getDur());
+        }
+        
         mAttchP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,7 +87,11 @@ public class AddProposalFragment extends Fragment {
         mAddProposalP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addOfferRequest();
+                if (id == 0){
+                        updateOfferRequest(model);
+                }else {
+                    addOfferRequest();
+                }
             }
         });
 
@@ -90,7 +101,50 @@ public class AddProposalFragment extends Fragment {
                 getFragmentManager().popBackStack();
             }
         });
+    }
 
+    private void updateOfferRequest(OfferModel model) {
+        Log.e("ffd",id + " gg");
+        MyRequest myRequest =new MyRequest();
+        MyProgressDialog.showDialog(getContext());
+        Map<String, String> stringMap = new HashMap<>();
+        stringMap.put("token", ConstantInterFace.USER.getToken());
+        stringMap.put("offer_id",model.getId()+"");
+        stringMap.put("dur", mDurP.getText().toString());
+        stringMap.put("balance", mBalanceP.getText().toString());
+        stringMap.put("descr", mProposalP.getText().toString());
+        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/editanoffer", stringMap, filePath, "file_link", new OkHttpCallback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                MyProgressDialog.dismissDialog();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException, JSONException {
+                MyProgressDialog.dismissDialog();
+                final JSONObject jsonObject = new JSONObject(response.body().string());
+                final JSONObject object = jsonObject.getJSONObject("status");
+                getActivity().runOnUiThread(new Runnable() {
+                    public void run() {
+                        try {
+                            if (object.getBoolean("success")){
+                                Toast.makeText(getActivity(), ""+ object.getString("message"), Toast.LENGTH_SHORT).show();
+                                Gson gson = new Gson();
+                                OfferModel model = gson.fromJson(jsonObject.getJSONObject("offer").toString(),OfferModel.class);
+                                getActivity().finish();
+                            }else {
+                                Toast.makeText(getActivity(), ""+ object.getString("error"), Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+
+
+            }
+        });
     }
 
     private void addOfferRequest() {

@@ -1,6 +1,9 @@
 package com.smm.sapp.sproject.Models;
 
-public class OfferModel {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class OfferModel implements Parcelable {
 
     /**
      * id : 6
@@ -29,6 +32,32 @@ public class OfferModel {
     private String finished;
     private String created_at;
     private String updated_at;
+
+    protected OfferModel(Parcel in) {
+        id = in.readInt();
+        dur = in.readString();
+        balance = in.readString();
+        total = in.readString();
+        descr = in.readString();
+        created_by = in.readString();
+        project_id = in.readString();
+        approved = in.readString();
+        finished = in.readString();
+        created_at = in.readString();
+        updated_at = in.readString();
+    }
+
+    public static final Creator<OfferModel> CREATOR = new Creator<OfferModel>() {
+        @Override
+        public OfferModel createFromParcel(Parcel in) {
+            return new OfferModel(in);
+        }
+
+        @Override
+        public OfferModel[] newArray(int size) {
+            return new OfferModel[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -124,5 +153,25 @@ public class OfferModel {
 
     public void setUpdated_at(String updated_at) {
         this.updated_at = updated_at;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(dur);
+        dest.writeString(balance);
+        dest.writeString(total);
+        dest.writeString(descr);
+        dest.writeString(created_by);
+        dest.writeString(project_id);
+        dest.writeString(approved);
+        dest.writeString(finished);
+        dest.writeString(created_at);
+        dest.writeString(updated_at);
     }
 }

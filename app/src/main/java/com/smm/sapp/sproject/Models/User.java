@@ -1,6 +1,9 @@
 package com.smm.sapp.sproject.Models;
 
-public class User {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class User implements Parcelable{
 
     /**
      * id : 3
@@ -48,6 +51,42 @@ public class User {
     private String created_at;
     private String updated_at;
     private String token;
+
+    protected User(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        email = in.readString();
+        type = in.readString();
+        job_type = in.readString();
+        own_projects = in.readString();
+        worked_projects = in.readString();
+        credit = in.readString();
+        owe = in.readString();
+        total = in.readString();
+        photo_link = in.readString();
+        verify = in.readString();
+        phone = in.readString();
+        bio = in.readString();
+        dob = in.readString();
+        gender = in.readString();
+        active = in.readString();
+        busniess_type = in.readString();
+        created_at = in.readString();
+        updated_at = in.readString();
+        token = in.readString();
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -223,5 +262,35 @@ public class User {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(name);
+        dest.writeString(email);
+        dest.writeString(type);
+        dest.writeString(job_type);
+        dest.writeString(own_projects);
+        dest.writeString(worked_projects);
+        dest.writeString(credit);
+        dest.writeString(owe);
+        dest.writeString(total);
+        dest.writeString(photo_link);
+        dest.writeString(verify);
+        dest.writeString(phone);
+        dest.writeString(bio);
+        dest.writeString(dob);
+        dest.writeString(gender);
+        dest.writeString(active);
+        dest.writeString(busniess_type);
+        dest.writeString(created_at);
+        dest.writeString(updated_at);
+        dest.writeString(token);
     }
 }
