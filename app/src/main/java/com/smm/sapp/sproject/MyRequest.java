@@ -94,9 +94,6 @@ public class MyRequest {
             try {
                 FileInputStream fileInputStream = new FileInputStream(sourceFile);
                 fileInputStream.read(b);
-                for (int i = 0; i < b.length; i++) {
-                    System.out.print((char) b[i]);
-                }
             } catch (FileNotFoundException e) {
                 System.out.println("File Not Found.");
                 e.printStackTrace();
@@ -124,7 +121,11 @@ public class MyRequest {
                 .post(body)
                 .build();
 
-        OkHttpClient okHttpClient = new OkHttpClient();
+        OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
+                .connectTimeout(460, TimeUnit.SECONDS)
+                .readTimeout(460, TimeUnit.SECONDS)
+                .writeTimeout(460, TimeUnit.SECONDS)
+                .build();
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {

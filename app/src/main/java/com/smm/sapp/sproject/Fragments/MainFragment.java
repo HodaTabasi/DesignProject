@@ -94,9 +94,7 @@ public class MainFragment extends Fragment {
         img_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AccountFragment(), true);
-
             }
         });
 
@@ -130,8 +128,16 @@ public class MainFragment extends Fragment {
         tv_proposals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (ConstantInterFace.USER.getType().equals("client"))
+                    FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new MyProjectFragment(), true);
+                else{
+                    MyOffersFragment fragment = new MyOffersFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putBoolean("flag",true);
+                    fragment.setArguments(bundle);
+                    FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
+                }
 
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new MyOffersFragment(), true);
 
 
             }
