@@ -166,7 +166,7 @@
                     android:paddingRight="8dp"
                     android:text="تفاصيل"
                     android:textColor="@android:color/secondary_text_light"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"/>
             </LinearLayout>
 
             <TextView
