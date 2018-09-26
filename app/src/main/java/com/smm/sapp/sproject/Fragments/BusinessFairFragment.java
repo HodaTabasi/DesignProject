@@ -14,17 +14,31 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.smm.sapp.sproject.ConstantInterFace;
+import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.Models.PWorks;
+import com.smm.sapp.sproject.MyRequest;
+import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import me.anwarshahriar.calligrapher.Calligrapher;
+import okhttp3.Call;
+import okhttp3.Response;
 
 
 public class BusinessFairFragment extends Fragment {
     ImageView ic_back, img1, img2, img3;
     TextView tv_name, tv_descr, num_date, num_seen, num_like, update_work, delete_work, project_link;
     PWorks models;
+    Bundle bundle;
 
     public BusinessFairFragment() {
 
@@ -64,11 +78,63 @@ public class BusinessFairFragment extends Fragment {
                 getFragmentManager().popBackStack();
             }
         });
+        delete_work.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteRequest();
+            }
+        });
+
         getData();
     }
 
+    private void deleteRequest() {
+        MyProgressDialog.showDialog(getContext());
+        MyRequest myRequest = new MyRequest();
+        bundle = getArguments();
+        models = bundle.getParcelable("work");
+
+        Map<String, String> map = new HashMap<>();
+        map.put("token", ConstantInterFace.USER.getToken());
+        map.put("pwork_id", String.valueOf(models.getId()));
+
+        myRequest.PostCall("http://smm.smmim.com/waell/public/api/deletepwork", map, new OkHttpCallback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                MyProgressDialog.dismissDialog();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException, JSONException {
+                MyProgressDialog.dismissDialog();
+                JSONObject jsonObject = new JSONObject(response.body().string());
+                JSONObject statusobj = jsonObject.getJSONObject("status");
+                final String success = statusobj.getString("success");
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (success.equals("true")) {
+                            getFragmentManager().popBackStack();
+                            Toast.makeText(getContext(), "تم الحذف بنجاح", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(getContext(), "لم يتم الحذف", Toast.LENGTH_LONG).show();
+                        }
+
+                    }
+                });
+            }
+        });
+    }
+
     private void getData() {
-        Bundle bundle = getArguments();
+        bundle = getArguments();
         models = bundle.getParcelable("work");
         tv_name.setText(models.getName());
         num_date.setText(models.getMdate());

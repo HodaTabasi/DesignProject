@@ -144,6 +144,11 @@ public class AddNewWorkFragment extends Fragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            et_title.setText("");
+                            et_bio.setText("");
+                            et_link.setText("");
+                            et_date.setText("");
+                            work_img.setImageResource(0);
                             Toast.makeText(getActivity(), "تم الاضافة بنجاح", Toast.LENGTH_LONG).show();
                         }
                     });
