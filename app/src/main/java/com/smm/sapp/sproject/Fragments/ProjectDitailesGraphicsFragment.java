@@ -61,12 +61,12 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
     private TextView mGhAttachment;
     private Button mSendGh;
 
-    String savedValue1, savedValue2;
+    String savedValue1 = "", savedValue2 = "";
 
     ImageView ic_back;
 
     int i = 0;
-    Map<String,String> attachMap;
+    Map<String, String> attachMap;
 
     public ProjectDitailesGraphicsFragment() {
         // Required empty public constructor
@@ -118,8 +118,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
         mSendGh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //sendGraphicRequest();
-
+                sendGraphicRequest();
             }
         });
 
@@ -138,50 +137,50 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
             }
         });
 
-//        mNo.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                savedValue1 = "no";
-//            }
-//        });
-//
-//        mYes.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                savedValue1 = "yes";
-//            }
-//        });
-//
-//        mInnovation.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                savedValue2 = "innovation";
-//            }
-//        });
-//
-//        mDevelop.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                savedValue2 = "develop";
-//            }
-//        });
+        mNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                savedValue1 = "0";
+            }
+        });
+
+        mYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                savedValue1 = "1";
+            }
+        });
+
+        mInnovation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                savedValue2 = "innovation";
+            }
+        });
+
+        mDevelop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                savedValue2 = "develop";
+            }
+        });
 
     }
 
     private void sendGraphicRequest() {
-
+        MyProgressDialog.showDialog(getContext());
         MyRequest myRequest = new MyRequest();
         Map<String, String> map = new HashMap<>();
         map.put("token", ConstantInterFace.USER.getToken());
         //map.put("name", mMotionType.getText().toString());
         map.put("name", mProjectNameGh.getText().toString());
         //map.put("about", mAboutActivity.getText().toString());
-//        map.put("newp", );
-//        map.put("d_type", );
+        map.put("newp", savedValue1);
+        map.put("d_type", savedValue2);
         map.put("balance", mGhBalance.getText().toString());
         map.put("descr", mProjectDeitailsGh.getText().toString());
 
-        myRequest.PostCall("http://smm.smmim.com/waell/public/api/projectmakegraphic", map, new OkHttpCallback() {
+        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/projectmakegraphic", map, attachMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
@@ -219,7 +218,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
                     @Override
                     public void onChoosePath(String path, File pathFile) {
                         Toast.makeText(getContext(), "FOLDER: " + path, Toast.LENGTH_SHORT).show();
-                        attachMap.put("attachs["+(i++)+"]",path);
+                        attachMap.put("attachs[" + (i++) + "]", path);
                         Toast.makeText(getContext(), "تم اضافة الملف في المرفقات بنجاح", Toast.LENGTH_SHORT).show();
                     }
                 })
@@ -235,7 +234,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
                 try {
                     String filePath = PathUtil.getPath(getActivity(), selectedImage);
                     Log.e("dd", " " + filePath);
-                    attachMap.put("photos["+(i++)+"]",filePath);
+                    attachMap.put("photos[" + (i++) + "]", filePath);
                     Toast.makeText(getContext(), "تم اضافة الصورة فى الخلفية بنجاح", Toast.LENGTH_SHORT).show();
                 } catch (URISyntaxException e) {
                     e.printStackTrace();
