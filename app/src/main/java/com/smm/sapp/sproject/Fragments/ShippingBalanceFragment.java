@@ -196,7 +196,6 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
                 } catch (URISyntaxException e) {
                     e.printStackTrace();
                 }
-
             }
         }
     }

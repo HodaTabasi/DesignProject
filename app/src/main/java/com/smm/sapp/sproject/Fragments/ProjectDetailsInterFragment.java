@@ -4,7 +4,9 @@ package com.smm.sapp.sproject.Fragments;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -21,21 +23,29 @@ import android.widget.Toast;
 //import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.obsez.android.lib.filechooser.ChooserDialog;
 import com.smm.sapp.sproject.Activities.MapActivity;
 import com.smm.sapp.sproject.ConstantInterFace;
+import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
+import com.smm.sapp.sproject.HelperClass.PathUtil;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 
 import me.anwarshahriar.calligrapher.Calligrapher;
 import okhttp3.Call;
 import okhttp3.Response;
+
+import static android.app.Activity.RESULT_OK;
 
 
 /**
@@ -61,6 +71,9 @@ public class ProjectDetailsInterFragment extends Fragment {
     String s_lat, s_lng;
     ImageView ic_back;
 
+    int i = 0,j = 0,k = 0;
+    Map<String,String> attachMap;
+
 
     public ProjectDetailsInterFragment() {
 
@@ -80,6 +93,8 @@ public class ProjectDetailsInterFragment extends Fragment {
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
 
+        attachMap = new HashMap<>();
+
         if (isServicesOk()) {
             initView();
         }
@@ -87,7 +102,7 @@ public class ProjectDetailsInterFragment extends Fragment {
         mSendIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //sendInterDesignRequest();
+                sendInterDesignRequest();
             }
         });
 
@@ -133,15 +148,31 @@ public class ProjectDetailsInterFragment extends Fragment {
         map.put("balance", mBalance.getText().toString());
         map.put("descr", mProjectDetailes.getText().toString());
 
-        myRequest.PostCall("http://smm.smmim.com/waell/public/api/projectmakeinter", map, new OkHttpCallback() {
+        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/projectmakeinter", map,attachMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
-
+                MyProgressDialog.dismissDialog();
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException, JSONException {
-
+                JSONObject jsonObject = new JSONObject(response.body().string());
+                final JSONObject object = jsonObject.getJSONObject("status");
+                MyProgressDialog.dismissDialog();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            if (object.getBoolean("success")) {
+                                Toast.makeText(getActivity(), "تم اضافة مشروع بنجاح", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getActivity(), "" + object.getString("error"), Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
             }
         });
 
@@ -169,6 +200,44 @@ public class ProjectDetailsInterFragment extends Fragment {
             }
         });
 
+        mUploadImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(pickPhoto, 2);//one can be replaced with any action code
+            }
+        });
+
+        mUploadLikeImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(pickPhoto, 3);//one can be replaced with any action code
+            }
+        });
+        mAttachmentIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fileBrowse();
+            }
+        });
+
+    }
+
+    private void fileBrowse() {
+        new ChooserDialog().with(getContext())
+                .withFilter(false, false, "pdf", "docx", "xlsx")
+                .withStartFile(Environment.getExternalStorageDirectory().getPath())
+                .withChosenListener(new ChooserDialog.Result() {
+                    @Override
+                    public void onChoosePath(String path, File pathFile) {
+                        Toast.makeText(getContext(), "FOLDER: " + path, Toast.LENGTH_SHORT).show();
+                        attachMap.put("attachs["+(i++)+"]",path);
+                        Toast.makeText(getContext(), "تم اضافة الملف في المرفقات بنجاح", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .build()
+                .show();
     }
 
     @Override
@@ -187,6 +256,34 @@ public class ProjectDetailsInterFragment extends Fragment {
             }
             if (resultCode == Activity.RESULT_CANCELED) {
                 Toast.makeText(getActivity(), "no data moved", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if (requestCode == 3) {
+            if (resultCode == RESULT_OK) {
+                Uri selectedImage = data.getData();
+                try {
+                    String filePath = PathUtil.getPath(getActivity(), selectedImage);
+                    Log.e("dd", " " + filePath);
+                    attachMap.put("similars["+(k++)+"]",filePath);
+                    Toast.makeText(getContext(), "تم اضافة الصورة فى الخلفية بنجاح", Toast.LENGTH_SHORT).show();
+                } catch (URISyntaxException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        if (requestCode == 2) {
+            if (resultCode == RESULT_OK) {
+                Uri selectedImage = data.getData();
+                try {
+                    String filePath = PathUtil.getPath(getActivity(), selectedImage);
+                    Log.e("dd", " " + filePath);
+                    attachMap.put("photos["+(j++)+"]",filePath);
+                    Toast.makeText(getContext(), "تم اضافة الصورة فى الخلفية بنجاح", Toast.LENGTH_SHORT).show();
+                } catch (URISyntaxException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
