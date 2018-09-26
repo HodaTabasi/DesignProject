@@ -152,6 +152,7 @@ public class ProjectDetailsInterFragment extends Fragment {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
+
             }
 
             @Override
