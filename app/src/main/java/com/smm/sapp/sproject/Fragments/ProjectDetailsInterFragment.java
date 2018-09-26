@@ -134,7 +134,7 @@ public class ProjectDetailsInterFragment extends Fragment {
     }
 
     private void sendInterDesignRequest() {
-
+        MyProgressDialog.showDialog(getContext());
         MyRequest myRequest = new MyRequest();
         Map<String, String> map = new HashMap<>();
         map.put("token", ConstantInterFace.USER.getToken());
