@@ -80,7 +80,6 @@ public class MyRequest {
                 }
             }
         });
-
     }
 
     public void PostCallWithAttachment(String URL, Map<String, String> parameter, String filePath, String key, final OkHttpCallback callback) {

@@ -75,23 +75,26 @@
                 android:background="@drawable/report_layout_shap"
                 android:gravity="start"
                 android:hint="الموضوع"
-                android:paddingBottom="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="11dp"
-                android:paddingTop="5dp"
+                android:padding="5dp"
                 android:textAlignment="textStart"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:textSize="14sp" />
 
-            <TextView
+            <EditText
+                android:id="@+id/et_writehere"
                 android:layout_width="match_parent"
                 android:layout_height="320dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/report_layout_shap" />
+                android:background="@drawable/report_layout_shap"
+                android:gravity="right"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/tv_send"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"

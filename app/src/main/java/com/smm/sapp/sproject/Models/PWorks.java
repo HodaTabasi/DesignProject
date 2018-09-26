@@ -1,6 +1,9 @@
 package com.smm.sapp.sproject.Models;
 
-public class PWorks {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class PWorks implements Parcelable {
 
     /**
      * id : 2
@@ -27,6 +30,32 @@ public class PWorks {
     private String likes;
     private String created_at;
     private String updated_at;
+
+    protected PWorks(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        descr = in.readString();
+        mdate = in.readString();
+        user_id = in.readString();
+        photo_link = in.readString();
+        work_link = in.readString();
+        views = in.readString();
+        likes = in.readString();
+        created_at = in.readString();
+        updated_at = in.readString();
+    }
+
+    public static final Creator<PWorks> CREATOR = new Creator<PWorks>() {
+        @Override
+        public PWorks createFromParcel(Parcel in) {
+            return new PWorks(in);
+        }
+
+        @Override
+        public PWorks[] newArray(int size) {
+            return new PWorks[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -114,5 +143,25 @@ public class PWorks {
 
     public void setUpdated_at(String updated_at) {
         this.updated_at = updated_at;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(name);
+        parcel.writeString(descr);
+        parcel.writeString(mdate);
+        parcel.writeString(user_id);
+        parcel.writeString(photo_link);
+        parcel.writeString(work_link);
+        parcel.writeString(views);
+        parcel.writeString(likes);
+        parcel.writeString(created_at);
+        parcel.writeString(updated_at);
     }
 }

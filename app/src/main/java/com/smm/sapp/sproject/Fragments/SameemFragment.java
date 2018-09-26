@@ -19,6 +19,7 @@ import me.anwarshahriar.calligrapher.Calligrapher;
 public class SameemFragment extends Fragment {
 
     ImageView ic_back;
+
     public SameemFragment() {
         // Required empty public constructor
     }
@@ -47,8 +48,11 @@ public class SameemFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AboutUsFragment(), true);
-
+                AboutUsFragment aboutUsFragment = new AboutUsFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("about", "about");
+                aboutUsFragment.setArguments(bundle);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, aboutUsFragment, true);
             }
         });
 
@@ -65,7 +69,11 @@ public class SameemFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AboutUsFragment(), true);
+                AboutUsFragment aboutUsFragment = new AboutUsFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("rights", "rights");
+                aboutUsFragment.setArguments(bundle);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, aboutUsFragment, true);
 
             }
         });
@@ -74,7 +82,11 @@ public class SameemFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AboutUsFragment(), true);
+                AboutUsFragment aboutUsFragment = new AboutUsFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("conditions", "conditions");
+                aboutUsFragment.setArguments(bundle);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, aboutUsFragment, true);
 
             }
         });
