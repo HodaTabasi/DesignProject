@@ -166,8 +166,9 @@ public class ProjectDetailsInterFragment extends Fragment {
                         try {
                             if (object.getBoolean("success")) {
                                 Toast.makeText(getActivity(), "تم اضافة مشروع بنجاح", Toast.LENGTH_SHORT).show();
+                                Log.e("fdd",object.getString("message"));
                             } else {
-                                Toast.makeText(getActivity(), "" + object.getString("error"), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "" + object.getString("message"), Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

@@ -517,6 +517,7 @@
                 android:gravity="center"
                 android:padding="8dp"
                 android:text="اضف عرض"
+                android:visibility="visible"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
 

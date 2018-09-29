@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "966472280658",
+    "firebase_url": "https://smmim-a1c6e.firebaseio.com",
+    "project_id": "smmim-a1c6e",
+    "storage_bucket": "smmim-a1c6e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:966472280658:android:52b132241d595430",
+        "android_client_info": {
+          "package_name": "com.smm.sapp.sproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "966472280658-pq55nj4kn5v8ehen8cp4rjrfs1r0s3q2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4rmAP5jvRYuKk31ByS4Rp-173GOM_Bls"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

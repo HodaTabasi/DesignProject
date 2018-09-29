@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.smm.sapp.sproject.Adapters.ProjectAttachmentAdapter;
 import com.smm.sapp.sproject.Adapters.ProjectPhotoAdapter;
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.Models.ProjectsModels;
 import com.smm.sapp.sproject.R;
@@ -66,6 +67,12 @@ public class ViewProjectFragment extends Fragment {
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
 
         initView(getView());
+        ///////////////لو كان عميل ما رح يقدر يضيف عرض ع المشروع
+        if (ConstantInterFace.USER.getType().equals("client"))
+            addOffer.setVisibility(View.INVISIBLE);
+        else
+            addOffer.setVisibility(View.VISIBLE);
+
         putData();
         addOffer.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -3,10 +3,15 @@ package com.smm.sapp.sproject.Activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.smm.sapp.sproject.ConstantInterFace;
+import com.smm.sapp.sproject.FirebaseIDService;
+import com.smm.sapp.sproject.MyFirebaseInstanceIDService;
 import com.smm.sapp.sproject.R;
 
 import me.anwarshahriar.calligrapher.Calligrapher;

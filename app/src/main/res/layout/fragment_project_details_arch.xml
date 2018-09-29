@@ -166,6 +166,7 @@
                         android:background="@drawable/account_shape"
                         android:gravity="center"
                         android:hint="المساحة م2"
+                        android:inputType="number"
                         android:padding="5dp"
                         android:textAlignment="center"
                         android:textColor="@color/textGray"
@@ -253,6 +254,7 @@
                 android:gravity="center"
                 android:hint="الميزانية"
                 android:padding="3dp"
+                android:inputType="number"
                 android:textColor="@color/textGray"
                 android:textColorHint="@color/gray"
                 android:textSize="14sp" />

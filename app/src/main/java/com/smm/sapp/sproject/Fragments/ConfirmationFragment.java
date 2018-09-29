@@ -51,10 +51,20 @@ public class ConfirmationFragment extends Fragment {
 
         editCodeView = (EditCodeView) view.findViewById(R.id.edit_code);
         TextView tv_confirm = view.findViewById(R.id.tv_confirm);
+        TextView resend = view.findViewById(R.id.resend);
+
         tv_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getPhoneVerifyRequest();
+            }
+        });
+
+        resend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editCodeView.clearCode();
+                regetPhoneVerifyRequest();
             }
         });
 
@@ -77,7 +87,7 @@ public class ConfirmationFragment extends Fragment {
         MyProgressDialog.showDialog(getContext());
         Map<String, String> stringMap = new HashMap<>();
         stringMap.put("phone", phone);
-        stringMap.put("code", verify);
+        stringMap.put("code", editCodeView.getCode());
         myRequest.PostCall("http://smm.smmim.com/waell/public/api/loginwithsms", stringMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -110,6 +120,52 @@ public class ConfirmationFragment extends Fragment {
                                 Intent intent = new Intent(getActivity(), ContainerActivity.class);
                                 startActivity(intent);
                                 getActivity().finish();
+                            } else {
+                                Toast.makeText(getActivity(), "لم يتم الارسال بشكل صحيح", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+            }
+        });
+    }
+
+    private void regetPhoneVerifyRequest() {
+        MyRequest myRequest = new MyRequest();
+        MyProgressDialog.showDialog(getContext());
+        Map<String, String> stringMap = new HashMap<>();
+        stringMap.put("phone", phone);
+        myRequest.PostCall("http://smm.smmim.com/waell/public/api/loginwithsms", stringMap, new OkHttpCallback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                MyProgressDialog.dismissDialog();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException, JSONException {
+                MyProgressDialog.dismissDialog();
+                String s = response.body().string();
+                Log.e("Ffd", s);
+                final JSONObject jsonObject = new JSONObject(s);
+                final JSONObject object = jsonObject.getJSONObject("status");
+                final Gson gson = new Gson();
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            if (object.getBoolean("success")) {
+                                User user = gson.fromJson(jsonObject.getJSONObject("user").toString(), User.class);
+                                editCodeView.setCode(user.getVerify());
                             } else {
                                 Toast.makeText(getActivity(), "لم يتم الارسال بشكل صحيح", Toast.LENGTH_SHORT).show();
                             }

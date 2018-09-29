@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.smm.sapp.sproject.Adapters.FavoritePortfolioAdapter;
+import com.smm.sapp.sproject.Adapters.LikesPWorkAdapter;
 import com.smm.sapp.sproject.Adapters.LikesProjectAdapter;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
@@ -164,7 +165,8 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
                 designs.setBackgroundResource(R.drawable.account_shape);
                 project.setTextColor(Color.parseColor("#000000"));
                 project.setBackgroundResource(R.drawable.account_shape);
-                recyclerView.setVisibility(View.INVISIBLE);
+                LikesPWorkAdapter workAdapter = new LikesPWorkAdapter(getContext(), R.layout.fav2_row, projectList);
+                recyclerView.setAdapter(workAdapter);
                 break;
             case R.id.projects:
                 project.setTextColor(Color.parseColor("#ffffff"));

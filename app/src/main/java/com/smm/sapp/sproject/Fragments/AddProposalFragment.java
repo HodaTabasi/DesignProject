@@ -50,6 +50,7 @@ public class AddProposalFragment extends Fragment {
     private byte[] b;
     int id;
     ImageView ic_back;
+    TextView back_two;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -96,6 +97,13 @@ public class AddProposalFragment extends Fragment {
         });
 
         ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
+        back_two.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getFragmentManager().popBackStack();
@@ -207,5 +215,6 @@ public class AddProposalFragment extends Fragment {
         mAttchP = (TextView) view.findViewById(R.id.attch_p);
         mAddProposalP = (TextView) view.findViewById(R.id.add_proposal_p);
         ic_back = getView().findViewById(R.id.ic_back);
+        back_two = view.findViewById(R.id.back_two);
     }
 }
