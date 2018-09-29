@@ -49,10 +49,8 @@ public class ProfileFragment extends Fragment {
     Calendar calendar;
     DatePickerDialog.OnDateSetListener date;
     String st_type, st_job_type, st_busniess_type, st_name, st_bio, mobile, st_email, gender, st_dob;
-    int position;
-    String s_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6Ly9zbW0uc21taW0uY29tL3dhZWxsL3B1YmxpYy9hcGkvTG9naW4iLCJpYXQiOjE1Mzc2MTI1MzEsImV4cCI6NDgwODE3NjA0NTkzMzMzNzMzMSwibmJmIjoxNTM3NjEyNTMxLCJqdGkiOiJjYVZDSHRmUW9WOVhsalBwIn0.3f7a7F9sDyow1ZV90dec235qiXQNiUcKwU71LCMvF3k";
-
     ImageView ic_back;
+
     public ProfileFragment() {
     }
 
@@ -90,35 +88,35 @@ public class ProfileFragment extends Fragment {
         });
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
-                R.array.spinner_items, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sp_specialization.setAdapter(adapter);
-        sp_specialization.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
-                switch (position) {
-                    case 0:
-                        //st_specialization = "inter";
-                        getSpecialization("inter");
-                        break;
-                    case 1:
-                        getSpecialization("arch");
-                        //st_specialization = "arch";
-                        break;
-                    case 2:
-                        getSpecialization("graphic");
-                        //st_specialization = "graphic";
-                        break;
-                    case 3:
-                        getSpecialization("wall");
-                        //st_specialization = "wall";
-                        break;
-                    case 4:
-                        getSpecialization("moshen");
-                        //st_specialization = "moshen";
-                        break;
+                        R.array.spinner_items, android.R.layout.simple_spinner_item);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                sp_specialization.setAdapter(adapter);
+                sp_specialization.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
+                        switch (position) {
+                            case 0:
+                                //st_specialization = "inter";
+                                getSpecialization("inter");
+                                break;
+                            case 1:
+                                getSpecialization("arch");
+                                //st_specialization = "arch";
+                                break;
+                            case 2:
+                                getSpecialization("graphic");
+                                //st_specialization = "graphic";
+                                break;
+                            case 3:
+                                getSpecialization("wall");
+                                //st_specialization = "wall";
+                                break;
+                            case 4:
+                                getSpecialization("moshen");
+                                //st_specialization = "moshen";
+                                break;
 
-                }
+                        }
 
             }
 
@@ -266,7 +264,7 @@ public class ProfileFragment extends Fragment {
                     stringMap.put("type", type);
 
                     for (Map.Entry<String, String> entry : stringMap.entrySet()) {
-                        Log.e(entry.getKey() + " ff",entry.getValue() + " 11");
+                        Log.e(entry.getKey() + " ff", entry.getValue() + " 11");
                     }
 
                     myRequest.PostCall("http://smm.smmim.com/waell/public/api/updateProfile", stringMap, new OkHttpCallback() {
@@ -346,7 +344,7 @@ public class ProfileFragment extends Fragment {
     private void getProfileData() {
         MyRequest myRequest = new MyRequest();
         Map<String, String> map = new HashMap<>();
-        map.put("token",ConstantInterFace.USER.getToken());
+        map.put("token", ConstantInterFace.USER.getToken());
         myRequest.PostCall("http://smm.smmim.com/waell/public/api/myprofile", map, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {

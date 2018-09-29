@@ -49,8 +49,9 @@
         android:layout_margin="8dp"
         android:background="@drawable/account_shape"
         android:drawableLeft="@drawable/ic_search_black_24dp"
-        android:drawableStart="@drawable/ic_search_black_24dp"
         android:hint="بحث عن مصمم"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
         android:padding="5dp"
         android:textColorHint="@color/textGray"
         android:textSize="14dp" />
@@ -141,7 +142,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:gravity="center"
-            android:stepSize="3"
             android:textAlignment="center" />
 
         <TextView
@@ -161,7 +161,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/res_search"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="8dp" />
 
 </LinearLayout>

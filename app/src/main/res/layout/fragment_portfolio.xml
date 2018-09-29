@@ -53,6 +53,8 @@
         android:background="@drawable/report_layout_shap"
         android:drawableLeft="@drawable/ic_search_black_24dp"
         android:hint="بحث عن عمل"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
         android:padding="5dp"
         android:textColor="@color/gray1"
         android:textColorHint="@color/gray1"

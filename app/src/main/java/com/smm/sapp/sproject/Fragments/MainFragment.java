@@ -133,7 +133,7 @@ public class MainFragment extends Fragment {
                 else{
                     MyOffersFragment fragment = new MyOffersFragment();
                     Bundle bundle = new Bundle();
-                    bundle.putBoolean("flag",true);
+                    bundle.putBoolean("isUpdated",true);
                     fragment.setArguments(bundle);
                     FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
                 }
