@@ -80,7 +80,7 @@ public class AddNewPworkAdapter extends RecyclerView.Adapter<AddNewPworkAdapter.
                 FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
             }
         });
-        
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -124,7 +124,6 @@ public class AddNewPworkAdapter extends RecyclerView.Adapter<AddNewPworkAdapter.
                         Toast.makeText(context, "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
                     }
                 }.execute();
-
 
             }
 
