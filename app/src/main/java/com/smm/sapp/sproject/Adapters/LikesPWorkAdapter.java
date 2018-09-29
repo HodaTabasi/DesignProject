@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.smm.sapp.sproject.Models.Likes;
 import com.smm.sapp.sproject.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -40,6 +41,7 @@ public class LikesPWorkAdapter extends RecyclerView.Adapter<LikesPWorkAdapter.Li
         holder.show.setText(likes.getpWork().getViews());
 //        holder.specialization.setText(likes.getpWork());
         holder.name.setText(likes.getpWork().getName());
+        Picasso.get().load(likes.getpWork().getPhoto_link()).into(holder.view);
 
         holder.fav.setOnClickListener(new View.OnClickListener() {
             @Override

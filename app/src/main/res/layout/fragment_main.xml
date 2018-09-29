@@ -168,7 +168,7 @@
                 android:drawableTop="@drawable/ic_my_proposals"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="عروضي"
+                android:text="عروضي ومشاريعي"
                 android:textColor="@color/gray_icon"
                 android:textSize="14sp" />
 

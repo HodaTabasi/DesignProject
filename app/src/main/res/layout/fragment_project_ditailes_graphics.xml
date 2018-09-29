@@ -265,6 +265,7 @@
                 android:gravity="center"
                 android:hint="الميزانية"
                 android:padding="3dp"
+                android:inputType="number"
                 android:textColor="@color/textGray"
                 android:textColorHint="@color/gray"
                 android:textSize="14sp" />
