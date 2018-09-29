@@ -14,15 +14,12 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.smm.sapp.sproject.Adapters.BrowseProjectAdapter;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
-import com.smm.sapp.sproject.Models.BrowseProjectsModel;
 import com.smm.sapp.sproject.Models.ProjectsModels;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
@@ -190,7 +187,7 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
         switch (id) {
             case R.id.motion_button:
                 mMotionButton.setTextColor(Color.parseColor("#ffffff"));
-                mMotionButton.setBackgroundResource(R.drawable.title_shape);
+                mMotionButton.setBackgroundResource(R.drawable.blue_shape);
                 mGhButton.setTextColor(Color.parseColor("#000000"));
                 mGhButton.setBackgroundResource(R.drawable.account_shape);
                 mWallButton.setTextColor(Color.parseColor("#000000"));
@@ -206,7 +203,7 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
 
             case R.id.gh_button:
                 mGhButton.setTextColor(Color.parseColor("#ffffff"));
-                mGhButton.setBackgroundResource(R.drawable.title_shape);
+                mGhButton.setBackgroundResource(R.drawable.blue_shape);
                 mMotionButton.setTextColor(Color.parseColor("#000000"));
                 mMotionButton.setBackgroundResource(R.drawable.account_shape);
                 mWallButton.setTextColor(Color.parseColor("#000000"));
@@ -222,7 +219,7 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
 
             case R.id.wall_button:
                 mWallButton.setTextColor(Color.parseColor("#ffffff"));
-                mWallButton.setBackgroundResource(R.drawable.title_shape);
+                mWallButton.setBackgroundResource(R.drawable.blue_shape);
                 mMotionButton.setTextColor(Color.parseColor("#000000"));
                 mMotionButton.setBackgroundResource(R.drawable.account_shape);
                 mGhButton.setTextColor(Color.parseColor("#000000"));
@@ -238,7 +235,7 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
 
             case R.id.arch_button:
                 mArchButton.setTextColor(Color.parseColor("#ffffff"));
-                mArchButton.setBackgroundResource(R.drawable.title_shape);
+                mArchButton.setBackgroundResource(R.drawable.blue_shape);
 
                 mMotionButton.setTextColor(Color.parseColor("#000000"));
                 mMotionButton.setBackgroundResource(R.drawable.account_shape);
@@ -255,7 +252,7 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
 
             case R.id.in_button:
                 mInButton.setTextColor(Color.parseColor("#ffffff"));
-                mInButton.setBackgroundResource(R.drawable.title_shape);
+                mInButton.setBackgroundResource(R.drawable.blue_shape);
                 mMotionButton.setTextColor(Color.parseColor("#000000"));
                 mMotionButton.setBackgroundResource(R.drawable.account_shape);
                 mGhButton.setTextColor(Color.parseColor("#000000"));

@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,9 +19,9 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.smm.sapp.sproject.Adapters.PortfolioAdapter;
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.Models.PortfolioModel;
-import com.smm.sapp.sproject.Models.SearchWorkersModel;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
@@ -32,7 +31,9 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import me.anwarshahriar.calligrapher.Calligrapher;
 import okhttp3.Call;
@@ -44,11 +45,11 @@ public class PortfolioFragment extends Fragment {
     TextView tv_inter, tv_arch, tv_wall, tv_graphic, tv_motion;
     EditText et_search;
     RecyclerView recyclerView;
-    String s_search;
+    String s_search, designer_name;
     ArrayList<PortfolioModel> arrayList = new ArrayList<>();
     PortfolioAdapter adapter;
-    int pwork_id;
-
+    Bundle bundle;
+    int designer_id;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,9 +63,18 @@ public class PortfolioFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
-
         initView();
-        getPworks("");
+
+        bundle = getArguments();
+        if (bundle != null && bundle.containsKey("designer_id") && bundle.containsKey("designer_name")) {
+            designer_id = bundle.getInt("designer_id");
+            designer_name = bundle.getString("designer_name");
+            getDesignerPworks(designer_id, designer_name);
+        } else {
+            getPworks("");
+
+        }
+
 
         ic_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +88,6 @@ public class PortfolioFragment extends Fragment {
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     s_search = textView.getText().toString();
-                    getPworks("?name=" + s_search);
 
                     tv_motion.setBackgroundResource(R.drawable.account_shape);
                     tv_motion.setTextColor(Color.parseColor("#000000"));
@@ -95,6 +104,9 @@ public class PortfolioFragment extends Fragment {
                     tv_wall.setBackgroundResource(R.drawable.account_shape);
                     tv_wall.setTextColor(Color.parseColor("#000000"));
 
+                    getPworks("?name=" + s_search);
+
+
                     return true;
                 }
                 return false;
@@ -107,7 +119,7 @@ public class PortfolioFragment extends Fragment {
             public void onClick(View view) {
                 et_search.setText("");
 
-                tv_arch.setBackgroundResource(R.drawable.title_shape);
+                tv_arch.setBackgroundResource(R.drawable.blue_shape);
                 tv_arch.setTextColor(Color.parseColor("#ffffff"));
 
                 tv_inter.setBackgroundResource(R.drawable.account_shape);
@@ -132,7 +144,7 @@ public class PortfolioFragment extends Fragment {
             public void onClick(View view) {
                 et_search.setText("");
 
-                tv_inter.setBackgroundResource(R.drawable.title_shape);
+                tv_inter.setBackgroundResource(R.drawable.blue_shape);
                 tv_inter.setTextColor(Color.parseColor("#ffffff"));
 
                 tv_arch.setBackgroundResource(R.drawable.account_shape);
@@ -156,7 +168,7 @@ public class PortfolioFragment extends Fragment {
             public void onClick(View view) {
                 et_search.setText("");
 
-                tv_graphic.setBackgroundResource(R.drawable.title_shape);
+                tv_graphic.setBackgroundResource(R.drawable.blue_shape);
                 tv_graphic.setTextColor(Color.parseColor("#ffffff"));
 
                 tv_arch.setBackgroundResource(R.drawable.account_shape);
@@ -180,7 +192,7 @@ public class PortfolioFragment extends Fragment {
             public void onClick(View view) {
                 et_search.setText("");
 
-                tv_motion.setBackgroundResource(R.drawable.title_shape);
+                tv_motion.setBackgroundResource(R.drawable.blue_shape);
                 tv_motion.setTextColor(Color.parseColor("#ffffff"));
 
                 tv_arch.setBackgroundResource(R.drawable.account_shape);
@@ -204,7 +216,7 @@ public class PortfolioFragment extends Fragment {
             public void onClick(View view) {
                 et_search.setText("");
 
-                tv_wall.setBackgroundResource(R.drawable.title_shape);
+                tv_wall.setBackgroundResource(R.drawable.blue_shape);
                 tv_wall.setTextColor(Color.parseColor("#ffffff"));
 
                 tv_arch.setBackgroundResource(R.drawable.account_shape);
@@ -220,6 +232,62 @@ public class PortfolioFragment extends Fragment {
                 tv_graphic.setTextColor(Color.parseColor("#000000"));
 
                 getPworks("?type=wall");
+            }
+        });
+
+    }
+
+    private void getDesignerPworks(int id, final String name) {
+        MyProgressDialog.showDialog(getContext());
+        MyRequest myRequest = new MyRequest();
+        Map<String, String> map = new HashMap<>();
+        map.put("token", ConstantInterFace.USER.getToken());
+        map.put("user_id", String.valueOf(id));
+
+        myRequest.PostCall("http://smm.smmim.com/waell/public/api/userprofile", map, new OkHttpCallback() {
+            @Override
+            public void onFailure(Call call, final IOException e) {
+                MyProgressDialog.dismissDialog();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException, JSONException {
+                MyProgressDialog.dismissDialog();
+                final JSONObject object = new JSONObject(response.body().string());
+                final JSONObject userObj = object.getJSONObject("user");
+                JSONObject statusObj = object.getJSONObject("status");
+                final String success = statusObj.getString("success");
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        if (success.equals("true")) {
+                            Gson gson = new Gson();
+                            TypeToken<List<PortfolioModel>> token = new TypeToken<List<PortfolioModel>>() {
+                            };
+                            try {
+                                arrayList = gson.fromJson(userObj.getJSONArray("pworks").toString(), token.getType());
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            adapter = new PortfolioAdapter(getActivity(), arrayList, name);
+
+                            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
+                            recyclerView.setAdapter(adapter);
+                        } else {
+
+                            Toast.makeText(getContext(), "لا يوجد نتائج", Toast.LENGTH_LONG).show();
+
+                        }
+                    }
+                });
             }
         });
 

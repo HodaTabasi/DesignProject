@@ -147,7 +147,6 @@ public class SkillsFragment extends Fragment {
 
         Bundle bundle = getArguments();
         arrayList = bundle.getParcelableArrayList("skillsInfo");
-        Log.e("fff", arrayList.get(0).getName());
 
         init();
         onClickMethod();

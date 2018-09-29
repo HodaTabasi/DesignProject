@@ -6,8 +6,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +23,15 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.smm.sapp.sproject.Adapters.AddNewPworkAdapter;
+import com.smm.sapp.sproject.Adapters.PortfolioAdapter;
+import com.smm.sapp.sproject.Adapters.SkillsSearchAdapter;
 import com.smm.sapp.sproject.ConstantInterFace;
+import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.Models.PWorks;
 import com.smm.sapp.sproject.Models.PortfolioModel;
 import com.smm.sapp.sproject.Models.SearchWorkersModel;
+import com.smm.sapp.sproject.Models.SkillsModel;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
@@ -52,10 +59,12 @@ public class AccountSearchFragment extends Fragment {
     TextView tv_name, tv_title, tv_comments, tv_portfolio, tv_completed, tv_inProgress, tv_rateProjects, tv_fav, tv_chooseMe;
     RatingBar rate_bar;
     EditText et_bio;
-    RecyclerView recycler_fav;
+    RecyclerView recycler_skill;
     Bundle bundle;
     SearchWorkersModel models;
     int worker_id;
+    ArrayList<SkillsModel> arrayList = new ArrayList<>();
+    SkillsSearchAdapter adapter;
 
 
     @Override
@@ -76,7 +85,7 @@ public class AccountSearchFragment extends Fragment {
         tv_chooseMe = view.findViewById(R.id.tv_chooseMe);
         rate_bar = view.findViewById(R.id.rate_bar);
         et_bio = view.findViewById(R.id.et_bio);
-        recycler_fav = view.findViewById(R.id.recycler_fav);
+        recycler_skill = view.findViewById(R.id.recycler_skill);
         return view;
     }
 
@@ -100,7 +109,12 @@ public class AccountSearchFragment extends Fragment {
         tv_portfolio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                PortfolioFragment fragment = new PortfolioFragment();
+                Bundle bundle = new Bundle();
+                bundle.putInt("designer_id", models.getId());
+                bundle.putString("designer_name", models.getName());
+                fragment.setArguments(bundle);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
             }
         });
 
@@ -165,66 +179,12 @@ public class AccountSearchFragment extends Fragment {
         });
     }
 
-//    private void getPworks() {
-//        MyProgressDialog.showDialog(getContext());
-//        MyRequest myRequest = new MyRequest();
-//        Map<String, String> map = new HashMap<>();
-//        map.put("token", ConstantInterFace.USER.getToken());
-//        map.put("user_id", String.valueOf(worker_id));
-//        myRequest.PostCall("http://smm.smmim.com/waell/public/api/userprofile", map, new OkHttpCallback() {
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//                MyProgressDialog.dismissDialog();
-//                getActivity().runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
-//                    }
-//                });
-//            }
-//
-//            @Override
-//            public void onResponse(Call call, Response response) throws IOException, JSONException {
-//                MyProgressDialog.dismissDialog();
-//                final JSONObject object = new JSONObject(response.body().string());
-//                JSONObject userObj = object.getJSONObject("user");
-//
-//                JSONObject statusObj = object.getJSONObject("status");
-//                String success = statusObj.getString("success");
-//
-//
-//                if (success.equals("true")) {
-//                    Gson gson = new Gson();
-//                    TypeToken<List<PWorks>> token = new TypeToken<List<PWorks>>() {
-//                    };
-//                    try {
-//                        arrayList = gson.fromJson(userObj.getJSONArray("pworks").toString(), token.getType());
-//                        adapter = new AddNewPworkAdapter(getActivity(), arrayList);
-//                        mnewWorkRes.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-//                        mnewWorkRes.setAdapter(adapter);
-//
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//
-//                    }
-//
-////                            ConstantInterFace.IS_USER_FAVORITE = true;
-//                    Toast.makeText(getContext(), "تمت الاضافة للمفضلة", Toast.LENGTH_LONG).show();
-//
-//                } else if (success.equals("true")) {
-////                            ConstantInterFace.IS_USER_FAVORITE = false;
-//                    Toast.makeText(getContext(), "تم الحذف من المفضلة", Toast.LENGTH_LONG).show();
-//                }
-//            }
-//        });
-//    }
 
     private void getData() {
         bundle = getArguments();
         models = bundle.getParcelable("worker");
-        tv_name.setText(models.getName());
-        worker_id = models.getId();
 
+        tv_name.setText(models.getName());
         Picasso.get().load(models.getPhoto_link()).into(profileImg);
 
         if (models.getJob_type().equals("wall")) {
@@ -244,6 +204,63 @@ public class AccountSearchFragment extends Fragment {
 //        tv_inProgress.setText();
 //        tv_rateProjects.setText();
 
+        getSkills();
+
+    }
+
+    private void getSkills() {
+        MyProgressDialog.showDialog(getContext());
+        MyRequest myRequest = new MyRequest();
+        Map<String, String> map = new HashMap<>();
+        map.put("token", ConstantInterFace.USER.getToken());
+        map.put("user_id", String.valueOf(models.getId()));
+
+        myRequest.PostCall("http://smm.smmim.com/waell/public/api/userprofile", map, new OkHttpCallback() {
+            @Override
+            public void onFailure(Call call, final IOException e) {
+                MyProgressDialog.dismissDialog();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException, JSONException {
+                MyProgressDialog.dismissDialog();
+                final JSONObject object = new JSONObject(response.body().string());
+                final JSONObject userObj = object.getJSONObject("user");
+                JSONObject statusObj = object.getJSONObject("status");
+                final String success = statusObj.getString("success");
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        if (success.equals("true")) {
+                            Gson gson = new Gson();
+                            TypeToken<List<SkillsModel>> token = new TypeToken<List<SkillsModel>>() {
+                            };
+                            try {
+                                arrayList = gson.fromJson(userObj.getJSONArray("skills").toString(), token.getType());
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            adapter = new SkillsSearchAdapter(getActivity(), arrayList);
+
+                            recycler_skill.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
+                            recycler_skill.setAdapter(adapter);
+                        } else {
+
+                            Toast.makeText(getContext(), "لا يوجد نتائج", Toast.LENGTH_LONG).show();
+
+                        }
+                    }
+                });
+            }
+        });
     }
 }
 

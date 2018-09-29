@@ -85,7 +85,7 @@
             android:background="@drawable/account_shape"
             android:gravity="center"
             android:padding="5dp"
-            android:text="تصاميم جرافكس"
+            android:text="مصمم جرافكس"
             android:textColor="@color/textGray"
             android:textSize="8sp" />
 
@@ -98,7 +98,7 @@
             android:background="@drawable/account_shape"
             android:gravity="center"
             android:padding="5dp"
-            android:text="رسم جداري"
+            android:text="مصمم جداري"
             android:textColor="@color/textGray"
             android:textSize="8sp" />
 
@@ -111,7 +111,7 @@
             android:background="@drawable/account_shape"
             android:gravity="center"
             android:padding="5dp"
-            android:text="تصميم معماري"
+            android:text="مصمم معماري"
             android:textColor="@color/textGray"
             android:textSize="8sp" />
 
@@ -123,7 +123,7 @@
             android:background="@drawable/account_shape"
             android:gravity="center"
             android:padding="5dp"
-            android:text="تصميم داخلي"
+            android:text="مصمم داخلي"
             android:textColor="@color/textGray"
             android:textSize="8sp" />
     </LinearLayout>

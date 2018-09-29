@@ -42,10 +42,17 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
     Context context;
     List<PortfolioModel> list;
     int pwork_id;
+    String name;
 
     public PortfolioAdapter(Context context, List<PortfolioModel> list) {
         this.context = context;
         this.list = list;
+    }
+
+    public PortfolioAdapter(Context context, List<PortfolioModel> list, String name) {
+        this.context = context;
+        this.list = list;
+        this.name = name;
     }
 
     @NonNull
@@ -60,20 +67,25 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
 
         pwork_id = list.get(position).getId();
 
-        holder.tv_name.setText(list.get(position).getUser().getName());
+        if (name != null) {
+            holder.tv_name.setText(name);
+        } else {
+            holder.tv_name.setText(list.get(position).getUser().getName());
+        }
+
         holder.tv_show.setText(list.get(position).getViews());
         holder.tv_like.setText(String.valueOf(list.get(position).getLikes()));
 
-        if (list.get(position).getUser().getJob_type().equals("wall")) {
-            holder.tv_specialization.setText("مصمم جداري");
-        } else if (list.get(position).getUser().getJob_type().equals("arch")) {
-            holder.tv_specialization.setText("مصمم معماري");
-        } else if (list.get(position).getUser().getJob_type().equals("graphic")) {
-            holder.tv_specialization.setText("مصمم جرافيكس");
-        } else if (list.get(position).getUser().getJob_type().equals("inter")) {
-            holder.tv_specialization.setText("مصمم داخلي");
-        } else if (list.get(position).getUser().getJob_type().equals("moshen")) {
-            holder.tv_specialization.setText("مصمم موشن");
+        if (list.get(position).getType().equals("wall")) {
+            holder.tv_specialization.setText("تصميم جداري");
+        } else if (list.get(position).getType().equals("arch")) {
+            holder.tv_specialization.setText("تصميم معماري");
+        } else if (list.get(position).getType().equals("graphic")) {
+            holder.tv_specialization.setText("تصميم جرافيكس");
+        } else if (list.get(position).getType().equals("inter")) {
+            holder.tv_specialization.setText("تصميم داخلي");
+        } else if (list.get(position).getType().equals("moshen")) {
+            holder.tv_specialization.setText("تصميم موشن");
         }
         Picasso.get().load(list.get(position).getPhoto_link()).into(holder.img);
 

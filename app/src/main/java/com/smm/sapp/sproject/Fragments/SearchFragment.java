@@ -138,7 +138,7 @@ public class SearchFragment extends Fragment {
             public void onClick(View view) {
                 et_search.setText("");
 
-                tv_arch.setBackgroundResource(R.drawable.title_shape);
+                tv_arch.setBackgroundResource(R.drawable.blue_shape);
                 tv_arch.setTextColor(Color.parseColor("#ffffff"));
 
                 tv_inter.setBackgroundResource(R.drawable.account_shape);
@@ -163,7 +163,7 @@ public class SearchFragment extends Fragment {
             public void onClick(View view) {
                 et_search.setText("");
 
-                tv_inter.setBackgroundResource(R.drawable.title_shape);
+                tv_inter.setBackgroundResource(R.drawable.blue_shape);
                 tv_inter.setTextColor(Color.parseColor("#ffffff"));
 
                 tv_arch.setBackgroundResource(R.drawable.account_shape);
@@ -187,7 +187,7 @@ public class SearchFragment extends Fragment {
             public void onClick(View view) {
                 et_search.setText("");
 
-                tv_graphic.setBackgroundResource(R.drawable.title_shape);
+                tv_graphic.setBackgroundResource(R.drawable.blue_shape);
                 tv_graphic.setTextColor(Color.parseColor("#ffffff"));
 
                 tv_arch.setBackgroundResource(R.drawable.account_shape);
@@ -211,7 +211,7 @@ public class SearchFragment extends Fragment {
             public void onClick(View view) {
                 et_search.setText("");
 
-                tv_motion.setBackgroundResource(R.drawable.title_shape);
+                tv_motion.setBackgroundResource(R.drawable.blue_shape);
                 tv_motion.setTextColor(Color.parseColor("#ffffff"));
 
                 tv_arch.setBackgroundResource(R.drawable.account_shape);
@@ -235,7 +235,7 @@ public class SearchFragment extends Fragment {
             public void onClick(View view) {
                 et_search.setText("");
 
-                tv_wall.setBackgroundResource(R.drawable.title_shape);
+                tv_wall.setBackgroundResource(R.drawable.blue_shape);
                 tv_wall.setTextColor(Color.parseColor("#ffffff"));
 
                 tv_arch.setBackgroundResource(R.drawable.account_shape);

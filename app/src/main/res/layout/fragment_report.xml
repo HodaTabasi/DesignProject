@@ -47,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:background="@drawable/title_shape"
+        android:background="@drawable/blue_shape"
         android:gravity="center"
         android:padding="5dp">
 

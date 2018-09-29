@@ -96,7 +96,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="2dp"
                         android:layout_weight=".7"
-                        android:background="@drawable/title_shape"
+                        android:background="@drawable/blue_shape"
                         android:gravity="center"
                         android:padding="5dp"
                         android:text="تعديل "

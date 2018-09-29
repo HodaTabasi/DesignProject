@@ -116,7 +116,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/title_shape"
+                android:background="@drawable/blue_shape"
                 android:gravity="center"
                 android:padding="8dp"
                 android:text="@string/save"
