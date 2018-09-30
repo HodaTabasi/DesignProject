@@ -17,6 +17,10 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.smm.sapp.sproject.Adapters.ClientProjectAdapter;
@@ -73,6 +77,9 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
     List<ProjectsModels> arrayList ;
     List<ProjectsModels> arrayList1 ;
     List<ProjectsModels> arrayList2 ;
+    int done = 0 ,wait = 0 ,under = 0;
+    TextView doneTV ,waitTV ,underTV;
+    PieChart chart;
 
     public MyProjectFragment() {
         // Required empty public constructor
@@ -92,13 +99,17 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         mMyProjectUnderway = getView().findViewById(R.id.my_project_underway);
         mMyProjectDone = getView().findViewById(R.id.my_project_done);
         mOne = getView().findViewById(R.id.one);
-        mProfileImage = getView().findViewById(R.id.profile_image);
+//        mProfileImage = getView().findViewById(R.id.profile_image);
         mLWaitProject = getView().findViewById(R.id.l_wait_project);
         mLUnderwayProject = getView().findViewById(R.id.l_underway_project);
         mLExcludedProject = getView().findViewById(R.id.l_excluded_project);
         mLDoneProject = getView().findViewById(R.id.l_done_project);
         mTwo = getView().findViewById(R.id.two);
         ic_back = getView().findViewById(R.id.ic_back);
+        doneTV = getView().findViewById(R.id.done);
+        underTV = getView().findViewById(R.id.under);
+        waitTV = getView().findViewById(R.id.wait);
+        chart = (PieChart) getView().findViewById(R.id.chart);
 
          arrayList = new ArrayList<>();
          arrayList1 = new ArrayList<>();
@@ -111,6 +122,8 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         mMyProjectDone.setOnClickListener(this);
         mMyProjectExcluded.setOnClickListener(this);
         mMyProjectUnderway.setOnClickListener(this);
+
+        addToChart();
     }
 
     private void onClickMethod(){
@@ -134,7 +147,7 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         });
     }
 
-    private void getProjects(String url) {
+    private void getProjects(final String url) {
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
         myRequest.GetCall("http://smm.smmim.com/waell/public/api/" + url, new OkHttpCallback() {
@@ -170,17 +183,24 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
                                         case "0":
                                             //قيد الموافقة
                                             arrayList.add(models);
+                                            waitTV.setText(arrayList.size()+"عرض ");
+                                            wait ++;
                                             break;
                                         case "1":
                                             //قيد العمل
                                             arrayList1.add(models);
+                                            underTV.setText(arrayList1.size()+" عرض ");
+                                            under ++;
                                             break;
                                         case "2":
                                             //قم التسليم
                                             arrayList2.add(models);
+                                            doneTV.setText(arrayList2.size()+" عرض ");
+                                            done ++;
                                             break;
                                     }
                                 }
+
                                 mMyProjectRes.setAdapter(new ClientProjectAdapter(getContext(),arrayList2));
                             } else {
                                 Toast.makeText(getContext(), "" + object1.getBoolean("error"), Toast.LENGTH_SHORT).show();
@@ -194,6 +214,24 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
 
             }
         });
+    }
+
+    private void addToChart() {
+        List<PieEntry> entries = new ArrayList<>();
+
+        entries.add(new PieEntry(18.5f));
+        entries.add(new PieEntry(26.7f));
+        entries.add(new PieEntry(24.0f));
+        entries.add(new PieEntry(30.8f));
+
+        PieDataSet set = new PieDataSet(entries, "");
+        set.setColors(new int[]{R.color.yalow, R.color.green,R.color.darkBlue,R.color.red},getActivity());
+        set.setValueTextSize(8f);
+        set.setValueTextColor(R.color.white);
+        PieData data = new PieData(set);
+        chart.setData(data);
+
+        chart.invalidate(); // refresh
     }
 
     @Override

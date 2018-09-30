@@ -17,8 +17,8 @@ public class MyFirebaseInstanceIDService extends FirebaseMessagingService {
 
         // TODO(developer): Handle FCM messages here.
         // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
-        Log.e(TAG, "From: " + remoteMessage.getFrom());
-        Log.e(TAG, "Message data payload: " + remoteMessage.getData());
+        Log.e("onMessageReceived", "From: " + remoteMessage.getNotification());
+        Log.e("onMessageReceived", "Message data payload: " + remoteMessage.getData());
 
         // Check if message contains a data payload.
         if (remoteMessage.getData().size() > 0) {

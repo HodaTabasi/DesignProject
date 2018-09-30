@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.Buffer;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -62,17 +63,27 @@ public class MyRequest {
                 .url(URL)
                 .post(body)
                 .build();
+        try {
+            Request c=request.newBuilder().build();
+            okio.Buffer buffer=new okio.Buffer();
+            c.body().writeTo(buffer);
+            Log.e("readUtf8",""+buffer.readUtf8());
+        }catch (IOException e){
+
+        }
 //
         OkHttpClient okHttpClient = new OkHttpClient();
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
+                Log.e("okHttpClient","onFailure");
                 callback.onFailure(call, e);
 
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
+
                 try {
                     callback.onResponse(call, response);
                 } catch (JSONException e) {

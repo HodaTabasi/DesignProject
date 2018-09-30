@@ -75,7 +75,7 @@ public class MainFragment extends Fragment {
         tv_search = view.findViewById(R.id.tv_search);
         img_power = view.findViewById(R.id.img_power);
         img_notification = view.findViewById(R.id.img_notification);
-//        refreshedToken = FirebaseInstanceId.getInstance().getToken();
+        refreshedToken = FirebaseInstanceId.getInstance().getToken();
     }
 
     private void onClickMethod() {
@@ -253,7 +253,9 @@ public class MainFragment extends Fragment {
             @Override
             public void onResponse(Call call, Response response) throws IOException, JSONException {
                 MyProgressDialog.dismissDialog();
-                JSONObject object = new JSONObject();
+                String s = response.body().string();
+                Log.e("okHttpClient",""+s);
+                JSONObject object = new JSONObject(s);
                 JSONObject object1 = object.getJSONObject("status");
                 Log.e("fffds", "dsgsgew");
                 if (object1.getBoolean("success")){

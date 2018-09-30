@@ -10,5 +10,8 @@
 	<color name="gray_icon">#5c5d5f</color>
 	<color name="lightgray">#4f5050</color>
 	<color name="white">#ffffff</color>
-    <color name="black">#000000</color>
+    <color name="red">#e21b1b</color>
+    <color name="darkBlue">#09102d</color>
+    <color name="yalow">#fcc529</color>
+    <color name="green">#19db9f</color>
 </resources>

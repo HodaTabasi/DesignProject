@@ -100,7 +100,8 @@ public class RegisterFragment extends Fragment {
             public void onResponse(Call call, Response response) throws IOException, JSONException {
                 MyProgressDialog.dismissDialog();
                 String s = response.body().string();
-                Log.e("Ffd", s);
+                Log.e("okHttpClient",""+s);
+
                 final JSONObject jsonObject = new JSONObject(s);
                 final JSONObject object = jsonObject.getJSONObject("status");
                 final Gson gson = new Gson();
