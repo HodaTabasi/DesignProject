@@ -79,7 +79,6 @@ public class ProfileFragment extends Fragment {
         tv_bio = view.findViewById(R.id.tv_bio);
 
         ic_back = view.findViewById(R.id.ic_back);
-
         ic_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
