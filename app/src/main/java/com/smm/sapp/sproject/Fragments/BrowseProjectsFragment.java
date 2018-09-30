@@ -40,28 +40,17 @@ import okhttp3.Response;
 
 public class BrowseProjectsFragment extends Fragment implements View.OnClickListener {
 
-
     ArrayList<ProjectsModels> arrayList = new ArrayList<>();
     BrowseProjectAdapter adapter;
     private EditText mSearch;
-
     private TextView mMotionButton;
-
     private TextView mGhButton;
-    /**
-     * رسم جداري
-     */
     private TextView mWallButton;
-    /**
-     * تصميم معماري
-     */
     private TextView mArchButton;
-    /**
-     * تصميم داخلي
-     */
     private TextView mInButton;
     private RecyclerView mProjectsRecycler;
     ImageView ic_back;
+    String s_search;
 
     public BrowseProjectsFragment() {
     }
@@ -84,6 +73,7 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
         getProjects("getallprojects");
         initView();
         setListener();
+
 
     }
 
@@ -109,9 +99,28 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
 
         mSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+            public boolean onEditorAction(TextView textView, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    Log.e("ff", mSearch.getText().toString());
+                    s_search = textView.getText().toString();
+
+                    mMotionButton.setBackgroundResource(R.drawable.account_shape);
+                    mMotionButton.setTextColor(Color.parseColor("#000000"));
+
+                    mArchButton.setBackgroundResource(R.drawable.account_shape);
+                    mArchButton.setTextColor(Color.parseColor("#000000"));
+
+                    mInButton.setBackgroundResource(R.drawable.account_shape);
+                    mInButton.setTextColor(Color.parseColor("#000000"));
+
+                    mGhButton.setBackgroundResource(R.drawable.account_shape);
+                    mGhButton.setTextColor(Color.parseColor("#000000"));
+
+                    mWallButton.setBackgroundResource(R.drawable.account_shape);
+                    mWallButton.setTextColor(Color.parseColor("#000000"));
+
+                    getProjects("searchprojects?name=" + s_search);
+
+
                     return true;
                 }
                 return false;
