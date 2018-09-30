@@ -26,13 +26,8 @@ import me.anwarshahriar.calligrapher.Calligrapher;
 
 
 public class ViewProjectFragment extends Fragment {
-    /**
-     * منال القرشي
-     */
+
     private TextView mUserName;
-    /**
-     * عميل صاحب مشاريع
-     */
     private TextView mUserType;
     private CircleImageView mUserPhoto;
     private EditText mPName;
@@ -67,7 +62,7 @@ public class ViewProjectFragment extends Fragment {
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
 
         initView(getView());
-        ///////////////لو كان عميل ما رح يقدر يضيف عرض ع المشروع
+
         if (ConstantInterFace.USER.getType().equals("client"))
             addOffer.setVisibility(View.INVISIBLE);
         else
@@ -79,10 +74,10 @@ public class ViewProjectFragment extends Fragment {
             public void onClick(View v) {
                 AddProposalFragment fragment = new AddProposalFragment();
                 Bundle bundle1 = new Bundle();
-                bundle1.putInt("id",models.getId());
-                Log.e("from",models.getId() + " ");
+                bundle1.putInt("id", models.getId());
+                Log.e("from", models.getId() + " ");
                 fragment.setArguments(bundle1);
-                FragmentsUtil.replaceFragment(getActivity(),R.id.container_activity,fragment,true);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
             }
         });
 
@@ -114,15 +109,29 @@ public class ViewProjectFragment extends Fragment {
         mPAttachment = (RecyclerView) view.findViewById(R.id.p_attachment);
         addOffer = view.findViewById(R.id.add_offer);
     }
-    private void putData(){
+
+    private void putData() {
         bundle = getArguments();
         models = bundle.getParcelable("theProject");
         mUserName.setText(models.getUser().getName());
         mUserType.setText(models.getUser().getType());
         Picasso.get().load(models.getUser().getPhoto_link()).into(mUserPhoto);
         mPName.setText(models.getName());
-        mPType.setText(models.getType());
-        if (models.getAddtion_info() != null){
+
+        if (models.getType().equals("inter")) {
+            mPType.setText("تصميم داخلي");
+        } else if (models.getType().equals("arch")) {
+            mPType.setText("تصميم معماري");
+        } else if (models.getType().equals("moshen")) {
+            mPType.setText("تصميم موشن");
+        } else if (models.getType().equals("graphic")) {
+            mPType.setText("تصميم جرافيكس");
+        } else if (models.getType().equals("wall")) {
+            mPType.setText("تصميم جداري");
+        }
+
+
+        if (models.getAddtion_info() != null) {
             mPStyle.setText(models.getAddtion_info().getStyle());
             mPColors.setText(models.getAddtion_info().getColors());
             mPCity.setText(models.getAddtion_info().getCity());
@@ -131,16 +140,16 @@ public class ViewProjectFragment extends Fragment {
         mPBalance.setText(models.getBalance());
         mPBio.setText(models.getDescr());
 
-        mPProjectPhoto.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
-        ProjectPhotoAdapter adapter = new ProjectPhotoAdapter(getContext(),R.layout.layout_item_photos,models.getPhotos());
+        mPProjectPhoto.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        ProjectPhotoAdapter adapter = new ProjectPhotoAdapter(getContext(), R.layout.layout_item_photos, models.getPhotos());
         mPProjectPhoto.setAdapter(adapter);
 
 //        mPProjectPhoto.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
 //        ProjectPhotoAdapter adapter1 = new ProjectPhotoAdapter(getContext(),R.layout.layout_item_photos,models.getSimilars());
 //        mPProjectPhoto.setAdapter(adapter);
 
-        mPAttachment.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
-        ProjectAttachmentAdapter adapter2 = new ProjectAttachmentAdapter(getContext(),R.layout.layout_item_attachment,models.getAttachs());
+        mPAttachment.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        ProjectAttachmentAdapter adapter2 = new ProjectAttachmentAdapter(getContext(), R.layout.layout_item_attachment, models.getAttachs());
         mPAttachment.setAdapter(adapter2);
 
     }

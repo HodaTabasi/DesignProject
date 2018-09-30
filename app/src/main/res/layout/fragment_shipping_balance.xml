@@ -39,7 +39,6 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="15dp"
-            android:padding="16dp"
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
@@ -47,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:background="@drawable/title_shape"
+        android:background="@drawable/blue_shape"
         android:gravity="center"
         android:padding="5dp">
 
@@ -130,7 +129,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:layout_margin="10dp"
-                        android:background="@drawable/title_shape"
+                        android:background="@drawable/blue_shape"
                         android:paddingBottom="3dp"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
@@ -203,8 +202,8 @@
                                 android:layout_marginRight="3dp"
                                 android:layout_marginTop="3dp"
                                 android:layout_weight="1"
-                                android:inputType="number"
                                 android:background="@drawable/white_shap"
+                                android:inputType="number"
                                 android:textColor="@android:color/black"
                                 android:textSize="12sp" />
 
@@ -281,8 +280,8 @@
                                 android:layout_marginTop="3dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/white_shap"
-                                android:textColor="@android:color/black"
                                 android:inputType="number"
+                                android:textColor="@android:color/black"
                                 android:textSize="12sp" />
 
                             <View
@@ -352,7 +351,7 @@
                             <View
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="0.5" />
+                                android:layout_weight="1" />
 
                             <!--<TextView-->
                             <!--android:layout_width="0dp"-->
@@ -372,8 +371,9 @@
                                 android:layout_marginTop="3dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/gray_shap"
-                                android:padding="2dp"
-                                android:text="ارفق صورة"
+                                android:gravity="center"
+                                android:padding="3dp"
+                                android:text="ارفق الصورة"
                                 android:textColor="@android:color/black"
                                 android:textSize="12sp" />
 
@@ -387,7 +387,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="5dp"
                                 android:layout_marginStart="5dp"
-                                android:layout_weight="0.7"
+                                android:layout_weight="1.4"
                                 android:text="صورة التحويل"
                                 android:textColor="@android:color/black"
                                 android:textSize="12sp" />
@@ -403,7 +403,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginBottom="10dp"
                         android:layout_marginTop="10dp"
-                        android:background="@drawable/title_shape"
+                        android:background="@drawable/blue_shape"
                         android:paddingBottom="3dp"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
@@ -429,7 +429,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:layout_margin="10dp"
-                        android:background="@drawable/title_shape"
+                        android:background="@drawable/blue_shape"
                         android:paddingBottom="3dp"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
@@ -618,7 +618,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginBottom="10dp"
                         android:layout_marginTop="10dp"
-                        android:background="@drawable/title_shape"
+                        android:background="@drawable/blue_shape"
                         android:paddingBottom="3dp"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"

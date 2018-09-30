@@ -106,7 +106,7 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
         Bundle bundle = getArguments();
-        if (bundle.getBoolean("flag")){
+        if (bundle.getBoolean("isUpdated")){
             getWorkerOffersRequest();
         }else {
             ProjectsModels projectsModels = bundle.getParcelable("object");

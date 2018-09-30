@@ -126,10 +126,12 @@ public class MainFragment extends Fragment {
         tv_addProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (ConstantInterFace.USER.getType().equals("client"))
-                    FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AddProjectFragment(), true);
-                else
-                    Toast.makeText(getContext(), "غير مخول لك بالدخول هذه الواجهة خاصة بصاحب المشاريع ", Toast.LENGTH_SHORT).show();
+//                if (ConstantInterFace.USER.getType().equals("client"))
+//                    FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AddProjectFragment(), true);
+//                else
+//                    Toast.makeText(getContext(), "غير مخول لك بالدخول هذه الواجهة خاصة بصاحب المشاريع ", Toast.LENGTH_SHORT).show();
+//
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AddProjectFragment(), true);
 
             }
         });
@@ -142,7 +144,7 @@ public class MainFragment extends Fragment {
                 else{
                     MyOffersFragment fragment = new MyOffersFragment();
                     Bundle bundle = new Bundle();
-                    bundle.putBoolean("flag",true);
+                    bundle.putBoolean("isUpdated",true);
                     fragment.setArguments(bundle);
                     FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
                 }
@@ -195,7 +197,7 @@ public class MainFragment extends Fragment {
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
 
         init(getView());
-        changeToken();
+        //changeToken();
         //registered user
         if (!ConstantInterFace.IS_REGISTER) {
             onClickMethod();
@@ -243,11 +245,11 @@ public class MainFragment extends Fragment {
         Map<String,String> stringMap = new HashMap<>();
         stringMap.put("token",ConstantInterFace.USER.getToken());
         stringMap.put("fcm_token",refreshedToken);
-        Log.e("dd",refreshedToken);
+//        Log.e("dd",refreshedToken);
         request.PostCall("http://smm.smmim.com/waell/public/api/changeuserfcm",stringMap , new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.e("fffd", "dsgsgew");
+//                Log.e("fffd", "dsgsgew");
             }
 
             @Override

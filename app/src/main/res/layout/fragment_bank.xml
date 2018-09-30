@@ -37,7 +37,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:padding="16dp"
             android:layout_marginRight="15dp"
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
@@ -116,7 +115,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/title_shape"
+                android:background="@drawable/blue_shape"
                 android:gravity="center"
                 android:padding="8dp"
                 android:text="@string/save"

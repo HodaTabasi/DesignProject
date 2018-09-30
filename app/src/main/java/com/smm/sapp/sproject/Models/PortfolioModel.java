@@ -1,6 +1,9 @@
 package com.smm.sapp.sproject.Models;
 
-public class PortfolioModel {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class PortfolioModel implements Parcelable {
 
     /**
      * id : 6
@@ -31,6 +34,32 @@ public class PortfolioModel {
     private String created_at;
     private String updated_at;
     private UserBean user;
+
+    protected PortfolioModel(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        descr = in.readString();
+        mdate = in.readString();
+        user_id = in.readString();
+        photo_link = in.readString();
+        work_link = in.readString();
+        views = in.readString();
+        likes = in.readInt();
+        created_at = in.readString();
+        updated_at = in.readString();
+    }
+
+    public static final Creator<PortfolioModel> CREATOR = new Creator<PortfolioModel>() {
+        @Override
+        public PortfolioModel createFromParcel(Parcel in) {
+            return new PortfolioModel(in);
+        }
+
+        @Override
+        public PortfolioModel[] newArray(int size) {
+            return new PortfolioModel[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -134,6 +163,26 @@ public class PortfolioModel {
 
     public void setUser(UserBean user) {
         this.user = user;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(name);
+        parcel.writeString(descr);
+        parcel.writeString(mdate);
+        parcel.writeString(user_id);
+        parcel.writeString(photo_link);
+        parcel.writeString(work_link);
+        parcel.writeString(views);
+        parcel.writeInt(likes);
+        parcel.writeString(created_at);
+        parcel.writeString(updated_at);
     }
 
     public static class UserBean {

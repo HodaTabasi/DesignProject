@@ -37,7 +37,6 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="15dp"
-            android:padding="16dp"
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
@@ -56,7 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:background="@drawable/title_shape"
+                android:background="@drawable/blue_shape"
                 android:gravity="center">
 
                 <TextView
@@ -266,7 +265,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:background="@drawable/title_shape"
+                android:background="@drawable/blue_shape"
                 android:text="ارسل الطلب"
                 android:textColor="@android:color/white"
                 android:textSize="14sp" />

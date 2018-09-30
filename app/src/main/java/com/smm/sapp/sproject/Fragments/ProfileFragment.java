@@ -49,10 +49,8 @@ public class ProfileFragment extends Fragment {
     Calendar calendar;
     DatePickerDialog.OnDateSetListener date;
     String st_type, st_job_type, st_busniess_type, st_name, st_bio, mobile, st_email, gender, st_dob;
-    int position;
-    String s_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6Ly9zbW0uc21taW0uY29tL3dhZWxsL3B1YmxpYy9hcGkvTG9naW4iLCJpYXQiOjE1Mzc2MTI1MzEsImV4cCI6NDgwODE3NjA0NTkzMzMzNzMzMSwibmJmIjoxNTM3NjEyNTMxLCJqdGkiOiJjYVZDSHRmUW9WOVhsalBwIn0.3f7a7F9sDyow1ZV90dec235qiXQNiUcKwU71LCMvF3k";
-
     ImageView ic_back;
+
     public ProfileFragment() {
     }
 
@@ -81,7 +79,6 @@ public class ProfileFragment extends Fragment {
         tv_bio = view.findViewById(R.id.tv_bio);
 
         ic_back = view.findViewById(R.id.ic_back);
-
         ic_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -266,7 +263,7 @@ public class ProfileFragment extends Fragment {
                     stringMap.put("type", type);
 
                     for (Map.Entry<String, String> entry : stringMap.entrySet()) {
-                        Log.e(entry.getKey() + " ff",entry.getValue() + " 11");
+                        Log.e(entry.getKey() + " ff", entry.getValue() + " 11");
                     }
 
                     myRequest.PostCall("http://smm.smmim.com/waell/public/api/updateProfile", stringMap, new OkHttpCallback() {
@@ -346,7 +343,7 @@ public class ProfileFragment extends Fragment {
     private void getProfileData() {
         MyRequest myRequest = new MyRequest();
         Map<String, String> map = new HashMap<>();
-        map.put("token",ConstantInterFace.USER.getToken());
+        map.put("token", ConstantInterFace.USER.getToken());
         myRequest.PostCall("http://smm.smmim.com/waell/public/api/myprofile", map, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {

@@ -37,7 +37,6 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="15dp"
-            android:padding="16dp"
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
@@ -58,7 +57,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/title_shape"
+                android:background="@drawable/blue_shape"
                 android:padding="5dp"
                 android:text="اتصل بنا "
                 android:textAlignment="center"
@@ -98,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:background="@drawable/title_shape"
+                android:background="@drawable/blue_shape"
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="ارسال"

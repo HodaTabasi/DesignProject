@@ -37,7 +37,6 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="15dp"
-            android:padding="16dp"
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
@@ -143,7 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:background="@drawable/title_shape"
+                android:background="@drawable/blue_shape"
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="معرض الاعمال"

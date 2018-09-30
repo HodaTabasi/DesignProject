@@ -26,6 +26,7 @@ public class PWorks implements Parcelable {
     private String user_id;
     private String photo_link;
     private String work_link;
+    private String type;
     private String views;
     private String likes;
     private String created_at;
@@ -39,6 +40,7 @@ public class PWorks implements Parcelable {
         user_id = in.readString();
         photo_link = in.readString();
         work_link = in.readString();
+        type = in.readString();
         views = in.readString();
         likes = in.readString();
         created_at = in.readString();
@@ -113,6 +115,14 @@ public class PWorks implements Parcelable {
         this.work_link = work_link;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public String getViews() {
         return views;
     }
@@ -159,6 +169,7 @@ public class PWorks implements Parcelable {
         parcel.writeString(user_id);
         parcel.writeString(photo_link);
         parcel.writeString(work_link);
+        parcel.writeString(type);
         parcel.writeString(views);
         parcel.writeString(likes);
         parcel.writeString(created_at);

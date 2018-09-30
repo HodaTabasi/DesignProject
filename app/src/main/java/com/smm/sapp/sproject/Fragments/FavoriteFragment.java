@@ -1,16 +1,12 @@
 package com.smm.sapp.sproject.Fragments;
 
-import android.content.Context;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,12 +15,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.smm.sapp.sproject.Adapters.FavoritePortfolioAdapter;
 import com.smm.sapp.sproject.Adapters.LikesPWorkAdapter;
 import com.smm.sapp.sproject.Adapters.LikesProjectAdapter;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
-import com.smm.sapp.sproject.Models.FavoritePortfolioModel;
 import com.smm.sapp.sproject.Models.Likes;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
@@ -151,7 +145,7 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
         switch (id) {
             case R.id.designs:
                 designs.setTextColor(Color.parseColor("#ffffff"));
-                designs.setBackgroundResource(R.drawable.title_shape);
+                designs.setBackgroundResource(R.drawable.blue_shape);
                 pWork.setTextColor(Color.parseColor("#000000"));
                 pWork.setBackgroundResource(R.drawable.account_shape);
                 project.setTextColor(Color.parseColor("#000000"));
@@ -160,7 +154,7 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.works:
                 pWork.setTextColor(Color.parseColor("#ffffff"));
-                pWork.setBackgroundResource(R.drawable.title_shape);
+                pWork.setBackgroundResource(R.drawable.blue_shape);
                 designs.setTextColor(Color.parseColor("#000000"));
                 designs.setBackgroundResource(R.drawable.account_shape);
                 project.setTextColor(Color.parseColor("#000000"));
@@ -170,7 +164,7 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.projects:
                 project.setTextColor(Color.parseColor("#ffffff"));
-                project.setBackgroundResource(R.drawable.title_shape);
+                project.setBackgroundResource(R.drawable.blue_shape);
                 pWork.setTextColor(Color.parseColor("#000000"));
                 pWork.setBackgroundResource(R.drawable.account_shape);
                 designs.setTextColor(Color.parseColor("#000000"));

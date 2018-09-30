@@ -1,5 +1,6 @@
 package com.smm.sapp.sproject.Fragments;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,17 +13,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.smm.sapp.sproject.Adapters.BrowseProjectAdapter;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
-import com.smm.sapp.sproject.Models.BrowseProjectsModel;
 import com.smm.sapp.sproject.Models.ProjectsModels;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
@@ -43,28 +42,17 @@ import okhttp3.Response;
 
 public class BrowseProjectsFragment extends Fragment implements View.OnClickListener {
 
-
     ArrayList<ProjectsModels> arrayList = new ArrayList<>();
     BrowseProjectAdapter adapter;
     private EditText mSearch;
-
     private TextView mMotionButton;
-
     private TextView mGhButton;
-    /**
-     * رسم جداري
-     */
     private TextView mWallButton;
-    /**
-     * تصميم معماري
-     */
     private TextView mArchButton;
-    /**
-     * تصميم داخلي
-     */
     private TextView mInButton;
     private RecyclerView mProjectsRecycler;
     ImageView ic_back;
+    String s_search;
 
     public BrowseProjectsFragment() {
     }
@@ -87,6 +75,7 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
         getProjects("getallprojects");
         initView();
         setListener();
+
 
     }
 
@@ -112,9 +101,31 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
 
         mSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+            public boolean onEditorAction(TextView textView, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    Log.e("ff", mSearch.getText().toString());
+                    s_search = textView.getText().toString();
+
+                    InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(mSearch.getWindowToken(), 0);
+
+                    mMotionButton.setBackgroundResource(R.drawable.account_shape);
+                    mMotionButton.setTextColor(Color.parseColor("#000000"));
+
+                    mArchButton.setBackgroundResource(R.drawable.account_shape);
+                    mArchButton.setTextColor(Color.parseColor("#000000"));
+
+                    mInButton.setBackgroundResource(R.drawable.account_shape);
+                    mInButton.setTextColor(Color.parseColor("#000000"));
+
+                    mGhButton.setBackgroundResource(R.drawable.account_shape);
+                    mGhButton.setTextColor(Color.parseColor("#000000"));
+
+                    mWallButton.setBackgroundResource(R.drawable.account_shape);
+                    mWallButton.setTextColor(Color.parseColor("#000000"));
+
+                    getProjects("searchprojects?name=" + s_search);
+
+
                     return true;
                 }
                 return false;
@@ -190,7 +201,7 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
         switch (id) {
             case R.id.motion_button:
                 mMotionButton.setTextColor(Color.parseColor("#ffffff"));
-                mMotionButton.setBackgroundResource(R.drawable.title_shape);
+                mMotionButton.setBackgroundResource(R.drawable.blue_shape);
                 mGhButton.setTextColor(Color.parseColor("#000000"));
                 mGhButton.setBackgroundResource(R.drawable.account_shape);
                 mWallButton.setTextColor(Color.parseColor("#000000"));
@@ -206,7 +217,7 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
 
             case R.id.gh_button:
                 mGhButton.setTextColor(Color.parseColor("#ffffff"));
-                mGhButton.setBackgroundResource(R.drawable.title_shape);
+                mGhButton.setBackgroundResource(R.drawable.blue_shape);
                 mMotionButton.setTextColor(Color.parseColor("#000000"));
                 mMotionButton.setBackgroundResource(R.drawable.account_shape);
                 mWallButton.setTextColor(Color.parseColor("#000000"));
@@ -222,7 +233,7 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
 
             case R.id.wall_button:
                 mWallButton.setTextColor(Color.parseColor("#ffffff"));
-                mWallButton.setBackgroundResource(R.drawable.title_shape);
+                mWallButton.setBackgroundResource(R.drawable.blue_shape);
                 mMotionButton.setTextColor(Color.parseColor("#000000"));
                 mMotionButton.setBackgroundResource(R.drawable.account_shape);
                 mGhButton.setTextColor(Color.parseColor("#000000"));
@@ -238,7 +249,7 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
 
             case R.id.arch_button:
                 mArchButton.setTextColor(Color.parseColor("#ffffff"));
-                mArchButton.setBackgroundResource(R.drawable.title_shape);
+                mArchButton.setBackgroundResource(R.drawable.blue_shape);
 
                 mMotionButton.setTextColor(Color.parseColor("#000000"));
                 mMotionButton.setBackgroundResource(R.drawable.account_shape);
@@ -255,7 +266,7 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
 
             case R.id.in_button:
                 mInButton.setTextColor(Color.parseColor("#ffffff"));
-                mInButton.setBackgroundResource(R.drawable.title_shape);
+                mInButton.setBackgroundResource(R.drawable.blue_shape);
                 mMotionButton.setTextColor(Color.parseColor("#000000"));
                 mMotionButton.setBackgroundResource(R.drawable.account_shape);
                 mGhButton.setTextColor(Color.parseColor("#000000"));

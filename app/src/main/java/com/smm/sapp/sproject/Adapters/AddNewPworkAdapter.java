@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.smm.sapp.sproject.ConstantInterFace;
+import com.smm.sapp.sproject.Fragments.AddNewWorkFragment;
 import com.smm.sapp.sproject.Fragments.BusinessFairFragment;
 import com.smm.sapp.sproject.Fragments.ViewProjectFragment;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
@@ -69,6 +70,17 @@ public class AddNewPworkAdapter extends RecyclerView.Adapter<AddNewPworkAdapter.
                 deleteRequest(pWorksList.get(position).getId(), position);
             }
         });
+        holder.update_work.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AddNewWorkFragment fragment = new AddNewWorkFragment();
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("work", pWorksList.get(position));
+                fragment.setArguments(bundle);
+                FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
+            }
+        });
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,6 +94,8 @@ public class AddNewPworkAdapter extends RecyclerView.Adapter<AddNewPworkAdapter.
 
 
     }
+
+
 
     @Override
     public int getItemCount() {
@@ -109,8 +123,7 @@ public class AddNewPworkAdapter extends RecyclerView.Adapter<AddNewPworkAdapter.
                         super.onPostExecute(aVoid);
                         Toast.makeText(context, "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
                     }
-                };
-
+                }.execute();
 
             }
 

@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.smm.sapp.sproject.ConstantInterFace;
+import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.Models.PWorks;
 import com.smm.sapp.sproject.MyRequest;
@@ -39,6 +40,8 @@ public class BusinessFairFragment extends Fragment {
     TextView tv_name, tv_descr, num_date, num_seen, num_like, update_work, delete_work, project_link;
     PWorks models;
     Bundle bundle;
+
+    int isUpdated = 0;
 
     public BusinessFairFragment() {
 
@@ -84,9 +87,24 @@ public class BusinessFairFragment extends Fragment {
                 deleteRequest();
             }
         });
+        update_work.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                bundle = getArguments();
+                models = bundle.getParcelable("work");
+
+                AddNewWorkFragment fragment = new AddNewWorkFragment();
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("work", models);
+                fragment.setArguments(bundle);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, false);
+            }
+        });
 
         getData();
     }
+
 
     private void deleteRequest() {
         MyProgressDialog.showDialog(getContext());

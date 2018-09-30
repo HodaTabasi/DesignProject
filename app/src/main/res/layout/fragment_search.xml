@@ -38,7 +38,6 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="15dp"
-            android:padding="16dp"
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
@@ -49,8 +48,9 @@
         android:layout_margin="8dp"
         android:background="@drawable/account_shape"
         android:drawableLeft="@drawable/ic_search_black_24dp"
-        android:drawableStart="@drawable/ic_search_black_24dp"
         android:hint="بحث عن مصمم"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
         android:padding="5dp"
         android:textColorHint="@color/textGray"
         android:textSize="14dp" />
@@ -84,7 +84,7 @@
             android:background="@drawable/account_shape"
             android:gravity="center"
             android:padding="5dp"
-            android:text="تصاميم جرافكس"
+            android:text="مصمم جرافكس"
             android:textColor="@color/textGray"
             android:textSize="8sp" />
 
@@ -97,7 +97,7 @@
             android:background="@drawable/account_shape"
             android:gravity="center"
             android:padding="5dp"
-            android:text="رسم جداري"
+            android:text="مصمم جداري"
             android:textColor="@color/textGray"
             android:textSize="8sp" />
 
@@ -110,7 +110,7 @@
             android:background="@drawable/account_shape"
             android:gravity="center"
             android:padding="5dp"
-            android:text="تصميم معماري"
+            android:text="مصمم معماري"
             android:textColor="@color/textGray"
             android:textSize="8sp" />
 
@@ -122,7 +122,7 @@
             android:background="@drawable/account_shape"
             android:gravity="center"
             android:padding="5dp"
-            android:text="تصميم داخلي"
+            android:text="مصمم داخلي"
             android:textColor="@color/textGray"
             android:textSize="8sp" />
     </LinearLayout>
@@ -141,7 +141,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:gravity="center"
-            android:stepSize="3"
             android:textAlignment="center" />
 
         <TextView
@@ -161,7 +160,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/res_search"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="8dp" />
 
 </LinearLayout>
