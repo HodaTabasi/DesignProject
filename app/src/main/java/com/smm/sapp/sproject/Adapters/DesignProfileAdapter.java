@@ -89,7 +89,7 @@ public class DesignProfileAdapter extends RecyclerView.Adapter<DesignProfileAdap
             @Override
             public void onClick(View view) {
 //                if (ConstantInterFace.IS_USER_FAVORITE = false) {
-                    addTofav();
+                addTofav();
 //                }
             }
         });

@@ -142,8 +142,20 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
                 two.setVisibility(View.VISIBLE);
                 break;
             case R.id.send_bank:
-                sendCardBank();
-                break;
+                if (userBankNameShp.getText().toString().matches("")
+                        || bankNumberShp.getText().toString().matches("")
+                        || bankNameShp.getText().toString().matches("")
+                        || balance.getText().toString().matches("")
+                        || transferDateSh.getText().toString().matches("")
+                        || addPhotoShp.getText().toString().matches("")) {
+                    Toast.makeText(getContext(), "يجب تعبئة جميع الحقول", Toast.LENGTH_LONG).show();
+                    break;
+
+                } else {
+                    sendCardBank();
+                    break;
+                }
+
             case R.id.send_bank1:
 
                 break;
@@ -175,7 +187,6 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
                 JSONObject jsonObject = new JSONObject(response.body().string());
                 JSONObject object = jsonObject.getJSONObject("status");
                 if (object.getBoolean("success")) {
-                    Log.e("ggg", " " + object.getString("message"));
                 } else {
 
                 }
@@ -191,7 +202,6 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
                 Uri selectedImage = data.getData();
                 try {
                     filePath = PathUtil.getPath(getActivity(), selectedImage);
-                    Log.e("dd", " " + filePath);
                     addPhotoShp.setText(filePath);
                 } catch (URISyntaxException e) {
                     e.printStackTrace();

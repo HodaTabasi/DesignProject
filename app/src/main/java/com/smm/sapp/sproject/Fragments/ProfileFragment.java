@@ -88,35 +88,35 @@ public class ProfileFragment extends Fragment {
         });
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
-                        R.array.spinner_items, android.R.layout.simple_spinner_item);
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                sp_specialization.setAdapter(adapter);
-                sp_specialization.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
-                        switch (position) {
-                            case 0:
-                                //st_specialization = "inter";
-                                getSpecialization("inter");
-                                break;
-                            case 1:
-                                getSpecialization("arch");
-                                //st_specialization = "arch";
-                                break;
-                            case 2:
-                                getSpecialization("graphic");
-                                //st_specialization = "graphic";
-                                break;
-                            case 3:
-                                getSpecialization("wall");
-                                //st_specialization = "wall";
-                                break;
-                            case 4:
-                                getSpecialization("moshen");
-                                //st_specialization = "moshen";
-                                break;
+                R.array.spinner_items, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sp_specialization.setAdapter(adapter);
+        sp_specialization.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
+                switch (position) {
+                    case 0:
+                        //st_specialization = "inter";
+                        getSpecialization("inter");
+                        break;
+                    case 1:
+                        getSpecialization("arch");
+                        //st_specialization = "arch";
+                        break;
+                    case 2:
+                        getSpecialization("graphic");
+                        //st_specialization = "graphic";
+                        break;
+                    case 3:
+                        getSpecialization("wall");
+                        //st_specialization = "wall";
+                        break;
+                    case 4:
+                        getSpecialization("moshen");
+                        //st_specialization = "moshen";
+                        break;
 
-                        }
+                }
 
             }
 

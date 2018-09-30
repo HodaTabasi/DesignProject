@@ -7,7 +7,6 @@
     android:layoutDirection="ltr"
     tools:context=".Fragments.ProfileFragment">
 
-    <!--<include layout="@layout/account_toolbar" />-->
     <RelativeLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -38,7 +37,6 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="15dp"
-            android:padding="16dp"
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 

@@ -1,5 +1,6 @@
 package com.smm.sapp.sproject.Fragments;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -108,8 +110,9 @@ public class SearchFragment extends Fragment {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     s_search = textView.getText().toString();
                     getWorkers("?name=" + s_search);
-//                    InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-//                    imm.hideSoftInputFromWindow(textView.getWindowToken(), 0);
+
+                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(et_search.getWindowToken(), 0);
 
                     tv_motion.setBackgroundResource(R.drawable.account_shape);
                     tv_motion.setTextColor(Color.parseColor("#000000"));
@@ -291,6 +294,11 @@ public class SearchFragment extends Fragment {
                             };
                             try {
                                 profilesList = gson.fromJson(object.getJSONArray("workers").toString(), token.getType());
+                                for (int i = 0; i < profilesList.size(); i++) {
+                                    if (profilesList.get(i).getName().equals(ConstantInterFace.USER.getName())) {
+                                        profilesList.remove(i);
+                                    }
+                                }
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

@@ -1,5 +1,6 @@
 package com.smm.sapp.sproject.Fragments;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -102,6 +104,9 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     s_search = textView.getText().toString();
+
+                    InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(mSearch.getWindowToken(), 0);
 
                     mMotionButton.setBackgroundResource(R.drawable.account_shape);
                     mMotionButton.setTextColor(Color.parseColor("#000000"));

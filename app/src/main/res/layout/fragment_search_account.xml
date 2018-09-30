@@ -38,7 +38,6 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="15dp"
-            android:padding="16dp"
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
@@ -260,7 +259,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="10dp"
                 android:text="مهاراتي"
                 android:textColor="@color/gray1"
                 android:textSize="14sp" />
@@ -268,12 +267,23 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_skill"
                 android:layout_width="match_parent"
-                android:padding="5dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="7dp"
-                android:background="@drawable/report_layout_shap" />
+                android:background="@drawable/report_layout_shap"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/tv_noSkills"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="20dp"
+                android:text="لا يوجد مهارات"
+                android:textColor="@color/gray"
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/tv_fav"

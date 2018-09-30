@@ -56,7 +56,7 @@ import okhttp3.Response;
 public class AccountSearchFragment extends Fragment {
     ImageView ic_back;
     CircleImageView profileImg;
-    TextView tv_name, tv_title, tv_comments, tv_portfolio, tv_completed, tv_inProgress, tv_rateProjects, tv_fav, tv_chooseMe;
+    TextView tv_name, tv_title, tv_comments, tv_portfolio, tv_completed, tv_inProgress, tv_rateProjects, tv_fav, tv_chooseMe, tv_noSkills;
     RatingBar rate_bar;
     EditText et_bio;
     RecyclerView recycler_skill;
@@ -86,6 +86,7 @@ public class AccountSearchFragment extends Fragment {
         rate_bar = view.findViewById(R.id.rate_bar);
         et_bio = view.findViewById(R.id.et_bio);
         recycler_skill = view.findViewById(R.id.recycler_skill);
+        tv_noSkills = view.findViewById(R.id.tv_noSkills);
         return view;
     }
 
@@ -245,17 +246,22 @@ public class AccountSearchFragment extends Fragment {
                             };
                             try {
                                 arrayList = gson.fromJson(userObj.getJSONArray("skills").toString(), token.getType());
+                                if (arrayList.isEmpty()) {
+                                    recycler_skill.setVisibility(View.GONE);
+                                    tv_noSkills.setVisibility(View.VISIBLE);
+                                } else {
+                                    recycler_skill.setVisibility(View.VISIBLE);
+                                    tv_noSkills.setVisibility(View.GONE);
+
+                                    adapter = new SkillsSearchAdapter(getActivity(), arrayList);
+                                    recycler_skill.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
+                                    recycler_skill.setAdapter(adapter);
+                                }
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-                            adapter = new SkillsSearchAdapter(getActivity(), arrayList);
-
-                            recycler_skill.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
-                            recycler_skill.setAdapter(adapter);
                         } else {
-
                             Toast.makeText(getContext(), "لا يوجد نتائج", Toast.LENGTH_LONG).show();
-
                         }
                     }
                 });
