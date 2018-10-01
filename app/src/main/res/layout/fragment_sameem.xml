@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".Fragments.SameemFragment">
 
@@ -41,76 +43,181 @@
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/tv_sammem_bio"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="72dp"
-        android:background="@drawable/account_shape"
-        android:gravity="center"
-        android:padding="3dp"
-        android:text="نبدة عن صمم"
-        android:textColor="@color/textGray"
-        android:textSize="14sp" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_ques"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:background="@drawable/account_shape"
-        android:gravity="center"
-        android:padding="3dp"
-        android:text="الاسئلة الشائعة "
-        android:textColor="@color/textGray"
-        android:textSize="14sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_rights"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:background="@drawable/account_shape"
-        android:gravity="center"
-        android:padding="3dp"
-        android:text="ضمان حقوقك"
-        android:textColor="@color/textGray"
-        android:textSize="14sp" />
+            <TextView
+                android:id="@+id/tv_sammem_bio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/account_shape"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="نبدة عن صمم"
+                android:textColor="@color/textGray"
+                android:textSize="14sp" />
 
-    <TextView
-        android:id="@+id/tv_conditions"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:background="@drawable/account_shape"
-        android:gravity="center"
-        android:padding="3dp"
-        android:text="شروط الاستخدام"
-        android:textColor="@color/textGray"
-        android:textSize="14sp" />
+            <TextView
+                android:id="@+id/about"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/report_layout_shap"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:visibility="gone" />
 
-    <TextView
-        android:id="@+id/tv_call_us"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:background="@drawable/account_shape"
-        android:gravity="center"
-        android:padding="3dp"
-        android:text="اتصل بنا"
-        android:textColor="@color/textGray"
-        android:textSize="14sp" />
+            <TextView
+                android:id="@+id/tv_ques"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/account_shape"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="الاسئلة الشائعة "
+                android:textColor="@color/textGray"
+                android:textSize="14sp" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/ask_us"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_rights"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/account_shape"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="ضمان حقوقك"
+                android:textColor="@color/textGray"
+                android:textSize="14sp" />
 
 
+            <TextView
+                android:id="@+id/rights"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/report_layout_shap"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_conditions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/account_shape"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="شروط الاستخدام"
+                android:textColor="@color/textGray"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/conditions"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/report_layout_shap"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_call_us"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/account_shape"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="اتصل بنا"
+                android:textColor="@color/textGray"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/linear_call"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/subject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/report_layout_shap"
+                    android:gravity="start"
+                    android:hint="الموضوع"
+                    android:padding="5dp"
+                    android:textAlignment="textStart"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/et_writehere"
+                    android:layout_width="match_parent"
+                    android:layout_height="320dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/report_layout_shap"
+                    android:gravity="right"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_send"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/blue_shape"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="ارسال"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
