@@ -230,7 +230,6 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         set.setValueTextColor(R.color.white);
         PieData data = new PieData(set);
         chart.setData(data);
-
         chart.invalidate(); // refresh
     }
 
