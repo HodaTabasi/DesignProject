@@ -10,6 +10,15 @@ public class ConstantInterFace {
     public static TextView tv_msgs, tv_projects, tv_home, tv_portfolio, tv_profile;
     public static Boolean IS_USER_FAVORITE = false;
 
+
+    public static Boolean IS_ABOUT_OPENED = false;
+    public static Boolean IS_QUES_OPENED = false;
+    public static Boolean IS_RIGHTS_OPENED = false;
+    public static Boolean IS_CONDITIONS_OPENED = false;
+    public static Boolean IS_CALLUS_OPENED = false;
+
+
+
     public static final String CHANNEL_ID = "my_channel_01";
     public static final String CHANNEL_NAME = "Simplified Coding Notification";
     public static final String CHANNEL_DESCRIPTION = "www.simplifiedcoding.ne";
