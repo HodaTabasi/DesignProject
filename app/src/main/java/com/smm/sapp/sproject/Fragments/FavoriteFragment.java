@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.smm.sapp.sproject.Adapters.LikesDesignAdapter;
 import com.smm.sapp.sproject.Adapters.LikesPWorkAdapter;
 import com.smm.sapp.sproject.Adapters.LikesProjectAdapter;
 import com.smm.sapp.sproject.ConstantInterFace;
@@ -150,6 +151,8 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
                 project.setTextColor(Color.parseColor("#000000"));
                 project.setBackgroundResource(R.drawable.account_shape);
                 recyclerView.setVisibility(View.INVISIBLE);
+//                LikesDesignAdapter designAdapter = new LikesDesignAdapter(getContext(), R.layout.fav2_row, projectList);
+//                recyclerView.setAdapter(designAdapter);
                 break;
             case R.id.works:
                 pWork.setTextColor(Color.parseColor("#ffffff"));
@@ -158,8 +161,9 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
                 designs.setBackgroundResource(R.drawable.account_shape);
                 project.setTextColor(Color.parseColor("#000000"));
                 project.setBackgroundResource(R.drawable.account_shape);
-                LikesPWorkAdapter workAdapter = new LikesPWorkAdapter(getContext(), R.layout.fav2_row, projectList);
-                recyclerView.setAdapter(workAdapter);
+//                LikesPWorkAdapter workAdapter = new LikesPWorkAdapter(getContext(), R.layout.fav2_row, projectList);
+//                recyclerView.setAdapter(workAdapter);
+                recyclerView.setVisibility(View.INVISIBLE);
                 break;
             case R.id.projects:
                 project.setTextColor(Color.parseColor("#ffffff"));
@@ -170,7 +174,6 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
                 designs.setBackgroundResource(R.drawable.account_shape);
                 LikesProjectAdapter projectAdapter = new LikesProjectAdapter(getContext(), R.layout.fav_row, projectList);
                 recyclerView.setAdapter(projectAdapter);
-                recyclerView.setVisibility(View.VISIBLE);
                 break;
         }
 
