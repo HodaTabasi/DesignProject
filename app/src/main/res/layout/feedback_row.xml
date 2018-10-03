@@ -2,10 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="3dp"
     android:background="@drawable/report_layout_shap"
     android:layoutDirection="ltr"
     android:orientation="vertical">
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,18 +21,15 @@
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/tv1"
-            android:layout_weight="0.15"
+            android:layout_weight="0.23"
             android:numStars="5"
-            android:max="5"
             android:rating="5.0"
-            android:stepSize="1.0" />
+            android:stepSize="1" />
 
         <TextView
             android:id="@+id/tv1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:layout_marginRight="5dp"
             android:layout_weight="0.5"
             android:text="التواصل والمتابعة"
@@ -53,22 +50,19 @@
         <RatingBar
             android:id="@+id/rate2"
             style="?android:attr/ratingBarStyleSmall"
-            android:layout_width="41dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.15"
-            android:max="5"
+            android:layout_weight="0.23"
             android:numStars="5"
             android:rating="5.0"
-            android:stepSize="1.0" />
+            android:stepSize="1" />
 
         <TextView
             android:id="@+id/tv2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/tv1"
             android:layout_marginRight="5dp"
-            android:layout_weight="1"
+            android:layout_weight="0.5"
             android:text="جودة العمل"
             android:textColor="@color/textGray"
             android:textSize="12sp" />
@@ -87,20 +81,19 @@
         <RatingBar
             android:id="@+id/rate3"
             style="?android:attr/ratingBarStyleSmall"
-            android:layout_width="42dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.15"
-            android:max="5"
+            android:layout_weight="0.23"
             android:numStars="5"
             android:rating="5.0"
-            android:stepSize="1.0" />
+            android:stepSize="1" />
 
         <TextView
             android:id="@+id/tv3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
-            android:layout_weight="1"
+            android:layout_weight="0.5"
             android:text="الخبرة بمجال المشروع"
             android:textColor="@color/textGray"
             android:textSize="12sp" />
@@ -118,20 +111,19 @@
         <RatingBar
             android:id="@+id/rate4"
             style="?android:attr/ratingBarStyleSmall"
-            android:layout_width="42dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.15"
-            android:max="5"
+            android:layout_weight="0.23"
             android:numStars="5"
             android:rating="5.0"
-            android:stepSize="1.0" />
+            android:stepSize="1" />
 
         <TextView
             android:id="@+id/tv4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
-            android:layout_weight="1"
+            android:layout_weight="0.5"
             android:text="التسليم بالوقت المحدد"
             android:textColor="@color/textGray"
             android:textSize="12sp" />
@@ -152,20 +144,19 @@
         <RatingBar
             android:id="@+id/rate5"
             style="?android:attr/ratingBarStyleSmall"
-            android:layout_width="41dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.15"
-            android:max="5"
+            android:layout_weight="0.23"
             android:numStars="5"
             android:rating="5.0"
-            android:stepSize="1.0" />
+            android:stepSize="1" />
 
         <TextView
             android:id="@+id/tv5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
-            android:layout_weight="1"
+            android:layout_weight="0.5"
             android:text="التعامل مرة أخرى"
             android:textColor="@color/textGray"
             android:textSize="12sp" />
@@ -195,8 +186,7 @@
         android:background="@drawable/report_layout_shap"
         android:gravity="clip_vertical"
         android:padding="5dp"
-        android:text="ننننننننن"
-        android:textColor="@color/gray"
+        android:textColor="@color/gray1"
         android:textDirection="rtl"
         android:textSize="14sp" />
 
