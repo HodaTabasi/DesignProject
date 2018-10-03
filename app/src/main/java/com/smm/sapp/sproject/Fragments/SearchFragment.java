@@ -156,7 +156,7 @@ public class SearchFragment extends Fragment {
                 tv_wall.setBackgroundResource(R.drawable.account_shape);
                 tv_wall.setTextColor(Color.parseColor("#000000"));
 
-                getWorkers("?type=arch");
+                getWorkers("?job_type=arch");
 
             }
         });
@@ -181,7 +181,7 @@ public class SearchFragment extends Fragment {
                 tv_wall.setBackgroundResource(R.drawable.account_shape);
                 tv_wall.setTextColor(Color.parseColor("#000000"));
 
-                getWorkers("?type=inter");
+                getWorkers("?job_type=inter");
             }
         });
 
@@ -205,7 +205,7 @@ public class SearchFragment extends Fragment {
                 tv_wall.setBackgroundResource(R.drawable.account_shape);
                 tv_wall.setTextColor(Color.parseColor("#000000"));
 
-                getWorkers("?type=graphic");
+                getWorkers("?job_type=graphic");
             }
         });
 
@@ -229,7 +229,7 @@ public class SearchFragment extends Fragment {
                 tv_wall.setBackgroundResource(R.drawable.account_shape);
                 tv_wall.setTextColor(Color.parseColor("#000000"));
 
-                getWorkers("?type=moshen");
+                getWorkers("?job_type=moshen");
             }
         });
 
@@ -253,7 +253,7 @@ public class SearchFragment extends Fragment {
                 tv_graphic.setBackgroundResource(R.drawable.account_shape);
                 tv_graphic.setTextColor(Color.parseColor("#000000"));
 
-                getWorkers("?type=wall");
+                getWorkers("?job_type=wall");
             }
         });
 

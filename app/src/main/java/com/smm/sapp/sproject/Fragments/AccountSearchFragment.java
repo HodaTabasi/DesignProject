@@ -1,14 +1,9 @@
 package com.smm.sapp.sproject.Fragments;
 
-import android.content.Context;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,14 +17,11 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.smm.sapp.sproject.Adapters.AddNewPworkAdapter;
-import com.smm.sapp.sproject.Adapters.PortfolioAdapter;
 import com.smm.sapp.sproject.Adapters.SkillsSearchAdapter;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
-import com.smm.sapp.sproject.Models.PWorks;
-import com.smm.sapp.sproject.Models.PortfolioModel;
+import com.smm.sapp.sproject.Models.ProjectsModels;
 import com.smm.sapp.sproject.Models.SearchWorkersModel;
 import com.smm.sapp.sproject.Models.SkillsModel;
 import com.smm.sapp.sproject.MyRequest;
@@ -37,7 +29,6 @@ import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
 import com.squareup.picasso.Picasso;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -64,6 +55,9 @@ public class AccountSearchFragment extends Fragment {
     SearchWorkersModel models;
     int worker_id;
     ArrayList<SkillsModel> arrayList = new ArrayList<>();
+    ArrayList<ProjectsModels> finishedProjectList = new ArrayList<>();
+    ArrayList<ProjectsModels> inProgressProjectList = new ArrayList<>();
+
     SkillsSearchAdapter adapter;
 
 
@@ -122,7 +116,11 @@ public class AccountSearchFragment extends Fragment {
         tv_comments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                FeedbackFragment commentsFragment = new FeedbackFragment();
+                Bundle bundle = new Bundle();
+                bundle.putInt("designer_id", models.getId());
+                commentsFragment.setArguments(bundle);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, commentsFragment, true);
             }
         });
 
@@ -201,9 +199,7 @@ public class AccountSearchFragment extends Fragment {
         }
 
         et_bio.setText(models.getBio());
-//        tv_completed.setText();
-//        tv_inProgress.setText();
-//        tv_rateProjects.setText();
+
 
         getSkills();
 
@@ -244,7 +240,20 @@ public class AccountSearchFragment extends Fragment {
                             Gson gson = new Gson();
                             TypeToken<List<SkillsModel>> token = new TypeToken<List<SkillsModel>>() {
                             };
+                            TypeToken<List<ProjectsModels>> token1 = new TypeToken<List<ProjectsModels>>() {
+                            };
                             try {
+                                finishedProjectList = gson.fromJson(userObj.getJSONArray("finished_projects").toString(), token1.getType());
+                                inProgressProjectList = gson.fromJson(userObj.getJSONArray("inprogress_projects").toString(), token1.getType());
+
+                                int finished = finishedProjectList.size();
+                                int in_progress = inProgressProjectList.size();
+                                int rate = (finished/in_progress)*100;
+
+                                tv_completed.setText(String.valueOf(finished));
+                                tv_inProgress.setText(String.valueOf(in_progress));
+                                tv_rateProjects.setText(String.valueOf(rate)+"%");
+
                                 arrayList = gson.fromJson(userObj.getJSONArray("skills").toString(), token.getType());
                                 if (arrayList.isEmpty()) {
                                     recycler_skill.setVisibility(View.GONE);

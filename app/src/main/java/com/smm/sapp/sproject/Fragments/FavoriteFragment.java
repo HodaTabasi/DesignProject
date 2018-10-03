@@ -80,16 +80,15 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
-//                Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException, JSONException {
+                MyProgressDialog.dismissDialog();
                 final JSONObject object = new JSONObject(response.body().string());
                 final JSONObject object1 = object.getJSONObject("status");
                 final Gson gson = new Gson();
-                MyProgressDialog.dismissDialog();
-                Log.e("26", "dfsewe");
                 getActivity().runOnUiThread(new Runnable() {
                     public void run() {
                         try {

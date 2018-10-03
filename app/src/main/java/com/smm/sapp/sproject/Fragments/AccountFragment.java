@@ -53,6 +53,7 @@ public class AccountFragment extends Fragment {
     ImageView ic_back;
 
     String name, title;
+
     public AccountFragment() {
     }
 
@@ -70,7 +71,7 @@ public class AccountFragment extends Fragment {
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
 
         init();
-        if (!ConstantInterFace.IS_REGISTER){
+        if (!ConstantInterFace.IS_REGISTER) {
             onClickMethod();
             getProfileDataRequest();
         }
@@ -181,13 +182,12 @@ public class AccountFragment extends Fragment {
     }
 
 
-
     private void getProfileDataRequest() {
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
         Map<String, String> stringMap = new HashMap<>();
         stringMap.put("token", ConstantInterFace.USER.getToken());
-        Log.e("12",ConstantInterFace.USER.getToken() + " ");
+        Log.e("12", ConstantInterFace.USER.getToken() + " ");
         myRequest.PostCall("http://smm.smmim.com/waell/public/api/myprofile", stringMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, final IOException e) {
@@ -227,8 +227,7 @@ public class AccountFragment extends Fragment {
                             } else if (userModel.getJob_type().equals("wall")) {
                                 tv_title.setText("الرسم الجداري");
                             }
-                            //ratingBar.setRating(Float.valueOf(userModel.getRate()));
-
+                            ratingBar.setRating(Float.valueOf(userModel.getRate()));
 
                         } else if (userModel.getType().equals("client")) {
 
