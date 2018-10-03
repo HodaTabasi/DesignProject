@@ -41,6 +41,7 @@ public class MyFirebaseInstanceIDService extends FirebaseMessagingService {
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
             Log.e(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+            Log.e(TAG, "Message Notification title: " + remoteMessage.getNotification().getTitle());
 
             /*
              * If the device is having android oreo we will create a notification channel
@@ -62,7 +63,7 @@ public class MyFirebaseInstanceIDService extends FirebaseMessagingService {
             /*
              * Displaying a notification locally
              */
-            MyNotificationManager.getInstance(this).displayNotification("Greetings", "Hello how are you?");
+            MyNotificationManager.getInstance(this).displayNotification(remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody());
         }
     }
 
