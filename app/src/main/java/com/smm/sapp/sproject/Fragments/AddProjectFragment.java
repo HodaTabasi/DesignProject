@@ -31,6 +31,7 @@ public class AddProjectFragment extends Fragment implements View.OnClickListener
     private RelativeLayout mSearchDesigner;
     private RelativeLayout mMostion;
     ImageView ic_back;
+    private String type;
 
     public AddProjectFragment() {
         // Required empty public constructor
@@ -52,7 +53,6 @@ public class AddProjectFragment extends Fragment implements View.OnClickListener
         initView();
         addListeners();
         setBottomBarShap();
-
         ic_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +60,23 @@ public class AddProjectFragment extends Fragment implements View.OnClickListener
             }
         });
 
+
+        if (!getArguments().isEmpty()){
+            Bundle bundle = getArguments();
+            type = bundle.getString("type");
+
+            if (type.equals("wall")) {
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProjectDitailsPaintingWallFragment());
+            } else if (type.equals("arch")) {
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProjectDetailsArchFragment());
+            } else if (type.equals("graphic")) {
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProjectDitailesGraphicsFragment());
+            } else if (type.equals("inter")) {
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProjectDetailsInterFragment());
+            } else if (type.equals("moshen")) {
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProjectDitailsMotionFragment());
+            }
+        }
     }
 
     private void initView() {

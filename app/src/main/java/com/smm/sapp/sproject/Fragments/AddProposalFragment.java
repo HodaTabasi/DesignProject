@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -109,6 +111,27 @@ public class AddProposalFragment extends Fragment {
                 getFragmentManager().popBackStack();
             }
         });
+
+        mBalanceP.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(s.length() != 0){
+                    double b = Double.parseDouble(mBalanceP.getText().toString());
+                    double total = b * 0.95;
+                    mReceivableP.setText(total +" ");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     private void updateOfferRequest(OfferModel model) {
@@ -180,6 +203,7 @@ public class AddProposalFragment extends Fragment {
                     Log.e("ggg"," " + object.getString("message"));
                     Gson gson = new Gson();
                     OfferModel model = gson.fromJson(jsonObject.getJSONObject("offer").toString(),OfferModel.class);
+                    getFragmentManager().popBackStack();
                     Log.e("ff",model.getBalance());
                 }else {
                     Log.e("ff","dglegh98");

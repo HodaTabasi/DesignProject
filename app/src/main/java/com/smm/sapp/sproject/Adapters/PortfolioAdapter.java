@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.Fragments.AddNewWork2Fragment;
+import com.smm.sapp.sproject.Fragments.AddProjectFragment;
 import com.smm.sapp.sproject.Fragments.PortfolioDescFragment;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
@@ -43,6 +44,7 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
     List<PortfolioModel> list;
     int pwork_id;
     String name;
+    String projectType;
 
     public PortfolioAdapter(Context context, List<PortfolioModel> list) {
         this.context = context;
@@ -75,7 +77,6 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
 
         holder.tv_show.setText(list.get(position).getViews());
         holder.tv_like.setText(String.valueOf(list.get(position).getLikes()));
-
         if (list.get(position).getType().equals("wall")) {
             holder.tv_specialization.setText("تصميم جداري");
         } else if (list.get(position).getType().equals("arch")) {
@@ -105,7 +106,17 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
         holder.tv_addProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AddNewWork2Fragment());
+                if (ConstantInterFace.USER.getType().equals("worker")){
+                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AddNewWork2Fragment(),true);
+                }else {
+                    projectType = (String) list.get(position).getType();
+                    AddProjectFragment fragment = new AddProjectFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("type",projectType);
+                    fragment.setArguments(bundle);
+                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment,true);
+                }
+
 
             }
         });

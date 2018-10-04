@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -131,7 +132,10 @@ public class MainFragment extends Fragment {
 //                else
 //                    Toast.makeText(getContext(), "غير مخول لك بالدخول هذه الواجهة خاصة بصاحب المشاريع ", Toast.LENGTH_SHORT).show();
 //
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AddProjectFragment(), true);
+                AddProjectFragment fragment = new AddProjectFragment();
+                Bundle bundle = new Bundle();
+                fragment.setArguments(bundle);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
 
             }
         });
@@ -197,7 +201,7 @@ public class MainFragment extends Fragment {
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
 
         init(getView());
-        changeToken();
+//        changeToken();
         //registered user
         if (!ConstantInterFace.IS_REGISTER) {
             onClickMethod();

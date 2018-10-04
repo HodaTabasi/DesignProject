@@ -161,7 +161,7 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
                 designs.setBackgroundResource(R.drawable.account_shape);
                 project.setTextColor(Color.parseColor("#000000"));
                 project.setBackgroundResource(R.drawable.account_shape);
-//                LikesPWorkAdapter workAdapter = new LikesPWorkAdapter(getContext(), R.layout.fav2_row, projectList);
+//                LikesPWorkAdapter workAdapter = new LikesPWorkAdapter(getContext(), R .layout.fav2_row, projectList);
 //                recyclerView.setAdapter(workAdapter);
                 recyclerView.setVisibility(View.INVISIBLE);
                 break;
