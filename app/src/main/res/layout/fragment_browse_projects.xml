@@ -78,7 +78,7 @@
             android:padding="5dp"
             android:text="موشن"
             android:textColor="@color/textGray"
-            android:textSize="9sp" />
+            android:textSize="8sp" />
 
         <TextView
             android:id="@+id/gh_button"

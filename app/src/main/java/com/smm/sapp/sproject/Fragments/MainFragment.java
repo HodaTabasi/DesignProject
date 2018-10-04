@@ -126,12 +126,11 @@ public class MainFragment extends Fragment {
         tv_addProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if (ConstantInterFace.USER.getType().equals("client"))
-//                    FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AddProjectFragment(), true);
-//                else
-//                    Toast.makeText(getContext(), "غير مخول لك بالدخول هذه الواجهة خاصة بصاحب المشاريع ", Toast.LENGTH_SHORT).show();
-//
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AddProjectFragment(), true);
+                if (ConstantInterFace.USER.getType().equals("client"))
+                    FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AddProjectFragment(), true);
+                else
+                    Toast.makeText(getContext(), "غير مخول لك بالدخول هذه الواجهة خاصة بصاحب المشاريع ", Toast.LENGTH_LONG).show();
+//                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AddProjectFragment(), true);
 
             }
         });
@@ -141,14 +140,13 @@ public class MainFragment extends Fragment {
             public void onClick(View view) {
                 if (ConstantInterFace.USER.getType().equals("client"))
                     FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new MyProjectFragment(), true);
-                else{
+                else {
                     MyOffersFragment fragment = new MyOffersFragment();
                     Bundle bundle = new Bundle();
-                    bundle.putBoolean("isUpdated",true);
+                    bundle.putBoolean("isUpdated", true);
                     fragment.setArguments(bundle);
                     FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
                 }
-
 
 
             }
@@ -242,11 +240,11 @@ public class MainFragment extends Fragment {
     private void changeToken() {
         MyProgressDialog.showDialog(getActivity());
         MyRequest request = new MyRequest();
-        Map<String,String> stringMap = new HashMap<>();
-        stringMap.put("token",ConstantInterFace.USER.getToken());
-        stringMap.put("fcm_token",refreshedToken);
+        Map<String, String> stringMap = new HashMap<>();
+        stringMap.put("token", ConstantInterFace.USER.getToken());
+        stringMap.put("fcm_token", refreshedToken);
 //        Log.e("dd",refreshedToken);
-        request.PostCall("http://smm.smmim.com/waell/public/api/changeuserfcm",stringMap , new OkHttpCallback() {
+        request.PostCall("http://smm.smmim.com/waell/public/api/changeuserfcm", stringMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
 //                Log.e("fffd", "dsgsgew");
@@ -256,14 +254,14 @@ public class MainFragment extends Fragment {
             public void onResponse(Call call, Response response) throws IOException, JSONException {
                 MyProgressDialog.dismissDialog();
                 String s = response.body().string();
-                Log.e("okHttpClient",""+s);
+                Log.e("okHttpClient", "" + s);
                 JSONObject object = new JSONObject(s);
                 JSONObject object1 = object.getJSONObject("status");
                 Log.e("fffds", "dsgsgew");
-                if (object1.getBoolean("success")){
-                    Log.e("fff",object1.getString("message"));
-                }else {
-                    Log.e("fff",object1.getString("message") + "dsgsgew");
+                if (object1.getBoolean("success")) {
+                    Log.e("fff", object1.getString("message"));
+                } else {
+                    Log.e("fff", object1.getString("message") + "dsgsgew");
                 }
             }
         });

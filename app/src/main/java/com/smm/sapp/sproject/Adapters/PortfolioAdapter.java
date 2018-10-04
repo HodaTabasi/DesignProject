@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.Fragments.AddNewWork2Fragment;
+import com.smm.sapp.sproject.Fragments.AddProjectFragment;
 import com.smm.sapp.sproject.Fragments.PortfolioDescFragment;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
@@ -105,7 +106,12 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
         holder.tv_addProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AddNewWork2Fragment());
+                if (ConstantInterFace.USER.getType().equals("worker")) {
+                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AddNewWork2Fragment());
+                } else if (ConstantInterFace.USER.getType().equals("client")) {
+                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AddProjectFragment());
+
+                }
 
             }
         });
