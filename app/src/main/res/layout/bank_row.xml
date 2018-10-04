@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
-    android:padding="5dp"
     android:background="@color/white"
     android:layoutDirection="ltr">
 
@@ -11,6 +10,7 @@
         android:id="@+id/tv_bankName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
         android:text="@string/bankName"
         android:textColor="@color/textGray"
         android:textSize="12sp" />
@@ -20,10 +20,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_bankName"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:background="@drawable/report_layout_shap"
         android:gravity="right"
         android:padding="5dp"
-        android:textColor="@color/gray"
+        android:textColor="@color/gray1"
         android:textSize="12sp" />
 
     <TextView
@@ -31,6 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/et_bankName"
+        android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"
         android:text="@string/bankNum"
         android:textColor="@color/textGray"
@@ -41,11 +44,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_bankNum"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:background="@drawable/report_layout_shap"
         android:gravity="right"
-        android:padding="5dp"
-        android:textColor="@color/gray"
         android:inputType="number"
+        android:padding="5dp"
+        android:textColor="@color/gray1"
         android:textSize="12sp" />
 
     <TextView
@@ -53,9 +58,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/et_bankNum"
+        android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"
         android:text="@string/EbanNum"
-
         android:textColor="@color/textGray"
         android:textSize="12sp" />
 
@@ -64,12 +69,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_Num"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:background="@drawable/report_layout_shap"
         android:gravity="right"
-        android:padding="5dp"
-        android:textColor="@color/gray"
         android:inputType="number"
+        android:padding="5dp"
+        android:textColor="@color/gray1"
         android:textSize="12sp" />
 
+    <View
+        android:id="@+id/bank_view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/et_kNum"
+        android:layout_marginTop="10dp"
+        android:background="@color/black" />
 
 </RelativeLayout>

@@ -39,6 +39,14 @@ public class BankAdapter extends RecyclerView.Adapter<BankAdapter.BankHolder> {
         holder.et_bankNum.setText(bankList.get(position).getNumber());
         holder.et_kNum.setText(bankList.get(position).getIban());
 
+        //to test if we in the last item in list
+        if (position == bankList.size() - 1) {
+            holder.view.setVisibility(View.GONE);
+            //first item
+        } else if (position == 0) {
+            holder.view.setVisibility(View.VISIBLE);
+        }
+
     }
 
     @Override
@@ -52,6 +60,7 @@ public class BankAdapter extends RecyclerView.Adapter<BankAdapter.BankHolder> {
         EditText et_bankNum;
         EditText et_kNum;
         TextView tv_bankName, tv_bankNum, tv_Num;
+        View view;
 
         public BankHolder(View itemView) {
             super(itemView);
@@ -62,6 +71,8 @@ public class BankAdapter extends RecyclerView.Adapter<BankAdapter.BankHolder> {
             tv_bankName = itemView.findViewById(R.id.tv_bankName);
             tv_bankNum = itemView.findViewById(R.id.tv_bankNum);
             tv_Num = itemView.findViewById(R.id.tv_Num);
+            view = itemView.findViewById(R.id.bank_view);
+
 
             Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
             tv_bankName.setTypeface(custom_font);
