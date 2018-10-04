@@ -75,8 +75,6 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
         getProjects("getallprojects");
         initView();
         setListener();
-
-
     }
 
     private void initView() {

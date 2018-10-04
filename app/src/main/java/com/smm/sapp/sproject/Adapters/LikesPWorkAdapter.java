@@ -37,10 +37,10 @@ public class LikesPWorkAdapter extends RecyclerView.Adapter<LikesPWorkAdapter.Li
     @Override
     public void onBindViewHolder(@NonNull LikesPWorkVH holder, int position) {
         Likes likes = PworksLikes.get(position);
-        holder.like.setText(likes.getpWork().getLikes());
-        holder.show.setText(likes.getpWork().getViews());
+        holder.like.setText(likes.getpWork().getLikes() +" ");
+        holder.show.setText(likes.getpWork().getViews() +" ");
 //        holder.specialization.setText(likes.getpWork());
-        holder.name.setText(likes.getpWork().getName());
+        holder.name.setText(likes.getpWork().getName()+ " ");
         Picasso.get().load(likes.getpWork().getPhoto_link()).into(holder.view);
 
         holder.fav.setOnClickListener(new View.OnClickListener() {
@@ -64,8 +64,8 @@ public class LikesPWorkAdapter extends RecyclerView.Adapter<LikesPWorkAdapter.Li
     }
 
     public class LikesPWorkVH extends RecyclerView.ViewHolder {
-        ImageView view;
-        TextView show, like, specialization, addProject, fav, name;
+        ImageView view ,fav;
+        TextView show, like, specialization, addProject,  name;
 
         public LikesPWorkVH(View itemView) {
             super(itemView);
@@ -83,7 +83,6 @@ public class LikesPWorkAdapter extends RecyclerView.Adapter<LikesPWorkAdapter.Li
             like.setTypeface(custom_font);
             specialization.setTypeface(custom_font);
             addProject.setTypeface(custom_font);
-            fav.setTypeface(custom_font);
 
         }
     }
