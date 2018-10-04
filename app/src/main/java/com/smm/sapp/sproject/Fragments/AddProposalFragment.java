@@ -188,6 +188,7 @@ public class AddProposalFragment extends Fragment {
         stringMap.put("dur", mDurP.getText().toString());
         stringMap.put("balance", mBalanceP.getText().toString());
         stringMap.put("descr", mProposalP.getText().toString());
+
         myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/makeanoffer", stringMap, filePath, "file_link", new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
