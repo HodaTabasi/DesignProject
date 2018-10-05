@@ -134,7 +134,7 @@ public class ViewProjectFragment extends Fragment {
                     addOffer.setTextColor(getResources().getColor(R.color.white));
                     linear_add_proposal.setVisibility(View.VISIBLE);
                     ConstantInterFace.IS_PROPOSAL_OPENED = true;
-                    pr_ditails.setVisibility(View.GONE);
+//                    pr_ditails.setVisibility(View.GONE);
                     id = models.getId();
                     addOnClickListener();
 
