@@ -24,7 +24,6 @@ import me.anwarshahriar.calligrapher.Calligrapher;
 public class ContainerActivity extends AppCompatActivity {
 
     Fragment currentFragment;
-//    public static TextView tv_msgs, tv_projects, tv_home, tv_portfolio, tv_profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +35,10 @@ public class ContainerActivity extends AppCompatActivity {
         Calligrapher calligrapher = new Calligrapher(this);
         calligrapher.setFont(this, "JFFlatregular.ttf", true);
 
-        //Bottom_bar
-        ConstantInterFace.tv_msgs = findViewById(R.id.tv_msgs);
-        ConstantInterFace.tv_projects = findViewById(R.id.tv_projects);
-        ConstantInterFace.tv_home = findViewById(R.id.tv_home);
-        ConstantInterFace.tv_portfolio = findViewById(R.id.tv_portfolio);
-        ConstantInterFace.tv_profile = findViewById(R.id.tv_profile);
+        setBottomBar();
+
 
         if (!ConstantInterFace.IS_REGISTER) {
-
             ConstantInterFace.tv_msgs.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -85,45 +79,40 @@ public class ContainerActivity extends AppCompatActivity {
             });
 
 
+            ConstantInterFace.tv_projects.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new BrowseProjectsFragment(), true);
+                    ConstantInterFace.tv_projects.setBackground(getResources().getDrawable(R.drawable.main_shape));
+                    ConstantInterFace.tv_msgs.setBackgroundResource(0);
+                    ConstantInterFace.tv_home.setBackgroundResource(0);
+                    ConstantInterFace.tv_portfolio.setBackgroundResource(0);
+                    ConstantInterFace.tv_profile.setBackgroundResource(0);
+                }
+            });
+
+            ConstantInterFace.tv_home.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new MainFragment(), true);
+                    ConstantInterFace.tv_home.setBackground(getResources().getDrawable(R.drawable.main_shape));
+                    ConstantInterFace.tv_msgs.setBackgroundResource(0);
+                    ConstantInterFace.tv_projects.setBackgroundResource(0);
+                    ConstantInterFace.tv_portfolio.setBackgroundResource(0);
+                    ConstantInterFace.tv_profile.setBackgroundResource(0);
+
+                }
+            });
         }
-//        else {
-//            new AlertDialog.Builder(this)
-//                    .setMessage("انت غير مسجل هل تريد تسجيل الدخول ؟").setCancelable(false)
-//                    .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
-//                        public void onClick(DialogInterface dialog, int id) {
-//                           FragmentsUtil.replaceFragment(ContainerActivity.this,R.id.container_activity,new  RegisterFragment());
-//                        }
-//                    })
-//                    .setNegativeButton("لا", null)
-//                    .show();
-//        }
 
-        ConstantInterFace.tv_projects.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new BrowseProjectsFragment(), true);
-                ConstantInterFace.tv_projects.setBackground(getResources().getDrawable(R.drawable.main_shape));
-                ConstantInterFace.tv_msgs.setBackgroundResource(0);
-                ConstantInterFace.tv_home.setBackgroundResource(0);
-                ConstantInterFace.tv_portfolio.setBackgroundResource(0);
-                ConstantInterFace.tv_profile.setBackgroundResource(0);
-            }
-        });
+    }
 
-        ConstantInterFace.tv_home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new MainFragment(), true);
-                ConstantInterFace.tv_home.setBackground(getResources().getDrawable(R.drawable.main_shape));
-                ConstantInterFace.tv_msgs.setBackgroundResource(0);
-                ConstantInterFace.tv_projects.setBackgroundResource(0);
-                ConstantInterFace.tv_portfolio.setBackgroundResource(0);
-                ConstantInterFace.tv_profile.setBackgroundResource(0);
-
-            }
-        });
-
-
+    private void setBottomBar() {
+        ConstantInterFace.tv_msgs = findViewById(R.id.tv_msgs);
+        ConstantInterFace.tv_projects = findViewById(R.id.tv_projects);
+        ConstantInterFace.tv_home = findViewById(R.id.tv_home);
+        ConstantInterFace.tv_portfolio = findViewById(R.id.tv_portfolio);
+        ConstantInterFace.tv_profile = findViewById(R.id.tv_profile);
     }
 
 }

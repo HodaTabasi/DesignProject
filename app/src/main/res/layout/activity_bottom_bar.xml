@@ -7,7 +7,7 @@
     android:background="#ebebeb"
     android:gravity="center_vertical"
     android:layoutDirection="ltr"
-    tools:context=".BottomBar">
+    tools:context=".Activities.BottomBar">
 
     <TextView
         android:id="@+id/tv_msgs"

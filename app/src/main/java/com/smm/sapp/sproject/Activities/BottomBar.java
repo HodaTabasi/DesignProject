@@ -1,10 +1,12 @@
-package com.smm.sapp.sproject;
+package com.smm.sapp.sproject.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.smm.sapp.sproject.R;
 
 import me.anwarshahriar.calligrapher.Calligrapher;
 
