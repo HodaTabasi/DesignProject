@@ -1,28 +1,49 @@
 package com.smm.sapp.sproject.Fragments;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.obsez.android.lib.filechooser.ChooserDialog;
 import com.smm.sapp.sproject.Adapters.ProjectAttachmentAdapter;
 import com.smm.sapp.sproject.Adapters.ProjectPhotoAdapter;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
+import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
+import com.smm.sapp.sproject.Models.OfferModel;
 import com.smm.sapp.sproject.Models.ProjectsModels;
+import com.smm.sapp.sproject.MyRequest;
+import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 import me.anwarshahriar.calligrapher.Calligrapher;
+import okhttp3.Call;
+import okhttp3.Response;
 
 
 public class ViewProjectFragment extends Fragment {
@@ -41,10 +62,26 @@ public class ViewProjectFragment extends Fragment {
     private EditText mPBalance;
     private EditText mPBio;
     private RecyclerView mPAttachment;
+    private LinearLayout linear_add_proposal;
     Bundle bundle;
     private TextView addOffer;
     ProjectsModels models;
     ImageView ic_back;
+
+    private EditText mReceivableP;
+    private EditText mBalanceP;
+    private EditText mDurP;
+    private EditText mProposalP;
+    private TextView mTv1;
+    private TextView mTv2;
+    private TextView mAttchP;
+    private TextView mAddProposalP;
+    private String filePath;
+    private byte[] b;
+    int id;
+    //    ImageView ic_back;
+    TextView back_two;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,15 +106,31 @@ public class ViewProjectFragment extends Fragment {
             addOffer.setVisibility(View.VISIBLE);
 
         putData();
+
         addOffer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddProposalFragment fragment = new AddProposalFragment();
-                Bundle bundle1 = new Bundle();
-                bundle1.putInt("id", models.getId());
-                Log.e("from", models.getId() + " ");
-                fragment.setArguments(bundle1);
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
+//                AddProposalFragment fragment = new AddProposalFragment();
+//                Bundle bundle1 = new Bundle();
+//                bundle1.putInt("id", models.getId());
+//                Log.e("from", models.getId() + " ");
+//                fragment.setArguments(bundle1);
+//                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
+
+
+                if (!ConstantInterFace.IS_PROPOSAL_OPENED) {
+                    addOffer.setBackgroundResource(R.drawable.dark_blue_shap);
+                    addOffer.setTextColor(getResources().getColor(R.color.white));
+                    linear_add_proposal.setVisibility(View.VISIBLE);
+                    ConstantInterFace.IS_PROPOSAL_OPENED = true;
+
+                } else if (ConstantInterFace.IS_PROPOSAL_OPENED) {
+                    addOffer.setBackgroundResource(R.drawable.report_layout_shap);
+                    addOffer.setTextColor(getResources().getColor(R.color.blue));
+                    linear_add_proposal.setVisibility(View.GONE);
+                    ConstantInterFace.IS_PROPOSAL_OPENED = false;
+
+                }
             }
         });
 
@@ -108,6 +161,19 @@ public class ViewProjectFragment extends Fragment {
         mPBio = (EditText) view.findViewById(R.id.p_bio);
         mPAttachment = (RecyclerView) view.findViewById(R.id.p_attachment);
         addOffer = view.findViewById(R.id.add_offer);
+        linear_add_proposal = view.findViewById(R.id.linear_add_proposal);
+
+        mReceivableP = (EditText) view.findViewById(R.id.receivable_p);
+        mBalanceP = (EditText) view.findViewById(R.id.balance_p);
+        mDurP = (EditText) view.findViewById(R.id.dur_p);
+        mProposalP = (EditText) view.findViewById(R.id.proposal_p);
+        mTv1 = (TextView) view.findViewById(R.id.tv1);
+        mTv2 = (TextView) view.findViewById(R.id.tv2);
+        mAttchP = (TextView) view.findViewById(R.id.attch_p);
+        mAddProposalP = (TextView) view.findViewById(R.id.add_proposal_p);
+        ic_back = getView().findViewById(R.id.ic_back);
+        back_two = view.findViewById(R.id.back_two);
+
     }
 
     private void putData() {
@@ -153,4 +219,5 @@ public class ViewProjectFragment extends Fragment {
         mPAttachment.setAdapter(adapter2);
 
     }
+
 }

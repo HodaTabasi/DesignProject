@@ -61,7 +61,7 @@ public class WorkerOfferAdapter extends RecyclerView.Adapter<WorkerOfferAdapter.
     }
 
     public class WorkerOfferHolder extends RecyclerView.ViewHolder {
-        TextView calender, name, money, body;
+        TextView calender, name, money, body,tv1;
 
         public WorkerOfferHolder(View itemView) {
             super(itemView);
@@ -70,12 +70,16 @@ public class WorkerOfferAdapter extends RecyclerView.Adapter<WorkerOfferAdapter.
             name = itemView.findViewById(R.id.tv_name);
             money = itemView.findViewById(R.id.tv_money);
             body = itemView.findViewById(R.id.tv2);
+            tv1 = itemView.findViewById(R.id.tv1);
+
 
             Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
             calender.setTypeface(custom_font);
             name.setTypeface(custom_font);
             money.setTypeface(custom_font);
             body.setTypeface(custom_font);
+            tv1.setTypeface(custom_font);
+
         }
     }
 }

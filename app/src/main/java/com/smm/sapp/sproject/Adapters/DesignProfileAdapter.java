@@ -66,43 +66,49 @@ public class DesignProfileAdapter extends RecyclerView.Adapter<DesignProfileAdap
         holder.name.setText(profiles.get(position).getName());
         holder.rate.setRating(profiles.get(position).getRate());
 
-        if (profiles.get(position).getJob_type().equals("wall")) {
-            holder.specialty.setText("مصمم جداري");
-        } else if (profiles.get(position).getJob_type().equals("arch")) {
-            holder.specialty.setText("مصمم معماري");
-        } else if (profiles.get(position).getJob_type().equals("graphic")) {
-            holder.specialty.setText("مصمم جرافيكس");
-        } else if (profiles.get(position).getJob_type().equals("inter")) {
-            holder.specialty.setText("مصمم داخلي");
-        } else if (profiles.get(position).getJob_type().equals("moshen")) {
-            holder.specialty.setText("مصمم موشن");
-        }
+        try {
 
-        Picasso.get().load(profiles.get(position).getPhoto_link()).into(holder.profileImg);
-        holder.ChooeseMe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
+            if (profiles.get(position).getJob_type().equals("wall")) {
+                holder.specialty.setText("مصمم جداري");
+            } else if (profiles.get(position).getJob_type().equals("arch")) {
+                holder.specialty.setText("مصمم معماري");
+            } else if (profiles.get(position).getJob_type().equals("graphic")) {
+                holder.specialty.setText("مصمم جرافيكس");
+            } else if (profiles.get(position).getJob_type().equals("inter")) {
+                holder.specialty.setText("مصمم داخلي");
+            } else if (profiles.get(position).getJob_type().equals("moshen")) {
+                holder.specialty.setText("مصمم موشن");
             }
-        });
-        holder.addToFav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+
+            Picasso.get().load(profiles.get(position).getPhoto_link()).into(holder.profileImg);
+            holder.ChooeseMe.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            holder.addToFav.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 //                if (ConstantInterFace.IS_USER_FAVORITE = false) {
-                addTofav();
+                    addTofav();
 //                }
-            }
-        });
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AccountSearchFragment fragment = new AccountSearchFragment();
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("worker", profiles.get(position));
-                fragment.setArguments(bundle);
-                FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
-            }
-        });
+                }
+            });
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    AccountSearchFragment fragment = new AccountSearchFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable("worker", profiles.get(position));
+                    fragment.setArguments(bundle);
+                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
+                }
+            });
+        } catch (Exception e) {
+
+        }
 
 
     }

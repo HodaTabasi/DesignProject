@@ -93,7 +93,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="2dp"
-            android:layout_weight="0.9"
+            android:layout_weight="1"
             android:background="@drawable/account_shape"
             android:gravity="center"
             android:padding="5dp"
@@ -106,7 +106,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="2dp"
-            android:layout_weight="1.2"
+            android:layout_weight="1.15"
             android:background="@drawable/account_shape"
             android:gravity="center"
             android:padding="5dp"
@@ -118,7 +118,7 @@
             android:id="@+id/in_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1.1"
+            android:layout_weight="1"
             android:background="@drawable/account_shape"
             android:gravity="center"
             android:padding="5dp"
@@ -132,15 +132,19 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:background="@drawable/account_shape"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <RatingBar
             android:id="@+id/ratting_designer"
-            style="@style/customRatingBar"
+            style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:gravity="center"
+            android:isIndicator="false"
+            android:numStars="5"
+            android:stepSize="1.0"
             android:textAlignment="center" />
 
         <TextView

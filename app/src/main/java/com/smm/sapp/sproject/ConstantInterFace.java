@@ -17,6 +17,7 @@ public class ConstantInterFace {
     public static Boolean IS_CONDITIONS_OPENED = false;
     public static Boolean IS_CALLUS_OPENED = false;
 
+    public static Boolean IS_PROPOSAL_OPENED = false;
 
 
     public static final String CHANNEL_ID = "my_channel_01";

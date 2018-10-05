@@ -258,6 +258,14 @@ public class SearchFragment extends Fragment {
         });
 
 
+        mRattingDesigner.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean b) {
+                getWorkers("?rate=" + String.valueOf(rating));
+            }
+        });
+
+
     }
 
     private void getWorkers(String URL) {
