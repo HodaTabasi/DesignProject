@@ -1,4 +1,4 @@
-package com.smm.sapp.sproject;
+package com.smm.sapp.sproject.HelperClass;
 
 import android.app.Application;
 

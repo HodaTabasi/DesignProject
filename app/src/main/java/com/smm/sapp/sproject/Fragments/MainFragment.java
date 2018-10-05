@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,10 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
-import com.smm.sapp.sproject.Activities.ContainerActivity;
 import com.smm.sapp.sproject.Activities.RegistrationActivity;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
@@ -165,22 +162,6 @@ public class MainFragment extends Fragment {
             }
         });
 
-        img_power.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                new AlertDialog.Builder(getActivity())
-                        .setMessage("هل تريد الخروج من التطبيق؟").setCancelable(false)
-                        .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                getActivity().finish();
-                            }
-                        })
-                        .setNegativeButton("لا", null)
-                        .show();
-
-            }
-        });
 
         img_notification.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -200,6 +181,7 @@ public class MainFragment extends Fragment {
 
         init(getView());
 //        changeToken();
+
         //registered user
         if (!ConstantInterFace.IS_REGISTER) {
             onClickMethod();
@@ -209,32 +191,78 @@ public class MainFragment extends Fragment {
 
             _name.setText("");
             _specialization.setText("");
+            getSnack();
 
-            Snackbar snackbar = Snackbar.make(getView(), "أنت غير مسجل في صمم!", Snackbar.LENGTH_INDEFINITE)
-                    .setAction("تسجيل", new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(getActivity(), RegistrationActivity.class);
-                            startActivity(intent);
-                            getActivity().finish();
-                        }
-                    });
+            img_user.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getSnack();
+                }
+            });
 
-            snackbar.show();
+            img_notification.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getSnack();
+                }
+            });
 
-            TextView tv = (snackbar.getView()).findViewById(android.support.design.R.id.snackbar_text);
-            TextView tv2 = (snackbar.getView()).findViewById(android.support.design.R.id.snackbar_action);
-            tv.setTextSize(12f);
-            tv2.setTextSize(12f);
-            Typeface font = Typeface.createFromAsset(getContext().getAssets(), "JFFlatregular.ttf");
-            tv.setTypeface(font);
-            tv2.setTypeface(font);
+            tv_search.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getSnack();
+                }
+            });
+            tv_addProject.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getSnack();
+                }
+            });
+            tv_budget.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getSnack();
+                }
+            });
+            tv_portfolio.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getSnack();
+                }
+            });
+            tv_proposals.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getSnack();
+                }
+            });
+
+
         }
 
         tv_about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new SameemFragment(), true);
+
+            }
+        });
+
+
+        img_power.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                new AlertDialog.Builder(getActivity())
+                        .setMessage("هل تريد الخروج من التطبيق؟").setCancelable(false)
+                        .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                getActivity().finish();
+                            }
+                        })
+                        .setNegativeButton("لا", null)
+                        .show();
 
             }
         });
@@ -269,5 +297,28 @@ public class MainFragment extends Fragment {
                 }
             }
         });
+    }
+
+    private void getSnack() {
+        Snackbar snackbar = Snackbar.make(getView(), "أنت غير مسجل في صمم!", Snackbar.LENGTH_LONG)
+                .setAction("تسجيل", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        ConstantInterFace.IS_REGISTER = false;
+                        Intent intent = new Intent(getActivity(), RegistrationActivity.class);
+                        startActivity(intent);
+                        getActivity().finish();
+                    }
+                });
+
+        snackbar.show();
+
+        TextView tv = (snackbar.getView()).findViewById(android.support.design.R.id.snackbar_text);
+        TextView tv2 = (snackbar.getView()).findViewById(android.support.design.R.id.snackbar_action);
+        tv.setTextSize(12f);
+        tv2.setTextSize(12f);
+        Typeface font = Typeface.createFromAsset(getContext().getAssets(), "JFFlatregular.ttf");
+        tv.setTypeface(font);
+        tv2.setTypeface(font);
     }
 }

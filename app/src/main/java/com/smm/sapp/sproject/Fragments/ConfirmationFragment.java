@@ -105,7 +105,7 @@ public class ConfirmationFragment extends Fragment {
             public void onResponse(Call call, Response response) throws IOException, JSONException {
                 MyProgressDialog.dismissDialog();
                 String s = response.body().string();
-                Log.e("okHttpClient",""+s);
+                Log.e("okHttpClient", "" + s);
                 final JSONObject jsonObject = new JSONObject(s);
                 final JSONObject object = jsonObject.getJSONObject("status");
                 final Gson gson = new Gson();
@@ -116,10 +116,10 @@ public class ConfirmationFragment extends Fragment {
                         try {
                             if (object.getBoolean("success")) {
                                 ConstantInterFace.USER = gson.fromJson(jsonObject.getJSONObject("user").toString(), User.class);
-                                Log.e("ff", ConstantInterFace.USER.getToken());
                                 Intent intent = new Intent(getActivity(), ContainerActivity.class);
                                 startActivity(intent);
                                 getActivity().finish();
+
                             } else {
                                 Toast.makeText(getActivity(), "لم يتم الارسال بشكل صحيح", Toast.LENGTH_SHORT).show();
                             }

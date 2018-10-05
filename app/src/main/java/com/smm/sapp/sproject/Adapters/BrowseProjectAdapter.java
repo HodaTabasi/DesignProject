@@ -77,13 +77,13 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
                     Bundle bundle = new Bundle();
                     bundle.putParcelable("theProject", projectsList.get(position));
                     fragment.setArguments(bundle);
-                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment,true);
+                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
                 }
             });
             holder.linear_setting.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPopUpMenu(v,projectsList.get(position));
+                    showPopUpMenu(v, projectsList.get(position));
                 }
             });
         }
@@ -160,12 +160,12 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
     }
 
     private void Reportcontent(int id) {
-        MyRequest myRequest =new MyRequest();
+        MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(context);
         Map<String, String> stringMap = new HashMap<>();
         stringMap.put("token", ConstantInterFace.USER.getToken());
         stringMap.put("target_type", "project");
-        stringMap.put("target_id",id + "");
+        stringMap.put("target_id", id + "");
         stringMap.put("message", "هذا المحتوى غير ملائم للنشر ف المشروع");
         myRequest.PostCall("http://smm.smmim.com/waell/public/api/report", stringMap, new OkHttpCallback() {
             @Override
@@ -182,10 +182,10 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
                     @Override
                     public void run() {
                         try {
-                            if (object.getBoolean("success")){
-                                Toast.makeText(context, " "+ object.getString("message"), Toast.LENGTH_SHORT).show();
-                            }else {
-                                Toast.makeText(context, " "+ object.getString("message"), Toast.LENGTH_SHORT).show();
+                            if (object.getBoolean("success")) {
+                                Toast.makeText(context, "تم ارسال التبليغ", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(context, " " + object.getString("message"), Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -198,11 +198,11 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
     }
 
     private void addToFav(int id) {
-        MyRequest myRequest =new MyRequest();
+        MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(context);
         Map<String, String> stringMap = new HashMap<>();
         stringMap.put("token", ConstantInterFace.USER.getToken());
-        stringMap.put("target_id",id + "");
+        stringMap.put("target_id", id + "");
         stringMap.put("target_type", "project");
         myRequest.PostCall("http://smm.smmim.com/waell/public/api/likedislike", stringMap, new OkHttpCallback() {
             @Override
@@ -219,10 +219,12 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
                     @Override
                     public void run() {
                         try {
-                            if (object.getBoolean("success")){
-                                Toast.makeText(context, " "+ object.getString("message"), Toast.LENGTH_SHORT).show();
-                            }else {
-                                Toast.makeText(context, " "+ object.getString("message"), Toast.LENGTH_SHORT).show();
+                            if (object.getBoolean("success") && object.getString("message").equals("like Returned")) {
+                                Toast.makeText(context, "تم الاضافة للمفضلة", Toast.LENGTH_SHORT).show();
+                            } else if (object.getBoolean("success") && object.getString("message").equals("dislike Returned")) {
+                                Toast.makeText(context, "تم الحذف من المفضلة", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(context, " " + object.getString("message"), Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
