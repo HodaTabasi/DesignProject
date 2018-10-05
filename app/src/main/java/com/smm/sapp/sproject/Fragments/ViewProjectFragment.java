@@ -62,7 +62,7 @@ public class ViewProjectFragment extends Fragment {
     private EditText mPBalance;
     private EditText mPBio;
     private RecyclerView mPAttachment;
-    private LinearLayout linear_add_proposal;
+    private LinearLayout linear_add_proposal ,pr_ditails;
     Bundle bundle;
     private TextView addOffer;
     ProjectsModels models;
@@ -81,6 +81,7 @@ public class ViewProjectFragment extends Fragment {
     int id;
     //    ImageView ic_back;
     TextView back_two;
+    OfferModel model;
 
 
     @Override
@@ -105,7 +106,17 @@ public class ViewProjectFragment extends Fragment {
         else
             addOffer.setVisibility(View.VISIBLE);
 
-        putData();
+        bundle = getArguments();
+        if (bundle.getBoolean("flag")){
+            model = bundle.getParcelable("object");
+            mBalanceP.setText(model.getBalance());
+            mProposalP.setText(model.getDescr());
+            mDurP.setText(model.getDur());
+            linear_add_proposal.setVisibility(View.VISIBLE);
+            pr_ditails.setVisibility(View.GONE);
+        }else {
+            putData();
+        }
 
         addOffer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,13 +134,17 @@ public class ViewProjectFragment extends Fragment {
                     addOffer.setTextColor(getResources().getColor(R.color.white));
                     linear_add_proposal.setVisibility(View.VISIBLE);
                     ConstantInterFace.IS_PROPOSAL_OPENED = true;
+                    pr_ditails.setVisibility(View.GONE);
+                    id = models.getId();
+                    addOnClickListener();
+
 
                 } else if (ConstantInterFace.IS_PROPOSAL_OPENED) {
                     addOffer.setBackgroundResource(R.drawable.report_layout_shap);
                     addOffer.setTextColor(getResources().getColor(R.color.blue));
                     linear_add_proposal.setVisibility(View.GONE);
+                    pr_ditails.setVisibility(View.VISIBLE);
                     ConstantInterFace.IS_PROPOSAL_OPENED = false;
-
                 }
             }
         });
@@ -143,6 +158,48 @@ public class ViewProjectFragment extends Fragment {
             }
         });
 
+    }
+
+   private void addOnClickListener(){
+       mBalanceP.addTextChangedListener(new TextWatcher() {
+           @Override
+           public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+           }
+
+           @Override
+           public void onTextChanged(CharSequence s, int start, int before, int count) {
+               if(s.length() != 0){
+                   double b = Double.parseDouble(mBalanceP.getText().toString());
+                   double total = b * 0.95;
+                   mReceivableP.setText(total +" ");
+               }
+           }
+
+           @Override
+           public void afterTextChanged(Editable s) {
+
+           }
+       });
+
+       mAttchP.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               fileBrowse();
+           }
+       });
+
+       mAddProposalP.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               if (bundle.getBoolean("flag")){
+                  updateOfferRequest(model);
+               }else {
+                   addOfferRequest();
+               }
+
+           }
+       });
     }
 
     private void initView(View view) {
@@ -162,6 +219,7 @@ public class ViewProjectFragment extends Fragment {
         mPAttachment = (RecyclerView) view.findViewById(R.id.p_attachment);
         addOffer = view.findViewById(R.id.add_offer);
         linear_add_proposal = view.findViewById(R.id.linear_add_proposal);
+        pr_ditails = view.findViewById(R.id.pr_ditails);
 
         mReceivableP = (EditText) view.findViewById(R.id.receivable_p);
         mBalanceP = (EditText) view.findViewById(R.id.balance_p);
@@ -177,7 +235,6 @@ public class ViewProjectFragment extends Fragment {
     }
 
     private void putData() {
-        bundle = getArguments();
         models = bundle.getParcelable("theProject");
         mUserName.setText(models.getUser().getName());
         mUserType.setText(models.getUser().getType());
@@ -218,6 +275,117 @@ public class ViewProjectFragment extends Fragment {
         ProjectAttachmentAdapter adapter2 = new ProjectAttachmentAdapter(getContext(), R.layout.layout_item_attachment, models.getAttachs());
         mPAttachment.setAdapter(adapter2);
 
+    }
+
+    private void updateOfferRequest(OfferModel model) {
+        Log.e("ffd",id + " gg");
+        MyRequest myRequest =new MyRequest();
+        MyProgressDialog.showDialog(getContext());
+        Map<String, String> stringMap = new HashMap<>();
+        stringMap.put("token", ConstantInterFace.USER.getToken());
+        stringMap.put("offer_id",model.getId()+"");
+        stringMap.put("dur", mDurP.getText().toString());
+        stringMap.put("balance", mBalanceP.getText().toString());
+        stringMap.put("descr", mProposalP.getText().toString());
+        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/editanoffer", stringMap, filePath, "file_link", new OkHttpCallback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                MyProgressDialog.dismissDialog();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException, JSONException {
+                MyProgressDialog.dismissDialog();
+                final JSONObject jsonObject = new JSONObject(response.body().string());
+                final JSONObject object = jsonObject.getJSONObject("status");
+                getActivity().runOnUiThread(new Runnable() {
+                    public void run() {
+                        try {
+                            if (object.getBoolean("success")){
+                                Toast.makeText(getActivity(), ""+ object.getString("message"), Toast.LENGTH_SHORT).show();
+                                Gson gson = new Gson();
+                                OfferModel model = gson.fromJson(jsonObject.getJSONObject("offer").toString(),OfferModel.class);
+                                getActivity().finish();
+                            }else {
+                                Toast.makeText(getActivity(), ""+ object.getString("error"), Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+
+
+            }
+        });
+    }
+
+    private void addOfferRequest() {
+        Log.e("ffd",id + " gg");
+        MyRequest myRequest =new MyRequest();
+        MyProgressDialog.showDialog(getContext());
+        Map<String, String> stringMap = new HashMap<>();
+        stringMap.put("token", ConstantInterFace.USER.getToken());
+        stringMap.put("project_id",id + "");
+        stringMap.put("dur", mDurP.getText().toString());
+        stringMap.put("balance", mBalanceP.getText().toString());
+        stringMap.put("descr", mProposalP.getText().toString());
+
+        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/makeanoffer", stringMap, filePath, "file_link", new OkHttpCallback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                MyProgressDialog.dismissDialog();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException, JSONException {
+                MyProgressDialog.dismissDialog();
+                JSONObject jsonObject = new JSONObject(response.body().string());
+                final JSONObject object = jsonObject.getJSONObject("status");
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            if (object.getBoolean("success")){
+                                Toast.makeText(getContext(), ""+ object.getString("message"), Toast.LENGTH_SHORT).show();
+    //                    Gson gson = new Gson();
+    //                    OfferModel model = gson.fromJson(jsonObject.getJSONObject("offer").toString(),OfferModel.class);
+    //                    getFragmentManager().popBackStack();
+    //                    Log.e("ff",model.getBalance());
+                                addOffer.setBackgroundResource(R.drawable.report_layout_shap);
+                                addOffer.setTextColor(getResources().getColor(R.color.blue));
+                                linear_add_proposal.setVisibility(View.GONE);
+                                pr_ditails.setVisibility(View.VISIBLE);
+                                ConstantInterFace.IS_PROPOSAL_OPENED = false;
+                            }else {
+                                Toast.makeText(getContext(), ""+ object.getString("error"), Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+            }
+        });
+    }
+
+    private void fileBrowse() {
+        new ChooserDialog().with(getContext())
+                .withFilter(false, false, "pdf", "docx", "xlsx")
+                .withStartFile(Environment.getExternalStorageDirectory().getPath())
+                .withChosenListener(new ChooserDialog.Result() {
+                    @Override
+                    public void onChoosePath(String path, File pathFile) {
+                        Toast.makeText(getContext(), "FOLDER: " + path, Toast.LENGTH_SHORT).show();
+                        filePath = path;
+                        mAttchP.setText(path);
+
+                    }
+                })
+                .build()
+                .show();
     }
 
 }

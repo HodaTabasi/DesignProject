@@ -259,9 +259,10 @@ public class EditProposalFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (model.getApproved().equals("0") && model.getFinished().equals("0")) {
-                    AddProposalFragment fragment = new AddProposalFragment();
+                    ViewProjectFragment fragment = new ViewProjectFragment();
                     Bundle bundle = new Bundle();
                     bundle.putParcelable("object", model);
+                    bundle.putBoolean("flag",true);
                     fragment.setArguments(bundle);
                     FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
                 }  else

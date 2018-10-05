@@ -127,15 +127,14 @@ public class MainFragment extends Fragment {
         tv_addProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if (ConstantInterFace.USER.getType().equals("client"))
-//                    FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AddProjectFragment(), true);
-//                else
-//                    Toast.makeText(getContext(), "غير مخول لك بالدخول هذه الواجهة خاصة بصاحب المشاريع ", Toast.LENGTH_SHORT).show();
-//
-                AddProjectFragment fragment = new AddProjectFragment();
-                Bundle bundle = new Bundle();
-                fragment.setArguments(bundle);
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
+                if (ConstantInterFace.USER.getType().equals("client")){
+                    AddProjectFragment fragment = new AddProjectFragment();
+                    Bundle bundle = new Bundle();
+                    fragment.setArguments(bundle);
+                    FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
+                } else
+                    Toast.makeText(getContext(), "غير مخول لك بالدخول هذه الواجهة خاصة بصاحب المشاريع ", Toast.LENGTH_SHORT).show();
+
 
             }
         });
