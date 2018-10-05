@@ -88,7 +88,7 @@
 
                     <TextView
                         android:id="@+id/tv_like"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:layout_weight="2"
@@ -108,7 +108,7 @@
 
                     <TextView
                         android:id="@+id/tv_shows"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="2dp"
                         android:layout_weight="2"
@@ -123,7 +123,7 @@
 
                     <TextView
                         android:id="@+id/tv_calender"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
                         android:background="@drawable/report_layout_shap"
@@ -171,10 +171,10 @@
 
                 <TextView
                     android:id="@+id/tv_ilike_it"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
-                    android:layout_weight="0.7"
+                    android:layout_weight="1"
                     android:background="@drawable/report_layout_shap"
                     android:drawableRight="@drawable/ic_like_small"
                     android:gravity="center"
@@ -185,7 +185,7 @@
 
                 <TextView
                     android:id="@+id/tv_link"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
@@ -208,13 +208,13 @@
                     android:padding="4dp"
                     android:text="أضف عمل مشابه"
                     android:textColor="@color/gray1"
-                    android:textSize="10sp" />
+                    android:textSize="8sp" />
 
                 <TextView
                     android:id="@+id/tv_add_to_fav"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.9"
+                    android:layout_weight="1"
                     android:background="@drawable/report_layout_shap"
                     android:gravity="center"
                     android:padding="4dp"

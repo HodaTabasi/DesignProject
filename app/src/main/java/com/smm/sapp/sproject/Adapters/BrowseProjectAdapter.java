@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.smm.sapp.sproject.ConstantInterFace;
+import com.smm.sapp.sproject.Fragments.AddNewWork2Fragment;
 import com.smm.sapp.sproject.Fragments.AddProjectFragment;
 import com.smm.sapp.sproject.Fragments.ViewProjectFragment;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
@@ -121,7 +122,16 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
             @Override
             public void onClick(View view) {
                 mypopupWindow.dismiss();
-                FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AddProjectFragment(), true);
+                if (ConstantInterFace.USER.getType().equals("worker")){
+                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AddNewWork2Fragment(),true);
+                }else {
+                    AddProjectFragment fragment = new AddProjectFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("type",projectsModels.getType());
+                    Log.e("ffd",projectsModels.getType());
+                    fragment.setArguments(bundle);
+                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment,true);
+                }
                 ConstantInterFace.tv_home.setBackgroundResource(0);
                 ConstantInterFace.tv_msgs.setBackgroundResource(0);
                 ConstantInterFace.tv_profile.setBackgroundResource(0);

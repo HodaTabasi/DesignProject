@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -117,7 +118,16 @@ public class PortfolioDescFragment extends Fragment {
         tv_addSimlilarWork.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AddNewWork2Fragment());
+                if (ConstantInterFace.USER.getType().equals("worker")){
+                    FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AddNewWork2Fragment(),true);
+                }else {
+                    AddProjectFragment fragment = new AddProjectFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("type", (String) models.getType());
+                    fragment.setArguments(bundle);
+                    FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment,true);
+                }
+
             }
         });
         tv_add_to_fav.setOnClickListener(new View.OnClickListener() {
