@@ -76,13 +76,7 @@ public class LikesPWorkAdapter extends RecyclerView.Adapter<LikesPWorkAdapter.Li
             });
 
 
-            holder.fav.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-
-                }
-            });
+            holder.fav.setVisibility(View.GONE);
 
             holder.addProject.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -95,7 +89,7 @@ public class LikesPWorkAdapter extends RecyclerView.Adapter<LikesPWorkAdapter.Li
                         Bundle bundle = new Bundle();
                         bundle.putString("type", projectType);
                         fragment.setArguments(bundle);
-                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
+                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, false);
                     }
                 }
             });
