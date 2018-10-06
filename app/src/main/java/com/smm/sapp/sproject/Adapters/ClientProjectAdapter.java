@@ -41,17 +41,17 @@ public class ClientProjectAdapter extends RecyclerView.Adapter<ClientProjectAdap
         holder.body.setText(projectsModels.getName());
         holder.calender.setText(projectsModels.getCreated_at());
         holder.name.setText(projectsModels.getUser().getName());
-        holder.money.setText(projectsModels.getBalance());
+        holder.money.setText(" $ " + projectsModels.getBalance());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyOffersFragment fragment = new MyOffersFragment();
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("object",projectsModels);
-                bundle.putBoolean("flag",false);
-                fragment.setArguments(bundle);
-                FragmentsUtil.replaceFragment((FragmentActivity) context,R.id.container_activity,fragment,true);
+//                MyOffersFragment fragment = new MyOffersFragment();
+//                Bundle bundle = new Bundle();
+//                bundle.putParcelable("object",projectsModels);
+//                bundle.putBoolean("flag",false);
+//                fragment.setArguments(bundle);
+//                FragmentsUtil.replaceFragment((FragmentActivity) context,R.id.container_activity,fragment,true);
             }
         });
     }
@@ -62,7 +62,7 @@ public class ClientProjectAdapter extends RecyclerView.Adapter<ClientProjectAdap
     }
 
     public class ClientProjectHolder extends RecyclerView.ViewHolder {
-        TextView calender, name, money, body;
+        TextView calender, name, money, body,tv_day,tv1;
 
         public ClientProjectHolder(View itemView) {
             super(itemView);
@@ -71,12 +71,17 @@ public class ClientProjectAdapter extends RecyclerView.Adapter<ClientProjectAdap
             name = itemView.findViewById(R.id.tv_name);
             money = itemView.findViewById(R.id.tv_money);
             body = itemView.findViewById(R.id.tv2);
+            tv_day = itemView.findViewById(R.id.tv_day);
+            tv1 = itemView.findViewById(R.id.tv1);
 
             Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
             calender.setTypeface(custom_font);
             name.setTypeface(custom_font);
             money.setTypeface(custom_font);
             body.setTypeface(custom_font);
+            tv_day.setTypeface(custom_font);
+            tv1.setTypeface(custom_font);
+
         }
     }
 }
