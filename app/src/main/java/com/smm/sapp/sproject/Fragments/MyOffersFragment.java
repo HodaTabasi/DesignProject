@@ -15,18 +15,15 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.smm.sapp.sproject.Adapters.MyProjectsProposalsAdapter;
 import com.smm.sapp.sproject.Adapters.WorkerOfferAdapter;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
-import com.smm.sapp.sproject.Models.MyProjectsProposals;
 import com.smm.sapp.sproject.Models.OfferModel;
 import com.smm.sapp.sproject.Models.ProjectsModels;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -64,6 +61,9 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
     List<OfferModel> offerModels3 ;
 
     List<OfferModel> arrayList;
+
+
+    String name = "";
 
     public MyOffersFragment() {
         // Required empty public constructor
@@ -110,6 +110,7 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
             getWorkerOffersRequest();
         }else {
             ProjectsModels projectsModels = bundle.getParcelable("object");
+            name = projectsModels.getUser().getName();
             swichOffers(projectsModels.getOffers());
         }
 
@@ -172,7 +173,7 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
                 offerModels2.add(model);
             }
         }
-        mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(),offerModels));
+        mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(),offerModels,name));
     }
 
 
@@ -181,16 +182,16 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
         int id = v.getId();
         switch (id){
             case R.id.all_offer_excluded:
-                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(),offerModels2));
+                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(),offerModels2,name));
                 break;
             case R.id.all_offer_done:
-                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(),offerModels3));
+                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(),offerModels3,name));
                 break;
             case R.id.all_offer_underway:
-                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(),offerModels1));
+                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(),offerModels1,name));
                 break;
             case R.id.all_offer_wait:
-                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(),offerModels));
+                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(),offerModels,name));
                 break;
             case R.id.ic_back:
                 getFragmentManager().popBackStack();

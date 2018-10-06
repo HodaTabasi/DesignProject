@@ -32,6 +32,15 @@ public class OfferModel implements Parcelable {
     private String finished;
     private String created_at;
     private String updated_at;
+    private ProjectsModels project;
+
+    public ProjectsModels getProject() {
+        return project;
+    }
+
+    public void setProject(ProjectsModels project) {
+        this.project = project;
+    }
 
     protected OfferModel(Parcel in) {
         id = in.readInt();

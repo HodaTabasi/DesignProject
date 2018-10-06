@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.Fragments.EditProposalFragment;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.Models.OfferModel;
@@ -22,10 +23,12 @@ public class WorkerOfferAdapter extends RecyclerView.Adapter<WorkerOfferAdapter.
 
     private Context context;
     private List<OfferModel> offerModels;
+    private String name;
 
-    public WorkerOfferAdapter(Context context, List<OfferModel> offerModels) {
+    public WorkerOfferAdapter(Context context, List<OfferModel> offerModels, String name) {
         this.context = context;
         this.offerModels = offerModels;
+        this.name = name;
     }
 
     @NonNull
@@ -40,7 +43,11 @@ public class WorkerOfferAdapter extends RecyclerView.Adapter<WorkerOfferAdapter.
         final OfferModel projectsModels = offerModels.get(position);
         holder.body.setText(projectsModels.getDescr());
         holder.calender.setText(projectsModels.getDur());
-        holder.name.setText(projectsModels.getId() + " ");
+        if (ConstantInterFace.USER.getType().equals("client"))
+            holder.name.setText(name);
+        else
+            holder.name.setText(projectsModels.getProject().getUser().getName());
+
         holder.money.setText(projectsModels.getBalance());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
