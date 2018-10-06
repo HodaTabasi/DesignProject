@@ -42,7 +42,6 @@ public class ClientProjectAdapter extends RecyclerView.Adapter<ClientProjectAdap
         holder.calender.setText(projectsModels.getCreated_at());
         holder.name.setText(projectsModels.getUser().getName());
         holder.money.setText(" $ " + projectsModels.getBalance());
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
