@@ -76,7 +76,7 @@ public class LikesPWorkAdapter extends RecyclerView.Adapter<LikesPWorkAdapter.Li
             });
 
 
-            holder.fav.setVisibility(View.GONE);
+
 
             holder.addProject.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -117,6 +117,8 @@ public class LikesPWorkAdapter extends RecyclerView.Adapter<LikesPWorkAdapter.Li
             addProject = itemView.findViewById(R.id.tv_addProject);
             fav = itemView.findViewById(R.id.tv_fav);
             view = itemView.findViewById(R.id.img);
+
+            fav.setVisibility(View.INVISIBLE);
 
             Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
             show.setTypeface(custom_font);

@@ -58,7 +58,7 @@ public class LikesDesignAdapter extends RecyclerView.Adapter<LikesDesignAdapter.
 
 //        holder.d_layout_rate.setRating(Float.valueOf(likes.getUser().getRate()));
 
-            holder.d_layout_fav.setVisibility(View.GONE);
+
             holder.chooses_me.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -91,7 +91,7 @@ public class LikesDesignAdapter extends RecyclerView.Adapter<LikesDesignAdapter.
             d_layout_rate = itemView.findViewById(R.id.d_layout_rate);
             chooses_me = itemView.findViewById(R.id.chooses_me);
             d_layout_fav = itemView.findViewById(R.id.d_layout_fav);
-
+            d_layout_fav.setVisibility(View.INVISIBLE);
             Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
             d_layout_name.setTypeface(custom_font);
             d_layout_specialty.setTypeface(custom_font);
