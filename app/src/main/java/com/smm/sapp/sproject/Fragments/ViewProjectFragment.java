@@ -394,7 +394,6 @@ public class ViewProjectFragment extends Fragment {
                         filePath = path;
                         // mAttchP.setText(path);
                         Toast.makeText(getContext(), "تم ارفاق الملف", Toast.LENGTH_LONG).show();
-
                     }
                 })
                 .build()
