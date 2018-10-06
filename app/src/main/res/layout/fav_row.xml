@@ -61,6 +61,7 @@
                     android:layout_height="wrap_content"
                     android:text="يوما"
                     android:textColor="@color/textGray"
+                    android:visibility="invisible"
                     android:textSize="12sp" />
 
                 <TextView

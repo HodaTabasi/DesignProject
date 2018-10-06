@@ -13,7 +13,11 @@ import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.Models.Likes;
 import com.smm.sapp.sproject.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class LikesProjectAdapter extends RecyclerView.Adapter<LikesProjectAdapter.LikesProjectVH> {
     Context context;
@@ -40,13 +44,20 @@ public class LikesProjectAdapter extends RecyclerView.Adapter<LikesProjectAdapte
         Likes likes = projectLikes.get(position);
         try {
             holder.body.setText(likes.getProject().getName());
-            holder.calender.setText(likes.getProject().getCreated_at());
+            holder.calender.setText(putDateTime(likes.getProject().getCreated_at()));
             holder.name.setText(likes.getProject().getUser_id());
             holder.money.setText(" $ " + likes.getProject().getBalance());
         } catch (Exception e) {
 
         }
 
+    }
+
+    private String putDateTime(String created_at) throws ParseException {
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd",new Locale("en"));
+        Date date = dt.parse(created_at);
+
+        return date.getDay() + "-" + date.getMonth() + "-" + date.getYear();
     }
 
     @Override
