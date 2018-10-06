@@ -46,13 +46,9 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
 
 
 
-    /** المستبعدة */
     private TextView mAllOfferExcluded;
-    /** المكتملة */
     private TextView mAllOfferDone;
-    /** قيد التنفيذ */
     private TextView mAllOfferUnderway;
-    /** بانتظار الموافقة */
     private TextView mAllOfferWait;
     private RecyclerView mAllOfferRes;
     ImageView ic_back;
