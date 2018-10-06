@@ -7,13 +7,9 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.view.menu.MenuBuilder;
-import android.support.v7.view.menu.MenuPopupHelper;
-import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -29,6 +25,7 @@ import com.smm.sapp.sproject.Fragments.AddProjectFragment;
 import com.smm.sapp.sproject.Fragments.ViewProjectFragment;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
+import com.smm.sapp.sproject.HelperClass.TimeAgo;
 import com.smm.sapp.sproject.Models.ProjectsModels;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
@@ -38,12 +35,19 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
 import okhttp3.Response;
+
+import static android.text.format.DateUtils.getRelativeTimeSpanString;
 
 public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdapter.BrowseProjectHolder> {
 
@@ -68,7 +72,16 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
         holder.tv_description.setText(projectsList.get(position).getName());
         holder.tv_name.setText(projectsList.get(position).getUser().getName());
         holder.tv_proposals.setText(projectsList.get(position).getOffers().size() + " عرض ");
-//        holder.tv_time.setText();
+
+        try {
+            String s = putDateTime(projectsList.get(position).getCreated_at());
+            holder.tv_time.setText("  قبل  "+ s +" يوما ");
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+
+        }
+
 
         if (!ConstantInterFace.IS_REGISTER) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +111,23 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
         }
 
 
+    }
+
+    private String putDateTime(String created_at) throws ParseException {
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss",new Locale("en"));
+        Date date = dt.parse(created_at);
+        long mills = System.currentTimeMillis() - date.getTime();
+
+        int hours = (int) (mills/(1000 * 60 * 60));
+        int mins = (int) (mills/(1000*60)) % 60;
+
+          int days = (int) (mills / (1000*60*60*24));
+//        String diff = hours + ":" + mins; // updated value every1 second
+
+
+//        hours = (hours < 0 ? -hours : hours);
+//        Log.i("======= Hours"," :: "+hours);
+        return days + " ";
     }
 
     @SuppressLint("RestrictedApi")
