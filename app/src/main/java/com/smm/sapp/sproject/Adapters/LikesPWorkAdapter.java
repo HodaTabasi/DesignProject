@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.Fragments.AddNewWork2Fragment;
 import com.smm.sapp.sproject.Fragments.AddProjectFragment;
+import com.smm.sapp.sproject.Fragments.PortfolioDescFragment;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.Models.Likes;
 import com.smm.sapp.sproject.R;
@@ -64,10 +65,17 @@ public class LikesPWorkAdapter extends RecyclerView.Adapter<LikesPWorkAdapter.Li
             holder.specialization.setText("مصمم جرافيكس");
         }
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//
+            }
+        });
+
+
         holder.fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
 
             }

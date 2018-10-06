@@ -104,8 +104,10 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
                                             projectList.add(likes);
                                             break;
                                         case "user":
-                                            designList.add(likes);
-                                            break;
+                                            if (ConstantInterFace.USER.getId() != likes.getUser().getId()) {
+                                                designList.add(likes);
+                                                break;
+                                            }
                                         case "pwork":
                                             workList.add(likes);
                                             break;
@@ -167,7 +169,7 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
                 project.setTextColor(Color.parseColor("#000000"));
                 project.setBackgroundResource(R.drawable.account_shape);
                 recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
-                LikesPWorkAdapter workAdapter = new LikesPWorkAdapter(getContext(), R .layout.fav2_row, workList);
+                LikesPWorkAdapter workAdapter = new LikesPWorkAdapter(getContext(), R.layout.fav2_row, workList);
                 recyclerView.setAdapter(workAdapter);
 //                recyclerView.setVisibility(View.INVISIBLE);
                 break;
@@ -179,7 +181,7 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
                 designs.setTextColor(Color.parseColor("#000000"));
                 designs.setBackgroundResource(R.drawable.account_shape);
 //                recyclerView.setVisibility(View.VISIBLE);
-                recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+                recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
                 LikesProjectAdapter projectAdapter = new LikesProjectAdapter(getContext(), R.layout.fav_row, projectList);
                 recyclerView.setAdapter(projectAdapter);
                 break;

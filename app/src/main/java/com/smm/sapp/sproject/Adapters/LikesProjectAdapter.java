@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.Models.Likes;
 import com.smm.sapp.sproject.R;
 
@@ -19,10 +20,12 @@ public class LikesProjectAdapter extends RecyclerView.Adapter<LikesProjectAdapte
     int Layout;
     List<Likes> projectLikes;
 
+
     public LikesProjectAdapter(Context context, int layout, List<Likes> projectLikes) {
         this.context = context;
         Layout = layout;
         this.projectLikes = projectLikes;
+
     }
 
     @NonNull
@@ -36,10 +39,9 @@ public class LikesProjectAdapter extends RecyclerView.Adapter<LikesProjectAdapte
     public void onBindViewHolder(@NonNull LikesProjectVH holder, int position) {
         Likes likes = projectLikes.get(position);
         holder.body.setText(likes.getProject().getName());
-        holder.calender.setText( likes.getProject().getCreated_at());
+        holder.calender.setText(likes.getProject().getCreated_at());
         holder.name.setText(likes.getProject().getUser_id());
         holder.money.setText(" $ " + likes.getProject().getBalance());
-
     }
 
     @Override
@@ -48,7 +50,7 @@ public class LikesProjectAdapter extends RecyclerView.Adapter<LikesProjectAdapte
     }
 
     public class LikesProjectVH extends RecyclerView.ViewHolder {
-        TextView calender, name, money, body, tv1,tv_day;
+        TextView calender, name, money, body, tv1, tv_day;
 
         public LikesProjectVH(View itemView) {
             super(itemView);
