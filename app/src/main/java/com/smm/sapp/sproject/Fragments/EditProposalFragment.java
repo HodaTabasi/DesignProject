@@ -227,8 +227,20 @@ public class EditProposalFragment extends Fragment {
     private void putData(User user) {
         Picasso.get().load(user.getPhoto_link()).into(mImg);
         mTvName.setText(user.getName());
-        mTvSpecialization.setText(user.getJob_type());
-        mMoney.setText("السعر" + model.getBalance() + " ");
+
+        if(user.getJob_type().equals("inter")){
+            mTvSpecialization.setText("مصمم داخلي");
+        }else if(user.getJob_type().equals("arch")){
+            mTvSpecialization.setText("مصمم معمماري");
+        }else if(user.getJob_type().equals("graphic")){
+            mTvSpecialization.setText("مصمم جرافيكس");
+        }else if(user.getJob_type().equals("moshen")){
+            mTvSpecialization.setText("مصمم موشن");
+        }else if(user.getJob_type().equals("wall")){
+            mTvSpecialization.setText("مصمم جداري");
+        }
+
+        mMoney.setText(" السعر " +""+ model.getBalance() + " ريال ");
         mDay.setText(" في " + model.getDur() +" يوم ");
         mEtProposal.setText(model.getDescr());
     }

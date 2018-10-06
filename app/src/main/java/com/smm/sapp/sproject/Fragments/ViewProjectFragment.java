@@ -62,7 +62,7 @@ public class ViewProjectFragment extends Fragment {
     private EditText mPBalance;
     private EditText mPBio;
     private RecyclerView mPAttachment;
-    private LinearLayout linear_add_proposal ,pr_ditails;
+    private LinearLayout linear_add_proposal, pr_ditails;
     Bundle bundle;
     private TextView addOffer;
     ProjectsModels models;
@@ -107,14 +107,14 @@ public class ViewProjectFragment extends Fragment {
             addOffer.setVisibility(View.VISIBLE);
 
         bundle = getArguments();
-        if (bundle.getBoolean("flag")){
+        if (bundle.getBoolean("flag")) {
             model = bundle.getParcelable("object");
             mBalanceP.setText(model.getBalance());
             mProposalP.setText(model.getDescr());
             mDurP.setText(model.getDur());
             linear_add_proposal.setVisibility(View.VISIBLE);
             pr_ditails.setVisibility(View.GONE);
-        }else {
+        } else {
             putData();
         }
 
@@ -160,46 +160,55 @@ public class ViewProjectFragment extends Fragment {
 
     }
 
-   private void addOnClickListener(){
-       mBalanceP.addTextChangedListener(new TextWatcher() {
-           @Override
-           public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+    private void addOnClickListener() {
+        mBalanceP.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-           }
+            }
 
-           @Override
-           public void onTextChanged(CharSequence s, int start, int before, int count) {
-               if(s.length() != 0){
-                   double b = Double.parseDouble(mBalanceP.getText().toString());
-                   double total = b * 0.95;
-                   mReceivableP.setText(total +" ");
-               }
-           }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.length() != 0) {
+                    double b = Double.parseDouble(mBalanceP.getText().toString());
+                    double total = b * 0.95;
+                    mReceivableP.setText(total + " ");
+                }
+            }
 
-           @Override
-           public void afterTextChanged(Editable s) {
+            @Override
+            public void afterTextChanged(Editable s) {
 
-           }
-       });
+            }
+        });
 
-       mAttchP.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               fileBrowse();
-           }
-       });
+        mAttchP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fileBrowse();
+            }
+        });
 
-       mAddProposalP.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               if (bundle.getBoolean("flag")){
-                  updateOfferRequest(model);
-               }else {
-                   addOfferRequest();
-               }
+        mAddProposalP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (bundle.getBoolean("flag")) {
+                    updateOfferRequest(model);
+                } else {
+                    if (mReceivableP.getText().toString().matches("")
+                            || mBalanceP.getText().toString().matches("")
+                            || mDurP.getText().toString().matches("")
+                            || mProposalP.getText().toString().matches("")) {
+                        Toast.makeText(getContext(), "يجب تعبئة جميع الحقول", Toast.LENGTH_LONG).show();
+                    } else {
+                        addOfferRequest();
 
-           }
-       });
+                    }
+
+                }
+
+            }
+        });
     }
 
     private void initView(View view) {
@@ -278,12 +287,12 @@ public class ViewProjectFragment extends Fragment {
     }
 
     private void updateOfferRequest(OfferModel model) {
-        Log.e("ffd",id + " gg");
-        MyRequest myRequest =new MyRequest();
+        Log.e("ffd", id + " gg");
+        MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
         Map<String, String> stringMap = new HashMap<>();
         stringMap.put("token", ConstantInterFace.USER.getToken());
-        stringMap.put("offer_id",model.getId()+"");
+        stringMap.put("offer_id", model.getId() + "");
         stringMap.put("dur", mDurP.getText().toString());
         stringMap.put("balance", mBalanceP.getText().toString());
         stringMap.put("descr", mProposalP.getText().toString());
@@ -301,13 +310,13 @@ public class ViewProjectFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     public void run() {
                         try {
-                            if (object.getBoolean("success")){
-                                Toast.makeText(getActivity(), ""+ object.getString("message"), Toast.LENGTH_SHORT).show();
+                            if (object.getBoolean("success")) {
+                                Toast.makeText(getActivity(), "" + object.getString("message"), Toast.LENGTH_SHORT).show();
                                 Gson gson = new Gson();
-                                OfferModel model = gson.fromJson(jsonObject.getJSONObject("offer").toString(),OfferModel.class);
+                                OfferModel model = gson.fromJson(jsonObject.getJSONObject("offer").toString(), OfferModel.class);
                                 getActivity().finish();
-                            }else {
-                                Toast.makeText(getActivity(), ""+ object.getString("error"), Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getActivity(), "" + object.getString("error"), Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -316,18 +325,17 @@ public class ViewProjectFragment extends Fragment {
                 });
 
 
-
             }
         });
     }
 
     private void addOfferRequest() {
-        Log.e("ffd",id + " gg");
-        MyRequest myRequest =new MyRequest();
+        Log.e("ffd", id + " gg");
+        MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
         Map<String, String> stringMap = new HashMap<>();
         stringMap.put("token", ConstantInterFace.USER.getToken());
-        stringMap.put("project_id",id + "");
+        stringMap.put("project_id", id + "");
         stringMap.put("dur", mDurP.getText().toString());
         stringMap.put("balance", mBalanceP.getText().toString());
         stringMap.put("descr", mProposalP.getText().toString());
@@ -347,19 +355,24 @@ public class ViewProjectFragment extends Fragment {
                     @Override
                     public void run() {
                         try {
-                            if (object.getBoolean("success")){
-                                Toast.makeText(getContext(), ""+ object.getString("message"), Toast.LENGTH_SHORT).show();
-    //                    Gson gson = new Gson();
-    //                    OfferModel model = gson.fromJson(jsonObject.getJSONObject("offer").toString(),OfferModel.class);
-    //                    getFragmentManager().popBackStack();
-    //                    Log.e("ff",model.getBalance());
+                            if (object.getBoolean("success")) {
+                                Toast.makeText(getContext(), "تم اضافة العرض بنجاح", Toast.LENGTH_SHORT).show();
+                                //                    Gson gson = new Gson();
+                                //                    OfferModel model = gson.fromJson(jsonObject.getJSONObject("offer").toString(),OfferModel.class);
+                                //                    getFragmentManager().popBackStack();
+                                //                    Log.e("ff",model.getBalance());
                                 addOffer.setBackgroundResource(R.drawable.report_layout_shap);
                                 addOffer.setTextColor(getResources().getColor(R.color.blue));
                                 linear_add_proposal.setVisibility(View.GONE);
                                 pr_ditails.setVisibility(View.VISIBLE);
                                 ConstantInterFace.IS_PROPOSAL_OPENED = false;
-                            }else {
-                                Toast.makeText(getContext(), ""+ object.getString("error"), Toast.LENGTH_SHORT).show();
+                            } else {
+                                Log.e("uuuu", object.getString("error"));
+                                if (object.getString("error").equals("you already made an offer , just edit")) {
+                                    Toast.makeText(getContext(), "لقد قمت باضافة عرض، يمكنك تعديل العرض فقط", Toast.LENGTH_SHORT).show();
+
+                                }
+                                //Toast.makeText(getContext(), "" + object.getString("error"), Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -378,10 +391,9 @@ public class ViewProjectFragment extends Fragment {
                 .withChosenListener(new ChooserDialog.Result() {
                     @Override
                     public void onChoosePath(String path, File pathFile) {
-                        Toast.makeText(getContext(), "FOLDER: " + path, Toast.LENGTH_SHORT).show();
                         filePath = path;
-                        mAttchP.setText(path);
-
+                        // mAttchP.setText(path);
+                        Toast.makeText(getContext(), "تم ارفاق الملف", Toast.LENGTH_LONG).show();
                     }
                 })
                 .build()

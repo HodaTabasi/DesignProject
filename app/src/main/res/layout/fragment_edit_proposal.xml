@@ -51,8 +51,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="30dp"
             android:layout_marginTop="30dp"
@@ -61,7 +61,7 @@
 
         <TextView
             android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginRight="20dp"
@@ -74,9 +74,9 @@
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
             android:paddingStart="8dp"
-            android:text="حسام اليماني"
+            android:hint="الاسم"
             android:textColor="@color/gray1"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
 
         <RatingBar
             android:id="@+id/rate_bar"
@@ -88,12 +88,11 @@
             android:layout_marginTop="10dp"
             android:layout_toLeftOf="@+id/img"
             android:numStars="5"
-            android:rating="5.0"
             android:stepSize="1.0" />
 
         <TextView
             android:id="@+id/tv_specialization"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/rate_bar"
             android:layout_gravity="center"
@@ -103,13 +102,11 @@
             android:background="@drawable/report_layout_shap"
             android:gravity="center"
             android:padding="5dp"
-            android:paddingEnd="8sp"
             android:paddingLeft="8dp"
+            android:hint="التخصص"
             android:paddingRight="8dp"
-            android:paddingStart="8dp"
-            android:text="مصمم معماري"
             android:textColor="@color/gray1"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
 
 
         <LinearLayout
@@ -127,27 +124,27 @@
                 android:id="@+id/day"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="2dp"
                 android:layout_weight="1"
                 android:background="@drawable/half_left_corner_shape"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="في 34 يوم"
+                android:hint="الأيام"
                 android:textColor="@color/gray1"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/exhibition"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="2dp"
                 android:layout_weight="1"
                 android:background="@drawable/blue_shape"
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="معرض الاعمال"
                 android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/money"
@@ -157,9 +154,9 @@
                 android:background="@drawable/half_right_corner_shape"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="السعر 5000 ريال"
+                android:hint="السعر"
                 android:textColor="@color/gray1"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
 
         </LinearLayout>
 
@@ -178,11 +175,11 @@
             android:layout_alignParentRight="true"
             android:layout_below="@+id/view"
             android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:background="@null"
             android:gravity="right"
             android:padding="8dp"
-            android:hint="نننننننكككك"
             android:textColor="@color/gray1"
             android:textColorHint="@color/gray"
             android:textSize="14sp" />
