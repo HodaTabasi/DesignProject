@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -86,10 +87,10 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException, JSONException {
-                MyProgressDialog.dismissDialog();
                 final JSONObject object = new JSONObject(response.body().string());
                 final JSONObject object1 = object.getJSONObject("status");
                 final Gson gson = new Gson();
+                MyProgressDialog.dismissDialog();
                 getActivity().runOnUiThread(new Runnable() {
                     public void run() {
                         try {
@@ -116,6 +117,9 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+
+                        LikesDesignAdapter designAdapter = new LikesDesignAdapter(getContext(), R.layout.item_layout_profile, designList);
+                        recyclerView.setAdapter(designAdapter);
                     }
                 });
             }
@@ -150,9 +154,10 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
                 pWork.setBackgroundResource(R.drawable.account_shape);
                 project.setTextColor(Color.parseColor("#000000"));
                 project.setBackgroundResource(R.drawable.account_shape);
-                recyclerView.setVisibility(View.INVISIBLE);
-//                LikesDesignAdapter designAdapter = new LikesDesignAdapter(getContext(), R.layout.fav2_row, projectList);
-//                recyclerView.setAdapter(designAdapter);
+//                recyclerView.setVisibility(View.INVISIBLE);
+                recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+                LikesDesignAdapter designAdapter = new LikesDesignAdapter(getContext(), R.layout.item_layout_profile, designList);
+                recyclerView.setAdapter(designAdapter);
                 break;
             case R.id.works:
                 pWork.setTextColor(Color.parseColor("#ffffff"));
@@ -161,9 +166,10 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
                 designs.setBackgroundResource(R.drawable.account_shape);
                 project.setTextColor(Color.parseColor("#000000"));
                 project.setBackgroundResource(R.drawable.account_shape);
-//                LikesPWorkAdapter workAdapter = new LikesPWorkAdapter(getContext(), R .layout.fav2_row, projectList);
-//                recyclerView.setAdapter(workAdapter);
-                recyclerView.setVisibility(View.INVISIBLE);
+                recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+                LikesPWorkAdapter workAdapter = new LikesPWorkAdapter(getContext(), R .layout.fav2_row, workList);
+                recyclerView.setAdapter(workAdapter);
+//                recyclerView.setVisibility(View.INVISIBLE);
                 break;
             case R.id.projects:
                 project.setTextColor(Color.parseColor("#ffffff"));
@@ -172,6 +178,8 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
                 pWork.setBackgroundResource(R.drawable.account_shape);
                 designs.setTextColor(Color.parseColor("#000000"));
                 designs.setBackgroundResource(R.drawable.account_shape);
+//                recyclerView.setVisibility(View.VISIBLE);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
                 LikesProjectAdapter projectAdapter = new LikesProjectAdapter(getContext(), R.layout.fav_row, projectList);
                 recyclerView.setAdapter(projectAdapter);
                 break;
