@@ -1,6 +1,7 @@
 package com.smm.sapp.sproject.Adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -41,8 +42,19 @@ public class LikesDesignAdapter extends RecyclerView.Adapter<LikesDesignAdapter.
         Likes likes = designLikes.get(position);
         Picasso.get().load(likes.getUser().getPhoto_link()).into(holder.imageView);
         holder.d_layout_name.setText(likes.getUser().getName());
-        holder.d_layout_specialty.setText(likes.getUser().getJob_type());
-//        holder.d_layout_rate.setRating(likes.getUser().getId());
+        if (likes.getUser().getJob_type().equals("inter")) {
+            holder.d_layout_specialty.setText("مصمم داخلي");
+        } else if (likes.getUser().getJob_type().equals("arch")) {
+            holder.d_layout_specialty.setText("مصمم معماري");
+        } else if (likes.getUser().getJob_type().equals("wall")) {
+            holder.d_layout_specialty.setText("مصمم جداري");
+        } else if (likes.getUser().getJob_type().equals("moshen")) {
+            holder.d_layout_specialty.setText("مصمم موشن");
+        } else if (likes.getUser().getJob_type().equals("graphic")) {
+            holder.d_layout_specialty.setText("مصمم جرافيكس");
+        }
+
+//        holder.d_layout_rate.setRating(Float.valueOf(likes.getUser().getRate()));
 
         holder.chooses_me.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +80,7 @@ public class LikesDesignAdapter extends RecyclerView.Adapter<LikesDesignAdapter.
         CircleImageView imageView;
         TextView d_layout_name, d_layout_specialty, chooses_me, d_layout_fav;
         RatingBar d_layout_rate;
+
         public LikesDesignHV(View itemView) {
             super(itemView);
 
@@ -77,6 +90,12 @@ public class LikesDesignAdapter extends RecyclerView.Adapter<LikesDesignAdapter.
             d_layout_rate = itemView.findViewById(R.id.d_layout_rate);
             chooses_me = itemView.findViewById(R.id.chooses_me);
             d_layout_fav = itemView.findViewById(R.id.d_layout_fav);
+
+            Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
+            d_layout_name.setTypeface(custom_font);
+            d_layout_specialty.setTypeface(custom_font);
+            chooses_me.setTypeface(custom_font);
+            d_layout_fav.setTypeface(custom_font);
         }
     }
 }

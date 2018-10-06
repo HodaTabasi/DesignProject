@@ -36,9 +36,9 @@ public class LikesProjectAdapter extends RecyclerView.Adapter<LikesProjectAdapte
     public void onBindViewHolder(@NonNull LikesProjectVH holder, int position) {
         Likes likes = projectLikes.get(position);
         holder.body.setText(likes.getProject().getName());
-        holder.calender.setText(likes.getProject().getCreated_at());
+        holder.calender.setText( likes.getProject().getCreated_at());
         holder.name.setText(likes.getProject().getUser_id());
-        holder.money.setText(likes.getProject().getBalance());
+        holder.money.setText(" $ " + likes.getProject().getBalance());
 
     }
 
@@ -48,7 +48,7 @@ public class LikesProjectAdapter extends RecyclerView.Adapter<LikesProjectAdapte
     }
 
     public class LikesProjectVH extends RecyclerView.ViewHolder {
-        TextView calender, name, money, body;
+        TextView calender, name, money, body, tv1,tv_day;
 
         public LikesProjectVH(View itemView) {
             super(itemView);
@@ -56,12 +56,19 @@ public class LikesProjectAdapter extends RecyclerView.Adapter<LikesProjectAdapte
             name = itemView.findViewById(R.id.tv_name);
             money = itemView.findViewById(R.id.tv_money);
             body = itemView.findViewById(R.id.tv2);
+            tv1 = itemView.findViewById(R.id.tv1);
+            tv_day = itemView.findViewById(R.id.tv_day);
+
 
             Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
             calender.setTypeface(custom_font);
             name.setTypeface(custom_font);
             money.setTypeface(custom_font);
             body.setTypeface(custom_font);
+            tv1.setTypeface(custom_font);
+            tv_day.setTypeface(custom_font);
+
+
         }
     }
 }
