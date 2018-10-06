@@ -19,7 +19,7 @@ public class Likes {
     private String updated_at;
     private ProjectsLikeModels project;
     private User user;
-    private PWorks pWork;
+    private PWorks pwork;
 
     public Likes(int id, String target_id, String target_type, String created_by, String created_at, String updated_at, ProjectsLikeModels project) {
         this.id = id;
@@ -48,7 +48,7 @@ public class Likes {
         this.created_by = created_by;
         this.created_at = created_at;
         this.updated_at = updated_at;
-        this.pWork = pWork;
+        this.pwork = pWork;
     }
 
     public int getId() {
@@ -116,10 +116,10 @@ public class Likes {
     }
 
     public PWorks getpWork() {
-        return pWork;
+        return pwork;
     }
 
     public void setpWork(PWorks pWork) {
-        this.pWork = pWork;
+        this.pwork = pWork;
     }
 }

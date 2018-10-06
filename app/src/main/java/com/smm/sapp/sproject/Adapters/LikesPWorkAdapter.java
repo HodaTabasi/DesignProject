@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,11 +37,12 @@ public class LikesPWorkAdapter extends RecyclerView.Adapter<LikesPWorkAdapter.Li
 
     @Override
     public void onBindViewHolder(@NonNull LikesPWorkVH holder, int position) {
+
         Likes likes = PworksLikes.get(position);
-        holder.like.setText(likes.getpWork().getLikes() +" ");
-        holder.show.setText(likes.getpWork().getViews() +" ");
-//        holder.specialization.setText(likes.getpWork());
-        holder.name.setText(likes.getpWork().getName()+ " ");
+        holder.like.setText(likes.getpWork().getLikes());
+        holder.show.setText(likes.getpWork().getViews());
+        holder.specialization.setText(likes.getpWork().getType());
+        holder.name.setText(likes.getpWork().getName());
         Picasso.get().load(likes.getpWork().getPhoto_link()).into(holder.view);
 
         holder.fav.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +71,7 @@ public class LikesPWorkAdapter extends RecyclerView.Adapter<LikesPWorkAdapter.Li
 
         public LikesPWorkVH(View itemView) {
             super(itemView);
+
             show = itemView.findViewById(R.id.tv_show);
             name = itemView.findViewById(R.id.tv_name);
             like = itemView.findViewById(R.id.tv_like);
@@ -83,7 +86,6 @@ public class LikesPWorkAdapter extends RecyclerView.Adapter<LikesPWorkAdapter.Li
             like.setTypeface(custom_font);
             specialization.setTypeface(custom_font);
             addProject.setTypeface(custom_font);
-
         }
     }
 }
