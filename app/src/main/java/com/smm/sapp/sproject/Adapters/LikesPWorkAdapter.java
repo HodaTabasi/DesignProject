@@ -47,55 +47,61 @@ public class LikesPWorkAdapter extends RecyclerView.Adapter<LikesPWorkAdapter.Li
     @Override
     public void onBindViewHolder(@NonNull LikesPWorkVH holder, final int position) {
 
-        final Likes likes = PworksLikes.get(position);
-        holder.like.setText(likes.getpWork().getLikes());
-        holder.show.setText(likes.getpWork().getViews());
-        holder.name.setText(likes.getpWork().getName());
-        Picasso.get().load(likes.getpWork().getPhoto_link()).into(holder.view);
+        try {
 
-        if (likes.getpWork().getType().equals("inter")) {
-            holder.specialization.setText("مصمم داخلي");
-        } else if (likes.getpWork().getType().equals("arch")) {
-            holder.specialization.setText("مصمم معماري");
-        } else if (likes.getpWork().getType().equals("wall")) {
-            holder.specialization.setText("مصمم جداري");
-        } else if (likes.getpWork().getType().equals("moshen")) {
-            holder.specialization.setText("مصمم موشن");
-        } else if (likes.getpWork().getType().equals("graphic")) {
-            holder.specialization.setText("مصمم جرافيكس");
-        }
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            final Likes likes = PworksLikes.get(position);
+            holder.like.setText(likes.getpWork().getLikes());
+            holder.show.setText(likes.getpWork().getViews());
+            holder.name.setText(likes.getpWork().getName());
+            Picasso.get().load(likes.getpWork().getPhoto_link()).into(holder.view);
+
+            if (likes.getpWork().getType().equals("inter")) {
+                holder.specialization.setText("مصمم داخلي");
+            } else if (likes.getpWork().getType().equals("arch")) {
+                holder.specialization.setText("مصمم معماري");
+            } else if (likes.getpWork().getType().equals("wall")) {
+                holder.specialization.setText("مصمم جداري");
+            } else if (likes.getpWork().getType().equals("moshen")) {
+                holder.specialization.setText("مصمم موشن");
+            } else if (likes.getpWork().getType().equals("graphic")) {
+                holder.specialization.setText("مصمم جرافيكس");
+            }
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 //
-            }
-        });
-
-
-        holder.fav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-            }
-        });
-
-        holder.addProject.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (ConstantInterFace.USER.getType().equals("worker")) {
-                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AddNewWork2Fragment(), true);
-                } else {
-                    projectType = likes.getpWork().getType();
-                    AddProjectFragment fragment = new AddProjectFragment();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("type", projectType);
-                    fragment.setArguments(bundle);
-                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
                 }
-            }
-        });
+            });
+
+
+            holder.fav.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+
+                }
+            });
+
+            holder.addProject.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (ConstantInterFace.USER.getType().equals("worker")) {
+                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AddNewWork2Fragment(), true);
+                    } else {
+                        projectType = likes.getpWork().getType();
+                        AddProjectFragment fragment = new AddProjectFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("type", projectType);
+                        fragment.setArguments(bundle);
+                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
+                    }
+                }
+            });
+        } catch (Exception e){
+
+        }
     }
 
     @Override

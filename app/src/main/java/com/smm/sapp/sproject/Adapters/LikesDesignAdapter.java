@@ -40,35 +40,41 @@ public class LikesDesignAdapter extends RecyclerView.Adapter<LikesDesignAdapter.
     @Override
     public void onBindViewHolder(@NonNull LikesDesignHV holder, int position) {
         Likes likes = designLikes.get(position);
-        Picasso.get().load(likes.getUser().getPhoto_link()).into(holder.imageView);
-        holder.d_layout_name.setText(likes.getUser().getName());
-        if (likes.getUser().getJob_type().equals("inter")) {
-            holder.d_layout_specialty.setText("مصمم داخلي");
-        } else if (likes.getUser().getJob_type().equals("arch")) {
-            holder.d_layout_specialty.setText("مصمم معماري");
-        } else if (likes.getUser().getJob_type().equals("wall")) {
-            holder.d_layout_specialty.setText("مصمم جداري");
-        } else if (likes.getUser().getJob_type().equals("moshen")) {
-            holder.d_layout_specialty.setText("مصمم موشن");
-        } else if (likes.getUser().getJob_type().equals("graphic")) {
-            holder.d_layout_specialty.setText("مصمم جرافيكس");
-        }
+
+        try {
+            Picasso.get().load(likes.getUser().getPhoto_link()).into(holder.imageView);
+            holder.d_layout_name.setText(likes.getUser().getName());
+            if (likes.getUser().getJob_type().equals("inter")) {
+                holder.d_layout_specialty.setText("مصمم داخلي");
+            } else if (likes.getUser().getJob_type().equals("arch")) {
+                holder.d_layout_specialty.setText("مصمم معماري");
+            } else if (likes.getUser().getJob_type().equals("wall")) {
+                holder.d_layout_specialty.setText("مصمم جداري");
+            } else if (likes.getUser().getJob_type().equals("moshen")) {
+                holder.d_layout_specialty.setText("مصمم موشن");
+            } else if (likes.getUser().getJob_type().equals("graphic")) {
+                holder.d_layout_specialty.setText("مصمم جرافيكس");
+            }
 
 //        holder.d_layout_rate.setRating(Float.valueOf(likes.getUser().getRate()));
 
-        holder.chooses_me.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            holder.chooses_me.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-            }
-        });
+                }
+            });
 
-        holder.d_layout_fav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            holder.d_layout_fav.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-            }
-        });
+                }
+            });
+
+        } catch (Exception e) {
+
+        }
     }
 
     @Override

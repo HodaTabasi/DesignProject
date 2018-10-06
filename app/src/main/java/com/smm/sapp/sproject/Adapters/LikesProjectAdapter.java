@@ -38,10 +38,15 @@ public class LikesProjectAdapter extends RecyclerView.Adapter<LikesProjectAdapte
     @Override
     public void onBindViewHolder(@NonNull LikesProjectVH holder, int position) {
         Likes likes = projectLikes.get(position);
-        holder.body.setText(likes.getProject().getName());
-        holder.calender.setText(likes.getProject().getCreated_at());
-        holder.name.setText(likes.getProject().getUser_id());
-        holder.money.setText(" $ " + likes.getProject().getBalance());
+        try {
+            holder.body.setText(likes.getProject().getName());
+            holder.calender.setText(likes.getProject().getCreated_at());
+            holder.name.setText(likes.getProject().getUser_id());
+            holder.money.setText(" $ " + likes.getProject().getBalance());
+        } catch (Exception e) {
+
+        }
+
     }
 
     @Override
