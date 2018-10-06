@@ -2,7 +2,9 @@ package com.smm.sapp.sproject.Adapters;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +13,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.smm.sapp.sproject.ConstantInterFace;
+import com.smm.sapp.sproject.Fragments.AddNewWork2Fragment;
+import com.smm.sapp.sproject.Fragments.AddProjectFragment;
+import com.smm.sapp.sproject.Fragments.PortfolioDescFragment;
+import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.Models.Likes;
 import com.smm.sapp.sproject.R;
 import com.squareup.picasso.Picasso;
@@ -21,6 +28,8 @@ public class LikesPWorkAdapter extends RecyclerView.Adapter<LikesPWorkAdapter.Li
     Context context;
     int Layout;
     List<Likes> PworksLikes;
+    String projectType;
+
 
     public LikesPWorkAdapter(Context context, int layout, List<Likes> pworksLikes) {
         this.context = context;
@@ -36,28 +45,63 @@ public class LikesPWorkAdapter extends RecyclerView.Adapter<LikesPWorkAdapter.Li
     }
 
     @Override
-    public void onBindViewHolder(@NonNull LikesPWorkVH holder, int position) {
+    public void onBindViewHolder(@NonNull LikesPWorkVH holder, final int position) {
 
-        Likes likes = PworksLikes.get(position);
-        holder.like.setText(likes.getpWork().getLikes());
-        holder.show.setText(likes.getpWork().getViews());
-        holder.specialization.setText(likes.getpWork().getType());
-        holder.name.setText(likes.getpWork().getName());
-        Picasso.get().load(likes.getpWork().getPhoto_link()).into(holder.view);
+        try {
 
-        holder.fav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
+            final Likes likes = PworksLikes.get(position);
+            holder.like.setText(likes.getpWork().getLikes());
+            holder.show.setText(likes.getpWork().getViews());
+            holder.name.setText(likes.getpWork().getName());
+            Picasso.get().load(likes.getpWork().getPhoto_link()).into(holder.view);
+
+            if (likes.getpWork().getType().equals("inter")) {
+                holder.specialization.setText("مصمم داخلي");
+            } else if (likes.getpWork().getType().equals("arch")) {
+                holder.specialization.setText("مصمم معماري");
+            } else if (likes.getpWork().getType().equals("wall")) {
+                holder.specialization.setText("مصمم جداري");
+            } else if (likes.getpWork().getType().equals("moshen")) {
+                holder.specialization.setText("مصمم موشن");
+            } else if (likes.getpWork().getType().equals("graphic")) {
+                holder.specialization.setText("مصمم جرافيكس");
             }
-        });
 
-        holder.addProject.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+//
+                }
+            });
 
-            }
-        });
+
+            holder.fav.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+
+                }
+            });
+
+            holder.addProject.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (ConstantInterFace.USER.getType().equals("worker")) {
+                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AddNewWork2Fragment(), true);
+                    } else {
+                        projectType = likes.getpWork().getType();
+                        AddProjectFragment fragment = new AddProjectFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("type", projectType);
+                        fragment.setArguments(bundle);
+                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
+                    }
+                }
+            });
+        } catch (Exception e){
+
+        }
     }
 
     @Override
@@ -66,8 +110,8 @@ public class LikesPWorkAdapter extends RecyclerView.Adapter<LikesPWorkAdapter.Li
     }
 
     public class LikesPWorkVH extends RecyclerView.ViewHolder {
-        ImageView view ,fav;
-        TextView show, like, specialization, addProject,  name;
+        ImageView view, fav;
+        TextView show, like, specialization, addProject, name;
 
         public LikesPWorkVH(View itemView) {
             super(itemView);

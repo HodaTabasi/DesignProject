@@ -124,9 +124,9 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
         holder.fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (ConstantInterFace.IS_USER_FAVORITE = false) {
+               // if (ConstantInterFace.IS_USER_FAVORITE = false) {
                     addTofav();
-                }
+               // }
             }
         });
 

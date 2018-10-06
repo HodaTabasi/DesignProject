@@ -1,6 +1,9 @@
 package com.smm.sapp.sproject.Models;
 
-public class Likes {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Likes implements Parcelable {
 
     /**
      * id : 2
@@ -50,6 +53,46 @@ public class Likes {
         this.updated_at = updated_at;
         this.pwork = pWork;
     }
+
+    protected Likes(Parcel in) {
+        id = in.readInt();
+        target_id = in.readString();
+        target_type = in.readString();
+        created_by = in.readString();
+        created_at = in.readString();
+        updated_at = in.readString();
+        user = in.readParcelable(User.class.getClassLoader());
+        pwork = in.readParcelable(PWorks.class.getClassLoader());
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(target_id);
+        dest.writeString(target_type);
+        dest.writeString(created_by);
+        dest.writeString(created_at);
+        dest.writeString(updated_at);
+        dest.writeParcelable(user, flags);
+        dest.writeParcelable(pwork, flags);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Likes> CREATOR = new Creator<Likes>() {
+        @Override
+        public Likes createFromParcel(Parcel in) {
+            return new Likes(in);
+        }
+
+        @Override
+        public Likes[] newArray(int size) {
+            return new Likes[size];
+        }
+    };
 
     public int getId() {
         return id;

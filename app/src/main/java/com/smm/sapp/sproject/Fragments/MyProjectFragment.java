@@ -54,13 +54,18 @@ import okhttp3.Response;
 public class MyProjectFragment extends Fragment implements View.OnClickListener {
 
 
-
     private Switch mSwitchOffer;
-    /** المستبعدة */
+    /**
+     * المستبعدة
+     */
     private TextView mMyProjectExcluded;
-    /** قيد التنفيذ */
+    /**
+     * قيد التنفيذ
+     */
     private TextView mMyProjectUnderway;
-    /** المكتملة */
+    /**
+     * المكتملة
+     */
     private TextView mMyProjectDone;
     private RecyclerView mMyProjectRes;
     private LinearLayout mOne;
@@ -74,11 +79,11 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
     ImageView ic_back;
 
     LinearLayoutManager layoutManager;
-    List<ProjectsModels> arrayList ;
-    List<ProjectsModels> arrayList1 ;
-    List<ProjectsModels> arrayList2 ;
-    int done = 0 ,wait = 0 ,under = 0;
-    TextView doneTV ,waitTV ,underTV;
+    List<ProjectsModels> arrayList;
+    List<ProjectsModels> arrayList1;
+    List<ProjectsModels> arrayList2;
+    int done = 0, wait = 0, under = 0;
+    TextView doneTV, waitTV, underTV;
     PieChart chart;
 
     public MyProjectFragment() {
@@ -111,12 +116,12 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         waitTV = getView().findViewById(R.id.wait);
         chart = (PieChart) getView().findViewById(R.id.chart);
 
-         arrayList = new ArrayList<>();
-         arrayList1 = new ArrayList<>();
-         arrayList2 = new ArrayList<>();
+        arrayList = new ArrayList<>();
+        arrayList1 = new ArrayList<>();
+        arrayList2 = new ArrayList<>();
 
         mMyProjectRes = getView().findViewById(R.id.my_project_res);
-        layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+        layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mMyProjectRes.setLayoutManager(layoutManager);
 
         mMyProjectDone.setOnClickListener(this);
@@ -126,14 +131,14 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         addToChart();
     }
 
-    private void onClickMethod(){
+    private void onClickMethod() {
         mSwitchOffer.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
+                if (isChecked) {
                     mOne.setVisibility(View.VISIBLE);
                     mTwo.setVisibility(View.GONE);
-                }else {
+                } else {
                     mOne.setVisibility(View.GONE);
                     mTwo.setVisibility(View.VISIBLE);
                 }
@@ -174,34 +179,35 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
                             if (object1.getBoolean("success")) {
                                 JSONArray jsonArray = object.getJSONArray("projects");
                                 Gson gson = new Gson();
-                                TypeToken<List<ProjectsModels>> token = new TypeToken<List<ProjectsModels>>() {};
+                                TypeToken<List<ProjectsModels>> token = new TypeToken<List<ProjectsModels>>() {
+                                };
 //                                arrayList = gson.fromJson(object.getJSONArray("projects").toString(), token.getType());
-                                for (int i =0 ; i<= jsonArray.length(); i++){
+                                for (int i = 0; i <= jsonArray.length(); i++) {
                                     JSONObject object2 = jsonArray.getJSONObject(i);
-                                    ProjectsModels models = gson.fromJson(object2.toString(),ProjectsModels.class);
-                                    switch (object2.getString("status")){
+                                    ProjectsModels models = gson.fromJson(object2.toString(), ProjectsModels.class);
+                                    switch (object2.getString("status")) {
                                         case "0":
                                             //قيد الموافقة
                                             arrayList.add(models);
-                                            waitTV.setText(arrayList.size()+"عرض ");
-                                            wait ++;
+                                            waitTV.setText(arrayList.size() + "عرض ");
+                                            wait++;
                                             break;
                                         case "1":
                                             //قيد العمل
                                             arrayList1.add(models);
-                                            underTV.setText(arrayList1.size()+" عرض ");
-                                            under ++;
+                                            underTV.setText(arrayList1.size() + " عرض ");
+                                            under++;
                                             break;
                                         case "2":
                                             //قم التسليم
                                             arrayList2.add(models);
-                                            doneTV.setText(arrayList2.size()+" عرض ");
-                                            done ++;
+                                            doneTV.setText(arrayList2.size() + " عرض ");
+                                            done++;
                                             break;
                                     }
                                 }
 
-                                mMyProjectRes.setAdapter(new ClientProjectAdapter(getContext(),arrayList2));
+                                mMyProjectRes.setAdapter(new ClientProjectAdapter(getContext(), arrayList2));
                             } else {
                                 Toast.makeText(getContext(), "" + object1.getBoolean("error"), Toast.LENGTH_SHORT).show();
                             }
@@ -225,7 +231,7 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         entries.add(new PieEntry(30.8f));
 
         PieDataSet set = new PieDataSet(entries, "");
-        set.setColors(new int[]{R.color.yalow, R.color.green,R.color.darkBlue,R.color.red},getActivity());
+        set.setColors(new int[]{R.color.yalow, R.color.green, R.color.darkBlue, R.color.red}, getActivity());
         set.setValueTextSize(8f);
         set.setValueTextColor(R.color.white);
         PieData data = new PieData(set);
@@ -241,22 +247,22 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         initView();
         onClickMethod();
 
-            getProjects("myprojects?token="+ ConstantInterFace.USER.getToken());
+        getProjects("myprojects?token=" + ConstantInterFace.USER.getToken());
 
     }
 
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        switch (id){
+        switch (id) {
             case R.id.my_project_excluded:
-                mMyProjectRes.setAdapter(new ClientProjectAdapter(getContext(),arrayList));
+                mMyProjectRes.setAdapter(new ClientProjectAdapter(getContext(), arrayList));
                 break;
             case R.id.my_project_done:
-                mMyProjectRes.setAdapter(new ClientProjectAdapter(getContext(),arrayList2));
+                mMyProjectRes.setAdapter(new ClientProjectAdapter(getContext(), arrayList2));
                 break;
             case R.id.my_project_underway:
-                mMyProjectRes.setAdapter(new ClientProjectAdapter(getContext(),arrayList1));
+                mMyProjectRes.setAdapter(new ClientProjectAdapter(getContext(), arrayList1));
                 break;
         }
     }

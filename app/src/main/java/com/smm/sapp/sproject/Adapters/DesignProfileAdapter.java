@@ -63,11 +63,9 @@ public class DesignProfileAdapter extends RecyclerView.Adapter<DesignProfileAdap
 
         worker_id = profiles.get(position).getId();
 
-        holder.name.setText(profiles.get(position).getName());
-        holder.rate.setRating(profiles.get(position).getRate());
-
         try {
-
+            holder.name.setText(profiles.get(position).getName());
+            holder.rate.setRating(profiles.get(position).getRate());
 
             if (profiles.get(position).getJob_type().equals("wall")) {
                 holder.specialty.setText("مصمم جداري");

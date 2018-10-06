@@ -48,16 +48,16 @@ public class WorkerOfferAdapter extends RecyclerView.Adapter<WorkerOfferAdapter.
         else
             holder.name.setText(projectsModels.getProject().getUser().getName());
 
-        holder.money.setText(projectsModels.getBalance());
+        holder.money.setText(" $ " + projectsModels.getBalance());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EditProposalFragment fragment = new EditProposalFragment();
                 Bundle bundle = new Bundle();
-                bundle.putParcelable("object",projectsModels);
+                bundle.putParcelable("object", projectsModels);
                 fragment.setArguments(bundle);
-                FragmentsUtil.replaceFragment((FragmentActivity) context,R.id.container_activity,fragment,true);
+                FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
             }
         });
     }
@@ -68,7 +68,7 @@ public class WorkerOfferAdapter extends RecyclerView.Adapter<WorkerOfferAdapter.
     }
 
     public class WorkerOfferHolder extends RecyclerView.ViewHolder {
-        TextView calender, name, money, body,tv1;
+        TextView calender, name, money, body, tv1, tv_day;
 
         public WorkerOfferHolder(View itemView) {
             super(itemView);
@@ -78,6 +78,7 @@ public class WorkerOfferAdapter extends RecyclerView.Adapter<WorkerOfferAdapter.
             money = itemView.findViewById(R.id.tv_money);
             body = itemView.findViewById(R.id.tv2);
             tv1 = itemView.findViewById(R.id.tv1);
+            tv_day = itemView.findViewById(R.id.tv_day);
 
 
             Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
@@ -86,6 +87,8 @@ public class WorkerOfferAdapter extends RecyclerView.Adapter<WorkerOfferAdapter.
             money.setTypeface(custom_font);
             body.setTypeface(custom_font);
             tv1.setTypeface(custom_font);
+            tv_day.setTypeface(custom_font);
+
 
         }
     }

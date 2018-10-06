@@ -50,6 +50,8 @@ public class User implements Parcelable{
     private String busniess_type;
     private String created_at;
     private String updated_at;
+    private String rate;
+
     private String token;
 
     protected User(Parcel in) {
@@ -74,6 +76,8 @@ public class User implements Parcelable{
         created_at = in.readString();
         updated_at = in.readString();
         token = in.readString();
+        rate = in.readString();
+
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -87,6 +91,14 @@ public class User implements Parcelable{
             return new User[size];
         }
     };
+
+    public String getRate() {
+        return rate;
+    }
+
+    public void setRate(String rate) {
+        this.rate = rate;
+    }
 
     public int getId() {
         return id;
@@ -292,5 +304,7 @@ public class User implements Parcelable{
         dest.writeString(created_at);
         dest.writeString(updated_at);
         dest.writeString(token);
+        dest.writeString(rate);
+
     }
 }
