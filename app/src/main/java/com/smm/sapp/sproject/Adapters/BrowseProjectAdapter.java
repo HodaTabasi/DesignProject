@@ -79,6 +79,7 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
 
         } catch (ParseException e) {
             e.printStackTrace();
+
         }
 
 
