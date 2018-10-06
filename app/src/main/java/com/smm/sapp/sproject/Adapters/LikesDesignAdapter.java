@@ -58,6 +58,7 @@ public class LikesDesignAdapter extends RecyclerView.Adapter<LikesDesignAdapter.
 
 //        holder.d_layout_rate.setRating(Float.valueOf(likes.getUser().getRate()));
 
+            holder.d_layout_fav.setVisibility(View.GONE);
             holder.chooses_me.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -65,12 +66,6 @@ public class LikesDesignAdapter extends RecyclerView.Adapter<LikesDesignAdapter.
                 }
             });
 
-            holder.d_layout_fav.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
 
         } catch (Exception e) {
 
