@@ -46,8 +46,15 @@
         android:id="@+id/message_details"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/ff"
+        android:layout_above="@+id/attchs_name"
         android:layout_below="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/attchs_name"
+        android:layout_above="@+id/ff"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:id="@+id/ff"
@@ -55,6 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
+
         android:padding="8dp">
 
         <ImageView

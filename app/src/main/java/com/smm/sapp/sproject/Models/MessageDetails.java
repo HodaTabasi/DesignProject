@@ -7,6 +7,7 @@ public class MessageDetails {
      * message : welcome
      * seen : 0
      * gr_id : 1
+     *  "file_link": "http://smm.smmim.com/waell/public/images/1538918843.jpg"
      * created_at : 2018-09-19 22:07:14
      * updated_at : 2018-09-19 22:07:14
      * user : {"id":2,"name":"mustafa kassab","email":"mk@mk.com","type":"worker","job_type":"wall","fcm_token":null,"own_projects":"0","worked_projects":"0","credit":"1000","owe":"0","total":"0","photo_link":"http://localhost:8585/waell/public/images/1534770520.jpg","verify":"4809","phone":"0592414345","bio":"bio biobio biobio biobio biobio biobio biobio bio","dob":"2/4/1995","gender":"male","active":"1","busniess_type":null,"created_at":"2018-08-20 13:01:03","updated_at":"2018-09-19 15:57:38"}
@@ -16,6 +17,7 @@ public class MessageDetails {
     private int id;
     private String message;
     private String seen;
+    private String file_link;
     private String gr_id;
     private String created_at;
     private String updated_at;
@@ -84,5 +86,13 @@ public class MessageDetails {
 
     public void setSender_id(String sender_id) {
         this.sender_id = sender_id;
+    }
+
+    public String getFile_link() {
+        return file_link;
+    }
+
+    public void setFile_link(String file_link) {
+        this.file_link = file_link;
     }
 }
