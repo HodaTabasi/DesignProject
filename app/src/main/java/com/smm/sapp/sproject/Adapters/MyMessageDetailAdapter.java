@@ -21,6 +21,8 @@ import java.net.URLConnection;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import hani.momanii.supernova_emoji_library.Helper.EmojiconEditText;
+import hani.momanii.supernova_emoji_library.Helper.EmojiconTextView;
 
 public class MyMessageDetailAdapter extends RecyclerView.Adapter {
 
@@ -87,8 +89,9 @@ public class MyMessageDetailAdapter extends RecyclerView.Adapter {
 
     private class SentMessageHolder extends RecyclerView.ViewHolder {
         CircleImageView imageView;
-        TextView mBody, mAttachs;
+        TextView  mAttachs;
         ImageView mimageView;
+        EmojiconTextView mBody;
 
         public SentMessageHolder(View itemView) {
             super(itemView);
@@ -128,8 +131,9 @@ public class MyMessageDetailAdapter extends RecyclerView.Adapter {
 
     private class ReceivedMessageHolder extends RecyclerView.ViewHolder {
         CircleImageView imageView;
-        TextView mBody, mName,mAttachs;
+        TextView mName, mAttachs;
         ImageView mimageView;
+        EmojiconTextView  mBody;
 
         public ReceivedMessageHolder(View itemView) {
             super(itemView);

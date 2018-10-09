@@ -40,6 +40,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import hani.momanii.supernova_emoji_library.Actions.EmojIconActions;
+import hani.momanii.supernova_emoji_library.Helper.EmojiconEditText;
 import me.anwarshahriar.calligrapher.Calligrapher;
 import okhttp3.Call;
 import okhttp3.Response;
@@ -54,13 +56,15 @@ public class MessageDitailsFragment extends Fragment implements View.OnClickList
     private View view;
     private RecyclerView mMessageDetails;
     private ImageView mOther;
-    private EditText mMessageEx;
+    private EmojiconEditText mMessageEx;
     private ImageView mSendMessg;
     private List<MessageDetails> details;
     MyMessageDetailAdapter adapter;
-    ImageView ic_back;
+    ImageView ic_back , keys;
     private String filePath ,fileName;
     TextView attchs_name;
+    LinearLayout ff;
+    EmojIconActions emojIcon;
 
     public MessageDitailsFragment() {
         // Required empty public constructor
@@ -165,6 +169,7 @@ public class MessageDitailsFragment extends Fragment implements View.OnClickList
             }
         });
     }
+
     private void initView(View view){
         mMessageDetails = view.findViewById(R.id.message_details);
         mMessageDetails.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,true));
@@ -172,9 +177,27 @@ public class MessageDitailsFragment extends Fragment implements View.OnClickList
         mMessageEx = view.findViewById(R.id.message_ex);
         mSendMessg = view.findViewById(R.id.send_messg);
         attchs_name = view.findViewById(R.id.attchs_name);
+        ff = view.findViewById(R.id.ff);
+        keys = view.findViewById(R.id.keys);
 
         mSendMessg.setOnClickListener(this);
         mOther.setOnClickListener(this);
+
+        emojIcon = new EmojIconActions(getActivity(), ff, mMessageEx, keys);
+        emojIcon.ShowEmojIcon();
+        emojIcon.setKeyboardListener(new EmojIconActions.KeyboardListener() {
+            @Override
+            public void onKeyboardOpen() {
+                Log.e("Keyboard", "open");
+            }
+
+            @Override
+            public void onKeyboardClose() {
+                Log.e("Keyboard", "close");
+            }
+        });
+
+        emojIcon.addEmojiconEditTextList(mMessageEx);
     }
     private void sendNewMessageRequest() {
         MyRequest myRequest = new MyRequest();
@@ -187,6 +210,7 @@ public class MessageDitailsFragment extends Fragment implements View.OnClickList
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
+                Log.e("115558676",e.toString());
             }
 
             @Override
@@ -205,8 +229,10 @@ public class MessageDitailsFragment extends Fragment implements View.OnClickList
                                 details.add(0,messageDetails);
                                 adapter.notifyDataSetChanged();
                                 mMessageEx.setText("");
+                                Log.e("115558676",object.toString());
                             }else {
                                 Toast.makeText(getContext(), "لم يتم الارسال", Toast.LENGTH_SHORT).show();
+                                Log.e("115558676",object.toString());
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
