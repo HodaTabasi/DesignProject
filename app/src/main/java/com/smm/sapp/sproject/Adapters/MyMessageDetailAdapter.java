@@ -91,7 +91,7 @@ public class MyMessageDetailAdapter extends RecyclerView.Adapter {
         CircleImageView imageView;
         TextView  mAttachs;
         ImageView mimageView;
-        EmojiconTextView mBody;
+        TextView mBody;
 
         public SentMessageHolder(View itemView) {
             super(itemView);
@@ -133,7 +133,7 @@ public class MyMessageDetailAdapter extends RecyclerView.Adapter {
         CircleImageView imageView;
         TextView mName, mAttachs;
         ImageView mimageView;
-        EmojiconTextView  mBody;
+        TextView  mBody;
 
         public ReceivedMessageHolder(View itemView) {
             super(itemView);

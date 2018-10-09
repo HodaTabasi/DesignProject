@@ -56,15 +56,13 @@ public class MessageDitailsFragment extends Fragment implements View.OnClickList
     private View view;
     private RecyclerView mMessageDetails;
     private ImageView mOther;
-    private EmojiconEditText mMessageEx;
+    private EditText mMessageEx;
     private ImageView mSendMessg;
     private List<MessageDetails> details;
     MyMessageDetailAdapter adapter;
-    ImageView ic_back , keys;
+    ImageView ic_back ;
     private String filePath ,fileName;
     TextView attchs_name;
-    LinearLayout ff;
-    EmojIconActions emojIcon;
 
     public MessageDitailsFragment() {
         // Required empty public constructor
@@ -177,27 +175,11 @@ public class MessageDitailsFragment extends Fragment implements View.OnClickList
         mMessageEx = view.findViewById(R.id.message_ex);
         mSendMessg = view.findViewById(R.id.send_messg);
         attchs_name = view.findViewById(R.id.attchs_name);
-        ff = view.findViewById(R.id.ff);
-        keys = view.findViewById(R.id.keys);
 
         mSendMessg.setOnClickListener(this);
         mOther.setOnClickListener(this);
 
-        emojIcon = new EmojIconActions(getActivity(), ff, mMessageEx, keys);
-        emojIcon.ShowEmojIcon();
-        emojIcon.setKeyboardListener(new EmojIconActions.KeyboardListener() {
-            @Override
-            public void onKeyboardOpen() {
-                Log.e("Keyboard", "open");
-            }
 
-            @Override
-            public void onKeyboardClose() {
-                Log.e("Keyboard", "close");
-            }
-        });
-
-        emojIcon.addEmojiconEditTextList(mMessageEx);
     }
     private void sendNewMessageRequest() {
         MyRequest myRequest = new MyRequest();
