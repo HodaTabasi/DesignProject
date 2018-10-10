@@ -37,7 +37,6 @@
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="الاسم"
             android:textColor="@color/white"
             android:textSize="14sp" />
 
@@ -47,7 +46,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_name"
             android:layout_centerHorizontal="true"
-            android:text="التخصص"
             android:textColor="@color/white"
             android:textSize="12sp" />
     </LinearLayout>

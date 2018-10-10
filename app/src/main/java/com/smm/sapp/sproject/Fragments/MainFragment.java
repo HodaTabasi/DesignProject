@@ -17,10 +17,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.gson.Gson;
 import com.smm.sapp.sproject.Activities.RegistrationActivity;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
+import com.smm.sapp.sproject.Models.UserModel;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
@@ -52,6 +54,9 @@ public class MainFragment extends Fragment {
     ImageView img_notification, img_edit;
     String refreshedToken;
 
+    UserModel userModel;
+
+
     public MainFragment() {
     }
 
@@ -80,7 +85,12 @@ public class MainFragment extends Fragment {
 
     private void onClickMethod() {
 
-        if (ConstantInterFace.USER.getPhoto_link() == null &&
+        if (ConstantInterFace.IS_USER_COMPLETEED) {
+            getProfileData();
+
+        }
+
+        else if (ConstantInterFace.USER.getPhoto_link() == null &&
                 ConstantInterFace.USER.getName() == null &&
                 ConstantInterFace.USER.getJob_type() == null) {
 
@@ -98,28 +108,33 @@ public class MainFragment extends Fragment {
             Typeface font = Typeface.createFromAsset(getContext().getAssets(), "JFFlatregular.ttf");
             tv.setTypeface(font);
 
-        } else {
+        } else if (ConstantInterFace.USER.getPhoto_link() != null ||
+                ConstantInterFace.USER.getName() != null ||
+                ConstantInterFace.USER.getJob_type() != null) {
 
+            Log.e("yyyyyyyyyy", "ttttttttt");
             ConstantInterFace.IS_USER_COMPLETEED = true;
+            getProfileData();
 
-            _name.setText(ConstantInterFace.USER.getName());
-            Picasso.get().load(ConstantInterFace.USER.getPhoto_link()).into(img_user);
 
-            if (ConstantInterFace.USER.getType().equals("worker")) {
-                if (ConstantInterFace.USER.getJob_type().equals("arch")) {
-                    _specialization.setText("مصمم معماري");
-                } else if (ConstantInterFace.USER.getJob_type().equals("wall")) {
-                    _specialization.setText("مصمم جداري");
-                } else if (ConstantInterFace.USER.getJob_type().equals("graphic")) {
-                    _specialization.setText("مصمم جرافكس");
-                } else if (ConstantInterFace.USER.getJob_type().equals("inter")) {
-                    _specialization.setText("مصمم داخلي");
-                } else if (ConstantInterFace.USER.getJob_type().equals("moshen")) {
-                    _specialization.setText("مصمم موشن");
-                }
-            } else {
-                _specialization.setText("صاحب مشاريع");
-            }
+//            _name.setText(ConstantInterFace.USER.getName());
+//            Picasso.get().load(ConstantInterFace.USER.getPhoto_link()).into(img_user);
+//
+//            if (ConstantInterFace.USER.getType().equals("worker")) {
+//                if (ConstantInterFace.USER.getJob_type().equals("arch")) {
+//                    _specialization.setText("مصمم معماري");
+//                } else if (ConstantInterFace.USER.getJob_type().equals("wall")) {
+//                    _specialization.setText("مصمم جداري");
+//                } else if (ConstantInterFace.USER.getJob_type().equals("graphic")) {
+//                    _specialization.setText("مصمم جرافكس");
+//                } else if (ConstantInterFace.USER.getJob_type().equals("inter")) {
+//                    _specialization.setText("مصمم داخلي");
+//                } else if (ConstantInterFace.USER.getJob_type().equals("moshen")) {
+//                    _specialization.setText("مصمم موشن");
+//                }
+//            } else {
+//                _specialization.setText("صاحب مشاريع");
+//            }
         }
 
         img_user.setOnClickListener(new View.OnClickListener() {
@@ -197,6 +212,68 @@ public class MainFragment extends Fragment {
             }
         });
 
+    }
+
+    private void getProfileData() {
+        MyRequest myRequest = new MyRequest();
+        Map<String, String> stringMap = new HashMap<>();
+        stringMap.put("token", ConstantInterFace.USER.getToken());
+        myRequest.PostCall("http://smm.smmim.com/waell/public/api/myprofile", stringMap, new OkHttpCallback() {
+            @Override
+            public void onFailure(Call call, final IOException e) {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
+
+                    }
+                });
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException, JSONException {
+                Log.e("yyyy", "ooooo");
+
+                JSONObject jsonObject = new JSONObject(response.body().string());
+                Gson gson = new Gson();
+                userModel = gson.fromJson(jsonObject.getJSONObject("user").toString(), UserModel.class);
+
+                Log.e("yyyyyy", jsonObject.toString());
+
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        img_edit.setImageResource(R.drawable.ic_edit);
+                        if (userModel.getType().equals("worker")) {
+                            _name.setText(userModel.getName());
+                            if (userModel.getJob_type().equals("arch")) {
+                                _specialization.setText("تصميم معماري");
+                            } else if (userModel.getJob_type().equals("graphic")) {
+                                _specialization.setText("تصميم جرافيكس");
+                            } else if (userModel.getJob_type().equals("inter")) {
+                                _specialization.setText("تصميم داخلي");
+                            } else if (userModel.getJob_type().equals("moshen")) {
+                                _specialization.setText("تصاميم موشن");
+                            } else if (userModel.getJob_type().equals("wall")) {
+                                _specialization.setText("الرسم الجداري");
+                            }
+                            Picasso.get().load(ConstantInterFace.USER.getPhoto_link()).into(img_user);
+
+                        } else if (userModel.getType().equals("client")) {
+
+                            _name.setText(userModel.getName());
+                            _specialization.setText("صاحب مشاريع");
+                            Picasso.get().load(ConstantInterFace.USER.getPhoto_link()).into(img_user);
+                        }
+
+
+                    }
+                });
+            }
+        });
     }
 
     @Override

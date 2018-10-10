@@ -537,7 +537,7 @@ public class ProfileFragment extends Fragment {
             }
 
 
-        } else {
+        } else if (!ConstantInterFace.IS_USER_COMPLETEED) {
 
             MyRequest myRequest = new MyRequest();
             Map<String, String> stringMap = new HashMap<>();
@@ -577,12 +577,15 @@ public class ProfileFragment extends Fragment {
                     public void onResponse(Call call, Response response) throws IOException, JSONException {
                         final JSONObject jsonObject = new JSONObject(response.body().string());
                         final JSONObject object = jsonObject.getJSONObject("status");
+
+
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 try {
                                     if (object.getBoolean("success")) {
                                         Toast.makeText(getContext(), "تم حفظ التعديلات", Toast.LENGTH_SHORT).show();
+                                        ConstantInterFace.IS_USER_COMPLETEED = true;
 
                                     } else {
                                         Toast.makeText(getActivity(), "لم يتم الارسال بشكل صحيح", Toast.LENGTH_SHORT).show();
@@ -622,6 +625,7 @@ public class ProfileFragment extends Fragment {
                             public void run() {
                                 try {
                                     if (object.getBoolean("success")) {
+                                        ConstantInterFace.IS_USER_COMPLETEED = true;
                                         Toast.makeText(getContext(), "تم حفظ التعديلات", Toast.LENGTH_SHORT).show();
 
                                     } else {

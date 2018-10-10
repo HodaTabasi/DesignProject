@@ -1,8 +1,10 @@
 package com.smm.sapp.sproject.Fragments;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -121,6 +123,35 @@ public class ViewProjectFragment extends Fragment {
         addOffer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (ConstantInterFace.IS_USER_COMPLETEED) {
+                    if (!ConstantInterFace.IS_PROPOSAL_OPENED) {
+                        addOffer.setBackgroundResource(R.drawable.dark_blue_shap);
+                        addOffer.setTextColor(getResources().getColor(R.color.white));
+                        linear_add_proposal.setVisibility(View.VISIBLE);
+                        ConstantInterFace.IS_PROPOSAL_OPENED = true;
+//                    pr_ditails.setVisibility(View.GONE);
+                        id = models.getId();
+                        addOnClickListener();
+
+
+                    } else if (ConstantInterFace.IS_PROPOSAL_OPENED) {
+                        addOffer.setBackgroundResource(R.drawable.report_layout_shap);
+                        addOffer.setTextColor(getResources().getColor(R.color.blue));
+                        linear_add_proposal.setVisibility(View.GONE);
+                        pr_ditails.setVisibility(View.VISIBLE);
+                        ConstantInterFace.IS_PROPOSAL_OPENED = false;
+                    }
+                } else if (!ConstantInterFace.IS_USER_COMPLETEED) {
+                    Snackbar snackbar = Snackbar.make(getView(), "يرجى تعبئة بياناتك الشخصية", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+
+                    TextView tv = (snackbar.getView()).findViewById(android.support.design.R.id.snackbar_text);
+                    tv.setTextSize(12f);
+                    Typeface font = Typeface.createFromAsset(getContext().getAssets(), "JFFlatregular.ttf");
+                    tv.setTypeface(font);
+                }
+
 //                AddProposalFragment fragment = new AddProposalFragment();
 //                Bundle bundle1 = new Bundle();
 //                bundle1.putInt("id", models.getId());
@@ -129,23 +160,6 @@ public class ViewProjectFragment extends Fragment {
 //                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
 
 
-                if (!ConstantInterFace.IS_PROPOSAL_OPENED) {
-                    addOffer.setBackgroundResource(R.drawable.dark_blue_shap);
-                    addOffer.setTextColor(getResources().getColor(R.color.white));
-                    linear_add_proposal.setVisibility(View.VISIBLE);
-                    ConstantInterFace.IS_PROPOSAL_OPENED = true;
-//                    pr_ditails.setVisibility(View.GONE);
-                    id = models.getId();
-                    addOnClickListener();
-
-
-                } else if (ConstantInterFace.IS_PROPOSAL_OPENED) {
-                    addOffer.setBackgroundResource(R.drawable.report_layout_shap);
-                    addOffer.setTextColor(getResources().getColor(R.color.blue));
-                    linear_add_proposal.setVisibility(View.GONE);
-                    pr_ditails.setVisibility(View.VISIBLE);
-                    ConstantInterFace.IS_PROPOSAL_OPENED = false;
-                }
             }
         });
 

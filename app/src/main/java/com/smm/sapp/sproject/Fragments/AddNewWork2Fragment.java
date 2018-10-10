@@ -1,8 +1,10 @@
 package com.smm.sapp.sproject.Fragments;
 
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -66,7 +68,16 @@ public class AddNewWork2Fragment extends Fragment {
         title1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AddNewWorkFragment(), true);
+                if (!ConstantInterFace.IS_USER_COMPLETEED) {
+                    Snackbar snackbar = Snackbar.make(getView(), "يرجى تعبئة بياناتك الشخصية", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                    TextView tv = (snackbar.getView()).findViewById(android.support.design.R.id.snackbar_text);
+                    tv.setTextSize(12f);
+                    Typeface font = Typeface.createFromAsset(getContext().getAssets(), "JFFlatregular.ttf");
+                    tv.setTypeface(font);
+                } else {
+                    FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AddNewWorkFragment(), true);
+                }
             }
         });
 
