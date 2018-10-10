@@ -115,7 +115,7 @@ public class MessageDitailsFragment extends Fragment implements View.OnClickList
 
     private void fileBrowse() {
         new ChooserDialog().with(getContext())
-                .withFilter(false, false, "jpg", "jpeg", "png","gif", "pdf", "docx", "xlsx")
+                .withFilter(false, false, "jpg", "jpeg", "png","gif", "pdf", "docx", "xlsx","txt")
                 .withStartFile(Environment.getExternalStorageDirectory().getPath())
                 .withChosenListener(new ChooserDialog.Result() {
                     @Override
@@ -211,6 +211,7 @@ public class MessageDitailsFragment extends Fragment implements View.OnClickList
                                 details.add(0,messageDetails);
                                 adapter.notifyDataSetChanged();
                                 mMessageEx.setText("");
+                                attchs_name.setVisibility(View.GONE);
                                 Log.e("115558676",object.toString());
                             }else {
                                 Toast.makeText(getContext(), "لم يتم الارسال", Toast.LENGTH_SHORT).show();

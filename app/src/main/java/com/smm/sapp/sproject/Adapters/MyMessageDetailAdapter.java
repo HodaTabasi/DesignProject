@@ -1,9 +1,13 @@
 package com.smm.sapp.sproject.Adapters;
 
+import android.app.DownloadManager;
 import android.content.Context;
 import android.graphics.Typeface;
+import android.media.Image;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +32,6 @@ public class MyMessageDetailAdapter extends RecyclerView.Adapter {
 
     private static final int VIEW_TYPE_MESSAGE_SENT = 1;
     private static final int VIEW_TYPE_MESSAGE_RECEIVED = 2;
-    boolean image = true;
 
     Context context;
     List<MessageDetails> details;
@@ -105,7 +108,7 @@ public class MyMessageDetailAdapter extends RecyclerView.Adapter {
             mAttachs.setTypeface(custom_font);
         }
 
-        void bind(MessageDetails message) {
+        void bind(final MessageDetails message) {
             Picasso.get().load(message.getUser().getPhoto_link()).into(imageView);
             mBody.setText(message.getMessage());
             if (message.getFile_link() == null){
@@ -121,6 +124,12 @@ public class MyMessageDetailAdapter extends RecyclerView.Adapter {
                     mAttachs.setVisibility(View.VISIBLE);
                     mimageView.setVisibility(View.GONE);
                     mAttachs.setText(URLUtil.guessFileName(message.getFile_link(), null, null));
+                    mAttachs.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dounloadAttachment(message.getFile_link(),1);
+                        }
+                    });
                 }
 
             }
@@ -149,7 +158,7 @@ public class MyMessageDetailAdapter extends RecyclerView.Adapter {
             //mName.setTypeface(custom_font);
         }
 
-        void bind(MessageDetails message) {
+        void bind(final MessageDetails message) {
             Picasso.get().load(message.getUser().getPhoto_link()).into(imageView);
             mBody.setText(message.getMessage());
             //mName.setText(message.getUser().getName());
@@ -167,33 +176,56 @@ public class MyMessageDetailAdapter extends RecyclerView.Adapter {
                     mAttachs.setVisibility(View.VISIBLE);
                     mimageView.setVisibility(View.GONE);
                     mAttachs.setText(URLUtil.guessFileName(message.getFile_link(), null, null));
-                }
 
+                    mAttachs.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dounloadAttachment(message.getFile_link(),1);
+                        }
+                    });
+                }
             }
 
         }
     }
 
     private Boolean ifAnImage(final String file_link) {
+        String word = ".";
 
-        Thread thread = new Thread() {
-            @Override
-            public void run() {
-                while(true) {
-                    URLConnection connection = null;
-                    try {
-                        connection = new URL(file_link).openConnection();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    String contentType = connection.getHeaderField("Content-Type");
-                     image = contentType.startsWith("image/");
-                }
-            }
-        };
+//        System.out.println(file_link.indexOf(word)); // prints "4"
+//        System.out.println(file_link.lastIndexOf(word)); // prints "22"
 
-        thread.start();
+        String s = file_link.substring(file_link.lastIndexOf(word));
 
-        return image;
+        if (s.equals(".jpg") || s.equals(".jpeg") || s.equals(".png") || s.equals(".gif")){
+            return true;
+        }else {
+            return false;
+        }
+//        Thread thread = new Thread() {
+//            @Override
+//            public void run() {
+//                while(true) {
+//                    URLConnection connection = null;
+//                    try {
+//                        connection = new URL(file_link).openConnection();
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                    String contentType = connection.getHeaderField("Content-Type");
+//                     image = contentType.startsWith("image/");
+//                }
+//            }
+//        };
+//
+//        thread.start();
+    }
+
+    private void dounloadAttachment(String file_link, int ids) {
+        Uri downloadUri = Uri.parse(file_link);
+        DownloadManager downloadManager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+        DownloadManager.Request request = new DownloadManager.Request(downloadUri);
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+        long id = downloadManager.enqueue(request);
     }
 }
