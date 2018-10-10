@@ -49,7 +49,6 @@ public class AddProposalFragment extends Fragment {
     private TextView mAttchP;
     private TextView mAddProposalP;
     private String filePath;
-    private byte[] b;
     int id;
     ImageView ic_back;
     TextView back_two;

@@ -42,6 +42,7 @@ dependencies {
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     implementation 'com.github.aakira:expandable-layout:1.6.0@aar'
+    implementation 'com.github.hani-momanii:SuperNova-Emoji:1.1'
 }
 // ADD THIS AT THE BOTTOM
 apply plugin: 'com.google.gms.google-services'
