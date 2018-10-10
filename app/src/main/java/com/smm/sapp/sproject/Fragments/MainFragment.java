@@ -120,9 +120,7 @@ public class MainFragment extends Fragment {
             } else {
                 _specialization.setText("صاحب مشاريع");
             }
-
         }
-
 
         img_user.setOnClickListener(new View.OnClickListener() {
             @Override
