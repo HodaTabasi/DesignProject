@@ -303,9 +303,15 @@ public class SearchFragment extends Fragment {
                             try {
                                 profilesList = gson.fromJson(object.getJSONArray("workers").toString(), token.getType());
                                 for (int i = 0; i < profilesList.size(); i++) {
-                                    if (profilesList.get(i).getName().equals(ConstantInterFace.USER.getName())) {
-                                        profilesList.remove(i);
+                                    try {
+                                        if (profilesList.get(i).getName().equals(ConstantInterFace.USER.getName())) {
+                                            profilesList.remove(i);
+                                        }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+
                                     }
+
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();

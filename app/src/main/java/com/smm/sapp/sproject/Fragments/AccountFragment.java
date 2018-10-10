@@ -75,18 +75,6 @@ public class AccountFragment extends Fragment {
             onClickMethod();
             getProfileDataRequest();
         }
-//        else {
-//            new AlertDialog.Builder(getActivity())
-//                    .setMessage("انت غير مسجل هل تريد تسجيل الدخول ؟").setCancelable(false)
-//                    .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
-//                        public void onClick(DialogInterface dialog, int id) {
-//                            FragmentsUtil.replaceFragment(getActivity(),R.id.container_activity,new  RegisterFragment());
-//                        }
-//                    })
-//                    .setNegativeButton("لا", null)
-//                    .show();
-//        }
-
     }
 
     private void init() {
@@ -117,20 +105,62 @@ public class AccountFragment extends Fragment {
         tv_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ProfileFragment fragment = new ProfileFragment();
-                Bundle bundle = new Bundle();
-                bundle.putString("type", userModel.getType());
-                bundle.putString("job_type", userModel.getJob_type());
-                bundle.putString("busniess_type", userModel.getBusniess_type());
-                bundle.putString("name", userModel.getName());
-                bundle.putString("bio", userModel.getBio());
-                bundle.putString("mobile", userModel.getPhone());
-                bundle.putString("email", userModel.getEmail());
-                bundle.putString("gender", userModel.getGender());
-                bundle.putString("dob", userModel.getDob());
+                if (ConstantInterFace.IS_USER_COMPLETEED) {
+                    if (userModel.getType().equals("worker")) {
+                        ProfileFragment fragment = new ProfileFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("type", userModel.getType());
+                        bundle.putString("job_type", userModel.getJob_type());
+                        bundle.putString("busniess_type", userModel.getBusniess_type());
+                        bundle.putString("name", userModel.getName());
+                        bundle.putString("bio", userModel.getBio());
+                        bundle.putString("bu_mobile", userModel.getPhone());
+                        bundle.putString("email", userModel.getEmail());
+                        bundle.putString("bu_gender", userModel.getGender());
+                        bundle.putString("dob", userModel.getDob());
 
-                fragment.setArguments(bundle);
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
+                        fragment.setArguments(bundle);
+                        FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
+
+                        Log.e("eee", userModel.getType());
+                        Log.e("eee", userModel.getJob_type());
+                        Log.e("eee", userModel.getBusniess_type());
+                        Log.e("eee", userModel.getName());
+                        Log.e("eee", userModel.getBio());
+                        Log.e("eee", userModel.getPhone());
+                        Log.e("eee", userModel.getEmail());
+                        Log.e("eee", userModel.getGender());
+                        Log.e("eee", userModel.getDob());
+
+                    } else if (userModel.getType().equals("client")) {
+                        ProfileFragment fragment = new ProfileFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("type", userModel.getType());
+                        bundle.putString("name", userModel.getName());
+                        bundle.putString("bu_mobile", userModel.getPhone());
+                        bundle.putString("email", userModel.getEmail());
+                        bundle.putString("bu_gender", userModel.getGender());
+                        bundle.putString("dob", userModel.getDob());
+
+                        Log.e("eee", userModel.getType());
+                        Log.e("eee", userModel.getName());
+                        Log.e("eee", userModel.getPhone());
+                        Log.e("eee", userModel.getEmail());
+                        Log.e("eee", userModel.getGender());
+                        Log.e("eee", userModel.getDob());
+
+                        fragment.setArguments(bundle);
+                        FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
+                    }
+
+                } else {
+                    ProfileFragment fragment = new ProfileFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("phone", ConstantInterFace.USER.getPhone());
+                    fragment.setArguments(bundle);
+                    FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
+                }
+
             }
         });
 
@@ -187,7 +217,6 @@ public class AccountFragment extends Fragment {
         MyProgressDialog.showDialog(getContext());
         Map<String, String> stringMap = new HashMap<>();
         stringMap.put("token", ConstantInterFace.USER.getToken());
-        Log.e("12", ConstantInterFace.USER.getToken() + " ");
         myRequest.PostCall("http://smm.smmim.com/waell/public/api/myprofile", stringMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, final IOException e) {
@@ -214,28 +243,33 @@ public class AccountFragment extends Fragment {
                     @Override
                     public void run() {
 
-                        if (userModel.getType().equals("worker")) {
-                            tv_name.setText(userModel.getName());
-                            if (userModel.getJob_type().equals("arch")) {
-                                tv_title.setText("تصميم معماري");
-                            } else if (userModel.getJob_type().equals("graphic")) {
-                                tv_title.setText("تصميم جرافيكس");
-                            } else if (userModel.getJob_type().equals("inter")) {
-                                tv_title.setText("تصميم داخلي");
-                            } else if (userModel.getJob_type().equals("moshen")) {
-                                tv_title.setText("تصاميم موشن");
-                            } else if (userModel.getJob_type().equals("wall")) {
-                                tv_title.setText("الرسم الجداري");
+                        try {
+                            if (userModel.getType().equals("worker")) {
+                                tv_name.setText(userModel.getName());
+                                if (userModel.getJob_type().equals("arch")) {
+                                    tv_title.setText("تصميم معماري");
+                                } else if (userModel.getJob_type().equals("graphic")) {
+                                    tv_title.setText("تصميم جرافيكس");
+                                } else if (userModel.getJob_type().equals("inter")) {
+                                    tv_title.setText("تصميم داخلي");
+                                } else if (userModel.getJob_type().equals("moshen")) {
+                                    tv_title.setText("تصاميم موشن");
+                                } else if (userModel.getJob_type().equals("wall")) {
+                                    tv_title.setText("الرسم الجداري");
+                                }
+                                ratingBar.setRating(Float.valueOf(userModel.getRate()));
+
+                            } else if (userModel.getType().equals("client")) {
+
+                                tv_name.setText(userModel.getName());
+                                tv_title.setText("صاحب مشاريع");
+                                ratingBar.setRating(Float.valueOf(userModel.getRate()));
+
                             }
-                            ratingBar.setRating(Float.valueOf(userModel.getRate()));
-
-                        } else if (userModel.getType().equals("client")) {
-
-                            tv_name.setText(userModel.getName());
-                            tv_title.setText("صاحب مشاريع");
-                            ratingBar.setRating(Float.valueOf(userModel.getRate()));
+                        } catch (Exception e) {
 
                         }
+
 
                     }
                 });

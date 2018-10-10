@@ -91,7 +91,7 @@ public class LikesDesignAdapter extends RecyclerView.Adapter<LikesDesignAdapter.
             d_layout_rate = itemView.findViewById(R.id.d_layout_rate);
             chooses_me = itemView.findViewById(R.id.chooses_me);
             d_layout_fav = itemView.findViewById(R.id.d_layout_fav);
-            d_layout_fav.setVisibility(View.INVISIBLE);
+            d_layout_fav.setVisibility(View.GONE);
             Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
             d_layout_name.setTypeface(custom_font);
             d_layout_specialty.setTypeface(custom_font);

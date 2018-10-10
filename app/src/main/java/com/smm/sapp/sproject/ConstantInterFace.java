@@ -19,6 +19,8 @@ public class ConstantInterFace {
 
     public static Boolean IS_PROPOSAL_OPENED = false;
 
+    public static Boolean IS_USER_COMPLETEED = false;
+
 
     public static final String CHANNEL_ID = "my_channel_01";
     public static final String CHANNEL_NAME = "Simplified Coding Notification";

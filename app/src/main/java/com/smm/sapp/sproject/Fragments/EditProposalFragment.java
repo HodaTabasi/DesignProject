@@ -42,56 +42,27 @@ import okhttp3.Response;
 public class EditProposalFragment extends Fragment {
 
     ImageView ic_back;
-    /**
-     * تصفح المشاريع
-     */
     private TextView mTvAccount;
     private ImageView mIcBack;
     private RelativeLayout mToolbar;
     private CircleImageView mImg;
-    /**
-     * حسام اليماني
-     */
     private TextView mTvName;
     private RatingBar mRateBar;
-    /**
-     * مصمم معماري
-     */
     private TextView mTvSpecialization;
-    /**
-     * في 34 يوم
-     */
     private TextView mDay;
-    /**
-     * معرض الاعمال
-     */
     private TextView mExhibition;
-    /**
-     * السعر 5000 ريال
-     */
     private TextView mMoney;
     private LinearLayout mLinear;
     private View mView;
-    /**
-     * نننننننكككك
-     */
     private EditText mEtProposal;
     private View mView2;
-    /**
-     * تعديل العرض
-     */
     private TextView mEdit;
-    /**
-     * اعتماد العرض
-     */
     private TextView mAtidim;
-    /**
-     * محادثة المصمم
-     */
     private TextView mTalk;
     private LinearLayout mDwe;
     User user;
     OfferModel model;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -118,11 +89,11 @@ public class EditProposalFragment extends Fragment {
             }
         });
         onClickMethod();
-        if (ConstantInterFace.USER.getType().equals("worker")){
+        if (ConstantInterFace.USER.getType().equals("worker")) {
             mEdit.setVisibility(View.VISIBLE);
             mDwe.setVisibility(View.GONE);
             mEtProposal.setEnabled(true);
-        }else {
+        } else {
             mDwe.setVisibility(View.VISIBLE);
             mEdit.setVisibility(View.GONE);
             mEtProposal.setEnabled(false);
@@ -134,9 +105,9 @@ public class EditProposalFragment extends Fragment {
     private void getUserProfile(int id) {
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
-        Map<String,String> stringMap = new HashMap<>();
-        stringMap.put("token",ConstantInterFace.USER.getToken());
-        stringMap.put("user_id",id+"");
+        Map<String, String> stringMap = new HashMap<>();
+        stringMap.put("token", ConstantInterFace.USER.getToken());
+        stringMap.put("user_id", id + "");
         myRequest.PostCall("http://smm.smmim.com/waell/public/api/userprofile", stringMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -151,10 +122,10 @@ public class EditProposalFragment extends Fragment {
             }
 
             @Override
-            public void onResponse(Call call,  Response response) throws IOException, JSONException {
+            public void onResponse(Call call, Response response) throws IOException, JSONException {
                 MyProgressDialog.dismissDialog();
                 String s = response.body().string();
-                Log.e("dd",s);
+                Log.e("dd", s);
                 final JSONObject object = new JSONObject(s);
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
@@ -163,10 +134,10 @@ public class EditProposalFragment extends Fragment {
 
                             JSONObject object1 = object.getJSONObject("status");
                             Gson gson = new Gson();
-                            if (object1.getBoolean("success")){
-                                user = gson.fromJson(object.getJSONObject("user").toString(),User.class);
+                            if (object1.getBoolean("success")) {
+                                user = gson.fromJson(object.getJSONObject("user").toString(), User.class);
                                 putData(user);
-                            }else {
+                            } else {
 
                             }
                         } catch (JSONException e) {
@@ -181,10 +152,10 @@ public class EditProposalFragment extends Fragment {
     private void approveAnOffer(int id) {
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
-        Map<String,String> stringMap = new HashMap<>();
-        stringMap.put("token",ConstantInterFace.USER.getToken());
-        stringMap.put("offer_id",id+"");
-        stringMap.put("project_id",model.getProject_id());
+        Map<String, String> stringMap = new HashMap<>();
+        stringMap.put("token", ConstantInterFace.USER.getToken());
+        stringMap.put("offer_id", id + "");
+        stringMap.put("project_id", model.getProject_id());
         myRequest.PostCall("http://smm.smmim.com/waell/public/api/approveanoffer", stringMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -199,10 +170,10 @@ public class EditProposalFragment extends Fragment {
             }
 
             @Override
-            public void onResponse(Call call,  Response response) throws IOException, JSONException {
+            public void onResponse(Call call, Response response) throws IOException, JSONException {
                 MyProgressDialog.dismissDialog();
                 String s = response.body().string();
-                Log.e("dd",s);
+                Log.e("dd", s);
                 final JSONObject object = new JSONObject(s);
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
@@ -210,9 +181,9 @@ public class EditProposalFragment extends Fragment {
                         try {
 
                             JSONObject object1 = object.getJSONObject("status");
-                            if (object1.getBoolean("success")){
-                                Toast.makeText(getActivity(),"تم اعتماد العرض",Toast.LENGTH_LONG).show();
-                            }else {
+                            if (object1.getBoolean("success")) {
+                                Toast.makeText(getActivity(), "تم اعتماد العرض", Toast.LENGTH_LONG).show();
+                            } else {
                                 Toast.makeText(getActivity(), "حصل خطا ما", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
@@ -225,24 +196,34 @@ public class EditProposalFragment extends Fragment {
     }
 
     private void putData(User user) {
-        Picasso.get().load(user.getPhoto_link()).into(mImg);
-        mTvName.setText(user.getName());
 
-        if(user.getJob_type().equals("inter")){
-            mTvSpecialization.setText("مصمم داخلي");
-        }else if(user.getJob_type().equals("arch")){
-            mTvSpecialization.setText("مصمم معمماري");
-        }else if(user.getJob_type().equals("graphic")){
-            mTvSpecialization.setText("مصمم جرافيكس");
-        }else if(user.getJob_type().equals("moshen")){
-            mTvSpecialization.setText("مصمم موشن");
-        }else if(user.getJob_type().equals("wall")){
-            mTvSpecialization.setText("مصمم جداري");
+        try {
+            Picasso.get().load(user.getPhoto_link()).into(mImg);
+            mTvName.setText(user.getName());
+            mRateBar.setRating(Float.valueOf(user.getRate()));
+
+            if (user.getJob_type().equals("inter")) {
+                mTvSpecialization.setText("مصمم داخلي");
+            } else if (user.getJob_type().equals("arch")) {
+                mTvSpecialization.setText("مصمم معمماري");
+            } else if (user.getJob_type().equals("graphic")) {
+                mTvSpecialization.setText("مصمم جرافيكس");
+            } else if (user.getJob_type().equals("moshen")) {
+                mTvSpecialization.setText("مصمم موشن");
+            } else if (user.getJob_type().equals("wall")) {
+                mTvSpecialization.setText("مصمم جداري");
+            }
+
+            mMoney.setText(" السعر " + "" + model.getBalance() + " ريال ");
+            mDay.setText(" في " + model.getDur() + " يوم ");
+            mEtProposal.setText(model.getDescr());
+        } catch (Exception e) {
+
         }
 
-        mMoney.setText(" السعر " +""+ model.getBalance() + " ريال ");
-        mDay.setText(" في " + model.getDur() +" يوم ");
-        mEtProposal.setText(model.getDescr());
+
+        Log.e("pppppppp", user.getName() + user.getRate() + user.getJob_type() + model.getBalance()
+                + model.getDur() + model.getDescr());
     }
 
     private void initView(View view) {
@@ -265,7 +246,8 @@ public class EditProposalFragment extends Fragment {
         mTalk = (TextView) view.findViewById(R.id.talk);
         mDwe = (LinearLayout) view.findViewById(R.id.dwe);
     }
-    private void onClickMethod(){
+
+    private void onClickMethod() {
 
         mEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -274,10 +256,10 @@ public class EditProposalFragment extends Fragment {
                     ViewProjectFragment fragment = new ViewProjectFragment();
                     Bundle bundle = new Bundle();
                     bundle.putParcelable("object", model);
-                    bundle.putBoolean("flag",true);
+                    bundle.putBoolean("flag", true);
                     fragment.setArguments(bundle);
                     FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
-                }  else
+                } else
                     Toast.makeText(getContext(), "لا يمكن التعديل على هذا العرض ", Toast.LENGTH_SHORT).show();
             }
         });
@@ -294,10 +276,10 @@ public class EditProposalFragment extends Fragment {
             public void onClick(View v) {
                 UnderwayFragment fragment = new UnderwayFragment();
                 Bundle bundle = new Bundle();
-                bundle.putParcelable("offer",model);
-                bundle.putParcelable("user",user);
+                bundle.putParcelable("offer", model);
+                bundle.putParcelable("user", user);
                 fragment.setArguments(bundle);
-                FragmentsUtil.replaceFragment(getActivity(),R.id.container_activity,fragment,true);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
             }
         });
     }

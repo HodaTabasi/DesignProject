@@ -89,7 +89,7 @@
             android:background="@drawable/account_shape"
             android:gravity="center"
             android:padding="5dp"
-            android:text="تصاميم جرافكس"
+            android:text="تصميم جرافكس"
             android:textColor="@color/textGray"
             android:textSize="8sp" />
 

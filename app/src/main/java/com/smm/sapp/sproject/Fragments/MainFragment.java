@@ -49,7 +49,7 @@ public class MainFragment extends Fragment {
     TextView tv_about;
     TextView tv_search;
     ImageView img_power;
-    ImageView img_notification;
+    ImageView img_notification, img_edit;
     String refreshedToken;
 
     public MainFragment() {
@@ -74,28 +74,55 @@ public class MainFragment extends Fragment {
         tv_search = view.findViewById(R.id.tv_search);
         img_power = view.findViewById(R.id.img_power);
         img_notification = view.findViewById(R.id.img_notification);
+        img_edit = view.findViewById(R.id.img_edit);
         refreshedToken = FirebaseInstanceId.getInstance().getToken();
     }
 
     private void onClickMethod() {
-        _name.setText(ConstantInterFace.USER.getName());
-        Picasso.get().load(ConstantInterFace.USER.getPhoto_link()).into(img_user);
 
-        if (ConstantInterFace.USER.getType().equals("worker")) {
-            if (ConstantInterFace.USER.getJob_type().equals("arch")) {
-                _specialization.setText("مصمم معماري");
-            } else if (ConstantInterFace.USER.getJob_type().equals("wall")) {
-                _specialization.setText("مصمم جداري");
-            } else if (ConstantInterFace.USER.getJob_type().equals("graphic")) {
-                _specialization.setText("مصمم جرافكس");
-            } else if (ConstantInterFace.USER.getJob_type().equals("inter")) {
-                _specialization.setText("مصمم داخلي");
-            } else if (ConstantInterFace.USER.getJob_type().equals("moshen")) {
-                _specialization.setText("مصمم موشن");
-            }
+        if (ConstantInterFace.USER.getPhoto_link() == null &&
+                ConstantInterFace.USER.getName() == null &&
+                ConstantInterFace.USER.getJob_type() == null) {
+
+            ConstantInterFace.IS_USER_COMPLETEED = false;
+            Log.e("ttttttttttt", ConstantInterFace.USER.getPhone());
+            img_edit.setImageResource(R.drawable.ic_edit_red);
+            _name.setText("");
+            _specialization.setText("");
+
+            Snackbar snackbar = Snackbar.make(getView(), "يرجى تعبئة بياناتك الشخصية", Snackbar.LENGTH_LONG);
+            snackbar.show();
+
+            TextView tv = (snackbar.getView()).findViewById(android.support.design.R.id.snackbar_text);
+            tv.setTextSize(12f);
+            Typeface font = Typeface.createFromAsset(getContext().getAssets(), "JFFlatregular.ttf");
+            tv.setTypeface(font);
+
         } else {
-            _specialization.setText("صاحب مشاريع");
+
+            ConstantInterFace.IS_USER_COMPLETEED = true;
+
+            _name.setText(ConstantInterFace.USER.getName());
+            Picasso.get().load(ConstantInterFace.USER.getPhoto_link()).into(img_user);
+
+            if (ConstantInterFace.USER.getType().equals("worker")) {
+                if (ConstantInterFace.USER.getJob_type().equals("arch")) {
+                    _specialization.setText("مصمم معماري");
+                } else if (ConstantInterFace.USER.getJob_type().equals("wall")) {
+                    _specialization.setText("مصمم جداري");
+                } else if (ConstantInterFace.USER.getJob_type().equals("graphic")) {
+                    _specialization.setText("مصمم جرافكس");
+                } else if (ConstantInterFace.USER.getJob_type().equals("inter")) {
+                    _specialization.setText("مصمم داخلي");
+                } else if (ConstantInterFace.USER.getJob_type().equals("moshen")) {
+                    _specialization.setText("مصمم موشن");
+                }
+            } else {
+                _specialization.setText("صاحب مشاريع");
+            }
+
         }
+
 
         img_user.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,7 +152,7 @@ public class MainFragment extends Fragment {
         tv_addProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (ConstantInterFace.USER.getType().equals("client")){
+                if (ConstantInterFace.USER.getType().equals("client")) {
                     AddProjectFragment fragment = new AddProjectFragment();
                     Bundle bundle = new Bundle();
                     fragment.setArguments(bundle);

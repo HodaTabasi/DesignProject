@@ -59,7 +59,7 @@ public class AccountSearchFragment extends Fragment {
     ArrayList<ProjectsModels> inProgressProjectList = new ArrayList<>();
 
     SkillsSearchAdapter adapter;
-
+    int rate;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -248,7 +248,12 @@ public class AccountSearchFragment extends Fragment {
 
                                 int finished = finishedProjectList.size();
                                 int in_progress = inProgressProjectList.size();
-                                int rate = (finished/in_progress)*100;
+
+                                try {
+                                     rate = (finished/in_progress)*100;
+                                }catch (Exception e){
+
+                                }
 
                                 tv_completed.setText(String.valueOf(finished));
                                 tv_inProgress.setText(String.valueOf(in_progress));

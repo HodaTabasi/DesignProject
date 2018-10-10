@@ -118,7 +118,7 @@ public class LikesPWorkAdapter extends RecyclerView.Adapter<LikesPWorkAdapter.Li
             fav = itemView.findViewById(R.id.tv_fav);
             view = itemView.findViewById(R.id.img);
 
-            fav.setVisibility(View.INVISIBLE);
+            fav.setVisibility(View.GONE);
 
             Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
             show.setTypeface(custom_font);
