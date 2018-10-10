@@ -89,7 +89,6 @@ public class MainFragment extends Fragment {
             getProfileData();
 
         }
-
         else if (ConstantInterFace.USER.getPhoto_link() == null &&
                 ConstantInterFace.USER.getName() == null &&
                 ConstantInterFace.USER.getJob_type() == null) {
