@@ -2,7 +2,10 @@ package com.smm.sapp.sproject.Fragments;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.Typeface;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -13,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,6 +57,7 @@ public class MainFragment extends Fragment {
     ImageView img_power;
     ImageView img_notification, img_edit;
     String refreshedToken;
+    RatingBar ratting_designer;
 
     UserModel userModel;
 
@@ -80,7 +85,11 @@ public class MainFragment extends Fragment {
         img_power = view.findViewById(R.id.img_power);
         img_notification = view.findViewById(R.id.img_notification);
         img_edit = view.findViewById(R.id.img_edit);
+        ratting_designer = view.findViewById(R.id.ratting_designer);
         refreshedToken = FirebaseInstanceId.getInstance().getToken();
+
+        LayerDrawable stars = (LayerDrawable) ratting_designer.getProgressDrawable();
+        stars.getDrawable(0).setColorFilter(Color.WHITE,PorterDuff.Mode.SRC_ATOP);
     }
 
     private void onClickMethod() {
