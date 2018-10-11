@@ -290,7 +290,7 @@ public class ProfileFragment extends Fragment {
         } else {
             bu_mobile = bundle.getString("phone");
             et_mobile2.setText(bu_mobile.substring(0, 3));
-            et_mobile1.setText(bu_mobile.substring(4));
+            et_mobile1.setText(bu_mobile.substring(3));
             bu_type = "worker";
             tv_worker.setBackground(getResources().getDrawable(R.drawable.solid_account_shape));
             tv_worker.setTextColor(Color.WHITE);
@@ -357,7 +357,8 @@ public class ProfileFragment extends Fragment {
             et_name.setText(bu_name);
             et_bio.setText(bu_bio);
             et_mobile2.setText(bu_mobile.substring(0, 3));
-            et_mobile1.setText(bu_mobile.substring(4));
+            et_mobile1.setText(bu_mobile.substring(3));
+
             et_email.setText(bu_email);
             if (bu_gender.equals("female")) {
                 sp_gender.setSelection(1);
@@ -401,7 +402,7 @@ public class ProfileFragment extends Fragment {
 
         et_name.setText(bu_name);
         et_mobile2.setText(bu_mobile.substring(0, 3));
-        et_mobile1.setText(bu_mobile.substring(4));
+        et_mobile1.setText(bu_mobile.substring(3));
         et_email.setText(bu_email);
         if (bu_gender.equals("female")) {
             sp_gender.setSelection(1);

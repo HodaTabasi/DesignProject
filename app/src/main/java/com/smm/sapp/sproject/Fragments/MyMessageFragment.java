@@ -66,6 +66,15 @@ public class MyMessageFragment extends Fragment {
         ic_back = getView().findViewById(R.id.ic_back);
 
     }
+
+    private void setBottomBar() {
+        ConstantInterFace.tv_msgs.setBackground(getResources().getDrawable(R.drawable.main_shape));
+        ConstantInterFace.tv_home.setBackgroundResource(0);
+        ConstantInterFace.tv_profile.setBackgroundResource(0);
+        ConstantInterFace.tv_portfolio.setBackgroundResource(0);
+        ConstantInterFace.tv_projects.setBackgroundResource(0);
+    }
+
     private void getMyConversationsRequest(){
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
@@ -110,6 +119,7 @@ public class MyMessageFragment extends Fragment {
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView(getView());
+        setBottomBar();
         getMyConversationsRequest();
 
         ic_back.setOnClickListener(new View.OnClickListener() {

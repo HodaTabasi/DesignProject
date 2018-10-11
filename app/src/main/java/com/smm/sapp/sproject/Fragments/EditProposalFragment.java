@@ -98,6 +98,7 @@ public class EditProposalFragment extends Fragment {
             mEdit.setVisibility(View.GONE);
             mEtProposal.setEnabled(false);
         }
+        Log.e("id",model.getId()+"");
         getUserProfile(model.getId());
 
     }
@@ -282,5 +283,18 @@ public class EditProposalFragment extends Fragment {
                 FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
             }
         });
+
+        mExhibition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToPortfolio(model.getId());
+                Log.e("id",model.getId()+"");
+
+            }
+        });
+    }
+
+    private void goToPortfolio(int id) {
+
     }
 }

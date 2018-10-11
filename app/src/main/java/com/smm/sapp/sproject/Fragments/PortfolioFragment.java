@@ -65,6 +65,8 @@ public class PortfolioFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
+
+        setBottomBar();
         initView();
 
         bundle = getArguments();
@@ -240,6 +242,14 @@ public class PortfolioFragment extends Fragment {
             }
         });
 
+    }
+
+    private void setBottomBar() {
+        ConstantInterFace.tv_portfolio.setBackground(getResources().getDrawable(R.drawable.main_shape));
+        ConstantInterFace.tv_projects.setBackgroundResource(0);
+        ConstantInterFace.tv_profile.setBackgroundResource(0);
+        ConstantInterFace.tv_home.setBackgroundResource(0);
+        ConstantInterFace.tv_msgs.setBackgroundResource(0);
     }
 
     private void getDesignerPworks(int id, final String name) {

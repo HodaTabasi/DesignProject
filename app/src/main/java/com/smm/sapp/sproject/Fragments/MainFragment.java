@@ -1,8 +1,10 @@
 package com.smm.sapp.sproject.Fragments;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -22,6 +24,7 @@ import com.smm.sapp.sproject.Activities.RegistrationActivity;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
+import com.smm.sapp.sproject.HelperClass.PathUtil;
 import com.smm.sapp.sproject.Models.UserModel;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
@@ -32,6 +35,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,6 +43,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import me.anwarshahriar.calligrapher.Calligrapher;
 import okhttp3.Call;
 import okhttp3.Response;
+
+import static android.app.Activity.RESULT_OK;
 
 public class MainFragment extends Fragment {
     CircleImageView img_user;
@@ -55,6 +61,7 @@ public class MainFragment extends Fragment {
     String refreshedToken;
 
     UserModel userModel;
+    private static final int REQUEST_CODE = 1;
 
 
     public MainFragment() {
@@ -88,8 +95,7 @@ public class MainFragment extends Fragment {
         if (ConstantInterFace.IS_USER_COMPLETEED) {
             getProfileData();
 
-        }
-        else if (ConstantInterFace.USER.getPhoto_link() == null &&
+        } else if (ConstantInterFace.USER.getPhoto_link() == null &&
                 ConstantInterFace.USER.getName() == null &&
                 ConstantInterFace.USER.getJob_type() == null) {
 
@@ -111,7 +117,6 @@ public class MainFragment extends Fragment {
                 ConstantInterFace.USER.getName() != null ||
                 ConstantInterFace.USER.getJob_type() != null) {
 
-            Log.e("yyyyyyyyyy", "ttttttttt");
             ConstantInterFace.IS_USER_COMPLETEED = true;
             getProfileData();
 
@@ -136,10 +141,17 @@ public class MainFragment extends Fragment {
 //            }
         }
 
+        img_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProfileFragment(), true);
+            }
+        });
+
         img_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AccountFragment(), true);
+                //openGallery();
             }
         });
 
@@ -213,6 +225,11 @@ public class MainFragment extends Fragment {
 
     }
 
+    private void openGallery() {
+        Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(pickPhoto, REQUEST_CODE);
+    }
+
     private void getProfileData() {
         MyRequest myRequest = new MyRequest();
         Map<String, String> stringMap = new HashMap<>();
@@ -281,6 +298,7 @@ public class MainFragment extends Fragment {
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
 
+        setBottomBar();
         init(getView());
 //        changeToken();
 
@@ -371,6 +389,14 @@ public class MainFragment extends Fragment {
 
     }
 
+    private void setBottomBar() {
+        ConstantInterFace.tv_home.setBackground(getResources().getDrawable(R.drawable.main_shape));
+        ConstantInterFace.tv_projects.setBackgroundResource(0);
+        ConstantInterFace.tv_profile.setBackgroundResource(0);
+        ConstantInterFace.tv_portfolio.setBackgroundResource(0);
+        ConstantInterFace.tv_msgs.setBackgroundResource(0);
+    }
+
     private void changeToken() {
         MyProgressDialog.showDialog(getActivity());
         MyRequest request = new MyRequest();
@@ -422,5 +448,25 @@ public class MainFragment extends Fragment {
         Typeface font = Typeface.createFromAsset(getContext().getAssets(), "JFFlatregular.ttf");
         tv.setTypeface(font);
         tv2.setTypeface(font);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+                Uri selectedImage = data.getData();
+                try {
+                    String filePath = PathUtil.getPath(getActivity(), selectedImage);
+                    Log.e("dd", " " + filePath);
+                    //attachMap.put("similars[" + (k++) + "]", filePath);
+                    Toast.makeText(getContext(), "تم اضافة الصورة بنجاح", Toast.LENGTH_SHORT).show();
+                } catch (URISyntaxException e) {
+                    e.printStackTrace();
+
+                }
+            }
+
+        }
     }
 }

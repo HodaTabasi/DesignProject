@@ -1,6 +1,9 @@
 package com.smm.sapp.sproject.Fragments;
 
+import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -19,6 +22,7 @@ import android.widget.Toast;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
+import com.smm.sapp.sproject.HelperClass.PathUtil;
 import com.smm.sapp.sproject.Models.SkillsModel;
 import com.smm.sapp.sproject.Models.UserModel;
 import com.smm.sapp.sproject.MyRequest;
@@ -30,6 +34,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,9 +55,10 @@ public class AccountFragment extends Fragment {
     TextView tv_title;
     RatingBar ratingBar;
     LinearLayout linear_rate;
-    ImageView ic_back;
+    ImageView ic_back, img_user, img_edit;
 
     String name, title;
+    private static final int REQUEST_CODE = 1;
 
     public AccountFragment() {
     }
@@ -70,11 +76,20 @@ public class AccountFragment extends Fragment {
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
 
+        setBottomBar();
         init();
         if (!ConstantInterFace.IS_REGISTER) {
             onClickMethod();
             getProfileDataRequest();
         }
+    }
+
+    private void setBottomBar() {
+        ConstantInterFace.tv_profile.setBackground(getResources().getDrawable(R.drawable.main_shape));
+        ConstantInterFace.tv_projects.setBackgroundResource(0);
+        ConstantInterFace.tv_portfolio.setBackgroundResource(0);
+        ConstantInterFace.tv_home.setBackgroundResource(0);
+        ConstantInterFace.tv_msgs.setBackgroundResource(0);
     }
 
     private void init() {
@@ -88,9 +103,29 @@ public class AccountFragment extends Fragment {
         ratingBar = getView().findViewById(R.id.account_rate);
         linear_rate = getView().findViewById(R.id.linear_rate);
         ic_back = getView().findViewById(R.id.ic_back);
+        img_user = getView().findViewById(R.id.img_user);
+        img_edit = getView().findViewById(R.id.img_edit);
+
     }
 
     private void onClickMethod() {
+
+        img_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProfileFragment(), true);
+
+            }
+        });
+
+        img_user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//                startActivityForResult(pickPhoto, REQUEST_CODE);
+            }
+        });
+
         linear_rate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -275,5 +310,25 @@ public class AccountFragment extends Fragment {
                 });
             }
         });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+                Uri selectedImage = data.getData();
+                try {
+                    String filePath = PathUtil.getPath(getActivity(), selectedImage);
+                    Log.e("dd", " " + filePath);
+                    //attachMap.put("similars[" + (k++) + "]", filePath);
+                    Toast.makeText(getContext(), "تم اضافة الصورة بنجاح", Toast.LENGTH_SHORT).show();
+                } catch (URISyntaxException e) {
+                    e.printStackTrace();
+
+                }
+            }
+
+        }
     }
 }

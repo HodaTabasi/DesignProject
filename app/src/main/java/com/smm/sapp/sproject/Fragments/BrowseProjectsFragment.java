@@ -74,7 +74,16 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         getProjects("getallprojects");
         initView();
+        setBottomBar();
         setListener();
+    }
+
+    private void setBottomBar() {
+        ConstantInterFace.tv_projects.setBackground(getResources().getDrawable(R.drawable.main_shape));
+        ConstantInterFace.tv_home.setBackgroundResource(0);
+        ConstantInterFace.tv_profile.setBackgroundResource(0);
+        ConstantInterFace.tv_portfolio.setBackgroundResource(0);
+        ConstantInterFace.tv_msgs.setBackgroundResource(0);
     }
 
     private void initView() {

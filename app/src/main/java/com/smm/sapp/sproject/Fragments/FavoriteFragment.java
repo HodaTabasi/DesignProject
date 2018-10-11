@@ -157,7 +157,7 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
                 project.setTextColor(Color.parseColor("#000000"));
                 project.setBackgroundResource(R.drawable.account_shape);
 //                recyclerView.setVisibility(View.INVISIBLE);
-                recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+                recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
                 LikesDesignAdapter designAdapter = new LikesDesignAdapter(getContext(), R.layout.item_layout_profile, designList);
                 recyclerView.setAdapter(designAdapter);
                 break;
@@ -168,7 +168,7 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
                 designs.setBackgroundResource(R.drawable.account_shape);
                 project.setTextColor(Color.parseColor("#000000"));
                 project.setBackgroundResource(R.drawable.account_shape);
-                recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+                recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
                 LikesPWorkAdapter workAdapter = new LikesPWorkAdapter(getContext(), R.layout.fav2_row, workList);
                 recyclerView.setAdapter(workAdapter);
 //                recyclerView.setVisibility(View.INVISIBLE);

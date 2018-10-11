@@ -183,6 +183,10 @@ public class AccountSearchFragment extends Fragment {
         bundle = getArguments();
         models = bundle.getParcelable("worker");
 
+        StringBuilder name = new StringBuilder(models.getName());
+        Log.e("vvvvv", name.length() + "");
+
+
         tv_name.setText(models.getName());
         Picasso.get().load(models.getPhoto_link()).into(profileImg);
 
@@ -250,14 +254,14 @@ public class AccountSearchFragment extends Fragment {
                                 int in_progress = inProgressProjectList.size();
 
                                 try {
-                                     rate = (finished/in_progress)*100;
-                                }catch (Exception e){
+                                    rate = (finished / in_progress) * 100;
+                                } catch (Exception e) {
 
                                 }
 
                                 tv_completed.setText(String.valueOf(finished));
                                 tv_inProgress.setText(String.valueOf(in_progress));
-                                tv_rateProjects.setText(String.valueOf(rate)+"%");
+                                tv_rateProjects.setText(String.valueOf(rate) + "%");
 
                                 arrayList = gson.fromJson(userObj.getJSONArray("skills").toString(), token.getType());
                                 if (arrayList.isEmpty()) {
