@@ -107,7 +107,9 @@ public class SkillsFragment extends Fragment {
                     public void run() {
                         try {
                             if (jsonObject.getBoolean("success")) {
-                                Toast.makeText(getContext(), "" + jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "تم اضافة المهارة بنجاح", Toast.LENGTH_SHORT).show();
+                                et_experience.setText("");
+                                et_skill.setText("");
                                 notifys();
                             } else {
                                 Toast.makeText(getContext(), "" + jsonObject.getString("message"), Toast.LENGTH_SHORT).show();

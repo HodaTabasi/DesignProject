@@ -136,8 +136,19 @@ public class UnderwayFragment extends Fragment {
          user = bundle.getParcelable("user");
          model = bundle.getParcelable("offer");
 
-         mName.setText(user.getName());
-         mName1.setText(ConstantInterFace.USER.getName());
+//         mName.setText(user.getName());
+//         mName1.setText(ConstantInterFace.USER.getName());
+
+        StringBuilder s_name = new StringBuilder(user.getName());
+        for (int i = 0; i< s_name.length() - 1 ; i++){
+            s_name.setCharAt(i, '*');
+        }
+
+        StringBuilder s_name1 = new StringBuilder(ConstantInterFace.USER.getName());
+        for (int i = 0; i< s_name1.length() - 1 ; i++){
+            s_name1.setCharAt(i, '*');
+        }
+
          mProjectMoney.setText(model.getBalance());
          mProjectTime.setText(model.getDur());
          mProjectStartDate.setText(model.getCreated_at());

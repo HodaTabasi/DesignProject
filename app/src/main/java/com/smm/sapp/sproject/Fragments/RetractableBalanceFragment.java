@@ -2,6 +2,8 @@ package com.smm.sapp.sproject.Fragments;
 
 
 import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -91,7 +94,7 @@ public class RetractableBalanceFragment extends Fragment {
                         try {
                             if (statusObject.getBoolean("success")) {
                                 mRetractableRetBalance.setText(object.getString("drawable"));
-                                Toast.makeText(getContext(), " " + statusObject.getString("message"), Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(getContext(), " " + statusObject.getString("message"), Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(getContext(), " " + statusObject.getString("message"), Toast.LENGTH_SHORT).show();
                             }
@@ -116,6 +119,8 @@ public class RetractableBalanceFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 final Dialog dialog = new Dialog(getContext());
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //before
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.setContentView(R.layout.fragment_withdraw_balance);
                  et_uName =  dialog.findViewById(R.id.user_name_w);
                  et_bNumber =  dialog.findViewById(R.id.bank_number_w);

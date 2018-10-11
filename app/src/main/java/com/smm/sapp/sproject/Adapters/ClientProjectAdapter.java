@@ -46,12 +46,12 @@ public class ClientProjectAdapter extends RecyclerView.Adapter<ClientProjectAdap
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                MyOffersFragment fragment = new MyOffersFragment();
-//                Bundle bundle = new Bundle();
-//                bundle.putParcelable("object",projectsModels);
-//                bundle.putBoolean("flag",false);
-//                fragment.setArguments(bundle);
-//                FragmentsUtil.replaceFragment((FragmentActivity) context,R.id.container_activity,fragment,true);
+                MyOffersFragment fragment = new MyOffersFragment();
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("object",projectsModels);
+                bundle.putBoolean("flag",false);
+                fragment.setArguments(bundle);
+                FragmentsUtil.replaceFragment((FragmentActivity) context,R.id.container_activity,fragment,true);
             }
         });
     }

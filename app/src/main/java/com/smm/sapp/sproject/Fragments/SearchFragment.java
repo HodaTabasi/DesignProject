@@ -309,8 +309,7 @@ public class SearchFragment extends Fragment {
                                         }
                                     } catch (Exception e) {
                                         e.printStackTrace();
-
-                                    }
+                                        }
 
                                 }
                             } catch (JSONException e) {

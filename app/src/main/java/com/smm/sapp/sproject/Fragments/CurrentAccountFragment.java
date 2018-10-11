@@ -104,7 +104,7 @@ public class CurrentAccountFragment extends Fragment {
                                 mTotalCuBalance.setText(object.getString("all"));
                                 mRetractableCuBalance.setText(object.getString("drawable"));
                                 mAvailableCuBalance.setText(object.getString("avaliable"));
-                                Toast.makeText(getContext(), " " + statusObject.getString("message"), Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(getContext(), " " + statusObject.getString("message"), Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(getContext(), " " + statusObject.getString("message"), Toast.LENGTH_SHORT).show();
                             }

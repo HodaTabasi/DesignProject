@@ -70,9 +70,17 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
         pwork_id = list.get(position).getId();
 
         if (name != null) {
-            holder.tv_name.setText(name);
+            StringBuilder s_name = new StringBuilder(name);
+            for (int i = 0; i< s_name.length() - 1 ; i++){
+                s_name.setCharAt(i, '*');
+            }
+            holder.tv_name.setText(s_name);
         } else {
-            holder.tv_name.setText(list.get(position).getUser().getName());
+            StringBuilder s_name = new StringBuilder(list.get(position).getUser().getName());
+            for (int i = 0; i< s_name.length() - 1 ; i++){
+                s_name.setCharAt(i, '*');
+            }
+            holder.tv_name.setText(s_name);
         }
 
         holder.tv_show.setText(list.get(position).getViews());
@@ -107,7 +115,11 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
             @Override
             public void onClick(View view) {
                 if (ConstantInterFace.USER.getType().equals("worker")){
-                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AddNewWork2Fragment(),true);
+                     AddNewWork2Fragment fragment  = new AddNewWork2Fragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putBoolean("flag",false);
+                    fragment.setArguments(bundle);
+                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity,fragment ,true);
                 }else {
                     projectType = (String) list.get(position).getType();
                     AddProjectFragment fragment = new AddProjectFragment();

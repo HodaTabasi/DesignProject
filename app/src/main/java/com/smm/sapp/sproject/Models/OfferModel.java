@@ -33,6 +33,28 @@ public class OfferModel implements Parcelable {
     private String created_at;
     private String updated_at;
     private ProjectsModels project;
+    private User user;
+
+    public static final Creator<OfferModel> CREATOR = new Creator<OfferModel>() {
+        @Override
+        public OfferModel createFromParcel(Parcel in) {
+            return new OfferModel(in);
+        }
+
+        @Override
+        public OfferModel[] newArray(int size) {
+            return new OfferModel[size];
+        }
+    };
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 
     public ProjectsModels getProject() {
         return project;
@@ -56,17 +78,7 @@ public class OfferModel implements Parcelable {
         updated_at = in.readString();
     }
 
-    public static final Creator<OfferModel> CREATOR = new Creator<OfferModel>() {
-        @Override
-        public OfferModel createFromParcel(Parcel in) {
-            return new OfferModel(in);
-        }
 
-        @Override
-        public OfferModel[] newArray(int size) {
-            return new OfferModel[size];
-        }
-    };
 
     public int getId() {
         return id;
@@ -164,6 +176,7 @@ public class OfferModel implements Parcelable {
         this.updated_at = updated_at;
     }
 
+
     @Override
     public int describeContents() {
         return 0;
@@ -182,5 +195,7 @@ public class OfferModel implements Parcelable {
         dest.writeString(finished);
         dest.writeString(created_at);
         dest.writeString(updated_at);
+        dest.writeParcelable(project, flags);
+        dest.writeParcelable(user, flags);
     }
 }

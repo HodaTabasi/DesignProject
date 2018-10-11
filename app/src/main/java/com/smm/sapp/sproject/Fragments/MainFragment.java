@@ -3,7 +3,10 @@ package com.smm.sapp.sproject.Fragments;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.Typeface;
+import android.graphics.drawable.LayerDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,6 +63,7 @@ public class MainFragment extends Fragment {
     ImageView img_power;
     ImageView img_notification, img_edit;
     String refreshedToken;
+    RatingBar ratting_designer;
 
     UserModel userModel;
     private static final int REQUEST_CODE = 1;
@@ -87,7 +92,11 @@ public class MainFragment extends Fragment {
         img_power = view.findViewById(R.id.img_power);
         img_notification = view.findViewById(R.id.img_notification);
         img_edit = view.findViewById(R.id.img_edit);
+        ratting_designer = view.findViewById(R.id.ratting_designer);
         refreshedToken = FirebaseInstanceId.getInstance().getToken();
+
+        LayerDrawable stars = (LayerDrawable) ratting_designer.getProgressDrawable();
+        stars.getDrawable(0).setColorFilter(Color.WHITE,PorterDuff.Mode.SRC_ATOP);
     }
 
     private void onClickMethod() {
@@ -95,7 +104,8 @@ public class MainFragment extends Fragment {
         if (ConstantInterFace.IS_USER_COMPLETEED) {
             getProfileData();
 
-        } else if (ConstantInterFace.USER.getPhoto_link() == null &&
+        }
+        else if (ConstantInterFace.USER.getPhoto_link() == null &&
                 ConstantInterFace.USER.getName() == null &&
                 ConstantInterFace.USER.getJob_type() == null) {
 
@@ -117,6 +127,7 @@ public class MainFragment extends Fragment {
                 ConstantInterFace.USER.getName() != null ||
                 ConstantInterFace.USER.getJob_type() != null) {
 
+            Log.e("yyyyyyyyyy", "ttttttttt");
             ConstantInterFace.IS_USER_COMPLETEED = true;
             getProfileData();
 
@@ -158,8 +169,11 @@ public class MainFragment extends Fragment {
         tv_portfolio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AddNewWork2Fragment(), true);
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("flag",false);
+                AddNewWork2Fragment fragment = new AddNewWork2Fragment();
+                fragment.setArguments(bundle);
+                FragmentsUtil.replaceFragment(getActivity(),R.id.container_activity,fragment,true);
 
             }
         });
@@ -305,6 +319,7 @@ public class MainFragment extends Fragment {
         //registered user
         if (!ConstantInterFace.IS_REGISTER) {
             onClickMethod();
+            changeToken();
         }
         //unregistered user
         else {
