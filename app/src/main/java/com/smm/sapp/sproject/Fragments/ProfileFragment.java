@@ -264,6 +264,7 @@ public class ProfileFragment extends Fragment {
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
 
         Bundle bundle = getArguments();
+
         if (ConstantInterFace.IS_USER_COMPLETEED) {
             bu_type = bundle.getString("type");
 

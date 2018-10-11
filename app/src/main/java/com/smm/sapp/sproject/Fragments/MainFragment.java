@@ -155,7 +155,7 @@ public class MainFragment extends Fragment {
         img_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProfileFragment(), true);
+                //FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProfileFragment(), true);
             }
         });
 
@@ -291,12 +291,15 @@ public class MainFragment extends Fragment {
                                 _specialization.setText("الرسم الجداري");
                             }
                             Picasso.get().load(ConstantInterFace.USER.getPhoto_link()).into(img_user);
+                            ratting_designer.setRating(Float.valueOf(userModel.getRate()));
 
                         } else if (userModel.getType().equals("client")) {
 
                             _name.setText(userModel.getName());
                             _specialization.setText("صاحب مشاريع");
                             Picasso.get().load(ConstantInterFace.USER.getPhoto_link()).into(img_user);
+                            ratting_designer.setRating(Float.valueOf(userModel.getRate()));
+
                         }
 
 

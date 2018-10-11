@@ -24,6 +24,8 @@ public class MyProgressDialog {
         progressDialog.setCancelable(false);
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
+        progressDialog.setCancelable(false);
+        progressDialog.setCanceledOnTouchOutside(false);
     }
 
     public static void showAuthDialog(Context context){
