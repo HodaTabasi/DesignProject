@@ -21,6 +21,8 @@ public class MyProgressDialog {
         progressDialog = new ProgressDialog(context, R.style.Theme_AppCompat_DayNight_Dialog);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
+        progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
     }
 

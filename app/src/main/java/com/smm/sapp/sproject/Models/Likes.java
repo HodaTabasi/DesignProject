@@ -24,35 +24,6 @@ public class Likes implements Parcelable {
     private User user;
     private PWorks pwork;
 
-    public Likes(int id, String target_id, String target_type, String created_by, String created_at, String updated_at, ProjectsLikeModels project) {
-        this.id = id;
-        this.target_id = target_id;
-        this.target_type = target_type;
-        this.created_by = created_by;
-        this.created_at = created_at;
-        this.updated_at = updated_at;
-        this.project = project;
-    }
-
-    public Likes(int id, String target_id, String target_type, String created_by, String created_at, String updated_at, User user) {
-        this.id = id;
-        this.target_id = target_id;
-        this.target_type = target_type;
-        this.created_by = created_by;
-        this.created_at = created_at;
-        this.updated_at = updated_at;
-        this.user = user;
-    }
-
-    public Likes(int id, String target_id, String target_type, String created_by, String created_at, String updated_at, PWorks pWork) {
-        this.id = id;
-        this.target_id = target_id;
-        this.target_type = target_type;
-        this.created_by = created_by;
-        this.created_at = created_at;
-        this.updated_at = updated_at;
-        this.pwork = pWork;
-    }
 
     protected Likes(Parcel in) {
         id = in.readInt();
@@ -63,23 +34,6 @@ public class Likes implements Parcelable {
         updated_at = in.readString();
         user = in.readParcelable(User.class.getClassLoader());
         pwork = in.readParcelable(PWorks.class.getClassLoader());
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(id);
-        dest.writeString(target_id);
-        dest.writeString(target_type);
-        dest.writeString(created_by);
-        dest.writeString(created_at);
-        dest.writeString(updated_at);
-        dest.writeParcelable(user, flags);
-        dest.writeParcelable(pwork, flags);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
     }
 
     public static final Creator<Likes> CREATOR = new Creator<Likes>() {
@@ -164,5 +118,22 @@ public class Likes implements Parcelable {
 
     public void setpWork(PWorks pWork) {
         this.pwork = pWork;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(target_id);
+        dest.writeString(target_type);
+        dest.writeString(created_by);
+        dest.writeString(created_at);
+        dest.writeString(updated_at);
+        dest.writeParcelable(user, flags);
+        dest.writeParcelable(pwork, flags);
     }
 }

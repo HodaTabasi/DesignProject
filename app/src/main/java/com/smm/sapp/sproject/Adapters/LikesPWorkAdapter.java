@@ -46,12 +46,10 @@ public class LikesPWorkAdapter extends RecyclerView.Adapter<LikesPWorkAdapter.Li
 
     @Override
     public void onBindViewHolder(@NonNull LikesPWorkVH holder, final int position) {
-
-        try {
-
-
+        Log.e("gfrvd","d ck[rg " + PworksLikes.size());
             final Likes likes = PworksLikes.get(position);
-            holder.like.setText(likes.getpWork().getLikes());
+
+//            holder.like.setText(likes.getpWork().getLikes());
             holder.show.setText(likes.getpWork().getViews());
             holder.name.setText(likes.getpWork().getName());
             Picasso.get().load(likes.getpWork().getPhoto_link()).into(holder.view);
@@ -97,9 +95,7 @@ public class LikesPWorkAdapter extends RecyclerView.Adapter<LikesPWorkAdapter.Li
                     }
                 }
             });
-        } catch (Exception e){
 
-        }
     }
 
     @Override

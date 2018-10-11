@@ -17,7 +17,11 @@ import com.smm.sapp.sproject.Models.MyMessageModel;
 import com.smm.sapp.sproject.R;
 import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -43,7 +47,12 @@ public class MyMessageAdapter extends RecyclerView.Adapter<MyMessageAdapter.MyMe
     @Override
     public void onBindViewHolder(@NonNull MyMessageVH holder, final int position) {
         holder.address.setText(messageModelList.get(position).getLast_message().getMessage());
-        holder.time.setText("قبل يومين");
+        try {
+            String s = putDateTime(messageModelList.get(position).getCreated_at());
+            holder.time.setText("  قبل  "+ s +"  ");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         Picasso.get().load(messageModelList.get(position).getUser().getPhoto_link()).into(holder.clientImage);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +66,23 @@ public class MyMessageAdapter extends RecyclerView.Adapter<MyMessageAdapter.MyMe
             }
         });
 
+    }
+
+    private String putDateTime(String created_at) throws ParseException {
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss",new Locale("en"));
+        Date date = dt.parse(created_at);
+        long mills = System.currentTimeMillis() - date.getTime();
+
+        int hours = (int) (mills/(1000 * 60 * 60));
+        int mins = (int) (mills/(1000*60)) % 60;
+
+        int days = (int) (mills / (1000*60*60*24));
+//        String diff = hours + ":" + mins; // updated value every1 second
+
+
+//        hours = (hours < 0 ? -hours : hours);
+//        Log.i("======= Hours"," :: "+hours);
+        return days + " ";
     }
 
     @Override
