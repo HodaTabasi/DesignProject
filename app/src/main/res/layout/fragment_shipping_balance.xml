@@ -461,6 +461,8 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:textSize="11sp"
+                                android:padding="3dp"
                                 android:background="@drawable/white_shap"
                                 android:textColor="@android:color/black" />
 
@@ -474,10 +476,11 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="5dp"
                                 android:layout_marginStart="5dp"
-                                android:layout_weight="0.7"
+                                android:layout_weight="1"
+                                android:padding="3dp"
                                 android:text="الأسم الكامل على البطاقة"
                                 android:textColor="@android:color/black"
-                                android:textSize="10sp" />
+                                android:textSize="11sp" />
                         </LinearLayout>
 
                         <View
@@ -494,6 +497,9 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:textSize="11sp"
+                                android:padding="3dp"
+                                android:inputType="number"
                                 android:background="@drawable/white_shap"
                                 android:textColor="@android:color/black" />
 
@@ -506,11 +512,12 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="5dp"
+                                android:padding="3dp"
                                 android:layout_marginStart="5dp"
-                                android:layout_weight="0.7"
+                                android:layout_weight="1"
                                 android:text="رقم البطاقة الائتمانية"
                                 android:textColor="@android:color/black"
-                                android:textSize="10sp" />
+                                android:textSize="11sp" />
                         </LinearLayout>
 
                         <View
@@ -527,6 +534,8 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:padding="3dp"
+                                android:textSize="11sp"
                                 android:background="@drawable/white_shap"
                                 android:textColor="@android:color/black" />
 
@@ -540,10 +549,11 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="5dp"
                                 android:layout_marginStart="5dp"
-                                android:layout_weight="0.7"
+                                android:layout_weight="1"
+                                android:padding="3dp"
                                 android:text="تاريخ انتهاء البطاقة"
                                 android:textColor="@android:color/black"
-                                android:textSize="12sp" />
+                                android:textSize="11sp" />
                         </LinearLayout>
 
                         <View
@@ -560,6 +570,8 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:textSize="11sp"
+                                android:padding="3dp"
                                 android:background="@drawable/white_shap"
                                 android:textColor="@android:color/black" />
 
@@ -573,10 +585,11 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="5dp"
                                 android:layout_marginStart="5dp"
-                                android:layout_weight="0.7"
+                                android:layout_weight="1"
                                 android:text="كود الحماية "
+                                android:padding="3dp"
                                 android:textColor="@android:color/black"
-                                android:textSize="10sp" />
+                                android:textSize="11sp" />
                         </LinearLayout>
 
                         <View
@@ -593,6 +606,8 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:textSize="11sp"
+                                android:padding="3dp"
                                 android:background="@drawable/white_shap"
                                 android:textColor="@android:color/black" />
 
@@ -602,8 +617,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="5dp"
                                 android:layout_marginStart="5dp"
-                                android:layout_weight="0.7"
+                                android:layout_weight="1"
                                 android:text="احفظ البطاقة"
+                                android:padding="3dp"
                                 android:textColor="@android:color/black"
                                 android:textSize="10sp" />
                         </LinearLayout>
