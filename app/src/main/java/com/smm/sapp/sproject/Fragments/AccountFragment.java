@@ -29,6 +29,7 @@ import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,6 +39,7 @@ import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import me.anwarshahriar.calligrapher.Calligrapher;
 import okhttp3.Call;
 import okhttp3.Response;
@@ -56,6 +58,7 @@ public class AccountFragment extends Fragment {
     RatingBar ratingBar;
     LinearLayout linear_rate;
     ImageView ic_back, img_user, img_edit;
+
 
     String name, title;
     private static final int REQUEST_CODE = 1;
@@ -281,6 +284,7 @@ public class AccountFragment extends Fragment {
                         try {
                             if (userModel.getType().equals("worker")) {
                                 tv_name.setText(userModel.getName());
+                                Picasso.get().load(userModel.getPhoto_link()).into(img_user);
                                 if (userModel.getJob_type().equals("arch")) {
                                     tv_title.setText("تصميم معماري");
                                 } else if (userModel.getJob_type().equals("graphic")) {
