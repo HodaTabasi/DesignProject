@@ -115,7 +115,11 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
             @Override
             public void onClick(View view) {
                 if (ConstantInterFace.USER.getType().equals("worker")){
-                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AddNewWork2Fragment(),true);
+                     AddNewWork2Fragment fragment  = new AddNewWork2Fragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putBoolean("flag",false);
+                    fragment.setArguments(bundle);
+                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity,fragment ,true);
                 }else {
                     projectType = (String) list.get(position).getType();
                     AddProjectFragment fragment = new AddProjectFragment();

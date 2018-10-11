@@ -294,11 +294,12 @@ public class MainFragment extends Fragment {
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
 
         init(getView());
-        changeToken();
+
 
         //registered user
         if (!ConstantInterFace.IS_REGISTER) {
             onClickMethod();
+            changeToken();
         }
         //unregistered user
         else {

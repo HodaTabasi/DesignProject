@@ -82,7 +82,11 @@ public class LikesPWorkAdapter extends RecyclerView.Adapter<LikesPWorkAdapter.Li
                 @Override
                 public void onClick(View v) {
                     if (ConstantInterFace.USER.getType().equals("worker")) {
-                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AddNewWork2Fragment(), true);
+                        AddNewWork2Fragment fragment = new AddNewWork2Fragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putBoolean("flag", false);
+                        fragment.setArguments(bundle);
+                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
                     } else {
                         projectType = likes.getpWork().getType();
                         AddProjectFragment fragment = new AddProjectFragment();

@@ -206,7 +206,7 @@
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:drawableTint="#a4a4a4"
-                android:drawableTop="@drawable/ic_about"
+                android:drawableTop="@drawable/ddd"
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="عن صمم"

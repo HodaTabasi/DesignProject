@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.smm.sapp.sproject.Adapters.BankAdapter;
 import com.smm.sapp.sproject.ConstantInterFace;
@@ -104,19 +105,38 @@ public class BankFragment extends Fragment {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
-                Log.e("tag", e.getMessage());
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException, JSONException {
                 MyProgressDialog.dismissDialog();
-//                Log.e("tagr", response.body().string());
-                JSONObject jsonObject = new JSONObject(response.body().string());
-                Gson gson = new Gson();
-                UserModel.BanksBean banksBean = gson.fromJson(jsonObject.getString("bank"), UserModel.BanksBean.class);
-                arrayList.add(banksBean);
-//                Log.e("tag1", userModel.getBanks().get(0).getNumber() + " ");
-                notifys();
+                String s = response.body().string();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getContext(), "تم الاضافة بنجاح", Toast.LENGTH_LONG).show();
+                        JSONObject jsonObject = new JSONObject();
+                        Gson gson = new Gson();
+                        UserModel.BanksBean banksBean = null;
+                        et_bankName.setText("");
+                        et_bankNum.setText("");
+                        et_kNum.setText("");
+                        try {
+                            banksBean = gson.fromJson(jsonObject.getString("bank"), UserModel.BanksBean.class);
+                            arrayList.add(banksBean);
+                            notifys();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
             }
         });
     }

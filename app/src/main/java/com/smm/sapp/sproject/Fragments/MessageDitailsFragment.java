@@ -29,6 +29,7 @@ import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -212,10 +213,13 @@ public class MessageDitailsFragment extends Fragment implements View.OnClickList
                                 adapter.notifyDataSetChanged();
                                 mMessageEx.setText("");
                                 attchs_name.setVisibility(View.GONE);
-                                Log.e("115558676",object.toString());
                             }else {
-                                Toast.makeText(getContext(), "لم يتم الارسال", Toast.LENGTH_SHORT).show();
-                                Log.e("115558676",object.toString());
+                                JSONObject object2 = object1.getJSONObject("error");
+                                JSONArray object3 = object2.getJSONArray("msg");
+                                if (object3.get(0).equals("The msg field is required.")){
+                                    Toast.makeText(getContext(), "يجب ارسال نص مع المرفقات", Toast.LENGTH_SHORT).show();
+                                }else
+                                    Toast.makeText(getContext(), "لم يتم الارسال", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
