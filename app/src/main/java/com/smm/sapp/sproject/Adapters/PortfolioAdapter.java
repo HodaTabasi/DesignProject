@@ -71,13 +71,13 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
 
         if (name != null) {
             StringBuilder s_name = new StringBuilder(name);
-            for (int i = 0; i< s_name.length() - 1 ; i++){
+            for (int i = 1; i< s_name.length() - 1 ; i++){
                 s_name.setCharAt(i, '*');
             }
             holder.tv_name.setText(s_name);
         } else {
             StringBuilder s_name = new StringBuilder(list.get(position).getUser().getName());
-            for (int i = 0; i< s_name.length() - 1 ; i++){
+            for (int i = 1; i< s_name.length() - 1 ; i++){
                 s_name.setCharAt(i, '*');
             }
             holder.tv_name.setText(s_name);

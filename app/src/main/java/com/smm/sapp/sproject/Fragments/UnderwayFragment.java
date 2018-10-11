@@ -140,7 +140,7 @@ public class UnderwayFragment extends Fragment {
 //         mName1.setText(ConstantInterFace.USER.getName());
 
         StringBuilder s_name = new StringBuilder(user.getName());
-        for (int i = 0; i< s_name.length() - 1 ; i++){
+        for (int i = 1; i< s_name.length() - 1 ; i++){
             s_name.setCharAt(i, '*');
         }
 

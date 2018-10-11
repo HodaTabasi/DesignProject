@@ -186,7 +186,7 @@ public class AccountSearchFragment extends Fragment {
 
         ///////////////
         StringBuilder name = new StringBuilder(models.getName());
-        for (int i = 0; i< name.length() - 1 ; i++){
+        for (int i = 1; i< name.length() - 1 ; i++){
             name.setCharAt(i, '*');
         }
         tv_name.setText(name);
