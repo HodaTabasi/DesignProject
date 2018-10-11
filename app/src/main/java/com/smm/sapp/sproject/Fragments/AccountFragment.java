@@ -116,7 +116,7 @@ public class AccountFragment extends Fragment {
         img_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProfileFragment(), true);
+                //FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProfileFragment(), true);
 
             }
         });
