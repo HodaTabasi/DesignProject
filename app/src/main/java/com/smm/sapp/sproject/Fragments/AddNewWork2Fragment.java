@@ -101,15 +101,20 @@ public class AddNewWork2Fragment extends Fragment {
                 getFragmentManager().popBackStack();
             }
         });
+        Bundle bundle = getArguments();
+        if (bundle.getBoolean("flag")){
+            getData(bundle.getString("id"));
+        }else {
+            getData(String.valueOf(ConstantInterFace.USER.getId()));
+        }
 
-        getData();
     }
 
-    private void getData() {
+    private void getData(String id) {
         MyProgressDialog.showDialog(getActivity());
         MyRequest myRequest = new MyRequest();
         Map<String, String> map = new HashMap<>();
-        map.put("user_id", String.valueOf(ConstantInterFace.USER.getId()));
+        map.put("user_id", id);
         map.put("token", ConstantInterFace.USER.getToken());
         myRequest.PostCall("http://smm.smmim.com/waell/public/api/userprofile", map, new OkHttpCallback() {
             @Override

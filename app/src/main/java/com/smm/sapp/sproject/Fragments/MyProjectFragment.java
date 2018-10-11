@@ -98,6 +98,19 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         return inflater.inflate(R.layout.fragment_my_project, container, false);
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Calligrapher calligrapher = new Calligrapher(getContext());
+        calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
+        initView();
+        onClickMethod();
+
+        getProjects("myprojects?token=" + ConstantInterFace.USER.getToken());
+
+    }
+
+
     private void initView() {
         mSwitchOffer = getView().findViewById(R.id.switch_offer);
         mMyProjectExcluded = getView().findViewById(R.id.my_project_excluded);
@@ -237,18 +250,6 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         PieData data = new PieData(set);
         chart.setData(data);
         chart.invalidate(); // refresh
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Calligrapher calligrapher = new Calligrapher(getContext());
-        calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
-        initView();
-        onClickMethod();
-
-        getProjects("myprojects?token=" + ConstantInterFace.USER.getToken());
-
     }
 
     @Override

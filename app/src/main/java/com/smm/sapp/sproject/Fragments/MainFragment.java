@@ -146,8 +146,11 @@ public class MainFragment extends Fragment {
         tv_portfolio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AddNewWork2Fragment(), true);
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("flag",false);
+                AddNewWork2Fragment fragment = new AddNewWork2Fragment();
+                fragment.setArguments(bundle);
+                FragmentsUtil.replaceFragment(getActivity(),R.id.container_activity,fragment,true);
 
             }
         });
@@ -282,7 +285,7 @@ public class MainFragment extends Fragment {
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
 
         init(getView());
-//        changeToken();
+        changeToken();
 
         //registered user
         if (!ConstantInterFace.IS_REGISTER) {

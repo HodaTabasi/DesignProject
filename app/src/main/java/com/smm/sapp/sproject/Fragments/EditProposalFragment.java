@@ -1,6 +1,5 @@
 package com.smm.sapp.sproject.Fragments;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -60,7 +59,7 @@ public class EditProposalFragment extends Fragment {
     private TextView mAtidim;
     private TextView mTalk;
     private LinearLayout mDwe;
-    User user;
+
     OfferModel model;
 
     @Override
@@ -80,6 +79,7 @@ public class EditProposalFragment extends Fragment {
 
         Bundle bundle = getArguments();
         model = bundle.getParcelable("object");
+        putData(model);
 
         ic_back = getView().findViewById(R.id.ic_back);
         ic_back.setOnClickListener(new View.OnClickListener() {
@@ -98,7 +98,8 @@ public class EditProposalFragment extends Fragment {
             mEdit.setVisibility(View.GONE);
             mEtProposal.setEnabled(false);
         }
-        getUserProfile(model.getId());
+//        getUserProfile(model.getId());
+
 
     }
 
@@ -135,8 +136,8 @@ public class EditProposalFragment extends Fragment {
                             JSONObject object1 = object.getJSONObject("status");
                             Gson gson = new Gson();
                             if (object1.getBoolean("success")) {
-                                user = gson.fromJson(object.getJSONObject("user").toString(), User.class);
-                                putData(user);
+//                                user = gson.fromJson(object.getJSONObject("user").toString(), User.class);
+//                                putData(user);
                             } else {
 
                             }
@@ -195,35 +196,32 @@ public class EditProposalFragment extends Fragment {
         });
     }
 
-    private void putData(User user) {
+    private void putData(OfferModel model) {
+        Log.e("fffffs"," فقاق " +model.getBalance() + model.getDur() + model.getUser().getJob_type() + model.getUser().getRate());
 
-        try {
-            Picasso.get().load(user.getPhoto_link()).into(mImg);
-            mTvName.setText(user.getName());
-            mRateBar.setRating(Float.valueOf(user.getRate()));
+            Picasso.get().load(model.getUser().getPhoto_link()).into(mImg);
+            mTvName.setText(model.getUser().getName());
+            if (model.getUser().getRate() == null )
+                mRateBar.setRating(Float.valueOf("0"));
+            else
+                mRateBar.setRating(Float.valueOf(model.getUser().getRate()));
 
-            if (user.getJob_type().equals("inter")) {
+
+            if (model.getUser().getJob_type().equals("inter")) {
                 mTvSpecialization.setText("مصمم داخلي");
-            } else if (user.getJob_type().equals("arch")) {
+            } else if (model.getUser().getJob_type().equals("arch")) {
                 mTvSpecialization.setText("مصمم معمماري");
-            } else if (user.getJob_type().equals("graphic")) {
+            } else if (model.getUser().getJob_type().equals("graphic")) {
                 mTvSpecialization.setText("مصمم جرافيكس");
-            } else if (user.getJob_type().equals("moshen")) {
+            } else if (model.getUser().getJob_type().equals("moshen")) {
                 mTvSpecialization.setText("مصمم موشن");
-            } else if (user.getJob_type().equals("wall")) {
+            } else if (model.getUser().getJob_type().equals("wall")) {
                 mTvSpecialization.setText("مصمم جداري");
             }
 
             mMoney.setText(" السعر " + "" + model.getBalance() + " ريال ");
             mDay.setText(" في " + model.getDur() + " يوم ");
             mEtProposal.setText(model.getDescr());
-        } catch (Exception e) {
-
-        }
-
-
-        Log.e("pppppppp", user.getName() + user.getRate() + user.getJob_type() + model.getBalance()
-                + model.getDur() + model.getDescr());
     }
 
     private void initView(View view) {
@@ -277,9 +275,21 @@ public class EditProposalFragment extends Fragment {
                 UnderwayFragment fragment = new UnderwayFragment();
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("offer", model);
-                bundle.putParcelable("user", user);
+                bundle.putParcelable("user", model.getUser());
                 fragment.setArguments(bundle);
                 FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
+            }
+        });
+
+        mExhibition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("flag",true);
+                bundle.putString("id",model.getUser().getId() + "");
+                AddNewWork2Fragment fragment = new AddNewWork2Fragment();
+                fragment.setArguments(bundle);
+                FragmentsUtil.replaceFragment(getActivity(),R.id.container_activity,fragment,true);
             }
         });
     }
