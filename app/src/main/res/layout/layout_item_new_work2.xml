@@ -46,11 +46,11 @@
 
     <TextView
         android:id="@+id/num_like"
-        android:layout_width="56dp"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/project_title"
-        android:layout_marginTop="16dp"
         android:layout_marginRight="3dp"
+        android:layout_marginTop="16dp"
         android:layout_toLeftOf="@+id/num_seen"
         android:layout_toStartOf="@+id/num_seen"
         android:background="@drawable/report_layout_shap"
@@ -64,7 +64,7 @@
 
     <TextView
         android:id="@+id/update_work"
-        android:layout_width="wrap_content"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/num_seen"
         android:layout_marginLeft="5dp"
@@ -73,27 +73,24 @@
         android:layout_toLeftOf="@+id/img"
         android:layout_toStartOf="@+id/img"
         android:background="@drawable/blue_shape"
-        android:paddingBottom="3dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="3dp"
+        android:gravity="center"
+        android:padding="5dp"
         android:text="تعديل "
         android:textColor="@android:color/white"
         android:textSize="12sp" />
 
     <TextView
         android:id="@+id/delete_work"
-        android:layout_width="wrap_content"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/num_like"
+        android:layout_marginRight="3dp"
         android:layout_marginTop="5dp"
         android:layout_toLeftOf="@+id/update_work"
         android:layout_toStartOf="@+id/update_work"
         android:background="@drawable/red_shap"
-        android:paddingBottom="3dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="3dp"
+        android:gravity="center"
+        android:padding="5dp"
         android:text="حذف  "
         android:textColor="@android:color/white"
         android:textSize="12dp" />
