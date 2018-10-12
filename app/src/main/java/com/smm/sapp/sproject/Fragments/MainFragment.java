@@ -110,7 +110,6 @@ public class MainFragment extends Fragment {
                 ConstantInterFace.USER.getJob_type() == null) {
 
             ConstantInterFace.IS_USER_COMPLETEED = false;
-            Log.e("ttttttttttt", ConstantInterFace.USER.getPhone());
             img_edit.setImageResource(R.drawable.ic_edit_red);
             _name.setText("");
             _specialization.setText("");
@@ -127,7 +126,6 @@ public class MainFragment extends Fragment {
                 ConstantInterFace.USER.getName() != null ||
                 ConstantInterFace.USER.getJob_type() != null) {
 
-            Log.e("yyyyyyyyyy", "ttttttttt");
             ConstantInterFace.IS_USER_COMPLETEED = true;
             getProfileData();
 

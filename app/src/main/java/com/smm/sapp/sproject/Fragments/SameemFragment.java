@@ -1,8 +1,11 @@
 package com.smm.sapp.sproject.Fragments;
 
 
+import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
@@ -15,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.smm.sapp.sproject.Activities.RegistrationActivity;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.MyRequest;
@@ -172,13 +176,37 @@ public class SameemFragment extends Fragment {
                         @Override
                         public void onClick(View view) {
 
-                            if (subject.getText().toString().matches("")
-                                    || et_writehere.getText().toString().matches("")) {
-                                Toast.makeText(getContext(), "يجب تعبئة جميع الحقول", Toast.LENGTH_LONG).show();
-                            } else {
-                                callUs();
+                            if (!ConstantInterFace.IS_REGISTER) {
+                                if (subject.getText().toString().matches("")
+                                        || et_writehere.getText().toString().matches("")) {
+                                    Toast.makeText(getContext(), "يجب تعبئة جميع الحقول", Toast.LENGTH_LONG).show();
+                                } else {
+                                    callUs();
 
+                                }
+                            } else {
+                                Snackbar snackbar = Snackbar.make(getView(), "أنت غير مسجل في صمم!", Snackbar.LENGTH_LONG)
+                                        .setAction("تسجيل", new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                ConstantInterFace.IS_REGISTER = false;
+                                                Intent intent = new Intent(getActivity(), RegistrationActivity.class);
+                                                startActivity(intent);
+                                                getActivity().finish();
+                                            }
+                                        });
+
+                                snackbar.show();
+
+                                TextView tv = (snackbar.getView()).findViewById(android.support.design.R.id.snackbar_text);
+                                TextView tv2 = (snackbar.getView()).findViewById(android.support.design.R.id.snackbar_action);
+                                tv.setTextSize(12f);
+                                tv2.setTextSize(12f);
+                                Typeface font = Typeface.createFromAsset(getContext().getAssets(), "JFFlatregular.ttf");
+                                tv.setTypeface(font);
+                                tv2.setTypeface(font);
                             }
+
 
                         }
                     });
