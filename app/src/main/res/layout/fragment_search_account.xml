@@ -23,8 +23,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:drawablePadding="5dp"
             android:drawableRight="@drawable/ic_search"
+            android:drawablePadding="5dp"
             android:gravity="center"
             android:text="@string/search"
             android:textColor="@color/white"
@@ -58,8 +58,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/report_layout_shap"
                 android:padding="5dp">
 
@@ -84,13 +84,18 @@
                 <RatingBar
                     android:id="@+id/rate_bar"
                     style="?android:attr/ratingBarStyleSmall"
-                    android:layout_width="wrap_content"
+                    android:layout_width="91dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_name"
                     android:layout_centerHorizontal="true"
+                    android:gravity="center"
                     android:numStars="5"
                     android:padding="5dp"
-                    android:stepSize="1.0" />
+                    android:progressTint="#fed42d"
+                    android:rotationY="180"
+                    android:stepSize="1.0"
+                    android:textAlignment="center" />
+
 
                 <TextView
                     android:id="@+id/tv_title"
@@ -113,8 +118,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_marginRight="20dp"
                 android:layout_marginTop="7dp"
+                android:layout_marginRight="20dp"
                 android:text="نبذة تعريفية"
                 android:textColor="@color/gray1"
                 android:textSize="14sp" />
@@ -124,8 +129,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:layout_marginTop="2dp"
+                android:layout_marginRight="20dp"
                 android:background="@drawable/report_layout_shap"
                 android:gravity="center_vertical"
                 android:hint="نبذة"
@@ -137,23 +142,9 @@
                 android:id="@+id/linear2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/et_bio"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="7dp">
-
-                <TextView
-                    android:id="@+id/tv_comments"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/report_layout_shap"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:text="@string/comments"
-                    android:textColor="@color/gray1"
-                    android:textSize="14sp" />
+                android:layout_marginTop="7dp"
+                android:layout_marginRight="20dp">
 
                 <TextView
                     android:id="@+id/tv_portfolio"
@@ -167,23 +158,37 @@
                     android:textColor="@color/gray1"
                     android:textSize="14sp" />
 
+                <TextView
+                    android:id="@+id/tv_comments"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/report_layout_shap"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="@string/comments"
+                    android:textColor="@color/gray1"
+                    android:textSize="14sp" />
+
+
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linear3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/linear2"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="7dp"
                 android:background="@drawable/report_layout_shap"
-                android:gravity="center"
                 android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
@@ -214,12 +219,14 @@
                 <View
                     android:id="@+id/view"
                     android:layout_width="1dp"
-                    android:layout_height="100dp"
+                    android:layout_height="match_parent"
                     android:background="@color/gray" />
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
@@ -256,8 +263,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_marginRight="20dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
                 android:text="مهاراتي"
                 android:textColor="@color/gray1"
                 android:textSize="14sp" />
@@ -267,8 +274,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:layout_marginTop="7dp"
+                android:layout_marginRight="20dp"
                 android:background="@drawable/report_layout_shap"
                 android:padding="5dp" />
 
@@ -288,8 +295,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:layout_marginTop="7dp"
+                android:layout_marginRight="20dp"
                 android:background="@drawable/report_layout_shap"
                 android:gravity="center"
                 android:padding="5dp"
@@ -301,10 +308,10 @@
                 android:id="@+id/tv_chooseMe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/blue_shape"
                 android:gravity="center"
                 android:padding="5dp"

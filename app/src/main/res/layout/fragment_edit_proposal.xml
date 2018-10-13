@@ -89,6 +89,8 @@
             android:layout_marginTop="10dp"
             android:layout_toLeftOf="@+id/img"
             android:numStars="5"
+            android:progressTint="#fed42d"
+            android:rotationY="180"
             android:stepSize="1.0" />
 
         <TextView

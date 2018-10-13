@@ -116,33 +116,28 @@ public class BankFragment extends Fragment {
             @Override
             public void onResponse(Call call, Response response) throws IOException, JSONException {
                 MyProgressDialog.dismissDialog();
-                String s = response.body().string();
+                final String s = response.body().string();
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(getContext(), "تم الاضافة بنجاح", Toast.LENGTH_LONG).show();
-                        JSONObject jsonObject = new JSONObject();
-                        Gson gson = new Gson();
-                        UserModel.BanksBean banksBean = null;
-                        et_bankName.setText("");
-                        et_bankNum.setText("");
-                        et_kNum.setText("");
                         try {
+                            Toast.makeText(getContext(), "تم الاضافة بنجاح", Toast.LENGTH_LONG).show();
+                            JSONObject jsonObject = new JSONObject(s);
+                            Gson gson = new Gson();
+                            UserModel.BanksBean banksBean = null;
+                            et_bankName.setText("");
+                            et_bankNum.setText("");
+                            et_kNum.setText("");
                             banksBean = gson.fromJson(jsonObject.getString("bank"), UserModel.BanksBean.class);
                             arrayList.add(banksBean);
-                            notifys();
+                            adapter.notifyDataSetChanged();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
                     }
                 });
             }
         });
-    }
-
-    private void notifys() {
-        adapter.notifyDataSetChanged();
     }
 
     @Override

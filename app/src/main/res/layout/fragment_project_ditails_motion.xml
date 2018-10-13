@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="ltr"
+    android:background="@color/white"
     tools:context=".Fragments.ProjectDitailsMotionFragment">
 
     <RelativeLayout
@@ -120,7 +121,7 @@
                 android:layout_marginStart="8dp"
                 android:background="@drawable/account_shape"
                 android:gravity="center"
-                android:hint="مدة المشروع"
+                android:hint=" مدة الفيديو"
                 android:padding="3dp"
                 android:inputType="number"
                 android:textColor="@color/textGray"

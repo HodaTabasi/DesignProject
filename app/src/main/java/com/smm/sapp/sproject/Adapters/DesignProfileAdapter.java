@@ -62,11 +62,10 @@ public class DesignProfileAdapter extends RecyclerView.Adapter<DesignProfileAdap
     public void onBindViewHolder(@NonNull DesignProfileVH holder, final int position) {
 
         worker_id = profiles.get(position).getId();
-
+        holder.name.setText(profiles.get(position).getName());
+        holder.rate.setRating(Float.valueOf(profiles.get(position).getRate()));
+        Log.e("fffds",profiles.get(position).getRate() + " ");
         try {
-            holder.name.setText(profiles.get(position).getName());
-            holder.rate.setRating(profiles.get(position).getRate());
-
             if (profiles.get(position).getJob_type().equals("wall")) {
                 holder.specialty.setText("مصمم جداري");
             } else if (profiles.get(position).getJob_type().equals("arch")) {

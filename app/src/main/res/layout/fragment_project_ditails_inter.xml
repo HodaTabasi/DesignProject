@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="ltr"
+    android:background="@color/white"
     tools:context=".Fragments.ProjectDetailsInterFragment">
 
     <RelativeLayout
@@ -236,7 +237,7 @@
                 android:layout_marginStart="8dp"
                 android:background="@drawable/account_shape"
                 android:gravity="center"
-                android:hint="خرائط - موقع المشروع "
+                android:hint="موقع المشروع -  خرائط"
                 android:padding="3dp"
                 android:textColor="@color/textGray"
                 android:textColorHint="@color/gray"

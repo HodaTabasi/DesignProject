@@ -280,11 +280,10 @@ public class AccountFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
+                        Picasso.get().load(userModel.getPhoto_link()).into(img_user);
                         try {
                             if (userModel.getType().equals("worker")) {
                                 tv_name.setText(userModel.getName());
-                                Picasso.get().load(userModel.getPhoto_link()).into(img_user);
                                 if (userModel.getJob_type().equals("arch")) {
                                     tv_title.setText("تصميم معماري");
                                 } else if (userModel.getJob_type().equals("graphic")) {
@@ -299,7 +298,6 @@ public class AccountFragment extends Fragment {
                                 ratingBar.setRating(Float.valueOf(userModel.getRate()));
 
                             } else if (userModel.getType().equals("client")) {
-
                                 tv_name.setText(userModel.getName());
                                 tv_title.setText("صاحب مشاريع");
                                 ratingBar.setRating(Float.valueOf(userModel.getRate()));

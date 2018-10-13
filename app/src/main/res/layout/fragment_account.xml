@@ -132,6 +132,8 @@
                     android:layout_height="20dp"
                     android:layout_marginLeft="20dp"
                     android:numStars="5"
+                    android:progressTint="#fed42d"
+                    android:rotationY="180"
                     android:stepSize="1.0" />
 
                 <TextView

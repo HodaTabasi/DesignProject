@@ -202,7 +202,7 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
                                         case "0":
                                             //قيد الموافقة
                                             arrayList.add(models);
-                                            waitTV.setText(arrayList.size() + "عرض ");
+                                            waitTV.setText(arrayList.size() + " عرض ");
                                             wait++;
                                             break;
                                         case "1":
@@ -243,9 +243,9 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         entries.add(new PieEntry(24.0f));
         entries.add(new PieEntry(30.8f));
 
-        PieDataSet set = new PieDataSet(entries, "");
+        PieDataSet set = new PieDataSet(entries, "  ");
         set.setColors(new int[]{R.color.yalow, R.color.green, R.color.darkBlue, R.color.red}, getActivity());
-        set.setValueTextSize(8f);
+        set.setValueTextSize(18f);
         set.setValueTextColor(R.color.white);
         PieData data = new PieData(set);
         chart.setData(data);

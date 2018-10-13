@@ -146,6 +146,8 @@
             android:isIndicator="false"
             android:numStars="5"
             android:stepSize="1.0"
+            android:rotationY="180"
+            android:progressTint="#fed42d"
             android:textAlignment="center" />
 
         <TextView

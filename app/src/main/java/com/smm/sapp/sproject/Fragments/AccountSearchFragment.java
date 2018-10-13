@@ -165,15 +165,20 @@ public class AccountSearchFragment extends Fragment {
                 JSONObject statusObj = object.getJSONObject("status");
                 final String success = statusObj.getString("success");
                 final String message = statusObj.getString("message");
-
-                if (success.equals("true") && message.equals("like Returned")) {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (success.equals("true") && message.equals("like Returned")) {
 //                            ConstantInterFace.IS_USER_FAVORITE = true;
-                    Toast.makeText(getContext(), "تمت الاضافة للمفضلة", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(), "تمت الاضافة للمفضلة", Toast.LENGTH_LONG).show();
 
-                } else if (success.equals("true") && message.equals("dislike Returned")) {
+                        } else if (success.equals("true") && message.equals("dislike Returned")) {
 //                            ConstantInterFace.IS_USER_FAVORITE = false;
-                    Toast.makeText(getContext(), "تم الحذف من المفضلة", Toast.LENGTH_LONG).show();
-                }
+                            Toast.makeText(getContext(), "تم الحذف من المفضلة", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
             }
         });
     }
@@ -183,6 +188,7 @@ public class AccountSearchFragment extends Fragment {
         bundle = getArguments();
         models = bundle.getParcelable("worker");
 
+        rate_bar.setRating(Float.valueOf(models.getRate()));
 
         ///////////////
         StringBuilder name = new StringBuilder(models.getName());
@@ -275,7 +281,7 @@ public class AccountSearchFragment extends Fragment {
                                     tv_noSkills.setVisibility(View.GONE);
 
                                     adapter = new SkillsSearchAdapter(getActivity(), arrayList);
-                                    recycler_skill.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
+                                    recycler_skill.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.HORIZONTAL, false));
                                     recycler_skill.setAdapter(adapter);
                                 }
                             } catch (JSONException e) {

@@ -56,10 +56,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:gravity="center"
-            android:isIndicator="false"
             android:numStars="5"
             android:stepSize="1.0"
             android:progressTint="#fed42d"
+            android:rotationY="180"
             android:textAlignment="center"/>
     </LinearLayout>
 
