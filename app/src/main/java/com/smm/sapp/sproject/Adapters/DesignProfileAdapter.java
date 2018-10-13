@@ -103,6 +103,7 @@ public class DesignProfileAdapter extends RecyclerView.Adapter<DesignProfileAdap
                     FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
                 }
             });
+
         } catch (Exception e) {
 
         }
