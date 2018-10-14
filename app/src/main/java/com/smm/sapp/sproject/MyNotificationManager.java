@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 
+import com.smm.sapp.sproject.Activities.ContainerActivity;
 import com.smm.sapp.sproject.Activities.SplashActivity;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
@@ -45,7 +46,8 @@ public class MyNotificationManager {
          *  But for your project you can customize it as you want
          * */
 
-        Intent resultIntent = new Intent(mCtx, SplashActivity.class);
+        Intent resultIntent = new Intent(mCtx, ContainerActivity.class);
+        resultIntent.putExtra("notifiy",true);
 
         /*
          *  Now we will create a pending intent
@@ -55,7 +57,7 @@ public class MyNotificationManager {
          *  We can detect this code in the activity that will open by this we can get
          *  Which notification opened the activity
          * */
-        PendingIntent pendingIntent = PendingIntent.getService(mCtx, 1, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(mCtx, 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         /*
          *  Setting the pending intent to notification builder

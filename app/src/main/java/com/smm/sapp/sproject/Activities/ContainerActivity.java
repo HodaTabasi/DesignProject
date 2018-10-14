@@ -1,6 +1,11 @@
 package com.smm.sapp.sproject.Activities;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.provider.SyncStateContract;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -13,10 +18,12 @@ import com.smm.sapp.sproject.Fragments.AccountFragment;
 import com.smm.sapp.sproject.Fragments.AddNewWork2Fragment;
 import com.smm.sapp.sproject.Fragments.BrowseProjectsFragment;
 import com.smm.sapp.sproject.Fragments.MainFragment;
+import com.smm.sapp.sproject.Fragments.NotificationFragment;
 import com.smm.sapp.sproject.Fragments.PortfolioFragment;
 import com.smm.sapp.sproject.Fragments.RegisterFragment;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.Fragments.MyMessageFragment;
+import com.smm.sapp.sproject.MyNotificationManager;
 import com.smm.sapp.sproject.R;
 
 import me.anwarshahriar.calligrapher.Calligrapher;
@@ -30,7 +37,11 @@ public class ContainerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container);
 
-        FragmentsUtil.addFragment(ContainerActivity.this, R.id.container_activity, new MainFragment(), false);
+         if (getIntent().getBooleanExtra("notifiy",false)){
+             FragmentsUtil.addFragment(ContainerActivity.this, R.id.container_activity, new NotificationFragment(), false);
+         }else {
+             FragmentsUtil.addFragment(ContainerActivity.this, R.id.container_activity, new MainFragment(), false);
+         }
 
         Calligrapher calligrapher = new Calligrapher(this);
         calligrapher.setFont(this, "JFFlatregular.ttf", true);

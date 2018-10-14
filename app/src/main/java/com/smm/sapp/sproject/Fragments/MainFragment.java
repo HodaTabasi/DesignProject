@@ -60,6 +60,7 @@ public class MainFragment extends Fragment {
     TextView tv_proposals;
     TextView tv_about;
     TextView tv_search;
+    TextView notification_num;
     ImageView img_power;
     ImageView img_notification, img_edit;
     String refreshedToken;
@@ -89,6 +90,7 @@ public class MainFragment extends Fragment {
         tv_proposals = view.findViewById(R.id.tv_proposals);
         tv_about = view.findViewById(R.id.tv_about);
         tv_search = view.findViewById(R.id.tv_search);
+        notification_num = view.findViewById(R.id.notification_num);
         img_power = view.findViewById(R.id.img_power);
         img_notification = view.findViewById(R.id.img_notification);
         img_edit = view.findViewById(R.id.img_edit);
@@ -230,6 +232,7 @@ public class MainFragment extends Fragment {
         img_notification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                notification_num.setVisibility(View.INVISIBLE);
                 FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new NotificationFragment(), true);
 
             }
@@ -315,12 +318,19 @@ public class MainFragment extends Fragment {
 
         setBottomBar();
         init(getView());
-//        changeToken();
 
         //registered user
         if (!ConstantInterFace.IS_REGISTER) {
             onClickMethod();
             changeToken();
+
+            if (ConstantInterFace.NOTIFICATION_NUMBER != 0){
+                notification_num.setVisibility(View.VISIBLE);
+                notification_num.setText(ConstantInterFace.NOTIFICATION_NUMBER+" ");
+            }else {
+                notification_num.setVisibility(View.INVISIBLE);
+            }
+
         }
         //unregistered user
         else {

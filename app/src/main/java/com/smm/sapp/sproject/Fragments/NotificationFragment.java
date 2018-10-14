@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.smm.sapp.sproject.Adapters.NotificationAdapter;
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.Models.Notifications;
 import com.smm.sapp.sproject.R;
 
@@ -40,6 +41,7 @@ public class NotificationFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_notification, container, false);
+        ConstantInterFace.NOTIFICATION_NUMBER  = 0;
         return view;
     }
 
