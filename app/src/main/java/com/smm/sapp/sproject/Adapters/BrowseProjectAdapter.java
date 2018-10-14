@@ -174,7 +174,6 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
                 ConstantInterFace.tv_portfolio.setBackgroundResource(0);
             }
         });
-
         add_fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
