@@ -4,11 +4,13 @@ package com.smm.sapp.sproject.Fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
@@ -61,9 +63,10 @@ public class AddProjectFragment extends Fragment implements View.OnClickListener
         });
 
 
-        if (!getArguments().isEmpty()){
+        if (!getArguments().isEmpty()) {
             Bundle bundle = getArguments();
             type = bundle.getString("type");
+            Log.e("eeeeeeeee", type);
 
             if (type.equals("wall")) {
                 FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProjectDitailsPaintingWallFragment());
