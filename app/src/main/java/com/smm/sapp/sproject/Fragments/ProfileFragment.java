@@ -23,6 +23,7 @@ import com.google.gson.Gson;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.Models.User;
 import com.smm.sapp.sproject.MyRequest;
+import com.smm.sapp.sproject.MySpinnerAdapter;
 import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
 
@@ -31,6 +32,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
@@ -89,10 +91,16 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
-                R.array.spinner_items, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sp_specialization.setAdapter(adapter);
+//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
+//                R.array.spinner_items, android.R.layout.simple_spinner_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        sp_specialization.setAdapter(adapter);
+        MySpinnerAdapter adapter2 = new MySpinnerAdapter(
+                getContext(),
+                android.R.layout.simple_spinner_item,
+                Arrays.asList(getResources().getStringArray(R.array.spinner_items))
+        );
+        sp_specialization.setAdapter(adapter2);
         sp_specialization.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
@@ -128,10 +136,16 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        ArrayAdapter<CharSequence> gender_adapter = ArrayAdapter.createFromResource(getContext(),
-                R.array.gender_items, android.R.layout.simple_spinner_item);
-        gender_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sp_gender.setAdapter(gender_adapter);
+//        ArrayAdapter<CharSequence> gender_adapter = ArrayAdapter.createFromResource(getContext(),
+//                R.array.gender_items, android.R.layout.simple_spinner_item);
+//        gender_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        sp_gender.setAdapter(gender_adapter);
+        MySpinnerAdapter adapter1 = new MySpinnerAdapter(
+                getContext(),
+                android.R.layout.simple_spinner_item,
+                Arrays.asList(getResources().getStringArray(R.array.gender_items))
+        );
+        sp_gender.setAdapter(adapter1);
         sp_gender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
@@ -150,7 +164,6 @@ public class ProfileFragment extends Fragment {
 
             }
         });
-
 
         calendar = Calendar.getInstance();
         date = new DatePickerDialog.OnDateSetListener() {

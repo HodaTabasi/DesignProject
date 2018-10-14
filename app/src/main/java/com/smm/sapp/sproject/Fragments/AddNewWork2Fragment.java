@@ -101,6 +101,7 @@ public class AddNewWork2Fragment extends Fragment {
                 getFragmentManager().popBackStack();
             }
         });
+
         Bundle bundle = getArguments();
         if (bundle.getBoolean("flag")){
             getData(bundle.getString("id"));

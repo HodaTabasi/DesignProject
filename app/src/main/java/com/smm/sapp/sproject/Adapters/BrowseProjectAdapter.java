@@ -153,7 +153,12 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
             public void onClick(View view) {
                 mypopupWindow.dismiss();
                 if (ConstantInterFace.USER.getType().equals("worker")){
-                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AddNewWork2Fragment(),true);
+                    AddNewWork2Fragment fragment = new AddNewWork2Fragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("id",String.valueOf(ConstantInterFace.USER.getId()));
+                    fragment.setArguments(bundle);
+                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment,true);
+//                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AddNewWork2Fragment(),true);
                 }else {
                     AddProjectFragment fragment = new AddProjectFragment();
                     Bundle bundle = new Bundle();
@@ -169,7 +174,6 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
                 ConstantInterFace.tv_portfolio.setBackgroundResource(0);
             }
         });
-
         add_fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

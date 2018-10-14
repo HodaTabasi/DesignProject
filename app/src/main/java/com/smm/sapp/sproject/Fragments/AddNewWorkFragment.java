@@ -28,6 +28,7 @@ import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.HelperClass.PathUtil;
 import com.smm.sapp.sproject.Models.PWorks;
 import com.smm.sapp.sproject.MyRequest;
+import com.smm.sapp.sproject.MySpinnerAdapter;
 import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
 import com.squareup.picasso.Picasso;
@@ -38,6 +39,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -86,10 +88,16 @@ public class AddNewWorkFragment extends Fragment {
     }
 
     private void setSpinner() {
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
-                R.array.spinner_items, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sp_specialization.setAdapter(adapter);
+//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
+//                R.array.spinner_items, android.R.layout.simple_spinner_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        sp_specialization.setAdapter(adapter);
+        MySpinnerAdapter adapter1 = new MySpinnerAdapter(
+                getContext(),
+                android.R.layout.simple_spinner_item,
+                Arrays.asList(getResources().getStringArray(R.array.spinner_items))
+        );
+        sp_specialization.setAdapter(adapter1);
         sp_specialization.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
