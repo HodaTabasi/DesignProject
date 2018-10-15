@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 
+import com.smm.sapp.sproject.ConstantInterFace;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -15,7 +16,7 @@ public class SharedPreferencesApp {
     public static SharedPreferencesApp sharedPreferencesApp;
     private SharedPreferences prefs;
     public SharedPreferencesApp(Context context) {
-//        prefs = context.getSharedPreferences(Constants.MY_PREFS_NAME, MODE_PRIVATE);
+        prefs = context.getSharedPreferences(ConstantInterFace.MY_PREFS_NAME, MODE_PRIVATE);
     }
 
     public static SharedPreferencesApp getInstance(Context context){

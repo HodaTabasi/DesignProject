@@ -10,6 +10,11 @@ import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.google.gson.Gson;
+import com.smm.sapp.sproject.Models.NotificationPayLoad;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MyFirebaseInstanceIDService extends FirebaseMessagingService {
     String TAG = "MyFirebaseInstanceIDService";
@@ -27,6 +32,14 @@ public class MyFirebaseInstanceIDService extends FirebaseMessagingService {
         // Check if message contains a data payload.
         if (remoteMessage.getData().size() > 0) {
             Log.e(TAG, "Message data payload: " + remoteMessage.getData());
+            Gson gson = new Gson();
+            NotificationPayLoad notificationPayLoad = gson.fromJson(remoteMessage.getData().toString(),NotificationPayLoad.class);
+//            try {
+//                JSONObject object = new JSONObject(remoteMessage.getData().toString());
+//                Log.e("ffdr",object.getString("seen") + " ");
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
 
             if (/* Check if data needs to be processed by long running job */ true) {
                 // For long-running tasks (10 seconds or more) use Firebase Job Dispatcher.

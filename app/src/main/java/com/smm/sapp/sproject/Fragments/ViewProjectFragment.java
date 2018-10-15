@@ -102,6 +102,7 @@ public class ViewProjectFragment extends Fragment {
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
 
         initView(getView());
+        addOnClickListener();
 
         if (ConstantInterFace.USER.getType().equals("client"))
             addOffer.setVisibility(View.INVISIBLE);
@@ -114,6 +115,9 @@ public class ViewProjectFragment extends Fragment {
             mBalanceP.setText(model.getBalance());
             mProposalP.setText(model.getDescr());
             mDurP.setText(model.getDur());
+            mUserName.setText(model.getUser().getName());
+            mUserType.setText(model.getUser().getType());
+            Picasso.get().load(model.getUser().getPhoto_link()).into(mUserPhoto);
             linear_add_proposal.setVisibility(View.VISIBLE);
             pr_ditails.setVisibility(View.GONE);
         } else {
@@ -132,7 +136,6 @@ public class ViewProjectFragment extends Fragment {
                         ConstantInterFace.IS_PROPOSAL_OPENED = true;
 //                    pr_ditails.setVisibility(View.GONE);
                         id = models.getId();
-                        addOnClickListener();
 
 
                     } else if (ConstantInterFace.IS_PROPOSAL_OPENED) {
@@ -206,7 +209,9 @@ public class ViewProjectFragment extends Fragment {
         mAddProposalP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.e("ffd", id + " ggيؤشس");
                 if (bundle.getBoolean("flag")) {
+                    Log.e("ffd", id + " gg");
                     updateOfferRequest(model);
                 } else {
                     if (mReceivableP.getText().toString().matches("")
@@ -216,7 +221,6 @@ public class ViewProjectFragment extends Fragment {
                         Toast.makeText(getContext(), "يجب تعبئة جميع الحقول", Toast.LENGTH_LONG).show();
                     } else {
                         addOfferRequest();
-
                     }
 
                 }
@@ -325,10 +329,9 @@ public class ViewProjectFragment extends Fragment {
                     public void run() {
                         try {
                             if (object.getBoolean("success")) {
-                                Toast.makeText(getActivity(), "" + object.getString("message"), Toast.LENGTH_SHORT).show();
                                 Gson gson = new Gson();
                                 OfferModel model = gson.fromJson(jsonObject.getJSONObject("offer").toString(), OfferModel.class);
-                                getActivity().finish();
+                                Toast.makeText(getActivity(), "م تعديل العرض بنجاح" , Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(getActivity(), "" + object.getString("error"), Toast.LENGTH_SHORT).show();
                             }
