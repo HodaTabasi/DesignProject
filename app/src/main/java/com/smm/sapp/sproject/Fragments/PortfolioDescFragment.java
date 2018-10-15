@@ -119,7 +119,11 @@ public class PortfolioDescFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (ConstantInterFace.USER.getType().equals("worker")){
-                    FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new AddNewWork2Fragment(),true);
+                    AddNewWork2Fragment fragment = new AddNewWork2Fragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("flag", models.getId()+"");
+                    fragment.setArguments(bundle);
+                    FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment,true);
                 }else {
                     AddProjectFragment fragment = new AddProjectFragment();
                     Bundle bundle = new Bundle();
