@@ -1,6 +1,7 @@
 package com.smm.sapp.sproject.Fragments;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -246,7 +247,7 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         PieDataSet set = new PieDataSet(entries, "  ");
         set.setColors(new int[]{R.color.yalow, R.color.green, R.color.darkBlue, R.color.red}, getActivity());
         set.setValueTextSize(18f);
-        set.setValueTextColor(R.color.white);
+        set.setValueTextColor(Color.WHITE);
         PieData data = new PieData(set);
         chart.setData(data);
         chart.invalidate(); // refresh

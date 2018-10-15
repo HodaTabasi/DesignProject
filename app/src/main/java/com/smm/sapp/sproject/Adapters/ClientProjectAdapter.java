@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +40,11 @@ public class ClientProjectAdapter extends RecyclerView.Adapter<ClientProjectAdap
     public void onBindViewHolder(@NonNull final ClientProjectHolder holder, final int position) {
         final ProjectsModels projectsModels = projectsList.get(position);
         holder.body.setText(projectsModels.getName());
-        holder.calender.setText(projectsModels.getCreated_at());
+
+        String created_at = projectsModels.getCreated_at();
+        String[] s = created_at.split(" ");
+
+        holder.calender.setText(s[0]);
         holder.name.setText(projectsModels.getUser().getName());
         holder.money.setText(" $ " + projectsModels.getBalance());
 
