@@ -2,11 +2,16 @@ package com.smm.sapp.sproject.Fragments;
 
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
+import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +27,8 @@ import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
+import com.github.mikephil.charting.utils.MPPointF;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.smm.sapp.sproject.Adapters.ClientProjectAdapter;
@@ -246,12 +253,42 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
 
         PieDataSet set = new PieDataSet(entries, "  ");
         set.setColors(new int[]{R.color.yalow, R.color.green, R.color.darkBlue, R.color.red}, getActivity());
-        set.setValueTextSize(18f);
+        set.setValueTextSize(15f);
         set.setValueTextColor(Color.WHITE);
+        set.setDrawIcons(false);
+
+        set.setSliceSpace(3f);
+        set.setIconsOffset(new MPPointF(0, 40));
+        set.setSelectionShift(5f);
+        set.setDrawIcons(false);
+
         PieData data = new PieData(set);
         chart.setData(data);
+        chart.setUsePercentValues(true);
+        chart.getDescription().setEnabled(false);
+        chart.setRotationEnabled(false);
+        chart.setHighlightPerTapEnabled(false);
+        chart.setDrawCenterText(true);
+//        chart.setCenterTextTypeface(mTfLight);
+        SpannableString s = new SpannableString("150");
+        chart.setCenterText(s);
         chart.invalidate(); // refresh
+
+
+
     }
+
+//    private SpannableString generateCenterSpannableText() {
+//
+//        SpannableString s = new SpannableString("150");
+//        s.setSpan(new RelativeSizeSpan(1.7f), 0, 14, 0);
+//        s.setSpan(new StyleSpan(Typeface.NORMAL), 14, s.length() - 15, 0);
+//        s.setSpan(new ForegroundColorSpan(Color.GRAY), 14, s.length() - 15, 0);
+//        s.setSpan(new RelativeSizeSpan(.8f), 14, s.length() - 15, 0);
+//        s.setSpan(new StyleSpan(Typeface.ITALIC), s.length() - 14, s.length(), 0);
+//        s.setSpan(new ForegroundColorSpan(ColorTemplate.getHoloBlue()), s.length() - 14, s.length(), 0);
+//        return s;
+//    }
 
     @Override
     public void onClick(View v) {
