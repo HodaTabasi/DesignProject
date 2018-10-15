@@ -191,27 +191,43 @@ public class AccountSearchFragment extends Fragment {
         rate_bar.setRating(Float.valueOf(models.getRate()));
 
         ///////////////
-        StringBuilder name = new StringBuilder(models.getName());
-        for (int i = 1; i< name.length() - 1 ; i++){
-            name.setCharAt(i, '*');
-        }
-        tv_name.setText(name);
-        //////////////////////
-        Picasso.get().load(models.getPhoto_link()).into(profileImg);
 
-        if (models.getJob_type().equals("wall")) {
-            tv_title.setText("مصمم جداري");
-        } else if (models.getJob_type().equals("arch")) {
-            tv_title.setText("مصمم معماري");
-        } else if (models.getJob_type().equals("inter")) {
-            tv_title.setText("مصمم داخلي");
-        } else if (models.getJob_type().equals("moshen")) {
-            tv_title.setText("مصمم موشن");
-        } else if (models.getJob_type().equals("graphic")) {
-            tv_title.setText("مصمم جرافيكس");
+        if (models.getName() == null) {
+            tv_name.setText("");
+        } else {
+            StringBuilder name = new StringBuilder(models.getName());
+            for (int i = 1; i < name.length() - 1; i++) {
+                name.setCharAt(i, '*');
+            }
+            tv_name.setText(name);
         }
 
-        et_bio.setText(models.getBio());
+        if (models.getPhoto_link() != null) {
+            Picasso.get().load(models.getPhoto_link()).into(profileImg);
+        }
+
+        if (models.getJob_type() != null) {
+            if (models.getJob_type().equals("wall")) {
+                tv_title.setText("مصمم جداري");
+            } else if (models.getJob_type().equals("arch")) {
+                tv_title.setText("مصمم معماري");
+            } else if (models.getJob_type().equals("inter")) {
+                tv_title.setText("مصمم داخلي");
+            } else if (models.getJob_type().equals("moshen")) {
+                tv_title.setText("مصمم موشن");
+            } else if (models.getJob_type().equals("graphic")) {
+                tv_title.setText("مصمم جرافيكس");
+            }
+        } else {
+            tv_title.setText("");
+        }
+
+        if (models.getBio() != null) {
+            et_bio.setText(models.getBio());
+
+        }else {
+            et_bio.setText("");
+        }
 
 
         getSkills();
@@ -263,14 +279,13 @@ public class AccountSearchFragment extends Fragment {
                                 int in_progress = inProgressProjectList.size();
 
                                 try {
-                                     rate = (finished/in_progress)*100;
-                                }catch (Exception e){
-
+                                    rate = (finished / in_progress) * 100;
+                                } catch (Exception e) {
                                 }
 
                                 tv_completed.setText(String.valueOf(finished));
                                 tv_inProgress.setText(String.valueOf(in_progress));
-                                tv_rateProjects.setText(String.valueOf(rate)+"%");
+                                tv_rateProjects.setText(String.valueOf(rate) + "%");
 
                                 arrayList = gson.fromJson(userObj.getJSONArray("skills").toString(), token.getType());
                                 if (arrayList.isEmpty()) {

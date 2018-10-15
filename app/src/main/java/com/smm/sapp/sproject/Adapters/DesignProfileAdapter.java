@@ -61,16 +61,13 @@ public class DesignProfileAdapter extends RecyclerView.Adapter<DesignProfileAdap
     @Override
     public void onBindViewHolder(@NonNull DesignProfileVH holder, final int position) {
 
-        if(profiles.get(position).getName() == null){
-            removeAt(position);
-        }
-
-        Log.e("zzzz",profiles.size()+"");
+        Log.e("zzzz", profiles.size() + "");
         worker_id = profiles.get(position).getId();
-        holder.name.setText(profiles.get(position).getName());
-        holder.rate.setRating(Float.valueOf(profiles.get(position).getRate()));
-        Log.e("fffds", profiles.get(position).getRate() + " ");
-        try {
+
+        if (profiles.get(position).getName() != null) {
+            holder.name.setText(profiles.get(position).getName());
+        }
+        if (profiles.get(position).getJob_type() != null) {
             if (profiles.get(position).getJob_type().equals("wall")) {
                 holder.specialty.setText("مصمم جداري");
             } else if (profiles.get(position).getJob_type().equals("arch")) {
@@ -82,41 +79,39 @@ public class DesignProfileAdapter extends RecyclerView.Adapter<DesignProfileAdap
             } else if (profiles.get(position).getJob_type().equals("moshen")) {
                 holder.specialty.setText("مصمم موشن");
             }
-
-            Picasso.get().load(profiles.get(position).getPhoto_link()).into(holder.profileImg);
-            holder.ChooeseMe.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            holder.addToFav.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-//                if (ConstantInterFace.IS_USER_FAVORITE = false) {
-                    addTofav();
-//                }
-                }
-            });
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (profiles.get(position).getName() == null && profiles.get(position).getName().isEmpty()) {
-                        Toast.makeText(context, "هذا المصمم غير مكتمل ملفه الشخصي", Toast.LENGTH_LONG).show();
-                    } else {
-                        AccountSearchFragment fragment = new AccountSearchFragment();
-                        Bundle bundle = new Bundle();
-                        bundle.putParcelable("worker", profiles.get(position));
-                        fragment.setArguments(bundle);
-                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
-                    }
-
-                }
-            });
-
-        } catch (Exception e) {
-
         }
+        holder.rate.setRating(Float.valueOf(profiles.get(position).getRate()));
+        Log.e("fffds", profiles.get(position).getRate() + " ");
+
+        if (profiles.get(position).getPhoto_link() != null){
+            Picasso.get().load(profiles.get(position).getPhoto_link()).into(holder.profileImg);
+        }
+
+        holder.ChooeseMe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        holder.addToFav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                if (ConstantInterFace.IS_USER_FAVORITE = false) {
+                addTofav();
+//                }
+            }
+        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                AccountSearchFragment fragment = new AccountSearchFragment();
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("worker", profiles.get(position));
+                fragment.setArguments(bundle);
+                FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
+            }
+        });
 
 
     }

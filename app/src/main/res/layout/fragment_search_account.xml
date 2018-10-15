@@ -69,7 +69,7 @@
                     android:layout_height="80dp"
                     android:layout_alignParentRight="true"
                     android:padding="5dp"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@drawable/img_user" />
 
                 <TextView
                     android:id="@+id/tv_name"
@@ -77,7 +77,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:padding="5dp"
-                    android:text="حسام اليماني"
+                    android:hint="الاسم"
                     android:textColor="@color/textGray"
                     android:textSize="14sp" />
 
@@ -106,7 +106,7 @@
                     android:background="@drawable/report_layout_shap"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="مصمم معماري"
+                    android:hint="التخصص"
                     android:textColor="@color/textGray"
                     android:textSize="14sp" />
 
