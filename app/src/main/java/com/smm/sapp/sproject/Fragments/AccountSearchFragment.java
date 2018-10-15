@@ -281,7 +281,6 @@ public class AccountSearchFragment extends Fragment {
                                 try {
                                     rate = (finished / in_progress) * 100;
                                 } catch (Exception e) {
-
                                 }
 
                                 tv_completed.setText(String.valueOf(finished));
