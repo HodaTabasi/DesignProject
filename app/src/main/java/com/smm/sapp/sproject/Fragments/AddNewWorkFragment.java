@@ -210,10 +210,13 @@ public class AddNewWorkFragment extends Fragment {
             public void onResponse(Call call, Response response) throws IOException, JSONException {
                 MyProgressDialog.dismissDialog();
 
-                JSONObject jsonObject = new JSONObject(response.body().string());
+                final JSONObject jsonObject = new JSONObject(response.body().string());
                 JSONObject statusobj = jsonObject.getJSONObject("status");
                 String success = statusobj.getString("success");
+                final String message = statusobj.getString("message");
 
+
+                Log.e("pppp",filePath);
                 if (success.equals("true")) {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
@@ -231,6 +234,10 @@ public class AddNewWorkFragment extends Fragment {
                         @Override
                         public void run() {
                             Toast.makeText(getActivity(), "لم يتم الاضافة", Toast.LENGTH_LONG).show();
+                            Log.e("oooooo",message);
+                            Log.e("eeeeee", String.valueOf(jsonObject));
+
+
                         }
                     });
                 }
