@@ -119,7 +119,6 @@ public class AccountFragment extends Fragment {
             public void onClick(View view) {
 
                 setBottomBar();
-
                 if (ConstantInterFace.IS_USER_COMPLETEED) {
                     if (userModel.getType().equals("worker")) {
                         ProfileFragment fragment = new ProfileFragment();
