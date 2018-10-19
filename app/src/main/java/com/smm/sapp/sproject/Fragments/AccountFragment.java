@@ -83,6 +83,7 @@ public class AccountFragment extends Fragment {
         init();
         if (!ConstantInterFace.IS_REGISTER) {
             onClickMethod();
+            img_user.setImageResource(0);
             getProfileDataRequest();
         }
     }
@@ -116,7 +117,47 @@ public class AccountFragment extends Fragment {
         img_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProfileFragment(), true);
+
+                setBottomBar();
+
+                if (ConstantInterFace.IS_USER_COMPLETEED) {
+                    if (userModel.getType().equals("worker")) {
+                        ProfileFragment fragment = new ProfileFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("type", userModel.getType());
+                        bundle.putString("job_type", userModel.getJob_type());
+                        bundle.putString("busniess_type", userModel.getBusniess_type());
+                        bundle.putString("name", userModel.getName());
+                        bundle.putString("bio", userModel.getBio());
+                        bundle.putString("bu_mobile", userModel.getPhone());
+                        bundle.putString("email", userModel.getEmail());
+                        bundle.putString("bu_gender", userModel.getGender());
+                        bundle.putString("dob", userModel.getDob());
+
+                        fragment.setArguments(bundle);
+                        FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
+
+                    } else if (userModel.getType().equals("client")) {
+                        ProfileFragment fragment = new ProfileFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("type", userModel.getType());
+                        bundle.putString("name", userModel.getName());
+                        bundle.putString("bu_mobile", userModel.getPhone());
+                        bundle.putString("email", userModel.getEmail());
+                        bundle.putString("bu_gender", userModel.getGender());
+                        bundle.putString("dob", userModel.getDob());
+
+                        fragment.setArguments(bundle);
+                        FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
+                    }
+
+                } else {
+                    ProfileFragment fragment = new ProfileFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("phone", ConstantInterFace.USER.getPhone());
+                    fragment.setArguments(bundle);
+                    FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
+                }
 
             }
         });
@@ -124,8 +165,8 @@ public class AccountFragment extends Fragment {
         img_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//                startActivityForResult(pickPhoto, REQUEST_CODE);
+                Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(pickPhoto, REQUEST_CODE);
             }
         });
 
@@ -160,16 +201,6 @@ public class AccountFragment extends Fragment {
                         fragment.setArguments(bundle);
                         FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
 
-                        Log.e("eee", userModel.getType());
-                        Log.e("eee", userModel.getJob_type());
-                        Log.e("eee", userModel.getBusniess_type());
-                        Log.e("eee", userModel.getName());
-                        Log.e("eee", userModel.getBio());
-                        Log.e("eee", userModel.getPhone());
-                        Log.e("eee", userModel.getEmail());
-                        Log.e("eee", userModel.getGender());
-                        Log.e("eee", userModel.getDob());
-
                     } else if (userModel.getType().equals("client")) {
                         ProfileFragment fragment = new ProfileFragment();
                         Bundle bundle = new Bundle();
@@ -179,13 +210,6 @@ public class AccountFragment extends Fragment {
                         bundle.putString("email", userModel.getEmail());
                         bundle.putString("bu_gender", userModel.getGender());
                         bundle.putString("dob", userModel.getDob());
-
-                        Log.e("eee", userModel.getType());
-                        Log.e("eee", userModel.getName());
-                        Log.e("eee", userModel.getPhone());
-                        Log.e("eee", userModel.getEmail());
-                        Log.e("eee", userModel.getGender());
-                        Log.e("eee", userModel.getDob());
 
                         fragment.setArguments(bundle);
                         FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
@@ -322,9 +346,8 @@ public class AccountFragment extends Fragment {
                 Uri selectedImage = data.getData();
                 try {
                     String filePath = PathUtil.getPath(getActivity(), selectedImage);
-                    Log.e("dd", " " + filePath);
-                    //attachMap.put("similars[" + (k++) + "]", filePath);
-                    Toast.makeText(getContext(), "تم اضافة الصورة بنجاح", Toast.LENGTH_SHORT).show();
+                    sendImgRequest(filePath);
+
                 } catch (URISyntaxException e) {
                     e.printStackTrace();
 
@@ -333,4 +356,58 @@ public class AccountFragment extends Fragment {
 
         }
     }
+
+
+    private void sendImgRequest(final String filePath) {
+        MyProgressDialog.showDialog(getContext());
+        MyRequest myRequest = new MyRequest();
+        Map<String, String> map = new HashMap<>();
+        map.put("token", ConstantInterFace.USER.getToken());
+        //map.put("photo_link", filePath);
+        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/updateProfilePhoto", map, filePath, "photo_link", new OkHttpCallback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                MyProgressDialog.dismissDialog();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getActivity(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException, JSONException {
+                MyProgressDialog.dismissDialog();
+
+                final JSONObject jsonObject = new JSONObject(response.body().string());
+                JSONObject statusobj = jsonObject.getJSONObject("status");
+                String success = statusobj.getString("success");
+                Gson gson = new Gson();
+                userModel = gson.fromJson(jsonObject.getJSONObject("user").toString(), UserModel.class);
+
+
+                if (success.equals("true")) {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Picasso.get().load(userModel.getPhoto_link()).into(img_user);
+                            ConstantInterFace.USER.setPhoto_link(userModel.getPhoto_link());
+                            Toast.makeText(getActivity(), "تم اضافة الصورة بنجاح", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                } else {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getActivity(), "لم يتم الاضافة", Toast.LENGTH_LONG).show();
+
+                        }
+                    });
+                }
+            }
+        });
+    }
+
+
 }

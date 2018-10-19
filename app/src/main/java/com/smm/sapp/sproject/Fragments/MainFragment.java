@@ -69,7 +69,6 @@ public class MainFragment extends Fragment {
     UserModel userModel;
     private static final int REQUEST_CODE = 1;
 
-
     public MainFragment() {
     }
 
@@ -98,16 +97,16 @@ public class MainFragment extends Fragment {
         refreshedToken = FirebaseInstanceId.getInstance().getToken();
 
         LayerDrawable stars = (LayerDrawable) ratting_designer.getProgressDrawable();
-        stars.getDrawable(0).setColorFilter(Color.WHITE,PorterDuff.Mode.SRC_ATOP);
+        stars.getDrawable(0).setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
     }
 
     private void onClickMethod() {
 
         if (ConstantInterFace.IS_USER_COMPLETEED) {
+            img_user.setImageResource(0);
             getProfileData();
 
-        }
-        else if (ConstantInterFace.USER.getPhoto_link() == null &&
+        } else if (ConstantInterFace.USER.getPhoto_link() == null &&
                 ConstantInterFace.USER.getName() == null &&
                 ConstantInterFace.USER.getJob_type() == null) {
 
@@ -129,40 +128,66 @@ public class MainFragment extends Fragment {
                 ConstantInterFace.USER.getJob_type() != null) {
 
             ConstantInterFace.IS_USER_COMPLETEED = true;
+            img_user.setImageResource(0);
             getProfileData();
-
-
-//            _name.setText(ConstantInterFace.USER.getName());
-//            Picasso.get().load(ConstantInterFace.USER.getPhoto_link()).into(img_user);
-//
-//            if (ConstantInterFace.USER.getType().equals("worker")) {
-//                if (ConstantInterFace.USER.getJob_type().equals("arch")) {
-//                    _specialization.setText("مصمم معماري");
-//                } else if (ConstantInterFace.USER.getJob_type().equals("wall")) {
-//                    _specialization.setText("مصمم جداري");
-//                } else if (ConstantInterFace.USER.getJob_type().equals("graphic")) {
-//                    _specialization.setText("مصمم جرافكس");
-//                } else if (ConstantInterFace.USER.getJob_type().equals("inter")) {
-//                    _specialization.setText("مصمم داخلي");
-//                } else if (ConstantInterFace.USER.getJob_type().equals("moshen")) {
-//                    _specialization.setText("مصمم موشن");
-//                }
-//            } else {
-//                _specialization.setText("صاحب مشاريع");
-//            }
         }
 
         img_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProfileFragment(), true);
+
+                ConstantInterFace.tv_profile.setBackground(getResources().getDrawable(R.drawable.main_shape));
+                ConstantInterFace.tv_projects.setBackgroundResource(0);
+                ConstantInterFace.tv_home.setBackgroundResource(0);
+                ConstantInterFace.tv_portfolio.setBackgroundResource(0);
+                ConstantInterFace.tv_msgs.setBackgroundResource(0);
+
+                if (ConstantInterFace.IS_USER_COMPLETEED) {
+                    if (userModel.getType().equals("worker")) {
+                        ProfileFragment fragment = new ProfileFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("type", userModel.getType());
+                        bundle.putString("job_type", userModel.getJob_type());
+                        bundle.putString("busniess_type", userModel.getBusniess_type());
+                        bundle.putString("name", userModel.getName());
+                        bundle.putString("bio", userModel.getBio());
+                        bundle.putString("bu_mobile", userModel.getPhone());
+                        bundle.putString("email", userModel.getEmail());
+                        bundle.putString("bu_gender", userModel.getGender());
+                        bundle.putString("dob", userModel.getDob());
+
+                        fragment.setArguments(bundle);
+                        FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
+
+                    } else if (userModel.getType().equals("client")) {
+                        ProfileFragment fragment = new ProfileFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("type", userModel.getType());
+                        bundle.putString("name", userModel.getName());
+                        bundle.putString("bu_mobile", userModel.getPhone());
+                        bundle.putString("email", userModel.getEmail());
+                        bundle.putString("bu_gender", userModel.getGender());
+                        bundle.putString("dob", userModel.getDob());
+
+                        fragment.setArguments(bundle);
+                        FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
+                    }
+
+                } else {
+                    ProfileFragment fragment = new ProfileFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("phone", ConstantInterFace.USER.getPhone());
+                    fragment.setArguments(bundle);
+                    FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
+                }
             }
         });
 
         img_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //openGallery();
+                Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(pickPhoto, REQUEST_CODE);
             }
         });
 
@@ -170,10 +195,10 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putBoolean("flag",false);
+                bundle.putBoolean("flag", false);
                 AddNewWork2Fragment fragment = new AddNewWork2Fragment();
                 fragment.setArguments(bundle);
-                FragmentsUtil.replaceFragment(getActivity(),R.id.container_activity,fragment,true);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
 
             }
         });
@@ -240,10 +265,6 @@ public class MainFragment extends Fragment {
 
     }
 
-    private void openGallery() {
-        Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(pickPhoto, REQUEST_CODE);
-    }
 
     private void getProfileData() {
         MyRequest myRequest = new MyRequest();
@@ -324,10 +345,10 @@ public class MainFragment extends Fragment {
             onClickMethod();
             changeToken();
 
-            if (ConstantInterFace.NOTIFICATION_NUMBER != 0){
+            if (ConstantInterFace.NOTIFICATION_NUMBER != 0) {
                 notification_num.setVisibility(View.VISIBLE);
-                notification_num.setText(ConstantInterFace.NOTIFICATION_NUMBER+" ");
-            }else {
+                notification_num.setText(ConstantInterFace.NOTIFICATION_NUMBER + " ");
+            } else {
                 notification_num.setVisibility(View.INVISIBLE);
             }
 
@@ -484,9 +505,7 @@ public class MainFragment extends Fragment {
                 Uri selectedImage = data.getData();
                 try {
                     String filePath = PathUtil.getPath(getActivity(), selectedImage);
-                    Log.e("dd", " " + filePath);
-                    //attachMap.put("similars[" + (k++) + "]", filePath);
-                    Toast.makeText(getContext(), "تم اضافة الصورة بنجاح", Toast.LENGTH_SHORT).show();
+                    sendImgRequest(filePath);
                 } catch (URISyntaxException e) {
                     e.printStackTrace();
 
@@ -494,5 +513,56 @@ public class MainFragment extends Fragment {
             }
 
         }
+    }
+
+    private void sendImgRequest(final String filePath) {
+        MyProgressDialog.showDialog(getContext());
+        MyRequest myRequest = new MyRequest();
+        Map<String, String> map = new HashMap<>();
+        map.put("token", ConstantInterFace.USER.getToken());
+        //map.put("photo_link", filePath);
+        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/updateProfilePhoto", map, filePath, "photo_link", new OkHttpCallback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                MyProgressDialog.dismissDialog();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getActivity(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException, JSONException {
+                MyProgressDialog.dismissDialog();
+
+                final JSONObject jsonObject = new JSONObject(response.body().string());
+                JSONObject statusobj = jsonObject.getJSONObject("status");
+                String success = statusobj.getString("success");
+                Gson gson = new Gson();
+                userModel = gson.fromJson(jsonObject.getJSONObject("user").toString(), UserModel.class);
+
+
+                if (success.equals("true")) {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Picasso.get().load(userModel.getPhoto_link()).into(img_user);
+                            ConstantInterFace.USER.setPhoto_link(userModel.getPhoto_link());
+                            Toast.makeText(getActivity(), "تم اضافة الصورة بنجاح", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                } else {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getActivity(), "لم يتم الاضافة", Toast.LENGTH_LONG).show();
+
+                        }
+                    });
+                }
+            }
+        });
     }
 }
