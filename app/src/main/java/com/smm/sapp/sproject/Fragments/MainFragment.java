@@ -412,7 +412,6 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new SameemFragment(), true);
-
             }
         });
 
@@ -420,7 +419,6 @@ public class MainFragment extends Fragment {
         img_power.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 new AlertDialog.Builder(getActivity())
                         .setMessage("هل تريد الخروج من التطبيق؟").setCancelable(false)
                         .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
@@ -430,7 +428,6 @@ public class MainFragment extends Fragment {
                         })
                         .setNegativeButton("لا", null)
                         .show();
-
             }
         });
 

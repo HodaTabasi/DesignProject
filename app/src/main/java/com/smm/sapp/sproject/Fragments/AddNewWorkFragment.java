@@ -173,6 +173,7 @@ public class AddNewWorkFragment extends Fragment {
                         || st_specialization.equals("")) {
                     Toast.makeText(getActivity(), "يجب تعبئة جميع الحقول", Toast.LENGTH_LONG).show();
                 } else {
+                    Log.e("dddd","dfadaw1");
                     sendRequest();
                 }
             }
@@ -180,6 +181,7 @@ public class AddNewWorkFragment extends Fragment {
     }
 
     private void sendRequest() {
+        Log.e("dddd","dfadaw");
         MyProgressDialog.showDialog(getContext());
         MyRequest myRequest = new MyRequest();
         Map<String, String> map = new HashMap<>();
@@ -234,11 +236,7 @@ public class AddNewWorkFragment extends Fragment {
                         @Override
                         public void run() {
                             Toast.makeText(getActivity(), "لم يتم الاضافة", Toast.LENGTH_LONG).show();
-                            Log.e("oooooo",message);
-                            Log.e("eeeeee", String.valueOf(jsonObject));
-
-
-                        }
+                            }
                     });
                 }
 

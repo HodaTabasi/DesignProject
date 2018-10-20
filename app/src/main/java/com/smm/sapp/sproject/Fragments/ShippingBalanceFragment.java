@@ -1,7 +1,11 @@
 package com.smm.sapp.sproject.Fragments;
 
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,8 +14,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -32,6 +39,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -66,6 +76,8 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
     /**
      * ارسال
      */
+    TextView tv,tv1;
+    ImageButton send_bank1;
     private TextView mSendBank1;
     RelativeLayout one, two;
     TextView addPhotoShp;
@@ -105,6 +117,7 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
         mSendBank.setOnClickListener(this);
         mSendBank1.setOnClickListener(this);
         addPhotoShp.setOnClickListener(this);
+        transferDateSh.setOnClickListener(this);
     }
 
     @Override
@@ -114,6 +127,7 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
         addListeners();
+        transferDateSh.setEnabled(true);
 
         ic_back = getView().findViewById(R.id.ic_back);
         ic_back.setOnClickListener(new View.OnClickListener() {
@@ -162,6 +176,26 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
             case R.id.add_photo_shp:
                 Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(pickPhoto, 1);//one can be replaced with any action code
+                break;
+            case R.id.transfer_date_sh:
+                Calendar c = Calendar.getInstance();
+
+                DatePickerDialog pickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                        SimpleDateFormat simpledateformat = new SimpleDateFormat("EEE");
+                        SimpleDateFormat simpledateformat1 = new SimpleDateFormat("MM");
+                        Date date = new Date(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth()-1);
+//                        String dayOfWeek = simpledateformat.format(date);
+                        String month = simpledateformat1.format(date);
+                        int d = datePicker.getDayOfMonth();
+                        int y = datePicker.getYear();
+                        transferDateSh.setText(d+"/"+month+"/"+y);
+                    }
+                },c.get(Calendar.YEAR),c.get(Calendar.MONTH),c.get(Calendar.DAY_OF_MONTH));
+
+                pickerDialog.show();
+                break;
         }
     }
 
@@ -185,11 +219,22 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
             public void onResponse(Call call, Response response) throws IOException, JSONException {
                 MyProgressDialog.dismissDialog();
                 JSONObject jsonObject = new JSONObject(response.body().string());
-                JSONObject object = jsonObject.getJSONObject("status");
-                if (object.getBoolean("success")) {
-                } else {
+                final JSONObject object = jsonObject.getJSONObject("status");
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            if (object.getBoolean("success")) {
+                                MyProgressDialog.DoneDialog(getContext()," المبلغ  " + balance.getText().toString() , "تم شحن حسابك ");
+                            } else {
+                                Toast.makeText(getContext(), "حصل خطا ما", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
 
-                }
             }
         });
     }
@@ -202,7 +247,8 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
                 Uri selectedImage = data.getData();
                 try {
                     filePath = PathUtil.getPath(getActivity(), selectedImage);
-                    addPhotoShp.setText(filePath);
+                    String[] separated = filePath.split("/");
+                    addPhotoShp.setText(separated[separated.length-1]);
                 } catch (URISyntaxException e) {
                     e.printStackTrace();
                 }

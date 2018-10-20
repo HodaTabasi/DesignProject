@@ -40,7 +40,8 @@ public class FinancialMovementReportAdapter extends RecyclerView.Adapter<Financi
         if (reports.size() == 0) {
             Toast.makeText(context, "لا يوجد بيانات لعرضها", Toast.LENGTH_SHORT).show();
         } else {
-            holder.operationDate.setText(reports.get(position).getCreated_at());
+            String[] separated = reports.get(position).getCreated_at().split(" ");
+            holder.operationDate.setText(separated[0]);
             holder.operationDesc.setText(reports.get(position).getDescr());
             holder.operationValue.setText(reports.get(position).getTotal());
             holder.operationNumber.setText(reports.get(position).getId() + "");
