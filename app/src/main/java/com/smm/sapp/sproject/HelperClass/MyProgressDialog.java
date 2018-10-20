@@ -67,6 +67,7 @@ public class MyProgressDialog {
         };
 
         dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+
             @Override
             public void onDismiss(DialogInterface dialog) {
                 handler.removeCallbacks(runnable);
