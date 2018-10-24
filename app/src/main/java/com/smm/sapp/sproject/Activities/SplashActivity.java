@@ -36,7 +36,6 @@ public class SplashActivity extends AppCompatActivity {
         tv1.startAnimation(blink);
         tv2.startAnimation(blink);
 
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
