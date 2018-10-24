@@ -19,6 +19,7 @@
         android:background="@drawable/dark_blue_shap">
 
         <TextView
+            android:id="@+id/tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -27,6 +28,7 @@
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/tv1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -38,7 +40,7 @@
     </LinearLayout>
 
     <ImageButton
-        android:id="@+id/send_bank1"
+        android:id="@+id/send_bank11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"

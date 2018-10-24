@@ -33,7 +33,7 @@ public class MyFirebaseInstanceIDService extends FirebaseMessagingService {
         if (remoteMessage.getData().size() > 0) {
             Log.e(TAG, "Message data payload: " + remoteMessage.getData());
             Gson gson = new Gson();
-            NotificationPayLoad notificationPayLoad = gson.fromJson(remoteMessage.getData().toString(),NotificationPayLoad.class);
+//            NotificationPayLoad notificationPayLoad = gson.fromJson(remoteMessage.getData().toString(),NotificationPayLoad.class);
 //            try {
 //                JSONObject object = new JSONObject(remoteMessage.getData().toString());
 //                Log.e("ffdr",object.getString("seen") + " ");

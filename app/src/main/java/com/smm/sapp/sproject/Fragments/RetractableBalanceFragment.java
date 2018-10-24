@@ -130,6 +130,7 @@ public class RetractableBalanceFragment extends Fragment {
                 TextView send  = dialog.findViewById(R.id.cancl_bank1);
 
                 et_balance.setText(mRetractableRetBalance.getText().toString());
+//                et_uName.setText(ConstantInterFace.USER.getName());
 
                 cancel.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -185,7 +186,8 @@ public class RetractableBalanceFragment extends Fragment {
                     public void run() {
                         try {
                             if (statusObject.getBoolean("success")) {
-                                Toast.makeText(getContext(), " " + statusObject.getString("message"), Toast.LENGTH_SHORT).show();
+                                MyProgressDialog.DoneDialog(getContext()," الى حسابك  " ,  "  تم ارسال " + et_balance.getText().toString() );
+
                             } else {
                                 Toast.makeText(getContext(), " " + statusObject.getString("error"), Toast.LENGTH_SHORT).show();
                             }
