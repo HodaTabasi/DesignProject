@@ -149,7 +149,16 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         mMyProjectExcluded.setOnClickListener(this);
         mMyProjectUnderway.setOnClickListener(this);
 
+        setBottomBar();
         addToChart();
+    }
+
+    private void setBottomBar() {
+        ConstantInterFace.tv_home.setBackgroundResource(0);
+        ConstantInterFace.tv_projects.setBackgroundResource(0);
+        ConstantInterFace.tv_profile.setBackgroundResource(0);
+        ConstantInterFace.tv_portfolio.setBackgroundResource(0);
+        ConstantInterFace.tv_msgs.setBackgroundResource(0);
     }
 
     private void onClickMethod() {

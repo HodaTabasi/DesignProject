@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 
 import com.smm.sapp.sproject.Activities.ContainerActivity;
-import com.smm.sapp.sproject.Activities.SplashActivity;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 

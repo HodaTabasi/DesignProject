@@ -1,22 +1,21 @@
 package com.smm.sapp.sproject.Activities;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.messaging.FirebaseMessaging;
-import com.smm.sapp.sproject.ConstantInterFace;
-import com.smm.sapp.sproject.FirebaseIDService;
-import com.smm.sapp.sproject.MyFirebaseInstanceIDService;
 import com.smm.sapp.sproject.R;
 
 import me.anwarshahriar.calligrapher.Calligrapher;
 
 public class SplashActivity extends AppCompatActivity {
+
+    private final int SPLASH_DISPLAY_LENGTH = 5000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,27 +25,35 @@ public class SplashActivity extends AppCompatActivity {
         Calligrapher calligrapher = new Calligrapher(this);
         calligrapher.setFont(this, "JFFlatregular.ttf", true);
 
-        ImageView reg_img = findViewById(R.id.img_reg);
-        ImageView skip_img = findViewById(R.id.img_skip);
+        TextView tv1 = findViewById(R.id.tv1);
+        TextView tv2 = findViewById(R.id.tv2);
+        ImageView logo = findViewById(R.id.splash);
 
-        reg_img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SplashActivity.this, RegistrationActivity.class);
-                startActivity(intent);
-                //finish();
-            }
-        });
+        Animation bounce = AnimationUtils.loadAnimation(this, R.anim.bounce);
+        Animation blink = AnimationUtils.loadAnimation(this, R.anim.blink);
 
-        skip_img.setOnClickListener(new View.OnClickListener() {
+        logo.startAnimation(bounce);
+        tv1.startAnimation(blink);
+        tv2.startAnimation(blink);
+
+
+        new Handler().postDelayed(new Runnable() {
             @Override
-            public void onClick(View view) {
-                ConstantInterFace.IS_REGISTER = true;
-                Intent intent = new Intent(SplashActivity.this, ContainerActivity.class);
-                startActivity(intent);
+            public void run() {
+
+                Intent mainIntent = new Intent(SplashActivity.this, FirstActivity.class);
+                startActivity(mainIntent);
                 finish();
-            }
-        });
 
+            }
+        }, SPLASH_DISPLAY_LENGTH);
     }
+
+
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
+
 }

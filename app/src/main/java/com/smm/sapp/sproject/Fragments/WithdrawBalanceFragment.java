@@ -12,10 +12,6 @@ import com.smm.sapp.sproject.R;
 
 import me.anwarshahriar.calligrapher.Calligrapher;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class WithdrawBalanceFragment extends Fragment {
 
 

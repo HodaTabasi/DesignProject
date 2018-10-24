@@ -60,7 +60,7 @@ public class EditProposalFragment extends Fragment {
     private TextView mTalk;
     private LinearLayout mDwe;
 
-    OfferModel model;
+    OfferModel model, offerModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -196,32 +196,37 @@ public class EditProposalFragment extends Fragment {
         });
     }
 
-    private void putData(OfferModel model) {
-        Log.e("fffffs"," فقاق " +model.getBalance() + model.getDur() + model.getUser().getJob_type() + model.getUser().getRate());
+    private void putData(OfferModel offerModel) {
 
-            Picasso.get().load(model.getUser().getPhoto_link()).into(mImg);
-            mTvName.setText(model.getUser().getName());
-            if (model.getUser().getRate() == null )
-                mRateBar.setRating(Float.valueOf("0"));
-            else
-                mRateBar.setRating(Float.valueOf(model.getUser().getRate()));
+        this.offerModel = offerModel;
+
+        Log.e("fffffs", " فقاق " + offerModel.getBalance() + offerModel.getDur() + offerModel.getUser().getJob_type() + offerModel.getUser().getRate());
+
+        Picasso.get().load(offerModel.getUser().getPhoto_link()).into(mImg);
+        mTvName.setText(offerModel.getUser().getName());
+        if (offerModel.getUser().getRate() == null)
+            mRateBar.setRating(Float.valueOf("0"));
+        else
+            mRateBar.setRating(Float.valueOf(offerModel.getUser().getRate()));
 
 
-            if (model.getUser().getJob_type().equals("inter")) {
-                mTvSpecialization.setText("مصمم داخلي");
-            } else if (model.getUser().getJob_type().equals("arch")) {
-                mTvSpecialization.setText("مصمم معمماري");
-            } else if (model.getUser().getJob_type().equals("graphic")) {
-                mTvSpecialization.setText("مصمم جرافيكس");
-            } else if (model.getUser().getJob_type().equals("moshen")) {
-                mTvSpecialization.setText("مصمم موشن");
-            } else if (model.getUser().getJob_type().equals("wall")) {
-                mTvSpecialization.setText("مصمم جداري");
-            }
+        if (offerModel.getUser().getJob_type().equals("inter")) {
+            mTvSpecialization.setText("مصمم داخلي");
+        } else if (offerModel.getUser().getJob_type().equals("arch")) {
+            mTvSpecialization.setText("مصمم معمماري");
+        } else if (offerModel.getUser().getJob_type().equals("graphic")) {
+            mTvSpecialization.setText("مصمم جرافيكس");
+        } else if (offerModel.getUser().getJob_type().equals("moshen")) {
+            mTvSpecialization.setText("مصمم موشن");
+        } else if (offerModel.getUser().getJob_type().equals("wall")) {
+            mTvSpecialization.setText("مصمم جداري");
+        }
 
-            mMoney.setText(" السعر " + "" + model.getBalance() + " ريال ");
-            mDay.setText(" في " + model.getDur() + " يوم ");
-            mEtProposal.setText(model.getDescr());
+        mMoney.setText(" السعر " + "" + offerModel.getBalance() + " ريال ");
+        mDay.setText(" في " + offerModel.getDur() + " يوم ");
+        mEtProposal.setText(offerModel.getDescr());
+
+
     }
 
     private void initView(View view) {
@@ -285,11 +290,47 @@ public class EditProposalFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putBoolean("flag",true);
-                bundle.putString("id",model.getUser().getId() + "");
-                AddNewWork2Fragment fragment = new AddNewWork2Fragment();
+                bundle.putBoolean("flag", true);
+                bundle.putString("id", model.getUser().getId() + "");
+                bundle.putString("name", offerModel.getUser().getName());
+
+                if (offerModel.getUser().getRate() == null) {
+                    bundle.putFloat("rate", Float.valueOf("0"));
+                    Log.e("qqqqqq",Float.valueOf("0")+"");
+
+                } else {
+                    bundle.putFloat("rate", Float.valueOf(offerModel.getUser().getRate()));
+                    Log.e("qqqqqq",Float.valueOf(offerModel.getUser().getRate())+"");
+
+                }
+
+
+                if (offerModel.getUser().getJob_type().equals("inter")) {
+                    bundle.putString("speacialization", "مصمم داخلي");
+                    Log.e("qqqqqq",offerModel.getUser().getJob_type()+"");
+
+                } else if (offerModel.getUser().getJob_type().equals("arch")) {
+                    Log.e("qqqqqq",offerModel.getUser().getJob_type()+"");
+
+                    bundle.putString("speacialization", "مصمم معمماري");
+                } else if (offerModel.getUser().getJob_type().equals("graphic")) {
+                    Log.e("qqqqqq",offerModel.getUser().getJob_type()+"");
+
+                    bundle.putString("speacialization", "مصمم جرافيكس");
+                } else if (offerModel.getUser().getJob_type().equals("moshen")) {
+                    Log.e("qqqqqq",offerModel.getUser().getJob_type()+"");
+
+                    bundle.putString("speacialization", "مصمم موشن");
+                } else if (offerModel.getUser().getJob_type().equals("wall")) {
+                    Log.e("qqqqqq",offerModel.getUser().getJob_type()+"");
+
+                    bundle.putString("speacialization", "مصمم جداري");
+                }
+
+
+                PortfolioBrowseProject fragment = new PortfolioBrowseProject();
                 fragment.setArguments(bundle);
-                FragmentsUtil.replaceFragment(getActivity(),R.id.container_activity,fragment,true);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
             }
         });
     }
