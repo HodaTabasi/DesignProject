@@ -18,11 +18,13 @@ import com.smm.sapp.sproject.Fragments.AccountFragment;
 import com.smm.sapp.sproject.Fragments.AddNewWork2Fragment;
 import com.smm.sapp.sproject.Fragments.BrowseProjectsFragment;
 import com.smm.sapp.sproject.Fragments.MainFragment;
+import com.smm.sapp.sproject.Fragments.MessageDitailsFragment;
 import com.smm.sapp.sproject.Fragments.NotificationFragment;
 import com.smm.sapp.sproject.Fragments.PortfolioFragment;
 import com.smm.sapp.sproject.Fragments.RegisterFragment;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.Fragments.MyMessageFragment;
+import com.smm.sapp.sproject.Models.NotificationPayLoad;
 import com.smm.sapp.sproject.MyNotificationManager;
 import com.smm.sapp.sproject.R;
 
@@ -38,7 +40,12 @@ public class ContainerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_container);
 
          if (getIntent().getBooleanExtra("notifiy",false)){
-             FragmentsUtil.addFragment(ContainerActivity.this, R.id.container_activity, new NotificationFragment(), false);
+             NotificationPayLoad payLoad = getIntent().getParcelableExtra("messagePayload");
+             Bundle bundle = new Bundle();
+             MessageDitailsFragment fragment = new MessageDitailsFragment();
+             bundle.putString("userId",payLoad.getSender_id());
+             fragment.setArguments(bundle);
+             FragmentsUtil.addFragment(ContainerActivity.this, R.id.container_activity, fragment, false);
          }else {
              FragmentsUtil.addFragment(ContainerActivity.this, R.id.container_activity, new MainFragment(), false);
          }

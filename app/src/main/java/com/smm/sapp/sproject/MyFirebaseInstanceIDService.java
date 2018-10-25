@@ -2,65 +2,93 @@ package com.smm.sapp.sproject;
 
 
 
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
+import com.github.mikephil.charting.utils.Utils;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.google.gson.Gson;
+import com.smm.sapp.sproject.Activities.ContainerActivity;
 import com.smm.sapp.sproject.Models.NotificationPayLoad;
+import com.smm.sapp.sproject.Models.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Objects;
+
 public class MyFirebaseInstanceIDService extends FirebaseMessagingService {
     String TAG = "MyFirebaseInstanceIDService";
-
-
+    NotificationPayLoad payLoad = new NotificationPayLoad();
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
 
         // TODO(developer): Handle FCM messages here.
         // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
-        Log.e(TAG, "From: " + remoteMessage.getNotification());
+        Log.e(TAG, "From: " + remoteMessage.getNotification().getTitle());
         Log.e(TAG, "Message data payload: " + remoteMessage.getData());
 
         // Check if message contains a data payload.
         if (remoteMessage.getData().size() > 0) {
             Log.e(TAG, "Message data payload: " + remoteMessage.getData());
+            payLoad.NotificationPayLoad(remoteMessage.getData());
             Gson gson = new Gson();
-//            NotificationPayLoad notificationPayLoad = gson.fromJson(remoteMessage.getData().toString(),NotificationPayLoad.class);
-//            try {
-//                JSONObject object = new JSONObject(remoteMessage.getData().toString());
-//                Log.e("ffdr",object.getString("seen") + " ");
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-
-            if (/* Check if data needs to be processed by long running job */ true) {
-                // For long-running tasks (10 seconds or more) use Firebase Job Dispatcher.
-
-            } else {
-                // Handle message within 10 seconds
-
-            }
-
+            payLoad.setUser(gson.fromJson(remoteMessage.getData().get("user"),User.class));
+            sendMessageNotification(payLoad);
         }
+    }
 
-        // Check if message contains a notification payload.
-        if (remoteMessage.getNotification() != null) {
-            ConstantInterFace.NOTIFICATION_NUMBER ++;
-            Log.e(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
-            Log.e(TAG, "Message Notification title: " + remoteMessage.getNotification().getTitle());
+    private void sendMessageNotification(NotificationPayLoad payLoad) {
+        Intent intent = new Intent(this, ContainerActivity.class);
+       // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("messagePayload",payLoad);
+        intent.putExtra("notifiy",true);
+        send(intent, 1, "رسالة جديدة", payLoad.getMessage());
+    }
 
-            /*
-             * Displaying a notification locally
-             */
-            MyNotificationManager.getInstance(this).displayNotification(remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody());
+    private void send(Intent intent, int action, String title, String message) {
+        ConstantInterFace.NOTIFICATION_NUMBER ++;
+        int notificationNumber = 0;
+        int id = 1;
+        PendingIntent pendingIntent;
+        pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+
+        NotificationManager notifyManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        NotificationCompat.Builder builder;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel mChannel = Objects.requireNonNull(notifyManager).getNotificationChannel(String.valueOf(id));
+            if (mChannel == null) {
+                mChannel = new NotificationChannel(String.valueOf(id), title, importance);
+                mChannel.setDescription(message);
+                mChannel.enableVibration(true);
+                mChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
+                notifyManager.createNotificationChannel(mChannel);
+            }
+        }
+        builder = new NotificationCompat.Builder(this, String.valueOf(id));
+        builder.setContentTitle(title)  // required
+                .setSmallIcon(R.drawable.img1)
+                .setDefaults(Notification.DEFAULT_ALL)
+                .setAutoCancel(true)
+                .setContentIntent(pendingIntent)
+                .setTicker(title + " : " + message)
+                .setContentText(message)
+                .setVibrate(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
+        builder.setNumber(notificationNumber)
+                .setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL);
+        if (notifyManager != null) {
+            notifyManager.notify(id, builder.build());
         }
     }
 
@@ -69,4 +97,15 @@ public class MyFirebaseInstanceIDService extends FirebaseMessagingService {
         super.onMessageSent(s);
     }
 
+//        // Check if message contains a notification payload.
+//        if (remoteMessage.getNotification() != null) {
+//            ConstantInterFace.NOTIFICATION_NUMBER ++;
+//            Log.e(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+//            Log.e(TAG, "Message Notification title: " + remoteMessage.getNotification().getTitle());
+//
+//            /*
+//             * Displaying a notification locally
+//             */
+//            MyNotificationManager.getInstance(this).displayNotification(remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody());
+//        }
 }
