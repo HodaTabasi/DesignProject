@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 
+import com.google.gson.Gson;
 import com.smm.sapp.sproject.ConstantInterFace;
+import com.smm.sapp.sproject.Models.User;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -32,6 +34,13 @@ public class SharedPreferencesApp {
         editor.apply();
     }
 
+    public void saveObject(User user) {
+        SharedPreferences.Editor prefsEditor = prefs.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(user);
+        prefsEditor.putString("MyObject", json);
+        prefsEditor.commit();
+    }
 
     public String getStringData(String key){
         return prefs.getString(key,"");

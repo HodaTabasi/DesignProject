@@ -17,6 +17,7 @@ import com.smm.sapp.sproject.Activities.ContainerActivity;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
+import com.smm.sapp.sproject.HelperClass.SharedPreferencesApp;
 import com.smm.sapp.sproject.Models.User;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
@@ -116,6 +117,7 @@ public class ConfirmationFragment extends Fragment {
                         try {
                             if (object.getBoolean("success")) {
                                 ConstantInterFace.USER = gson.fromJson(jsonObject.getJSONObject("user").toString(), User.class);
+                                SharedPreferencesApp.getInstance(getContext()).saveObject(ConstantInterFace.USER);
                                 Intent intent = new Intent(getActivity(), ContainerActivity.class);
                                 startActivity(intent);
                                 getActivity().finish();

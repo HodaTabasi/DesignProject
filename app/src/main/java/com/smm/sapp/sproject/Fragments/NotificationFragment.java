@@ -50,8 +50,7 @@ public class NotificationFragment extends Fragment {
 
         layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mNotificationAttention.setLayoutManager(layoutManager);
-        notifications = new ArrayList<>();
-        mNotificationAttention.setAdapter(new NotificationAdapter(getContext(), R.layout.layout_item_notification, notifications));
+        mNotificationAttention.setAdapter(new NotificationAdapter(getContext(), R.layout.layout_item_notification, ConstantInterFace.notificationsModels));
 
         ic_back = getView().findViewById(R.id.ic_back);
     }

@@ -2,7 +2,10 @@ package com.smm.sapp.sproject;
 
 import android.widget.TextView;
 
+import com.smm.sapp.sproject.Models.NotificationsModels;
 import com.smm.sapp.sproject.Models.User;
+
+import java.util.ArrayList;
 
 public class ConstantInterFace {
     public static final String MY_PREFS_NAME = "notificationData" ;
@@ -28,4 +31,5 @@ public class ConstantInterFace {
     public static final String CHANNEL_DESCRIPTION = "www.simplifiedcoding.ne";
 
     public static int NOTIFICATION_NUMBER = 0;
+    public static ArrayList<NotificationsModels> notificationsModels = null;
 }

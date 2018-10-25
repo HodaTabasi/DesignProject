@@ -29,6 +29,7 @@ import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.HelperClass.PathUtil;
+import com.smm.sapp.sproject.HelperClass.SharedPreferencesApp;
 import com.smm.sapp.sproject.Models.UserModel;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
@@ -423,6 +424,7 @@ public class MainFragment extends Fragment {
                         .setMessage("هل تريد الخروج من التطبيق؟").setCancelable(false)
                         .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
+                                SharedPreferencesApp.getInstance(getContext()).clearData();
                                 getActivity().finish();
                             }
                         })

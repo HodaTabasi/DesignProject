@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.smm.sapp.sproject.Models.Notifications;
+import com.smm.sapp.sproject.Models.NotificationsModels;
 import com.smm.sapp.sproject.R;
 
 import java.util.List;
@@ -19,9 +20,9 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     Context context;
     int layout;
-    List<Notifications> notifications;
+    List<NotificationsModels> notifications;
 
-    public NotificationAdapter(Context context, int layout, List<Notifications> notifications) {
+    public NotificationAdapter(Context context, int layout, List<NotificationsModels> notifications) {
         this.context = context;
         this.layout = layout;
         this.notifications = notifications;
@@ -36,7 +37,9 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     @Override
     public void onBindViewHolder(@NonNull NotificationVH holder, int position) {
-
+        holder.title.setText(notifications.get(position).getNoti_ar());
+        String[] separated = notifications.get(position).getCreated_at().split(" ");
+        holder.time.setText(separated[0]);
     }
 
     @Override
