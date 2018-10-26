@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.smm.sapp.sproject.Fragments.EditProposalFragment;
 import com.smm.sapp.sproject.Fragments.MyOffersFragment;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.Models.ProjectsModels;
@@ -39,24 +40,26 @@ public class ClientProjectAdapter extends RecyclerView.Adapter<ClientProjectAdap
     @Override
     public void onBindViewHolder(@NonNull final ClientProjectHolder holder, final int position) {
         final ProjectsModels projectsModels = projectsList.get(position);
-        holder.body.setText(projectsModels.getName());
 
         String created_at = projectsModels.getCreated_at();
         String[] s = created_at.split(" ");
-
         holder.calender.setText(s[0]);
         holder.name.setText(projectsModels.getUser().getName());
         holder.money.setText(" $ " + projectsModels.getBalance());
+        holder.body.setText(projectsModels.getName());
+
+        Log.e("uuuuu",projectsModels.getUser().getName());
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MyOffersFragment fragment = new MyOffersFragment();
                 Bundle bundle = new Bundle();
-                bundle.putParcelable("object",projectsModels);
-                bundle.putBoolean("flag",false);
+                bundle.putParcelable("object", projectsModels);
+                bundle.putBoolean("flag", false);
                 fragment.setArguments(bundle);
-                FragmentsUtil.replaceFragment((FragmentActivity) context,R.id.container_activity,fragment,true);
+                FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
             }
         });
     }
@@ -67,7 +70,7 @@ public class ClientProjectAdapter extends RecyclerView.Adapter<ClientProjectAdap
     }
 
     public class ClientProjectHolder extends RecyclerView.ViewHolder {
-        TextView calender, name, money, body,tv_day,tv1;
+        TextView calender, name, money, body, tv_day, tv1;
 
         public ClientProjectHolder(View itemView) {
             super(itemView);

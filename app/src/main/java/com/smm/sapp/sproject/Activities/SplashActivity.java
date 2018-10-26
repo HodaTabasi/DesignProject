@@ -34,7 +34,7 @@ import okhttp3.Response;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private final int SPLASH_DISPLAY_LENGTH = 10000;
+    private final int SPLASH_DISPLAY_LENGTH = 5000;
     Intent mainIntent = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +51,9 @@ public class SplashActivity extends AppCompatActivity {
         Animation bounce = AnimationUtils.loadAnimation(this, R.anim.bounce);
         Animation blink = AnimationUtils.loadAnimation(this, R.anim.blink);
 
-        logo.startAnimation(bounce);
-        tv1.startAnimation(blink);
-        tv2.startAnimation(blink);
+        logo.startAnimation(blink);
+        tv1.startAnimation(bounce);
+        tv2.startAnimation(bounce);
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -66,6 +66,7 @@ public class SplashActivity extends AppCompatActivity {
                 } else {
                     Gson gson = new Gson();
                     String json = SharedPreferencesApp.getInstance(SplashActivity.this).getStringData("MyObject");
+                    Log.e("oooo",json);
                     ConstantInterFace.USER = gson.fromJson(json, User.class);
                     getNotifications(ConstantInterFace.USER.getToken());
                 }

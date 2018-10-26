@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -103,12 +104,13 @@ public class AddNewWork2Fragment extends Fragment {
         });
 
         Bundle bundle = getArguments();
-        if (bundle.getBoolean("flag")){
-            getData(bundle.getString("id"));
-        }else {
+        if (bundle.getBoolean("flag")) {
+            //from main fragment (worker & client)
             getData(String.valueOf(ConstantInterFace.USER.getId()));
+        } else if (!bundle.getBoolean("flag")) {
+            //worker type, from edit proposal fragment
+            getData(bundle.getString("id"));
         }
-
     }
 
     private void getData(String id) {

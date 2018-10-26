@@ -196,7 +196,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putBoolean("flag", false);
+                bundle.putBoolean("flag", true);
                 AddNewWork2Fragment fragment = new AddNewWork2Fragment();
                 fragment.setArguments(bundle);
                 FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);

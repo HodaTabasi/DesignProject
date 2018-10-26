@@ -41,23 +41,23 @@ public class WorkerOfferAdapter extends RecyclerView.Adapter<WorkerOfferAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull WorkerOfferHolder holder, int position) {
-        final OfferModel projectsModels = offerModels.get(position);
-        holder.body.setText(projectsModels.getDescr());
-        holder.calender.setText(projectsModels.getDur());
-        Log.e("ppppp",projectsModels.getDur());
+        final OfferModel offerModel = offerModels.get(position);
+        holder.body.setText(offerModel.getDescr());
+        holder.calender.setText(offerModel.getDur());
+        Log.e("ppppp",offerModel.getDur());
         if (ConstantInterFace.USER.getType().equals("client"))
             holder.name.setText(name);
         else
-            holder.name.setText(projectsModels.getProject().getUser().getName());
+            holder.name.setText(offerModel.getProject().getUser().getName());
 
-        holder.money.setText(" $ " + projectsModels.getBalance());
+        holder.money.setText(" $ " + offerModel.getBalance());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EditProposalFragment fragment = new EditProposalFragment();
                 Bundle bundle = new Bundle();
-                bundle.putParcelable("object", projectsModels);
+                bundle.putParcelable("object", offerModel);
                 fragment.setArguments(bundle);
                 FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
             }

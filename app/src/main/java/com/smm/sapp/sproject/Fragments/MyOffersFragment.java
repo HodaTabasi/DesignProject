@@ -43,7 +43,6 @@ import okhttp3.Response;
 public class MyOffersFragment extends Fragment implements View.OnClickListener {
 
 
-
     private TextView mAllOfferExcluded;
     private TextView mAllOfferDone;
     private TextView mAllOfferUnderway;
@@ -52,10 +51,10 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
     ImageView ic_back;
 
     LinearLayoutManager layoutManager;
-    List<OfferModel> offerModels ;
-    List<OfferModel> offerModels1 ;
-    List<OfferModel> offerModels2 ;
-    List<OfferModel> offerModels3 ;
+    List<OfferModel> offerModels;
+    List<OfferModel> offerModels1;
+    List<OfferModel> offerModels2;
+    List<OfferModel> offerModels3;
 
     List<OfferModel> arrayList;
 
@@ -80,7 +79,7 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
         mAllOfferUnderway = getView().findViewById(R.id.all_offer_underway);
         mAllOfferWait = getView().findViewById(R.id.all_offer_wait);
         mAllOfferRes = getView().findViewById(R.id.all_offer_res);
-        layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+        layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mAllOfferRes.setLayoutManager(layoutManager);
         ic_back = getView().findViewById(R.id.ic_back);
 
@@ -102,14 +101,24 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
+        setBottomBar();
+
         Bundle bundle = getArguments();
-        if (bundle.getBoolean("isUpdated")){
+        if (bundle.getBoolean("isUpdated")) {
             getWorkerOffersRequest();
-        }else {
+        } else {
             ProjectsModels projectsModels = bundle.getParcelable("object");
             name = projectsModels.getUser().getName();
             swichOffers(projectsModels.getOffers());
         }
+    }
+
+    private void setBottomBar() {
+        ConstantInterFace.tv_home.setBackgroundResource(0);
+        ConstantInterFace.tv_projects.setBackgroundResource(0);
+        ConstantInterFace.tv_profile.setBackgroundResource(0);
+        ConstantInterFace.tv_portfolio.setBackgroundResource(0);
+        ConstantInterFace.tv_msgs.setBackgroundResource(0);
     }
 
     private void getWorkerOffersRequest() {
@@ -137,7 +146,8 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
                         try {
                             if (object1.getBoolean("success")) {
                                 Gson gson = new Gson();
-                                TypeToken<List<OfferModel>> token = new TypeToken<List<OfferModel>>() {};
+                                TypeToken<List<OfferModel>> token = new TypeToken<List<OfferModel>>() {
+                                };
                                 arrayList = gson.fromJson(object.getJSONArray("my_offers").toString(), token.getType());
                                 swichOffers(arrayList);
 
@@ -154,40 +164,40 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
     }
 
     private void swichOffers(List<OfferModel> offers) {
-        for(OfferModel model :offers){
-            if (model.getApproved().equals("0") && model.getFinished().equals("0")){
+        for (OfferModel model : offers) {
+            if (model.getApproved().equals("0") && model.getFinished().equals("0")) {
                 //انضار الموافقة
                 offerModels.add(model);
-            }else if(model.getApproved().equals("1") && model.getFinished().equals("0")){
+            } else if (model.getApproved().equals("1") && model.getFinished().equals("0")) {
                 //قيد العمل
                 offerModels1.add(model);
-            }else if(model.getApproved().equals("1") && model.getFinished().equals("1")){
+            } else if (model.getApproved().equals("1") && model.getFinished().equals("1")) {
                 //منتهي
                 offerModels3.add(model);
-            }else if(model.getApproved().equals("2")){
+            } else if (model.getApproved().equals("2")) {
                 //مستبعد
                 offerModels2.add(model);
             }
         }
-        mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(),offerModels,name));
+        mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels, name));
     }
 
 
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        switch (id){
+        switch (id) {
             case R.id.all_offer_excluded:
-                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(),offerModels2,name));
+                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels2, name));
                 break;
             case R.id.all_offer_done:
-                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(),offerModels3,name));
+                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels3, name));
                 break;
             case R.id.all_offer_underway:
-                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(),offerModels1,name));
+                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels1, name));
                 break;
             case R.id.all_offer_wait:
-                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(),offerModels,name));
+                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels, name));
                 break;
             case R.id.ic_back:
                 getFragmentManager().popBackStack();

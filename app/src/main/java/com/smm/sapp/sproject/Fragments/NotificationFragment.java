@@ -85,6 +85,7 @@ public class NotificationFragment extends Fragment implements SwipeRefreshLayout
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
+        setBottomBar();
 
 //        mSwipeRefreshLayout.post(new Runnable() {
 //
@@ -106,6 +107,14 @@ public class NotificationFragment extends Fragment implements SwipeRefreshLayout
             }
         });
 
+    }
+
+    private void setBottomBar() {
+        ConstantInterFace.tv_home.setBackgroundResource(0);
+        ConstantInterFace.tv_projects.setBackgroundResource(0);
+        ConstantInterFace.tv_profile.setBackgroundResource(0);
+        ConstantInterFace.tv_portfolio.setBackgroundResource(0);
+        ConstantInterFace.tv_msgs.setBackgroundResource(0);
     }
 
     @Override

@@ -5,8 +5,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.smm.sapp.sproject.Adapters.AddNewPworkAdapter;
 import com.smm.sapp.sproject.Adapters.PortfolioAdapter;
+import com.smm.sapp.sproject.Adapters.PworksAdapter;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.Models.PWorks;
@@ -26,6 +29,7 @@ import com.smm.sapp.sproject.Models.PortfolioModel;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -49,8 +53,8 @@ public class PortfolioBrowseProject extends Fragment {
     RatingBar rate_bar;
     RecyclerView res_search;
 
-    ArrayList<PortfolioModel> arrayList = new ArrayList<>();
-    PortfolioAdapter adapter;
+    ArrayList<PWorks> arrayList = new ArrayList<>();
+    PworksAdapter adapter;
 
     public PortfolioBrowseProject() {
         // Required empty public constructor
@@ -88,23 +92,30 @@ public class PortfolioBrowseProject extends Fragment {
 
         Bundle bundle = getArguments();
         if (bundle.getBoolean("flag")) {
-            getData(bundle.getString("id"));
+            String name = bundle.getString("name");
 
-            tv_name.setText(bundle.getString("name"));
+            getData(bundle.getString("id"), name);
+
+            Picasso.get().load(bundle.getString("photo")).into(profileImg);
+
+            StringBuilder s_name = new StringBuilder(bundle.getString("name"));
+            for (int i = 1; i < s_name.length() - 1; i++) {
+                s_name.setCharAt(i, '*');
+            }
+            tv_name.setText(s_name);
             rate_bar.setRating(bundle.getFloat("rate"));
             tv_title.setText(bundle.getString("speacialization"));
 
+
         }
-
-
     }
 
 
-    private void getData(String id) {
+    private void getData(String user_id, final String user_name) {
         MyProgressDialog.showDialog(getActivity());
         MyRequest myRequest = new MyRequest();
         Map<String, String> map = new HashMap<>();
-        map.put("user_id", id);
+        map.put("user_id", user_id);
         map.put("token", ConstantInterFace.USER.getToken());
         myRequest.PostCall("http://smm.smmim.com/waell/public/api/userprofile", map, new OkHttpCallback() {
             @Override
@@ -133,8 +144,8 @@ public class PortfolioBrowseProject extends Fragment {
                         };
                         try {
                             arrayList = gson.fromJson(userJson.getJSONArray("pworks").toString(), token.getType());
-                            adapter = new PortfolioAdapter(getActivity(), arrayList);
-                            res_search.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+                            adapter = new PworksAdapter(getActivity(), arrayList, user_name);
+                            res_search.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
                             res_search.setAdapter(adapter);
 
                         } catch (JSONException e) {

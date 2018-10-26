@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.smm.sapp.sproject.ConstantInterFace;
+import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.Models.User;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.MySpinnerAdapter;
@@ -315,9 +316,6 @@ public class ProfileFragment extends Fragment {
 
     private void setWorkerProfileData() {
 
-        Log.e("qqqqqq", "qqqqq");
-
-
         try {
             if (bu_type.equals("worker")) {
                 tv_worker.setBackground(getResources().getDrawable(R.drawable.solid_account_shape));
@@ -466,6 +464,8 @@ public class ProfileFragment extends Fragment {
     }
 
     private void send() {
+        MyProgressDialog.showDialog(getContext());
+
         st_mobile = et_mobile2.getText().toString() + et_mobile1.getText().toString();
         if (ConstantInterFace.IS_USER_COMPLETEED) {
             MyRequest myRequest = new MyRequest();
@@ -486,11 +486,19 @@ public class ProfileFragment extends Fragment {
                 myRequest.PostCall("http://smm.smmim.com/waell/public/api/updateProfile", stringMap, new OkHttpCallback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
-                        Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_SHORT).show();
+                        MyProgressDialog.dismissDialog();
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
+
+                            }
+                        });
                     }
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException, JSONException {
+                        MyProgressDialog.dismissDialog();
                         final JSONObject jsonObject = new JSONObject(response.body().string());
                         final JSONObject object = jsonObject.getJSONObject("status");
                         getActivity().runOnUiThread(new Runnable() {
@@ -524,12 +532,19 @@ public class ProfileFragment extends Fragment {
                 myRequest.PostCall("https://mustafa.smmim.com/waell/public/api/updateProfile", stringMap, new OkHttpCallback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
-                        Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_SHORT).show();
+                        MyProgressDialog.dismissDialog();
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
 
+                            }
+                        });
                     }
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException, JSONException {
+                        MyProgressDialog.dismissDialog();
                         final JSONObject jsonObject = new JSONObject(response.body().string());
                         final JSONObject object = jsonObject.getJSONObject("status");
                         getActivity().runOnUiThread(new Runnable() {
@@ -558,19 +573,6 @@ public class ProfileFragment extends Fragment {
             Map<String, String> stringMap = new HashMap<>();
 
             if (bu_type.equals("worker")) {
-
-                Log.e("wwwww", ConstantInterFace.USER.getToken());
-                Log.e("wwwww", et_name.getText().toString());
-                Log.e("wwwww", et_email.getText().toString());
-                Log.e("wwwww", st_gender);
-                Log.e("wwwww", st_specialization);
-                Log.e("wwwww", et_bio.getText().toString());
-                Log.e("wwwww", bu_dob);
-                Log.e("wwwww", bu_busniess_type);
-                Log.e("wwwww", st_mobile);
-                Log.e("wwwww", bu_type);
-
-
                 stringMap.put("token", ConstantInterFace.USER.getToken());
                 stringMap.put("name", et_name.getText().toString());
                 stringMap.put("email", et_email.getText().toString());
@@ -585,11 +587,19 @@ public class ProfileFragment extends Fragment {
                 myRequest.PostCall("http://smm.smmim.com/waell/public/api/updateProfile", stringMap, new OkHttpCallback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
-                        Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_SHORT).show();
+                        MyProgressDialog.dismissDialog();
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
+
+                            }
+                        });
                     }
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException, JSONException {
+                        MyProgressDialog.dismissDialog();
                         final JSONObject jsonObject = new JSONObject(response.body().string());
                         final JSONObject object = jsonObject.getJSONObject("status");
 
@@ -626,12 +636,19 @@ public class ProfileFragment extends Fragment {
                 myRequest.PostCall("https://mustafa.smmim.com/waell/public/api/updateProfile", stringMap, new OkHttpCallback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
-                        Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_SHORT).show();
+                        MyProgressDialog.dismissDialog();
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
 
+                            }
+                        });
                     }
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException, JSONException {
+                        MyProgressDialog.dismissDialog();
                         final JSONObject jsonObject = new JSONObject(response.body().string());
                         final JSONObject object = jsonObject.getJSONObject("status");
 

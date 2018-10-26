@@ -20,6 +20,7 @@ import com.smm.sapp.sproject.Fragments.AddProjectFragment;
 import com.smm.sapp.sproject.Fragments.PortfolioDescFragment;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
+import com.smm.sapp.sproject.Models.PWorks;
 import com.smm.sapp.sproject.Models.PortfolioModel;
 import com.smm.sapp.sproject.Models.SearchWorkersModel;
 import com.smm.sapp.sproject.MyRequest;
@@ -71,13 +72,13 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
 
         if (name != null) {
             StringBuilder s_name = new StringBuilder(name);
-            for (int i = 1; i< s_name.length() - 1 ; i++){
+            for (int i = 1; i < s_name.length() - 1; i++) {
                 s_name.setCharAt(i, '*');
             }
             holder.tv_name.setText(s_name);
         } else {
             StringBuilder s_name = new StringBuilder(list.get(position).getUser().getName());
-            for (int i = 1; i< s_name.length() - 1 ; i++){
+            for (int i = 1; i < s_name.length() - 1; i++) {
                 s_name.setCharAt(i, '*');
             }
             holder.tv_name.setText(s_name);
@@ -114,19 +115,19 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
         holder.tv_addProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (ConstantInterFace.USER.getType().equals("worker")){
-                     AddNewWork2Fragment fragment  = new AddNewWork2Fragment();
+                if (ConstantInterFace.USER.getType().equals("worker")) {
+                    AddNewWork2Fragment fragment = new AddNewWork2Fragment();
                     Bundle bundle = new Bundle();
-                    bundle.putBoolean("flag",false);
+                    bundle.putBoolean("flag", false);
                     fragment.setArguments(bundle);
-                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity,fragment ,true);
-                }else {
+                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
+                } else {
                     projectType = (String) list.get(position).getType();
                     AddProjectFragment fragment = new AddProjectFragment();
                     Bundle bundle = new Bundle();
-                    bundle.putString("type",projectType);
+                    bundle.putString("type", projectType);
                     fragment.setArguments(bundle);
-                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment,true);
+                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
                 }
 
 
@@ -136,9 +137,9 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
         holder.fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // if (ConstantInterFace.IS_USER_FAVORITE = false) {
-                    addTofav();
-               // }
+                // if (ConstantInterFace.IS_USER_FAVORITE = false) {
+                addTofav();
+                // }
             }
         });
 
