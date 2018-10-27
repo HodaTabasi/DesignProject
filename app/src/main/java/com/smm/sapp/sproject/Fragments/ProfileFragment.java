@@ -316,6 +316,9 @@ public class ProfileFragment extends Fragment {
 
     private void setWorkerProfileData() {
 
+        Log.e("qqqqqq", "qqqqq");
+
+
         try {
             if (bu_type.equals("worker")) {
                 tv_worker.setBackground(getResources().getDrawable(R.drawable.solid_account_shape));
@@ -494,6 +497,8 @@ public class ProfileFragment extends Fragment {
 
                             }
                         });
+                        MyProgressDialog.dismissDialog();
+                        Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -507,7 +512,6 @@ public class ProfileFragment extends Fragment {
                                 try {
                                     if (object.getBoolean("success")) {
                                         Toast.makeText(getContext(), "تم حفظ التعديلات", Toast.LENGTH_SHORT).show();
-
                                     } else {
                                         Toast.makeText(getActivity(), "لم يتم الارسال بشكل صحيح", Toast.LENGTH_SHORT).show();
                                     }
@@ -529,7 +533,7 @@ public class ProfileFragment extends Fragment {
                 stringMap.put("phone", st_mobile);
                 stringMap.put("type", bu_type);
 
-                myRequest.PostCall("https://mustafa.smmim.com/waell/public/api/updateProfile", stringMap, new OkHttpCallback() {
+                myRequest.PostCall("https://smm.smmim.com/waell/public/api/updateProfile", stringMap, new OkHttpCallback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
                         MyProgressDialog.dismissDialog();
@@ -537,6 +541,8 @@ public class ProfileFragment extends Fragment {
                             @Override
                             public void run() {
                                 Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
+                        MyProgressDialog.dismissDialog();
+                        Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_SHORT).show();
 
                             }
                         });
@@ -573,6 +579,19 @@ public class ProfileFragment extends Fragment {
             Map<String, String> stringMap = new HashMap<>();
 
             if (bu_type.equals("worker")) {
+
+                Log.e("wwwww", ConstantInterFace.USER.getToken());
+                Log.e("wwwww", et_name.getText().toString());
+                Log.e("wwwww", et_email.getText().toString());
+                Log.e("wwwww", st_gender);
+                Log.e("wwwww", st_specialization);
+                Log.e("wwwww", et_bio.getText().toString());
+                Log.e("wwwww", bu_dob);
+                Log.e("wwwww", bu_busniess_type);
+                Log.e("wwwww", st_mobile);
+                Log.e("wwwww", bu_type);
+
+
                 stringMap.put("token", ConstantInterFace.USER.getToken());
                 stringMap.put("name", et_name.getText().toString());
                 stringMap.put("email", et_email.getText().toString());
