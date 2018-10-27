@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
+import com.smm.sapp.sproject.HelperClass.SharedPreferencesApp;
 import com.smm.sapp.sproject.Models.User;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.MySpinnerAdapter;
@@ -473,7 +474,7 @@ public class ProfileFragment extends Fragment {
         if (ConstantInterFace.IS_USER_COMPLETEED) {
             MyRequest myRequest = new MyRequest();
             Map<String, String> stringMap = new HashMap<>();
-
+            final Gson gson = new Gson();
             if (bu_type.equals("worker")) {
                 stringMap.put("token", ConstantInterFace.USER.getToken());
                 stringMap.put("name", et_name.getText().toString());
@@ -511,6 +512,8 @@ public class ProfileFragment extends Fragment {
                             public void run() {
                                 try {
                                     if (object.getBoolean("success")) {
+                                        ConstantInterFace.USER = gson.fromJson(jsonObject.getJSONObject("user").toString(), User.class);
+                                        SharedPreferencesApp.getInstance(getContext()).updateObject(ConstantInterFace.USER);
                                         Toast.makeText(getContext(), "تم حفظ التعديلات", Toast.LENGTH_SHORT).show();
                                     } else {
                                         Toast.makeText(getActivity(), "لم يتم الارسال بشكل صحيح", Toast.LENGTH_SHORT).show();
@@ -553,11 +556,14 @@ public class ProfileFragment extends Fragment {
                         MyProgressDialog.dismissDialog();
                         final JSONObject jsonObject = new JSONObject(response.body().string());
                         final JSONObject object = jsonObject.getJSONObject("status");
+
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 try {
                                     if (object.getBoolean("success")) {
+                                        ConstantInterFace.USER = gson.fromJson(jsonObject.getJSONObject("user").toString(), User.class);
+                                        SharedPreferencesApp.getInstance(getContext()).updateObject(ConstantInterFace.USER);
                                         Toast.makeText(getContext(), "تم حفظ التعديلات", Toast.LENGTH_SHORT).show();
 
                                     } else {
