@@ -62,7 +62,6 @@ public class EditProposalFragment extends Fragment {
     private LinearLayout mDwe;
 
     OfferModel model, offerModel;
-    ProjectsModels projectsModels;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
