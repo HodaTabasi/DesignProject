@@ -21,7 +21,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="@dimen/_8sdp"
             android:layout_weight="1"
             android:gravity="right"
             android:orientation="vertical">
@@ -30,24 +30,24 @@
                 android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:drawablePadding="10dp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:drawablePadding="@dimen/_10sdp"
                 android:drawableRight="@drawable/ic_solid_person2"
-                android:padding="5dp"
+                android:padding="@dimen/_5sdp"
                 android:text="سما القرشي"
                 android:textColor="@color/textGray"
-                android:textSize="12sp" />
+                android:textSize="@dimen/_10sdp" />
 
             <TextView
                 android:id="@+id/tv_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawablePadding="10dp"
+                android:drawablePadding="@dimen/_8sdp"
                 android:drawableRight="@drawable/ic_money"
-                android:padding="5dp"
+                android:padding="@dimen/_5sdp"
                 android:text="1000"
                 android:textColor="@color/textGray"
-                android:textSize="12sp" />
+                android:textSize="@dimen/_10sdp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -62,18 +62,18 @@
                     android:text="يوما"
                     android:textColor="@color/textGray"
                     android:visibility="invisible"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/_10sdp" />
 
                 <TextView
                     android:id="@+id/tv_calender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="10dp"
+                    android:drawablePadding="@dimen/_8sdp"
                     android:drawableRight="@drawable/ic_calender2"
-                    android:padding="6dp"
+                    android:padding="@dimen/_8sdp"
                     android:text="21 "
                     android:textColor="@color/textGray"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/_10sdp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -87,8 +87,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
             android:layout_weight="1.4"
             android:gravity="right"
             android:orientation="vertical">
@@ -99,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:text="استفسار بخصوص"
                 android:textColor="@color/textGray"
-                android:textSize="12sp" />
+                android:textSize="@dimen/_10sdp" />
 
             <TextView
                 android:id="@+id/tv2"
@@ -107,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:text="مشروع محتاج مصمم"
                 android:textColor="@color/textGray"
-                android:textSize="12sp" />
+                android:textSize="@dimen/_10sdp" />
         </LinearLayout>
 
 

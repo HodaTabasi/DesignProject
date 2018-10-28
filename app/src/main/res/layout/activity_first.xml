@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="@dimen/_120sdp"
         android:src="@drawable/logo" />
 
     <TextView
@@ -24,7 +24,7 @@
         android:layout_marginTop="20dp"
         android:text="وظف مصممين محترفين"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="@dimen/_13sdp" />
 
     <TextView
         android:id="@+id/tv2"
@@ -34,7 +34,7 @@
         android:layout_centerHorizontal="true"
         android:text="للعمل على مشروعك"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="@dimen/_13sdp" />
 
     <ImageView
         android:id="@+id/img_reg"
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/tv2"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/_40sdp"
         android:src="@drawable/register" />
 
     <ImageView
@@ -51,6 +51,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/img_reg"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:src="@drawable/skip" />
 </RelativeLayout>

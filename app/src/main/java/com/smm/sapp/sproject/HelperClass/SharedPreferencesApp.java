@@ -39,7 +39,17 @@ public class SharedPreferencesApp {
         Gson gson = new Gson();
         String json = gson.toJson(user);
         prefsEditor.putString("MyObject", json);
-        prefsEditor.commit();
+        prefsEditor.apply();
+        this.saveData("token",user.getToken());
+    }
+
+    public void updateObject(User user) {
+        user.setToken(this.getStringData("token"));
+        SharedPreferences.Editor prefsEditor = prefs.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(user);
+        prefsEditor.putString("MyObject", json);
+        prefsEditor.apply();
     }
 
     public String getStringData(String key){

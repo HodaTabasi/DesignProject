@@ -80,8 +80,8 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
     ImageButton send_bank1;
     private TextView mSendBank1;
     RelativeLayout one, two;
-    TextView addPhotoShp;
-    EditText userBankNameShp, bankNumberShp, bankNameShp, balance, transferDateSh;
+    TextView addPhotoShp, transferDateSh;
+    EditText userBankNameShp, bankNumberShp, bankNameShp, balance;
     ImageView ic_back;
     String filePath;
 

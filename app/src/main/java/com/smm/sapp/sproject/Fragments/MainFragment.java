@@ -30,6 +30,7 @@ import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.HelperClass.PathUtil;
 import com.smm.sapp.sproject.HelperClass.SharedPreferencesApp;
+import com.smm.sapp.sproject.Models.User;
 import com.smm.sapp.sproject.Models.UserModel;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
@@ -537,26 +538,39 @@ public class MainFragment extends Fragment {
                 MyProgressDialog.dismissDialog();
 
                 final JSONObject jsonObject = new JSONObject(response.body().string());
-                JSONObject statusobj = jsonObject.getJSONObject("status");
+                final JSONObject statusobj = jsonObject.getJSONObject("status");
                 String success = statusobj.getString("success");
-                Gson gson = new Gson();
-                userModel = gson.fromJson(jsonObject.getJSONObject("user").toString(), UserModel.class);
+                final Gson gson = new Gson();
+//                userModel = gson.fromJson(jsonObject.getJSONObject("user").toString(), UserModel.class);
 
 
-                if (success.equals("true")) {
+                if (statusobj.getBoolean("success")) {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Picasso.get().load(userModel.getPhoto_link()).into(img_user);
-                            ConstantInterFace.USER.setPhoto_link(userModel.getPhoto_link());
-                            Toast.makeText(getActivity(), "تم اضافة الصورة بنجاح", Toast.LENGTH_LONG).show();
+//                            ConstantInterFace.USER.setPhoto_link(userModel.getPhoto_link());
+                            try {
+                                ConstantInterFace.USER = gson.fromJson(jsonObject.getJSONObject("user").toString(), User.class);
+                                Picasso.get().load(ConstantInterFace.USER.getPhoto_link()).into(img_user);
+                                SharedPreferencesApp.getInstance(getContext()).updateObject(ConstantInterFace.USER);
+                                Toast.makeText(getActivity(), "تم اضافة الصورة بنجاح", Toast.LENGTH_LONG).show();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
                         }
                     });
                 } else {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getActivity(), "لم يتم الاضافة", Toast.LENGTH_LONG).show();
+
+                            try {
+                                Toast.makeText(getActivity(), "لم يتم الاضافة" , Toast.LENGTH_LONG).show();
+                                Log.e("fffdec",statusobj.getString("error") + "  /  " + filePath);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
 
                         }
                     });

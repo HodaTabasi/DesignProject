@@ -46,7 +46,7 @@ public class SplashActivity extends AppCompatActivity {
 
         TextView tv1 = findViewById(R.id.tv1);
         TextView tv2 = findViewById(R.id.tv2);
-        ImageView logo = findViewById(R.id.splash);
+        final ImageView logo = findViewById(R.id.splash);
 
         Animation bounce = AnimationUtils.loadAnimation(this, R.anim.bounce);
         Animation blink = AnimationUtils.loadAnimation(this, R.anim.blink);
