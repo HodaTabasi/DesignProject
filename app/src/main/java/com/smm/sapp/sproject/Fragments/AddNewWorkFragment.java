@@ -1,6 +1,7 @@
 package com.smm.sapp.sproject.Fragments;
 
 
+import android.app.DatePickerDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -39,7 +41,10 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,9 +56,9 @@ import static android.app.Activity.RESULT_OK;
 
 
 public class AddNewWorkFragment extends Fragment {
-    TextView tv_save, tv_photo, title, tv_update;
+    TextView tv_save, tv_photo, title, tv_update, et_date;
     ImageView ic_back, work_img;
-    EditText et_title, et_bio, et_date, et_link;
+    EditText et_title, et_bio, et_link;
     Spinner sp_specialization;
     String filePath, st_specialization;
     Bundle bundle;
@@ -159,6 +164,29 @@ public class AddNewWorkFragment extends Fragment {
             public void onClick(View view) {
                 Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(pickPhoto, 1);//one can be replaced with any action code
+            }
+        });
+
+        et_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar c = Calendar.getInstance();
+
+                DatePickerDialog pickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                        SimpleDateFormat simpledateformat = new SimpleDateFormat("EEE");
+                        SimpleDateFormat simpledateformat1 = new SimpleDateFormat("MM");
+                        Date date = new Date(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth()-1);
+//                        String dayOfWeek = simpledateformat.format(date);
+                        String month = simpledateformat1.format(date);
+                        int d = datePicker.getDayOfMonth();
+                        int y = datePicker.getYear();
+                        et_date.setText(d+"/"+month+"/"+y);
+                    }
+                },c.get(Calendar.YEAR),c.get(Calendar.MONTH),c.get(Calendar.DAY_OF_MONTH));
+
+                pickerDialog.show();
             }
         });
 

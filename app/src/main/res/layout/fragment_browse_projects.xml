@@ -56,7 +56,7 @@
         android:inputType="text"
         android:padding="3dp"
         android:textColorHint="@color/textGray"
-        android:textSize="14sp" />
+        android:textSize="@dimen/_12sdp" />
 
     <LinearLayout
         android:id="@+id/linear"
@@ -76,10 +76,10 @@
             android:layout_weight="0.6"
             android:background="@drawable/account_shape"
             android:gravity="center"
-            android:padding="5dp"
+            android:padding="@dimen/_5sdp"
             android:text="موشن"
             android:textColor="@color/textGray"
-            android:textSize="8sp" />
+            android:textSize="@dimen/_8sdp" />
 
         <TextView
             android:id="@+id/gh_button"
@@ -89,10 +89,10 @@
             android:layout_weight="1.2"
             android:background="@drawable/account_shape"
             android:gravity="center"
-            android:padding="5dp"
+            android:padding="@dimen/_5sdp"
             android:text="تصميم جرافكس"
             android:textColor="@color/textGray"
-            android:textSize="8sp" />
+            android:textSize="@dimen/_8sdp" />
 
         <TextView
             android:id="@+id/wall_button"
@@ -102,10 +102,10 @@
             android:layout_weight="0.9"
             android:background="@drawable/account_shape"
             android:gravity="center"
-            android:padding="5dp"
+            android:padding="@dimen/_5sdp"
             android:text="رسم جداري"
             android:textColor="@color/textGray"
-            android:textSize="8sp" />
+            android:textSize="@dimen/_8sdp" />
 
         <TextView
             android:id="@+id/arch_button"
@@ -115,10 +115,10 @@
             android:layout_weight="1.2"
             android:background="@drawable/account_shape"
             android:gravity="center"
-            android:padding="5dp"
+            android:padding="@dimen/_5sdp"
             android:text="تصميم معماري"
             android:textColor="@color/textGray"
-            android:textSize="8sp" />
+            android:textSize="@dimen/_8sdp" />
 
         <TextView
             android:id="@+id/in_button"
@@ -127,10 +127,10 @@
             android:layout_weight="1.1"
             android:background="@drawable/account_shape"
             android:gravity="center"
-            android:padding="5dp"
+            android:padding="@dimen/_4sdp"
             android:text="تصميم داخلي"
             android:textColor="@color/textGray"
-            android:textSize="8sp" />
+            android:textSize="@dimen/_8sdp" />
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView

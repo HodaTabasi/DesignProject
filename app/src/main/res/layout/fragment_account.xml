@@ -61,8 +61,8 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/img_user"
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_80sdp"
                     android:layout_gravity="bottom|center_horizontal"
                     android:src="@drawable/img_user" />
 
@@ -88,15 +88,15 @@
                     android:id="@+id/title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="@dimen/_10sdp"
                     android:layout_weight="1"
                     android:background="@drawable/report_layout_shap"
                     android:gravity="center"
                     android:hint="التخصص"
-                    android:padding="5dp"
+                    android:padding="@dimen/_5sdp"
                     android:textColor="@color/textGray"
                     android:textColorHint="@color/gray"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/_12sdp" />
 
                 <TextView
                     android:id="@+id/name"
@@ -106,11 +106,11 @@
                     android:background="@drawable/report_layout_shap"
                     android:gravity="center"
                     android:hint="الاسم"
-                    android:padding="5dp"
+                    android:padding="@dimen/_5sdp"
                     android:text=""
                     android:textColor="@color/textGray"
                     android:textColorHint="@color/gray"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/_12sdp" />
             </LinearLayout>
 
             <LinearLayout
@@ -118,19 +118,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/linaer"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="7dp"
+                android:layout_marginLeft="@dimen/_16sdp"
+                android:layout_marginRight="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_6sdp"
                 android:background="@drawable/report_layout_shap"
                 android:orientation="horizontal"
-                android:padding="5dp">
+                android:padding="@dimen/_3sdp">
 
                 <RatingBar
                     android:id="@+id/account_rate"
                     style="?android:attr/ratingBarStyleSmall"
                     android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_marginLeft="@dimen/_20sdp"
                     android:numStars="5"
                     android:progressTint="#fed42d"
                     android:rotationY="180"
@@ -140,10 +140,10 @@
                     android:id="@+id/rate"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="@dimen/_20sdp"
                     android:text="@string/rate"
                     android:textColor="@color/textGray"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/_12sdp" />
 
             </LinearLayout>
 
@@ -161,75 +161,74 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/view"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="@dimen/_16sdp"
+                android:layout_marginRight="@dimen/_16sdp"
                 android:background="@drawable/report_layout_shap"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="@dimen/_5sdp"
                 android:text="@string/profile"
                 android:textColor="@color/textGray"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
             <TextView
                 android:id="@+id/tv_skills"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_profile"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="7dp"
+                android:layout_marginLeft="@dimen/_16sdp"
+                android:layout_marginRight="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:background="@drawable/report_layout_shap"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="@dimen/_5sdp"
                 android:text="@string/skills"
                 android:textColor="@color/textGray"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
             <TextView
                 android:id="@+id/tv_fav"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_skills"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="7dp"
+                android:layout_marginLeft="@dimen/_16sdp"
+                android:layout_marginRight="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:background="@drawable/report_layout_shap"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="@dimen/_5sdp"
                 android:text="@string/fav"
                 android:textColor="@color/textGray"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
             <TextView
                 android:id="@+id/tv_notification"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_fav"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="7dp"
+                android:layout_marginLeft="@dimen/_16sdp"
+                android:layout_marginRight="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:background="@drawable/report_layout_shap"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="@dimen/_5sdp"
                 android:text="@string/notification"
                 android:textColor="@color/textGray"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
             <TextView
                 android:id="@+id/tv_bankAccount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_notification"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="7dp"
+                android:layout_marginLeft="@dimen/_16sdp"
+                android:layout_marginRight="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:background="@drawable/report_layout_shap"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="@dimen/_5sdp"
                 android:text="@string/bankAccount"
                 android:textColor="@color/textGray"
-                android:textSize="14sp" />
-
+                android:textSize="@dimen/_12sdp" />
 
         </RelativeLayout>
 

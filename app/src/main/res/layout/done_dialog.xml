@@ -22,20 +22,20 @@
             android:id="@+id/tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_margin="@dimen/_8sdp"
             android:text=" تم شحن حسابك  "
             android:textColor="@android:color/white"
-            android:textSize="20sp" />
+            android:textSize="@dimen/_16sdp" />
 
         <TextView
             android:id="@+id/tv1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_margin="@dimen/_4sdp"
             android:text="بمبلغ 500$  "
             android:layout_gravity="center"
             android:textColor="@android:color/white"
-            android:textSize="20sp" />
+            android:textSize="@dimen/_16sdp" />
 
     </LinearLayout>
 
@@ -43,15 +43,15 @@
         android:id="@+id/send_bank11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/_8sdp"
         android:background="@drawable/blue_shape"
-        android:paddingRight="8dp"
-        android:paddingEnd="8dp"
-        android:paddingStart="8dp"
-        android:paddingLeft="8dp"
+        android:paddingRight="@dimen/_8sdp"
+        android:paddingEnd="@dimen/_8sdp"
+        android:paddingStart="@dimen/_8sdp"
+        android:paddingLeft="@dimen/_8sdp"
         android:layout_gravity="center"
         android:textColor="@android:color/white"
         android:src="@drawable/ic_check_black_24dp"
-        android:textSize="22dp" />
+        android:textSize="@dimen/_16sdp" />
 
 </LinearLayout>
