@@ -44,7 +44,6 @@ public class WorkerOfferAdapter extends RecyclerView.Adapter<WorkerOfferAdapter.
         final OfferModel offerModel = offerModels.get(position);
         holder.body.setText(offerModel.getDescr());
         holder.calender.setText(offerModel.getDur());
-        Log.e("ppppp",offerModel.getDur());
         if (ConstantInterFace.USER.getType().equals("client"))
             holder.name.setText(name);
         else

@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layoutDirection="ltr"
     android:background="@color/white"
+    android:layoutDirection="ltr"
     android:orientation="vertical"
     tools:context=".Fragments.AddNewWorkFragment">
 
@@ -48,16 +48,16 @@
         android:id="@+id/title1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_9sdp"
+        android:layout_margin="16dp"
         android:background="@drawable/blue_shape"
-        android:paddingBottom="@dimen/_4sdp"
-        android:paddingLeft="@dimen/_4sdp"
-        android:paddingRight="@dimen/_10sdp"
-        android:paddingTop="@dimen/_5sdp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="11dp"
+        android:paddingTop="5dp"
         android:text="اضف عمل جديد  "
         android:textAlignment="center"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/_12sdp" />
+        android:textSize="14sp" />
 
 
     <ScrollView
@@ -73,83 +73,52 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_8sdp"
-                android:layout_marginLeft="@dimen/_8sdp"
-                android:layout_marginRight="@dimen/_8sdp"
-                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
                 android:background="@drawable/report_layout_shap"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-                    <EditText
-                        android:id="@+id/et_title"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_4sdp"
-                        android:layout_weight="1"
-                        android:background="@drawable/white_shap"
-                        android:hint=" "
-                        android:padding="@dimen/_2sdp"
-                        android:textColor="@android:color/black"
-                        android:textColorHint="@color/gray"
-                        android:textSize="@dimen/_12sdp" />
+                    android:layout_height="wrap_content">
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_4sdp"
-                        android:layout_weight="0.5"
+                        />
+
+                    <EditText
+                        android:id="@+id/et_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:background="@drawable/white_shap"
-                        android:text="العنوان"
-                        android:textColor="@color/gray"
-                        android:textSize="@dimen/_12sdp" />
+                        android:hint="العنوان"
+                        android:padding="3dp"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="@color/gray"
+                        android:textSize="14sp" />
 
                 </LinearLayout>
-
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/gray" />
 
-                <LinearLayout
+                <EditText
+                    android:id="@+id/et_bio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/et_bio"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_4sdp"
-                        android:layout_weight="1"
-                        android:background="@drawable/white_shap"
-                        android:hint="  "
-                        android:padding="@dimen/_2sdp"
-                        android:textColor="@android:color/black"
-                        android:textColorHint="@color/gray"
-                        android:textSize="@dimen/_12sdp" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_4sdp"
-                        android:layout_weight="0.5"
-                        android:background="@drawable/white_shap"
-                        android:text="نبذة عن العمل"
-                        android:textColor="@color/gray"
-                        android:textSize="@dimen/_12sdp" />
-
-                </LinearLayout>
-
-
+                    android:layout_margin="5dp"
+                    android:background="@drawable/white_shap"
+                    android:hint="نبذة عن العمل"
+                    android:padding="3dp"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/gray"
+                    android:textSize="14sp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -171,18 +140,18 @@
                         android:layout_weight="2"
                         android:background="@color/white"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_12sdp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/tv_type"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_1sdp"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/white_shap"
                         android:text="نوع العمل"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/_12sdp" />
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
@@ -193,77 +162,34 @@
                     android:layout_height="1dp"
                     android:background="@color/gray" />
 
-                <LinearLayout
+                <EditText
+                    android:id="@+id/et_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:layout_margin="3dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/et_date"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_4sdp"
-                        android:layout_weight="1"
-                        android:background="@drawable/white_shap"
-                        android:hint="  "
-                        android:padding="@dimen/_2sdp"
-                        android:textColor="@android:color/black"
-                        android:textColorHint="@color/gray"
-                        android:textSize="@dimen/_12sdp"/>
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_4sdp"
-                        android:layout_weight="0.5"
-                        android:background="@drawable/white_shap"
-                        android:text="تاريخ العمل"
-                        android:textColor="@color/gray"
-                        android:textSize="@dimen/_12sdp" />
-
-                </LinearLayout>
-
-
+                    android:layout_margin="5dp"
+                    android:background="@drawable/white_shap"
+                    android:hint="تاريخ العمل"
+                    android:padding="3dp"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/gray"
+                    android:textSize="14sp" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/gray" />
 
-                <LinearLayout
+                <EditText
+                    android:id="@+id/et_link"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:layout_margin="3dp"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/et_link"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_4sdp"
-                        android:layout_weight="1"
-                        android:background="@drawable/white_shap"
-                        android:hint=" اكتب الرابط"
-                        android:padding="@dimen/_2sdp"
-                        android:textColor="@android:color/black"
-                        android:textColorHint="@color/gray"
-                        android:textSize="@dimen/_12sdp" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_4sdp"
-                        android:layout_weight="0.5"
-                        android:background="@drawable/white_shap"
-                        android:text="رابط العمل"
-                        android:textColor="@color/gray"
-                        android:textSize="@dimen/_12sdp" />
-
-                </LinearLayout>
-
+                    android:layout_margin="5dp"
+                    android:background="@drawable/white_shap"
+                    android:hint="رابط العمل"
+                    android:padding="3dp"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/gray"
+                    android:textSize="14sp" />
 
                 <View
                     android:layout_width="match_parent"
