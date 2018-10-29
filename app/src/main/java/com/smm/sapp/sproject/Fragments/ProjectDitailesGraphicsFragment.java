@@ -305,6 +305,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
             try {
                 String filePath = PathUtil.getPath(getActivity(), selectedImage);
                 Log.e("dd", " " + filePath);
+                bStrings.add(filePath);
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
                 bitmaps.add(bitmap);
                 adapter.notifyDataSetChanged();
