@@ -118,7 +118,13 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
         mSendGh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendGraphicRequest();
+                if (mGhType.getText().toString().matches("") || mProjectNameGh.getText().toString().matches("") || mAboutActivity.getText().toString().matches("")
+                        || mGhBalance.getText().toString().matches("") || mProjectDeitailsGh.getText().toString().matches("")) {
+                    Toast.makeText(getContext(), "يجب تعبئة جميع الحقول", Toast.LENGTH_LONG).show();
+
+                } else {
+                    sendGraphicRequest();
+                }
             }
         });
 

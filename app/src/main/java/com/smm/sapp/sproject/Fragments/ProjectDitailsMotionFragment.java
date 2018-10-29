@@ -59,7 +59,7 @@ public class ProjectDitailsMotionFragment extends Fragment {
     ImageView ic_back;
 
     int i = 0;
-    Map<String,String> attachMap;
+    Map<String, String> attachMap;
 
     public ProjectDitailsMotionFragment() {
 
@@ -98,7 +98,13 @@ public class ProjectDitailsMotionFragment extends Fragment {
         mSendMotion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendMotionRequest();
+                if (mMotionType.getText().toString().matches("") || mProjectName.getText().toString().matches("") || mProjectTime.getText().toString().matches("")
+                        || mAboutActivity.getText().toString().matches("") || mMotionBalance.getText().toString().matches("") || mProjectDetiailsMotion.getText().toString().matches("")) {
+                    Toast.makeText(getContext(), "يجب تعبئة جميع الحقول", Toast.LENGTH_LONG).show();
+
+                } else {
+                    sendMotionRequest();
+                }
             }
         });
 
@@ -126,6 +132,7 @@ public class ProjectDitailsMotionFragment extends Fragment {
         });
 
     }
+
     private void fileBrowse() {
         new ChooserDialog().with(getContext())
                 .withFilter(false, false, "pdf", "docx", "xlsx")
@@ -134,7 +141,7 @@ public class ProjectDitailsMotionFragment extends Fragment {
                     @Override
                     public void onChoosePath(String path, File pathFile) {
                         Toast.makeText(getContext(), "FOLDER: " + path, Toast.LENGTH_SHORT).show();
-                        attachMap.put("attachs["+(i++)+"]",path);
+                        attachMap.put("attachs[" + (i++) + "]", path);
                         Toast.makeText(getContext(), "تم اضافة الملف في المرفقات بنجاح", Toast.LENGTH_SHORT).show();
                     }
                 })
@@ -154,7 +161,7 @@ public class ProjectDitailsMotionFragment extends Fragment {
         map.put("balance", mMotionBalance.getText().toString());
         map.put("descr", mProjectDetiailsMotion.getText().toString());
 
-        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/projectmakemoshen", map,attachMap, new OkHttpCallback() {
+        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/projectmakemoshen", map, attachMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
@@ -191,7 +198,7 @@ public class ProjectDitailsMotionFragment extends Fragment {
                 try {
                     String filePath = PathUtil.getPath(getActivity(), selectedImage);
                     Log.e("dd", " " + filePath);
-                    attachMap.put("photos["+(i++)+"]",filePath);
+                    attachMap.put("photos[" + (i++) + "]", filePath);
                     Toast.makeText(getContext(), "تم اضافة الصورة فى الخلفية بنجاح", Toast.LENGTH_SHORT).show();
                 } catch (URISyntaxException e) {
                     e.printStackTrace();

@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layoutDirection="ltr"
     android:background="@color/white"
+    android:layoutDirection="ltr"
     tools:context=".Fragments.ProjectDetailsInterFragment">
 
     <RelativeLayout
@@ -94,20 +94,36 @@
                 android:textColorHint="@color/gray"
                 android:textSize="14sp" />
 
-            <EditText
-                android:id="@+id/chooese_style"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
                 android:background="@drawable/account_shape"
-                android:gravity="center"
-                android:hint="اختر الاستايل"
-                android:padding="3dp"
-                android:textColor="@color/textGray"
-                android:textColorHint="@color/gray"
-                android:textSize="14sp" />
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/sp_chooese_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/textGray"
+                    android:textSize="14sp" />
+
+
+                <TextView
+                    android:id="@+id/chooese_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:text="اختر الاستايل"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
 
             <EditText
                 android:id="@+id/design_color"
@@ -211,20 +227,33 @@
                         android:padding="8dp"
                         android:src="@drawable/add" />
 
-                    <EditText
-                        android:id="@+id/city"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         android:background="@drawable/account_shape"
-                        android:gravity="center"
-                        android:hint="المدينة"
-                        android:padding="5dp"
-                        android:textAlignment="center"
-                        android:textColor="@color/textGray"
-                        android:textColorHint="@color/gray"
-                        android:textSize="14sp" />
+                        android:orientation="vertical">
 
+                        <TextView
+                            android:id="@+id/city"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text="المدينة"
+                            android:textAlignment="center"
+                            android:textColor="@color/gray"
+                            android:textSize="14sp" />
+
+                        <Spinner
+                            android:id="@+id/sp_city"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/textGray"
+                            android:textSize="14sp" />
+                    </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
@@ -254,8 +283,8 @@
                 android:background="@drawable/account_shape"
                 android:gravity="center"
                 android:hint="الميزانية"
-                android:padding="3dp"
                 android:inputType="number"
+                android:padding="3dp"
                 android:textColor="@color/textGray"
                 android:textColorHint="@color/gray"
                 android:textSize="14sp" />
