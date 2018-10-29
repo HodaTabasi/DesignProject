@@ -78,7 +78,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
 
     Map<String, String> attachMap;
     ArrayList<Bitmap> bitmaps;
-
+    ArrayList<String> bStrings;
     ProjectPhotoAdapter adapter;
 
 
@@ -115,6 +115,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
         rec_P =  getView().findViewById(R.id.rec_P);
         rec_P.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
         bitmaps = new ArrayList<>();
+        bStrings = new ArrayList<>();
     }
 
 
@@ -125,7 +126,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
 
-        adapter = new ProjectPhotoAdapter(getContext(),R.layout.layout_item_photos,bitmaps,true);
+        adapter = new ProjectPhotoAdapter(getContext(),R.layout.layout_item_photos,bitmaps,bStrings,true);
         rec_P.setAdapter(adapter);
 
         attachMap = new HashMap<>();
@@ -142,6 +143,11 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
         mSendGh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                attachMap.clear();
+                for (String s:bStrings){
+                    Log.e("ddddd", " " + s);
+                    attachMap.put("photos[" + (i++) + "]", s);
+                }
                 sendGraphicRequest();
             }
         });
@@ -291,8 +297,8 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
                     Log.e("dd", " " + filePath);
                     attachMap.put("photos[" + (i++) + "]", filePath);
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
-                    bitmaps.add(bitmap);
-                    adapter = new ProjectPhotoAdapter(getContext(),R.layout.layout_item_photos,bitmaps,true);
+//                    bitmaps.add(bitmap);
+//                    adapter = new ProjectPhotoAdapter(getContext(),R.layout.layout_item_photos,bitmaps,true);
                     rec_P.setAdapter(adapter);
                 } catch (URISyntaxException e) {
                     e.printStackTrace();
@@ -307,7 +313,6 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
             try {
                 String filePath = PathUtil.getPath(getActivity(), selectedImage);
                 Log.e("dd", " " + filePath);
-                attachMap.put("photos[" + (i++) + "]", filePath);
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
                 bitmaps.add(bitmap);
                 adapter.notifyDataSetChanged();

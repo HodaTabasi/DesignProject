@@ -22,6 +22,7 @@ public class ProjectPhotoAdapter extends RecyclerView.Adapter<ProjectPhotoAdapte
     int layout;
     List<PhotoModel> photoModels;
     ArrayList<Bitmap> photoModelsBitmap;
+    ArrayList<String> pStrings;
     Boolean flag;
 
     public ProjectPhotoAdapter(Context context, int layout, List<PhotoModel> photoModels) {
@@ -30,11 +31,12 @@ public class ProjectPhotoAdapter extends RecyclerView.Adapter<ProjectPhotoAdapte
         this.photoModels = photoModels;
     }
 
-    public ProjectPhotoAdapter(Context context, int layout, ArrayList<Bitmap> photoModels,Boolean aBoolean) {
+    public ProjectPhotoAdapter(Context context, int layout, ArrayList<Bitmap> photoModels,ArrayList<String> photoModels1,Boolean aBoolean) {
         this.context = context;
         this.layout = layout;
         this.photoModelsBitmap = photoModels;
         flag = aBoolean;
+        pStrings = photoModels1;
     }
 
     @NonNull
@@ -45,14 +47,25 @@ public class ProjectPhotoAdapter extends RecyclerView.Adapter<ProjectPhotoAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProjectPhotoVH holder, int position) {
+    public void onBindViewHolder(@NonNull ProjectPhotoVH holder, final int position) {
         if (flag){
+            holder.delete.setVisibility(View.VISIBLE);
             if (photoModelsBitmap.size() != 0)
                 holder.imageView.setImageBitmap(photoModelsBitmap.get(position));
         }else {
             Picasso.get().load(photoModels.get(position).getPhoto_link()).into(holder.imageView);
             Log.e("ff", photoModels.get(position).getPhoto_link());
+            holder.delete.setVisibility(View.INVISIBLE);
         }
+
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                photoModelsBitmap.remove(position);
+                pStrings.remove(position);
+                notifyDataSetChanged();
+            }
+        });
 
     }
 
@@ -65,11 +78,12 @@ public class ProjectPhotoAdapter extends RecyclerView.Adapter<ProjectPhotoAdapte
     }
 
     public class ProjectPhotoVH extends RecyclerView.ViewHolder {
-        ImageView imageView;
+        ImageView imageView, delete;
 
         public ProjectPhotoVH(View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.photo);
+            delete = itemView.findViewById(R.id.delete);
         }
     }
 }

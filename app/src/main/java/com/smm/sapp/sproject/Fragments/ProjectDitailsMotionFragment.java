@@ -71,6 +71,7 @@ public class ProjectDitailsMotionFragment extends Fragment {
     int i = 0;
     Map<String,String> attachMap;
     ArrayList<Bitmap> bitmaps;
+    ArrayList<String> bStrings;
 
     ProjectPhotoAdapter adapter;
 
@@ -101,6 +102,7 @@ public class ProjectDitailsMotionFragment extends Fragment {
         rec_P =  getView().findViewById(R.id.rec_P);
         rec_P.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
         bitmaps = new ArrayList<>();
+        bStrings = new ArrayList<>();
     }
 
 
@@ -111,12 +113,17 @@ public class ProjectDitailsMotionFragment extends Fragment {
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
         attachMap = new HashMap<>();
-        adapter = new ProjectPhotoAdapter(getContext(),R.layout.layout_item_photos,bitmaps,true);
+        adapter = new ProjectPhotoAdapter(getContext(),R.layout.layout_item_photos,bitmaps,bStrings,true);
         rec_P.setAdapter(adapter);
 
         mSendMotion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                attachMap.clear();
+                for (String s:bStrings){
+                    Log.e("ddddd", " " + s);
+                    attachMap.put("photos[" + (i++) + "]", s);
+                }
                 sendMotionRequest();
             }
         });
@@ -209,8 +216,7 @@ public class ProjectDitailsMotionFragment extends Fragment {
                 Uri selectedImage = data.getData();
                 try {
                     String filePath = PathUtil.getPath(getActivity(), selectedImage);
-                    Log.e("dd", " " + filePath);
-                    attachMap.put("photos[" + (i++) + "]", filePath);
+                    bStrings.add(filePath);
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
                     bitmaps.add(bitmap);
                     adapter.notifyDataSetChanged();
