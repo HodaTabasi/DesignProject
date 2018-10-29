@@ -23,7 +23,7 @@ public class ProjectPhotoAdapter extends RecyclerView.Adapter<ProjectPhotoAdapte
     List<PhotoModel> photoModels;
     ArrayList<Bitmap> photoModelsBitmap;
     ArrayList<String> pStrings;
-    Boolean flag;
+    Boolean flag =false;
 
     public ProjectPhotoAdapter(Context context, int layout, List<PhotoModel> photoModels) {
         this.context = context;
