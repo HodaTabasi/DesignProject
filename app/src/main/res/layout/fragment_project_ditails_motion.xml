@@ -154,14 +154,38 @@
                 android:textColor="@color/gray1"
                 android:textSize="12sp" />
 
-            <ImageView
-                android:id="@+id/motion_like_image"
+            <LinearLayout
+                android:id="@+id/lien"
                 android:layout_width="match_parent"
+                android:orientation="horizontal"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
                 android:background="@drawable/account_shape"
-                android:padding="8dp"
-                android:src="@drawable/add" />
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:visibility="visible">
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rec_P"
+                    android:layout_width="0dp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_weight="4"
+                    android:layoutDirection="rtl"
+                    android:layout_height="@dimen/_53sdp">
+                </android.support.v7.widget.RecyclerView>
+
+                <ImageView
+                    android:id="@+id/motion_like_image"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/add" />
+
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/motion_balance"

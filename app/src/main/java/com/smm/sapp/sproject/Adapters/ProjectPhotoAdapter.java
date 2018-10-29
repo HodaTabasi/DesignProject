@@ -1,6 +1,7 @@
 package com.smm.sapp.sproject.Adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,17 +14,27 @@ import com.smm.sapp.sproject.Models.PhotoModel;
 import com.smm.sapp.sproject.R;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProjectPhotoAdapter extends RecyclerView.Adapter<ProjectPhotoAdapter.ProjectPhotoVH> {
     Context context;
     int layout;
     List<PhotoModel> photoModels;
+    ArrayList<Bitmap> photoModelsBitmap;
+    Boolean flag;
 
     public ProjectPhotoAdapter(Context context, int layout, List<PhotoModel> photoModels) {
         this.context = context;
         this.layout = layout;
         this.photoModels = photoModels;
+    }
+
+    public ProjectPhotoAdapter(Context context, int layout, ArrayList<Bitmap> photoModels,Boolean aBoolean) {
+        this.context = context;
+        this.layout = layout;
+        this.photoModelsBitmap = photoModels;
+        flag = aBoolean;
     }
 
     @NonNull
@@ -35,13 +46,22 @@ public class ProjectPhotoAdapter extends RecyclerView.Adapter<ProjectPhotoAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ProjectPhotoVH holder, int position) {
-        Picasso.get().load(photoModels.get(position).getPhoto_link()).into(holder.imageView);
-        Log.e("ff", photoModels.get(position).getPhoto_link());
+        if (flag){
+            if (photoModelsBitmap.size() != 0)
+                holder.imageView.setImageBitmap(photoModelsBitmap.get(position));
+        }else {
+            Picasso.get().load(photoModels.get(position).getPhoto_link()).into(holder.imageView);
+            Log.e("ff", photoModels.get(position).getPhoto_link());
+        }
+
     }
 
     @Override
     public int getItemCount() {
-        return photoModels.size();
+        if (flag)
+            return photoModelsBitmap.size();
+        else
+            return photoModels.size();
     }
 
     public class ProjectPhotoVH extends RecyclerView.ViewHolder {

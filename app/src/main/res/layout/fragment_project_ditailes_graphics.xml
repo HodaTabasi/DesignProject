@@ -136,14 +136,53 @@
                 android:textColor="@color/gray1"
                 android:textSize="12sp" />
 
-            <ImageView
-                android:id="@+id/gh_upload_image_like"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:background="@drawable/account_shape"
-                android:padding="8dp"
-                android:src="@drawable/add" />
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/gh_upload_image_like"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:background="@drawable/account_shape"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/add"
+                    android:visibility="gone"/>
+
+                <LinearLayout
+                    android:id="@+id/lien"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/account_shape"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:visibility="visible">
+
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rec_P"
+                        android:layout_width="0dp"
+                        android:layout_marginEnd="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_weight="4"
+                        android:layoutDirection="rtl"
+                        android:layout_height="@dimen/_53sdp">
+                    </android.support.v7.widget.RecyclerView>
+
+                    <ImageView
+                        android:id="@+id/gh_upload_image_like1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        android:padding="@dimen/_5sdp"
+                        android:src="@drawable/add" />
+
+                </LinearLayout>
+            </FrameLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -166,8 +205,9 @@
                         android:gravity="center"
                         android:padding="5dp"
                         android:text="ابتكار"
+                        android:layout_margin="1dp"
                         android:textColor="@color/textGray"
-                        android:textSize="12sp" />
+                        android:textSize="@dimen/_10sdp" />
 
                     <View
                         android:layout_width="1.5dp"
@@ -182,7 +222,7 @@
                         android:padding="5dp"
                         android:text="تطوير"
                         android:textColor="@color/textGray"
-                        android:textSize="12sp" />
+                        android:textSize="@dimen/_10sdp" />
 
                     <View
                         android:layout_width="1.5dp"
@@ -197,7 +237,7 @@
                         android:padding="5dp"
                         android:text="طلب تصميم"
                         android:textColor="@color/textGray"
-                        android:textSize="12sp" />
+                        android:textSize="@dimen/_10sdp" />
 
                 </LinearLayout>
 
@@ -217,7 +257,7 @@
                         android:padding="5dp"
                         android:text="لا"
                         android:textColor="@color/textGray"
-                        android:textSize="12sp" />
+                        android:textSize="@dimen/_10sdp" />
 
                     <View
                         android:layout_width="1.5dp"
@@ -233,7 +273,7 @@
                         android:padding="5dp"
                         android:text="نعم"
                         android:textColor="@color/textGray"
-                        android:textSize="12sp" />
+                        android:textSize="@dimen/_10sdp" />
 
                     <View
                         android:layout_width="1.5dp"
@@ -249,7 +289,7 @@
                         android:padding="5dp"
                         android:text="المشروع جديد"
                         android:textColor="@color/textGray"
-                        android:textSize="12sp" />
+                        android:textSize="@dimen/_10sdp" />
 
 
                 </LinearLayout>
