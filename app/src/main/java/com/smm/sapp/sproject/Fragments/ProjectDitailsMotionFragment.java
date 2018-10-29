@@ -2,11 +2,15 @@ package com.smm.sapp.sproject.Fragments;
 
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +18,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.obsez.android.lib.filechooser.ChooserDialog;
+import com.smm.sapp.sproject.Adapters.ProjectPhotoAdapter;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.HelperClass.PathUtil;
@@ -29,8 +35,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -57,9 +65,15 @@ public class ProjectDitailsMotionFragment extends Fragment {
     private TextView mAttachmentMotion;
     private Button mSendMotion;
     ImageView ic_back;
+    private RecyclerView rec_P;
+    LinearLayout lien;
 
     int i = 0;
-    Map<String, String> attachMap;
+    Map<String,String> attachMap;
+    ArrayList<Bitmap> bitmaps;
+    ArrayList<String> bStrings;
+
+    ProjectPhotoAdapter adapter;
 
     public ProjectDitailsMotionFragment() {
 
@@ -84,6 +98,11 @@ public class ProjectDitailsMotionFragment extends Fragment {
         mProjectDetiailsMotion = getView().findViewById(R.id.project_detiails_motion);
         mAttachmentMotion = getView().findViewById(R.id.attachment_motion);
         mSendMotion = getView().findViewById(R.id.send_motion);
+        lien =  getView().findViewById(R.id.lien);
+        rec_P =  getView().findViewById(R.id.rec_P);
+        rec_P.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+        bitmaps = new ArrayList<>();
+        bStrings = new ArrayList<>();
     }
 
 
@@ -94,6 +113,8 @@ public class ProjectDitailsMotionFragment extends Fragment {
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
         attachMap = new HashMap<>();
+        adapter = new ProjectPhotoAdapter(getContext(),R.layout.layout_item_photos,bitmaps,bStrings,true);
+        rec_P.setAdapter(adapter);
 
         mSendMotion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +124,11 @@ public class ProjectDitailsMotionFragment extends Fragment {
                     Toast.makeText(getContext(), "يجب تعبئة جميع الحقول", Toast.LENGTH_LONG).show();
 
                 } else {
+                    attachMap.clear();
+                    for (String s:bStrings){
+                        Log.e("ddddd", " " + s);
+                        attachMap.put("photos[" + (i++) + "]", s);
+                    }
                     sendMotionRequest();
                 }
             }
@@ -132,7 +158,6 @@ public class ProjectDitailsMotionFragment extends Fragment {
         });
 
     }
-
     private void fileBrowse() {
         new ChooserDialog().with(getContext())
                 .withFilter(false, false, "pdf", "docx", "xlsx")
@@ -141,7 +166,7 @@ public class ProjectDitailsMotionFragment extends Fragment {
                     @Override
                     public void onChoosePath(String path, File pathFile) {
                         Toast.makeText(getContext(), "FOLDER: " + path, Toast.LENGTH_SHORT).show();
-                        attachMap.put("attachs[" + (i++) + "]", path);
+                        attachMap.put("attachs["+(i++)+"]",path);
                         Toast.makeText(getContext(), "تم اضافة الملف في المرفقات بنجاح", Toast.LENGTH_SHORT).show();
                     }
                 })
@@ -161,7 +186,7 @@ public class ProjectDitailsMotionFragment extends Fragment {
         map.put("balance", mMotionBalance.getText().toString());
         map.put("descr", mProjectDetiailsMotion.getText().toString());
 
-        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/projectmakemoshen", map, attachMap, new OkHttpCallback() {
+        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/projectmakemoshen", map,attachMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
@@ -197,10 +222,15 @@ public class ProjectDitailsMotionFragment extends Fragment {
                 Uri selectedImage = data.getData();
                 try {
                     String filePath = PathUtil.getPath(getActivity(), selectedImage);
-                    Log.e("dd", " " + filePath);
-                    attachMap.put("photos[" + (i++) + "]", filePath);
-                    Toast.makeText(getContext(), "تم اضافة الصورة فى الخلفية بنجاح", Toast.LENGTH_SHORT).show();
+                    bStrings.add(filePath);
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
+                    bitmaps.add(bitmap);
+                    adapter.notifyDataSetChanged();
                 } catch (URISyntaxException e) {
+                    e.printStackTrace();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }

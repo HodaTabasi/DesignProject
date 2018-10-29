@@ -2,11 +2,16 @@ package com.smm.sapp.sproject.Fragments;
 
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +19,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.obsez.android.lib.filechooser.ChooserDialog;
+import com.smm.sapp.sproject.Adapters.ProjectPhotoAdapter;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.HelperClass.PathUtil;
@@ -29,8 +36,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,7 +58,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
     private EditText mGhType;
     private EditText mProjectNameGh;
     private EditText mAboutActivity;
-    private ImageView mGhUploadImageLike;
+    private ImageView mGhUploadImageLike, mGhUploadImageLike1;
     private TextView mInnovation;
     private TextView mDevelop;
     private TextView mAskForDesign;
@@ -60,13 +69,18 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
     private EditText mProjectDeitailsGh;
     private TextView mGhAttachment;
     private Button mSendGh;
+    LinearLayout lien;
+    ImageView ic_back;
+    private RecyclerView rec_P;
 
     String savedValue1 = "", savedValue2 = "";
-
-    ImageView ic_back;
-
     int i = 0;
+
     Map<String, String> attachMap;
+    ArrayList<Bitmap> bitmaps;
+    ArrayList<String> bStrings;
+    ProjectPhotoAdapter adapter;
+
 
     public ProjectDitailesGraphicsFragment() {
         // Required empty public constructor
@@ -85,6 +99,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
         mProjectNameGh = getView().findViewById(R.id.project_name_gh);
         mAboutActivity = getView().findViewById(R.id.about_activity);
         mGhUploadImageLike = getView().findViewById(R.id.gh_upload_image_like);
+        mGhUploadImageLike1 = getView().findViewById(R.id.gh_upload_image_like1);
         mInnovation = getView().findViewById(R.id.innovation);
         mDevelop = getView().findViewById(R.id.develop);
         mAskForDesign = getView().findViewById(R.id.ask_for_design);
@@ -95,6 +110,11 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
         mProjectDeitailsGh = getView().findViewById(R.id.project_deitails_gh);
         mGhAttachment = getView().findViewById(R.id.gh_attachment);
         mSendGh = getView().findViewById(R.id.send_gh);
+        lien = getView().findViewById(R.id.lien);
+        rec_P = getView().findViewById(R.id.rec_P);
+        rec_P.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        bitmaps = new ArrayList<>();
+        bStrings = new ArrayList<>();
     }
 
 
@@ -104,6 +124,10 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
+
+        adapter = new ProjectPhotoAdapter(getContext(), R.layout.layout_item_photos, bitmaps, bStrings, true);
+        rec_P.setAdapter(adapter);
+
         attachMap = new HashMap<>();
 
         ic_back = getView().findViewById(R.id.ic_back);
@@ -121,8 +145,12 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
                 if (mGhType.getText().toString().matches("") || mProjectNameGh.getText().toString().matches("") || mAboutActivity.getText().toString().matches("")
                         || mGhBalance.getText().toString().matches("") || mProjectDeitailsGh.getText().toString().matches("")) {
                     Toast.makeText(getContext(), "يجب تعبئة جميع الحقول", Toast.LENGTH_LONG).show();
-
                 } else {
+                    attachMap.clear();
+                    for (String s : bStrings) {
+                        Log.e("ddddd", " " + s);
+                        attachMap.put("photos[" + (i++) + "]", s);
+                    }
                     sendGraphicRequest();
                 }
             }
@@ -131,8 +159,18 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
         mGhUploadImageLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mGhUploadImageLike.setVisibility(View.GONE);
+                lien.setVisibility(View.VISIBLE);
                 Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(pickPhoto, 1);//one can be replaced with any action code
+            }
+        });
+
+        mGhUploadImageLike1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(pickPhoto, 2);//one can be replaced with any action code
             }
         });
 
@@ -147,6 +185,12 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 savedValue1 = "0";
+                mNo.setBackgroundColor(Color.parseColor("#65bafb"));
+                mNo.setTextColor(Color.parseColor("#ffffff"));
+
+                mYes.setBackgroundColor(Color.WHITE);
+                mYes.setTextColor(Color.parseColor("#000000"));
+
             }
         });
 
@@ -154,6 +198,11 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 savedValue1 = "1";
+                mYes.setBackgroundColor(Color.parseColor("#65bafb"));
+                mYes.setTextColor(Color.parseColor("#ffffff"));
+
+                mNo.setBackgroundColor(Color.WHITE);
+                mNo.setTextColor(Color.parseColor("#000000"));
             }
         });
 
@@ -161,6 +210,11 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 savedValue2 = "innovation";
+                mInnovation.setBackgroundColor(Color.parseColor("#65bafb"));
+                mInnovation.setTextColor(Color.parseColor("#ffffff"));
+
+                mDevelop.setBackgroundColor(Color.WHITE);
+                mDevelop.setTextColor(Color.parseColor("#000000"));
             }
         });
 
@@ -168,6 +222,11 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 savedValue2 = "develop";
+                mDevelop.setBackgroundColor(Color.parseColor("#65bafb"));
+                mDevelop.setTextColor(Color.parseColor("#ffffff"));
+
+                mInnovation.setBackgroundColor(Color.WHITE);
+                mInnovation.setTextColor(Color.parseColor("#000000"));
             }
         });
 
@@ -241,10 +300,32 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
                     String filePath = PathUtil.getPath(getActivity(), selectedImage);
                     Log.e("dd", " " + filePath);
                     attachMap.put("photos[" + (i++) + "]", filePath);
-                    Toast.makeText(getContext(), "تم اضافة الصورة فى الخلفية بنجاح", Toast.LENGTH_SHORT).show();
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
+//                    bitmaps.add(bitmap);
+//                    adapter = new ProjectPhotoAdapter(getContext(),R.layout.layout_item_photos,bitmaps,true);
+                    rec_P.setAdapter(adapter);
                 } catch (URISyntaxException e) {
                     e.printStackTrace();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
+            }
+        }else if (requestCode == 2){
+            Uri selectedImage = data.getData();
+            try {
+                String filePath = PathUtil.getPath(getActivity(), selectedImage);
+                Log.e("dd", " " + filePath);
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
+                bitmaps.add(bitmap);
+                adapter.notifyDataSetChanged();
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }

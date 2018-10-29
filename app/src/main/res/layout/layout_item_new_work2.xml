@@ -6,12 +6,12 @@
 
     <ImageView
         android:id="@+id/img"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_80sdp"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_marginRight="12dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_12sdp"
         android:scaleType="fitXY"
         android:src="@drawable/img1" />
 
@@ -23,74 +23,74 @@
         android:layout_alignTop="@+id/img"
         android:text="هوية بصرية لشركة تهتم بمجال النظر"
         android:textColor="@color/textGray"
-        android:textSize="14sp" />
+        android:textSize="@dimen/_12sdp" />
 
     <TextView
         android:id="@+id/num_seen"
-        android:layout_width="60dp"
+        android:layout_width="@dimen/_50sdp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/project_title"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/_14sdp"
         android:layout_toLeftOf="@+id/img"
         android:layout_toStartOf="@+id/img"
         android:background="@drawable/report_layout_shap"
         android:drawableEnd="@drawable/ic_visibility_black_24dp"
-        android:drawablePadding="8dp"
+        android:drawablePadding="@dimen/_8sdp"
         android:drawableRight="@drawable/ic_visibility_black_24dp"
         android:gravity="center"
-        android:padding="5dp"
+        android:padding="@dimen/_4sdp"
         android:textColor="@android:color/black"
-        android:textSize="12sp" />
+        android:textSize="@dimen/_10sdp" />
 
     <TextView
         android:id="@+id/num_like"
-        android:layout_width="60dp"
+        android:layout_width="@dimen/_50sdp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/project_title"
-        android:layout_marginRight="3dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginRight="@dimen/_3sdp"
+        android:layout_marginTop="@dimen/_14sdp"
         android:layout_toLeftOf="@+id/num_seen"
         android:layout_toStartOf="@+id/num_seen"
         android:background="@drawable/report_layout_shap"
         android:drawableEnd="@drawable/ic_thumb_up_black_24dp"
-        android:drawablePadding="8dp"
+        android:drawablePadding="@dimen/_8sdp"
         android:drawableRight="@drawable/ic_thumb_up_black_24dp"
         android:gravity="center"
-        android:padding="5dp"
+        android:padding="@dimen/_4sdp"
         android:textColor="@android:color/black"
-        android:textSize="12dp" />
+        android:textSize="@dimen/_10sdp" />
 
     <TextView
         android:id="@+id/update_work"
-        android:layout_width="60dp"
+        android:layout_width="@dimen/_50sdp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/num_seen"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="@dimen/_5sdp"
         android:layout_toLeftOf="@+id/img"
         android:layout_toStartOf="@+id/img"
         android:background="@drawable/blue_shape"
         android:gravity="center"
-        android:padding="5dp"
+        android:padding="@dimen/_4sdp"
         android:text="تعديل"
         android:textColor="@android:color/white"
         android:textSize="12sp" />
 
     <TextView
         android:id="@+id/delete_work"
-        android:layout_width="60dp"
+        android:layout_width="@dimen/_50sdp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/num_like"
-        android:layout_marginRight="3dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginRight="@dimen/_3sdp"
+        android:layout_marginTop="@dimen/_5sdp"
         android:layout_toLeftOf="@+id/update_work"
         android:layout_toStartOf="@+id/update_work"
         android:background="@drawable/red_shap"
         android:gravity="center"
-        android:padding="5dp"
+        android:padding="@dimen/_4sdp"
         android:text="حذف"
         android:textColor="@android:color/white"
         android:textSize="12sp" />

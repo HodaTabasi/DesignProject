@@ -109,6 +109,7 @@ public class ViewProjectFragment extends Fragment {
         else
             addOffer.setVisibility(View.VISIBLE);
 
+        //لفحص هل هو تعديل ولا جاي من الفيو
         bundle = getArguments();
         if (bundle.getBoolean("flag")) {
             model = bundle.getParcelable("object");
@@ -301,7 +302,19 @@ public class ViewProjectFragment extends Fragment {
         mPAttachment.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         ProjectAttachmentAdapter adapter2 = new ProjectAttachmentAdapter(getContext(), R.layout.layout_item_attachment, models.getAttachs());
         mPAttachment.setAdapter(adapter2);
-
+// عرض الاوفر للمستخدم لو كان مقدم
+        if (models.getOffers().size() != 0){
+            for(OfferModel s: models.getOffers()){
+                if(s.getCreated_by().equals(ConstantInterFace.USER.getId() +"")){
+                    linear_add_proposal.setVisibility(View.VISIBLE);
+                    mBalanceP.setText(s.getBalance());
+                    mProposalP.setText(s.getDescr());
+                    mDurP.setText(s.getDur());
+                    addOffer.setVisibility(View.INVISIBLE);
+                    break;
+                }
+            }
+        }
     }
 
     private void updateOfferRequest(OfferModel model) {
