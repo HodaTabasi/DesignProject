@@ -185,10 +185,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 savedValue1 = "0";
-                mNo.setBackgroundColor(Color.parseColor("#65bafb"));
-                mNo.setTextColor(Color.parseColor("#ffffff"));
-
-                mYes.setBackgroundColor(Color.WHITE);
+                mNo.setTextColor(Color.parseColor("#65bafb"));
                 mYes.setTextColor(Color.parseColor("#000000"));
 
             }
@@ -198,10 +195,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 savedValue1 = "1";
-                mYes.setBackgroundColor(Color.parseColor("#65bafb"));
-                mYes.setTextColor(Color.parseColor("#ffffff"));
-
-                mNo.setBackgroundColor(Color.WHITE);
+                mYes.setTextColor(Color.parseColor("#65bafb"));
                 mNo.setTextColor(Color.parseColor("#000000"));
             }
         });
@@ -210,10 +204,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 savedValue2 = "innovation";
-                mInnovation.setBackgroundColor(Color.parseColor("#65bafb"));
-                mInnovation.setTextColor(Color.parseColor("#ffffff"));
-
-                mDevelop.setBackgroundColor(Color.WHITE);
+                mInnovation.setTextColor(Color.parseColor("#65bafb"));
                 mDevelop.setTextColor(Color.parseColor("#000000"));
             }
         });
@@ -222,10 +213,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 savedValue2 = "develop";
-                mDevelop.setBackgroundColor(Color.parseColor("#65bafb"));
-                mDevelop.setTextColor(Color.parseColor("#ffffff"));
-
-                mInnovation.setBackgroundColor(Color.WHITE);
+                mDevelop.setTextColor(Color.parseColor("#65bafb"));
                 mInnovation.setTextColor(Color.parseColor("#000000"));
             }
         });
@@ -312,7 +300,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
                     e.printStackTrace();
                 }
             }
-        }else if (requestCode == 2){
+        } else if (requestCode == 2) {
             Uri selectedImage = data.getData();
             try {
                 String filePath = PathUtil.getPath(getActivity(), selectedImage);

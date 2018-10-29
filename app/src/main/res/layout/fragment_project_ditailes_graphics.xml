@@ -200,7 +200,8 @@
 
                     <TextView
                         android:id="@+id/innovation"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.8"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:padding="5dp"
@@ -216,7 +217,8 @@
 
                     <TextView
                         android:id="@+id/develop"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.8"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:padding="5dp"
@@ -231,7 +233,8 @@
 
                     <TextView
                         android:id="@+id/ask_for_design"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.5"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:padding="5dp"
