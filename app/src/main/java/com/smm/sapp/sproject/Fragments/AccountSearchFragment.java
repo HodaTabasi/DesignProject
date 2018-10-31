@@ -225,7 +225,7 @@ public class AccountSearchFragment extends Fragment {
         if (models.getBio() != null) {
             et_bio.setText(models.getBio());
 
-        }else {
+        } else {
             et_bio.setText("");
         }
 
@@ -279,7 +279,8 @@ public class AccountSearchFragment extends Fragment {
                                 int in_progress = inProgressProjectList.size();
 
                                 try {
-                                    rate = (finished / in_progress) * 100;
+//                                    rate = (finished / in_progress) * 100;
+                                    rate = (in_progress / (finished + in_progress)) * 100;
                                 } catch (Exception e) {
                                 }
 

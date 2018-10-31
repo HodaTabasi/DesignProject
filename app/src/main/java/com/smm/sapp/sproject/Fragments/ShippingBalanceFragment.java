@@ -25,9 +25,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.smm.sapp.sproject.Activities.WebViewActivity;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.HelperClass.PathUtil;
+import com.smm.sapp.sproject.HelperClass.SharedPreferencesApp;
+import com.smm.sapp.sproject.Models.User;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
@@ -76,14 +79,14 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
     /**
      * ارسال
      */
-    TextView tv,tv1;
+    TextView tv, tv1;
     ImageButton send_bank1;
     private TextView mSendBank1;
     RelativeLayout one, two;
     TextView addPhotoShp, transferDateSh;
-    EditText userBankNameShp, bankNumberShp, bankNameShp, balance;
+    EditText userBankNameShp, bankNumberShp, bankNameShp, balance, et_amount;
     ImageView ic_back;
-    String filePath;
+    String filePath, st_amount;
 
     public ShippingBalanceFragment() {
         // Required empty public constructor
@@ -109,6 +112,7 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
         addPhotoShp = getView().findViewById(R.id.add_photo_shp);
         one = getView().findViewById(R.id.sh_one);
         two = getView().findViewById(R.id.sh_two);
+        et_amount = getView().findViewById(R.id.et_amount);
     }
 
     private void addListeners() {
@@ -171,7 +175,7 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
                 }
 
             case R.id.send_bank1:
-
+                sendShippingRequest();
                 break;
             case R.id.add_photo_shp:
                 Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -185,18 +189,68 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
                         SimpleDateFormat simpledateformat = new SimpleDateFormat("EEE");
                         SimpleDateFormat simpledateformat1 = new SimpleDateFormat("MM");
-                        Date date = new Date(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth()-1);
+                        Date date = new Date(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth() - 1);
 //                        String dayOfWeek = simpledateformat.format(date);
                         String month = simpledateformat1.format(date);
                         int d = datePicker.getDayOfMonth();
                         int y = datePicker.getYear();
-                        transferDateSh.setText(d+"/"+month+"/"+y);
+                        transferDateSh.setText(d + "/" + month + "/" + y);
                     }
-                },c.get(Calendar.YEAR),c.get(Calendar.MONTH),c.get(Calendar.DAY_OF_MONTH));
+                }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
 
                 pickerDialog.show();
                 break;
         }
+    }
+
+    private void sendShippingRequest() {
+        MyProgressDialog.showDialog(getContext());
+        st_amount = et_amount.getText().toString();
+        MyRequest myRequest = new MyRequest();
+        Map<String, String> stringMap = new HashMap<>();
+        stringMap.put("token", ConstantInterFace.USER.getToken());
+        stringMap.put("amount", st_amount);
+        myRequest.PostCall("http://smm.smmim.com/waell/public/api/sendpayment", stringMap, new OkHttpCallback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                MyProgressDialog.dismissDialog();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException, JSONException {
+                MyProgressDialog.dismissDialog();
+
+                final JSONObject jsonObject = new JSONObject(response.body().string());
+                final JSONObject statusObj = jsonObject.getJSONObject("status");
+                final String urlString = jsonObject.getString("url");
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            if (statusObj.getBoolean("success")) {
+
+                                Intent intent = new Intent(getContext(), WebViewActivity.class);
+                                intent.putExtra("url", urlString);
+                                startActivity(intent);
+
+                            } else {
+                                Toast.makeText(getActivity(), "لم يتم الارسال بشكل صحيح", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
+        });
+
     }
 
     private void sendCardBank() {
@@ -213,6 +267,12 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
 
             @Override
@@ -225,7 +285,7 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
                     public void run() {
                         try {
                             if (object.getBoolean("success")) {
-                                MyProgressDialog.DoneDialog(getContext()," المبلغ  " + balance.getText().toString() , "تم شحن حسابك ");
+                                MyProgressDialog.DoneDialog(getContext(), " المبلغ  " + balance.getText().toString(), "تم شحن حسابك ");
                             } else {
                                 Toast.makeText(getContext(), "حصل خطا ما", Toast.LENGTH_SHORT).show();
                             }
@@ -248,7 +308,7 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
                 try {
                     filePath = PathUtil.getPath(getActivity(), selectedImage);
                     String[] separated = filePath.split("/");
-                    addPhotoShp.setText(separated[separated.length-1]);
+                    addPhotoShp.setText(separated[separated.length - 1]);
                 } catch (URISyntaxException e) {
                     e.printStackTrace();
                 }

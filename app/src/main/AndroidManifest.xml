@@ -25,8 +25,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDpyp8xxGGx9oRF-MOZDHJxArOPiZfc3lk" />
 
-        <activity android:name=".Activities.FirstActivity"/>
-
+        <activity android:name=".Activities.FirstActivity" />
         <activity android:name=".Activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,19 +38,16 @@
         <activity android:name=".Activities.BottomBar" />
         <activity android:name=".Activities.MapActivity" />
 
-        <service
-            android:name=".MyFirebaseInstanceIDService">
+        <service android:name=".MyFirebaseInstanceIDService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
         <service android:name=".FirebaseIDService">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-
 
         <activity android:name=".Activities.SplashActivity">
             <intent-filter>
@@ -59,19 +55,19 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
-        <!--<meta-data-->
-        <!--android:name="com.google.firebase.messaging.default_notification_icon"-->
-        <!--android:resource="@drawable/ic_search" />-->
-        <!--&lt;!&ndash;-->
-        <!--Set color used with incoming notification messages. This is used when no color is set for the incoming-->
-        <!--notification message. See README(https://goo.gl/6BKBk7) for more.-->
-        <!--&ndash;&gt;-->
-        <!--<meta-data-->
-        <!--android:name="com.google.firebase.messaging.default_notification_color"-->
-        <!--android:resource="@color/colorAccent" />-->
+        <!-- <meta-data -->
+        <!-- android:name="com.google.firebase.messaging.default_notification_icon" -->
+        <!-- android:resource="@drawable/ic_search" /> -->
+        <!-- &lt;!&ndash; -->
+        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming -->
+        <!-- notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <!-- &ndash;&gt; -->
+        <!-- <meta-data -->
+        <!-- android:name="com.google.firebase.messaging.default_notification_color" -->
+        <!-- android:resource="@color/colorAccent" /> -->
+        <activity android:name=".Activities.WebViewActivity"></activity>
     </application>
 
 </manifest>
