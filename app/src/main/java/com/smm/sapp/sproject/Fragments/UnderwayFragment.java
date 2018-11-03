@@ -35,6 +35,7 @@ import com.smm.sapp.sproject.Models.User;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -173,26 +174,30 @@ public class UnderwayFragment extends Fragment {
                 sendNewMessageRequest();
             }
         });
-//        Bundle bundle = getArguments();
-//        user = bundle.getParcelable("user");
-//        model = bundle.getParcelable("offer");
+        Bundle bundle = getArguments();
+        user = bundle.getParcelable("user");
+        model = bundle.getParcelable("offer");
 
-//         mName.setText(user.getName());
-//         mName1.setText(ConstantInterFace.USER.getName());
 
         StringBuilder s_name = new StringBuilder(user.getName());
         for (int i = 1; i < s_name.length() - 1; i++) {
             s_name.setCharAt(i, '*');
         }
+        mName.setText(s_name);
+        Picasso.get().load(user.getPhoto_link()).into(mProfileImage1);
 
         StringBuilder s_name1 = new StringBuilder(ConstantInterFace.USER.getName());
         for (int i = 0; i < s_name1.length() - 1; i++) {
             s_name1.setCharAt(i, '*');
         }
+        mName1.setText(s_name1);
+        Picasso.get().load(ConstantInterFace.USER.getPhoto_link()).into(mProfileImage2);
 
         mProjectMoney.setText(model.getBalance());
         mProjectTime.setText(model.getDur());
-        mProjectStartDate.setText(model.getCreated_at());
+        String created_at = model.getCreated_at();
+        String[] s = created_at.split(" ");
+        mProjectStartDate.setText(s[0]);
         mProjectEndDate.setText("");
 
         getAConversationRequest();
