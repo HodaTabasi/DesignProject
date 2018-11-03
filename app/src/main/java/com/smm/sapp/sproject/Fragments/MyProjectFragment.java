@@ -254,6 +254,7 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
                                     }
 
 
+
                                     for (OfferModel offerModel : models.getOffers()) {
                                         if (offerModel.getApproved().equals("0") && offerModel.getFinished().equals("0")) {
                                             wait++;
