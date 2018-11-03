@@ -39,6 +39,7 @@
             android:layout_marginRight="15dp"
             android:padding="8dp"
             android:src="@drawable/ic_arrow" />
+
         <ImageView
             android:id="@+id/ic_dots"
             android:layout_width="wrap_content"
@@ -79,41 +80,34 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:background="@drawable/report_layout_shap"
+                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/project_start_date"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/account_shape">
+                    android:layout_weight="1.2"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="29/08/2017"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_8sdp" />
 
-                    <TextView
-                        android:id="@+id/project_start_date"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1.2"
-                        android:padding="5dp"
-                        android:text="29/08/2017"
-                        android:textColor="@android:color/black"
-                        android:textSize="14sp" />
+                <View
+                    android:layout_width="1.2dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/black" />
 
-                    <View
-                        android:layout_width="1.5dp"
-                        android:layout_height="40dp"
-                        android:background="@color/gray" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.1"
+                    android:gravity="center"
+                    android:text="تاريخ المشروع"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_8sdp" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:text="تاريخ المشروع"
-                        android:textColor="@android:color/black"
-                        android:textSize="14dp" />
-
-
-                </LinearLayout>
 
             </LinearLayout>
 
@@ -139,27 +133,27 @@
                         android:id="@+id/project_money"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:layout_weight="1.3"
+                        android:gravity="center"
                         android:padding="5dp"
                         android:text="1200 ريال سعودى"
                         android:textColor="@android:color/black"
-                        android:textSize="14dp" />
+                        android:textSize="@dimen/_8sdp" />
 
                     <View
-                        android:layout_width="1.5dp"
-                        android:layout_height="40dp"
-                        android:background="@color/gray" />
+                        android:layout_width="1.2dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/black" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="0.7"
+                        android:layout_weight="0.9"
+                        android:gravity="center"
                         android:padding="5dp"
                         android:text="الميزانية"
                         android:textColor="@android:color/black"
-                        android:textSize="14dp" />
+                        android:textSize="@dimen/_8sdp" />
 
 
                 </LinearLayout>
@@ -180,39 +174,35 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:background="@drawable/account_shape"
+                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/project_end_date"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/account_shape">
+                    android:layout_weight="1.2"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="29/08/2017"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_8sdp" />
 
-                    <TextView
-                        android:id="@+id/project_end_date"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1.2"
-                        android:padding="5dp"
-                        android:text="29/08/2017"
-                        android:textColor="@android:color/black"
-                        android:textSize="14sp" />
+                <View
+                    android:layout_width="1.2dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/black" />
 
-                    <View
-                        android:layout_width="1.5dp"
-                        android:layout_height="40dp"
-                        android:background="@color/gray" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.1"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="موعد التسليم"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_8sdp" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1.1"
-                        android:padding="5dp"
-                        android:text="موعد التسليم"
-                        android:textColor="@android:color/black"
-                        android:textSize="14sp" />
-                </LinearLayout>
 
             </LinearLayout>
 
@@ -234,27 +224,27 @@
                         android:id="@+id/project_time"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:layout_weight="1.3"
+                        android:gravity="center"
                         android:padding="5dp"
-                        android:text="  50 ايام"
+                        android:text="50 ايام"
                         android:textColor="@android:color/black"
-                        android:textSize="14dp" />
+                        android:textSize="@dimen/_8sdp" />
 
                     <View
-                        android:layout_width="1.5dp"
-                        android:layout_height="40dp"
-                        android:background="@color/gray" />
+                        android:layout_width="1.2dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/black" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:layout_weight="0.9"
+                        android:gravity="center"
                         android:padding="5dp"
                         android:text="مدة التنفيذ"
                         android:textColor="@android:color/black"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_8sdp" />
 
 
                 </LinearLayout>
@@ -301,9 +291,10 @@
                     android:layout_marginTop="15dp"
                     android:layout_toLeftOf="@+id/profile_image1"
                     android:layout_toStartOf="@+id/profile_image1"
+                    android:gravity="center_horizontal"
                     android:text="حسام اليماني "
                     android:textColor="@android:color/black"
-                    android:textSize="14dp" />
+                    android:textSize="@dimen/_8sdp" />
 
                 <TextView
                     android:id="@+id/its_type"
@@ -314,13 +305,15 @@
                     android:layout_margin="5dp"
                     android:layout_toLeftOf="@+id/profile_image1"
                     android:background="@drawable/account_shape"
+                    android:paddingBottom="@dimen/_5sdp"
                     android:paddingEnd="8sp"
                     android:paddingLeft="8dp"
                     android:paddingRight="8sp"
                     android:paddingStart="8dp"
-                    android:text="مصمم"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:text="المصمم"
                     android:textColor="@android:color/black"
-                    android:textSize="13dp" />
+                    android:textSize="@dimen/_8sdp" />
 
             </RelativeLayout>
 
@@ -356,9 +349,10 @@
                     android:layout_marginTop="15dp"
                     android:layout_toLeftOf="@+id/profile_image2"
                     android:layout_toStartOf="@+id/profile_image2"
+                    android:gravity="center_horizontal"
                     android:text="حسام اليماني "
                     android:textColor="@android:color/black"
-                    android:textSize="14dp" />
+                    android:textSize="@dimen/_8sdp" />
 
                 <TextView
                     android:id="@+id/its_type1"
@@ -369,13 +363,15 @@
                     android:layout_margin="5dp"
                     android:layout_toLeftOf="@+id/profile_image2"
                     android:background="@drawable/account_shape"
+                    android:paddingBottom="@dimen/_5sdp"
                     android:paddingEnd="8sp"
                     android:paddingLeft="8dp"
                     android:paddingRight="8sp"
                     android:paddingStart="8dp"
+                    android:paddingTop="@dimen/_5sdp"
                     android:text="صاحب مشروع"
                     android:textColor="@android:color/black"
-                    android:textSize="13dp" />
+                    android:textSize="@dimen/_8sdp" />
 
             </RelativeLayout>
 
