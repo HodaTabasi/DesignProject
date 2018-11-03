@@ -250,6 +250,7 @@ public class MainFragment extends Fragment {
         tv_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new SearchFragment(), true);
 
             }

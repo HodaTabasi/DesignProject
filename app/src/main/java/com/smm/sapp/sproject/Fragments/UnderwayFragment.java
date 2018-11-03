@@ -1,9 +1,13 @@
 package com.smm.sapp.sproject.Fragments;
 
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,9 +26,11 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.smm.sapp.sproject.Adapters.MyMessageDetailAdapter;
 import com.smm.sapp.sproject.ConstantInterFace;
+import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.Models.MessageDetails;
 import com.smm.sapp.sproject.Models.OfferModel;
+import com.smm.sapp.sproject.Models.ProjectsModels;
 import com.smm.sapp.sproject.Models.User;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
@@ -49,24 +57,39 @@ import okhttp3.Response;
 public class UnderwayFragment extends Fragment {
 
 
-
-    /** 29/08/2017 */
+    /**
+     * 29/08/2017
+     */
     private TextView mProjectStartDate;
-    /** 1200 ريال سعودى */
+    /**
+     * 1200 ريال سعودى
+     */
     private TextView mProjectMoney;
-    /** 29/08/2017 */
+    /**
+     * 29/08/2017
+     */
     private TextView mProjectEndDate;
-    /**   50 ايام */
+    /**
+     * 50 ايام
+     */
     private TextView mProjectTime;
     private CircleImageView mProfileImage1;
-    /** حسام اليماني  */
+    /**
+     * حسام اليماني
+     */
     private TextView mName;
-    /** مصمم */
+    /**
+     * مصمم
+     */
     private TextView mItsType;
     private CircleImageView mProfileImage2;
-    /** حسام اليماني  */
+    /**
+     * حسام اليماني
+     */
     private TextView mName1;
-    /** صاحب مشروع */
+    /**
+     * صاحب مشروع
+     */
     private TextView mItsType1;
     private LinearLayout mWw;
     private RecyclerView mMres;
@@ -74,12 +97,14 @@ public class UnderwayFragment extends Fragment {
     private EditText mMessageEx;
     private ImageView mSendMessg;
     private LinearLayout mFf;
-    ImageView ic_back;
+    ImageView ic_back, ic_dots;
     User user;
     OfferModel model;
 
     private List<MessageDetails> details;
     MyMessageDetailAdapter adapter;
+    PopupWindow mypopupWindow;
+
     public UnderwayFragment() {
         // Required empty public constructor
     }
@@ -92,7 +117,7 @@ public class UnderwayFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_underway, container, false);
     }
 
-    private void initView(){
+    private void initView() {
         mProjectStartDate = getView().findViewById(R.id.project_start_date);
         mProjectMoney = getView().findViewById(R.id.project_money);
         mProjectEndDate = getView().findViewById(R.id.project_end_date);
@@ -104,10 +129,12 @@ public class UnderwayFragment extends Fragment {
         mName1 = getView().findViewById(R.id.name1);
         mItsType1 = getView().findViewById(R.id.its_type1);
         mMres = getView().findViewById(R.id.mres);
-        mMres.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+        mMres.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         mOther = getView().findViewById(R.id.other);
         mMessageEx = getView().findViewById(R.id.message_ex);
         mSendMessg = getView().findViewById(R.id.send_messg);
+        ic_dots = getView().findViewById(R.id.ic_dots);
+
         details = new ArrayList<>();
     }
 
@@ -126,43 +153,92 @@ public class UnderwayFragment extends Fragment {
                 getFragmentManager().popBackStack();
             }
         });
+
+        if (ConstantInterFace.USER.getType().equals("worker")) {
+            ic_dots.setVisibility(View.GONE);
+        } else {
+            ic_dots.setVisibility(View.VISIBLE);
+        }
+
+        ic_dots.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showPopUpMenu(view);
+            }
+        });
+
         mSendMessg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sendNewMessageRequest();
             }
         });
-        Bundle bundle = getArguments();
-         user = bundle.getParcelable("user");
-         model = bundle.getParcelable("offer");
+//        Bundle bundle = getArguments();
+//        user = bundle.getParcelable("user");
+//        model = bundle.getParcelable("offer");
 
 //         mName.setText(user.getName());
 //         mName1.setText(ConstantInterFace.USER.getName());
 
         StringBuilder s_name = new StringBuilder(user.getName());
-        for (int i = 1; i< s_name.length() - 1 ; i++){
+        for (int i = 1; i < s_name.length() - 1; i++) {
             s_name.setCharAt(i, '*');
         }
 
         StringBuilder s_name1 = new StringBuilder(ConstantInterFace.USER.getName());
-        for (int i = 0; i< s_name1.length() - 1 ; i++){
+        for (int i = 0; i < s_name1.length() - 1; i++) {
             s_name1.setCharAt(i, '*');
         }
 
-         mProjectMoney.setText(model.getBalance());
-         mProjectTime.setText(model.getDur());
-         mProjectStartDate.setText(model.getCreated_at());
-         mProjectEndDate.setText("");
+        mProjectMoney.setText(model.getBalance());
+        mProjectTime.setText(model.getDur());
+        mProjectStartDate.setText(model.getCreated_at());
+        mProjectEndDate.setText("");
 
         getAConversationRequest();
     }
 
-    private void getAConversationRequest(){
+
+    @SuppressLint("RestrictedApi")
+    private void showPopUpMenu(View v) {
+
+        LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.popup_menu, null);
+
+        TextView deliever_proj = view.findViewById(R.id.deliever_proj);
+        TextView report = view.findViewById(R.id.report);
+
+        Typeface custom_font = Typeface.createFromAsset(getActivity().getAssets(), "JFFlatregular.ttf");
+        deliever_proj.setTypeface(custom_font);
+        report.setTypeface(custom_font);
+
+        mypopupWindow = new PopupWindow(view, RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT, true);
+        mypopupWindow.showAsDropDown(v);
+
+        deliever_proj.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mypopupWindow.dismiss();
+
+            }
+        });
+
+        report.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mypopupWindow.dismiss();
+
+            }
+        });
+
+    }
+
+    private void getAConversationRequest() {
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
-        Map<String,String> stringMap = new HashMap<>();
+        Map<String, String> stringMap = new HashMap<>();
         stringMap.put("token", ConstantInterFace.USER.getToken());
-        stringMap.put("user_id",user.getId()+"");
+        stringMap.put("user_id", user.getId() + "");
         myRequest.PostCall("http://smm.smmim.com/waell/public/api/getAconversation", stringMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -178,11 +254,12 @@ public class UnderwayFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     public void run() {
                         try {
-                            if (object1.getBoolean("success")){
+                            if (object1.getBoolean("success")) {
                                 Gson gson = new Gson();
-                                TypeToken<List<MessageDetails>> token = new TypeToken<List<MessageDetails>>() {};
-                                details = gson.fromJson(object.getJSONArray("msgs").toString(),token.getType());
-                                adapter = new MyMessageDetailAdapter(getContext(),details);
+                                TypeToken<List<MessageDetails>> token = new TypeToken<List<MessageDetails>>() {
+                                };
+                                details = gson.fromJson(object.getJSONArray("msgs").toString(), token.getType());
+                                adapter = new MyMessageDetailAdapter(getContext(), details);
                                 mMres.setAdapter(adapter);
                             }
                         } catch (JSONException e) {
@@ -197,10 +274,10 @@ public class UnderwayFragment extends Fragment {
     private void sendNewMessageRequest() {
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
-        Map<String,String> stringMap = new HashMap<>();
-        stringMap.put("token",ConstantInterFace.USER.getToken());
-        stringMap.put("msg",mMessageEx.getText().toString());
-        stringMap.put("seconed_id",user.getId()+"");
+        Map<String, String> stringMap = new HashMap<>();
+        stringMap.put("token", ConstantInterFace.USER.getToken());
+        stringMap.put("msg", mMessageEx.getText().toString());
+        stringMap.put("seconed_id", user.getId() + "");
         myRequest.PostCall("http://smm.smmim.com/waell/public/api/sendmsg", stringMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -213,17 +290,17 @@ public class UnderwayFragment extends Fragment {
                 String s = response.body().string();
                 final JSONObject object = new JSONObject(s);
                 final JSONObject object1 = object.getJSONObject("status");
-                Log.e("ddf",s);
+                Log.e("ddf", s);
                 getActivity().runOnUiThread(new Runnable() {
                     public void run() {
                         try {
-                            if (object1.getBoolean("success")){
+                            if (object1.getBoolean("success")) {
                                 Gson gson = new Gson();
-                                MessageDetails messageDetails = gson.fromJson(object.getJSONObject("msg").toString(),MessageDetails.class);
-                                details.add(0,messageDetails);
+                                MessageDetails messageDetails = gson.fromJson(object.getJSONObject("msg").toString(), MessageDetails.class);
+                                details.add(0, messageDetails);
                                 adapter.notifyDataSetChanged();
                                 mMessageEx.setText("");
-                            }else {
+                            } else {
                                 Toast.makeText(getContext(), "لم يتم الارسال", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
