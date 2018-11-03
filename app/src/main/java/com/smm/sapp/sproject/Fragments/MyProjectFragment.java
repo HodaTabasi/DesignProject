@@ -4,6 +4,7 @@ package com.smm.sapp.sproject.Fragments;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -37,6 +38,7 @@ import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.Models.MyProjectsProposals;
+import com.smm.sapp.sproject.Models.OfferModel;
 import com.smm.sapp.sproject.Models.ProjectsModels;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
@@ -90,8 +92,9 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
     List<ProjectsModels> arrayList;
     List<ProjectsModels> arrayList1;
     List<ProjectsModels> arrayList2;
-    int done = 0, wait = 0, under = 0;
-    TextView doneTV, waitTV, underTV;
+    ArrayList<OfferModel> underList, doneList, waitList, excludedList;
+    int done = 0, wait = 0, under = 0, excluded = 0;
+    TextView doneTV, waitTV, underTV, excludedTV;
     PieChart chart;
 
     public MyProjectFragment() {
@@ -135,11 +138,18 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         doneTV = getView().findViewById(R.id.done);
         underTV = getView().findViewById(R.id.under);
         waitTV = getView().findViewById(R.id.wait);
+        excludedTV = getView().findViewById(R.id.go);
         chart = (PieChart) getView().findViewById(R.id.chart);
 
         arrayList = new ArrayList<>();
         arrayList1 = new ArrayList<>();
         arrayList2 = new ArrayList<>();
+
+        //للعروض
+        underList = new ArrayList<>();
+        waitList = new ArrayList<>();
+        doneList = new ArrayList<>();
+        excludedList = new ArrayList<>();
 
         mMyProjectRes = getView().findViewById(R.id.my_project_res);
         layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
@@ -149,8 +159,19 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         mMyProjectExcluded.setOnClickListener(this);
         mMyProjectUnderway.setOnClickListener(this);
 
+        underTV.setOnClickListener(this);
+        doneTV.setOnClickListener(this);
+        waitTV.setOnClickListener(this);
+        excludedTV.setOnClickListener(this);
+
+        done = 0;
+        wait = 0;
+        under = 0;
+        excluded = 0;
+
         setBottomBar();
         addToChart();
+
     }
 
     private void setBottomBar() {
@@ -180,6 +201,7 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
                 getFragmentManager().popBackStack();
             }
         });
+
     }
 
     private void getProjects(final String url) {
@@ -211,29 +233,45 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
                                 Gson gson = new Gson();
                                 TypeToken<List<ProjectsModels>> token = new TypeToken<List<ProjectsModels>>() {
                                 };
-//                                arrayList = gson.fromJson(object.getJSONArray("projects").toString(), token.getType());
+
                                 for (int i = 0; i <= jsonArray.length(); i++) {
                                     JSONObject object2 = jsonArray.getJSONObject(i);
                                     ProjectsModels models = gson.fromJson(object2.toString(), ProjectsModels.class);
-                                    switch (object2.getString("status")) {
-                                        case "0":
-                                            //قيد الموافقة
-                                            arrayList.add(models);
-                                            waitTV.setText(arrayList.size() + " عرض ");
+                                    if (object2.getString("accepted").equals("0")){
+                                        //قيد الموافقة
+                                        arrayList.add(models);
+                                    }else {
+                                        switch (object2.getString("status")) {
+                                            case "1":
+                                                //قيد العمل
+                                                arrayList1.add(models);
+                                                break;
+                                            case "2":
+                                                //قم التسليم
+                                                arrayList2.add(models);
+                                                break;
+                                        }
+                                    }
+
+
+                                    for (OfferModel offerModel : models.getOffers()) {
+                                        if (offerModel.getApproved().equals("0") && offerModel.getFinished().equals("0")) {
                                             wait++;
-                                            break;
-                                        case "1":
-                                            //قيد العمل
-                                            arrayList1.add(models);
-                                            underTV.setText(arrayList1.size() + " عرض ");
+                                            waitTV.setText(wait + " عرض ");
+                                            waitList.add(offerModel);
+                                        } else if (offerModel.getApproved().equals("1") && offerModel.getFinished().equals("0")) {
                                             under++;
-                                            break;
-                                        case "2":
-                                            //قم التسليم
-                                            arrayList2.add(models);
-                                            doneTV.setText(arrayList2.size() + " عرض ");
+                                            underTV.setText(under + " عرض ");
+                                            underList.add(offerModel);
+                                        } else if (offerModel.getApproved().equals("1") && offerModel.getFinished().equals("1")) {
                                             done++;
-                                            break;
+                                            doneTV.setText(done + " عرض ");
+                                            doneList.add(offerModel);
+                                        } else {
+                                            excluded++;
+                                            excludedTV.setText(excluded + " عرض ");
+                                            excludedList.add(offerModel);
+                                        }
                                     }
                                 }
 
@@ -285,7 +323,6 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         chart.invalidate(); // refresh
 
 
-
     }
 
 //    private SpannableString generateCenterSpannableText() {
@@ -302,6 +339,8 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
+        MyOffersFragment fragment = new MyOffersFragment();
+        Bundle bundle = new Bundle();
         int id = v.getId();
         switch (id) {
             case R.id.my_project_excluded:
@@ -312,6 +351,34 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
                 break;
             case R.id.my_project_underway:
                 mMyProjectRes.setAdapter(new ClientProjectAdapter(getContext(), arrayList1));
+                break;
+            case R.id.wait:
+                bundle.putParcelableArrayList("array", waitList);
+                bundle.putBoolean("flag", true);
+                bundle.putInt("key", 1);
+                fragment.setArguments(bundle);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
+                break;
+            case R.id.go:
+                bundle.putParcelableArrayList("array", excludedList);
+                bundle.putBoolean("flag", true);
+                bundle.putInt("key", 2);
+                fragment.setArguments(bundle);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
+                break;
+            case R.id.done:
+                bundle.putParcelableArrayList("array", doneList);
+                bundle.putBoolean("flag", true);
+                bundle.putInt("key", 3);
+                fragment.setArguments(bundle);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
+                break;
+            case R.id.under:
+                bundle.putParcelableArrayList("array", underList);
+                bundle.putBoolean("flag", true);
+                bundle.putInt("key", 4);
+                fragment.setArguments(bundle);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
                 break;
         }
     }

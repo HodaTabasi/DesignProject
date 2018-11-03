@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.Fragments.EditProposalFragment;
+import com.smm.sapp.sproject.Fragments.UnderwayFragment;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.Models.OfferModel;
 import com.smm.sapp.sproject.R;
@@ -24,12 +25,12 @@ public class WorkerOfferAdapter extends RecyclerView.Adapter<WorkerOfferAdapter.
 
     private Context context;
     private List<OfferModel> offerModels;
-    private String name;
+    private int num;
 
-    public WorkerOfferAdapter(Context context, List<OfferModel> offerModels, String name) {
+    public WorkerOfferAdapter(Context context, List<OfferModel> offerModels, int num) {
         this.context = context;
         this.offerModels = offerModels;
-        this.name = name;
+        this.num = num;
     }
 
     @NonNull
@@ -45,22 +46,32 @@ public class WorkerOfferAdapter extends RecyclerView.Adapter<WorkerOfferAdapter.
         holder.body.setText(offerModel.getDescr());
         holder.calender.setText(offerModel.getDur());
         if (ConstantInterFace.USER.getType().equals("client"))
-            holder.name.setText(name);
+            holder.name.setText(offerModel.getUser().getName());
         else
             holder.name.setText(offerModel.getProject().getUser().getName());
 
         holder.money.setText(" $ " + offerModel.getBalance());
+holder.itemView.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        if (num == 0 || num == 1){
+            EditProposalFragment fragment = new EditProposalFragment();
+            Bundle bundle = new Bundle();
+            bundle.putParcelable("object", offerModel);
+            fragment.setArguments(bundle);
+            FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
+        }else if (num == 3 || num == 4){
+            UnderwayFragment fragment = new UnderwayFragment();
+            Bundle bundle = new Bundle();
+            bundle.putParcelable("offer", offerModel);
+            bundle.putParcelable("user", offerModel.getUser());
+            fragment.setArguments(bundle);
+            FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
+        }
+    }
+});
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditProposalFragment fragment = new EditProposalFragment();
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("object", offerModel);
-                fragment.setArguments(bundle);
-                FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
-            }
-        });
+
     }
 
     @Override

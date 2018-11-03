@@ -47,6 +47,7 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
     private TextView mAllOfferDone;
     private TextView mAllOfferUnderway;
     private TextView mAllOfferWait;
+    private TextView titles;
     private RecyclerView mAllOfferRes;
     ImageView ic_back;
 
@@ -78,6 +79,7 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
         mAllOfferDone = getView().findViewById(R.id.all_offer_done);
         mAllOfferUnderway = getView().findViewById(R.id.all_offer_underway);
         mAllOfferWait = getView().findViewById(R.id.all_offer_wait);
+        titles = getView().findViewById(R.id.titles);
         mAllOfferRes = getView().findViewById(R.id.all_offer_res);
         layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mAllOfferRes.setLayoutManager(layoutManager);
@@ -106,6 +108,30 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
         Bundle bundle = getArguments();
         if (bundle.getBoolean("isUpdated")) {
             getWorkerOffersRequest();
+        } else if (bundle.getBoolean("flag")) {
+            mAllOfferDone.setClickable(false);
+            mAllOfferExcluded.setClickable(false);
+            mAllOfferUnderway.setClickable(false);
+            mAllOfferWait.setClickable(false);
+            switch (bundle.getInt("key")) {
+                case 1:
+                    titles.setText(" العرووض في انتظار الموافقة ");
+                    mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), bundle.<OfferModel>getParcelableArrayList("array"), 1));
+                    break;
+                case 2:
+                    titles.setText(" العرووض المستبعدة ");
+                    mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), bundle.<OfferModel>getParcelableArrayList("array"), 2));
+                    break;
+                case 3:
+                    titles.setText(" العرووض المكتملة ");
+                    mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), bundle.<OfferModel>getParcelableArrayList("array"), 3));
+                    break;
+                case 4:
+                    titles.setText(" العرووض قيد التنفيذ ");
+                    mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), bundle.<OfferModel>getParcelableArrayList("array"), 4));
+                    break;
+            }
+
         } else {
             ProjectsModels projectsModels = bundle.getParcelable("object");
             name = projectsModels.getUser().getName();
@@ -179,7 +205,7 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
                 offerModels2.add(model);
             }
         }
-        mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels, name));
+        mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels, 0));
     }
 
 
@@ -188,16 +214,16 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
         int id = v.getId();
         switch (id) {
             case R.id.all_offer_excluded:
-                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels2, name));
+                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels2, 0));
                 break;
             case R.id.all_offer_done:
-                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels3, name));
+                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels3, 0));
                 break;
             case R.id.all_offer_underway:
-                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels1, name));
+                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels1, 0));
                 break;
             case R.id.all_offer_wait:
-                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels, name));
+                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels, 0));
                 break;
             case R.id.ic_back:
                 getFragmentManager().popBackStack();
