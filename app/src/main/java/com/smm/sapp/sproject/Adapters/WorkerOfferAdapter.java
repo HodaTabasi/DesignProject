@@ -51,25 +51,25 @@ public class WorkerOfferAdapter extends RecyclerView.Adapter<WorkerOfferAdapter.
             holder.name.setText(offerModel.getProject().getUser().getName());
 
         holder.money.setText(" $ " + offerModel.getBalance());
-holder.itemView.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        if (num == 0 || num == 1){
-            EditProposalFragment fragment = new EditProposalFragment();
-            Bundle bundle = new Bundle();
-            bundle.putParcelable("object", offerModel);
-            fragment.setArguments(bundle);
-            FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
-        }else if (num == 3 || num == 4){
-            UnderwayFragment fragment = new UnderwayFragment();
-            Bundle bundle = new Bundle();
-            bundle.putParcelable("offer", offerModel);
-            bundle.putParcelable("user", offerModel.getUser());
-            fragment.setArguments(bundle);
-            FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
-        }
-    }
-});
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (num == 0 || num == 1 || num == 2) {
+                    EditProposalFragment fragment = new EditProposalFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable("object", offerModel);
+                    fragment.setArguments(bundle);
+                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
+                } else if (num == 3 || num == 4) {
+                    UnderwayFragment fragment = new UnderwayFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable("offer", offerModel);
+                    bundle.putParcelable("user", offerModel.getUser());
+                    fragment.setArguments(bundle);
+                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
+                }
+            }
+        });
 
 
     }

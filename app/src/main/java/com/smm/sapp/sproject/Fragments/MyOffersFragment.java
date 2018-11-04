@@ -205,7 +205,7 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
                 offerModels2.add(model);
             }
         }
-        mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels, 0));
+        mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels, 1));
     }
 
 
@@ -214,16 +214,16 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
         int id = v.getId();
         switch (id) {
             case R.id.all_offer_excluded:
-                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels2, 0));
+                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels2, 2));
                 break;
             case R.id.all_offer_done:
-                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels3, 0));
+                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels3, 3));
                 break;
             case R.id.all_offer_underway:
-                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels1, 0));
+                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels1, 4));
                 break;
             case R.id.all_offer_wait:
-                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels, 0));
+                mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels, 1));
                 break;
             case R.id.ic_back:
                 getFragmentManager().popBackStack();
