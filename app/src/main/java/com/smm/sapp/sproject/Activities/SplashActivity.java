@@ -34,7 +34,7 @@ import okhttp3.Response;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private final int SPLASH_DISPLAY_LENGTH = 5000;
+    private final int SPLASH_DISPLAY_LENGTH = 1000;
     Intent mainIntent = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +68,10 @@ public class SplashActivity extends AppCompatActivity {
                     String json = SharedPreferencesApp.getInstance(SplashActivity.this).getStringData("MyObject");
                     Log.e("oooo",json);
                     ConstantInterFace.USER = gson.fromJson(json, User.class);
-                    getNotifications(ConstantInterFace.USER.getToken());
+//                    getNotifications(ConstantInterFace.USER.getToken());
+                    mainIntent = new Intent(SplashActivity.this, ContainerActivity.class);
+                    startActivity(mainIntent);
+                    finish();
                 }
 
 

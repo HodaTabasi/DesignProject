@@ -17,14 +17,17 @@ import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.Fragments.AccountFragment;
 import com.smm.sapp.sproject.Fragments.AddNewWork2Fragment;
 import com.smm.sapp.sproject.Fragments.BrowseProjectsFragment;
+import com.smm.sapp.sproject.Fragments.EditProposalFragment;
 import com.smm.sapp.sproject.Fragments.MainFragment;
 import com.smm.sapp.sproject.Fragments.MessageDitailsFragment;
+import com.smm.sapp.sproject.Fragments.MyProjectFragment;
 import com.smm.sapp.sproject.Fragments.NotificationFragment;
 import com.smm.sapp.sproject.Fragments.PortfolioFragment;
 import com.smm.sapp.sproject.Fragments.RegisterFragment;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.Fragments.MyMessageFragment;
 import com.smm.sapp.sproject.Models.NotificationPayLoad;
+import com.smm.sapp.sproject.Models.OfferModel;
 import com.smm.sapp.sproject.MyNotificationManager;
 import com.smm.sapp.sproject.R;
 
@@ -38,14 +41,36 @@ public class ContainerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container);
-
+        Bundle bundle = new Bundle();
          if (getIntent().getBooleanExtra("notifiy",false)){
-             NotificationPayLoad payLoad = getIntent().getParcelableExtra("messagePayload");
-             Bundle bundle = new Bundle();
-             MessageDitailsFragment fragment = new MessageDitailsFragment();
-             bundle.putString("userId",payLoad.getSender_id());
-             fragment.setArguments(bundle);
-             FragmentsUtil.addFragment(ContainerActivity.this, R.id.container_activity, fragment, false);
+             switch (getIntent().getIntExtra("type",0)){
+                 case 1:
+                     NotificationPayLoad payLoad = getIntent().getParcelableExtra("messagePayload");
+                     bundle = new Bundle();
+                     MessageDitailsFragment fragment = new MessageDitailsFragment();
+                     bundle.putString("userId",payLoad.getSender_id());
+                     fragment.setArguments(bundle);
+                     FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, fragment, false);
+                     break;
+                 case 2:
+                     OfferModel model = getIntent().getParcelableExtra("messagePayload");
+                     bundle = new Bundle();
+                     bundle.putParcelable("object",model);
+                     EditProposalFragment editProposalFragment = new EditProposalFragment();
+                     editProposalFragment.setArguments(bundle);
+                     FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, editProposalFragment, false);
+                     break;
+                 case 3:
+                     FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new MyProjectFragment(), false);
+                     break;
+                 case 4:
+                     FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new MyProjectFragment(), false);
+                     break;
+                 case 5:
+                     FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new NotificationFragment(), true);
+                     break;
+             }
+
          }else {
              FragmentsUtil.addFragment(ContainerActivity.this, R.id.container_activity, new MainFragment(), false);
          }
