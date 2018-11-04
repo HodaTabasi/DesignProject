@@ -349,6 +349,9 @@ public class ProjectDetailsInterFragment extends Fragment {
         map.put("balance", mBalance.getText().toString());
         map.put("descr", mProjectDetailes.getText().toString());
 
+        Log.e("qqqqq",st_city);
+        Log.e("qqqqq",st_style);
+
         myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/projectmakeinter", map, attachMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -466,7 +469,7 @@ public class ProjectDetailsInterFragment extends Fragment {
 
             }
             if (resultCode == Activity.RESULT_CANCELED) {
-                Toast.makeText(getActivity(), "no data moved", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "لا يوجد بيانات", Toast.LENGTH_SHORT).show();
             }
         }
 

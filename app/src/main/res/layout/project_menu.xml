@@ -33,6 +33,15 @@
             android:text="تقديم شكوى"
             android:textSize="11sp" />
 
+        <TextView
+            android:id="@+id/edit_offer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_marginTop="2dp"
+            android:text="تعديل العرض"
+            android:textSize="11sp" />
+
 
     </LinearLayout>
 

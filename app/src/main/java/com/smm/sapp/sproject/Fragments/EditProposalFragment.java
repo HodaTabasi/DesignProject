@@ -61,7 +61,7 @@ public class EditProposalFragment extends Fragment {
     private TextView mTalk;
     private LinearLayout mDwe;
 
-    OfferModel model, offerModel;
+    OfferModel model, offerModel, model2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -80,8 +80,14 @@ public class EditProposalFragment extends Fragment {
 
         Bundle bundle = getArguments();
 
-        model = bundle.getParcelable("object");
-        putData(model);
+        if (bundle.getBoolean("flag")) {
+            model2 = bundle.getParcelable("offer");
+            putData(model2);
+        } else {
+            model = bundle.getParcelable("object");
+            putData(model);
+        }
+
 
         ic_back = getView().findViewById(R.id.ic_back);
         ic_back.setOnClickListener(new View.OnClickListener() {
@@ -324,7 +330,6 @@ public class EditProposalFragment extends Fragment {
                     } else if (offerModel.getUser().getJob_type().equals("wall")) {
                         bundle.putString("speacialization", "مصمم جداري");
                     }
-
 
 
                     PortfolioBrowseProject fragment = new PortfolioBrowseProject();

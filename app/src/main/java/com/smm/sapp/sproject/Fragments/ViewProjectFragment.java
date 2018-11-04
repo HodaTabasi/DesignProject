@@ -210,7 +210,7 @@ public class ViewProjectFragment extends Fragment {
         mAddProposalP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("ffd", id + " ggيؤشس");
+                Log.e("ffd", id + "");
                 if (bundle.getBoolean("flag")) {
                     Log.e("ffd", id + " gg");
                     updateOfferRequest(model);

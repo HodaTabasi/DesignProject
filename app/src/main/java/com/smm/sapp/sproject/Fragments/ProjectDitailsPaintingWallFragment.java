@@ -359,12 +359,14 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
         Map<String, String> map = new HashMap<>();
         map.put("token", ConstantInterFace.USER.getToken());
         map.put("name", mWallType.getText().toString());
-        map.put("city", mWallCity.getText().toString());
+        map.put("city", st_city);
         map.put("area", mWallArea.getText().toString());
         map.put("lng", s_lng);
         map.put("lat", s_lat);
         map.put("balance", mWallBalance.getText().toString());
         map.put("descr", mWallProjectDietails.getText().toString());
+
+        Log.e("qqqq",st_city);
 
         myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/projectmakewall", map, attachMap, new OkHttpCallback() {
             @Override
@@ -410,7 +412,7 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
 
             }
             if (resultCode == Activity.RESULT_CANCELED) {
-                Toast.makeText(getActivity(), "no data moved", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "لا يوجد بيانات", Toast.LENGTH_SHORT).show();
             }
         }
 
