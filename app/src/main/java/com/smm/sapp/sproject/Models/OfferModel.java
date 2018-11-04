@@ -3,6 +3,8 @@ package com.smm.sapp.sproject.Models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.Map;
+
 public class OfferModel implements Parcelable {
 
     /**
@@ -34,6 +36,23 @@ public class OfferModel implements Parcelable {
     private String updated_at;
     private ProjectsModels project;
     private User user;
+
+    public void NotificationPayLoad(Map<String, String> data) {
+        this.setCreated_at(data.get("created_at"));
+        this.setProject_id(data.get("project_id"));
+        this.setFinished(data.get("finished"));
+        this.setBalance(data.get("balance"));
+        this.setUpdated_at(data.get("updated_at"));
+        this.setId(Integer.parseInt(data.get("id")));
+        this.setDescr(data.get("descr"));
+        this.setTotal(data.get("total"));
+        this.setDur(data.get("dur"));
+        setApproved(data.get("approved"));
+        setCreated_by(data.get("created_by"));
+    }
+
+    public OfferModel() {
+    }
 
     public static final Creator<OfferModel> CREATOR = new Creator<OfferModel>() {
         @Override

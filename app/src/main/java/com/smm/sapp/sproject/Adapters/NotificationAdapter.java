@@ -14,7 +14,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.smm.sapp.sproject.Activities.ContainerActivity;
+import com.smm.sapp.sproject.Fragments.AccountFragment;
 import com.smm.sapp.sproject.Fragments.MessageDitailsFragment;
+import com.smm.sapp.sproject.Fragments.MyOffersFragment;
+import com.smm.sapp.sproject.Fragments.MyProjectFragment;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.Models.Notifications;
 import com.smm.sapp.sproject.Models.NotificationsModels;
@@ -60,20 +63,21 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                         FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
                         break;
                     case  "project":
-                        Toast.makeText(context, "project", Toast.LENGTH_SHORT).show();
+                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new MyProjectFragment(), true);
                         break;
                     case  "User":
                         Toast.makeText(context, "User", Toast.LENGTH_SHORT).show();
                         break;
                     case  "offer":
-                        Toast.makeText(context, "offer", Toast.LENGTH_SHORT).show();
-                        break;
+                        MyOffersFragment fragment1 = new MyOffersFragment();
+                        Bundle bundle1 = new Bundle();
+                        bundle1.putBoolean("isUpdated", true);
+                        fragment1.setArguments(bundle1);
+                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment1, true);                        break;
                     case  "Like":
-                        Toast.makeText(context, "Like", Toast.LENGTH_SHORT).show();
-                        break;
+                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AccountFragment(), true);                        break;
                     case  "Comment":
-                        Toast.makeText(context, "Comment", Toast.LENGTH_SHORT).show();
-                        break;
+                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AccountFragment(), true);                        break;
                 }
             }
         });

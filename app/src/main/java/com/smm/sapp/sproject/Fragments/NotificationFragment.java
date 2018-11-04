@@ -67,8 +67,6 @@ public class NotificationFragment extends Fragment implements SwipeRefreshLayout
 
         layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mNotificationAttention.setLayoutManager(layoutManager);
-        adapter = new NotificationAdapter(getContext(), R.layout.layout_item_notification, ConstantInterFace.notificationsModels);
-        mNotificationAttention.setAdapter(adapter);
         ic_back = getView().findViewById(R.id.ic_back);
 
         mSwipeRefreshLayout = (SwipeRefreshLayout) getView().findViewById(R.id.swipe_container);
@@ -87,17 +85,17 @@ public class NotificationFragment extends Fragment implements SwipeRefreshLayout
         initView();
         setBottomBar();
 
-//        mSwipeRefreshLayout.post(new Runnable() {
-//
-//            @Override
-//            public void run() {
-//
-//                mSwipeRefreshLayout.setRefreshing(true);
-//
-//                // Fetching data from server
-//                getNotifications(ConstantInterFace.USER.getToken());
-//            }
-//        });
+        mSwipeRefreshLayout.post(new Runnable() {
+
+            @Override
+            public void run() {
+
+                mSwipeRefreshLayout.setRefreshing(true);
+
+                // Fetching data from server
+                getNotifications(ConstantInterFace.USER.getToken());
+            }
+        });
 
         ic_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,7 +147,8 @@ public class NotificationFragment extends Fragment implements SwipeRefreshLayout
                         try {
                             if (object.getBoolean("success")) {
                                 ConstantInterFace.notificationsModels = gson.fromJson(jsonObject.getJSONArray("notifications").toString(), new TypeToken<ArrayList<NotificationsModels>>(){}.getType());
-                                adapter.notifyDataSetChanged();
+                                adapter = new NotificationAdapter(getContext(), R.layout.layout_item_notification, ConstantInterFace.notificationsModels);
+                                mNotificationAttention.setAdapter(adapter);
                                 mSwipeRefreshLayout.setRefreshing(false);
                             } else {
                                 Toast.makeText(getContext(), "لم يتم الارسال بشكل صحيح", Toast.LENGTH_SHORT).show();

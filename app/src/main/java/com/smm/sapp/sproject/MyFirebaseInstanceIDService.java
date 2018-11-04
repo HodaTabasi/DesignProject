@@ -19,6 +19,7 @@ import com.google.firebase.messaging.RemoteMessage;
 import com.google.gson.Gson;
 import com.smm.sapp.sproject.Activities.ContainerActivity;
 import com.smm.sapp.sproject.Models.NotificationPayLoad;
+import com.smm.sapp.sproject.Models.OfferModel;
 import com.smm.sapp.sproject.Models.User;
 
 import org.json.JSONException;
@@ -37,23 +38,74 @@ public class MyFirebaseInstanceIDService extends FirebaseMessagingService {
         // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
         Log.e(TAG, "From: " + remoteMessage.getNotification().getTitle());
         Log.e(TAG, "Message data payload: " + remoteMessage.getData());
-
+        Log.e(TAG, "Message data payload: " + remoteMessage.getData());
         // Check if message contains a data payload.
         if (remoteMessage.getData().size() > 0) {
-            Log.e(TAG, "Message data payload: " + remoteMessage.getData());
-            payLoad.NotificationPayLoad(remoteMessage.getData());
-            Gson gson = new Gson();
-            payLoad.setUser(gson.fromJson(remoteMessage.getData().get("user"),User.class));
-            sendMessageNotification(payLoad);
+            String s = remoteMessage.getNotification().getTitle();
+            switch (s){
+                case "رسالة جديدة":
+                    payLoad.NotificationPayLoad(remoteMessage.getData());
+                    Gson gson = new Gson();
+                    payLoad.setUser(gson.fromJson(remoteMessage.getData().get("user"),User.class));
+                    sendMessageNotification(payLoad);
+                    break;
+                case "تم قبول العرض الخاص بك , هنيئا لك":
+                    OfferModel model = new OfferModel();
+                    model.NotificationPayLoad(remoteMessage.getData());
+                    sendAcceptOfferNotification(model);
+                    break;
+                case "تم قبول مشروعك":
+                    sendAcceptProjectNotification(remoteMessage.getData().get("name"));
+                    break;
+                case "تم تقديم عرض على مشروع لك":
+                    sendAddOfferNotification("تم تقديم عرض على مشروعك");
+                    break;
+                default:
+                    sendNotification();
+                        break;
+            }
+
         }
     }
-
+    private void sendNotification() {
+        Intent intent = new Intent(this, ContainerActivity.class);
+        // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("notifiy",true);
+        intent.putExtra("type",5);
+        send(intent, 1, "اشعار جديد", "اشعار جديد");
+    }
     private void sendMessageNotification(NotificationPayLoad payLoad) {
         Intent intent = new Intent(this, ContainerActivity.class);
        // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra("messagePayload",payLoad);
         intent.putExtra("notifiy",true);
+        intent.putExtra("type",1);
         send(intent, 1, "رسالة جديدة", payLoad.getMessage());
+    }
+
+    private void sendAcceptOfferNotification(OfferModel payLoad) {
+        Intent intent = new Intent(this, ContainerActivity.class);
+        // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("messagePayload",payLoad);
+        intent.putExtra("notifiy",true);
+        intent.putExtra("type",2);
+        send(intent, 1, "تم قبول العرض الخاص بك",payLoad.getDescr());
+    }
+
+    private void sendAcceptProjectNotification(String name) {
+        Intent intent = new Intent(this, ContainerActivity.class);
+        // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("notifiy",true);
+        intent.putExtra("type",3);
+        send(intent, 1, "تم قبول مشروعك",name);
+    }
+
+    private void sendAddOfferNotification(String name) {
+        Intent intent = new Intent(this, ContainerActivity.class);
+        // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("notifiy",true);
+        intent.putExtra("type",4);
+        send(intent, 1, "تم تقديم عرض على مشروعك",name);
     }
 
     private void send(Intent intent, int action, String title, String message) {
