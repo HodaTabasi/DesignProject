@@ -54,7 +54,7 @@ public class WorkerOfferAdapter extends RecyclerView.Adapter<WorkerOfferAdapter.
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (num == 0 || num == 1) {
+                if (num == 0 || num == 1 || num == 2) {
                     EditProposalFragment fragment = new EditProposalFragment();
                     Bundle bundle = new Bundle();
                     bundle.putParcelable("object", offerModel);

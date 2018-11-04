@@ -182,19 +182,36 @@ public class UnderwayFragment extends Fragment {
         user = bundle.getParcelable("user");
         model = bundle.getParcelable("offer");
 
-        StringBuilder s_name = new StringBuilder(user.getName());
-        for (int i = 1; i < s_name.length() - 1; i++) {
-            s_name.setCharAt(i, '*');
-        }
-        mName.setText(s_name);
-        Picasso.get().load(user.getPhoto_link()).into(mProfileImage1);
+        if (ConstantInterFace.USER.getType().equals("client")){
+            StringBuilder s_name = new StringBuilder(user.getName());
+            for (int i = 1; i < s_name.length() - 1; i++) {
+                s_name.setCharAt(i, '*');
+            }
+            mName.setText(s_name);
+            Picasso.get().load(user.getPhoto_link()).into(mProfileImage1);
 
-        StringBuilder s_name1 = new StringBuilder(ConstantInterFace.USER.getName());
-        for (int i = 1; i < s_name1.length() - 1; i++) {
-            s_name1.setCharAt(i, '*');
+            StringBuilder s_name1 = new StringBuilder(ConstantInterFace.USER.getName());
+            for (int i = 1; i < s_name1.length() - 1; i++) {
+                s_name1.setCharAt(i, '*');
+            }
+            mName1.setText(s_name1);
+            Picasso.get().load(ConstantInterFace.USER.getPhoto_link()).into(mProfileImage2);
+        }else {
+            StringBuilder s_name = new StringBuilder(model.getProject().getUser().getName());
+            for (int i = 1; i < s_name.length() - 1; i++) {
+                s_name.setCharAt(i, '*');
+            }
+            mName.setText(s_name);
+            Picasso.get().load(model.getProject().getUser().getPhoto_link()).into(mProfileImage2);
+
+            StringBuilder s_name1 = new StringBuilder(ConstantInterFace.USER.getName());
+            for (int i = 1; i < s_name1.length() - 1; i++) {
+                s_name1.setCharAt(i, '*');
+            }
+            mName1.setText(s_name1);
+            Picasso.get().load(ConstantInterFace.USER.getPhoto_link()).into(mProfileImage1);
         }
-        mName1.setText(s_name1);
-        Picasso.get().load(ConstantInterFace.USER.getPhoto_link()).into(mProfileImage2);
+
 
         mProjectMoney.setText(model.getBalance());
         mProjectTime.setText(model.getDur());
@@ -211,7 +228,7 @@ public class UnderwayFragment extends Fragment {
     private void showPopUpMenu(View v) {
 
         LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.project_menu, null);
+        View view = inflater.inflate(R.layout.popup_menu, null);
 
         TextView deliever_proj = view.findViewById(R.id.deliever_proj);
         TextView report = view.findViewById(R.id.report);
