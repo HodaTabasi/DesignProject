@@ -2,8 +2,12 @@ package com.smm.sapp.sproject.Fragments;
 
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -155,11 +159,11 @@ public class UnderwayFragment extends Fragment {
             }
         });
 
-        if (ConstantInterFace.USER.getType().equals("worker")) {
-            ic_dots.setVisibility(View.GONE);
-        } else {
-            ic_dots.setVisibility(View.VISIBLE);
-        }
+//        if (ConstantInterFace.USER.getType().equals("worker")) {
+//            ic_dots.setVisibility(View.GONE);
+//        } else {
+//            ic_dots.setVisibility(View.VISIBLE);
+//        }
 
         ic_dots.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,7 +181,6 @@ public class UnderwayFragment extends Fragment {
         Bundle bundle = getArguments();
         user = bundle.getParcelable("user");
         model = bundle.getParcelable("offer");
-
 
         StringBuilder s_name = new StringBuilder(user.getName());
         for (int i = 1; i < s_name.length() - 1; i++) {
@@ -224,6 +227,26 @@ public class UnderwayFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 mypopupWindow.dismiss();
+                AlertDialog.Builder builder;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    builder = new AlertDialog.Builder(getActivity(), android.R.style.Theme_Material_Dialog_Alert);
+                } else {
+                    builder = new AlertDialog.Builder(getActivity());
+                }
+                builder.setTitle("تسليم المشروع")
+                        .setMessage("هل أنت متأكد من رغبتك بارسال طلب تسليم المشروع؟")
+                        .setPositiveButton(R.string.deliever, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                delieverProjectRequest();
+                            }
+                        })
+                        .setNegativeButton(R.string.back, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // do nothing
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
 
             }
         });
@@ -232,7 +255,92 @@ public class UnderwayFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 mypopupWindow.dismiss();
+                reportRequest();
 
+            }
+        });
+
+    }
+
+    private void reportRequest() {
+        MyRequest myRequest = new MyRequest();
+        MyProgressDialog.showDialog(getActivity());
+        Map<String, String> stringMap = new HashMap<>();
+        stringMap.put("token", ConstantInterFace.USER.getToken());
+        stringMap.put("target_type", "offer");
+        stringMap.put("target_id", model.getId() + "");
+        stringMap.put("message", "هذا المحتوى غير ملائم للنشر في المشروع");
+        myRequest.PostCall("http://smm.smmim.com/waell/public/api/report", stringMap, new OkHttpCallback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                MyProgressDialog.dismissDialog();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getActivity(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException, JSONException {
+                MyProgressDialog.dismissDialog();
+                JSONObject jsonObject = new JSONObject(response.body().string());
+                final JSONObject object = jsonObject.getJSONObject("status");
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            if (object.getBoolean("success")) {
+                                Toast.makeText(getActivity(), "تم ارسال التبليغ", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getActivity(), " " + object.getString("message"), Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+            }
+        });
+    }
+
+    private void delieverProjectRequest() {
+        MyRequest myRequest = new MyRequest();
+        MyProgressDialog.showDialog(getContext());
+        Map<String, String> stringMap = new HashMap<>();
+        stringMap.put("token", ConstantInterFace.USER.getToken());
+        stringMap.put("offer_id", model.getId() + "");
+        stringMap.put("project_id", model.getProject_id());
+        myRequest.PostCall("http://smm.smmim.com/waell/public/api/finishanoffer", stringMap, new OkHttpCallback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                MyProgressDialog.dismissDialog();
+            }
+
+            @Override
+            public void onResponse(Call call, final Response response) throws IOException, JSONException {
+                MyProgressDialog.dismissDialog();
+                final JSONObject object = new JSONObject(response.body().string());
+                final JSONObject object1 = object.getJSONObject("status");
+
+                getActivity().runOnUiThread(new Runnable() {
+                    public void run() {
+                        try {
+                            if (object1.getBoolean("success")) {
+                                Gson gson = new Gson();
+                                TypeToken<List<MessageDetails>> token = new TypeToken<List<MessageDetails>>() {
+                                };
+                                details = gson.fromJson(object.getJSONArray("msgs").toString(), token.getType());
+                                adapter = new MyMessageDetailAdapter(getContext(), details);
+                                mMres.setAdapter(adapter);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
             }
         });
 

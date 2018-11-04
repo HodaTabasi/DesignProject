@@ -35,6 +35,10 @@
     <string name="mobile">رقم الجوال</string>
     <string name="notNow">ليس الآن</string>
     <string name="next">التالي</string>
+    <string name="deliever">تسليم المشروع</string>
+    <string name="back">تراجع</string>
+
+
 
 
     <array name="spinner_items">

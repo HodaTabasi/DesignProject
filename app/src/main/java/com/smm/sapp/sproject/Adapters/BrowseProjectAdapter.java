@@ -210,7 +210,7 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
         stringMap.put("token", ConstantInterFace.USER.getToken());
         stringMap.put("target_type", "project");
         stringMap.put("target_id", id + "");
-        stringMap.put("message", "هذا المحتوى غير ملائم للنشر ف المشروع");
+        stringMap.put("message", "هذا المحتوى غير ملائم للنشر في المشروع");
         myRequest.PostCall("http://smm.smmim.com/waell/public/api/report", stringMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {

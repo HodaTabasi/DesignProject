@@ -238,7 +238,7 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
                                     JSONObject object2 = jsonArray.getJSONObject(i);
                                     ProjectsModels models = gson.fromJson(object2.toString(), ProjectsModels.class);
                                     if (object2.getString("accepted").equals("0")){
-                                        //قيد الموافقة
+//                                        قيد الموافقة
                                         arrayList.add(models);
                                     }else {
                                         switch (object2.getString("status")) {
