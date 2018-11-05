@@ -248,7 +248,7 @@ public class UnderwayFragment extends Fragment {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             String s_projLink = input.getText().toString();
-                                            delieverWorkerProject(model.getProject().getType(), s_projLink);
+                                            delieverWorkerProject(s_projLink);
                                         }
                                     });
                                     builder.setNegativeButton("إلغاء", new DialogInterface.OnClickListener() {
@@ -294,36 +294,16 @@ public class UnderwayFragment extends Fragment {
 
     }
 
-    private void delieverWorkerProject(String project_type, String s_projLink) {
-        Log.e("eeee", project_type + s_projLink);
-
-        if (project_type.equals("arch")) {
-            sendWorkerRequest("projectupdatearch", s_projLink);
-        } else if (project_type.equals("graphic")) {
-            sendWorkerRequest("projectupdategraphic", s_projLink);
-        } else if (project_type.equals("inter")) {
-            sendWorkerRequest("projectupdateinter", s_projLink);
-        } else if (project_type.equals("moshen")) {
-            sendWorkerRequest("projectupdatemoshen", s_projLink);
-        } else if (project_type.equals("wall")) {
-            sendWorkerRequest("projectupdatewall", s_projLink);
-        }
-
-    }
-
-    private void sendWorkerRequest(String URL, String s_projLink) {
+    private void delieverWorkerProject(String s_projLink) {
+        Log.e("eeee",  s_projLink);
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getActivity());
         Map<String, String> stringMap = new HashMap<>();
         stringMap.put("token", ConstantInterFace.USER.getToken());
-        stringMap.put("name", model.getProject().getName());
-        stringMap.put("project_id", model.getProject_id());
+        stringMap.put("offer_id", model.getId()+"");
         stringMap.put("project_link", s_projLink);
-        stringMap.put("finished", "1");
-
-        Log.e("eeee", "http://smm.smmim.com/waell/public/api/" + URL);
-
-        myRequest.PostCall("http://smm.smmim.com/waell/public/api/" + URL, stringMap, new OkHttpCallback() {
+        stringMap.put("final", "1");
+        myRequest.PostCall("http://smm.smmim.com/waell/public/api/editanoffer", stringMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
@@ -348,8 +328,9 @@ public class UnderwayFragment extends Fragment {
                                 Toast.makeText(getActivity(), "تم ارسال التبليغ", Toast.LENGTH_SHORT).show();
                                 Log.e("eeeeee", jsonObject.toString());
                             } else {
-                                Log.e("eeeeee", object.getString("message"));
-                                Toast.makeText(getActivity(), " " + object.getString("message"), Toast.LENGTH_SHORT).show();
+                                Log.e("eeeeee", "eeee");
+                                Log.e("eeeeee", object.getString("error"));
+                                Toast.makeText(getActivity(), " " + object.getString("error"), Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -434,7 +415,6 @@ public class UnderwayFragment extends Fragment {
                     public void run() {
                         try {
                             if (statusObj.getBoolean("success")) {
-
 
                                 final Dialog rate_dialog = new Dialog(getActivity());
                                 rate_dialog.setContentView(R.layout.feedback_dialog);
