@@ -96,6 +96,7 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
     int done = 0, wait = 0, under = 0, excluded = 0;
     TextView doneTV, waitTV, underTV, excludedTV;
     PieChart chart;
+    private int total = 0;
 
     public MyProjectFragment() {
         // Required empty public constructor
@@ -118,7 +119,7 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         onClickMethod();
 
         getProjects("myprojects?token=" + ConstantInterFace.USER.getToken());
-
+        addToChart();
     }
 
 
@@ -170,7 +171,6 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         excluded = 0;
 
         setBottomBar();
-        addToChart();
 
     }
 
@@ -236,6 +236,7 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
 
                                 for (int i = 0; i <= jsonArray.length(); i++) {
                                     JSONObject object2 = jsonArray.getJSONObject(i);
+                                    total += object2.length();
                                     ProjectsModels models = gson.fromJson(object2.toString(), ProjectsModels.class);
                                     if (object2.getString("accepted").equals("0")){
 //                                        قيد الموافقة
@@ -276,28 +277,36 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
                                     }
                                 }
 
+                                wait = (wait/total) *100;
+                                under = (under/total) *100;
+                                done = (done/total) *100;
+                                excluded = (excluded/total) *100;
+
                                 mMyProjectRes.setAdapter(new ClientProjectAdapter(getContext(), arrayList2));
+
                             } else {
                                 Toast.makeText(getContext(), "" + object1.getBoolean("error"), Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+                        addToChart();
                     }
                 });
 
 
             }
+
         });
     }
 
     private void addToChart() {
         List<PieEntry> entries = new ArrayList<>();
 
-        entries.add(new PieEntry(18.5f));
-        entries.add(new PieEntry(26.7f));
-        entries.add(new PieEntry(24.0f));
-        entries.add(new PieEntry(30.8f));
+        entries.add(new PieEntry(wait));
+        entries.add(new PieEntry(done));
+        entries.add(new PieEntry(under));
+        entries.add(new PieEntry(excluded));
 
         PieDataSet set = new PieDataSet(entries, "  ");
         set.setColors(new int[]{R.color.yalow, R.color.green, R.color.darkBlue, R.color.red}, getActivity());

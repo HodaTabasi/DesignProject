@@ -72,7 +72,7 @@ public class MyFirebaseInstanceIDService extends FirebaseMessagingService {
         // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra("notifiy",true);
         intent.putExtra("type",5);
-        send(intent, 1, "اشعار جديد", "اشعار جديد");
+        send(intent, 1, "اشعار جديد", "");
     }
     private void sendMessageNotification(NotificationPayLoad payLoad) {
         Intent intent = new Intent(this, ContainerActivity.class);
