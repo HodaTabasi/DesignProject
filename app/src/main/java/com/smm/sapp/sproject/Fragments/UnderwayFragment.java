@@ -44,7 +44,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -187,7 +190,19 @@ public class UnderwayFragment extends Fragment {
         String created_at = model.getCreated_at();
         String[] s = created_at.split(" ");
         mProjectStartDate.setText(s[0]);
-        mProjectEndDate.setText("");
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
+        try {
+            c.setTime(sdf.parse(s[0]));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        c.add(Calendar.DATE, Integer.parseInt(model.getDur()));  // number of days to add, can also use Calendar.DAY_OF_MONTH in place of Calendar.DATE
+        SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy");
+        String output = sdf1.format(c.getTime());
+
+        mProjectEndDate.setText(output);
 
         getAConversationRequest();
     }
@@ -288,6 +303,8 @@ public class UnderwayFragment extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putBoolean("flag", true);
                 bundle.putParcelable("offer", model);
+                fragment.setArguments(bundle);
+                mypopupWindow.dismiss();
                 FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
             }
         });

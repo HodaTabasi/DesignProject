@@ -80,7 +80,7 @@ public class EditProposalFragment extends Fragment {
 
         Bundle bundle = getArguments();
 
-        if (bundle.getBoolean("flag")) {
+        if (bundle.getBoolean("flag",false)) {
             model2 = bundle.getParcelable("offer");
             putData(model2);
         } else {
