@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.smm.sapp.sproject.Activities.ContainerActivity;
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.Fragments.AccountFragment;
 import com.smm.sapp.sproject.Fragments.MessageDitailsFragment;
 import com.smm.sapp.sproject.Fragments.MyOffersFragment;
@@ -54,30 +55,37 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             @Override
             public void onClick(View v) {
                 String s = notifications.get(position).getTarget_type();
-                switch (s){
+                switch (s) {
                     case "message":
                         Bundle bundle = new Bundle();
                         MessageDitailsFragment fragment = new MessageDitailsFragment();
-                        bundle.putString("userId",notifications.get(position).getMessage().getSender_id());
+                        bundle.putString("userId", notifications.get(position).getMessage().getSender_id());
                         fragment.setArguments(bundle);
                         FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
                         break;
-                    case  "project":
+                    case "project":
                         FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new MyProjectFragment(), true);
                         break;
-                    case  "User":
+                    case "User":
                         Toast.makeText(context, "User", Toast.LENGTH_SHORT).show();
                         break;
-                    case  "offer":
-                        MyOffersFragment fragment1 = new MyOffersFragment();
-                        Bundle bundle1 = new Bundle();
-                        bundle1.putBoolean("isUpdated", true);
-                        fragment1.setArguments(bundle1);
-                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment1, true);                        break;
-                    case  "Like":
-                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AccountFragment(), true);                        break;
-                    case  "Comment":
-                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AccountFragment(), true);                        break;
+                    case "offer":
+                        if (ConstantInterFace.USER.getType().equals("client")) {
+                            FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new MyProjectFragment(), true);
+                        } else {
+                            MyOffersFragment fragment1 = new MyOffersFragment();
+                            Bundle bundle1 = new Bundle();
+                            bundle1.putBoolean("isUpdated", true);
+                            fragment1.setArguments(bundle1);
+                            FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment1, true);
+                        }
+                        break;
+                    case "Like":
+                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AccountFragment(), true);
+                        break;
+                    case "Comment":
+                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AccountFragment(), true);
+                        break;
                 }
             }
         });

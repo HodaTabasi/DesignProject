@@ -6,7 +6,9 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,6 +19,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -433,9 +436,10 @@ public class UnderwayFragment extends Fragment {
                         try {
                             if (statusObj.getBoolean("success")) {
 
-                                final Dialog rate_dialog = new Dialog(getActivity());
+                                final Dialog rate_dialog = new Dialog(getContext());
+                                rate_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //before
+                                rate_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                 rate_dialog.setContentView(R.layout.feedback_dialog);
-                                rate_dialog.setTitle("Title...");
 
                                 TextView et_comment = rate_dialog.findViewById(R.id.et_comment);
                                 RatingBar rate1 = rate_dialog.findViewById(R.id.rate1);
