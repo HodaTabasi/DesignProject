@@ -244,11 +244,12 @@ public class UnderwayFragment extends Fragment {
                 mypopupWindow.dismiss();
 
                 if (ConstantInterFace.USER.getType().equals("client")) {
-                    if (ConstantInterFace.DELEIVER_PROJECT == 1) {
-                        delieverClientProject();
-                    } else {
-                        Toast.makeText(getActivity(), "لم يتم تسليم المشروع من قبل المصمم", Toast.LENGTH_LONG).show();
-                    }
+                    delieverClientProject();
+//                    if (ConstantInterFace.DELEIVER_PROJECT == 1) {
+////                        delieverClientProject();
+//                    } else {
+//                        Toast.makeText(getActivity(), "لم يتم تسليم المشروع من قبل المصمم", Toast.LENGTH_LONG).show();
+//                    }
 
 //                    if (ConstantInterFace.DELEIVER_CLIENT_PROJECT == 1) {
 //                        Toast.makeText(getActivity(), "تم استلامك للمشروع سابقا", Toast.LENGTH_LONG).show();
@@ -498,6 +499,7 @@ public class UnderwayFragment extends Fragment {
                                         final Float f_rate3 = rate3.getRating();
                                         final Float f_rate4 = rate4.getRating();
                                         final Float f_rate5 = rate5.getRating();
+                                        rate_dialog.dismiss();
                                         sendRateRequest(s_comment, f_rate, f_rate2, f_rate3, f_rate4, f_rate5);
                                     }
                                 });
