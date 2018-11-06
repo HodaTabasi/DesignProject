@@ -8,7 +8,7 @@ import com.smm.sapp.sproject.Models.User;
 import java.util.ArrayList;
 
 public class ConstantInterFace {
-    public static final String MY_PREFS_NAME = "notificationData" ;
+    public static final String MY_PREFS_NAME = "notificationData";
     public static User USER;
     public static Boolean IS_REGISTER = false;
     public static TextView tv_msgs, tv_projects, tv_home, tv_portfolio, tv_profile;
@@ -32,4 +32,9 @@ public class ConstantInterFace {
 
     public static int NOTIFICATION_NUMBER = 0;
     public static ArrayList<NotificationsModels> notificationsModels = null;
+
+    public static int DELEIVER_PROJECT = 0;
+    public static int DELEIVER_CLIENT_PROJECT = 0;
+
+
 }

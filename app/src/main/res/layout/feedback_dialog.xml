@@ -8,9 +8,9 @@
 
     <LinearLayout
         android:id="@+id/l1"
-        android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_gravity="right"
         android:layout_marginLeft="@dimen/_20sdp"
         android:layout_marginRight="@dimen/_8sdp"
@@ -22,12 +22,13 @@
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.25"
+            android:layout_weight="0.2"
             android:numStars="5"
             android:progressTint="#fed42d"
-            android:rating="5.0"
+            android:isIndicator="false"
             android:rotationY="180"
-            android:stepSize="1" />
+            android:stepSize="1"
+            />
 
         <TextView
             android:id="@+id/tv1"
@@ -43,9 +44,9 @@
 
     <LinearLayout
         android:id="@+id/l2"
-        android:layout_below="@+id/l1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/l1"
         android:layout_gravity="right"
         android:layout_marginLeft="@dimen/_20sdp"
         android:layout_marginRight="@dimen/_8sdp"
@@ -57,10 +58,10 @@
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.25"
+            android:layout_weight="0.2"
             android:numStars="5"
             android:progressTint="#fed42d"
-            android:rating="5.0"
+            android:isIndicator="false"
             android:rotationY="180"
             android:stepSize="1" />
 
@@ -78,9 +79,9 @@
 
     <LinearLayout
         android:id="@+id/l3"
-        android:layout_below="@+id/l2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/l2"
         android:layout_gravity="right"
         android:layout_marginLeft="@dimen/_20sdp"
         android:layout_marginRight="@dimen/_10sdp"
@@ -92,10 +93,10 @@
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.25"
+            android:layout_weight="0.2"
             android:numStars="5"
+            android:isIndicator="false"
             android:progressTint="#fed42d"
-            android:rating="5.0"
             android:rotationY="180"
             android:stepSize="1" />
 
@@ -112,9 +113,9 @@
 
     <LinearLayout
         android:id="@+id/l4"
-        android:layout_below="@+id/l3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/l3"
         android:layout_gravity="right"
         android:layout_marginLeft="@dimen/_20sdp"
         android:layout_marginRight="@dimen/_10sdp"
@@ -126,10 +127,10 @@
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.25"
+            android:layout_weight="0.2"
             android:numStars="5"
             android:progressTint="#fed42d"
-            android:rating="5.0"
+            android:isIndicator="false"
             android:rotationY="180"
             android:stepSize="1" />
 
@@ -149,9 +150,9 @@
 
     <LinearLayout
         android:id="@+id/l5"
-        android:layout_below="@+id/l4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/l4"
         android:layout_gravity="right"
         android:layout_marginLeft="@dimen/_20sdp"
         android:layout_marginRight="@dimen/_10sdp"
@@ -163,10 +164,10 @@
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.25"
+            android:layout_weight="0.2"
             android:numStars="5"
             android:progressTint="#fed42d"
-            android:rating="5.0"
+            android:isIndicator="false"
             android:rotationY="180"
             android:stepSize="1" />
 
@@ -185,16 +186,16 @@
         android:id="@+id/tv6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/l5"
         android:layout_alignParentEnd="true"
+        android:layout_below="@+id/l5"
         android:layout_gravity="end"
-        android:layout_marginTop="@dimen/_8sdp"
         android:layout_marginEnd="21dp"
+        android:layout_marginTop="@dimen/_8sdp"
         android:text="التعليق"
         android:textColor="@color/textGray"
         android:textSize="@dimen/_10sdp" />
 
-    <TextView
+    <EditText
         android:id="@+id/et_comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -209,22 +210,22 @@
         android:padding="@dimen/_5sdp"
         android:textColor="@color/gray1"
         android:textDirection="rtl"
-        android:textSize="@dimen/_14sdp" />
+        android:textSize="@dimen/_10sdp" />
 
 
     <LinearLayout
-        android:layout_below="@+id/et_comment"
-        android:layout_marginBottom="@dimen/_15sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/et_comment"
         android:layout_gravity="right"
+        android:layout_marginBottom="@dimen/_15sdp"
         android:layout_marginLeft="@dimen/_20sdp"
         android:layout_marginRight="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:gravity="center_vertical">
 
         <TextView
-            android:id="@+id/send_rate"
+            android:id="@+id/cancel_rate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/_5sdp"
@@ -237,7 +238,7 @@
             android:textSize="@dimen/_10sdp" />
 
         <TextView
-            android:id="@+id/cancel_rate"
+            android:id="@+id/send_rate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/_5sdp"

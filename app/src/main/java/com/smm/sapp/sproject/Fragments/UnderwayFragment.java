@@ -228,8 +228,11 @@ public class UnderwayFragment extends Fragment {
 
         if (ConstantInterFace.USER.getType().equals("client")) {
             edit_offer.setVisibility(View.GONE);
+            deliever_proj.setText("استلام المشروع");
         } else {
             edit_offer.setVisibility(View.VISIBLE);
+            deliever_proj.setText("تسليم المشروع");
+
         }
 
         mypopupWindow = new PopupWindow(view, RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT, true);
@@ -239,23 +242,32 @@ public class UnderwayFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 mypopupWindow.dismiss();
-                AlertDialog.Builder builder;
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    builder = new AlertDialog.Builder(getActivity(), android.R.style.Theme_Material_Dialog_Alert);
-                } else {
-                    builder = new AlertDialog.Builder(getActivity());
-                }
-                builder.setTitle("تسليم المشروع")
-                        .setMessage("هل أنت متأكد من رغبتك بارسال طلب تسليم المشروع؟")
-                        .setPositiveButton(R.string.deliever, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                if (ConstantInterFace.USER.getType().equals("client")) {
-                                    delieverClientProject();
-                                    //finishOffer
-                                    Log.e("qqqqmmm", model.getId() + "");
-                                    Log.e("qqqq", model.getProject_id() + "");
 
-                                } else {
+                if (ConstantInterFace.USER.getType().equals("client")) {
+                    if (ConstantInterFace.DELEIVER_PROJECT == 1) {
+                        delieverClientProject();
+                    } else {
+                        Toast.makeText(getActivity(), "لم يتم تسليم المشروع من قبل المصمم", Toast.LENGTH_LONG).show();
+                    }
+
+                    if (ConstantInterFace.DELEIVER_CLIENT_PROJECT == 1) {
+                        Toast.makeText(getActivity(), "تم استلامك للمشروع سابقا", Toast.LENGTH_LONG).show();
+                    } else {
+                        delieverClientProject();
+                    }
+
+                } else {
+                    AlertDialog.Builder builder;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        builder = new AlertDialog.Builder(getActivity(), android.R.style.Theme_Material_Dialog_Alert);
+                    } else {
+                        builder = new AlertDialog.Builder(getActivity());
+                    }
+                    builder.setTitle("تسليم المشروع")
+                            .setMessage("هل أنت متأكد من رغبتك بارسال طلب تسليم المشروع؟")
+                            .setPositiveButton(R.string.deliever, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+
 
                                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                                     builder.setTitle("الرجاء إدخال رابط المشروع");
@@ -276,17 +288,17 @@ public class UnderwayFragment extends Fragment {
                                         }
                                     });
                                     builder.show();
-                                }
-                            }
-                        })
-                        .setNegativeButton(R.string.back, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // do nothing
-                            }
-                        })
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show();
 
+                                }
+                            })
+                            .setNegativeButton(R.string.back, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // do nothing
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                }
             }
         });
 
@@ -315,12 +327,12 @@ public class UnderwayFragment extends Fragment {
     }
 
     private void delieverWorkerProject(String s_projLink) {
-        Log.e("eeee",  s_projLink);
+        Log.e("eeee", s_projLink);
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getActivity());
         Map<String, String> stringMap = new HashMap<>();
         stringMap.put("token", ConstantInterFace.USER.getToken());
-        stringMap.put("offer_id", model.getId()+"");
+        stringMap.put("offer_id", model.getId() + "");
         stringMap.put("project_link", s_projLink);
         stringMap.put("final", "1");
         myRequest.PostCall("http://smm.smmim.com/waell/public/api/editanoffer", stringMap, new OkHttpCallback() {
@@ -345,12 +357,12 @@ public class UnderwayFragment extends Fragment {
                     public void run() {
                         try {
                             if (object.getBoolean("success")) {
-                                Toast.makeText(getActivity(), "تم ارسال التبليغ", Toast.LENGTH_SHORT).show();
-                                Log.e("eeeeee", jsonObject.toString());
+                                ConstantInterFace.DELEIVER_PROJECT = 1;
+                                Toast.makeText(getActivity(), "تم تسليم المشروع بنجاح", Toast.LENGTH_SHORT).show();
                             } else {
-                                Log.e("eeeeee", "eeee");
+                                ConstantInterFace.DELEIVER_PROJECT = 0;
                                 Log.e("eeeeee", object.getString("error"));
-                                Toast.makeText(getActivity(), " " + object.getString("error"), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "لم يتم التسليم", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -436,12 +448,15 @@ public class UnderwayFragment extends Fragment {
                         try {
                             if (statusObj.getBoolean("success")) {
 
+                                ConstantInterFace.DELEIVER_CLIENT_PROJECT = 1;
+
+                                Toast.makeText(getActivity(), "تم استلام المشروع، يمكنك تقييم العامل", Toast.LENGTH_LONG).show();
                                 final Dialog rate_dialog = new Dialog(getContext());
                                 rate_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //before
                                 rate_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                 rate_dialog.setContentView(R.layout.feedback_dialog);
 
-                                TextView et_comment = rate_dialog.findViewById(R.id.et_comment);
+                                EditText et_comment = rate_dialog.findViewById(R.id.et_comment);
                                 RatingBar rate1 = rate_dialog.findViewById(R.id.rate1);
                                 RatingBar rate2 = rate_dialog.findViewById(R.id.rate2);
                                 RatingBar rate3 = rate_dialog.findViewById(R.id.rate3);
@@ -484,6 +499,8 @@ public class UnderwayFragment extends Fragment {
                                 send_rate.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
+                                        Log.e("yyyy", s_comment);
+                                        Log.e("yyyy", s_comment + f_rate + f_rate2 + f_rate3 + f_rate4 + f_rate5 + "");
                                         sendRateRequest(s_comment, f_rate, f_rate2, f_rate3, f_rate4, f_rate5);
                                     }
                                 });
@@ -502,6 +519,7 @@ public class UnderwayFragment extends Fragment {
     }
 
     private void sendRateRequest(String comment, Float rate, Float rate2, Float rate3, Float rate4, Float rate5) {
+        Log.e("yyyy", comment + rate + rate2 + rate3 + rate4 + rate5 + "");
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
         Map<String, String> stringMap = new HashMap<>();
@@ -538,6 +556,7 @@ public class UnderwayFragment extends Fragment {
                             if (statusObj.getBoolean("success")) {
                                 Toast.makeText(getActivity(), "تم التقييم بنجاح", Toast.LENGTH_LONG).show();
                             } else {
+                                Log.e("eeeeee", object.getString("error"));
                                 Toast.makeText(getActivity(), "لم يتم ارسال التقييم", Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
