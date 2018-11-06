@@ -512,7 +512,6 @@ public class UnderwayFragment extends Fragment {
                 });
             }
         });
-
     }
 
     private void sendRateRequest(String comment, Float rate, Float rate2, Float rate3, Float rate4, Float rate5) {
