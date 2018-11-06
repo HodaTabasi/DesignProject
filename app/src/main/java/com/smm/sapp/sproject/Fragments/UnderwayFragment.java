@@ -250,11 +250,11 @@ public class UnderwayFragment extends Fragment {
                         Toast.makeText(getActivity(), "لم يتم تسليم المشروع من قبل المصمم", Toast.LENGTH_LONG).show();
                     }
 
-                    if (ConstantInterFace.DELEIVER_CLIENT_PROJECT == 1) {
-                        Toast.makeText(getActivity(), "تم استلامك للمشروع سابقا", Toast.LENGTH_LONG).show();
-                    } else {
-                        delieverClientProject();
-                    }
+//                    if (ConstantInterFace.DELEIVER_CLIENT_PROJECT == 1) {
+//                        Toast.makeText(getActivity(), "تم استلامك للمشروع سابقا", Toast.LENGTH_LONG).show();
+//                    } else {
+//                        delieverClientProject();
+//                    }
 
                 } else {
                     AlertDialog.Builder builder;
@@ -448,7 +448,7 @@ public class UnderwayFragment extends Fragment {
                         try {
                             if (statusObj.getBoolean("success")) {
 
-                                ConstantInterFace.DELEIVER_CLIENT_PROJECT = 1;
+                                //ConstantInterFace.DELEIVER_CLIENT_PROJECT = 1;
 
                                 Toast.makeText(getActivity(), "تم استلام المشروع، يمكنك تقييم العامل", Toast.LENGTH_LONG).show();
                                 final Dialog rate_dialog = new Dialog(getContext());
@@ -456,12 +456,12 @@ public class UnderwayFragment extends Fragment {
                                 rate_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                 rate_dialog.setContentView(R.layout.feedback_dialog);
 
-                                EditText et_comment = rate_dialog.findViewById(R.id.et_comment);
-                                RatingBar rate1 = rate_dialog.findViewById(R.id.rate1);
-                                RatingBar rate2 = rate_dialog.findViewById(R.id.rate2);
-                                RatingBar rate3 = rate_dialog.findViewById(R.id.rate3);
-                                RatingBar rate4 = rate_dialog.findViewById(R.id.rate4);
-                                RatingBar rate5 = rate_dialog.findViewById(R.id.rate5);
+                                final EditText et_comment = rate_dialog.findViewById(R.id.et_comment);
+                                final RatingBar rate1 = rate_dialog.findViewById(R.id.rate1);
+                                final RatingBar rate2 = rate_dialog.findViewById(R.id.rate2);
+                                final RatingBar rate3 = rate_dialog.findViewById(R.id.rate3);
+                                final RatingBar rate4 = rate_dialog.findViewById(R.id.rate4);
+                                final RatingBar rate5 = rate_dialog.findViewById(R.id.rate5);
                                 TextView tv1 = rate_dialog.findViewById(R.id.tv1);
                                 TextView tv2 = rate_dialog.findViewById(R.id.tv2);
                                 TextView tv3 = rate_dialog.findViewById(R.id.tv3);
@@ -470,13 +470,6 @@ public class UnderwayFragment extends Fragment {
                                 TextView tv6 = rate_dialog.findViewById(R.id.tv6);
                                 TextView cancel_rate = rate_dialog.findViewById(R.id.cancel_rate);
                                 TextView send_rate = rate_dialog.findViewById(R.id.send_rate);
-
-                                final String s_comment = et_comment.getText().toString();
-                                final Float f_rate = rate1.getRating();
-                                final Float f_rate2 = rate2.getRating();
-                                final Float f_rate3 = rate3.getRating();
-                                final Float f_rate4 = rate4.getRating();
-                                final Float f_rate5 = rate5.getRating();
 
                                 Typeface custom_font = Typeface.createFromAsset(getActivity().getAssets(), "JFFlatregular.ttf");
                                 et_comment.setTypeface(custom_font);
@@ -499,8 +492,12 @@ public class UnderwayFragment extends Fragment {
                                 send_rate.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        Log.e("yyyy", s_comment);
-                                        Log.e("yyyy", s_comment + f_rate + f_rate2 + f_rate3 + f_rate4 + f_rate5 + "");
+                                        final String s_comment = et_comment.getText().toString();
+                                        final Float f_rate = rate1.getRating();
+                                        final Float f_rate2 = rate2.getRating();
+                                        final Float f_rate3 = rate3.getRating();
+                                        final Float f_rate4 = rate4.getRating();
+                                        final Float f_rate5 = rate5.getRating();
                                         sendRateRequest(s_comment, f_rate, f_rate2, f_rate3, f_rate4, f_rate5);
                                     }
                                 });
