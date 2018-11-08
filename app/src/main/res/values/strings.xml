@@ -37,10 +37,10 @@
     <string name="next">التالي</string>
     <string name="deliever">تسليم المشروع</string>
     <string name="back">تراجع</string>
-
-
-
-
+    <!--Assem-->
+    <string name="cancel">الغاء</string>
+    <string name="add">أضف</string>
+    <string name="add_location">اضف هذا المكان كموقع لمشروعك؟</string>
     <array name="spinner_items">
         <item>التصميم الداخلي</item>
         <item>التصميم المعماري</item>
