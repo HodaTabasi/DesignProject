@@ -231,6 +231,7 @@
                         android:layout_margin="8dp"
                         android:background="@drawable/account_shape"
                         android:orientation="horizontal">
+
                         <Spinner
                             android:id="@+id/sp_city"
                             android:layout_width="0dp"
@@ -243,7 +244,7 @@
                             android:id="@+id/city"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.7"
+                            android:layout_weight="0.8"
                             android:gravity="center"
                             android:padding="5dp"
                             android:text="المدينة"
@@ -303,20 +304,20 @@
             </LinearLayout>
 
             <!--<EditText-->
-                <!--android:id="@+id/balance"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginBottom="5dp"-->
-                <!--android:layout_marginEnd="8dp"-->
-                <!--android:layout_marginStart="8dp"-->
-                <!--android:background="@drawable/account_shape"-->
-                <!--android:gravity="center"-->
-                <!--android:hint="الميزانية"-->
-                <!--android:inputType="number"-->
-                <!--android:padding="3dp"-->
-                <!--android:textColor="@color/textGray"-->
-                <!--android:textColorHint="@color/gray"-->
-                <!--android:textSize="14sp" />-->
+            <!--android:id="@+id/balance"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="5dp"-->
+            <!--android:layout_marginEnd="8dp"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:background="@drawable/account_shape"-->
+            <!--android:gravity="center"-->
+            <!--android:hint="الميزانية"-->
+            <!--android:inputType="number"-->
+            <!--android:padding="3dp"-->
+            <!--android:textColor="@color/textGray"-->
+            <!--android:textColorHint="@color/gray"-->
+            <!--android:textSize="14sp" />-->
 
             <EditText
                 android:id="@+id/project_detailes"

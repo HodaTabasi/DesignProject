@@ -410,7 +410,10 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="4"
-            android:background="@drawable/ligtht_gray_shap" />
+            android:gravity="right|center"
+            android:padding="@dimen/_3sdp"
+            android:background="@drawable/ligtht_gray_shap"
+            android:textSize="@dimen/_10sdp" />
 
         <ImageView
             android:id="@+id/send_messg"
