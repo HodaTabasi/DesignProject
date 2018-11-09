@@ -28,6 +28,7 @@ public class ProjectsModels implements Parcelable {
     private List<PhotoModel> photos;
     private List<Attachments> similars;
 
+
     @SerializedName("private")
     private String Private;
 
