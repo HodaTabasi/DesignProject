@@ -16,7 +16,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="@dimen/_60sdp"
             android:background="#09102D" />
 
         <TextView
@@ -24,13 +24,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:drawablePadding="10dp"
+            android:drawablePadding="@dimen/_10sdp"
             android:drawableRight="@drawable/ic_my_budget_toolbar"
             android:drawableTint="@color/white"
             android:gravity="center"
             android:text="رصيدي"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="@dimen/_16sdp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -38,18 +38,18 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="15dp"
-            android:padding="8dp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:padding="@dimen/_8sdp"
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/_8sdp"
         android:background="@drawable/blue_shape"
         android:gravity="center"
-        android:padding="5dp">
+        android:padding="@dimen/_5sdp">
 
         <TextView
             android:id="@+id/name"
@@ -61,7 +61,7 @@
             android:gravity="center"
             android:text="شحن الرصيد "
             android:textColor="@android:color/white"
-            android:textSize="14dp" />
+            android:textSize="@dimen/_12sdp" />
     </RelativeLayout>
 
     <LinearLayout
@@ -83,7 +83,7 @@
             android:padding="5dp"
             android:text="تحويل بنكي"
             android:textColor="@android:color/white"
-            android:textSize="14dp" />
+            android:textSize="@dimen/_12sdp" />
 
         <TextView
             android:id="@+id/credit_sh_card"
@@ -96,7 +96,7 @@
             android:padding="5dp"
             android:text="بطاقة ائتمانية"
             android:textColor="@android:color/white"
-            android:textSize="14dp" />
+            android:textSize="@dimen/_12sdp" />
 
     </LinearLayout>
 
@@ -137,7 +137,7 @@
                         android:paddingTop="3dp"
                         android:text="التحويل البنكي"
                         android:textColor="@android:color/white"
-                        android:textSize="14dp" />
+                        android:textSize="@dimen/_12sdp" />
 
                     <LinearLayout
                         android:id="@+id/ww"
@@ -167,7 +167,7 @@
                                 android:layout_weight="1"
                                 android:background="@drawable/white_shap"
                                 android:textColor="@android:color/black"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/_10sdp" />
 
                             <View
                                 android:layout_width="1dp"
@@ -182,7 +182,7 @@
                                 android:layout_weight="0.7"
                                 android:text="اسم صاحب الحساب "
                                 android:textColor="@android:color/black"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/_10sdp" />
                         </LinearLayout>
 
                         <View
@@ -206,7 +206,7 @@
                                 android:background="@drawable/white_shap"
                                 android:inputType="number"
                                 android:textColor="@android:color/black"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/_10sdp" />
 
                             <View
                                 android:layout_width="1dp"
@@ -221,7 +221,7 @@
                                 android:layout_weight="0.7"
                                 android:text="رقم الحساب"
                                 android:textColor="@android:color/black"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/_10sdp" />
                         </LinearLayout>
 
                         <View
@@ -244,7 +244,7 @@
                                 android:layout_weight="1"
                                 android:background="@drawable/white_shap"
                                 android:textColor="@android:color/black"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/_10sdp" />
 
                             <View
                                 android:layout_width="1dp"
@@ -259,7 +259,7 @@
                                 android:layout_weight="0.7"
                                 android:text="اسم البنك"
                                 android:textColor="@android:color/black"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/_10sdp" />
                         </LinearLayout>
 
                         <View
@@ -283,7 +283,7 @@
                                 android:background="@drawable/white_shap"
                                 android:inputType="number"
                                 android:textColor="@android:color/black"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/_10sdp" />
 
                             <View
                                 android:layout_width="1dp"
@@ -298,7 +298,7 @@
                                 android:layout_weight="0.7"
                                 android:text="المبلغ"
                                 android:textColor="@android:color/black"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/_10sdp" />
                         </LinearLayout>
 
                         <View
@@ -321,7 +321,7 @@
                                 android:layout_weight="1"
                                 android:background="@drawable/white_shap"
                                 android:textColor="@android:color/black"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/_10sdp" />
 
                             <View
                                 android:layout_width="1dp"
@@ -336,7 +336,7 @@
                                 android:layout_weight="0.7"
                                 android:text="تاريخ التحويل"
                                 android:textColor="@android:color/black"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/_10sdp" />
                         </LinearLayout>
 
                         <View
@@ -376,7 +376,7 @@
                                 android:padding="3dp"
                                 android:text="ارفق الصورة"
                                 android:textColor="@android:color/black"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/_10sdp" />
 
                             <View
                                 android:layout_width="1dp"
@@ -391,7 +391,7 @@
                                 android:layout_weight="1.4"
                                 android:text="صورة التحويل"
                                 android:textColor="@android:color/black"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/_10sdp" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -411,7 +411,7 @@
                         android:paddingTop="3dp"
                         android:text="ارسال "
                         android:textColor="@android:color/white"
-                        android:textSize="14dp" />
+                        android:textSize="@dimen/_12sdp" />
 
 
                 </RelativeLayout>
@@ -437,7 +437,7 @@
                         android:paddingTop="3dp"
                         android:text="البطاقة الائتمانية "
                         android:textColor="@android:color/white"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
 
                     <LinearLayout
                         android:id="@+id/ww1"
@@ -462,7 +462,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:textSize="11sp"
+                                android:textSize="@dimen/_10sdp"
                                 android:padding="3dp"
                                 android:inputType="number"
                                 android:background="@drawable/white_shap"
@@ -482,7 +482,7 @@
                                 android:padding="3dp"
                                 android:text="المبلغ الذي تريد شحنه"
                                 android:textColor="@android:color/black"
-                                android:textSize="11sp" />
+                                android:textSize="@dimen/_10sdp" />
                         </LinearLayout>
 
 
@@ -676,7 +676,7 @@
                         android:paddingTop="3dp"
                         android:text="ارسال "
                         android:textColor="@android:color/white"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
 
 
                 </RelativeLayout>

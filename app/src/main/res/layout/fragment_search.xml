@@ -16,7 +16,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="@dimen/_60sdp"
             android:background="#09102D" />
 
         <TextView
@@ -24,12 +24,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:drawablePadding="10dp"
+            android:drawablePadding="@dimen/_10sdp"
             android:drawableRight="@drawable/ic_search"
             android:gravity="center"
             android:text="بحث"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="@dimen/_16sdp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -37,8 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="15dp"
-            android:padding="8dp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:padding="@dimen/_8sdp"
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
@@ -54,7 +54,7 @@
         android:inputType="text"
         android:padding="5dp"
         android:textColorHint="@color/textGray"
-        android:textSize="14dp" />
+        android:textSize="@dimen/_12sdp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -74,7 +74,7 @@
             android:padding="3dp"
             android:text="موشن"
             android:textColor="@color/textGray"
-            android:textSize="9sp" />
+            android:textSize="@dimen/_9sdp" />
 
         <TextView
             android:id="@+id/gh_button"
@@ -87,7 +87,7 @@
             android:padding="5dp"
             android:text="مصمم جرافكس"
             android:textColor="@color/textGray"
-            android:textSize="8sp" />
+            android:textSize="@dimen/_8sdp" />
 
         <TextView
             android:id="@+id/wall_button"
@@ -100,7 +100,7 @@
             android:padding="5dp"
             android:text="مصمم جداري"
             android:textColor="@color/textGray"
-            android:textSize="8sp" />
+            android:textSize="@dimen/_8sdp" />
 
         <TextView
             android:id="@+id/arch_button"
@@ -113,7 +113,7 @@
             android:padding="5dp"
             android:text="مصمم معماري"
             android:textColor="@color/textGray"
-            android:textSize="8sp" />
+            android:textSize="@dimen/_8sdp" />
 
         <TextView
             android:id="@+id/in_button"
@@ -125,7 +125,7 @@
             android:padding="5dp"
             android:text="مصمم داخلي"
             android:textColor="@color/textGray"
-            android:textSize="8sp" />
+            android:textSize="@dimen/_8sdp" />
     </LinearLayout>
 
     <LinearLayout
@@ -159,7 +159,7 @@
             android:padding="5dp"
             android:text="التقييم"
             android:textColor="@color/textGray"
-            android:textSize="14dp" />
+            android:textSize="@dimen/_12sdp" />
 
 
     </LinearLayout>
@@ -169,7 +169,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/_8sdp"
         android:textAlignment="center" />
 
 </LinearLayout>

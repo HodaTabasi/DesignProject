@@ -15,7 +15,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="@dimen/_60sdp"
             android:background="#09102D" />
 
         <TextView
@@ -23,12 +23,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:drawablePadding="5dp"
+            android:drawablePadding="@dimen/_5sdp"
             android:drawableRight="@drawable/ic_projects"
             android:gravity="center"
             android:text="@string/browseProjects"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="@dimen/_16sdp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -36,8 +36,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="15dp"
-            android:padding="8dp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:padding="@dimen/_8sdp"
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
@@ -45,39 +45,39 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_30sdp"
         android:background="@drawable/report_layout_shap">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_70sdp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="30dp"
-            android:padding="5dp"
+            android:layout_marginRight="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:padding="@dimen/_5sdp"
             android:src="@mipmap/ic_launcher" />
 
         <TextView
             android:id="@+id/tv_name"
-            android:layout_width="120dp"
+            android:layout_width="@dimen/_120sdp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="@dimen/_20sdp"
             android:layout_marginTop="10dp"
             android:layout_toLeftOf="@+id/img"
             android:background="@drawable/report_layout_shap"
             android:gravity="center"
-            android:padding="5dp"
-            android:paddingEnd="8sp"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:paddingStart="8dp"
+            android:padding="@dimen/_5sdp"
+            android:paddingEnd="@dimen/_8sdp"
+            android:paddingLeft="@dimen/_8sdp"
+            android:paddingRight="@dimen/_8sdp"
+            android:paddingStart="@dimen/_8sdp"
             android:hint="الاسم"
             android:textColor="@color/textGray"
-            android:textSize="12sp" />
+            android:textSize="@dimen/_10sdp" />
 
         <RatingBar
             android:id="@+id/rate_bar"
@@ -85,8 +85,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_name"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_toLeftOf="@+id/img"
             android:numStars="5"
             android:progressTint="#fed42d"
@@ -95,21 +95,21 @@
 
         <TextView
             android:id="@+id/tv_specialization"
-            android:layout_width="120dp"
+            android:layout_width="@dimen/_120sdp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/rate_bar"
             android:layout_gravity="center"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_toLeftOf="@+id/img"
             android:background="@drawable/report_layout_shap"
             android:gravity="center"
-            android:padding="5dp"
-            android:paddingLeft="8dp"
+            android:padding="@dimen/_5sdp"
+            android:paddingLeft="@dimen/_8sdp"
             android:hint="التخصص"
-            android:paddingRight="8dp"
+            android:paddingRight="@dimen/_8sdp"
             android:textColor="@color/textGray"
-            android:textSize="12sp" />
+            android:textSize="@dimen/_10sdp" />
 
 
         <LinearLayout
@@ -118,36 +118,36 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_specialization"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_17sdp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/day"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
+                android:layout_marginRight="@dimen/_2sdp"
                 android:layout_weight="1"
                 android:background="@drawable/half_left_corner_shape"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="@dimen/_5sdp"
                 android:hint="الأيام"
                 android:textColor="@color/textGray"
-                android:textSize="12sp" />
+                android:textSize="@dimen/_10sdp" />
 
             <TextView
                 android:id="@+id/exhibition"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
+                android:layout_marginRight="@dimen/_2sdp"
                 android:layout_weight="1"
                 android:background="@drawable/blue_shape"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="@dimen/_5sdp"
                 android:text="معرض الاعمال"
                 android:textColor="@color/white"
-                android:textSize="12sp" />
+                android:textSize="@dimen/_10sdp" />
 
             <TextView
                 android:id="@+id/money"
@@ -156,10 +156,10 @@
                 android:layout_weight="1.2"
                 android:background="@drawable/half_right_corner_shape"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="@dimen/_5sdp"
                 android:hint="السعر"
                 android:textColor="@color/textGray"
-                android:textSize="12sp" />
+                android:textSize="@dimen/_10sdp" />
 
         </LinearLayout>
 
@@ -168,7 +168,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_below="@+id/linear"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:background="@color/gray" />
 
         <EditText
@@ -177,15 +177,15 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/view"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:background="@null"
             android:gravity="right"
-            android:padding="8dp"
+            android:padding="@dimen/_8sdp"
             android:textColor="@color/textGray"
             android:textColorHint="@color/gray"
-            android:textSize="14sp" />
+            android:textSize="@dimen/_12sdp" />
 
         <View
             android:id="@id/view2"
@@ -197,18 +197,18 @@
 
         <TextView
             android:id="@+id/edit"
-            android:layout_width="120dp"
+            android:layout_width="@dimen/_110sdp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/view2"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:background="@drawable/report_layout_shap"
             android:gravity="center"
-            android:padding="3dp"
+            android:padding="@dimen/_3sdp"
             android:text="تعديل العرض"
             android:textColor="@color/textGray"
-            android:textSize="14sp"
+            android:textSize="@dimen/_12sdp"
             android:visibility="visible" />
 
         <LinearLayout
@@ -217,37 +217,37 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/view2"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:orientation="horizontal"
             android:visibility="gone">
 
             <TextView
                 android:id="@+id/Atidim"
-                android:layout_width="120dp"
+                android:layout_width="@dimen/_110sdp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:background="@drawable/report_layout_shap"
                 android:gravity="center"
-                android:padding="3dp"
+                android:padding="@dimen/_3sdp"
                 android:text="اعتماد العرض"
                 android:textColor="@color/textGray"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
             <TextView
                 android:id="@+id/talk"
-                android:layout_width="120dp"
+                android:layout_width="@dimen/_110sdp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:background="@drawable/report_layout_shap"
                 android:gravity="center"
-                android:padding="3dp"
+                android:padding="@dimen/_3sdp"
                 android:text="محادثة المصمم"
                 android:textColor="@color/textGray"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
         </LinearLayout>
 

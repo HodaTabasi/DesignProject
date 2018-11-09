@@ -16,7 +16,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="@dimen/_60sdp"
             android:background="#09102D" />
 
         <TextView
@@ -24,13 +24,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:drawablePadding="10dp"
+            android:drawablePadding="@dimen/_10sdp"
             android:drawableRight="@drawable/ic_my_budget_toolbar"
             android:drawableTint="@color/white"
             android:gravity="center"
             android:text="رصيدي"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="@dimen/_16sdp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -38,8 +38,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="15dp"
-            android:padding="8dp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:padding="@dimen/_8sdp"
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
@@ -51,7 +51,7 @@
         android:layout_marginTop="80dp"
         android:text=" الرصيد القابل للسحب "
         android:textColor="@color/textGray"
-        android:textSize="14sp" />
+        android:textSize="@dimen/_12sdp" />
 
     <TextView
         android:id="@+id/retractable_ret_balance"
@@ -61,7 +61,7 @@
         android:layout_marginTop="16dp"
         android:text="0.00"
         android:textColor="@android:color/black"
-        android:textSize="12sp" />
+        android:textSize="@dimen/_10sdp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -70,7 +70,7 @@
         android:layout_marginTop="16dp"
         android:text=" المبلغ المتبقي من الأرباح التي حققتها  "
         android:textColor="@color/gray1"
-        android:textSize="14sp" />
+        android:textSize="@dimen/_12sdp" />
 
     <TextView
         android:id="@+id/send_retractable_ret_balance"
@@ -85,5 +85,5 @@
         android:paddingTop="3dp"
         android:text="إرسال إلى حسابك البنكي "
         android:textColor="@android:color/white"
-        android:textSize="14dp" />
+        android:textSize="@dimen/_12sdp" />
 </LinearLayout>

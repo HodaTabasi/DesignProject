@@ -15,7 +15,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="@dimen/_60sdp"
             android:background="#09102D" />
 
         <TextView
@@ -23,12 +23,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:drawablePadding="@dimen/_10sdp"
             android:drawableRight="@drawable/ic_search"
-            android:drawablePadding="10dp"
             android:gravity="center"
             android:text="@string/search"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="@dimen/_16sdp" />
 
 
         <ImageView
@@ -37,8 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="15dp"
-            android:padding="8dp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:padding="@dimen/_8sdp"
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
@@ -58,8 +58,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/report_layout_shap"
                 android:padding="5dp">
 
@@ -76,10 +76,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:padding="5dp"
                     android:hint="الاسم"
+                    android:padding="5dp"
                     android:textColor="@color/textGray"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/_12sdp" />
 
                 <RatingBar
                     android:id="@+id/rate_bar"
@@ -105,10 +105,10 @@
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/report_layout_shap"
                     android:gravity="center"
-                    android:padding="5dp"
                     android:hint="التخصص"
+                    android:padding="5dp"
                     android:textColor="@color/textGray"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/_12sdp" />
 
             </RelativeLayout>
 
@@ -118,33 +118,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_marginTop="7dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginTop="7dp"
                 android:text="نبذة تعريفية"
                 android:textColor="@color/gray1"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
             <EditText
                 android:id="@+id/et_bio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="2dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginTop="2dp"
                 android:background="@drawable/report_layout_shap"
                 android:gravity="center_vertical"
                 android:hint="نبذة"
                 android:padding="5dp"
                 android:textColor="@color/textGray"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
             <LinearLayout
                 android:id="@+id/linear2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="7dp"
-                android:layout_marginRight="20dp">
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="7dp">
 
                 <TextView
                     android:id="@+id/tv_portfolio"
@@ -156,7 +156,7 @@
                     android:padding="5dp"
                     android:text="@string/portfolio"
                     android:textColor="@color/gray1"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/_12sdp" />
 
                 <TextView
                     android:id="@+id/tv_comments"
@@ -169,7 +169,7 @@
                     android:padding="5dp"
                     android:text="@string/comments"
                     android:textColor="@color/gray1"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/_12sdp" />
 
 
             </LinearLayout>
@@ -179,16 +179,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/report_layout_shap"
                 android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
@@ -198,21 +198,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/gray1"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
 
                     <TextView
                         android:id="@+id/tv5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/gray1"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
 
                     <TextView
                         android:id="@+id/tv6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/gray1"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
 
                 </LinearLayout>
 
@@ -225,8 +225,8 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
@@ -237,7 +237,7 @@
                         android:layout_height="wrap_content"
                         android:text="المشاريع المكتملة"
                         android:textColor="@color/gray1"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
 
                     <TextView
                         android:id="@+id/tv2"
@@ -245,7 +245,7 @@
                         android:layout_height="wrap_content"
                         android:text="مشاريع قيد التنفيذ"
                         android:textColor="@color/gray1"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
 
                     <TextView
                         android:id="@+id/tv3"
@@ -253,7 +253,7 @@
                         android:layout_height="wrap_content"
                         android:text="معدل اكمال المشاريع"
                         android:textColor="@color/gray1"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -263,19 +263,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
                 android:text="مهاراتي"
                 android:textColor="@color/gray1"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_skill"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="7dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginTop="7dp"
                 android:background="@drawable/report_layout_shap"
                 android:padding="5dp" />
 
@@ -287,7 +287,7 @@
                 android:layout_marginRight="20dp"
                 android:text="لا يوجد مهارات"
                 android:textColor="@color/gray"
-                android:textSize="12sp"
+                android:textSize="@dimen/_10sdp"
                 android:visibility="gone" />
 
             <TextView
@@ -295,29 +295,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="7dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginTop="7dp"
                 android:background="@drawable/report_layout_shap"
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="أضف للمفضلة"
                 android:textColor="@color/gray1"
-                android:textSize="16sp" />
+                android:textSize="@dimen/_14sdp" />
 
             <TextView
                 android:id="@+id/tv_chooseMe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="20dp"
                 android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/blue_shape"
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="اختارني للعمل"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="@dimen/_14sdp" />
 
         </LinearLayout>
 

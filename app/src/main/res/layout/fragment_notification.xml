@@ -15,7 +15,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="@dimen/_60sdp"
             android:background="#09102D" />
 
         <TextView
@@ -23,12 +23,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:drawablePadding="5dp"
+            android:drawablePadding="@dimen/_5sdp"
             android:drawableRight="@drawable/ic_notification_toolbar"
             android:gravity="center"
             android:text="التنبيهات"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="@dimen/_16sdp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -37,7 +37,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="15dp"
-            android:padding="8dp"
+            android:padding="@dimen/_8sdp"
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
@@ -46,13 +46,13 @@
         android:id="@+id/swipe_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp">
+        android:layout_margin="@dimen/_8sdp">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/notification_attention"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"/>
+            android:layout_margin="@dimen/_8sdp"/>
 
     </android.support.v4.widget.SwipeRefreshLayout>
 

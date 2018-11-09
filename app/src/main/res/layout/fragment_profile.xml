@@ -15,7 +15,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="@dimen/_60sdp"
             android:background="#09102D" />
 
         <TextView
@@ -23,12 +23,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:drawablePadding="5dp"
+            android:drawablePadding="@dimen/_5sdp"
             android:drawableRight="@drawable/ic_person"
             android:gravity="center"
             android:text="@string/account"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="@dimen/_16sdp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -36,8 +36,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="15dp"
-            android:padding="8dp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:padding="@dimen/_8sdp"
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
@@ -63,7 +63,7 @@
                 android:padding="5dp"
                 android:text="@string/profile"
                 android:textColor="@color/textGray"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
             <LinearLayout
                 android:id="@+id/linaer"
@@ -85,7 +85,7 @@
                     android:padding="5dp"
                     android:text="@string/designer"
                     android:textColor="@color/textGray"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/_12sdp" />
 
                 <TextView
                     android:id="@+id/tv_client"
@@ -97,7 +97,7 @@
                     android:padding="5dp"
                     android:text="@string/client"
                     android:textColor="@color/textGray"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/_12sdp" />
             </LinearLayout>
 
             <Spinner
@@ -134,7 +134,7 @@
                     android:padding="5dp"
                     android:text="@string/company"
                     android:textColor="@color/textGray"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/_12sdp" />
 
                 <TextView
                     android:id="@+id/tv_individual"
@@ -146,7 +146,7 @@
                     android:padding="5dp"
                     android:text="@string/individual"
                     android:textColor="@color/textGray"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/_12sdp" />
             </LinearLayout>
 
             <TextView
@@ -159,7 +159,7 @@
                 android:layout_marginTop="7dp"
                 android:text="الاسم"
                 android:textColor="@color/gray1"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
             <EditText
                 android:id="@+id/et_name"
@@ -173,7 +173,7 @@
                 android:text=""
                 android:textColor="@color/textGray"
                 android:textColorHint="@color/gray"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
             <TextView
                 android:id="@+id/tv_bio"
@@ -185,7 +185,7 @@
                 android:layout_marginTop="7dp"
                 android:text="نبذة تعريفية"
                 android:textColor="@color/gray1"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
             <EditText
                 android:id="@+id/et_bio"
@@ -199,7 +199,7 @@
                 android:padding="5dp"
                 android:text=""
                 android:textColor="@color/textGray"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
             <TextView
                 android:id="@+id/tv_mobile"
@@ -211,7 +211,7 @@
                 android:layout_marginTop="7dp"
                 android:text="رقم الجوال"
                 android:textColor="@color/gray1"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
             <LinearLayout
                 android:id="@+id/relative3"
@@ -230,7 +230,7 @@
                     android:inputType="number"
                     android:padding="5dp"
                     android:textColor="@color/textGray"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/_12sdp" />
 
                 <EditText
                     android:id="@+id/et_mobile1"
@@ -241,7 +241,7 @@
                     android:inputType="number"
                     android:padding="5dp"
                     android:textColor="@color/textGray"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/_12sdp" />
 
 
             </LinearLayout>
@@ -256,7 +256,7 @@
                 android:layout_marginTop="7dp"
                 android:text="الايميل"
                 android:textColor="@color/gray1"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
             <EditText
                 android:id="@+id/et_email"
@@ -269,7 +269,7 @@
                 android:inputType="textEmailAddress"
                 android:padding="5dp"
                 android:textColor="@color/textGray"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
 
             <LinearLayout
@@ -294,7 +294,7 @@
                         android:layout_height="wrap_content"
                         android:text="تاريخ الميلاد"
                         android:textColor="@color/gray1"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -309,7 +309,7 @@
                             android:background="@drawable/half_left_corner_shape"
                             android:gravity="center"
                             android:padding="5dp"
-                            android:textSize="14sp" />
+                            android:textSize="@dimen/_12sdp" />
 
                         <TextView
                             android:id="@+id/tv_dob2"
@@ -319,7 +319,7 @@
                             android:background="@drawable/square_shape"
                             android:gravity="center"
                             android:padding="5dp"
-                            android:textSize="14sp" />
+                            android:textSize="@dimen/_12sdp" />
 
                         <TextView
                             android:id="@+id/tv_dob1"
@@ -329,7 +329,7 @@
                             android:background="@drawable/half_right_corner_shape"
                             android:gravity="center"
                             android:padding="5dp"
-                            android:textSize="14sp" />
+                            android:textSize="@dimen/_12sdp" />
 
                     </LinearLayout>
 
@@ -349,7 +349,7 @@
                         android:layout_height="wrap_content"
                         android:text="الجنس"
                         android:textColor="@color/gray1"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
 
                     <Spinner
                         android:id="@+id/sp_gender"
@@ -377,7 +377,7 @@
                 android:padding="5dp"
                 android:text="@string/save"
                 android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
 
         </RelativeLayout>

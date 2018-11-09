@@ -16,7 +16,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="@dimen/_60sdp"
             android:background="#09102D" />
 
         <TextView
@@ -24,12 +24,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:drawablePadding="5dp"
+            android:drawablePadding="@dimen/_5sdp"
             android:drawableRight="@drawable/ic_person"
             android:gravity="center"
             android:text="@string/account"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="@dimen/_16sdp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -37,8 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="15dp"
-            android:padding="8dp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:padding="@dimen/_8sdp"
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
@@ -55,7 +55,7 @@
         android:padding="5dp"
         android:text="@string/skills"
         android:textColor="@color/textGray"
-        android:textSize="14sp" />
+        android:textSize="@dimen/_12sdp" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -104,7 +104,7 @@
                 android:padding="5dp"
                 android:text="أضف مهارة أخرى"
                 android:textColor="@android:color/black"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
             <TextView
                 android:id="@+id/tv_save"
@@ -119,7 +119,7 @@
                 android:padding="5dp"
                 android:text="@string/save"
                 android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
         </LinearLayout>
 
     </ScrollView>

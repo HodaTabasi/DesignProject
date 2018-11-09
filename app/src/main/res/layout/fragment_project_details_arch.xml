@@ -16,7 +16,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="@dimen/_60sdp"
             android:background="#09102D" />
 
         <TextView
@@ -24,12 +24,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:drawablePadding="10dp"
+            android:drawablePadding="@dimen/_10sdp"
             android:drawableRight="@drawable/ic_add_toolbar"
             android:gravity="center"
             android:text="اضف مشروع"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="@dimen/_16sdp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -37,8 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="15dp"
-            android:padding="8dp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:padding="@dimen/_8sdp"
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
@@ -92,7 +92,7 @@
                 android:padding="3dp"
                 android:textColor="@color/textGray"
                 android:textColorHint="@color/gray"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -121,7 +121,7 @@
                     android:padding="3dp"
                     android:text="اختر الاستايل"
                     android:textColor="@color/gray"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/_12sdp" />
             </LinearLayout>
 
 
@@ -138,7 +138,7 @@
                 android:padding="3dp"
                 android:textColor="@color/textGray"
                 android:textColorHint="@color/gray"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -188,7 +188,7 @@
                         android:textAlignment="center"
                         android:textColor="@color/textGray"
                         android:textColorHint="@color/gray"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
 
                 </LinearLayout>
 
@@ -233,6 +233,7 @@
                         android:layout_margin="8dp"
                         android:background="@drawable/account_shape"
                         android:orientation="horizontal">
+
                         <Spinner
                             android:id="@+id/sp_city"
                             android:layout_width="0dp"
@@ -251,7 +252,7 @@
                             android:text="المدينة"
                             android:textAlignment="center"
                             android:textColor="@color/gray"
-                            android:textSize="14sp" />
+                            android:textSize="@dimen/_12sdp" />
 
 
                     </LinearLayout>
@@ -272,7 +273,8 @@
                 android:padding="3dp"
                 android:textColor="@color/textGray"
                 android:textColorHint="@color/gray"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -300,23 +302,23 @@
                     android:padding="3dp"
                     android:text="اختر الميزانية "
                     android:textColor="@color/gray"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/_12sdp" />
             </LinearLayout>
             <!--<EditText-->
-                <!--android:id="@+id/balance"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginBottom="5dp"-->
-                <!--android:layout_marginEnd="8dp"-->
-                <!--android:layout_marginStart="8dp"-->
-                <!--android:background="@drawable/account_shape"-->
-                <!--android:gravity="center"-->
-                <!--android:hint="الميزانية"-->
-                <!--android:inputType="number"-->
-                <!--android:padding="3dp"-->
-                <!--android:textColor="@color/textGray"-->
-                <!--android:textColorHint="@color/gray"-->
-                <!--android:textSize="14sp" />-->
+            <!--android:id="@+id/balance"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="5dp"-->
+            <!--android:layout_marginEnd="8dp"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:background="@drawable/account_shape"-->
+            <!--android:gravity="center"-->
+            <!--android:hint="الميزانية"-->
+            <!--android:inputType="number"-->
+            <!--android:padding="3dp"-->
+            <!--android:textColor="@color/textGray"-->
+            <!--android:textColorHint="@color/gray"-->
+            <!--android:textSize="14sp" />-->
 
             <EditText
                 android:id="@+id/project_detailes"
@@ -331,7 +333,7 @@
                 android:padding="3dp"
                 android:textColor="@color/textGray"
                 android:textColorHint="@color/gray"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
             <TextView
                 android:id="@+id/attachment_in"
@@ -347,7 +349,7 @@
                 android:padding="5dp"
                 android:text="المرفقات"
                 android:textColor="@color/gray"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
             <Button
                 android:id="@+id/send_in"
@@ -360,7 +362,7 @@
                 android:background="@drawable/blue_shape"
                 android:text="ارسل الطلب"
                 android:textColor="@android:color/white"
-                android:textSize="14dp" />
+                android:textSize="@dimen/_12sdp" />
         </LinearLayout>
 
 

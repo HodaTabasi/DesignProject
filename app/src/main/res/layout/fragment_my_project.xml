@@ -17,7 +17,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="@dimen/_60sdp"
             android:background="#09102D" />
 
         <TextView
@@ -25,12 +25,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:drawablePadding="10dp"
+            android:drawablePadding="@dimen/_10sdp"
             android:drawableRight="@drawable/ic_myprojects_toolbar"
             android:gravity="center"
             android:text="عروضي ومشاريعي"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="@dimen/_16sdp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -38,8 +38,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="15dp"
-            android:padding="8dp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:padding="@dimen/_8sdp"
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
@@ -58,7 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:layout_margin="16dp"
+                android:layout_margin="@dimen/_16sdp"
                 android:visibility="gone"/>
 
             <FrameLayout
@@ -69,11 +69,11 @@
                     android:id="@+id/one"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:layout_marginRight="@dimen/_8sdp"
                     android:layout_marginTop="@dimen/_16sdp"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="@dimen/_8sdp"
                     android:orientation="vertical"
                     android:visibility="visible">
 
@@ -89,7 +89,7 @@
                         android:layout_marginBottom="@dimen/_5sdp"
                         android:text="المشاريع"
                         android:textColor="@android:color/black"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
 
 
 
@@ -103,29 +103,29 @@
                             android:id="@+id/my_project_excluded"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginRight="8dp"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:layout_marginRight="@dimen/_8sdp"
                             android:layout_weight="1"
                             android:background="@drawable/red_shap"
                             android:gravity="center"
-                            android:padding="5dp"
+                            android:padding="@dimen/_5sdp"
                             android:text="قيد الموافقة"
                             android:textColor="@android:color/white"
-                            android:textSize="12sp" />
+                            android:textSize="@dimen/_10sdp" />
 
                         <TextView
                             android:id="@+id/my_project_underway"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginRight="8dp"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:layout_marginRight="@dimen/_8sdp"
                             android:layout_weight="1"
                             android:background="@drawable/dark_blue_shap"
                             android:gravity="center"
-                            android:padding="5dp"
+                            android:padding="@dimen/_5sdp"
                             android:text="قيد التنفيذ"
                             android:textColor="@android:color/white"
-                            android:textSize="12sp" />
+                            android:textSize="@dimen/_10sdp" />
 
                         <TextView
                             android:id="@+id/my_project_done"
@@ -134,10 +134,10 @@
                             android:layout_weight="1"
                             android:background="@drawable/green_shap"
                             android:gravity="center"
-                            android:padding="5dp"
+                            android:padding="@dimen/_5sdp"
                             android:text="المكتملة"
                             android:textColor="@android:color/white"
-                            android:textSize="12sp" />
+                            android:textSize="@dimen/_10sdp" />
 
                     </LinearLayout>
 
@@ -145,8 +145,8 @@
                         android:id="@+id/my_project_res"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginTop="8dp" />
+                        android:layout_marginBottom="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_8sdp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -161,18 +161,18 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:background="@drawable/account_shape"
-                        android:padding="5dp"
+                        android:padding="@dimen/_5sdp"
                         android:text="العروض المقدمة كاملة"
                         android:textColor="@android:color/black"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
 
 
                     <com.github.mikephil.charting.charts.PieChart
                         android:id="@+id/chart"
-                        android:layout_width="180dp"
-                        android:layout_height="180dp"
+                        android:layout_width="@dimen/_170sdp"
+                        android:layout_height="@dimen/_170sdp"
                         android:layout_gravity="center"
-                        android:layout_margin="8dp" />
+                        android:layout_margin="@dimen/_8sdp" />
 
                     <View
                         android:layout_width="match_parent"
@@ -182,14 +182,14 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="@dimen/_16sdp"
                         android:orientation="horizontal">
 
                         <LinearLayout
                             android:id="@+id/l_wait_project"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="16dp"
+                            android:layout_marginBottom="@dimen/_16sdp"
                             android:layout_weight="1"
                             android:orientation="vertical">
 
@@ -199,23 +199,23 @@
                                 android:layout_gravity="center"
                                 android:text="بانتظار الموافقة"
                                 android:textColor="@android:color/black"
-                                android:textSize="14sp" />
+                                android:textSize="@dimen/_12sdp" />
 
                             <TextView
                                 android:id="@+id/wait"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:layout_margin="8dp"
+                                android:layout_margin="@dimen/_8sdp"
                                 android:layout_weight="1"
                                 android:background="@drawable/yeallow_shap"
-                                android:paddingStart="15dp"
-                                android:paddingEnd="15dp"
-                                android:paddingTop="5dp"
-                                android:paddingBottom="5dp"
+                                android:paddingStart="@dimen/_15sdp"
+                                android:paddingEnd="@dimen/_15sdp"
+                                android:paddingTop="@dimen/_5sdp"
+                                android:paddingBottom="@dimen/_5sdp"
                                 android:text="0  عرض "
                                 android:textColor="@android:color/white"
-                                android:textSize="18sp" />
+                                android:textSize="@dimen/_16sdp" />
 
                         </LinearLayout>
 
@@ -228,7 +228,7 @@
                             android:id="@+id/l_underway_project"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="16dp"
+                            android:layout_marginBottom="@dimen/_16sdp"
                             android:layout_weight="1"
                             android:orientation="vertical">
 
@@ -238,22 +238,22 @@
                                 android:layout_gravity="center"
                                 android:text="قيد التشغيل "
                                 android:textColor="@android:color/black"
-                                android:textSize="14sp" />
+                                android:textSize="@dimen/_12sdp" />
 
                             <TextView
                                 android:id="@+id/under"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:layout_margin="8dp"
+                                android:layout_margin="@dimen/_8sdp"
                                 android:background="@drawable/dark_blue_shap"
-                                android:paddingStart="15dp"
-                                android:paddingEnd="15dp"
-                                android:paddingTop="5dp"
-                                android:paddingBottom="5dp"
+                                android:paddingStart="@dimen/_15sdp"
+                                android:paddingEnd="@dimen/_15sdp"
+                                android:paddingTop="@dimen/_5sdp"
+                                android:paddingBottom="@dimen/_5sdp"
                                 android:text="0  عرض "
                                 android:textColor="@android:color/white"
-                                android:textSize="18sp" />
+                                android:textSize="@dimen/_16sdp" />
 
                         </LinearLayout>
 
@@ -274,8 +274,8 @@
                             android:id="@+id/l_excluded_project"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="16dp"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="@dimen/_16sdp"
+                            android:layout_marginTop="@dimen/_16sdp"
                             android:layout_weight="1"
                             android:orientation="vertical">
 
@@ -285,7 +285,7 @@
                                 android:layout_gravity="center"
                                 android:text="المستبعد"
                                 android:textColor="@android:color/black"
-                                android:textSize="14sp" />
+                                android:textSize="@dimen/_12sdp" />
 
                             <TextView
                                 android:id="@+id/go"
@@ -295,13 +295,13 @@
                                 android:layout_margin="8dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/red_shap"
-                                android:paddingStart="15dp"
-                                android:paddingEnd="15dp"
-                                android:paddingTop="5dp"
-                                android:paddingBottom="5dp"
+                                android:paddingStart="@dimen/_15sdp"
+                                android:paddingEnd="@dimen/_15sdp"
+                                android:paddingTop="@dimen/_5sdp"
+                                android:paddingBottom="@dimen/_5sdp"
                                 android:text="0  عرض "
                                 android:textColor="@android:color/white"
-                                android:textSize="18sp" />
+                                android:textSize="@dimen/_16sdp" />
 
                         </LinearLayout>
 
@@ -314,8 +314,8 @@
                             android:id="@+id/l_done_project"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="16dp"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="@dimen/_16sdp"
+                            android:layout_marginTop="@dimen/_16sdp"
                             android:layout_weight="1"
                             android:orientation="vertical">
 
@@ -325,7 +325,7 @@
                                 android:layout_gravity="center"
                                 android:text="المكتملة"
                                 android:textColor="@android:color/black"
-                                android:textSize="14sp" />
+                                android:textSize="@dimen/_12sdp" />
 
                             <TextView
                                 android:id="@+id/done"
@@ -335,13 +335,13 @@
                                 android:layout_margin="8dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/green_shap"
-                                android:paddingStart="15dp"
-                                android:paddingEnd="15dp"
-                                android:paddingTop="5dp"
-                                android:paddingBottom="5dp"
+                                android:paddingStart="@dimen/_15sdp"
+                                android:paddingEnd="@dimen/_15sdp"
+                                android:paddingTop="@dimen/_5sdp"
+                                android:paddingBottom="@dimen/_5sdp"
                                 android:text="0  عرض "
                                 android:textColor="@android:color/white"
-                                android:textSize="18sp" />
+                                android:textSize="@dimen/_16sdp" />
 
                         </LinearLayout>
 

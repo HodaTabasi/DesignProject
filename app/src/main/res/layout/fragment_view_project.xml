@@ -16,7 +16,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="@dimen/_60sdp"
             android:background="#09102D" />
 
         <TextView
@@ -24,12 +24,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:drawablePadding="5dp"
+            android:drawablePadding="@dimen/_5sdp"
             android:drawableRight="@drawable/ic_projects"
             android:gravity="center"
             android:text="@string/browseProjects"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="@dimen/_16sdp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -37,8 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="15dp"
-            android:padding="8dp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:padding="@dimen/_8sdp"
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
@@ -76,7 +76,7 @@
                         android:layout_height="wrap_content"
                         android:text="منال القرشي"
                         android:textColor="@color/textGray"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
 
                     <TextView
                         android:id="@+id/user_type"
@@ -84,7 +84,7 @@
                         android:layout_height="wrap_content"
                         android:text="عميل صاحب مشاريع"
                         android:textColor="@color/textGray"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
 
                 </LinearLayout>
 
@@ -122,7 +122,7 @@
                         android:background="@drawable/white_shap"
                         android:padding="2dp"
                         android:textColor="@color/textGray"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
 
                     <View
                         android:layout_width="1dp"
@@ -137,7 +137,7 @@
                         android:layout_weight="0.5"
                         android:text="اسم المشروع"
                         android:textColor="@color/textGray"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
                 </LinearLayout>
 
                 <View
@@ -159,7 +159,7 @@
                         android:background="@drawable/white_shap"
                         android:padding="2dp"
                         android:textColor="@color/textGray"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
 
                     <View
                         android:layout_width="1dp"
@@ -174,7 +174,7 @@
                         android:layout_weight="0.5"
                         android:text="نوع المشروع"
                         android:textColor="@color/textGray"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
                 </LinearLayout>
 
                 <View
@@ -196,7 +196,7 @@
                         android:background="@drawable/white_shap"
                         android:padding="2dp"
                         android:textColor="@color/textGray"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
 
                     <View
                         android:layout_width="1dp"
@@ -211,7 +211,7 @@
                         android:layout_weight="0.5"
                         android:text="استايل المشروع"
                         android:textColor="@color/textGray"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
                 </LinearLayout>
 
                 <View
@@ -233,7 +233,7 @@
                         android:background="@drawable/white_shap"
                         android:padding="2dp"
                         android:textColor="@color/textGray"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
 
                     <View
                         android:layout_width="1dp"
@@ -248,7 +248,7 @@
                         android:layout_weight="0.5"
                         android:text="الالوان المقترحة"
                         android:textColor="@color/textGray"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
                 </LinearLayout>
 
                 <View
@@ -270,7 +270,7 @@
                         android:background="@drawable/white_shap"
                         android:padding="2dp"
                         android:textColor="@color/textGray"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
 
                     <View
                         android:layout_width="1dp"
@@ -285,7 +285,7 @@
                         android:layout_weight="0.5"
                         android:text="المدينة"
                         android:textColor="@color/textGray"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
                 </LinearLayout>
 
                 <View
@@ -321,7 +321,7 @@
                         android:layout_weight="0.5"
                         android:text="تصاميم اعجبتك"
                         android:textColor="@color/textGray"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
                 </LinearLayout>
 
                 <View
@@ -356,7 +356,7 @@
                         android:layout_weight="0.5"
                         android:text="صور المشروع"
                         android:textColor="@color/textGray"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
                 </LinearLayout>
 
                 <View
@@ -393,7 +393,7 @@
                         android:layout_weight="0.5"
                         android:text="مساحة المشروع"
                         android:textColor="@color/textGray"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
                 </LinearLayout>
 
                 <View
@@ -430,7 +430,7 @@
                         android:layout_weight="0.5"
                         android:text="ميزانية المشروع"
                         android:textColor="@color/textGray"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
                 </LinearLayout>
 
                 <View
@@ -452,7 +452,7 @@
                         android:background="@drawable/white_shap"
                         android:padding="2dp"
                         android:textColor="@color/textGray"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
 
                     <View
                         android:layout_width="1dp"
@@ -467,7 +467,7 @@
                         android:layout_weight="0.5"
                         android:text="نبذة عن المشروع"
                         android:textColor="@color/textGray"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
                 </LinearLayout>
 
                 <View
@@ -504,7 +504,7 @@
                         android:layout_weight="0.5"
                         android:text="المرفقات"
                         android:textColor="@color/textGray"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -521,7 +521,7 @@
                 android:padding="8dp"
                 android:text="اضف عرض"
                 android:textColor="@color/blue"
-                android:textSize="14sp"
+                android:textSize="@dimen/_12sdp"
                 android:visibility="visible" />
 
             <LinearLayout
@@ -566,7 +566,7 @@
                                     android:padding="5dp"
                                     android:text="مستحقاتك"
                                     android:textColor="@color/gray1"
-                                    android:textSize="8sp" />
+                                    android:textSize="@dimen/_8sdp" />
 
                                 <LinearLayout
                                     android:layout_width="80dp"
@@ -581,7 +581,7 @@
                                         android:padding="5dp"
                                         android:text="ريال"
                                         android:textColor="@color/gray1"
-                                        android:textSize="12sp" />
+                                        android:textSize="@dimen/_10sdp" />
 
                                     <View
                                         android:layout_width="1dp"
@@ -596,7 +596,7 @@
                                         android:gravity="center_horizontal"
                                         android:inputType="number"
                                         android:padding="5dp"
-                                        android:textSize="12sp" />
+                                        android:textSize="@dimen/_10sdp" />
 
                                 </LinearLayout>
 
@@ -606,7 +606,7 @@
                                     android:layout_marginTop="5dp"
                                     android:text="بعد خصم نسبة صمم"
                                     android:textColor="@color/gray1"
-                                    android:textSize="8sp" />
+                                    android:textSize="@dimen/_8sdp" />
 
                             </LinearLayout>
 
@@ -625,7 +625,7 @@
                                     android:padding="5dp"
                                     android:text="قيمة العرض"
                                     android:textColor="@color/gray1"
-                                    android:textSize="8sp" />
+                                    android:textSize="@dimen/_8sdp" />
 
                                 <LinearLayout
                                     android:layout_width="80dp"
@@ -640,7 +640,7 @@
                                         android:padding="5dp"
                                         android:text="ريال"
                                         android:textColor="@color/gray1"
-                                        android:textSize="12sp" />
+                                        android:textSize="@dimen/_10sdp" />
 
                                     <View
                                         android:layout_width="1dp"
@@ -655,7 +655,7 @@
                                         android:gravity="center_horizontal"
                                         android:inputType="number"
                                         android:padding="5dp"
-                                        android:textSize="12sp" />
+                                        android:textSize="@dimen/_10sdp" />
 
                                 </LinearLayout>
                             </LinearLayout>
@@ -673,7 +673,7 @@
                                     android:padding="5dp"
                                     android:text="مدة التسليم"
                                     android:textColor="@color/gray1"
-                                    android:textSize="8sp" />
+                                    android:textSize="@dimen/_8sdp" />
 
                                 <LinearLayout
                                     android:layout_width="80dp"
@@ -688,7 +688,7 @@
                                         android:padding="5dp"
                                         android:text="يوم"
                                         android:textColor="@color/gray1"
-                                        android:textSize="12sp" />
+                                        android:textSize="@dimen/_10sdp" />
 
                                     <View
                                         android:layout_width="1dp"
@@ -703,7 +703,7 @@
                                         android:gravity="center_horizontal"
                                         android:inputType="number"
                                         android:padding="5dp"
-                                        android:textSize="12sp" />
+                                        android:textSize="@dimen/_10sdp" />
 
                                 </LinearLayout>
 
@@ -718,7 +718,7 @@
                             android:layout_gravity="center_horizontal"
                             android:text="تفاصيل العرض"
                             android:textColor="@color/gray1"
-                            android:textSize="12sp" />
+                            android:textSize="@dimen/_10sdp" />
 
                         <EditText
                             android:id="@+id/proposal_p"
@@ -732,7 +732,7 @@
                             android:padding="5dp"
                             android:textColor="@color/gray1"
                             android:textColorHint="@color/gray"
-                            android:textSize="12sp" />
+                            android:textSize="@dimen/_10sdp" />
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
@@ -748,7 +748,7 @@
                                 android:layout_alignParentTop="true"
                                 android:text="يمنع استخدام وسائل تواصل خارجية"
                                 android:textColor="@color/gray1"
-                                android:textSize="10sp" />
+                                android:textSize="@dimen/_10sdp" />
 
                             <TextView
                                 android:id="@+id/tv2"
@@ -757,7 +757,7 @@
                                 android:layout_below="@+id/tv1"
                                 android:text="سيتم وضع معرض اعمالك مع العرض"
                                 android:textColor="@color/gray1"
-                                android:textSize="10sp" />
+                                android:textSize="@dimen/_10sdp" />
 
                             <TextView
                                 android:id="@+id/attch_p"
@@ -775,7 +775,7 @@
                                 android:paddingBottom="2dp"
                                 android:text="ارفق ملف"
                                 android:textColor="@color/gray1"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/_10sdp" />
                         </RelativeLayout>
 
                         <TextView
@@ -789,7 +789,7 @@
                             android:padding="5dp"
                             android:text="اضف عرضك"
                             android:textColor="@color/white"
-                            android:textSize="14sp" />
+                            android:textSize="@dimen/_12sdp" />
                     </LinearLayout>
                 </ScrollView>
 

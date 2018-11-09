@@ -123,14 +123,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="5dp"
+                android:layout_margin="@dimen/_5sdp"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/ic_my_portfolio"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="@dimen/_5sdp"
                 android:text="معرض اعمالي"
                 android:textColor="@color/gray_icon"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
             <View
                 android:layout_width="1dp"
@@ -142,14 +142,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="5dp"
+                android:layout_margin="@dimen/_5sdp"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/ic_my_budget"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="@dimen/_5sdp"
                 android:text="رصيدي"
                 android:textColor="@color/gray_icon"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
         </LinearLayout>
 
@@ -171,14 +171,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="5dp"
+                android:layout_margin="@dimen/_5sdp"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/ic_add"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="@dimen/_5sdp"
                 android:text="اضف مشروع"
                 android:textColor="@color/gray_icon"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
             <View
                 android:layout_width="1dp"
@@ -190,14 +190,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="5dp"
+                android:layout_margin="@dimen/_5sdp"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/ic_my_proposals"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="@dimen/_5sdp"
                 android:text="عروضي ومشاريعي"
                 android:textColor="@color/gray_icon"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
         </LinearLayout>
 
@@ -218,15 +218,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="5dp"
+                android:layout_margin="@dimen/_5sdp"
                 android:layout_weight="1"
                 android:drawableTint="#a4a4a4"
                 android:drawableTop="@drawable/ic_samem"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="@dimen/_5sdp"
                 android:text="عن صمم"
                 android:textColor="@color/gray_icon"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
             <View
                 android:layout_width="1dp"
@@ -238,14 +238,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="5dp"
+                android:layout_margin="@dimen/_5sdp"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/ic_search2"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="@dimen/_5sdp"
                 android:text="بحث"
                 android:textColor="@color/gray_icon"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
         </LinearLayout>
 

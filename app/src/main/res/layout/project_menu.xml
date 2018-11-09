@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_5sdp"
             android:text="تسليم المشروع"
-            android:textSize="11sp" />
+            android:textSize="@dimen/_11sdp" />
 
         <TextView
             android:id="@+id/report"
@@ -31,7 +31,7 @@
             android:layout_margin="@dimen/_5sdp"
             android:layout_marginTop="2dp"
             android:text="تقديم شكوى"
-            android:textSize="11sp" />
+            android:textSize="@dimen/_11sdp" />
 
         <TextView
             android:id="@+id/edit_offer"
@@ -40,7 +40,7 @@
             android:layout_margin="@dimen/_5sdp"
             android:layout_marginTop="2dp"
             android:text="تعديل العرض"
-            android:textSize="11sp" />
+            android:textSize="@dimen/_11sdp" />
 
 
     </LinearLayout>

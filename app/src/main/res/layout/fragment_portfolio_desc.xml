@@ -16,7 +16,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="@dimen/_60sdp"
             android:background="#09102D" />
 
         <TextView
@@ -24,12 +24,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:drawablePadding="5dp"
+            android:drawablePadding="@dimen/_5sdp"
             android:drawableRight="@drawable/ic_portfolio"
             android:gravity="center"
             android:text="@string/portfolio"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="@dimen/_16sdp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -37,8 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="15dp"
-            android:padding="8dp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:padding="@dimen/_8sdp"
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
@@ -70,7 +70,7 @@
                     android:layout_marginRight="5dp"
                     android:text="تصميم معماري لفيلا واجهة خارجية"
                     android:textColor="@color/textGray"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/_12sdp" />
 
 
                 <LinearLayout
@@ -105,7 +105,7 @@
                         android:paddingRight="5dp"
                         android:text="150"
                         android:textColor="@color/gray1"
-                        android:textSize="10sp" />
+                        android:textSize="@dimen/_9sdp" />
 
                     <TextView
                         android:id="@+id/tv_shows"
@@ -120,7 +120,7 @@
                         android:padding="3dp"
                         android:text="1200"
                         android:textColor="@color/gray1"
-                        android:textSize="10sp" />
+                        android:textSize="@dimen/_9sdp" />
 
                     <TextView
                         android:id="@+id/tv_calender"
@@ -134,7 +134,7 @@
                         android:padding="3dp"
                         android:text="10/4/2019"
                         android:textColor="@color/gray1"
-                        android:textSize="10sp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
@@ -143,8 +143,8 @@
                     android:id="@+id/view"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:background="@color/gray" />
 
                 <TextView
@@ -152,11 +152,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
                     android:text="واجهة فيلا بتصميم جميلومودرن وتم تنفيذه بالشكل الاحترافي"
                     android:textColor="@color/textGray"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/_12sdp" />
 
             </LinearLayout>
 
@@ -165,16 +165,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/tv_ilike_it"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="2dp"
+                    android:layout_marginRight="@dimen/_2sdp"
                     android:layout_weight="1"
                     android:background="@drawable/report_layout_shap"
                     android:drawableRight="@drawable/ic_like_small"
@@ -182,13 +182,13 @@
                     android:padding="3dp"
                     android:text="أعجبني"
                     android:textColor="@color/gray1"
-                    android:textSize="10sp" />
+                    android:textSize="@dimen/_9sdp" />
 
                 <TextView
                     android:id="@+id/tv_link"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="2dp"
+                    android:layout_marginRight="@dimen/_2sdp"
                     android:layout_weight="1"
                     android:background="@drawable/report_layout_shap"
                     android:drawableRight="@drawable/ic_link_small"
@@ -196,20 +196,20 @@
                     android:padding="3dp"
                     android:text="رابط العمل"
                     android:textColor="@color/gray1"
-                    android:textSize="10sp" />
+                    android:textSize="@dimen/_9sdp" />
 
                 <TextView
                     android:id="@+id/tv_addSimlilarWork"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="2dp"
+                    android:layout_marginRight="@dimen/_2sdp"
                     android:layout_weight="1"
                     android:background="@drawable/report_layout_shap"
                     android:gravity="center"
                     android:padding="4dp"
                     android:text="أضف عمل مشابه"
                     android:textColor="@color/gray1"
-                    android:textSize="8sp" />
+                    android:textSize="@dimen/_8sdp" />
 
                 <TextView
                     android:id="@+id/tv_add_to_fav"
@@ -221,7 +221,7 @@
                     android:padding="4dp"
                     android:text="أضف للمفضلة"
                     android:textColor="@color/gray1"
-                    android:textSize="10sp" />
+                    android:textSize="@dimen/_9sdp" />
             </LinearLayout>
 
             <LinearLayout
