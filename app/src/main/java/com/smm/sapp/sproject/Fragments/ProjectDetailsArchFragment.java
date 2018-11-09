@@ -73,8 +73,9 @@ public class ProjectDetailsArchFragment extends Fragment {
     private Button mSendIn;
     ImageView ic_back;
     private Spinner sp_chooese_style, sp_city, sp_balance;
-    String st_style, st_city, st_balance;
+    String st_style, st_city;
 
+    int st_balance;
 
     private static final int ERROR_DIALOG_REQUEST = 9001;
     private static final int REQUEST_CODE = 1;
@@ -121,7 +122,7 @@ public class ProjectDetailsArchFragment extends Fragment {
             public void onClick(View view) {
                 if (mInType.getText().toString().matches("") || st_style.matches("") || mDesignColor.getText().toString().matches("")
                         || mArea2.getText().toString().matches("") || st_city.matches("") || mMap.getText().toString().matches("")
-                        ||st_balance.matches("")|| mProjectDetailes.getText().toString().matches("")) {
+                         || mProjectDetailes.getText().toString().matches("")) {
                     Toast.makeText(getContext(), "يجب تعبئة جميع الحقول", Toast.LENGTH_LONG).show();
                 } else {
                     sendArchDesignRequest();
@@ -203,64 +204,64 @@ public class ProjectDetailsArchFragment extends Fragment {
                         setCity("الرياض");
                         break;
                     case 1:
-                        setCity("مكة");
+                        setCity("مكة المكرمة");
                         break;
                     case 2:
                         setCity("المدينة المنورة");
                         break;
                     case 3:
-                        setCity("بريدة");
+                        setCity("جدة");
                         break;
                     case 4:
-                        setCity("تبوك");
+                        setCity("سلطانة");
                         break;
                     case 5:
                         setCity("الدمام");
                         break;
                     case 6:
-                        setCity("الاحساء");
+                        setCity("تبوك");
                         break;
                     case 7:
-                        setCity("القطيف");
-                        break;
-                    case 8:
-                        setCity("خميس مشيط");
-                        break;
-                    case 9:
                         setCity("الطائف");
                         break;
+                    case 8:
+                        setCity("بريدة");
+                        break;
+                    case 9:
+                        setCity("خميس مشيط");
+                        break;
                     case 10:
-                        setCity("نجران");
+                        setCity("الهفوف");
                         break;
                     case 11:
-                        setCity("حفر الباطن");
+                        setCity("المبرز");
                         break;
                     case 12:
-                        setCity("الجبيل");
+                        setCity("حفر الباطن");
                         break;
                     case 13:
-                        setCity("ضباء");
+                        setCity("حائل");
                         break;
                     case 14:
-                        setCity("الخرج");
+                        setCity("نجران");
                         break;
                     case 15:
-                        setCity("الثقبة");
+                        setCity("الجبيل");
                         break;
                     case 16:
-                        setCity("ينبع البحر");
+                        setCity("ابها");
                         break;
                     case 17:
-                        setCity("الخبر");
+                        setCity("ينبع");
                         break;
                     case 18:
-                        setCity("عرعر");
+                        setCity("الخبر");
                         break;
                     case 19:
-                        setCity("الحوية");
+                        setCity("عنيزة");
                         break;
                     case 20:
-                        setCity("عنيزة");
+                        setCity("عرعر");
                         break;
                     case 21:
                         setCity("سكاكا");
@@ -272,58 +273,13 @@ public class ProjectDetailsArchFragment extends Fragment {
                         setCity("القريات");
                         break;
                     case 24:
-                        setCity("الظهران");
-                        break;
-                    case 25:
                         setCity("الباحة");
                         break;
+                    case 25:
+                        setCity("باقى");
+                        break;
                     case 26:
-                        setCity("الزلفي");
-                        break;
-                    case 27:
-                        setCity("الرس");
-                        break;
-                    case 28:
-                        setCity("وادي الدواسر");
-                        break;
-                    case 29:
-                        setCity("بيشه");
-                        break;
-                    case 30:
-                        setCity("سيهات");
-                        break;
-                    case 31:
-                        setCity("شروره");
-                        break;
-                    case 32:
-                        setCity("بحره");
-                        break;
-                    case 33:
-                        setCity("تاروت");
-                        break;
-                    case 34:
-                        setCity("الدوادمي");
-                        break;
-                    case 35:
-                        setCity("صبياء");
-                        break;
-                    case 36:
-                        setCity("بيش");
-                        break;
-                    case 37:
-                        setCity("أحد رفيدة");
-                        break;
-                    case 38:
-                        setCity("الفريش");
-                        break;
-                    case 39:
-                        setCity("بارق");
-                        break;
-                    case 40:
-                        setCity("الحوطة");
-                        break;
-                    case 41:
-                        setCity("الأفلاج");
+                        setCity("القصيم");
                         break;
                 }
             }
@@ -345,28 +301,28 @@ public class ProjectDetailsArchFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
                 switch (position) {
                     case 0:
-                        setBalance(0+"");
+                        setBalance(0);
                         break;
                     case 1:
-                        setBalance(1+"");
+                        setBalance(1);
                         break;
                     case 2:
-                        setBalance(2+"");
+                        setBalance(2);
                         break;
                     case 3:
-                        setBalance(3+"");
+                        setBalance(3);
                         break;
                     case 4:
-                        setBalance(4+"");
+                        setBalance(4);
                         break;
                     case 5:
-                        setBalance(5+"");
+                        setBalance(5);
                         break;
                     case 6:
-                        setBalance(6+"");
+                        setBalance(6);
                         break;
                     case 7:
-                        setBalance(7+"");
+                        setBalance(7);
                         break;
                 }
             }
@@ -449,7 +405,7 @@ public class ProjectDetailsArchFragment extends Fragment {
         map.put("area", mArea2.getText().toString());
         map.put("lng", s_lng);
         map.put("lat", s_lat);
-        map.put("balance", st_balance);
+        map.put("balance", String.valueOf(st_balance));
         map.put("descr", mProjectDetailes.getText().toString());
 
         Log.e("qqqqq", st_city);
@@ -539,7 +495,7 @@ public class ProjectDetailsArchFragment extends Fragment {
         this.st_style = st_style;
     }
 
-    private void setBalance(String st_balance) {
+    private void setBalance(int st_balance) {
         this.st_balance = st_balance;
     }
 

@@ -78,7 +78,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
 
     String savedValue1 = "", savedValue2 = "";
     int i = 0;
-    int st_balance = 0;
+    String st_balance;
 
     private Spinner sp_balance;
 
@@ -151,7 +151,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (mGhType.getText().toString().matches("") || mProjectNameGh.getText().toString().matches("") || mAboutActivity.getText().toString().matches("")
-                        || mProjectDeitailsGh.getText().toString().matches("")) {
+                        || mProjectDeitailsGh.getText().toString().matches("") || st_balance.matches("")) {
                     Toast.makeText(getContext(), "يجب تعبئة جميع الحقول", Toast.LENGTH_LONG).show();
                 } else {
                     attachMap.clear();
@@ -238,7 +238,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
         //map.put("about", mAboutActivity.getText().toString());
         map.put("newp", savedValue1);
         map.put("d_type", savedValue2);
-        map.put("balance", String.valueOf(st_balance));
+        map.put("balance", st_balance);
         map.put("descr", mProjectDeitailsGh.getText().toString());
 
         myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/projectmakegraphic", map, attachMap, new OkHttpCallback() {
@@ -299,28 +299,28 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
                 switch (position) {
                     case 0:
-                        setBalance(0);
+                        setBalance("500-1000");
                         break;
                     case 1:
-                        setBalance(1);
+                        setBalance("1000-2000");
                         break;
                     case 2:
-                        setBalance(2);
+                        setBalance("3000-3000");
                         break;
                     case 3:
-                        setBalance(3);
+                        setBalance("3000-4000");
                         break;
                     case 4:
-                        setBalance(4);
+                        setBalance("4000-5000");
                         break;
                     case 5:
-                        setBalance(5);
+                        setBalance("5000-6500");
                         break;
                     case 6:
-                        setBalance(6);
+                        setBalance("6500-8000");
                         break;
                     case 7:
-                        setBalance(7);
+                        setBalance("اكثر من 8000");
                         break;
                 }
             }
@@ -332,7 +332,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
         });
     }
 
-    private void setBalance(int st_balance) {
+    private void setBalance(String st_balance) {
         this.st_balance = st_balance;
     }
 

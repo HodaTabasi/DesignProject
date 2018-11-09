@@ -67,10 +67,8 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
     private TextView mWallAttachment;
     private Button mWallSend;
     ImageView ic_back;
-    Spinner sp_city ,sp_balance;
-    String st_city;
-
-    int st_balance = 0;
+    Spinner sp_city, sp_balance;
+    String st_city, st_balance;
 
     private static final int ERROR_DIALOG_REQUEST = 9001;
     private static final int REQUEST_CODE = 1;
@@ -140,7 +138,8 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (mWallType.getText().toString().matches("") || st_city.matches("") || mWallArea.getText().toString().matches("")
-                        || mWallMap.getText().toString().matches("")  || mWallProjectDietails.getText().toString().matches("")) {
+                        || mWallMap.getText().toString().matches("") || mWallProjectDietails.getText().toString().matches("")
+                        || st_balance.matches("")) {
                     Toast.makeText(getContext(), "يجب تعبئة جميع الحقول", Toast.LENGTH_LONG).show();
                 } else {
                     sendWallRequest();
@@ -283,28 +282,28 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
                 switch (position) {
                     case 0:
-                        setBalance(0);
+                        setBalance("500-1000");
                         break;
                     case 1:
-                        setBalance(1);
+                        setBalance("1000-2000");
                         break;
                     case 2:
-                        setBalance(2);
+                        setBalance("3000-3000");
                         break;
                     case 3:
-                        setBalance(3);
+                        setBalance("3000-4000");
                         break;
                     case 4:
-                        setBalance(4);
+                        setBalance("4000-5000");
                         break;
                     case 5:
-                        setBalance(5);
+                        setBalance("5000-6500");
                         break;
                     case 6:
-                        setBalance(6);
+                        setBalance("6500-8000");
                         break;
                     case 7:
-                        setBalance(7);
+                        setBalance("اكثر من 8000");
                         break;
                 }
             }
@@ -359,10 +358,10 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
         map.put("area", mWallArea.getText().toString());
         map.put("lng", s_lng);
         map.put("lat", s_lat);
-        map.put("balance", String.valueOf(st_balance));
+        map.put("balance", st_balance);
         map.put("descr", mWallProjectDietails.getText().toString());
 
-        Log.e("qqqq",st_city);
+        Log.e("qqqq", st_city + "" + st_balance);
 
         myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/projectmakewall", map, attachMap, new OkHttpCallback() {
             @Override
@@ -445,7 +444,7 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
         this.st_city = st_city;
     }
 
-    private void setBalance(int st_balance) {
+    private void setBalance(String st_balance) {
         this.st_balance = st_balance;
     }
 

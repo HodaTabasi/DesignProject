@@ -69,8 +69,8 @@ public class ProjectDetailsInterFragment extends Fragment {
     private EditText mProjectDetailes;
     private TextView mAttachmentIn;
     private Button mSendIn;
-    private Spinner sp_chooese_style, sp_city,sp_balance;
-    String st_style, st_city,st_balance;
+    private Spinner sp_chooese_style, sp_city, sp_balance;
+    String st_style, st_city, st_balance;
 
     private static final int ERROR_DIALOG_REQUEST = 9001;
     private static final int REQUEST_CODE = 1;
@@ -110,7 +110,7 @@ public class ProjectDetailsInterFragment extends Fragment {
             public void onClick(View view) {
                 if (mInType.getText().toString().matches("") || st_style.matches("") || mDesignColor.getText().toString().matches("")
                         || mArea2.getText().toString().matches("") || st_city.matches("") || mMap.getText().toString().matches("")
-                         ||st_balance.matches("")|| mProjectDetailes.getText().toString().matches("")) {
+                        || st_balance.matches("") || mProjectDetailes.getText().toString().matches("")) {
                     Toast.makeText(getContext(), "يجب تعبئة جميع الحقول", Toast.LENGTH_LONG).show();
 
                 } else {
@@ -281,28 +281,28 @@ public class ProjectDetailsInterFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
                 switch (position) {
                     case 0:
-                        setBalance(0+"");
+                        setBalance("500-1000");
                         break;
                     case 1:
-                        setBalance(1+"");
+                        setBalance("1000-2000");
                         break;
                     case 2:
-                        setBalance(2+"");
+                        setBalance("3000-3000");
                         break;
                     case 3:
-                        setBalance(3+"");
+                        setBalance("3000-4000");
                         break;
                     case 4:
-                        setBalance(4+"");
+                        setBalance("4000-5000");
                         break;
                     case 5:
-                        setBalance(5+"");
+                        setBalance("5000-6500");
                         break;
                     case 6:
-                        setBalance(6+"");
+                        setBalance("6500-8000");
                         break;
                     case 7:
-                        setBalance(7+"");
+                        setBalance("اكثر من 8000");
                         break;
                 }
             }
@@ -346,8 +346,7 @@ public class ProjectDetailsInterFragment extends Fragment {
         map.put("balance", st_balance);
         map.put("descr", mProjectDetailes.getText().toString());
 
-        Log.e("qqqqq",st_city);
-        Log.e("qqqqq",st_style);
+        Log.e("qqqqq", st_city+""+st_balance+""+st_style);
 
         myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/projectmakeinter", map, attachMap, new OkHttpCallback() {
             @Override
