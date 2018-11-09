@@ -70,7 +70,7 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
     Spinner sp_city ,sp_balance;
     String st_city;
 
-    int st_balance = 0;
+    int st_balance = 1;
 
     private static final int ERROR_DIALOG_REQUEST = 9001;
     private static final int REQUEST_CODE = 1;
@@ -283,28 +283,28 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
                 switch (position) {
                     case 0:
-                        setBalance(0);
-                        break;
-                    case 1:
                         setBalance(1);
                         break;
-                    case 2:
+                    case 1:
                         setBalance(2);
                         break;
-                    case 3:
+                    case 2:
                         setBalance(3);
                         break;
-                    case 4:
+                    case 3:
                         setBalance(4);
                         break;
-                    case 5:
+                    case 4:
                         setBalance(5);
                         break;
-                    case 6:
+                    case 5:
                         setBalance(6);
                         break;
-                    case 7:
+                    case 6:
                         setBalance(7);
+                        break;
+                    case 7:
+                        setBalance(8);
                         break;
                 }
             }

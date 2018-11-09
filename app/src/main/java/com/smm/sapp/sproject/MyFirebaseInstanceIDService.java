@@ -61,6 +61,11 @@ public class MyFirebaseInstanceIDService extends FirebaseMessagingService {
                     sendAddOfferNotification("تم تقديم عرض على مشروعك");
                     break;
                 case "تم رفض مشروعك":
+                    String name = remoteMessage.getData().get("name");
+                    String id = remoteMessage.getData().get("id");
+                    String type = remoteMessage.getData().get("type");
+                    String declineMessage = remoteMessage.getData().get("decline_message");
+                    sendRejectProjectNotification(name,type,id,declineMessage);
                     break;
                 default:
                     sendNotification();
@@ -73,7 +78,7 @@ public class MyFirebaseInstanceIDService extends FirebaseMessagingService {
         Intent intent = new Intent(this, ContainerActivity.class);
         // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra("notifiy",true);
-        intent.putExtra("type",5);
+        intent.putExtra("type",0);
         send(intent, 1, "اشعار جديد", "");
     }
     private void sendMessageNotification(NotificationPayLoad payLoad) {
@@ -108,6 +113,18 @@ public class MyFirebaseInstanceIDService extends FirebaseMessagingService {
         intent.putExtra("notifiy",true);
         intent.putExtra("type",4);
         send(intent, 1, "تم تقديم عرض على مشروعك",name);
+    }
+
+    private void sendRejectProjectNotification(String name,String type, String id,String reason) {
+        Intent intent = new Intent(this, ContainerActivity.class);
+        // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("notifiy",true);
+        intent.putExtra("type",5);
+        intent.putExtra("name",name);
+        intent.putExtra("id",id);
+        intent.putExtra("ptype",type);
+        intent.putExtra("reason",reason);
+        send(intent, 1, " تم رفض مشروعك ",name);
     }
 
     private void send(Intent intent, int action, String title, String message) {
