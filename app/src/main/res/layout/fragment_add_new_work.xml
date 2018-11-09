@@ -17,7 +17,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="@dimen/_60sdp"
             android:background="#09102D" />
 
         <TextView
@@ -25,13 +25,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:drawablePadding="5dp"
+            android:drawablePadding="@dimen/_5sdp"
             android:drawableRight="@drawable/ic_gallary"
             android:drawableTint="@color/white"
             android:gravity="center"
             android:text="معرض اعمالي"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="@dimen/_16sdp" />
 
         <ImageView
             android:id="@+id/ic_back"
@@ -39,8 +39,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="15dp"
-            android:padding="8dp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:padding="@dimen/_8sdp"
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
@@ -48,16 +48,16 @@
         android:id="@+id/title1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/_14sdp"
         android:background="@drawable/blue_shape"
-        android:paddingBottom="5dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="11dp"
-        android:paddingTop="5dp"
-        android:text="اضف عمل جديد  "
+        android:paddingBottom="@dimen/_5sdp"
+        android:paddingLeft="@dimen/_10sdp"
+        android:paddingRight="@dimen/_10sdp"
+        android:paddingTop="@dimen/_5sdp"
+        android:text="اضف عمل جديد"
         android:textAlignment="center"
         android:textColor="@android:color/white"
-        android:textSize="14sp" />
+        android:textSize="@dimen/_14sdp" />
 
 
     <ScrollView
@@ -73,10 +73,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:layout_marginRight="@dimen/_8sdp"
+                android:layout_marginStart="@dimen/_8sdp"
                 android:background="@drawable/report_layout_shap"
                 android:orientation="vertical">
 
@@ -96,42 +96,42 @@
                         android:layout_margin="5dp"
                         android:background="@drawable/white_shap"
                         android:hint="العنوان"
-                        android:padding="3dp"
+                        android:padding="@dimen/_3sdp"
                         android:textColor="@android:color/black"
                         android:textColorHint="@color/gray"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
 
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/_1sdp"
                     android:background="@color/gray" />
 
                 <EditText
                     android:id="@+id/et_bio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="@dimen/_5sdp"
                     android:background="@drawable/white_shap"
                     android:hint="نبذة عن العمل"
-                    android:padding="3dp"
+                    android:padding="@dimen/_3sdp"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/gray"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/_12sdp" />
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/_1sdp"
                     android:background="@color/gray" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="@dimen/_5sdp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="3dp">
+                    android:padding="@dimen/_3sdp">
 
                     <Spinner
                         android:id="@+id/sp_specialization"
@@ -140,18 +140,17 @@
                         android:layout_weight="2"
                         android:background="@color/white"
                         android:textColor="@android:color/black"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
 
                     <TextView
                         android:id="@+id/tv_type"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/white_shap"
                         android:text="نوع العمل"
                         android:textColor="@color/gray"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/_12sdp" />
 
 
                 </LinearLayout>
@@ -159,63 +158,63 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/_1sdp"
                     android:background="@color/gray" />
 
                 <EditText
                     android:id="@+id/et_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="@dimen/_5sdp"
                     android:background="@drawable/white_shap"
                     android:hint="تاريخ العمل"
-                    android:padding="3dp"
+                    android:padding="@dimen/_3sdp"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/gray"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/_12sdp" />
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/_1sdp"
                     android:background="@color/gray" />
 
                 <EditText
                     android:id="@+id/et_link"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="@dimen/_5sdp"
                     android:background="@drawable/white_shap"
                     android:hint="رابط العمل"
-                    android:padding="3dp"
+                    android:padding="@dimen/_3sdp"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/gray"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/_12sdp" />
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/_1sdp"
                     android:background="@color/gray" />
 
                 <TextView
                     android:id="@+id/tv_photo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="@dimen/_5sdp"
                     android:background="@drawable/white_shap"
                     android:hint="اضف صورة العمل"
-                    android:padding="3dp"
+                    android:padding="@dimen/_3sdp"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/gray"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/_12sdp" />
 
                 <ImageView
                     android:id="@+id/work_img"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_100sdp"
                     android:layout_gravity="right"
-                    android:layout_margin="5dp"
+                    android:layout_margin="@dimen/_5sdp"
                     android:background="@drawable/white_shap"
-                    android:padding="3dp" />
+                    android:padding="@dimen/_3sdp" />
 
 
             </LinearLayout>
@@ -225,32 +224,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_margin="16dp"
+                android:layout_margin="@dimen/_8sdp"
                 android:background="@drawable/blue_shape"
-                android:paddingBottom="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="11dp"
-                android:paddingTop="5dp"
-                android:text="حفظ "
+                android:paddingBottom="@dimen/_5sdp"
+                android:paddingLeft="@dimen/_10sdp"
+                android:paddingRight="@dimen/_10sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:text="حفظ"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_12sdp" />
 
             <TextView
                 android:id="@+id/tv_update"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_margin="16dp"
+                android:layout_margin="@dimen/_8sdp"
                 android:background="@drawable/blue_shape"
-                android:paddingBottom="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="11dp"
-                android:paddingTop="5dp"
-                android:text="تعديل "
+                android:paddingBottom="@dimen/_5sdp"
+                android:paddingLeft="@dimen/_10sdp"
+                android:paddingRight="@dimen/_11sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:text="تعديل"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
-                android:textSize="14sp"
+                android:textSize="@dimen/_12sdp"
                 android:visibility="gone" />
         </LinearLayout>
     </ScrollView>

@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="@dimen/_160sdp"
         android:src="@drawable/logo" />
 
 
@@ -23,10 +23,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/splash"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/_15sdp"
         android:text="وظف مصممين محترفين"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="@dimen/_13sdp" />
 
     <TextView
         android:id="@+id/tv2"
@@ -36,15 +36,6 @@
         android:layout_centerHorizontal="true"
         android:text="للعمل على مشروعك"
         android:textColor="@color/white"
-        android:textSize="16sp" />
-    <!--<TextView-->
-    <!--android:id="@+id/tv2"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_below="@+id/tv1"-->
-    <!--android:layout_centerHorizontal="true"-->
-    <!--android:text="للعمل على مشروعك"-->
-    <!--android:textColor="@color/white"-->
-    <!--android:textSize="16sp" />-->
+        android:textSize="@dimen/_13sdp" />
 
 </RelativeLayout>
