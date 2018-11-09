@@ -74,8 +74,8 @@ public class ProjectDetailsArchFragment extends Fragment {
     ImageView ic_back;
     private Spinner sp_chooese_style, sp_city, sp_balance;
     String st_style, st_city;
+    int st_balance = 1;
 
-    int st_balance;
 
     private static final int ERROR_DIALOG_REQUEST = 9001;
     private static final int REQUEST_CODE = 1;
@@ -122,7 +122,7 @@ public class ProjectDetailsArchFragment extends Fragment {
             public void onClick(View view) {
                 if (mInType.getText().toString().matches("") || st_style.matches("") || mDesignColor.getText().toString().matches("")
                         || mArea2.getText().toString().matches("") || st_city.matches("") || mMap.getText().toString().matches("")
-                         || mProjectDetailes.getText().toString().matches("")) {
+                        || mProjectDetailes.getText().toString().matches("")) {
                     Toast.makeText(getContext(), "يجب تعبئة جميع الحقول", Toast.LENGTH_LONG).show();
                 } else {
                     sendArchDesignRequest();
@@ -301,28 +301,28 @@ public class ProjectDetailsArchFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
                 switch (position) {
                     case 0:
-                        setBalance(0);
-                        break;
-                    case 1:
                         setBalance(1);
                         break;
-                    case 2:
+                    case 1:
                         setBalance(2);
                         break;
-                    case 3:
+                    case 2:
                         setBalance(3);
                         break;
-                    case 4:
+                    case 3:
                         setBalance(4);
                         break;
-                    case 5:
+                    case 4:
                         setBalance(5);
                         break;
-                    case 6:
+                    case 5:
                         setBalance(6);
                         break;
-                    case 7:
+                    case 6:
                         setBalance(7);
+                        break;
+                    case 7:
+                        setBalance(8);
                         break;
                 }
             }

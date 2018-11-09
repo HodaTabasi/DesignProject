@@ -69,8 +69,9 @@ public class ProjectDetailsInterFragment extends Fragment {
     private EditText mProjectDetailes;
     private TextView mAttachmentIn;
     private Button mSendIn;
-    private Spinner sp_chooese_style, sp_city, sp_balance;
-    String st_style, st_city, st_balance;
+    private Spinner sp_chooese_style, sp_city,sp_balance;
+    String st_style, st_city;
+    int  st_balance = 1;
 
     private static final int ERROR_DIALOG_REQUEST = 9001;
     private static final int REQUEST_CODE = 1;
@@ -110,7 +111,7 @@ public class ProjectDetailsInterFragment extends Fragment {
             public void onClick(View view) {
                 if (mInType.getText().toString().matches("") || st_style.matches("") || mDesignColor.getText().toString().matches("")
                         || mArea2.getText().toString().matches("") || st_city.matches("") || mMap.getText().toString().matches("")
-                        || st_balance.matches("") || mProjectDetailes.getText().toString().matches("")) {
+                         || mProjectDetailes.getText().toString().matches("")) {
                     Toast.makeText(getContext(), "يجب تعبئة جميع الحقول", Toast.LENGTH_LONG).show();
 
                 } else {
@@ -281,28 +282,28 @@ public class ProjectDetailsInterFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
                 switch (position) {
                     case 0:
-                        setBalance("500-1000");
+                        setBalance(1);
                         break;
                     case 1:
-                        setBalance("1000-2000");
+                        setBalance(2);
                         break;
                     case 2:
-                        setBalance("3000-3000");
+                        setBalance(3);
                         break;
                     case 3:
-                        setBalance("3000-4000");
+                        setBalance(4);
                         break;
                     case 4:
-                        setBalance("4000-5000");
+                        setBalance(5);
                         break;
                     case 5:
-                        setBalance("5000-6500");
+                        setBalance(6);
                         break;
                     case 6:
-                        setBalance("6500-8000");
+                        setBalance(7);
                         break;
                     case 7:
-                        setBalance("اكثر من 8000");
+                        setBalance(8);
                         break;
                 }
             }
@@ -343,10 +344,12 @@ public class ProjectDetailsInterFragment extends Fragment {
         map.put("area", mArea2.getText().toString());
         map.put("lng", s_lng);
         map.put("lat", s_lat);
-        map.put("balance", st_balance);
+        map.put("balance", String.valueOf(st_balance));
         map.put("descr", mProjectDetailes.getText().toString());
 
-        Log.e("qqqqq", st_city+""+st_balance+""+st_style);
+        Log.e("qqqqq",st_city);
+        Log.e("qqqqq",st_style);
+        Log.e("qqqqq",st_balance+" gh");
 
         myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/projectmakeinter", map, attachMap, new OkHttpCallback() {
             @Override
@@ -374,7 +377,7 @@ public class ProjectDetailsInterFragment extends Fragment {
                                 Log.e("fdd", object.getString("message"));
 
                             } else {
-                                Toast.makeText(getActivity(), "" + object.getString("message"), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "" + object.getString("error"), Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -507,7 +510,7 @@ public class ProjectDetailsInterFragment extends Fragment {
         this.st_city = st_city;
     }
 
-    private void setBalance(String st_balance) {
+    private void setBalance(int st_balance) {
         this.st_balance = st_balance;
     }
 }

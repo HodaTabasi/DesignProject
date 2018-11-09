@@ -243,6 +243,7 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
                                     }else {
                                         switch (object2.getString("status")) {
                                             case "1":
+                                            case "0":
                                                 //قيد العمل
                                                 arrayList1.add(models);
                                                 break;

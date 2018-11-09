@@ -31,8 +31,6 @@ public class MyProgressDialog {
         progressDialog.setCancelable(false);
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
-        progressDialog.setCancelable(false);
-        progressDialog.setCanceledOnTouchOutside(false);
     }
 
     public static void DoneDialog(Context context , String balance , String message){

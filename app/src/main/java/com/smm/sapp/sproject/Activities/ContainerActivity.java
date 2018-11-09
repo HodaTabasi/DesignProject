@@ -1,16 +1,20 @@
 package com.smm.sapp.sproject.Activities;
 
+import android.app.Dialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.provider.SyncStateContract;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.smm.sapp.sproject.ConstantInterFace;
@@ -67,6 +71,14 @@ public class ContainerActivity extends AppCompatActivity {
                      FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new MyProjectFragment(), false);
                      break;
                  case 5:
+                     FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new MainFragment(), false);
+                     String name = getIntent().getStringExtra("name");
+                     String id = getIntent().getStringExtra("id");
+                     String type = getIntent().getStringExtra("ptype");
+                     String reason = getIntent().getStringExtra("reason");
+                     showRejectProjectDialog(name,id,type,reason);
+                     break;
+                 default:
                      FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new NotificationFragment(), true);
                      break;
              }
@@ -148,6 +160,29 @@ public class ContainerActivity extends AppCompatActivity {
             });
         }
 
+    }
+
+    private void showRejectProjectDialog(String name, String id, String type, String reason) {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //before
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setContentView(R.layout.done_dialog);
+        TextView tv = dialog.findViewById(R.id.tv);
+        TextView tv1 = dialog.findViewById(R.id.tv1);
+        ImageButton send_bank11 = dialog.findViewById(R.id.send_bank11);
+
+        tv.setText( "تم رفض مشروع  " + name);
+        tv1.setText(" السبب: "+reason);
+        send_bank11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                FragmentsUtil.replaceFragment(ContainerActivity.this, R.id.container_activity, new MyProjectFragment(), false);
+            }
+        });
+        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
     }
 
     private void setBottomBar() {
