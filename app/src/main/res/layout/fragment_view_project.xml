@@ -283,7 +283,7 @@
                         android:layout_marginEnd="5dp"
                         android:layout_marginStart="5dp"
                         android:layout_weight="0.5"
-                        android:text="الالوان المقترحة"
+                        android:text="المدينة"
                         android:textColor="@color/textGray"
                         android:textSize="14sp" />
                 </LinearLayout>

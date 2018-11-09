@@ -117,9 +117,8 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
         onClickMethod();
-
         getProjects("myprojects?token=" + ConstantInterFace.USER.getToken());
-        addToChart();
+        //addToChart();
     }
 
 
@@ -254,35 +253,33 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
                                         }
                                     }
 
-
-
-                                    for (OfferModel offerModel : models.getOffers()) {
-                                        if (offerModel.getApproved().equals("0") && offerModel.getFinished().equals("0")) {
-                                            wait++;
-                                            waitTV.setText(wait + " عرض ");
-                                            waitList.add(offerModel);
-                                        } else if (offerModel.getApproved().equals("1") && offerModel.getFinished().equals("0")) {
-                                            under++;
-                                            underTV.setText(under + " عرض ");
-                                            underList.add(offerModel);
-                                        } else if (offerModel.getApproved().equals("1") && offerModel.getFinished().equals("1")) {
-                                            done++;
-                                            doneTV.setText(done + " عرض ");
-                                            doneList.add(offerModel);
-                                        } else {
-                                            excluded++;
-                                            excludedTV.setText(excluded + " عرض ");
-                                            excludedList.add(offerModel);
-                                        }
-                                    }
+//                                    for (OfferModel offerModel : models.getOffers()) {
+//                                        if (offerModel.getApproved().equals("0") && offerModel.getFinished().equals("0")) {
+//                                            wait++;
+//                                            waitTV.setText(wait + " عرض ");
+//                                            waitList.add(offerModel);
+//                                        } else if (offerModel.getApproved().equals("1") && offerModel.getFinished().equals("0")) {
+//                                            under++;
+//                                            underTV.setText(under + " عرض ");
+//                                            underList.add(offerModel);
+//                                        } else if (offerModel.getApproved().equals("1") && offerModel.getFinished().equals("1")) {
+//                                            done++;
+//                                            doneTV.setText(done + " عرض ");
+//                                            doneList.add(offerModel);
+//                                        } else {
+//                                            excluded++;
+//                                            excludedTV.setText(excluded + " عرض ");
+//                                            excludedList.add(offerModel);
+//                                        }
+//                                    }
                                 }
 
-                                wait = (wait/total) *100;
-                                under = (under/total) *100;
-                                done = (done/total) *100;
-                                excluded = (excluded/total) *100;
+//                                wait = (wait/total) *100;
+//                                under = (under/total) *100;
+//                                done = (done/total) *100;
+//                                excluded = (excluded/total) *100;
 
-                                mMyProjectRes.setAdapter(new ClientProjectAdapter(getContext(), arrayList2));
+
 
                             } else {
                                 Toast.makeText(getContext(), "" + object1.getBoolean("error"), Toast.LENGTH_SHORT).show();
@@ -290,7 +287,8 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        addToChart();
+                        //addToChart();
+                        mMyProjectRes.setAdapter(new ClientProjectAdapter(getContext(), arrayList2));
                     }
                 });
 

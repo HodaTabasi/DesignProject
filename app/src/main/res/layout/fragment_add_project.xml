@@ -158,15 +158,17 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="25dp"
                     android:src="@drawable/ic_search2"
+                    android:layout_above="@+id/ss"
                     android:tint="#a4a4a4" />
 
                 <TextView
+                    android:id="@+id/ss"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="25dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="18dp"
                     android:text="بحث عن مصمم"
                     android:textColor="@android:color/black"
                     android:textSize="14sp" />

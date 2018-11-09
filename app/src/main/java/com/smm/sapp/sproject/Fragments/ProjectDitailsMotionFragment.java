@@ -15,10 +15,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +30,7 @@ import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.HelperClass.PathUtil;
 import com.smm.sapp.sproject.MyRequest;
+import com.smm.sapp.sproject.MySpinnerAdapter;
 import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
 
@@ -39,6 +42,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -60,7 +64,6 @@ public class ProjectDitailsMotionFragment extends Fragment {
     private EditText mProjectTime;
     private EditText mAboutActivity;
     private ImageView mMotionLikeImage;
-    private EditText mMotionBalance;
     private EditText mProjectDetiailsMotion;
     private TextView mAttachmentMotion;
     private Button mSendMotion;
@@ -74,7 +77,9 @@ public class ProjectDitailsMotionFragment extends Fragment {
     ArrayList<String> bStrings;
 
     ProjectPhotoAdapter adapter;
+    int st_balance = 0;
 
+    private Spinner sp_balance;
     public ProjectDitailsMotionFragment() {
 
 
@@ -94,10 +99,10 @@ public class ProjectDitailsMotionFragment extends Fragment {
         mProjectTime = getView().findViewById(R.id.project_time);
         mAboutActivity = getView().findViewById(R.id.about_activity);
         mMotionLikeImage = getView().findViewById(R.id.motion_like_image);
-        mMotionBalance = getView().findViewById(R.id.motion_balance);
         mProjectDetiailsMotion = getView().findViewById(R.id.project_detiails_motion);
         mAttachmentMotion = getView().findViewById(R.id.attachment_motion);
         mSendMotion = getView().findViewById(R.id.send_motion);
+        sp_balance = getView().findViewById(R.id.sp_chooese_balance);
         lien =  getView().findViewById(R.id.lien);
         rec_P =  getView().findViewById(R.id.rec_P);
         rec_P.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
@@ -116,11 +121,13 @@ public class ProjectDitailsMotionFragment extends Fragment {
         adapter = new ProjectPhotoAdapter(getContext(),R.layout.layout_item_photos,bitmaps,bStrings,true);
         rec_P.setAdapter(adapter);
 
+        setSpinner();
+
         mSendMotion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (mMotionType.getText().toString().matches("") || mProjectName.getText().toString().matches("") || mProjectTime.getText().toString().matches("")
-                        || mAboutActivity.getText().toString().matches("") || mMotionBalance.getText().toString().matches("") || mProjectDetiailsMotion.getText().toString().matches("")) {
+                        || mAboutActivity.getText().toString().matches("") || mProjectDetiailsMotion.getText().toString().matches("")) {
                     Toast.makeText(getContext(), "يجب تعبئة جميع الحقول", Toast.LENGTH_LONG).show();
 
                 } else {
@@ -183,7 +190,7 @@ public class ProjectDitailsMotionFragment extends Fragment {
         map.put("name", mProjectName.getText().toString());
         map.put("dur", mProjectTime.getText().toString());
         map.put("about", mAboutActivity.getText().toString());
-        map.put("balance", mMotionBalance.getText().toString());
+        map.put("balance", String.valueOf(st_balance));
         map.put("descr", mProjectDetiailsMotion.getText().toString());
 
         myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/projectmakemoshen", map,attachMap, new OkHttpCallback() {
@@ -213,6 +220,55 @@ public class ProjectDitailsMotionFragment extends Fragment {
                 });
             }
         });
+    }
+
+    private void setSpinner() {
+        MySpinnerAdapter adapter3 = new MySpinnerAdapter(
+                getContext(),
+                android.R.layout.simple_spinner_item,
+                Arrays.asList(getResources().getStringArray(R.array.spinner_balance))
+        );
+        sp_balance.setAdapter(adapter3);
+        sp_balance.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
+                switch (position) {
+                    case 0:
+                        setBalance(0);
+                        break;
+                    case 1:
+                        setBalance(1);
+                        break;
+                    case 2:
+                        setBalance(2);
+                        break;
+                    case 3:
+                        setBalance(3);
+                        break;
+                    case 4:
+                        setBalance(4);
+                        break;
+                    case 5:
+                        setBalance(5);
+                        break;
+                    case 6:
+                        setBalance(6);
+                        break;
+                    case 7:
+                        setBalance(7);
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
+    private void setBalance(int st_balance) {
+        this.st_balance = st_balance;
     }
 
     @Override

@@ -16,10 +16,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +31,7 @@ import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.HelperClass.PathUtil;
 import com.smm.sapp.sproject.MyRequest;
+import com.smm.sapp.sproject.MySpinnerAdapter;
 import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
 
@@ -40,6 +43,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -65,7 +69,6 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
     private TextView mNo;
     private TextView mYes;
     private TextView mNewProject;
-    private EditText mGhBalance;
     private EditText mProjectDeitailsGh;
     private TextView mGhAttachment;
     private Button mSendGh;
@@ -75,6 +78,10 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
 
     String savedValue1 = "", savedValue2 = "";
     int i = 0;
+    int st_balance = 0;
+
+    private Spinner sp_balance;
+
 
     Map<String, String> attachMap;
     ArrayList<Bitmap> bitmaps;
@@ -106,9 +113,10 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
         mNo = getView().findViewById(R.id.no);
         mYes = getView().findViewById(R.id.yes);
         mNewProject = getView().findViewById(R.id.new_project);
-        mGhBalance = getView().findViewById(R.id.gh_balance);
+
         mProjectDeitailsGh = getView().findViewById(R.id.project_deitails_gh);
         mGhAttachment = getView().findViewById(R.id.gh_attachment);
+        sp_balance = getView().findViewById(R.id.sp_chooese_balance);
         mSendGh = getView().findViewById(R.id.send_gh);
         lien = getView().findViewById(R.id.lien);
         rec_P = getView().findViewById(R.id.rec_P);
@@ -127,7 +135,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
 
         adapter = new ProjectPhotoAdapter(getContext(), R.layout.layout_item_photos, bitmaps, bStrings, true);
         rec_P.setAdapter(adapter);
-
+        setSpinner();
         attachMap = new HashMap<>();
 
         ic_back = getView().findViewById(R.id.ic_back);
@@ -143,7 +151,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (mGhType.getText().toString().matches("") || mProjectNameGh.getText().toString().matches("") || mAboutActivity.getText().toString().matches("")
-                        || mGhBalance.getText().toString().matches("") || mProjectDeitailsGh.getText().toString().matches("")) {
+                        || mProjectDeitailsGh.getText().toString().matches("")) {
                     Toast.makeText(getContext(), "يجب تعبئة جميع الحقول", Toast.LENGTH_LONG).show();
                 } else {
                     attachMap.clear();
@@ -230,7 +238,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
         //map.put("about", mAboutActivity.getText().toString());
         map.put("newp", savedValue1);
         map.put("d_type", savedValue2);
-        map.put("balance", mGhBalance.getText().toString());
+        map.put("balance", String.valueOf(st_balance));
         map.put("descr", mProjectDeitailsGh.getText().toString());
 
         myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/projectmakegraphic", map, attachMap, new OkHttpCallback() {
@@ -277,6 +285,55 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
                 })
                 .build()
                 .show();
+    }
+
+    private void setSpinner() {
+        MySpinnerAdapter adapter3 = new MySpinnerAdapter(
+                getContext(),
+                android.R.layout.simple_spinner_item,
+                Arrays.asList(getResources().getStringArray(R.array.spinner_balance))
+        );
+        sp_balance.setAdapter(adapter3);
+        sp_balance.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
+                switch (position) {
+                    case 0:
+                        setBalance(0);
+                        break;
+                    case 1:
+                        setBalance(1);
+                        break;
+                    case 2:
+                        setBalance(2);
+                        break;
+                    case 3:
+                        setBalance(3);
+                        break;
+                    case 4:
+                        setBalance(4);
+                        break;
+                    case 5:
+                        setBalance(5);
+                        break;
+                    case 6:
+                        setBalance(6);
+                        break;
+                    case 7:
+                        setBalance(7);
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
+    private void setBalance(int st_balance) {
+        this.st_balance = st_balance;
     }
 
     @Override

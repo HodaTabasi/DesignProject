@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.smm.sapp.sproject.Fragments.EditProposalFragment;
 import com.smm.sapp.sproject.Fragments.MyOffersFragment;
@@ -25,7 +26,7 @@ public class ClientProjectAdapter extends RecyclerView.Adapter<ClientProjectAdap
     private Context context;
     private List<ProjectsModels> projectsList;
 
-    public ClientProjectAdapter(Context context, List<ProjectsModels> projectsList) {
+    public ClientProjectAdapter(Context context, List<ProjectsModels> projectsList ) {
         this.context = context;
         this.projectsList = projectsList;
     }
@@ -45,7 +46,7 @@ public class ClientProjectAdapter extends RecyclerView.Adapter<ClientProjectAdap
         String[] s = created_at.split(" ");
         holder.calender.setText(s[0]);
         holder.name.setText(projectsModels.getUser().getName());
-        holder.money.setText(" $ " + projectsModels.getBalance());
+        holder.money.setText(projectsModels.getBalance() + " ريال سعودي ");
         holder.body.setText(projectsModels.getName());
 
         Log.e("uuuuu",projectsModels.getUser().getName());
@@ -54,12 +55,18 @@ public class ClientProjectAdapter extends RecyclerView.Adapter<ClientProjectAdap
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyOffersFragment fragment = new MyOffersFragment();
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("object", projectsModels);
-                bundle.putBoolean("flag", false);
-                fragment.setArguments(bundle);
-                FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
+                if (projectsModels.getAccepted().equals("0")){
+
+                    Toast.makeText(context, "المشروع قيد المراجعة ليس له عروض", Toast.LENGTH_SHORT).show();
+                }else {
+                    MyOffersFragment fragment = new MyOffersFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable("object", projectsModels);
+                    bundle.putBoolean("flag", false);
+                    fragment.setArguments(bundle);
+                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
+                }
+
             }
         });
     }

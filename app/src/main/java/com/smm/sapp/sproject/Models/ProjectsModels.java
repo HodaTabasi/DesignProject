@@ -3,6 +3,8 @@ package com.smm.sapp.sproject.Models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class ProjectsModels implements Parcelable {
@@ -15,6 +17,8 @@ public class ProjectsModels implements Parcelable {
     private String balance;
     private String user_id;
     private String status;
+    private String with_id;
+    private String accepted;
     private String created_at;
     private String updated_at;
     private AddtionInfoBean addtion_info;
@@ -24,6 +28,9 @@ public class ProjectsModels implements Parcelable {
     private List<PhotoModel> photos;
     private List<Attachments> similars;
 
+    @SerializedName("private")
+    private String Private;
+
     protected ProjectsModels(Parcel in) {
         id = in.readInt();
         name = in.readString();
@@ -32,8 +39,31 @@ public class ProjectsModels implements Parcelable {
         balance = in.readString();
         user_id = in.readString();
         status = in.readString();
+        with_id = in.readString();
+        accepted = in.readString();
         created_at = in.readString();
         updated_at = in.readString();
+        user = in.readParcelable(User.class.getClassLoader());
+        offers = in.createTypedArrayList(OfferModel.CREATOR);
+        Private = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(name);
+        dest.writeString(descr);
+        dest.writeString(type);
+        dest.writeString(balance);
+        dest.writeString(user_id);
+        dest.writeString(status);
+        dest.writeString(with_id);
+        dest.writeString(accepted);
+        dest.writeString(created_at);
+        dest.writeString(updated_at);
+        dest.writeParcelable(user, flags);
+        dest.writeTypedList(offers);
+        dest.writeString(Private);
     }
 
     public static final Creator<ProjectsModels> CREATOR = new Creator<ProjectsModels>() {
@@ -47,6 +77,31 @@ public class ProjectsModels implements Parcelable {
             return new ProjectsModels[size];
         }
     };
+
+    public String getPrivate()
+    {
+        return Private;
+    }
+    public void setPrivate(String Private)
+    {
+        this.Private = Private;
+    }
+
+    public String getWith_id() {
+        return with_id;
+    }
+
+    public void setWith_id(String with_id) {
+        this.with_id = with_id;
+    }
+
+    public String getAccepted() {
+        return accepted;
+    }
+
+    public void setAccepted(String accepted) {
+        this.accepted = accepted;
+    }
 
     public int getId() {
         return id;
@@ -168,23 +223,12 @@ public class ProjectsModels implements Parcelable {
         this.similars = similars;
     }
 
+
     @Override
     public int describeContents() {
         return 0;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(id);
-        dest.writeString(name);
-        dest.writeString(descr);
-        dest.writeString(type);
-        dest.writeString(balance);
-        dest.writeString(user_id);
-        dest.writeString(status);
-        dest.writeString(created_at);
-        dest.writeString(updated_at);
-    }
 
     public static class AddtionInfoBean {
 

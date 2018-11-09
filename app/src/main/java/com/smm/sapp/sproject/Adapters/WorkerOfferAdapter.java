@@ -50,7 +50,7 @@ public class WorkerOfferAdapter extends RecyclerView.Adapter<WorkerOfferAdapter.
         else
             holder.name.setText(offerModel.getProject().getUser().getName());
 
-        holder.money.setText(" $ " + offerModel.getBalance());
+        holder.money.setText(offerModel.getBalance() + " ريال سعودي ");
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,11 +61,13 @@ public class WorkerOfferAdapter extends RecyclerView.Adapter<WorkerOfferAdapter.
                     fragment.setArguments(bundle);
                     FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
                 } else if (num == 3 || num == 4) {
+                    Log.e("ffrvhvs","vlhjpifspod");
                     UnderwayFragment fragment = new UnderwayFragment();
                     Bundle bundle = new Bundle();
                     bundle.putParcelable("offer", offerModel);
                     bundle.putParcelable("user", offerModel.getUser());
                     fragment.setArguments(bundle);
+                    Log.e("ffrvhvs",offerModel.getUser().getId()+" fddd" );
                     FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
                 }
             }

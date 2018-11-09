@@ -135,6 +135,7 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
         } else {
             ProjectsModels projectsModels = bundle.getParcelable("object");
             name = projectsModels.getUser().getName();
+            titles.setText( " جميع عروض مشروع "+ projectsModels.getName());
             swichOffers(projectsModels.getOffers());
         }
     }

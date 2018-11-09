@@ -64,50 +64,46 @@
         <item>بوهيمي</item>
     </array>
 
+    <array name="spinner_balance">
+        <item>500-1000</item>
+        <item>1000-2000</item>
+        <item>2000-3000</item>
+        <item>3000-4000</item>
+        <item>4000-5000</item>
+        <item>5000-6500</item>
+        <item>6500-8000</item>
+        <item>اكثر من 8000</item>
+    </array>
+
 
     <array name="spinner_cities">
         <item>الرياض</item>
-        <item>مكة</item>
+        <item>مكة المكرمة</item>
         <item>المدينة المنورة</item>
-        <item>بريدة</item>
-        <item>تبوك</item>
+        <item>جدة</item>
+        <item>سلطانة</item>
         <item>الدمام</item>
-        <item>الاحساء</item>
-        <item>القطيف</item>
-        <item>خميس مشيط</item>
+        <item>تبوك</item>
         <item>الطائف</item>
-        <item>نجران</item>
+        <item>بريدة</item>
+        <item>خميس مشيط</item>
+        <item>الهفوف</item>
+        <item>المبرز</item>
         <item>حفر الباطن</item>
+        <item>حائل</item>
+        <item>نجران</item>
         <item>الجبيل</item>
-        <item>ضباء</item>
-        <item>الخرج</item>
-        <item>الثقبة</item>
-        <item>ينبع البحر</item>
+        <item>ابها</item>
+        <item>ينبع</item>
         <item>الخبر</item>
-        <item>عرعر</item>
-        <item>الحوية</item>
         <item>عنيزة</item>
+        <item>عرعر</item>
         <item>سكاكا</item>
-        <item>جيزان</item>
+        <item>جازان</item>
         <item>القريات</item>
-        <item>الظهران</item>
         <item>الباحة</item>
-        <item>الزلفي</item>
-        <item>الرس</item>
-        <item>وادي الدواسر</item>
-        <item>بيشه</item>
-        <item>سيهات</item>
-        <item>شروره</item>
-        <item>بحره</item>
-        <item>تاروت</item>
-        <item>الدوادمي</item>
-        <item>صبياء</item>
-        <item>بيش</item>
-        <item>أحد رفيدة</item>
-        <item>الفريش</item>
-        <item>بارق</item>
-        <item>الحوطة</item>
-        <item>الأفلاج</item>
+        <item>باقى</item>
+        <item>القصيم</item>
     </array>
 
 </resources>

@@ -2,22 +2,24 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
+    android:layoutDirection="rtl"
     android:layout_height="wrap_content">
-    
-    <ImageView
-        android:id="@+id/photo"
-        android:layout_width="@dimen/_80sdp"
-        android:layout_height="@dimen/_80sdp"
-        android:layout_margin="@dimen/_8sdp"
-        android:src="@drawable/img1"/>
 
     <ImageView
-        android:id="@+id/delete"
+        android:id="@+id/view_img"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_200sdp"
+        android:layout_margin="@dimen/_8sdp"
+        android:src="@drawable/app_icon"/>
+
+    <ImageView
+        android:id="@+id/deletes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/photo"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="-9dp"
-        android:padding="@dimen/_5sdp"
+        android:layout_marginTop="-5dp"
+        android:padding="@dimen/_8sdp"
         android:src="@drawable/ic_highlight_off_black_24dp" />
+
 </RelativeLayout>

@@ -119,6 +119,7 @@ public class UnderwayFragment extends Fragment {
         mOther = getView().findViewById(R.id.other);
         mMessageEx = getView().findViewById(R.id.message_ex);
         mSendMessg = getView().findViewById(R.id.send_messg);
+        mFf = getView().findViewById(R.id.ff);
         ic_dots = getView().findViewById(R.id.ic_dots);
 
         details = new ArrayList<>();
@@ -157,13 +158,25 @@ public class UnderwayFragment extends Fragment {
         user = bundle.getParcelable("user");
         model = bundle.getParcelable("offer");
 
+        if (model.getFinished().equals("1")){
+            ic_dots.setVisibility(View.INVISIBLE);
+            mFf.setVisibility(View.INVISIBLE);
+        }
+
+
         if (ConstantInterFace.USER.getType().equals("client")) {
-            StringBuilder s_name = new StringBuilder(user.getName());
-            for (int i = 1; i < s_name.length() - 1; i++) {
-                s_name.setCharAt(i, '*');
+            if (user.getName() != null){
+                StringBuilder s_name = new StringBuilder(user.getName());
+                for (int i = 1; i < s_name.length() - 1; i++) {
+                    s_name.setCharAt(i, '*');
+                }
+                mName.setText(s_name);
+            }else {
+                mName.setText(" ");
             }
-            mName.setText(s_name);
-            Picasso.get().load(user.getPhoto_link()).into(mProfileImage1);
+            if (user.getPhoto_link() != null)
+                Picasso.get().load(user.getPhoto_link()).into(mProfileImage1);
+
 
             StringBuilder s_name1 = new StringBuilder(ConstantInterFace.USER.getName());
             for (int i = 1; i < s_name1.length() - 1; i++) {
@@ -172,12 +185,17 @@ public class UnderwayFragment extends Fragment {
             mName1.setText(s_name1);
             Picasso.get().load(ConstantInterFace.USER.getPhoto_link()).into(mProfileImage2);
         } else {
-            StringBuilder s_name = new StringBuilder(model.getProject().getUser().getName());
-            for (int i = 1; i < s_name.length() - 1; i++) {
-                s_name.setCharAt(i, '*');
-            }
-            mName.setText(s_name);
-            Picasso.get().load(model.getProject().getUser().getPhoto_link()).into(mProfileImage2);
+            if (model.getProject().getUser().getName() != null ){
+                StringBuilder s_name = new StringBuilder(model.getProject().getUser().getName());
+                for (int i = 1; i < s_name.length() - 1; i++) {
+                    s_name.setCharAt(i, '*');
+                }
+                mName.setText(s_name);
+            }else
+                mName.setText(" ");
+
+            if (model.getProject().getUser().getPhoto_link() != null)
+                Picasso.get().load(model.getProject().getUser().getPhoto_link()).into(mProfileImage2);
 
             StringBuilder s_name1 = new StringBuilder(ConstantInterFace.USER.getName());
             for (int i = 1; i < s_name1.length() - 1; i++) {

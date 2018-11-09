@@ -1,13 +1,17 @@
 package com.smm.sapp.sproject.Adapters;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
 
 import com.smm.sapp.sproject.Models.PhotoModel;
@@ -57,6 +61,31 @@ public class ProjectPhotoAdapter extends RecyclerView.Adapter<ProjectPhotoAdapte
             Log.e("ff", photoModels.get(position).getPhoto_link());
             holder.delete.setVisibility(View.INVISIBLE);
         }
+
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!flag){
+                    final Dialog dialog = new Dialog(context);
+                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //before
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    dialog.setContentView(R.layout.dialog_view_image);
+
+                    ImageView imageView = dialog.findViewById(R.id.view_img);
+                    ImageView deletes = dialog.findViewById(R.id.deletes);
+
+                    Picasso.get().load(photoModels.get(position).getPhoto_link()).into(imageView);
+                    deletes.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+                    dialog.show();
+                }
+
+            }
+        });
 
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override

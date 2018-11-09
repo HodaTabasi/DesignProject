@@ -288,7 +288,7 @@ public class ViewProjectFragment extends Fragment {
             mPCity.setText(models.getAddtion_info().getCity());
             mPArea.setText(models.getAddtion_info().getArea());
         }
-        mPBalance.setText(models.getBalance());
+        mPBalance.setText(ConstantInterFace.array[Integer.parseInt(models.getBalance())]);
         mPBio.setText(models.getDescr());
 
         mPProjectPhoto.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
