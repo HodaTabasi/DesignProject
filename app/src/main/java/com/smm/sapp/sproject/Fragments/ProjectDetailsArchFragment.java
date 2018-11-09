@@ -407,10 +407,8 @@ public class ProjectDetailsArchFragment extends Fragment {
         map.put("lat", s_lat);
         map.put("balance", String.valueOf(st_balance));
         map.put("descr", mProjectDetailes.getText().toString());
-
         Log.e("qqqqq", st_city);
         Log.e("qqqqq", st_style);
-
         myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/projectmakearch", map, attachMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
