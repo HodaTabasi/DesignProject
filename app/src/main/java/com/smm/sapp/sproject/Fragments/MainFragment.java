@@ -105,8 +105,10 @@ public class MainFragment extends Fragment {
     private void onClickMethod() {
 
         if (ConstantInterFace.IS_USER_COMPLETEED) {
+            //registered user
             img_user.setImageResource(0);
             getProfileData();
+            Log.e("ttttt","1");
 
         } else if (ConstantInterFace.USER.getPhoto_link() == null &&
                 ConstantInterFace.USER.getName() == null &&
@@ -132,6 +134,8 @@ public class MainFragment extends Fragment {
             ConstantInterFace.IS_USER_COMPLETEED = true;
             img_user.setImageResource(0);
             getProfileData();
+            Log.e("ttttt","2");
+
         }
 
         img_edit.setOnClickListener(new View.OnClickListener() {
@@ -358,7 +362,6 @@ public class MainFragment extends Fragment {
         }
         //unregistered user
         else {
-
             _name.setText("");
             _specialization.setText("");
             getSnack();
@@ -369,14 +372,12 @@ public class MainFragment extends Fragment {
                     getSnack();
                 }
             });
-
             img_notification.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     getSnack();
                 }
             });
-
             tv_search.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -521,7 +522,6 @@ public class MainFragment extends Fragment {
         MyRequest myRequest = new MyRequest();
         Map<String, String> map = new HashMap<>();
         map.put("token", ConstantInterFace.USER.getToken());
-        //map.put("photo_link", filePath);
         myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/updateProfilePhoto", map, filePath, "photo_link", new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
