@@ -54,7 +54,6 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
     ImageView ic_back;
     String s_search;
     private TextView tv_next, tv_back;
-
     int current_page, total_pages, flag;
 
     public BrowseProjectsFragment() {
@@ -139,8 +138,6 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
                     mWallButton.setTextColor(Color.parseColor("#000000"));
 
                     getProjects("searchprojects?name=" + s_search, 1);
-
-
                     return true;
                 }
                 return false;
@@ -196,20 +193,15 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
                                     //two are visible
                                     tv_next.setVisibility(View.VISIBLE);
                                     tv_back.setVisibility(View.VISIBLE);
-                                    Log.e("qqqqq", "1");
-
                                 } else if (total_pages == current_page && current_page != 1) {
                                     //back visible, next gone
                                     tv_next.setVisibility(View.GONE);
                                     tv_back.setVisibility(View.VISIBLE);
-                                    Log.e("qqqqq", "2");
-
                                 } else if (total_pages > current_page && current_page == 1) {
                                     //next visible, back gone
                                     tv_next.setVisibility(View.VISIBLE);
                                     tv_back.setVisibility(View.GONE);
-                                    Log.e("qqqqq", "3");
-                                } else if (total_pages == 1) {
+                                } else if (total_pages == 1 || total_pages == 0) {
                                     //two are gone
                                     tv_next.setVisibility(View.GONE);
                                     tv_back.setVisibility(View.GONE);
@@ -338,8 +330,6 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
                 } else {
                     getProjects("getallprojects?i_current_page=", current_page);
                 }
-
-                Log.e("jjjj", current_page + "");
                 break;
 
             case R.id.tv_back:
@@ -359,8 +349,6 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
                 } else {
                     getProjects("getallprojects?i_current_page=", current_page);
                 }
-
-                Log.e("jjjj", current_page + "");
                 break;
         }
     }

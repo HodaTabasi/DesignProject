@@ -70,7 +70,7 @@ public class ViewProjectFragment extends Fragment {
     ProjectsModels models;
     ImageView ic_back;
 
-    private EditText mReceivableP;
+    private TextView mReceivableP;
     private EditText mBalanceP;
     private EditText mDurP;
     private EditText mProposalP;
@@ -249,7 +249,7 @@ public class ViewProjectFragment extends Fragment {
         linear_add_proposal = view.findViewById(R.id.linear_add_proposal);
         pr_ditails = view.findViewById(R.id.pr_ditails);
 
-        mReceivableP = (EditText) view.findViewById(R.id.receivable_p);
+        mReceivableP = (TextView) view.findViewById(R.id.receivable_p);
         mBalanceP = (EditText) view.findViewById(R.id.balance_p);
         mDurP = (EditText) view.findViewById(R.id.dur_p);
         mProposalP = (EditText) view.findViewById(R.id.proposal_p);

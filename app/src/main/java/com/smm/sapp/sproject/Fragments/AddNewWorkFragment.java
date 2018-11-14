@@ -2,9 +2,6 @@ package com.smm.sapp.sproject.Fragments;
 
 
 import android.app.DatePickerDialog;
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -56,7 +52,7 @@ import static android.app.Activity.RESULT_OK;
 
 
 public class AddNewWorkFragment extends Fragment {
-    TextView tv_save, tv_photo, title, tv_update, et_date;
+    TextView tv_save, tv_photo, title, tv_update, tv_date;
     ImageView ic_back, work_img;
     EditText et_title, et_bio, et_link;
     Spinner sp_specialization;
@@ -79,7 +75,7 @@ public class AddNewWorkFragment extends Fragment {
         tv_save = view.findViewById(R.id.tv_save);
         et_title = view.findViewById(R.id.et_title);
         et_bio = view.findViewById(R.id.et_bio);
-        et_date = view.findViewById(R.id.et_date);
+        tv_date = view.findViewById(R.id.tv_date);
         tv_photo = view.findViewById(R.id.tv_photo);
         et_link = view.findViewById(R.id.et_link);
         work_img = view.findViewById(R.id.work_img);
@@ -167,7 +163,7 @@ public class AddNewWorkFragment extends Fragment {
             }
         });
 
-        et_date.setOnClickListener(new View.OnClickListener() {
+        tv_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Calendar c = Calendar.getInstance();
@@ -182,7 +178,7 @@ public class AddNewWorkFragment extends Fragment {
                         String month = simpledateformat1.format(date);
                         int d = datePicker.getDayOfMonth();
                         int y = datePicker.getYear();
-                        et_date.setText(d+"/"+month+"/"+y);
+                        tv_date.setText(d+"/"+month+"/"+y);
                     }
                 },c.get(Calendar.YEAR),c.get(Calendar.MONTH),c.get(Calendar.DAY_OF_MONTH));
 
@@ -195,7 +191,7 @@ public class AddNewWorkFragment extends Fragment {
             public void onClick(View view) {
                 if (et_title.getText().toString().matches("")
                         || et_bio.getText().toString().matches("")
-                        || et_date.getText().toString().matches("")
+                        || tv_date.getText().toString().matches("")
                         || et_link.getText().toString().matches("")
                         || work_img.getDrawable() == null
                         || st_specialization.equals("")) {
@@ -215,7 +211,7 @@ public class AddNewWorkFragment extends Fragment {
         Map<String, String> map = new HashMap<>();
         String s_title = et_title.getText().toString();
         String s_bio = et_bio.getText().toString();
-        String s_date = et_date.getText().toString();
+        String s_date = tv_date.getText().toString();
         String s_link = et_link.getText().toString();
 
         map.put("token", ConstantInterFace.USER.getToken());
@@ -254,7 +250,7 @@ public class AddNewWorkFragment extends Fragment {
                             et_title.setText("");
                             et_bio.setText("");
                             et_link.setText("");
-                            et_date.setText("");
+                            tv_date.setText("");
                             work_img.setImageResource(0);
                             Toast.makeText(getActivity(), "تم الاضافة بنجاح", Toast.LENGTH_LONG).show();
                         }
@@ -300,7 +296,7 @@ public class AddNewWorkFragment extends Fragment {
         title.setText("تعديل العمل");
         et_title.setText(models.getName());
         et_bio.setText(models.getDescr());
-        et_date.setText(models.getMdate());
+        tv_date.setText(models.getMdate());
         et_link.setText(models.getWork_link());
 
         if (models.getType().equals("inter")) {
@@ -322,7 +318,7 @@ public class AddNewWorkFragment extends Fragment {
             public void onClick(View view) {
                 if (et_title.getText().toString().equals(models.getName())
                         && et_bio.getText().toString().equals(models.getDescr())
-                        && et_date.getText().toString().equals(models.getMdate())
+                        && tv_date.getText().toString().equals(models.getMdate())
                         && et_link.getText().toString().equals(models.getWork_link())
 //                        && filePath.equals(models.getPhoto_link())
                         && sp_specialization.getSelectedItem().toString().equals(models.getType())) {
@@ -335,7 +331,7 @@ public class AddNewWorkFragment extends Fragment {
                     Map<String, String> map = new HashMap<>();
                     String s_title = et_title.getText().toString();
                     String s_bio = et_bio.getText().toString();
-                    String s_date = et_date.getText().toString();
+                    String s_date = tv_date.getText().toString();
                     String s_link = et_link.getText().toString();
                     map.put("token", ConstantInterFace.USER.getToken());
                     map.put("name", s_title);
@@ -372,7 +368,7 @@ public class AddNewWorkFragment extends Fragment {
                                         et_title.setText("");
                                         et_bio.setText("");
                                         et_link.setText("");
-                                        et_date.setText("");
+                                        tv_date.setText("");
                                         work_img.setImageResource(0);
                                         Toast.makeText(getActivity(), "تم التعديل بنجاح", Toast.LENGTH_LONG).show();
                                     }

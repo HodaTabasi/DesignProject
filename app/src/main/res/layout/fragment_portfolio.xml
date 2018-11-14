@@ -42,111 +42,156 @@
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
-
-    <EditText
-        android:id="@+id/search"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
-        android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginRight="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:background="@drawable/report_layout_shap"
-        android:drawableLeft="@drawable/ic_search_black_24dp"
-        android:hint="بحث عن عمل"
-        android:imeOptions="actionSearch"
-        android:inputType="text"
-        android:padding="@dimen/_4sdp"
-        android:textColor="@color/gray1"
-        android:textColorHint="@color/gray1"
-        android:textSize="@dimen/_14sdp" />
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
 
-    <LinearLayout
-        android:id="@+id/linear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/search"
-        android:layout_marginLeft="@dimen/_8sdp"
-        android:layout_marginRight="@dimen/_8sdp"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:orientation="horizontal">
+            <EditText
+                android:id="@+id/search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/toolbar"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/report_layout_shap"
+                android:drawableLeft="@drawable/ic_search_black_24dp"
+                android:hint="بحث عن عمل"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:padding="@dimen/_4sdp"
+                android:textColor="@color/gray1"
+                android:textColorHint="@color/gray1"
+                android:textSize="@dimen/_14sdp" />
 
-        <TextView
-            android:id="@+id/tv_motion"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/_2sdp"
-            android:layout_weight="0.6"
-            android:background="@drawable/report_layout_shap"
-            android:gravity="center"
-            android:padding="@dimen/_5sdp"
-            android:text="موشن"
-            android:textColor="@color/textGray"
-            android:textSize="@dimen/_8sdp" />
 
-        <TextView
-            android:id="@+id/tv_graphic"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/_2sdp"
-            android:layout_weight="1.2"
-            android:background="@drawable/report_layout_shap"
-            android:gravity="center"
-            android:padding="@dimen/_5sdp"
-            android:text="تصميم جرافيك"
-            android:textColor="@color/textGray"
-            android:textSize="@dimen/_8sdp" />
+            <LinearLayout
+                android:id="@+id/linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/search"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:layout_marginRight="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv_wall"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/_2sdp"
-            android:layout_weight="0.9"
-            android:background="@drawable/report_layout_shap"
-            android:gravity="center"
-            android:padding="@dimen/_5sdp"
-            android:text="رسم جداري"
-            android:textColor="@color/textGray"
-            android:textSize="@dimen/_8sdp" />
+                <TextView
+                    android:id="@+id/tv_motion"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/_2sdp"
+                    android:layout_weight="0.6"
+                    android:background="@drawable/report_layout_shap"
+                    android:gravity="center"
+                    android:padding="@dimen/_5sdp"
+                    android:text="موشن"
+                    android:textColor="@color/textGray"
+                    android:textSize="@dimen/_8sdp" />
 
-        <TextView
-            android:id="@+id/tv_arch"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/_2sdp"
-            android:layout_weight="1.2"
-            android:background="@drawable/report_layout_shap"
-            android:gravity="center"
-            android:padding="@dimen/_5sdp"
-            android:text="تصميم معماري"
-            android:textColor="@color/textGray"
-            android:textSize="@dimen/_8sdp" />
+                <TextView
+                    android:id="@+id/tv_graphic"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/_2sdp"
+                    android:layout_weight="1.2"
+                    android:background="@drawable/report_layout_shap"
+                    android:gravity="center"
+                    android:padding="@dimen/_5sdp"
+                    android:text="تصميم جرافيك"
+                    android:textColor="@color/textGray"
+                    android:textSize="@dimen/_8sdp" />
 
-        <TextView
-            android:id="@+id/tv_inter"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.1"
-            android:background="@drawable/report_layout_shap"
-            android:gravity="center"
-            android:padding="@dimen/_5sdp"
-            android:text="تصميم داخلي"
-            android:textColor="@color/textGray"
-            android:textSize="@dimen/_8sdp" />
+                <TextView
+                    android:id="@+id/tv_wall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/_2sdp"
+                    android:layout_weight="0.9"
+                    android:background="@drawable/report_layout_shap"
+                    android:gravity="center"
+                    android:padding="@dimen/_5sdp"
+                    android:text="رسم جداري"
+                    android:textColor="@color/textGray"
+                    android:textSize="@dimen/_8sdp" />
 
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_arch"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/_2sdp"
+                    android:layout_weight="1.2"
+                    android:background="@drawable/report_layout_shap"
+                    android:gravity="center"
+                    android:padding="@dimen/_5sdp"
+                    android:text="تصميم معماري"
+                    android:textColor="@color/textGray"
+                    android:textSize="@dimen/_8sdp" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linear"
-        android:layout_marginRight="@dimen/_16sdp"
-        android:layout_marginLeft="@dimen/_16sdp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/_16sdp" />
+                <TextView
+                    android:id="@+id/tv_inter"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.1"
+                    android:background="@drawable/report_layout_shap"
+                    android:gravity="center"
+                    android:padding="@dimen/_5sdp"
+                    android:text="تصميم داخلي"
+                    android:textColor="@color/textGray"
+                    android:textSize="@dimen/_8sdp" />
 
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:layout_marginLeft="@dimen/_16sdp"
+                android:layout_marginRight="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_16sdp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/projects_recycler"
+                    android:layout_marginBottom="@dimen/_14sdp"
+                    android:layout_marginRight="@dimen/_8sdp"
+                    android:drawablePadding="@dimen/_3sdp"
+                    android:drawableRight="@drawable/ic_next"
+                    android:gravity="center"
+                    android:text="التالي"
+                    android:textColor="@color/textGray"
+                    android:textSize="@dimen/_10sdp" />
+
+                <TextView
+                    android:id="@+id/tv_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_14sdp"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:drawableLeft="@drawable/ic_back"
+                    android:drawablePadding="@dimen/_3sdp"
+                    android:gravity="center_vertical"
+                    android:text="السابق"
+                    android:textColor="@color/textGray"
+                    android:textSize="@dimen/_10sdp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

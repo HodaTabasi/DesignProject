@@ -50,16 +50,12 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
     private TextView titles;
     private RecyclerView mAllOfferRes;
     ImageView ic_back;
-
     LinearLayoutManager layoutManager;
     List<OfferModel> offerModels;
     List<OfferModel> offerModels1;
     List<OfferModel> offerModels2;
     List<OfferModel> offerModels3;
-
     List<OfferModel> arrayList;
-
-
     String name = "";
 
     public MyOffersFragment() {
@@ -115,19 +111,19 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
             mAllOfferWait.setClickable(false);
             switch (bundle.getInt("key")) {
                 case 1:
-                    titles.setText(" العرووض في انتظار الموافقة ");
+                    titles.setText("العروض بانتظار الموافقة");
                     mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), bundle.<OfferModel>getParcelableArrayList("array"), 1));
                     break;
                 case 2:
-                    titles.setText(" العرووض المستبعدة ");
+                    titles.setText("العروض المستبعدة");
                     mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), bundle.<OfferModel>getParcelableArrayList("array"), 2));
                     break;
                 case 3:
-                    titles.setText(" العرووض المكتملة ");
+                    titles.setText("العروض المكتملة");
                     mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), bundle.<OfferModel>getParcelableArrayList("array"), 3));
                     break;
                 case 4:
-                    titles.setText(" العرووض قيد التنفيذ ");
+                    titles.setText("العروض قيد التنفيذ");
                     mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), bundle.<OfferModel>getParcelableArrayList("array"), 4));
                     break;
             }
@@ -135,7 +131,7 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
         } else {
             ProjectsModels projectsModels = bundle.getParcelable("object");
             name = projectsModels.getUser().getName();
-            titles.setText( " جميع عروض مشروع "+ projectsModels.getName());
+            titles.setText(" جميع عروض مشروع " + projectsModels.getName());
             swichOffers(projectsModels.getOffers());
         }
     }
@@ -193,16 +189,12 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
     private void swichOffers(List<OfferModel> offers) {
         for (OfferModel model : offers) {
             if (model.getApproved().equals("0") && model.getFinished().equals("0")) {
-                //انضار الموافقة
                 offerModels.add(model);
             } else if (model.getApproved().equals("1") && model.getFinished().equals("0")) {
-                //قيد العمل
                 offerModels1.add(model);
             } else if (model.getApproved().equals("1") && model.getFinished().equals("1")) {
-                //منتهي
                 offerModels3.add(model);
             } else if (model.getApproved().equals("2")) {
-                //مستبعد
                 offerModels2.add(model);
             }
         }
@@ -215,15 +207,19 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
         int id = v.getId();
         switch (id) {
             case R.id.all_offer_excluded:
+                titles.setText("العروض المستبعدة");
                 mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels2, 2));
                 break;
             case R.id.all_offer_done:
+                titles.setText("العروض المكتملة");
                 mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels3, 3));
                 break;
             case R.id.all_offer_underway:
+                titles.setText("العروض قيد التنفيذ");
                 mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels1, 4));
                 break;
             case R.id.all_offer_wait:
+                titles.setText("العروض بانتظار الموافقة");
                 mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels, 1));
                 break;
             case R.id.ic_back:
