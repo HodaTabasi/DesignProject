@@ -41,112 +41,155 @@
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
-    <EditText
-        android:id="@+id/search"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
-        android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginRight="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:background="@drawable/report_layout_shap"
-        android:drawableLeft="@drawable/ic_search_black_24dp"
-        android:hint="بحث عن مشروع"
-        android:imeOptions="actionSearch"
-        android:inputType="text"
-        android:padding="@dimen/_3sdp"
-        android:textColorHint="@color/textGray"
-        android:textSize="@dimen/_12sdp" />
+        android:layout_below="@+id/toolbar">
 
-    <LinearLayout
-        android:id="@+id/linear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/search"
-        android:layout_marginLeft="@dimen/_8sdp"
-        android:layout_marginRight="@dimen/_8sdp"
-        android:layout_marginTop="@dimen/_8sdp"
-        android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/motion_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/_2sdp"
-            android:layout_weight="0.6"
-            android:background="@drawable/account_shape"
-            android:gravity="center"
-            android:padding="@dimen/_5sdp"
-            android:text="موشن"
-            android:textColor="@color/textGray"
-            android:textSize="@dimen/_8sdp" />
 
-        <TextView
-            android:id="@+id/gh_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/_2sdp"
-            android:layout_weight="1.2"
-            android:background="@drawable/account_shape"
-            android:gravity="center"
-            android:padding="@dimen/_5sdp"
-            android:text="تصميم جرافكس"
-            android:textColor="@color/textGray"
-            android:textSize="@dimen/_8sdp" />
+            <EditText
+                android:id="@+id/search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/report_layout_shap"
+                android:drawableLeft="@drawable/ic_search_black_24dp"
+                android:hint="بحث عن مشروع"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:padding="@dimen/_3sdp"
+                android:textColorHint="@color/textGray"
+                android:textSize="@dimen/_12sdp" />
 
-        <TextView
-            android:id="@+id/wall_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/_2sdp"
-            android:layout_weight="0.9"
-            android:background="@drawable/account_shape"
-            android:gravity="center"
-            android:padding="@dimen/_5sdp"
-            android:text="رسم جداري"
-            android:textColor="@color/textGray"
-            android:textSize="@dimen/_8sdp" />
+            <LinearLayout
+                android:id="@+id/linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/search"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:layout_marginRight="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/arch_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/_2sdp"
-            android:layout_weight="1.2"
-            android:background="@drawable/account_shape"
-            android:gravity="center"
-            android:padding="@dimen/_5sdp"
-            android:text="تصميم معماري"
-            android:textColor="@color/textGray"
-            android:textSize="@dimen/_8sdp" />
+                <TextView
+                    android:id="@+id/motion_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/_2sdp"
+                    android:layout_weight="0.6"
+                    android:background="@drawable/account_shape"
+                    android:gravity="center"
+                    android:padding="@dimen/_5sdp"
+                    android:text="موشن"
+                    android:textColor="@color/textGray"
+                    android:textSize="@dimen/_8sdp" />
 
-        <TextView
-            android:id="@+id/in_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.1"
-            android:background="@drawable/account_shape"
-            android:gravity="center"
-            android:padding="@dimen/_4sdp"
-            android:text="تصميم داخلي"
-            android:textColor="@color/textGray"
-            android:textSize="@dimen/_8sdp" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/gh_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/_2sdp"
+                    android:layout_weight="1.2"
+                    android:background="@drawable/account_shape"
+                    android:gravity="center"
+                    android:padding="@dimen/_5sdp"
+                    android:text="تصميم جرافكس"
+                    android:textColor="@color/textGray"
+                    android:textSize="@dimen/_8sdp" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/projects_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/linear"
-        android:layout_marginBottom="@dimen/_16sdp"
-        android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginRight="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_16sdp"
-        android:background="@drawable/report_layout_shap"
-        android:paddingBottom="@dimen/_10sdp"
-        android:paddingLeft="@dimen/_3sdp"
-        android:paddingRight="@dimen/_3sdp"
-        android:paddingTop="@dimen/_3sdp" />
+                <TextView
+                    android:id="@+id/wall_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/_2sdp"
+                    android:layout_weight="0.9"
+                    android:background="@drawable/account_shape"
+                    android:gravity="center"
+                    android:padding="@dimen/_5sdp"
+                    android:text="رسم جداري"
+                    android:textColor="@color/textGray"
+                    android:textSize="@dimen/_8sdp" />
+
+                <TextView
+                    android:id="@+id/arch_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/_2sdp"
+                    android:layout_weight="1.2"
+                    android:background="@drawable/account_shape"
+                    android:gravity="center"
+                    android:padding="@dimen/_5sdp"
+                    android:text="تصميم معماري"
+                    android:textColor="@color/textGray"
+                    android:textSize="@dimen/_8sdp" />
+
+                <TextView
+                    android:id="@+id/in_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.1"
+                    android:background="@drawable/account_shape"
+                    android:gravity="center"
+                    android:padding="@dimen/_4sdp"
+                    android:text="تصميم داخلي"
+                    android:textColor="@color/textGray"
+                    android:textSize="@dimen/_8sdp" />
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/projects_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear"
+                android:layout_marginBottom="@dimen/_14sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:background="@drawable/report_layout_shap"
+                android:paddingBottom="@dimen/_10sdp"
+                android:paddingLeft="@dimen/_3sdp"
+                android:paddingRight="@dimen/_3sdp"
+                android:paddingTop="@dimen/_3sdp" />
+
+            <TextView
+                android:id="@+id/tv_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/projects_recycler"
+                android:layout_marginBottom="@dimen/_14sdp"
+                android:layout_marginRight="@dimen/_8sdp"
+                android:drawablePadding="@dimen/_3sdp"
+                android:drawableRight="@drawable/ic_next"
+                android:gravity="center"
+                android:text="التالي"
+                android:textColor="@color/textGray"
+                android:textSize="@dimen/_10sdp" />
+
+            <TextView
+                android:id="@+id/tv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/projects_recycler"
+                android:layout_marginBottom="@dimen/_14sdp"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:drawableLeft="@drawable/ic_back"
+                android:drawablePadding="@dimen/_3sdp"
+                android:gravity="center_vertical"
+                android:text="السابق"
+                android:textColor="@color/textGray"
+                android:textSize="@dimen/_10sdp" />
+
+
+        </RelativeLayout>
+    </ScrollView>
 
 
 </RelativeLayout>

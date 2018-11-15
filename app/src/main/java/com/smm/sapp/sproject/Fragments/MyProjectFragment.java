@@ -65,17 +65,8 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
 
 
     private Switch mSwitchOffer;
-    /**
-     * المستبعدة
-     */
     private TextView mMyProjectExcluded;
-    /**
-     * قيد التنفيذ
-     */
     private TextView mMyProjectUnderway;
-    /**
-     * المكتملة
-     */
     private TextView mMyProjectDone;
     private RecyclerView mMyProjectRes;
     private LinearLayout mOne;
@@ -85,9 +76,7 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
     private LinearLayout mLExcludedProject;
     private LinearLayout mLDoneProject;
     private LinearLayout mTwo;
-
     ImageView ic_back;
-
     LinearLayoutManager layoutManager;
     List<ProjectsModels> arrayList;
     List<ProjectsModels> arrayList1;
@@ -97,6 +86,8 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
     TextView doneTV, waitTV, underTV, excludedTV;
     PieChart chart;
     private int total = 0;
+    int current_page, total_pages, flag;
+    private TextView tv_next, tv_back, tv_projects;
 
     public MyProjectFragment() {
         // Required empty public constructor
@@ -117,7 +108,7 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
         onClickMethod();
-        getProjects("myprojects?token=" + ConstantInterFace.USER.getToken());
+        getProjects("myprojects?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", 1);
         //addToChart();
     }
 
@@ -139,7 +130,10 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         underTV = getView().findViewById(R.id.under);
         waitTV = getView().findViewById(R.id.wait);
         excludedTV = getView().findViewById(R.id.go);
-        chart = (PieChart) getView().findViewById(R.id.chart);
+        chart = getView().findViewById(R.id.chart);
+        tv_next = getView().findViewById(R.id.tv_next);
+        tv_back = getView().findViewById(R.id.tv_back);
+        tv_projects = getView().findViewById(R.id.tv_projects);
 
         arrayList = new ArrayList<>();
         arrayList1 = new ArrayList<>();
@@ -158,11 +152,12 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         mMyProjectDone.setOnClickListener(this);
         mMyProjectExcluded.setOnClickListener(this);
         mMyProjectUnderway.setOnClickListener(this);
-
         underTV.setOnClickListener(this);
         doneTV.setOnClickListener(this);
         waitTV.setOnClickListener(this);
         excludedTV.setOnClickListener(this);
+        tv_back.setOnClickListener(this);
+        tv_next.setOnClickListener(this);
 
         done = 0;
         wait = 0;
@@ -203,10 +198,10 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
 
     }
 
-    private void getProjects(final String url) {
+    private void getProjects(final String url, int current) {
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
-        myRequest.GetCall("http://smm.smmim.com/waell/public/api/" + url, new OkHttpCallback() {
+        myRequest.GetCall("http://smm.smmim.com/waell/public/api/" + url + current, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
@@ -214,7 +209,6 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
                     @Override
                     public void run() {
                         Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
-
                     }
                 });
             }
@@ -223,6 +217,8 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
             public void onResponse(Call call, Response response) throws IOException, JSONException {
                 final JSONObject object = new JSONObject(response.body().string());
                 final JSONObject object1 = object.getJSONObject("status");
+                final JSONObject paginationObj = object.getJSONObject("pagination");
+
                 MyProgressDialog.dismissDialog();
                 getActivity().runOnUiThread(new Runnable() {
                     public void run() {
@@ -237,14 +233,14 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
                                     JSONObject object2 = jsonArray.getJSONObject(i);
                                     total += object2.length();
                                     ProjectsModels models = gson.fromJson(object2.toString(), ProjectsModels.class);
-                                    if (object2.getString("accepted").equals("0")){
+                                    if (object2.getString("accepted").equals("0")) {
 //                                        قيد الموافقة
                                         arrayList.add(models);
-                                    }else {
+                                    } else {
                                         switch (object2.getString("status")) {
                                             case "1":
                                             case "0":
-                                                //قيد العمل
+//                                                قيد العمل
                                                 arrayList1.add(models);
                                                 break;
                                             case "2":
@@ -280,7 +276,31 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
 //                                done = (done/total) *100;
 //                                excluded = (excluded/total) *100;
 
-
+//                                current_page = Integer.valueOf(paginationObj.getString("i_current_page"));
+//                                total_pages = Integer.valueOf(paginationObj.getString("i_total_pages"));
+//
+//                                if (total_pages > current_page && current_page != 1) {
+//                                    //two are visible
+//                                    tv_next.setVisibility(View.VISIBLE);
+//                                    tv_back.setVisibility(View.VISIBLE);
+//                                    Log.e("qqqqq", "1");
+//
+//                                } else if (total_pages == current_page && current_page != 1) {
+//                                    //back visible, next gone
+//                                    tv_next.setVisibility(View.GONE);
+//                                    tv_back.setVisibility(View.VISIBLE);
+//                                    Log.e("qqqqq", "2");
+//
+//                                } else if (total_pages > current_page && current_page == 1) {
+//                                    //next visible, back gone
+//                                    tv_next.setVisibility(View.VISIBLE);
+//                                    tv_back.setVisibility(View.GONE);
+//                                    Log.e("qqqqq", "3");
+//                                } else if (total_pages == 1 || total_pages == 0) {
+//                                    //two are gone
+//                                    tv_next.setVisibility(View.GONE);
+//                                    tv_back.setVisibility(View.GONE);
+//                                }
 
                             } else {
                                 Toast.makeText(getContext(), "" + object1.getBoolean("error"), Toast.LENGTH_SHORT).show();
@@ -353,12 +373,21 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         int id = v.getId();
         switch (id) {
             case R.id.my_project_excluded:
+//                flag = 1;
+                tv_projects.setText("مشاريع قيد الموافقة");
+//                getProjects("myprojects?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", 1, 1);
                 mMyProjectRes.setAdapter(new ClientProjectAdapter(getContext(), arrayList));
                 break;
             case R.id.my_project_done:
+//                flag = 2;
+                tv_projects.setText("مشاريع مكتملة");
+//                getProjects("myprojects?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", 1, 2);
                 mMyProjectRes.setAdapter(new ClientProjectAdapter(getContext(), arrayList2));
                 break;
             case R.id.my_project_underway:
+//                flag = 3;
+                tv_projects.setText("مشاريع قيد التنفيذ");
+//                getProjects("myprojects?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", 1, 3);
                 mMyProjectRes.setAdapter(new ClientProjectAdapter(getContext(), arrayList1));
                 break;
             case R.id.wait:
@@ -388,6 +417,30 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
                 bundle.putInt("key", 4);
                 fragment.setArguments(bundle);
                 FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
+                break;
+
+            case R.id.tv_next:
+                setBottomBar();
+                current_page++;
+//                if (flag == 1) {
+//                    getProjects("myprojects?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", current_page,1);
+//                } else if (flag == 2) {
+//                    getProjects("myprojects?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", current_page,2);
+//                } else if (flag == 3) {
+//                    getProjects("myprojects?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", current_page,3);
+//                }
+                break;
+
+            case R.id.tv_back:
+                setBottomBar();
+//                current_page--;
+//                if (flag == 1) {
+//                    getProjects("myprojects?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", current_page,1);
+//                } else if (flag == 2) {
+//                    getProjects("myprojects?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", current_page,2);
+//                } else if (flag == 3) {
+//                    getProjects("myprojects?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", current_page,3);
+//                }
                 break;
         }
     }

@@ -495,11 +495,8 @@ public class ProfileFragment extends Fragment {
                             @Override
                             public void run() {
                                 Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
-
                             }
                         });
-                        MyProgressDialog.dismissDialog();
-                        Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -544,9 +541,6 @@ public class ProfileFragment extends Fragment {
                             @Override
                             public void run() {
                                 Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
-                        MyProgressDialog.dismissDialog();
-                        Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_SHORT).show();
-
                             }
                         });
                     }
@@ -585,19 +579,6 @@ public class ProfileFragment extends Fragment {
             Map<String, String> stringMap = new HashMap<>();
 
             if (bu_type.equals("worker")) {
-
-                Log.e("wwwww", ConstantInterFace.USER.getToken());
-                Log.e("wwwww", et_name.getText().toString());
-                Log.e("wwwww", et_email.getText().toString());
-                Log.e("wwwww", st_gender);
-                Log.e("wwwww", st_specialization);
-                Log.e("wwwww", et_bio.getText().toString());
-                Log.e("wwwww", bu_dob);
-                Log.e("wwwww", bu_busniess_type);
-                Log.e("wwwww", st_mobile);
-                Log.e("wwwww", bu_type);
-
-
                 stringMap.put("token", ConstantInterFace.USER.getToken());
                 stringMap.put("name", et_name.getText().toString());
                 stringMap.put("email", et_email.getText().toString());
@@ -627,8 +608,6 @@ public class ProfileFragment extends Fragment {
                         MyProgressDialog.dismissDialog();
                         final JSONObject jsonObject = new JSONObject(response.body().string());
                         final JSONObject object = jsonObject.getJSONObject("status");
-
-
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {

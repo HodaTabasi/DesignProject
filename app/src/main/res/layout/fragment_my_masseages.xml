@@ -42,8 +42,57 @@
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/my_message"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/my_message"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/_8sdp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/tv_next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/projects_recycler"
+                    android:layout_marginBottom="@dimen/_14sdp"
+                    android:layout_marginRight="@dimen/_8sdp"
+                    android:drawablePadding="@dimen/_3sdp"
+                    android:drawableRight="@drawable/ic_next"
+                    android:gravity="center"
+                    android:text="التالي"
+                    android:textColor="@color/textGray"
+                    android:textSize="@dimen/_10sdp" />
+
+                <TextView
+                    android:id="@+id/tv_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_14sdp"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:drawableLeft="@drawable/ic_back"
+                    android:drawablePadding="@dimen/_3sdp"
+                    android:gravity="center_vertical"
+                    android:text="السابق"
+                    android:textColor="@color/textGray"
+                    android:textSize="@dimen/_10sdp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

@@ -91,10 +91,10 @@
                     <EditText
                         android:id="@+id/et_title"
                         android:layout_width="0dp"
+                        android:gravity="right|center"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:background="@drawable/white_shap"
-                        android:hint=""
                         android:padding="@dimen/_3sdp"
                         android:textColor="@android:color/black"
                         android:textColorHint="@color/gray"
@@ -129,7 +129,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/white_shap"
-                        android:hint=""
+                        android:gravity="right|center"
                         android:layout_weight="2"
                         android:padding="@dimen/_3sdp"
                         android:textColor="@android:color/black"
@@ -177,8 +177,6 @@
                         android:text="نوع العمل"
                         android:textColor="@color/gray"
                         android:textSize="@dimen/_12sdp" />
-
-
                 </LinearLayout>
 
 
@@ -195,13 +193,13 @@
                     android:gravity="center_vertical"
                     android:padding="@dimen/_3sdp">
 
-                    <EditText
-                        android:id="@+id/et_date"
+                    <TextView
+                        android:id="@+id/tv_date"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/white_shap"
                         android:layout_weight="2"
-                        android:hint="03/05/2018"
+                        android:gravity="right|center"
                         android:padding="@dimen/_3sdp"
                         android:textColor="@android:color/black"
                         android:textColorHint="@color/gray"
@@ -236,7 +234,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:background="@drawable/white_shap"
-                        android:hint=""
+                        android:gravity="right|center"
                         android:padding="@dimen/_3sdp"
                         android:textColor="@android:color/black"
                         android:textColorHint="@color/gray"
@@ -277,8 +275,6 @@
                     android:layout_margin="@dimen/_5sdp"
                     android:background="@drawable/white_shap"
                     android:padding="@dimen/_3sdp" />
-
-
             </LinearLayout>
 
             <TextView
