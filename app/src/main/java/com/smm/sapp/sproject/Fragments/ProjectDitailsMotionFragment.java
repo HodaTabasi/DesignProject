@@ -72,6 +72,7 @@ public class ProjectDitailsMotionFragment extends Fragment {
     private RecyclerView rec_P;
     LinearLayout lien;
 
+
     int i = 0;
     Map<String,String> attachMap;
     ArrayList<Bitmap> bitmaps;
