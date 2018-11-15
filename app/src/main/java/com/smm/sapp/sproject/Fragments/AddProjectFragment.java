@@ -69,15 +69,30 @@ public class AddProjectFragment extends Fragment implements View.OnClickListener
             Log.e("eeeeeeeee", type);
 
             if (type.equals("wall")) {
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProjectDitailsPaintingWallFragment());
+                ProjectDitailsPaintingWallFragment fragment = new ProjectDitailsPaintingWallFragment();
+                Bundle bundle1 = new Bundle();
+                fragment.setArguments(bundle1);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment);
             } else if (type.equals("arch")) {
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProjectDetailsArchFragment());
+                ProjectDetailsArchFragment fragment = new ProjectDetailsArchFragment();
+                Bundle bundle1 = new Bundle();
+                fragment.setArguments(bundle1);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment);
             } else if (type.equals("graphic")) {
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProjectDitailesGraphicsFragment());
+                ProjectDitailesGraphicsFragment fragment = new ProjectDitailesGraphicsFragment();
+                Bundle bundle1 = new Bundle();
+                fragment.setArguments(bundle1);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment);
             } else if (type.equals("inter")) {
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProjectDetailsInterFragment());
+                ProjectDetailsInterFragment fragment = new ProjectDetailsInterFragment();
+                Bundle bundle1 = new Bundle();
+                fragment.setArguments(bundle1);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment);
             } else if (type.equals("moshen")) {
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProjectDitailsMotionFragment());
+                ProjectDitailsMotionFragment fragment = new ProjectDitailsMotionFragment();
+                Bundle bundle1 = new Bundle();
+                fragment.setArguments(bundle1);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment);
             }
         }
     }
@@ -112,21 +127,32 @@ public class AddProjectFragment extends Fragment implements View.OnClickListener
     @Override
     public void onClick(View v) {
         int id = v.getId();
+        Bundle bundle = new Bundle();
         switch (id) {
             case R.id.in_side:
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProjectDetailsInterFragment(), true);
+                ProjectDetailsInterFragment fragment1 = new ProjectDetailsInterFragment();
+                fragment1.setArguments(bundle);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment1, true);
                 break;
             case R.id.mostion:
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProjectDitailsMotionFragment(), true);
+                ProjectDitailsMotionFragment fragment2 = new ProjectDitailsMotionFragment();
+                fragment2.setArguments(bundle);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment2, true);
                 break;
             case R.id.draw_wall:
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProjectDitailsPaintingWallFragment(), true);
+                ProjectDitailsPaintingWallFragment fragment = new ProjectDitailsPaintingWallFragment();
+                fragment.setArguments(bundle);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
                 break;
             case R.id.graphic:
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProjectDitailesGraphicsFragment(), true);
+                ProjectDitailesGraphicsFragment fragment3 = new ProjectDitailesGraphicsFragment();
+                fragment3.setArguments(bundle);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment3, true);
                 break;
             case R.id.arch:
-                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new ProjectDetailsArchFragment(), true);
+                ProjectDetailsArchFragment fragment4 = new ProjectDetailsArchFragment();
+                fragment4.setArguments(bundle);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment4, true);
                 break;
             case R.id.search_designer:
                 FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new SearchFragment(), true);

@@ -29,6 +29,7 @@ import com.smm.sapp.sproject.Adapters.ProjectPhotoAdapter;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.HelperClass.PathUtil;
+import com.smm.sapp.sproject.Models.ProjectsModels;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.MySpinnerAdapter;
 import com.smm.sapp.sproject.OkHttpCallback;
@@ -75,14 +76,16 @@ public class ProjectDitailsMotionFragment extends Fragment {
     Map<String,String> attachMap;
     ArrayList<Bitmap> bitmaps;
     ArrayList<String> bStrings;
+    MySpinnerAdapter adapter3;
+    Bundle bundle ;
+    String projectId;
+    Boolean flag = false;
 
     ProjectPhotoAdapter adapter;
     int st_balance = 1;
 
     private Spinner sp_balance;
     public ProjectDitailsMotionFragment() {
-
-
     }
 
 
@@ -123,6 +126,20 @@ public class ProjectDitailsMotionFragment extends Fragment {
 
         setSpinner();
 
+        if (!getArguments().isEmpty()) {
+            bundle = getArguments();
+            ProjectsModels models = bundle.getParcelable("object");
+            flag = bundle.getBoolean("flag",false);
+            mMotionType.setText(models.getName());
+            mProjectName.setText(models.getName());
+            mProjectTime.setText(models.getAddtion_info().getDur());
+            mAboutActivity.setText(models.getAddtion_info().getAbout());
+            sp_balance.setSelection(adapter3.getPosition(ConstantInterFace.array[Integer.parseInt(models.getBalance())]));
+            st_balance = Integer.parseInt(models.getBalance());
+            mProjectDetiailsMotion.setText(models.getDescr());
+            projectId = String.valueOf(models.getId());
+        }
+
         mSendMotion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -136,7 +153,7 @@ public class ProjectDitailsMotionFragment extends Fragment {
                         Log.e("ddddd", " " + s);
                         attachMap.put("photos[" + (i++) + "]", s);
                     }
-                    sendMotionRequest();
+                    sendMotionRequest("projectmakemoshen","projectupdatemoshen");
                 }
             }
         });
@@ -181,10 +198,23 @@ public class ProjectDitailsMotionFragment extends Fragment {
                 .show();
     }
 
-    private void sendMotionRequest() {
+    private void sendMotionRequest(String make, String update) {
         MyProgressDialog.showDialog(getContext());
         MyRequest myRequest = new MyRequest();
         Map<String, String> map = new HashMap<>();
+        String url;
+        final String success;
+
+        if (flag){
+            url = update;
+            map.put("project_id", projectId);
+            Log.e("ffgedsfd",url);
+            success = "تمت التعديل نجاح قيد المراجعة من الادارة";
+        }else {
+            url = make;
+            Log.e("ffgedsfd",url);
+            success = "تمت الاضافة نجاح قيد المراجعة من الادارة";
+        }
         map.put("token", ConstantInterFace.USER.getToken());
         //map.put("name", mMotionType.getText().toString());
         map.put("name", mProjectName.getText().toString());
@@ -193,7 +223,7 @@ public class ProjectDitailsMotionFragment extends Fragment {
         map.put("balance", String.valueOf(st_balance));
         map.put("descr", mProjectDetiailsMotion.getText().toString());
 
-        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/projectmakemoshen", map,attachMap, new OkHttpCallback() {
+        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/"+url, map,attachMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
@@ -201,7 +231,8 @@ public class ProjectDitailsMotionFragment extends Fragment {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException, JSONException {
-                JSONObject jsonObject = new JSONObject(response.body().string());
+                String s = response.body().string();
+                JSONObject jsonObject = new JSONObject(s);
                 final JSONObject object = jsonObject.getJSONObject("status");
                 MyProgressDialog.dismissDialog();
                 getActivity().runOnUiThread(new Runnable() {
@@ -209,7 +240,7 @@ public class ProjectDitailsMotionFragment extends Fragment {
                     public void run() {
                         try {
                             if (object.getBoolean("success")) {
-                                Toast.makeText(getActivity(), "تم اضافة مشروع بنجاح", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), success, Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(getActivity(), "" + object.getString("message"), Toast.LENGTH_SHORT).show();
                             }
@@ -223,7 +254,7 @@ public class ProjectDitailsMotionFragment extends Fragment {
     }
 
     private void setSpinner() {
-        MySpinnerAdapter adapter3 = new MySpinnerAdapter(
+        adapter3 = new MySpinnerAdapter(
                 getContext(),
                 android.R.layout.simple_spinner_item,
                 Arrays.asList(getResources().getStringArray(R.array.spinner_balance))

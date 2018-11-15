@@ -79,6 +79,11 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
 
     int i = 0, j = 0, k = 0;
     Map<String, String> attachMap;
+    MySpinnerAdapter adapter2;
+    MySpinnerAdapter adapter3;
+    Bundle bundle ;
+    String projectId;
+    Boolean flag = false;
 
     public ProjectDitailsPaintingWallFragment() {
         // Required empty public constructor
@@ -125,6 +130,24 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
         if (isServicesOk()) {
             initView();
         }
+        setSpinner();
+
+        if (!getArguments().isEmpty()) {
+            bundle = getArguments();
+            ProjectsModels models = bundle.getParcelable("object");
+            flag = bundle.getBoolean("flag",false);
+            mWallType.setText(models.getName());
+            mWallArea.setText(models.getAddtion_info().getArea());
+            sp_city.setSelection(adapter2.getPosition(models.getAddtion_info().getCity()));
+            st_city =models.getAddtion_info().getCity();
+            sp_balance.setSelection(adapter3.getPosition(ConstantInterFace.array[Integer.parseInt(models.getBalance())]));
+            st_balance = Integer.parseInt(models.getBalance());
+            mWallProjectDietails.setText(models.getDescr());
+            mWallMap.setText("خط الطول = " + models.getAddtion_info().getLng() + "\n" + "خط العرض = " + models.getAddtion_info().getLat());
+            s_lat =  models.getAddtion_info().getLat();
+            s_lng = models.getAddtion_info().getLng();
+            projectId = String.valueOf(models.getId());
+        }
 
         ic_back = getView().findViewById(R.id.ic_back);
 
@@ -135,7 +158,7 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
             }
         });
 
-        setSpinner();
+
 
         mWallSend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,7 +167,7 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
                         || mWallMap.getText().toString().matches("")  || mWallProjectDietails.getText().toString().matches("")) {
                     Toast.makeText(getContext(), "يجب تعبئة جميع الحقول", Toast.LENGTH_LONG).show();
                 } else {
-                    sendWallRequest();
+                        sendWallRequest("projectmakewall","projectupdatewall");
                 }
 
             }
@@ -174,7 +197,7 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
     }
 
     private void setSpinner() {
-        MySpinnerAdapter adapter2 = new MySpinnerAdapter(
+         adapter2 = new MySpinnerAdapter(
                 getContext(),
                 android.R.layout.simple_spinner_item,
                 Arrays.asList(getResources().getStringArray(R.array.spinner_cities))
@@ -273,7 +296,7 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
 
             }
         });
-        MySpinnerAdapter adapter3 = new MySpinnerAdapter(
+         adapter3 = new MySpinnerAdapter(
                 getContext(),
                 android.R.layout.simple_spinner_item,
                 Arrays.asList(getResources().getStringArray(R.array.spinner_balance))
@@ -350,10 +373,23 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
     }
 
 
-    private void sendWallRequest() {
+    private void sendWallRequest(String projectmakewall, String projectupdatewall) {
+        String url;
+        final String success;
         MyProgressDialog.showDialog(getContext());
         MyRequest myRequest = new MyRequest();
         Map<String, String> map = new HashMap<>();
+
+        if (flag){
+            url = projectupdatewall;
+            map.put("project_id", projectId);
+            Log.e("ffgedsfd",url);
+            success = "تمت التعديل نجاح قيد المراجعة من الادارة";
+        }else {
+            url = projectmakewall;
+            Log.e("ffgedsfd",url);
+            success = "تمت الاضافة نجاح قيد المراجعة من الادارة";
+        }
         map.put("token", ConstantInterFace.USER.getToken());
         map.put("name", mWallType.getText().toString());
         map.put("city", st_city);
@@ -365,7 +401,7 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
 
         Log.e("qqqq",st_city);
 
-        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/projectmakewall", map, attachMap, new OkHttpCallback() {
+        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/"+url, map, attachMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
@@ -373,7 +409,8 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException, JSONException {
-                JSONObject jsonObject = new JSONObject(response.body().string());
+                String s = response.body().string();
+                JSONObject jsonObject = new JSONObject(s);
                 final JSONObject object = jsonObject.getJSONObject("status");
                 MyProgressDialog.dismissDialog();
                 getActivity().runOnUiThread(new Runnable() {
@@ -381,7 +418,7 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
                     public void run() {
                         try {
                             if (object.getBoolean("success")) {
-                                Toast.makeText(getActivity(), "تم اضافة مشروع بنجاح", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), success, Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(getActivity(), "" + object.getString("error"), Toast.LENGTH_SHORT).show();
                             }

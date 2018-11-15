@@ -61,25 +61,33 @@ public class ClientProjectAdapter extends RecyclerView.Adapter<ClientProjectAdap
             @Override
             public void onClick(View v) {
                 if (projectsModels.getAccepted().equals("0")){
-//                    String type = projectsModels.getType();
-//                    Bundle bundle = new Bundle();
-//                    bundle.putParcelable("object", projectsModels);
-//                    bundle.putBoolean("flag", true);
-//
-//                    if (type.equals("wall")) {
-//                        ProjectDitailsPaintingWallFragment wallFragment = new ProjectDitailsPaintingWallFragment();
-//                        wallFragment.setArguments(bundle);
-//                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity,wallFragment,true);
-//                    } else if (type.equals("arch")) {
-//                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new ProjectDetailsArchFragment());
-//                    } else if (type.equals("graphic")) {
-//                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new ProjectDitailesGraphicsFragment());
-//                    } else if (type.equals("inter")) {
-//                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new ProjectDetailsInterFragment());
-//                    } else if (type.equals("moshen")) {
-//                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new ProjectDitailsMotionFragment());
-//                    }
-                    Toast.makeText(context, "المشروع قيد المراجعة ليس له عروض", Toast.LENGTH_SHORT).show();
+                    String type = projectsModels.getType();
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable("object", projectsModels);
+                    bundle.putBoolean("flag", true);
+
+                    if (type.equals("wall")) {
+                        ProjectDitailsPaintingWallFragment wallFragment = new ProjectDitailsPaintingWallFragment();
+                        wallFragment.setArguments(bundle);
+                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity,wallFragment,true);
+                    } else if (type.equals("arch")) {
+                        ProjectDetailsArchFragment fragment = new ProjectDetailsArchFragment();
+                        fragment.setArguments(bundle);
+                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment,true);
+                    } else if (type.equals("graphic")) {
+                        ProjectDitailesGraphicsFragment fragment = new ProjectDitailesGraphicsFragment();
+                        fragment.setArguments(bundle);
+                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment,true);
+                    } else if (type.equals("inter")) {
+                        ProjectDetailsInterFragment fragment = new ProjectDetailsInterFragment();
+                        fragment.setArguments(bundle);
+                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment,true);
+                    } else if (type.equals("moshen")) {
+                        ProjectDitailsMotionFragment fragment = new ProjectDitailsMotionFragment();
+                        fragment.setArguments(bundle);
+                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment,true);
+                    }
+                    //Toast.makeText(context, "المشروع قيد المراجعة ليس له عروض", Toast.LENGTH_SHORT).show();
                 }else {
                     MyOffersFragment fragment = new MyOffersFragment();
                     Bundle bundle = new Bundle();
