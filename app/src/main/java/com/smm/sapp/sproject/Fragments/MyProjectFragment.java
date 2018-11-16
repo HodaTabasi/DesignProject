@@ -244,7 +244,7 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
                                                 arrayList1.add(models);
                                                 break;
                                             case "2":
-                                                //قم التسليم
+                                                //DONE
                                                 arrayList2.add(models);
                                                 break;
                                         }
@@ -284,7 +284,7 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
 //                                    tv_next.setVisibility(View.VISIBLE);
 //                                    tv_back.setVisibility(View.VISIBLE);
 //                                    Log.e("qqqqq", "1");
-//
+//..
 //                                } else if (total_pages == current_page && current_page != 1) {
 //                                    //back visible, next gone
 //                                    tv_next.setVisibility(View.GONE);
@@ -373,20 +373,32 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
         int id = v.getId();
         switch (id) {
             case R.id.my_project_excluded:
-//                flag = 1;
+                flag = 1;
                 tv_projects.setText("مشاريع قيد الموافقة");
+                if (arrayList.size() > 10) {
+                    tv_next.setVisibility(View.VISIBLE);
+                    tv_back.setVisibility(View.GONE);
+                }
 //                getProjects("myprojects?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", 1, 1);
                 mMyProjectRes.setAdapter(new ClientProjectAdapter(getContext(), arrayList));
                 break;
             case R.id.my_project_done:
-//                flag = 2;
+                flag = 2;
                 tv_projects.setText("مشاريع مكتملة");
+                if (arrayList2.size() > 10) {
+                    tv_next.setVisibility(View.VISIBLE);
+                    tv_back.setVisibility(View.GONE);
+                }
 //                getProjects("myprojects?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", 1, 2);
                 mMyProjectRes.setAdapter(new ClientProjectAdapter(getContext(), arrayList2));
                 break;
             case R.id.my_project_underway:
-//                flag = 3;
+                flag = 3;
                 tv_projects.setText("مشاريع قيد التنفيذ");
+                if (arrayList1.size() > 10) {
+                    tv_next.setVisibility(View.VISIBLE);
+                    tv_back.setVisibility(View.GONE);
+                }
 //                getProjects("myprojects?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", 1, 3);
                 mMyProjectRes.setAdapter(new ClientProjectAdapter(getContext(), arrayList1));
                 break;
