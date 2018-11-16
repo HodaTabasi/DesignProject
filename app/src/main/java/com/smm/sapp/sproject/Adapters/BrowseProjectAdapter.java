@@ -137,8 +137,13 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
         View view = inflater.inflate(R.layout.popup_menu, null);
 
         TextView new_project = view.findViewById(R.id.new_project);
+        ImageView tt = view.findViewById(R.id.tt);
         TextView add_fav = view.findViewById(R.id.add_fav);
         TextView report = view.findViewById(R.id.report);
+        if (ConstantInterFace.USER.getType().equals("worker")){
+            new_project.setVisibility(View.GONE);
+            tt.setVisibility(View.GONE);
+        }
 
         Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
         new_project.setTypeface(custom_font);
@@ -152,21 +157,21 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
             @Override
             public void onClick(View view) {
                 mypopupWindow.dismiss();
-                if (ConstantInterFace.USER.getType().equals("worker")){
-                    AddNewWork2Fragment fragment = new AddNewWork2Fragment();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("id",String.valueOf(ConstantInterFace.USER.getId()));
-                    fragment.setArguments(bundle);
-                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment,true);
-//                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AddNewWork2Fragment(),true);
-                }else {
+//                if (ConstantInterFace.USER.getType().equals("worker")){
+//                    AddNewWork2Fragment fragment = new AddNewWork2Fragment();
+//                    Bundle bundle = new Bundle();
+//                    bundle.putString("id",String.valueOf(ConstantInterFace.USER.getId()));
+//                    fragment.setArguments(bundle);
+//                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment,true);
+////                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AddNewWork2Fragment(),true);
+//                }else {
                     AddProjectFragment fragment = new AddProjectFragment();
                     Bundle bundle = new Bundle();
                     bundle.putString("type",projectsModels.getType());
                     Log.e("ffd",projectsModels.getType());
                     fragment.setArguments(bundle);
                     FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment,true);
-                }
+                //}
                 ConstantInterFace.tv_home.setBackgroundResource(0);
                 ConstantInterFace.tv_msgs.setBackgroundResource(0);
                 ConstantInterFace.tv_profile.setBackgroundResource(0);

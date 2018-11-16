@@ -254,6 +254,12 @@ public class ProjectsModels implements Parcelable {
         private String style;
         private String project_id;
         private String lng;
+
+        private String dur;
+        private String about;
+
+        private String newp;
+        private String d_type;
         private String created_at;
         private String updated_at;
 
@@ -303,6 +309,38 @@ public class ProjectsModels implements Parcelable {
 
         public void setStyle(String style) {
             this.style = style;
+        }
+
+        public String getDur() {
+            return dur;
+        }
+
+        public void setDur(String dur) {
+            this.dur = dur;
+        }
+
+        public String getAbout() {
+            return about;
+        }
+
+        public void setAbout(String about) {
+            this.about = about;
+        }
+
+        public String getNewp() {
+            return newp;
+        }
+
+        public void setNewp(String newp) {
+            this.newp = newp;
+        }
+
+        public String getD_type() {
+            return d_type;
+        }
+
+        public void setD_type(String d_type) {
+            this.d_type = d_type;
         }
 
         public String getProject_id() {

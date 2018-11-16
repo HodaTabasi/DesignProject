@@ -30,6 +30,7 @@ import com.smm.sapp.sproject.Adapters.ProjectPhotoAdapter;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.HelperClass.PathUtil;
+import com.smm.sapp.sproject.Models.ProjectsModels;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.MySpinnerAdapter;
 import com.smm.sapp.sproject.OkHttpCallback;
@@ -88,6 +89,11 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
     ArrayList<String> bStrings;
     ProjectPhotoAdapter adapter;
 
+    MySpinnerAdapter adapter3;
+    Bundle bundle ;
+    String projectId;
+    Boolean flag = false;
+
 
     public ProjectDitailesGraphicsFragment() {
         // Required empty public constructor
@@ -132,11 +138,45 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
-
+        setSpinner();
         adapter = new ProjectPhotoAdapter(getContext(), R.layout.layout_item_photos, bitmaps, bStrings, true);
         rec_P.setAdapter(adapter);
-        setSpinner();
+
         attachMap = new HashMap<>();
+
+        if (!getArguments().isEmpty()) {
+            bundle = getArguments();
+            ProjectsModels models = bundle.getParcelable("object");
+            flag = bundle.getBoolean("flag",false);
+            mGhType.setText(models.getName());
+            mProjectNameGh.setText(models.getName());
+            mAboutActivity.setText(models.getAddtion_info().getAbout());
+            sp_balance.setSelection(adapter3.getPosition(ConstantInterFace.array[Integer.parseInt(models.getBalance())]));
+            st_balance = Integer.parseInt(models.getBalance());
+            mProjectDeitailsGh.setText(models.getDescr());
+            projectId = String.valueOf(models.getId());
+
+            if (models.getAddtion_info().getNewp().equals("1")){
+                savedValue1 = "1";
+                mYes.setTextColor(Color.parseColor("#65bafb"));
+                mNo.setTextColor(Color.parseColor("#000000"));
+            }else {
+                savedValue1 = "0";
+                mYes.setTextColor(Color.parseColor("#000000"));
+                mNo.setTextColor(Color.parseColor("#65bafb"));
+            }
+
+            if (models.getAddtion_info().getD_type().equals("develop")){
+                savedValue2 = "develop";
+                mDevelop.setTextColor(Color.parseColor("#65bafb"));
+                mInnovation.setTextColor(Color.parseColor("#000000"));
+            }else {
+                savedValue2 = "innovation";
+                mInnovation.setTextColor(Color.parseColor("#65bafb"));
+                mDevelop.setTextColor(Color.parseColor("#000000"));
+            }
+
+        }
 
         ic_back = getView().findViewById(R.id.ic_back);
 
@@ -159,7 +199,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
                         Log.e("ddddd", " " + s);
                         attachMap.put("photos[" + (i++) + "]", s);
                     }
-                    sendGraphicRequest();
+                    sendGraphicRequest("projectmakegraphic","projectupdategraphic");
                 }
             }
         });
@@ -228,10 +268,23 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
 
     }
 
-    private void sendGraphicRequest() {
+    private void sendGraphicRequest(String make, String update) {
         MyProgressDialog.showDialog(getContext());
         MyRequest myRequest = new MyRequest();
         Map<String, String> map = new HashMap<>();
+        String url;
+        final String success;
+
+        if (flag){
+            url = update;
+            map.put("project_id", projectId);
+            Log.e("ffgedsfd",url);
+            success = "تمت التعديل نجاح قيد المراجعة من الادارة";
+        }else {
+            url = make;
+            Log.e("ffgedsfd",url);
+            success = "تمت الاضافة نجاح قيد المراجعة من الادارة";
+        }
         map.put("token", ConstantInterFace.USER.getToken());
         //map.put("name", mMotionType.getText().toString());
         map.put("name", mProjectNameGh.getText().toString());
@@ -241,7 +294,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
         map.put("balance", String.valueOf(st_balance));
         map.put("descr", mProjectDeitailsGh.getText().toString());
 
-        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/projectmakegraphic", map, attachMap, new OkHttpCallback() {
+        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/"+url, map, attachMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
@@ -257,9 +310,9 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
                     public void run() {
                         try {
                             if (object.getBoolean("success")) {
-                                Toast.makeText(getActivity(), "تم اضافة مشروع بنجاح", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), success, Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(getActivity(), "" + object.getString("message"), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "" + object.getString("error"), Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -288,7 +341,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
     }
 
     private void setSpinner() {
-        MySpinnerAdapter adapter3 = new MySpinnerAdapter(
+        adapter3 = new MySpinnerAdapter(
                 getContext(),
                 android.R.layout.simple_spinner_item,
                 Arrays.asList(getResources().getStringArray(R.array.spinner_balance))

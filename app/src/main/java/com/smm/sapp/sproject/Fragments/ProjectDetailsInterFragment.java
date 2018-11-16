@@ -30,6 +30,7 @@ import com.smm.sapp.sproject.Activities.MapActivity;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.HelperClass.PathUtil;
+import com.smm.sapp.sproject.Models.ProjectsModels;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.MySpinnerAdapter;
 import com.smm.sapp.sproject.OkHttpCallback;
@@ -80,6 +81,12 @@ public class ProjectDetailsInterFragment extends Fragment {
 
     int i = 0, j = 0, k = 0;
     Map<String, String> attachMap;
+    MySpinnerAdapter adapter1;
+    MySpinnerAdapter adapter2;
+    MySpinnerAdapter adapter3;
+    Bundle bundle ;
+    String projectId;
+    Boolean flag = false;
 
 
     public ProjectDetailsInterFragment() {
@@ -106,6 +113,28 @@ public class ProjectDetailsInterFragment extends Fragment {
             initView();
         }
 
+        setSpinners();
+
+        if (!getArguments().isEmpty()) {
+            bundle = getArguments();
+            ProjectsModels models = bundle.getParcelable("object");
+            flag = bundle.getBoolean("flag",false);
+            mInType.setText(models.getName());
+            mArea2.setText(models.getAddtion_info().getArea());
+            sp_city.setSelection(adapter2.getPosition(models.getAddtion_info().getCity()));
+            st_city =models.getAddtion_info().getCity();
+            sp_balance.setSelection(adapter3.getPosition(ConstantInterFace.array[Integer.parseInt(models.getBalance())]));
+            st_balance = Integer.parseInt(models.getBalance());
+            sp_chooese_style.setSelection(adapter1.getPosition(models.getAddtion_info().getStyle()));
+            st_style = models.getAddtion_info().getStyle();
+            mProjectDetailes.setText(models.getDescr());
+            mMap.setText("خط الطول = " + models.getAddtion_info().getLng() + "\n" + "خط العرض = " + models.getAddtion_info().getLat());
+            s_lat =  models.getAddtion_info().getLat();
+            s_lng = models.getAddtion_info().getLng();
+            mDesignColor.setText(models.getAddtion_info().getColors());
+            projectId = String.valueOf(models.getId());
+        }
+
         mSendIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -115,7 +144,7 @@ public class ProjectDetailsInterFragment extends Fragment {
                     Toast.makeText(getContext(), "يجب تعبئة جميع الحقول", Toast.LENGTH_LONG).show();
 
                 } else {
-                    sendInterDesignRequest();
+                    sendInterDesignRequest("projectmakeinter","projectupdateinter");
                 }
             }
         });
@@ -129,14 +158,14 @@ public class ProjectDetailsInterFragment extends Fragment {
             }
         });
 
-        setSpinners();
+
 
 
     }
 
     private void setSpinners() {
 
-        MySpinnerAdapter adapter1 = new MySpinnerAdapter(
+        adapter1 = new MySpinnerAdapter(
                 getContext(),
                 android.R.layout.simple_spinner_item,
                 Arrays.asList(getResources().getStringArray(R.array.spinner_styles))
@@ -171,7 +200,7 @@ public class ProjectDetailsInterFragment extends Fragment {
         });
 
 
-        MySpinnerAdapter adapter2 = new MySpinnerAdapter(
+        adapter2 = new MySpinnerAdapter(
                 getContext(),
                 android.R.layout.simple_spinner_item,
                 Arrays.asList(getResources().getStringArray(R.array.spinner_cities))
@@ -271,7 +300,7 @@ public class ProjectDetailsInterFragment extends Fragment {
             }
         });
 
-        MySpinnerAdapter adapter3 = new MySpinnerAdapter(
+        adapter3 = new MySpinnerAdapter(
                 getContext(),
                 android.R.layout.simple_spinner_item,
                 Arrays.asList(getResources().getStringArray(R.array.spinner_balance))
@@ -332,10 +361,24 @@ public class ProjectDetailsInterFragment extends Fragment {
         return false;
     }
 
-    private void sendInterDesignRequest() {
+    private void sendInterDesignRequest(String make, String update) {
         MyProgressDialog.showDialog(getContext());
         MyRequest myRequest = new MyRequest();
         Map<String, String> map = new HashMap<>();
+        String url;
+        final String success;
+
+        if (flag){
+            url = update;
+            map.put("project_id", projectId);
+            Log.e("ffgedsfd",url);
+            success = "تمت التعديل نجاح قيد المراجعة من الادارة";
+        }else {
+            url = make;
+            Log.e("ffgedsfd",url);
+            success = "تمت الاضافة نجاح قيد المراجعة من الادارة";
+        }
+
         map.put("token", ConstantInterFace.USER.getToken());
         map.put("name", mInType.getText().toString());
         map.put("style", st_style);
@@ -351,7 +394,7 @@ public class ProjectDetailsInterFragment extends Fragment {
         Log.e("qqqqq",st_style);
         Log.e("qqqqq",st_balance+" gh");
 
-        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/projectmakeinter", map, attachMap, new OkHttpCallback() {
+        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/"+url, map, attachMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
@@ -373,7 +416,7 @@ public class ProjectDetailsInterFragment extends Fragment {
                     public void run() {
                         try {
                             if (object.getBoolean("success")) {
-                                Toast.makeText(getActivity(), "تم اضافة مشروع بنجاح", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), success, Toast.LENGTH_SHORT).show();
                                 Log.e("fdd", object.getString("message"));
 
                             } else {
