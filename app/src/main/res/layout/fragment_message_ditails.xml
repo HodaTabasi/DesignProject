@@ -24,8 +24,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:drawableRight="@drawable/ic_msgs"
             android:drawablePadding="@dimen/_5sdp"
+            android:drawableRight="@drawable/ic_msgs"
             android:drawableTint="@color/white"
             android:gravity="center"
             android:text="الرسائل"
@@ -43,12 +43,21 @@
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/message_details"
+    <android.support.v4.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/swipe_container"
         android:layout_above="@+id/attchs_name"
-        android:layout_below="@+id/toolbar" />
+        android:layout_below="@+id/toolbar"
+        android:layout_margin="@dimen/_8sdp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/message_details"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 
     <TextView
         android:id="@+id/attchs_name"
@@ -82,8 +91,8 @@
                 android:id="@+id/message_ex"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right|center"
                 android:background="@drawable/ligtht_gray_shap"
+                android:gravity="right|center"
                 android:padding="@dimen/_10sdp"
                 android:textSize="@dimen/_11sdp" />
 
@@ -99,4 +108,5 @@
             android:padding="5dp"
             android:src="@drawable/send" />
     </LinearLayout>
+
 </RelativeLayout>

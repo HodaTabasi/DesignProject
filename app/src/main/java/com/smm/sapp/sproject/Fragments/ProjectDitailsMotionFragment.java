@@ -74,11 +74,11 @@ public class ProjectDitailsMotionFragment extends Fragment {
 
 
     int i = 0;
-    Map<String,String> attachMap;
+    Map<String, String> attachMap;
     ArrayList<Bitmap> bitmaps;
     ArrayList<String> bStrings;
     MySpinnerAdapter adapter3;
-    Bundle bundle ;
+    Bundle bundle;
     String projectId;
     Boolean flag = false;
 
@@ -86,6 +86,7 @@ public class ProjectDitailsMotionFragment extends Fragment {
     int st_balance = 1;
 
     private Spinner sp_balance;
+
     public ProjectDitailsMotionFragment() {
     }
 
@@ -107,9 +108,9 @@ public class ProjectDitailsMotionFragment extends Fragment {
         mAttachmentMotion = getView().findViewById(R.id.attachment_motion);
         mSendMotion = getView().findViewById(R.id.send_motion);
         sp_balance = getView().findViewById(R.id.sp_chooese_balance);
-        lien =  getView().findViewById(R.id.lien);
-        rec_P =  getView().findViewById(R.id.rec_P);
-        rec_P.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+        lien = getView().findViewById(R.id.lien);
+        rec_P = getView().findViewById(R.id.rec_P);
+        rec_P.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         bitmaps = new ArrayList<>();
         bStrings = new ArrayList<>();
     }
@@ -122,7 +123,7 @@ public class ProjectDitailsMotionFragment extends Fragment {
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
         initView();
         attachMap = new HashMap<>();
-        adapter = new ProjectPhotoAdapter(getContext(),R.layout.layout_item_photos,bitmaps,bStrings,true);
+        adapter = new ProjectPhotoAdapter(getContext(), R.layout.layout_item_photos, bitmaps, bStrings, true);
         rec_P.setAdapter(adapter);
 
         setSpinner();
@@ -130,7 +131,7 @@ public class ProjectDitailsMotionFragment extends Fragment {
         if (!getArguments().isEmpty()) {
             bundle = getArguments();
             ProjectsModels models = bundle.getParcelable("object");
-            flag = bundle.getBoolean("flag",false);
+            flag = bundle.getBoolean("flag", false);
             mMotionType.setText(models.getName());
             mProjectName.setText(models.getName());
             mProjectTime.setText(models.getAddtion_info().getDur());
@@ -139,6 +140,8 @@ public class ProjectDitailsMotionFragment extends Fragment {
             st_balance = Integer.parseInt(models.getBalance());
             mProjectDetiailsMotion.setText(models.getDescr());
             projectId = String.valueOf(models.getId());
+            Log.e("eeeee",projectId+"");
+
         }
 
         mSendMotion.setOnClickListener(new View.OnClickListener() {
@@ -150,11 +153,11 @@ public class ProjectDitailsMotionFragment extends Fragment {
 
                 } else {
                     attachMap.clear();
-                    for (String s:bStrings){
+                    for (String s : bStrings) {
                         Log.e("ddddd", " " + s);
                         attachMap.put("photos[" + (i++) + "]", s);
                     }
-                    sendMotionRequest("projectmakemoshen","projectupdatemoshen");
+                    sendMotionRequest("projectmakemoshen", "projectupdatemoshen");
                 }
             }
         });
@@ -183,6 +186,7 @@ public class ProjectDitailsMotionFragment extends Fragment {
         });
 
     }
+
     private void fileBrowse() {
         new ChooserDialog().with(getContext())
                 .withFilter(false, false, "pdf", "docx", "xlsx")
@@ -191,7 +195,7 @@ public class ProjectDitailsMotionFragment extends Fragment {
                     @Override
                     public void onChoosePath(String path, File pathFile) {
                         Toast.makeText(getContext(), "FOLDER: " + path, Toast.LENGTH_SHORT).show();
-                        attachMap.put("attachs["+(i++)+"]",path);
+                        attachMap.put("attachs[" + (i++) + "]", path);
                         Toast.makeText(getContext(), "تم اضافة الملف في المرفقات بنجاح", Toast.LENGTH_SHORT).show();
                     }
                 })
@@ -206,14 +210,14 @@ public class ProjectDitailsMotionFragment extends Fragment {
         String url;
         final String success;
 
-        if (flag){
+        if (flag) {
             url = update;
             map.put("project_id", projectId);
-            Log.e("ffgedsfd",url);
+            Log.e("ffgedsfd", url);
             success = "تمت التعديل نجاح قيد المراجعة من الادارة";
-        }else {
+        } else {
             url = make;
-            Log.e("ffgedsfd",url);
+            Log.e("ffgedsfd", url);
             success = "تمت الاضافة نجاح قيد المراجعة من الادارة";
         }
         map.put("token", ConstantInterFace.USER.getToken());
@@ -224,18 +228,23 @@ public class ProjectDitailsMotionFragment extends Fragment {
         map.put("balance", String.valueOf(st_balance));
         map.put("descr", mProjectDetiailsMotion.getText().toString());
 
-        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/"+url, map,attachMap, new OkHttpCallback() {
+        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/" + url, map, attachMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException, JSONException {
-                String s = response.body().string();
-                JSONObject jsonObject = new JSONObject(s);
-                final JSONObject object = jsonObject.getJSONObject("status");
                 MyProgressDialog.dismissDialog();
+                JSONObject jsonObject = new JSONObject(response.body().string());
+                final JSONObject object = jsonObject.getJSONObject("status");
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

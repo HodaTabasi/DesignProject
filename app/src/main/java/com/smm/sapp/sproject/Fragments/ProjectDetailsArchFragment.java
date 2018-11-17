@@ -139,6 +139,8 @@ public class ProjectDetailsArchFragment extends Fragment {
             s_lng = models.getAddtion_info().getLng();
             mDesignColor.setText(models.getAddtion_info().getColors());
             projectId = String.valueOf(models.getId());
+
+            Log.e("success",projectId);
         }
 
 
@@ -423,17 +425,17 @@ public class ProjectDetailsArchFragment extends Fragment {
         MyProgressDialog.showDialog(getContext());
         Map<String, String> map = new HashMap<>();
         String url;
-        final String success;
+        final String success_msg;
 
         if (flag){
             url = update;
             map.put("project_id", projectId);
             Log.e("ffgedsfd",url);
-            success = "تمت التعديل نجاح قيد المراجعة من الادارة";
+            success_msg = "تمت التعديل نجاح قيد المراجعة من الادارة";
         }else {
             url = make;
             Log.e("ffgedsfd",url);
-            success = "تمت الاضافة نجاح قيد المراجعة من الادارة";
+            success_msg = "تمت الاضافة نجاح قيد المراجعة من الادارة";
         }
         map.put("token", ConstantInterFace.USER.getToken());
         map.put("name", mInType.getText().toString());
@@ -445,25 +447,32 @@ public class ProjectDetailsArchFragment extends Fragment {
         map.put("lat", s_lat);
         map.put("balance", String.valueOf(st_balance));
         map.put("descr", mProjectDetailes.getText().toString());
-        Log.e("qqqqq", st_city);
-        Log.e("qqqqq", st_style);
+
         myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/"+url, map, attachMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException, JSONException {
+                MyProgressDialog.dismissDialog();
                 JSONObject jsonObject = new JSONObject(response.body().string());
                 final JSONObject object = jsonObject.getJSONObject("status");
-                MyProgressDialog.dismissDialog();
+                Log.e("success", "ssss");
+
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         try {
                             if (object.getBoolean("success")) {
-                                Toast.makeText(getActivity(), success, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), success_msg, Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(getActivity(), "" + object.getString("error"), Toast.LENGTH_SHORT).show();
                             }

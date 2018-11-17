@@ -155,6 +155,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
             st_balance = Integer.parseInt(models.getBalance());
             mProjectDeitailsGh.setText(models.getDescr());
             projectId = String.valueOf(models.getId());
+            Log.e("eeeee",projectId+"");
 
             if (models.getAddtion_info().getNewp().equals("1")){
                 savedValue1 = "1";
@@ -298,13 +299,19 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException, JSONException {
+                MyProgressDialog.dismissDialog();
                 JSONObject jsonObject = new JSONObject(response.body().string());
                 final JSONObject object = jsonObject.getJSONObject("status");
-                MyProgressDialog.dismissDialog();
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

@@ -56,9 +56,6 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_favorite, container, false);
 
-
-//        adapter = new FavoritePortfolioAdapter(getActivity(), arrayList);
-//        recyclerView.setAdapter(adapter);
         return view;
     }
 

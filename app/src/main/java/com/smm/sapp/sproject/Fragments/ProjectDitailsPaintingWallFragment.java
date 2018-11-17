@@ -68,7 +68,7 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
     private TextView mWallAttachment;
     private Button mWallSend;
     ImageView ic_back;
-    Spinner sp_city ,sp_balance;
+    Spinner sp_city, sp_balance;
     String st_city;
 
     int st_balance = 1;
@@ -81,7 +81,7 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
     Map<String, String> attachMap;
     MySpinnerAdapter adapter2;
     MySpinnerAdapter adapter3;
-    Bundle bundle ;
+    Bundle bundle;
     String projectId;
     Boolean flag = false;
 
@@ -135,16 +135,17 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
         if (!getArguments().isEmpty()) {
             bundle = getArguments();
             ProjectsModels models = bundle.getParcelable("object");
-            flag = bundle.getBoolean("flag",false);
+            flag = bundle.getBoolean("flag", false);
             mWallType.setText(models.getName());
             mWallArea.setText(models.getAddtion_info().getArea());
             sp_city.setSelection(adapter2.getPosition(models.getAddtion_info().getCity()));
-            st_city =models.getAddtion_info().getCity();
+            st_city = models.getAddtion_info().getCity();
+            Log.e("qqqqqq",st_city);
             sp_balance.setSelection(adapter3.getPosition(ConstantInterFace.array[Integer.parseInt(models.getBalance())]));
             st_balance = Integer.parseInt(models.getBalance());
             mWallProjectDietails.setText(models.getDescr());
             mWallMap.setText("خط الطول = " + models.getAddtion_info().getLng() + "\n" + "خط العرض = " + models.getAddtion_info().getLat());
-            s_lat =  models.getAddtion_info().getLat();
+            s_lat = models.getAddtion_info().getLat();
             s_lng = models.getAddtion_info().getLng();
             projectId = String.valueOf(models.getId());
         }
@@ -159,15 +160,14 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
         });
 
 
-
         mWallSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (mWallType.getText().toString().matches("") || st_city.matches("") || mWallArea.getText().toString().matches("")
-                        || mWallMap.getText().toString().matches("")  || mWallProjectDietails.getText().toString().matches("")) {
+                        || mWallMap.getText().toString().matches("") || mWallProjectDietails.getText().toString().matches("")) {
                     Toast.makeText(getContext(), "يجب تعبئة جميع الحقول", Toast.LENGTH_LONG).show();
                 } else {
-                        sendWallRequest("projectmakewall","projectupdatewall");
+                    sendWallRequest("projectmakewall", "projectupdatewall");
                 }
 
             }
@@ -197,7 +197,7 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
     }
 
     private void setSpinner() {
-         adapter2 = new MySpinnerAdapter(
+        adapter2 = new MySpinnerAdapter(
                 getContext(),
                 android.R.layout.simple_spinner_item,
                 Arrays.asList(getResources().getStringArray(R.array.spinner_cities))
@@ -296,7 +296,7 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
 
             }
         });
-         adapter3 = new MySpinnerAdapter(
+        adapter3 = new MySpinnerAdapter(
                 getContext(),
                 android.R.layout.simple_spinner_item,
                 Arrays.asList(getResources().getStringArray(R.array.spinner_balance))
@@ -375,51 +375,63 @@ public class ProjectDitailsPaintingWallFragment extends Fragment {
 
     private void sendWallRequest(String projectmakewall, String projectupdatewall) {
         String url;
-        final String success;
+        final String success_msg;
         MyProgressDialog.showDialog(getContext());
         MyRequest myRequest = new MyRequest();
         Map<String, String> map = new HashMap<>();
 
-        if (flag){
+        if (flag) {
             url = projectupdatewall;
             map.put("project_id", projectId);
-            Log.e("ffgedsfd",url);
-            success = "تمت التعديل نجاح قيد المراجعة من الادارة";
-        }else {
+            Log.e("uuuuu", url+""+projectId);
+            success_msg = "تم التعديل بنجاح قيد المراجعة من الادارة";
+        } else {
             url = projectmakewall;
-            Log.e("ffgedsfd",url);
-            success = "تمت الاضافة نجاح قيد المراجعة من الادارة";
+            Log.e("uuuuu", url);
+            success_msg = "تم الاضافة بنجاح قيد المراجعة من الادارة";
         }
         map.put("token", ConstantInterFace.USER.getToken());
         map.put("name", mWallType.getText().toString());
-        map.put("city", st_city);
+        map.put("descr", mWallProjectDietails.getText().toString());
+        map.put("balance", String.valueOf(st_balance));
         map.put("area", mWallArea.getText().toString());
+        map.put("city", st_city);
         map.put("lng", s_lng);
         map.put("lat", s_lat);
-        map.put("balance", String.valueOf(st_balance));
-        map.put("descr", mWallProjectDietails.getText().toString());
 
-        Log.e("qqqq",st_city);
-
-        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/"+url, map, attachMap, new OkHttpCallback() {
+        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/" + url, map, attachMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
+                Log.e("failure", "ffff");
                 MyProgressDialog.dismissDialog();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException, JSONException {
-                String s = response.body().string();
-                JSONObject jsonObject = new JSONObject(s);
-                final JSONObject object = jsonObject.getJSONObject("status");
                 MyProgressDialog.dismissDialog();
+
+                Log.e("success", "ssss");
+
+//                String s = response.body().string();
+                final JSONObject jsonObject = new JSONObject(response.body().string());
+                final JSONObject object = jsonObject.getJSONObject("status");
+
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         try {
                             if (object.getBoolean("success")) {
-                                Toast.makeText(getActivity(), success, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), success_msg, Toast.LENGTH_SHORT).show();
+                                Log.e("success", "uuuuu");
+
                             } else {
+                                Log.e("success", "ffffff");
                                 Toast.makeText(getActivity(), "" + object.getString("error"), Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {

@@ -133,6 +133,7 @@ public class ProjectDetailsInterFragment extends Fragment {
             s_lng = models.getAddtion_info().getLng();
             mDesignColor.setText(models.getAddtion_info().getColors());
             projectId = String.valueOf(models.getId());
+            Log.e("eeeee",projectId+"");
         }
 
         mSendIn.setOnClickListener(new View.OnClickListener() {
@@ -408,9 +409,9 @@ public class ProjectDetailsInterFragment extends Fragment {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException, JSONException {
+                MyProgressDialog.dismissDialog();
                 JSONObject jsonObject = new JSONObject(response.body().string());
                 final JSONObject object = jsonObject.getJSONObject("status");
-                MyProgressDialog.dismissDialog();
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

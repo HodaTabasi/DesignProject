@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -46,6 +47,8 @@ public class FeedbackFragment extends Fragment {
     ImageView ic_back;
     Bundle bundle;
     int designer_id;
+    private TextView tv_next, tv_back;
+    int current_page, total_pages, flag;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,6 +58,9 @@ public class FeedbackFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recycel_feedback);
         ic_back = view.findViewById(R.id.ic_back);
+        tv_next = getView().findViewById(R.id.tv_next);
+        tv_back = getView().findViewById(R.id.tv_back);
+
         return view;
     }
 
@@ -64,20 +70,17 @@ public class FeedbackFragment extends Fragment {
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
 
-//        Bundle bundle = getArguments();
-//        arrayList = bundle.getParcelableArrayList("commentsInfo");
-//        adapter = new FeedbackAdapter(getActivity(), arrayList);
-//        recyclerView.setAdapter(adapter);
-
         bundle = getArguments();
         if (bundle != null && bundle.containsKey("designer_id")) {
             designer_id = bundle.getInt("designer_id");
             getDesignerComments(designer_id);
+            flag = 1;
         } else if (bundle != null && bundle.containsKey("commentsInfo")) {
             arrayList = bundle.getParcelableArrayList("commentsInfo");
             adapter = new FeedbackAdapter(getActivity(), arrayList);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
             recyclerView.setAdapter(adapter);
+            flag = 2;
         }
 
         ic_back.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +89,6 @@ public class FeedbackFragment extends Fragment {
                 getFragmentManager().popBackStack();
             }
         });
-
     }
 
     private void getDesignerComments(int designer_id) {

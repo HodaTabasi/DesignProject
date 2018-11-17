@@ -42,134 +42,183 @@
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
 
-    <EditText
-        android:id="@+id/txt_search"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@drawable/account_shape"
-        android:drawableLeft="@drawable/ic_search_black_24dp"
-        android:hint="بحث عن مصمم"
-        android:imeOptions="actionSearch"
-        android:inputType="text"
-        android:padding="5dp"
-        android:textColorHint="@color/textGray"
-        android:textSize="@dimen/_12sdp" />
+        android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/motion_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="2dp"
-            android:layout_weight="0.6"
-            android:background="@drawable/account_shape"
-            android:gravity="center"
-            android:padding="3dp"
-            android:text="موشن"
-            android:textColor="@color/textGray"
-            android:textSize="@dimen/_9sdp" />
+            <EditText
+                android:id="@+id/txt_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/account_shape"
+                android:drawableLeft="@drawable/ic_search_black_24dp"
+                android:hint="بحث عن مصمم"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:padding="5dp"
+                android:textColorHint="@color/textGray"
+                android:textSize="@dimen/_12sdp" />
 
-        <TextView
-            android:id="@+id/gh_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="2dp"
-            android:layout_weight="1.2"
-            android:background="@drawable/account_shape"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="مصمم جرافكس"
-            android:textColor="@color/textGray"
-            android:textSize="@dimen/_8sdp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/wall_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="2dp"
-            android:layout_weight="1"
-            android:background="@drawable/account_shape"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="مصمم جداري"
-            android:textColor="@color/textGray"
-            android:textSize="@dimen/_8sdp" />
+                <TextView
+                    android:id="@+id/motion_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="0.6"
+                    android:background="@drawable/account_shape"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:text="موشن"
+                    android:textColor="@color/textGray"
+                    android:textSize="@dimen/_9sdp" />
 
-        <TextView
-            android:id="@+id/arch_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="2dp"
-            android:layout_weight="1.15"
-            android:background="@drawable/account_shape"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="مصمم معماري"
-            android:textColor="@color/textGray"
-            android:textSize="@dimen/_8sdp" />
+                <TextView
+                    android:id="@+id/gh_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1.2"
+                    android:background="@drawable/account_shape"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="مصمم جرافكس"
+                    android:textColor="@color/textGray"
+                    android:textSize="@dimen/_8sdp" />
 
-        <TextView
-            android:id="@+id/in_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/account_shape"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="مصمم داخلي"
-            android:textColor="@color/textGray"
-            android:textSize="@dimen/_8sdp" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/wall_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/account_shape"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="مصمم جداري"
+                    android:textColor="@color/textGray"
+                    android:textSize="@dimen/_8sdp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@drawable/account_shape"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/arch_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1.15"
+                    android:background="@drawable/account_shape"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="مصمم معماري"
+                    android:textColor="@color/textGray"
+                    android:textSize="@dimen/_8sdp" />
 
-        <RatingBar
-            android:id="@+id/ratting_designer"
-            style="?android:attr/ratingBarStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:gravity="center"
-            android:isIndicator="false"
-            android:numStars="5"
-            android:progressTint="#fed42d"
-            android:rotationY="180"
-            android:stepSize="1.0"
-            android:textAlignment="center" />
+                <TextView
+                    android:id="@+id/in_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/account_shape"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="مصمم داخلي"
+                    android:textColor="@color/textGray"
+                    android:textSize="@dimen/_8sdp" />
+            </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_weight="0.5"
-            android:padding="5dp"
-            android:text="التقييم"
-            android:textColor="@color/textGray"
-            android:textSize="@dimen/_12sdp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/account_shape"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <RatingBar
+                    android:id="@+id/ratting_designer"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:gravity="center"
+                    android:isIndicator="false"
+                    android:numStars="5"
+                    android:progressTint="#fed42d"
+                    android:rotationY="180"
+                    android:stepSize="1.0"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_weight="0.5"
+                    android:padding="5dp"
+                    android:text="التقييم"
+                    android:textColor="@color/textGray"
+                    android:textSize="@dimen/_12sdp" />
 
 
-    </LinearLayout>
+            </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/res_search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="@dimen/_8sdp"
-        android:textAlignment="center" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/res_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/_8sdp"
+                android:textAlignment="center" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_8sdp">
+
+                <TextView
+                    android:id="@+id/tv_next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/projects_recycler"
+                    android:layout_marginBottom="@dimen/_14sdp"
+                    android:layout_marginRight="@dimen/_8sdp"
+                    android:drawablePadding="@dimen/_3sdp"
+                    android:drawableRight="@drawable/ic_next"
+                    android:gravity="center"
+                    android:text="التالي"
+                    android:textColor="@color/textGray"
+                    android:textSize="@dimen/_10sdp" />
+
+                <TextView
+                    android:id="@+id/tv_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_14sdp"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:drawableLeft="@drawable/ic_back"
+                    android:drawablePadding="@dimen/_3sdp"
+                    android:gravity="center_vertical"
+                    android:text="السابق"
+                    android:textColor="@color/textGray"
+                    android:textSize="@dimen/_10sdp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
 
 </LinearLayout>

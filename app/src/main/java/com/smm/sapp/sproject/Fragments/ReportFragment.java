@@ -212,6 +212,8 @@ public class ReportFragment extends Fragment implements View.OnClickListener {
                     addNewBankRequest("charge", current_page);
                 } else if (flag == 3) {
                     addNewBankRequest("all", current_page);
+                } else {
+                    addNewBankRequest("all", current_page);
                 }
                 break;
 
@@ -222,6 +224,8 @@ public class ReportFragment extends Fragment implements View.OnClickListener {
                 } else if (flag == 2) {
                     addNewBankRequest("charge", current_page);
                 } else if (flag == 3) {
+                    addNewBankRequest("all", current_page);
+                } else {
                     addNewBankRequest("all", current_page);
                 }
                 break;
