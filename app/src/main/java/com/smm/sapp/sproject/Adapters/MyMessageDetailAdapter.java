@@ -15,6 +15,7 @@ import android.webkit.URLUtil;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.Models.MessageDetails;
 import com.smm.sapp.sproject.R;
 import com.squareup.picasso.Picasso;
@@ -81,7 +82,7 @@ public class MyMessageDetailAdapter extends RecyclerView.Adapter {
     public int getItemViewType(int position) {
         MessageDetails message = details.get(position);
 
-        if (message.getSender_id().equals("2")) {
+        if (message.getSender_id().equals(String.valueOf(ConstantInterFace.USER.getId()))) {
             // If the current user is the sender of the message
             return VIEW_TYPE_MESSAGE_SENT;
         } else {
