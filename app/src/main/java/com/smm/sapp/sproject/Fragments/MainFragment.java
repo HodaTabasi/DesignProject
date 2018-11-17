@@ -24,12 +24,15 @@ import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.smm.sapp.sproject.Activities.RegistrationActivity;
+import com.smm.sapp.sproject.Adapters.NotificationAdapter;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.HelperClass.PathUtil;
 import com.smm.sapp.sproject.HelperClass.SharedPreferencesApp;
+import com.smm.sapp.sproject.Models.NotificationsModels;
 import com.smm.sapp.sproject.Models.User;
 import com.smm.sapp.sproject.Models.UserModel;
 import com.smm.sapp.sproject.MyRequest;
@@ -42,6 +45,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -323,19 +327,61 @@ public class MainFragment extends Fragment {
                             ratting_designer.setRating(Float.valueOf(userModel.getRate()));
 
                         } else if (userModel.getType().equals("client")) {
-
                             _name.setText(userModel.getName());
                             _specialization.setText("صاحب مشاريع");
                             Picasso.get().load(ConstantInterFace.USER.getPhoto_link()).into(img_user);
                             ratting_designer.setRating(Float.valueOf(userModel.getRate()));
-
                         }
+                       getSetsData();
+                    }
+                });
+            }
+        });
+    }
 
+    private void getSetsData() {
+        MyRequest myRequest = new MyRequest();
+
+        myRequest.GetCall("http://smm.smmim.com/waell/public/api/sets?token="+ConstantInterFace.USER.getToken(), new OkHttpCallback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getContext(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException, JSONException {
+                String s = response.body().string();
+                Log.e("okHttpClient",""+s);
+
+                final JSONObject jsonObject = new JSONObject(s);
+                final JSONObject object = jsonObject.getJSONObject("status");
+                final Gson gson = new Gson();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            if (object.getBoolean("success")) {
+                                Log.e("dfrgthyum",jsonObject.getString("unseen_notifications") + "dcs");
+                               ConstantInterFace.NOTIFICATION_NUMBER = Integer.parseInt(jsonObject.getString("unseen_notifications"));
+                               notification_num.setVisibility(View.VISIBLE);
+                               notification_num.setText(jsonObject.getString("unseen_notifications"));
+                            } else {
+                                Toast.makeText(getContext(), "لم يتم الارسال بشكل صحيح", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
 
                     }
                 });
             }
         });
+
     }
 
     @Override
