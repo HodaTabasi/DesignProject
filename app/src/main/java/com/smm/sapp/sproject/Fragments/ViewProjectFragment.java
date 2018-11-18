@@ -189,14 +189,18 @@ public class ViewProjectFragment extends Fragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.length() != 0) {
                     double b = Double.parseDouble(mBalanceP.getText().toString());
-                    double total = b * 0.95;
+                    double total;
+                    if (models.getType().equals("inter") || models.getType().equals("arch"))
+                         total = b * 0.95;
+                    else
+                         total = b * 0.90;
+
                     mReceivableP.setText(total + " ");
                 }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
 

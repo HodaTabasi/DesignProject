@@ -121,6 +121,7 @@ public class AddProposalFragment extends Fragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(s.length() != 0){
                     double b = Double.parseDouble(mBalanceP.getText().toString());
+
                     double total = b * 0.95;
                     mReceivableP.setText(total +" ");
                 }

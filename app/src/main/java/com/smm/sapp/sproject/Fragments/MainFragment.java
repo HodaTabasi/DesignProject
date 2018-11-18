@@ -367,7 +367,7 @@ public class MainFragment extends Fragment {
                         try {
                             if (object.getBoolean("success")) {
                                 Log.e("dfrgthyum",jsonObject.getString("unseen_notifications") + "dcs");
-                               ConstantInterFace.NOTIFICATION_NUMBER += Integer.parseInt(jsonObject.getString("unseen_notifications"));
+                               ConstantInterFace.NOTIFICATION_NUMBER = Integer.parseInt(jsonObject.getString("unseen_notifications"));
                                if (ConstantInterFace.NOTIFICATION_NUMBER == 0)
                                    notification_num.setVisibility(View.INVISIBLE);
                                else {
