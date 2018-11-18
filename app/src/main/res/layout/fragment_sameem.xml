@@ -89,7 +89,7 @@
                 android:background="@drawable/account_shape"
                 android:gravity="center"
                 android:padding="3dp"
-                android:text="الاسئلة الشائعة "
+                android:text="الاسئلة الشائعة"
                 android:textColor="@color/textGray"
                 android:textSize="14sp" />
 

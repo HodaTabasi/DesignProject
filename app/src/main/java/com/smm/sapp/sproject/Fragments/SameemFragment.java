@@ -44,7 +44,7 @@ public class SameemFragment extends Fragment {
     EditText subject, et_writehere;
     RecyclerView recyclerView;
 
-    String s_about, s_condition, s_rights;
+    String s_about, s_condition, s_rights, s_ques;
 
     public SameemFragment() {
         // Required empty public constructor
@@ -316,14 +316,14 @@ public class SameemFragment extends Fragment {
                 MyProgressDialog.dismissDialog();
                 JSONObject jsonObject = new JSONObject(response.body().string());
 
-
                 final JSONObject aboutObject = jsonObject.getJSONObject("about");
                 final String s1 = aboutObject.getString("value");
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        //about.setText(Html.fromHtml(Html.fromHtml(s).toString()));
                         s_about = Html.fromHtml(s1).toString();
+                        about.setText(s_about);
+
                     }
                 });
 
@@ -333,6 +333,8 @@ public class SameemFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+//                        s_ques = Html.fromHtml(s2).toString();
+//                        tv_ques.setText(s2);
                     }
                 });
 
@@ -341,8 +343,9 @@ public class SameemFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        //rights.setText(Html.fromHtml(Html.fromHtml(s).toString()));
                         s_rights = Html.fromHtml(s3).toString();
+                        rights.setText(s3);
+
 
                     }
                 });
@@ -352,8 +355,8 @@ public class SameemFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        // conditions.setText(Html.fromHtml(Html.fromHtml(s).toString()));
                         s_condition = Html.fromHtml(s4).toString();
+                        conditions.setText(s4);
 
                     }
                 });

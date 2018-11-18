@@ -80,7 +80,7 @@ public class EditProposalFragment extends Fragment {
 
         Bundle bundle = getArguments();
 
-        if (bundle.getBoolean("flag",false)) {
+        if (bundle.getBoolean("flag", false)) {
             model2 = bundle.getParcelable("offer");
             putData(model2);
         } else {
@@ -182,19 +182,22 @@ public class EditProposalFragment extends Fragment {
             public void onResponse(Call call, Response response) throws IOException, JSONException {
                 MyProgressDialog.dismissDialog();
                 String s = response.body().string();
-                Log.e("dd", s);
                 final JSONObject object = new JSONObject(s);
+                final JSONObject statusObject = object.getJSONObject("status");
+                Log.e("dd", statusObject + "");
+
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         try {
-
-                            JSONObject object1 = object.getJSONObject("status");
-                            if (object1.getBoolean("success")) {
+                            if (statusObject.getString("error").equals("please charge your balance  5% of the project")) {
+                                Toast.makeText(getActivity(), "يجب عليك شحن رصيدك بنسبة 5% من المشروع", Toast.LENGTH_SHORT).show();
+                            } else if (statusObject.getBoolean("success")) {
                                 Toast.makeText(getActivity(), "تم اعتماد العرض", Toast.LENGTH_LONG).show();
                             } else {
                                 Toast.makeText(getActivity(), "حصل خطا ما", Toast.LENGTH_SHORT).show();
                             }
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
