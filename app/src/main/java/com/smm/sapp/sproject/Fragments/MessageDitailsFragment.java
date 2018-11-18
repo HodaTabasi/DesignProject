@@ -170,15 +170,22 @@ public class MessageDitailsFragment extends Fragment implements View.OnClickList
                         try {
                             if (object1.getBoolean("success")) {
                                 Gson gson = new Gson();
-                                TypeToken<List<MessageDetails>> token = new TypeToken<List<MessageDetails>>() {
-                                };
-                                details = gson.fromJson(object.getJSONArray("msgs").toString(), token.getType());
-                                adapter = new MyMessageDetailAdapter(getContext(), details);
-                                mMessageDetails.setAdapter(adapter);
-                                mSwipeRefreshLayout.setRefreshing(false);
-
+                                TypeToken<List<MessageDetails>> token = new TypeToken<List<MessageDetails>>() {};
                                 current_page = Integer.valueOf(paginationObj.getString("i_current_page"));
                                 total_pages = Integer.valueOf(paginationObj.getString("i_total_pages"));
+                                if (current_page <= 1){
+                                    details = gson.fromJson(object.getJSONArray("msgs").toString(), token.getType());
+                                    adapter = new MyMessageDetailAdapter(getContext(), details);
+                                    mMessageDetails.setAdapter(adapter);
+                                }else {
+                                    List<MessageDetails> messageDetails = gson.fromJson(object.getJSONArray("msgs").toString(), token.getType());
+                                    details.addAll(messageDetails);
+                                    adapter.notifyDataSetChanged();
+                                }
+
+                                mSwipeRefreshLayout.setRefreshing(false);
+
+
 
                             }
                         } catch (JSONException e) {
@@ -260,10 +267,10 @@ public class MessageDitailsFragment extends Fragment implements View.OnClickList
 
     @Override
     public void onRefresh() {
-        getAConversationRequest(current_page + 1);
         if (total_pages == current_page && current_page != 1){
             mSwipeRefreshLayout.setRefreshing(false);
-
+        }else {
+            getAConversationRequest(current_page + 1);
         }
 
     }

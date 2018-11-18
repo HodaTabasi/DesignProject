@@ -367,9 +367,14 @@ public class MainFragment extends Fragment {
                         try {
                             if (object.getBoolean("success")) {
                                 Log.e("dfrgthyum",jsonObject.getString("unseen_notifications") + "dcs");
-                               ConstantInterFace.NOTIFICATION_NUMBER = Integer.parseInt(jsonObject.getString("unseen_notifications"));
-                               notification_num.setVisibility(View.VISIBLE);
-                               notification_num.setText(jsonObject.getString("unseen_notifications"));
+                               ConstantInterFace.NOTIFICATION_NUMBER += Integer.parseInt(jsonObject.getString("unseen_notifications"));
+                               if (ConstantInterFace.NOTIFICATION_NUMBER == 0)
+                                   notification_num.setVisibility(View.INVISIBLE);
+                               else {
+                                   notification_num.setVisibility(View.VISIBLE);
+                                   notification_num.setText(ConstantInterFace.NOTIFICATION_NUMBER+" ");
+                               }
+
                             } else {
                                 Toast.makeText(getContext(), "لم يتم الارسال بشكل صحيح", Toast.LENGTH_SHORT).show();
                             }
