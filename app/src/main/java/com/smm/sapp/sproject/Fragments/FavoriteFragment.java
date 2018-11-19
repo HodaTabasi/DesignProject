@@ -123,8 +123,10 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
                                 }.getType());
 
                                 if (flag ==1){
+                                    recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
                                     designAdapter = new LikesDesignAdapter(getContext(), R.layout.item_layout_profile, likes);
                                 }else if(flag ==2){
+                                    recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
                                     designAdapter = new LikesDesignAdapter(getContext(), R.layout.fav2_row, likes);
                                 }else if(flag ==3){
                                     designAdapter = new LikesDesignAdapter(getContext(), R.layout.fav_row, likes);

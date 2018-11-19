@@ -31,6 +31,15 @@ public class PWorks implements Parcelable {
     private String likes;
     private String created_at;
     private String updated_at;
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     protected PWorks(Parcel in) {
         id = in.readInt();
@@ -45,6 +54,8 @@ public class PWorks implements Parcelable {
         likes = in.readString();
         created_at = in.readString();
         updated_at = in.readString();
+        user = in.readParcelable(User.class.getClassLoader());
+
     }
 
     public static final Creator<PWorks> CREATOR = new Creator<PWorks>() {
@@ -174,5 +185,7 @@ public class PWorks implements Parcelable {
         parcel.writeString(likes);
         parcel.writeString(created_at);
         parcel.writeString(updated_at);
+        parcel.writeParcelable(user, i);
+
     }
 }

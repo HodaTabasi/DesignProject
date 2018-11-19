@@ -29,7 +29,7 @@
             android:background="@drawable/report_layout_shap"
             android:gravity="center"
             android:padding="@dimen/_4sdp"
-            android:text="حسام اليماني"
+            android:text="اسم صاحب العمل"
             android:textColor="@color/textGray"
             android:textSize="@dimen/_10sdp" />
 
@@ -85,7 +85,7 @@
             android:gravity="center"
             android:padding="@dimen/_5sdp"
             android:text="تصميم معماري"
-            android:textColor="@color/gray1"
+            android:textColor="@color/textGray"
             android:textSize="@dimen/_8sdp" />
 
         <LinearLayout

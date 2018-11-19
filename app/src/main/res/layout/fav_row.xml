@@ -34,7 +34,7 @@
                 android:drawablePadding="@dimen/_10sdp"
                 android:drawableRight="@drawable/ic_solid_person2"
                 android:padding="@dimen/_5sdp"
-                android:text="سما القرشي"
+                android:text="اسم صاحب المشروع"
                 android:textColor="@color/textGray"
                 android:textSize="@dimen/_10sdp" />
 
@@ -45,7 +45,7 @@
                 android:drawablePadding="@dimen/_8sdp"
                 android:drawableRight="@drawable/ic_money"
                 android:padding="@dimen/_5sdp"
-                android:text="1000"
+                android:text="ميزانية المشروع"
                 android:textColor="@color/textGray"
                 android:textSize="@dimen/_10sdp" />
 
@@ -71,7 +71,7 @@
                     android:drawablePadding="@dimen/_8sdp"
                     android:drawableRight="@drawable/ic_calender2"
                     android:padding="@dimen/_8sdp"
-                    android:text="21"
+                    android:text=""
                     android:textColor="@color/textGray"
                     android:textSize="@dimen/_10sdp" />
             </LinearLayout>
@@ -105,7 +105,7 @@
                 android:id="@+id/tv2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="مشروع محتاج مصمم"
+                android:text=""
                 android:textColor="@color/textGray"
                 android:textSize="@dimen/_10sdp" />
         </LinearLayout>
