@@ -49,7 +49,7 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
     ImageView ic_back;
     List<Likes> likes;
     LikesDesignAdapter designAdapter;
-    int current_page, total_pages, flag;
+    int current_page, total_pages, flag  = 3;
     private TextView tv_next, tv_back;
 
     public FavoriteFragment() {

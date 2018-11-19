@@ -13,8 +13,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.smm.sapp.sproject.ConstantInterFace;
+import com.smm.sapp.sproject.Fragments.AccountSearchFragment;
 import com.smm.sapp.sproject.Fragments.AddNewWork2Fragment;
 import com.smm.sapp.sproject.Fragments.AddProjectFragment;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
@@ -47,7 +49,7 @@ public class LikesDesignAdapter extends RecyclerView.Adapter<LikesDesignAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull LikesDesignHV holder, final int position) {
-        Likes likes = designLikes.get(position);
+        final Likes likes = designLikes.get(position);
 
         if (Layout == R.layout.fav2_row) {
             try {
@@ -94,6 +96,10 @@ public class LikesDesignAdapter extends RecyclerView.Adapter<LikesDesignAdapter.
                 holder.tv_name.setText(likes.getProject().getUser().getName());
                 holder.tv_money.setText(likes.getProject().getBalance());
                 //holder.tv_calender.setText(likes.getProject().getName());
+                String created_at = likes.getCreated_at();
+                String[] s = created_at.split(" ");
+                holder.tv_calender.setText(s[0]);
+                holder.tv_day.setVisibility(View.INVISIBLE);
 
             } catch (Exception e) {
 
@@ -129,7 +135,27 @@ public class LikesDesignAdapter extends RecyclerView.Adapter<LikesDesignAdapter.
 
             }
         }
-
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (Layout){
+                    case R.layout.item_layout_profile:
+                        Log.e("ffffffff","vdsvcv");
+                        AccountSearchFragment fragment = new AccountSearchFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putParcelable("worker", likes.getUser());
+                        fragment.setArguments(bundle);
+                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
+                        break;
+                    case R.layout.fav2_row:
+                        Log.e("ffffffff","نلتيقحل");
+                        break;
+                    case R.layout.fav_row:
+                        Log.e("ffffffff","تيىلسم");
+                        break;
+                }
+            }
+        });
 
     }
 
@@ -166,6 +192,8 @@ public class LikesDesignAdapter extends RecyclerView.Adapter<LikesDesignAdapter.
                 tv_specialization = itemView.findViewById(R.id.tv_specialization);
                 tv_addProject = itemView.findViewById(R.id.tv_addProject);
                 tv_fav.setVisibility(View.GONE);
+                if (ConstantInterFace.USER.getType().equals("worker"))
+                    tv_addProject.setVisibility(View.GONE);
 
                 tv_name.setTypeface(custom_font);
                 tv_like.setTypeface(custom_font);
@@ -196,6 +224,9 @@ public class LikesDesignAdapter extends RecyclerView.Adapter<LikesDesignAdapter.
                 chooses_me = itemView.findViewById(R.id.chooses_me);
                 d_layout_fav = itemView.findViewById(R.id.d_layout_fav);
                 d_layout_fav.setVisibility(View.GONE);
+
+                if (ConstantInterFace.USER.getType().equals("worker"))
+                    Toast.makeText(context, "انت مصمم غير مخول لك هذا الخيار", Toast.LENGTH_SHORT).show();
 
                 d_layout_name.setTypeface(custom_font);
                 d_layout_specialty.setTypeface(custom_font);
