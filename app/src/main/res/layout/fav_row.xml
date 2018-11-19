@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:text="يوما"
                     android:textColor="@color/textGray"
-                    android:visibility="invisible"
+                    android:visibility="visible"
                     android:textSize="@dimen/_10sdp" />
 
                 <TextView
@@ -71,7 +71,7 @@
                     android:drawablePadding="@dimen/_8sdp"
                     android:drawableRight="@drawable/ic_calender2"
                     android:padding="@dimen/_8sdp"
-                    android:text="21 "
+                    android:text="21"
                     android:textColor="@color/textGray"
                     android:textSize="@dimen/_10sdp" />
             </LinearLayout>

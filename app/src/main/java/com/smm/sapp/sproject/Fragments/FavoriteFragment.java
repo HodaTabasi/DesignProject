@@ -121,7 +121,18 @@ public class FavoriteFragment extends Fragment implements View.OnClickListener {
                                 Gson gson = new Gson();
                                 likes = gson.fromJson(object.getJSONArray("likes").toString(), new TypeToken<List<Likes>>() {
                                 }.getType());
-                                designAdapter = new LikesDesignAdapter(getContext(), R.layout.item_layout_profile, likes);
+
+                                if (flag ==1){
+                                    designAdapter = new LikesDesignAdapter(getContext(), R.layout.item_layout_profile, likes);
+                                }else if(flag ==2){
+                                    designAdapter = new LikesDesignAdapter(getContext(), R.layout.fav2_row, likes);
+                                }else if(flag ==3){
+                                    designAdapter = new LikesDesignAdapter(getContext(), R.layout.fav_row, likes);
+                                    recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+
+                                }
+
+                                //designAdapter = new LikesDesignAdapter(getContext(), R.layout.item_layout_profile, likes);
                                 recyclerView.setAdapter(designAdapter);
 
                                 current_page = Integer.valueOf(paginationObj.getString("i_current_page"));
