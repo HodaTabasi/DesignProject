@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,8 +21,8 @@ import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.Models.ProjectsModels;
-import com.smm.sapp.sproject.Models.SearchWorkersModel;
 import com.smm.sapp.sproject.Models.SkillsModel;
+import com.smm.sapp.sproject.Models.User;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
@@ -52,7 +51,7 @@ public class AccountSearchFragment extends Fragment {
     EditText et_bio;
     RecyclerView recycler_skill;
     Bundle bundle;
-    SearchWorkersModel models;
+    User models;
     int worker_id;
     ArrayList<SkillsModel> arrayList = new ArrayList<>();
     ArrayList<ProjectsModels> finishedProjectList = new ArrayList<>();
@@ -188,7 +187,7 @@ public class AccountSearchFragment extends Fragment {
         bundle = getArguments();
         models = bundle.getParcelable("worker");
 
-        rate_bar.setRating(Float.valueOf(models.getRate()));
+        //rate_bar.setRating(Float.valueOf(models.getRate()));
 
         ///////////////
 

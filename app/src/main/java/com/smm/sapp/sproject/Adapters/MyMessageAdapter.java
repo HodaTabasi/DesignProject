@@ -46,7 +46,10 @@ public class MyMessageAdapter extends RecyclerView.Adapter<MyMessageAdapter.MyMe
 
     @Override
     public void onBindViewHolder(@NonNull MyMessageVH holder, final int position) {
-        holder.address.setText(messageModelList.get(position).getLast_message().getMessage());
+        if (messageModelList.get(position).getUser().getType().equals("client"))
+            holder.address.setText(" صاحب المشروع -  "+ messageModelList.get(position).getUser().getName());
+        else
+            holder.address.setText(" المصمم -  "+ messageModelList.get(position).getUser().getName());
         try {
             String s = putDateTime(messageModelList.get(position).getCreated_at());
             holder.time.setText("  قبل  "+ s +"  ");
@@ -54,7 +57,6 @@ public class MyMessageAdapter extends RecyclerView.Adapter<MyMessageAdapter.MyMe
             e.printStackTrace();
         }
         Picasso.get().load(messageModelList.get(position).getUser().getPhoto_link()).into(holder.clientImage);
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

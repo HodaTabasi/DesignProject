@@ -25,7 +25,7 @@ import com.google.gson.reflect.TypeToken;
 import com.smm.sapp.sproject.Adapters.DesignProfileAdapter;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
-import com.smm.sapp.sproject.Models.SearchWorkersModel;
+import com.smm.sapp.sproject.Models.User;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
@@ -52,7 +52,7 @@ public class SearchFragment extends Fragment {
     private TextView tv_inter;
     private RatingBar mRattingDesigner;
     private ImageView ic_back;
-    ArrayList<SearchWorkersModel> profilesList = new ArrayList<>();
+    ArrayList<User> profilesList = new ArrayList<>();
     String s_search;
     DesignProfileAdapter adapter;
     private TextView tv_next, tv_back;
@@ -345,7 +345,7 @@ public class SearchFragment extends Fragment {
 
                         if (success.equals("true")) {
                             Gson gson = new Gson();
-                            TypeToken<List<SearchWorkersModel>> token = new TypeToken<List<SearchWorkersModel>>() {
+                            TypeToken<List<User>> token = new TypeToken<List<User>>() {
                             };
                             try {
                                 profilesList = gson.fromJson(object.getJSONArray("workers").toString(), token.getType());

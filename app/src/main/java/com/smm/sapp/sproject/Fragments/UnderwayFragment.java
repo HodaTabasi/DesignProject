@@ -13,6 +13,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -43,6 +45,7 @@ import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -64,7 +67,7 @@ import okhttp3.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class UnderwayFragment extends Fragment {
+public class UnderwayFragment extends Fragment implements  SwipeRefreshLayout.OnRefreshListener{
 
 
     private TextView mProjectStartDate;
@@ -86,6 +89,9 @@ public class UnderwayFragment extends Fragment {
     ImageView ic_back, ic_dots;
     User user;
     OfferModel model;
+
+    SwipeRefreshLayout mSwipeRefreshLayout;
+    int current_page, total_pages, flag;
 
     private List<MessageDetails> details;
     MyMessageDetailAdapter adapter;
@@ -123,6 +129,13 @@ public class UnderwayFragment extends Fragment {
         ic_dots = getView().findViewById(R.id.ic_dots);
 
         details = new ArrayList<>();
+
+        mSwipeRefreshLayout = getView().findViewById(R.id.swipe_container);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary,
+                android.R.color.holo_green_dark,
+                android.R.color.holo_orange_dark,
+                android.R.color.holo_blue_dark);
     }
 
     @Override
@@ -134,9 +147,18 @@ public class UnderwayFragment extends Fragment {
 
         ic_back = getView().findViewById(R.id.ic_back);
 
+        mSwipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                mSwipeRefreshLayout.setRefreshing(true);
+                getAConversationRequest(1);
+            }
+        });
+
         ic_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mSwipeRefreshLayout.setRefreshing(true);
                 getFragmentManager().popBackStack();
             }
         });
@@ -184,6 +206,9 @@ public class UnderwayFragment extends Fragment {
             }
             mName1.setText(s_name1);
             Picasso.get().load(ConstantInterFace.USER.getPhoto_link()).into(mProfileImage2);
+
+
+
         } else {
             if (model.getProject().getUser().getName() != null ){
                 StringBuilder s_name = new StringBuilder(model.getProject().getUser().getName());
@@ -203,7 +228,31 @@ public class UnderwayFragment extends Fragment {
             }
             mName1.setText(s_name1);
             Picasso.get().load(ConstantInterFace.USER.getPhoto_link()).into(mProfileImage1);
+
         }
+
+        mName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AccountSearchFragment fragment = new AccountSearchFragment();
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("worker", user);
+                fragment.setArguments(bundle);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
+            }
+        });
+
+        mName1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AccountSearchFragment fragment = new AccountSearchFragment();
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("worker", ConstantInterFace.USER);
+                fragment.setArguments(bundle);
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
+
+            }
+        });
 
 
         mProjectMoney.setText(model.getBalance());
@@ -224,8 +273,6 @@ public class UnderwayFragment extends Fragment {
         String output = sdf1.format(c.getTime());
 
         mProjectEndDate.setText(output);
-
-        getAConversationRequest();
     }
 
 
@@ -585,12 +632,13 @@ public class UnderwayFragment extends Fragment {
 
     }
 
-    private void getAConversationRequest() {
+    private void getAConversationRequest(int current) {
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
         Map<String, String> stringMap = new HashMap<>();
         stringMap.put("token", ConstantInterFace.USER.getToken());
         stringMap.put("user_id", user.getId() + "");
+        stringMap.put("i_current_page", String.valueOf(current));
         myRequest.PostCall("http://smm.smmim.com/waell/public/api/getAconversation", stringMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -602,17 +650,29 @@ public class UnderwayFragment extends Fragment {
                 MyProgressDialog.dismissDialog();
                 final JSONObject object = new JSONObject(response.body().string());
                 final JSONObject object1 = object.getJSONObject("status");
+                final JSONObject paginationObj = object.getJSONObject("pagination");
 
                 getActivity().runOnUiThread(new Runnable() {
                     public void run() {
                         try {
+                            current_page = Integer.valueOf(paginationObj.getString("i_current_page"));
+                            total_pages = Integer.valueOf(paginationObj.getString("i_total_pages"));
+
                             if (object1.getBoolean("success")) {
                                 Gson gson = new Gson();
                                 TypeToken<List<MessageDetails>> token = new TypeToken<List<MessageDetails>>() {
                                 };
-                                details = gson.fromJson(object.getJSONArray("msgs").toString(), token.getType());
-                                adapter = new MyMessageDetailAdapter(getContext(), details);
-                                mMres.setAdapter(adapter);
+                                if (current_page <= 1){
+                                    details = gson.fromJson(object.getJSONArray("msgs").toString(), token.getType());
+                                    adapter = new MyMessageDetailAdapter(getContext(), details);
+                                    mMres.setAdapter(adapter);
+                                }else {
+                                    List<MessageDetails> messageDetails = gson.fromJson(object.getJSONArray("msgs").toString(), token.getType());
+                                    details.addAll(messageDetails);
+                                    adapter.notifyDataSetChanged();
+                                }
+
+                                mSwipeRefreshLayout.setRefreshing(false);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -646,21 +706,36 @@ public class UnderwayFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     public void run() {
                         try {
-                            if (object1.getBoolean("success")) {
-                                Gson gson = new Gson();
-                                MessageDetails messageDetails = gson.fromJson(object.getJSONObject("msg").toString(), MessageDetails.class);
-                                details.add(0, messageDetails);
-                                adapter.notifyDataSetChanged();
-                                mMessageEx.setText("");
-                            } else {
-                                Toast.makeText(getContext(), "لم يتم الارسال", Toast.LENGTH_SHORT).show();
+                                if (object1.getBoolean("success")) {
+                                    Gson gson = new Gson();
+                                    MessageDetails messageDetails = gson.fromJson(object.getJSONObject("msg").toString(), MessageDetails.class);
+                                    details.add(0, messageDetails);
+                                    adapter.notifyDataSetChanged();
+                                    mMessageEx.setText("");
+                                } else {
+                                    JSONObject object2 = object1.getJSONObject("error");
+                                    JSONArray object3 = object2.getJSONArray("msg");
+                                    if (object3.get(0).equals("The msg field is required.")) {
+                                        Toast.makeText(getContext(), "يجب ارسال نص مع المرفقات", Toast.LENGTH_SHORT).show();
+                                    } else
+                                        Toast.makeText(getContext(), "لم يتم الارسال", Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+
                     }
                 });
             }
         });
+    }
+
+    @Override
+    public void onRefresh() {
+        if (total_pages == current_page && current_page != 1){
+            mSwipeRefreshLayout.setRefreshing(false);
+        }else {
+            getAConversationRequest(current_page + 1);
+        }
     }
 }

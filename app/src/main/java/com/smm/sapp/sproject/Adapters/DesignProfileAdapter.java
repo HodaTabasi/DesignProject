@@ -22,7 +22,7 @@ import com.smm.sapp.sproject.Fragments.PortfolioDescFragment;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.Models.DesignProfile;
-import com.smm.sapp.sproject.Models.SearchWorkersModel;
+import com.smm.sapp.sproject.Models.User;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
@@ -42,10 +42,10 @@ import okhttp3.Response;
 
 public class DesignProfileAdapter extends RecyclerView.Adapter<DesignProfileAdapter.DesignProfileVH> {
     Context context;
-    List<SearchWorkersModel> profiles;
+    List<User> profiles;
     int worker_id;
 
-    public DesignProfileAdapter(Context context, List<SearchWorkersModel> profiles) {
+    public DesignProfileAdapter(Context context, List<User> profiles) {
         this.context = context;
         this.profiles = profiles;
     }

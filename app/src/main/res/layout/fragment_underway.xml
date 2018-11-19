@@ -380,15 +380,19 @@
 
     </LinearLayout>
 
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/swipe_container"
+        android:layout_above="@+id/ff"
+        android:layout_below="@+id/ww"
+        android:layout_margin="@dimen/_8sdp">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/mres"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/ff"
-        android:layout_below="@+id/ww"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp" />
+        android:layout_height="wrap_content" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 
     <LinearLayout
         android:id="@+id/ff"
