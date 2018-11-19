@@ -91,7 +91,7 @@ public class LikesDesignAdapter extends RecyclerView.Adapter<LikesDesignAdapter.
         } else if (Layout == R.layout.fav_row) {
             try {
                 holder.tv2.setText(likes.getProject().getName());
-                //holder.tv_name.setText(likes.getProject().get);
+                holder.tv_name.setText(likes.getProject().getUser().getName());
                 holder.tv_money.setText(likes.getProject().getBalance());
                 //holder.tv_calender.setText(likes.getProject().getName());
 

@@ -20,9 +20,18 @@ public class ProjectsLikeModels {
     private String type;
     private String balance;
     private String user_id;
+    private User user;
     private String status;
     private String created_at;
     private String updated_at;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public int getId() {
         return id;
