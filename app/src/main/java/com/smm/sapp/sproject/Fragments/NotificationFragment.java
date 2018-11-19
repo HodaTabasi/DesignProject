@@ -48,6 +48,8 @@ public class NotificationFragment extends Fragment implements SwipeRefreshLayout
     private NotificationAdapter adapter;
     ImageView ic_back;
 
+    int current_page, total_pages, flag;
+
     public NotificationFragment() {
         // Required empty public constructor
     }
@@ -93,7 +95,7 @@ public class NotificationFragment extends Fragment implements SwipeRefreshLayout
                 mSwipeRefreshLayout.setRefreshing(true);
 
                 // Fetching data from server
-                getNotifications(ConstantInterFace.USER.getToken());
+                getNotifications(ConstantInterFace.USER.getToken(),1);
             }
         });
 
@@ -117,12 +119,17 @@ public class NotificationFragment extends Fragment implements SwipeRefreshLayout
 
     @Override
     public void onRefresh() {
-        getNotifications(ConstantInterFace.USER.getToken());
+
+        if (total_pages == current_page && current_page != 1){
+            mSwipeRefreshLayout.setRefreshing(false);
+        }else {
+            getNotifications(ConstantInterFace.USER.getToken(),current_page + 1);
+        }
     }
 
-    private void getNotifications(String token) {
+    private void getNotifications(String token,int current) {
         MyRequest myRequest = new MyRequest();
-        myRequest.GetCall("http://smm.smmim.com/waell/public/api/mynotifications?token="+token, new OkHttpCallback() {
+        myRequest.GetCall("http://smm.smmim.com/waell/public/api/mynotifications?token="+token+ "&i_current_page=" + current, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 getActivity().runOnUiThread(new Runnable() {
@@ -140,15 +147,25 @@ public class NotificationFragment extends Fragment implements SwipeRefreshLayout
 
                 final JSONObject jsonObject = new JSONObject(s);
                 final JSONObject object = jsonObject.getJSONObject("status");
+                final JSONObject paginationObj = jsonObject.getJSONObject("pagination");
                 final Gson gson = new Gson();
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         try {
                             if (object.getBoolean("success")) {
-                                ConstantInterFace.notificationsModels = gson.fromJson(jsonObject.getJSONArray("notifications").toString(), new TypeToken<ArrayList<NotificationsModels>>(){}.getType());
-                                adapter = new NotificationAdapter(getContext(), R.layout.layout_item_notification, ConstantInterFace.notificationsModels);
-                                mNotificationAttention.setAdapter(adapter);
+                                current_page = Integer.valueOf(paginationObj.getString("i_current_page"));
+                                total_pages = Integer.valueOf(paginationObj.getString("i_total_pages"));
+                                if (current_page <= 1){
+                                    ConstantInterFace.notificationsModels = gson.fromJson(jsonObject.getJSONArray("notifications").toString(), new TypeToken<ArrayList<NotificationsModels>>(){}.getType());
+                                    adapter = new NotificationAdapter(getContext(), R.layout.layout_item_notification, ConstantInterFace.notificationsModels);
+                                    mNotificationAttention.setAdapter(adapter);
+                                }else {
+                                    List<NotificationsModels> notificationsModels = gson.fromJson(jsonObject.getJSONArray("notifications").toString(), new TypeToken<ArrayList<NotificationsModels>>(){}.getType());
+                                    ConstantInterFace.notificationsModels.addAll(notificationsModels);
+                                    adapter.notifyDataSetChanged();
+                                }
+
                                 mSwipeRefreshLayout.setRefreshing(false);
                             } else {
                                 Toast.makeText(getContext(), "لم يتم الارسال بشكل صحيح", Toast.LENGTH_SHORT).show();
