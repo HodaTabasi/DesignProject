@@ -64,6 +64,12 @@ public class PortfolioDescFragment extends Fragment {
         img2 = view.findViewById(R.id.img2);
         img3 = view.findViewById(R.id.img3);
 
+        if (ConstantInterFace.USER.getType().equals("worker"))
+            tv_addSimlilarWork.setVisibility(View.GONE);
+        else
+            tv_addSimlilarWork.setVisibility(View.VISIBLE);
+
+
         return view;
     }
 
