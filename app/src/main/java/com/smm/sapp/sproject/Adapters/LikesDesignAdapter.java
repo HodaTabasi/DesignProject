@@ -20,6 +20,7 @@ import com.smm.sapp.sproject.Fragments.AccountSearchFragment;
 import com.smm.sapp.sproject.Fragments.AddNewWork2Fragment;
 import com.smm.sapp.sproject.Fragments.AddProjectFragment;
 import com.smm.sapp.sproject.Fragments.PortfolioDescFragment;
+import com.smm.sapp.sproject.Fragments.ViewProjectFragment;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.Models.Likes;
 import com.smm.sapp.sproject.R;
@@ -157,7 +158,12 @@ public class LikesDesignAdapter extends RecyclerView.Adapter<LikesDesignAdapter.
                         FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment1, true);
                         break;
                     case R.layout.fav_row:
-                        Log.e("ffffffff","تيىلسم");
+                        ViewProjectFragment fragment2 = new ViewProjectFragment();
+                        Bundle bundle2 = new Bundle();
+                        bundle2.putParcelable("project", likes.getProject());
+                        bundle2.putInt("flage",1);
+                        fragment2.setArguments(bundle2);
+                        FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment2, true);
                         break;
                 }
             }

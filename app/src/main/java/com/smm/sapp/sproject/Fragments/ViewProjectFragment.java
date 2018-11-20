@@ -28,6 +28,7 @@ import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.Models.OfferModel;
+import com.smm.sapp.sproject.Models.ProjectsLikeModels;
 import com.smm.sapp.sproject.Models.ProjectsModels;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
@@ -68,6 +69,7 @@ public class ViewProjectFragment extends Fragment {
     Bundle bundle;
     private TextView addOffer;
     ProjectsModels models;
+    ProjectsLikeModels likeModels;
     ImageView ic_back;
 
     private TextView mReceivableP;
@@ -121,7 +123,9 @@ public class ViewProjectFragment extends Fragment {
             Picasso.get().load(model.getUser().getPhoto_link()).into(mUserPhoto);
             linear_add_proposal.setVisibility(View.VISIBLE);
             pr_ditails.setVisibility(View.GONE);
-        } else {
+        } else if (bundle.getInt("flage") == 1){
+            putLikeData();
+        }else  {
             putData();
         }
 
@@ -319,6 +323,36 @@ public class ViewProjectFragment extends Fragment {
                 }
             }
         }
+    }
+
+    private void putLikeData(){
+        addOffer.setVisibility(View.INVISIBLE);
+        likeModels = bundle.getParcelable("project");
+        mUserName.setText(likeModels.getUser().getName());
+        mUserType.setText(likeModels.getUser().getType());
+        Picasso.get().load(likeModels.getUser().getPhoto_link()).into(mUserPhoto);
+        mPName.setText(likeModels.getName());
+
+        if (likeModels.getType().equals("inter")) {
+            mPType.setText("تصميم داخلي");
+        } else if (likeModels.getType().equals("arch")) {
+            mPType.setText("تصميم معماري");
+        } else if (likeModels.getType().equals("moshen")) {
+            mPType.setText("تصميم موشن");
+        } else if (likeModels.getType().equals("graphic")) {
+            mPType.setText("تصميم جرافيكس");
+        } else if (likeModels.getType().equals("wall")) {
+            mPType.setText("تصميم جداري");
+        }
+
+        if (likeModels.getProject() != null) {
+            mPStyle.setText(likeModels.getProject().getStyle());
+            mPColors.setText(likeModels.getProject().getColors());
+            mPCity.setText(likeModels.getProject().getCity());
+            mPArea.setText(likeModels.getProject().getArea());
+        }
+        mPBalance.setText(ConstantInterFace.array[Integer.parseInt(likeModels.getBalance())]);
+        mPBio.setText(likeModels.getDescr());
     }
 
     private void updateOfferRequest(OfferModel model) {

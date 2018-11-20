@@ -1,6 +1,11 @@
 package com.smm.sapp.sproject.Models;
 
-public class ProjectsLikeModels {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import com.google.gson.annotations.SerializedName;
+
+public class ProjectsLikeModels implements Parcelable {
 
     /**
      * id : 1
@@ -21,9 +26,45 @@ public class ProjectsLikeModels {
     private String balance;
     private String user_id;
     private User user;
+    private ProjectsModels.AddtionInfoBean project;
     private String status;
+
+    private String with_id;
+    private String accepted;
     private String created_at;
     private String updated_at;
+
+    @SerializedName("private")
+    private String Private;
+
+
+    protected ProjectsLikeModels(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        descr = in.readString();
+        type = in.readString();
+        balance = in.readString();
+        user_id = in.readString();
+        user = in.readParcelable(User.class.getClassLoader());
+        status = in.readString();
+        with_id = in.readString();
+        accepted = in.readString();
+        created_at = in.readString();
+        updated_at = in.readString();
+        Private = in.readString();
+    }
+
+    public static final Creator<ProjectsLikeModels> CREATOR = new Creator<ProjectsLikeModels>() {
+        @Override
+        public ProjectsLikeModels createFromParcel(Parcel in) {
+            return new ProjectsLikeModels(in);
+        }
+
+        @Override
+        public ProjectsLikeModels[] newArray(int size) {
+            return new ProjectsLikeModels[size];
+        }
+    };
 
     public User getUser() {
         return user;
@@ -103,5 +144,59 @@ public class ProjectsLikeModels {
 
     public void setUpdated_at(String updated_at) {
         this.updated_at = updated_at;
+    }
+
+    public ProjectsModels.AddtionInfoBean getProject() {
+        return project;
+    }
+
+    public void setProject(ProjectsModels.AddtionInfoBean project) {
+        this.project = project;
+    }
+
+    public String getWith_id() {
+        return with_id;
+    }
+
+    public void setWith_id(String with_id) {
+        this.with_id = with_id;
+    }
+
+    public String getAccepted() {
+        return accepted;
+    }
+
+    public void setAccepted(String accepted) {
+        this.accepted = accepted;
+    }
+
+    public String getPrivate() {
+        return Private;
+    }
+
+    public void setPrivate(String aPrivate) {
+        Private = aPrivate;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(name);
+        dest.writeString(descr);
+        dest.writeString(type);
+        dest.writeString(balance);
+        dest.writeString(user_id);
+        dest.writeParcelable(user, flags);
+        dest.writeString(status);
+        dest.writeString(with_id);
+        dest.writeString(accepted);
+        dest.writeString(created_at);
+        dest.writeString(updated_at);
+        dest.writeString(Private);
     }
 }
