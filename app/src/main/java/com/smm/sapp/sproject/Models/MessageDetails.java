@@ -19,6 +19,9 @@ public class MessageDetails {
     private String seen;
     private String file_link;
     private String gr_id;
+    private String offline;
+    private String height;
+    private String width;
     private String created_at;
     private String updated_at;
     private User user;
@@ -94,5 +97,29 @@ public class MessageDetails {
 
     public void setFile_link(String file_link) {
         this.file_link = file_link;
+    }
+
+    public String getOffline() {
+        return offline;
+    }
+
+    public void setOffline(String offline) {
+        this.offline = offline;
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public void setHeight(String height) {
+        this.height = height;
+    }
+
+    public String getWidth() {
+        return width;
+    }
+
+    public void setWidth(String width) {
+        this.width = width;
     }
 }
