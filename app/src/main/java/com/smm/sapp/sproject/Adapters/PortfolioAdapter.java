@@ -2,11 +2,13 @@ package com.smm.sapp.sproject.Adapters;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,18 +79,18 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
             }
             holder.tv_name.setText(s_name);
         } else {
-            if (list.get(position).getUser().getName() != null){
+            if (list.get(position).getUser().getName() != null) {
                 StringBuilder s_name = new StringBuilder(list.get(position).getUser().getName());
                 for (int i = 1; i < s_name.length() - 1; i++) {
                     s_name.setCharAt(i, '*');
                 }
                 holder.tv_name.setText(s_name);
-            }else
+            } else
                 holder.tv_name.setText(" ");
         }
 
-        if(list.get(position).getViews() != null)
-        holder.tv_show.setText(list.get(position).getViews());
+        if (list.get(position).getViews() != null)
+            holder.tv_show.setText(list.get(position).getViews());
         holder.tv_like.setText(String.valueOf(list.get(position).getLikes()));
 
         if (list.get(position).getType().equals("wall")) {
@@ -140,25 +142,45 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
 
         });
 
+        if (list.get(position).getLiked().equals("0")) {
+            holder.fav.setImageResource(R.drawable.ic_favorite_small);
+        } else {
+            holder.fav.setImageResource(R.drawable.ic_favorite_solid);
+        }
+
         holder.fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (clicked) {
-                    clicked = false;
-                    ConstantInterFace.IS_WORK_FAVORITE = false;
-                    holder.fav.setImageResource(R.drawable.ic_favorite_solid);
-                } else {
-                    clicked = true;
-                    ConstantInterFace.IS_WORK_FAVORITE = true;
-                    holder.fav.setImageResource(R.drawable.ic_favorite_small);
-                }
+
+//                if (holder.fav.getDrawable() == context.getResources().getDrawable(R.drawable.ic_favorite_small)) {
+//                    holder.fav.setImageResource(R.drawable.ic_favorite_solid);
+//
+//                } else if (holder.fav.getDrawable() == context.getResources().getDrawable(R.drawable.ic_favorite_solid)) {
+//                    holder.fav.setImageResource(R.drawable.ic_favorite_small);
+//                }
+
+//                if (clicked) {
+//                    clicked = false;
+////                    ConstantInterFace.IS_WORK_FAVORITE = false;
+//                    holder.fav.setImageResource(R.drawable.ic_favorite_solid);
+//                    addTofav();
+//
+//                } else {
+//                    clicked = true;
+////                    ConstantInterFace.IS_WORK_FAVORITE = true;
+//                    holder.fav.setImageResource(R.drawable.ic_favorite_small);
+//                    addTofav();
+//
+//                }
                 addTofav();
+
             }
         });
 
     }
 
     private void addTofav() {
+        Log.e("qqqq", String.valueOf(pwork_id));
         MyProgressDialog.showDialog(context);
         MyRequest myRequest = new MyRequest();
         Map<String, String> map = new HashMap<>();
@@ -200,12 +222,12 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
                     @Override
                     protected void onPostExecute(Void aVoid) {
                         super.onPostExecute(aVoid);
-                        if (success.equals("true") && message.equals("like Returned")) {
-                            ConstantInterFace.IS_WORK_FAVORITE = true;
+                        if (message.equals("like Returned")) {
+//                            ConstantInterFace.IS_WORK_FAVORITE = true;
                             Toast.makeText(context, "تمت الاضافة للمفضلة", Toast.LENGTH_LONG).show();
 
-                        } else if (success.equals("true") && message.equals("dislike Returned")) {
-                            ConstantInterFace.IS_WORK_FAVORITE = false;
+                        } else if (message.equals("dislike Returned")) {
+//                            ConstantInterFace.IS_WORK_FAVORITE = false;
                             Toast.makeText(context, "تم الحذف من المفضلة", Toast.LENGTH_LONG).show();
 
                         }
@@ -221,7 +243,7 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
         return list.size();
     }
 
-    public class PortfolioHolder extends RecyclerView.ViewHolder{
+    public class PortfolioHolder extends RecyclerView.ViewHolder {
 
         ImageView img, fav;
         TextView tv_name, tv_like, tv_show, tv_specialization, tv_addProject;
@@ -237,7 +259,7 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
             tv_addProject = itemView.findViewById(R.id.tv_addProject);
 
             if (ConstantInterFace.USER.getType().equals("worker"))
-                tv_addProject.setVisibility(View.INVISIBLE);
+                tv_addProject.setVisibility(View.GONE);
             else
                 tv_addProject.setVisibility(View.VISIBLE);
 

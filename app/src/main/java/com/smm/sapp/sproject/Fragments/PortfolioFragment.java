@@ -76,7 +76,7 @@ public class PortfolioFragment extends Fragment {
             designer_name = bundle.getString("designer_name");
             getDesignerPworks(designer_id, designer_name);
         } else {
-            getPworks("?i_current_page=", 1);
+            getPworks("&i_current_page=", 1);
 
         }
 
@@ -111,7 +111,7 @@ public class PortfolioFragment extends Fragment {
                     tv_wall.setBackgroundResource(R.drawable.account_shape);
                     tv_wall.setTextColor(Color.parseColor("#000000"));
 
-                    getPworks("?name=" + s_search + "&i_current_page=", 1);
+                    getPworks("&name=" + s_search + "&i_current_page=", 1);
 
                     return true;
                 }
@@ -141,7 +141,7 @@ public class PortfolioFragment extends Fragment {
                 tv_wall.setBackgroundResource(R.drawable.account_shape);
                 tv_wall.setTextColor(Color.parseColor("#000000"));
 
-                getPworks("?type=arch&i_current_page=", 1);
+                getPworks("&type=arch&i_current_page=", 1);
 
             }
         });
@@ -167,7 +167,7 @@ public class PortfolioFragment extends Fragment {
                 tv_wall.setBackgroundResource(R.drawable.account_shape);
                 tv_wall.setTextColor(Color.parseColor("#000000"));
 
-                getPworks("?type=inter&i_current_page=", 1);
+                getPworks("&type=inter&i_current_page=", 1);
             }
         });
 
@@ -192,7 +192,7 @@ public class PortfolioFragment extends Fragment {
                 tv_wall.setBackgroundResource(R.drawable.account_shape);
                 tv_wall.setTextColor(Color.parseColor("#000000"));
 
-                getPworks("?type=graphic&i_current_page=", 1);
+                getPworks("&type=graphic&i_current_page=", 1);
             }
         });
 
@@ -217,7 +217,7 @@ public class PortfolioFragment extends Fragment {
                 tv_wall.setBackgroundResource(R.drawable.account_shape);
                 tv_wall.setTextColor(Color.parseColor("#000000"));
 
-                getPworks("?type=moshen&i_current_page=", 1);
+                getPworks("&type=moshen&i_current_page=", 1);
             }
         });
 
@@ -242,7 +242,7 @@ public class PortfolioFragment extends Fragment {
                 tv_graphic.setBackgroundResource(R.drawable.account_shape);
                 tv_graphic.setTextColor(Color.parseColor("#000000"));
 
-                getPworks("?type=wall&i_current_page=", 1);
+                getPworks("&type=wall&i_current_page=", 1);
             }
         });
 
@@ -253,17 +253,17 @@ public class PortfolioFragment extends Fragment {
                 current_page++;
 
                 if (flag == 1) {
-                    getPworks("?type=arch&i_current_page=", current_page);
+                    getPworks("&type=arch&i_current_page=", current_page);
                 } else if (flag == 2) {
-                    getPworks("?type=inter&i_current_page=", current_page);
+                    getPworks("&type=inter&i_current_page=", current_page);
                 } else if (flag == 3) {
-                    getPworks("?type=graphic&i_current_page=", current_page);
+                    getPworks("&type=graphic&i_current_page=", current_page);
                 } else if (flag == 4) {
-                    getPworks("?type=moshen&i_current_page=", current_page);
+                    getPworks("&type=moshen&i_current_page=", current_page);
                 } else if (flag == 5) {
-                    getPworks("?type=wall&i_current_page=", current_page);
+                    getPworks("&type=wall&i_current_page=", current_page);
                 } else {
-                    getPworks("?i_current_page=", current_page);
+                    getPworks("&i_current_page=", current_page);
                 }
             }
         });
@@ -274,17 +274,17 @@ public class PortfolioFragment extends Fragment {
                 setBottomBar();
                 current_page--;
                 if (flag == 1) {
-                    getPworks("?type=arch&i_current_page=", current_page);
+                    getPworks("&type=arch&i_current_page=", current_page);
                 } else if (flag == 2) {
-                    getPworks("?type=inter&i_current_page=", current_page);
+                    getPworks("&type=inter&i_current_page=", current_page);
                 } else if (flag == 3) {
-                    getPworks("?type=graphic&i_current_page=", current_page);
+                    getPworks("&type=graphic&i_current_page=", current_page);
                 } else if (flag == 4) {
-                    getPworks("?type=moshen&i_current_page=", current_page);
+                    getPworks("&type=moshen&i_current_page=", current_page);
                 } else if (flag == 5) {
-                    getPworks("?type=wall&i_current_page=", current_page);
+                    getPworks("&type=wall&i_current_page=", current_page);
                 } else {
-                    getPworks("?i_current_page=", current_page);
+                    getPworks("&i_current_page=", current_page);
                 }
             }
         });
@@ -371,7 +371,7 @@ public class PortfolioFragment extends Fragment {
     private void getPworks(String URL, int current) {
         MyProgressDialog.showDialog(getContext());
         MyRequest myRequest = new MyRequest();
-        myRequest.GetCall("http://smm.smmim.com/waell/public/api/searchpworks" + URL + current, new OkHttpCallback() {
+        myRequest.GetCall("http://smm.smmim.com/waell/public/api/searchpworks?token=" + ConstantInterFace.USER.getToken() + URL + current, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, final IOException e) {
                 MyProgressDialog.dismissDialog();

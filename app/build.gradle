@@ -45,9 +45,7 @@ dependencies {
     implementation 'com.github.hani-momanii:SuperNova-Emoji:1.1'
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     // Assem
-    implementation 'io.realm:android-adapters:2.0.0'
     implementation 'com.android.support:cardview-v7:27.1.1'
 }
 // ADD THIS AT THE BOTTOM
 apply plugin: 'com.google.gms.google-services'
-apply plugin: 'realm-android'

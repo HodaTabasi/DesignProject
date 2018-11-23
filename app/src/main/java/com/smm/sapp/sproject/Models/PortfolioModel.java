@@ -3,8 +3,6 @@ package com.smm.sapp.sproject.Models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import io.realm.RealmObject;
-
 public class PortfolioModel implements Parcelable {
 
     /**
@@ -36,6 +34,8 @@ public class PortfolioModel implements Parcelable {
     private String created_at;
     private String updated_at;
     private UserBean user;
+    private String liked;
+
 
     protected PortfolioModel(Parcel in) {
         id = in.readInt();
@@ -49,6 +49,8 @@ public class PortfolioModel implements Parcelable {
         likes = in.readInt();
         created_at = in.readString();
         updated_at = in.readString();
+        liked = in.readString();
+
     }
 
     public static final Creator<PortfolioModel> CREATOR = new Creator<PortfolioModel>() {
@@ -62,6 +64,14 @@ public class PortfolioModel implements Parcelable {
             return new PortfolioModel[size];
         }
     };
+
+    public String getLiked() {
+        return liked;
+    }
+
+    public void setLiked(String liked) {
+        this.liked = liked;
+    }
 
     public int getId() {
         return id;
@@ -185,6 +195,8 @@ public class PortfolioModel implements Parcelable {
         parcel.writeInt(likes);
         parcel.writeString(created_at);
         parcel.writeString(updated_at);
+        parcel.writeString(liked);
+
     }
 
     public static class UserBean {
