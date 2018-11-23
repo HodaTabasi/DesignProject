@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,7 +67,8 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
     @Override
     public void onBindViewHolder(@NonNull PortfolioHolder holder, final int position) {
 
-        pwork_id = list.get(position).getId();
+        //pwork_id = list.get(position).getId();
+        Log.e("ffffffffff",pwork_id +" ");
 
         if (name != null) {
             StringBuilder s_name = new StringBuilder(name);
@@ -141,19 +143,20 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
             @Override
             public void onClick(View view) {
                 // if (ConstantInterFace.IS_USER_FAVORITE = false) {
-                addTofav();
+                addTofav(list.get(position).getId());
                 // }
             }
         });
 
     }
 
-    private void addTofav() {
+    private void addTofav(int id) {
+        Log.e("ffffffffffff",id+" fff");
         MyProgressDialog.showDialog(context);
         MyRequest myRequest = new MyRequest();
         Map<String, String> map = new HashMap<>();
         map.put("token", ConstantInterFace.USER.getToken());
-        map.put("target_id", String.valueOf(pwork_id));
+        map.put("target_id", String.valueOf(id));
         map.put("target_type", "pwork");
         myRequest.PostCall("http://smm.smmim.com/waell/public/api/likedislike", map, new OkHttpCallback() {
             @Override
