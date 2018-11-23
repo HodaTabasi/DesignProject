@@ -58,8 +58,8 @@ public class FeedbackFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recycel_feedback);
         ic_back = view.findViewById(R.id.ic_back);
-        tv_next = getView().findViewById(R.id.tv_next);
-        tv_back = getView().findViewById(R.id.tv_back);
+        tv_next = view.findViewById(R.id.tv_next);
+        tv_back = view.findViewById(R.id.tv_back);
 
         return view;
     }

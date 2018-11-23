@@ -46,10 +46,18 @@ public class MyMessageAdapter extends RecyclerView.Adapter<MyMessageAdapter.MyMe
 
     @Override
     public void onBindViewHolder(@NonNull MyMessageVH holder, final int position) {
+        String name = messageModelList.get(position).getUser().getName();
+        String[] s1 = name.split(" ");
+        StringBuilder s_name = new StringBuilder(s1[0]);
+        for (int i = 2; i < s_name.length() - 1; i++) {
+            s_name.setCharAt(i, '*');
+        }
+
         if (messageModelList.get(position).getUser().getType().equals("client"))
-            holder.address.setText(" صاحب المشروع -  "+ messageModelList.get(position).getUser().getName());
+            holder.address.setText(" صاحب المشروع -  "+ s_name);
         else
-            holder.address.setText(" المصمم -  "+ messageModelList.get(position).getUser().getName());
+            holder.address.setText(" المصمم -  "+ s_name);
+
         try {
             String s = putDateTime(messageModelList.get(position).getCreated_at());
             holder.time.setText("  قبل  "+ s +"  ");

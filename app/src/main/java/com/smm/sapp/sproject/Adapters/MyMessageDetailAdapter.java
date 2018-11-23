@@ -120,6 +120,15 @@ public class MyMessageDetailAdapter extends RecyclerView.Adapter {
                 if (aBoolean){
                     mAttachs.setVisibility(View.GONE);
                     mimageView.setVisibility(View.VISIBLE);
+                    if (!(message.getWidth().equals("0")&& message.getHeight().equals("0"))){
+                        int w =Integer.parseInt(message.getWidth());
+                        int h =Integer.parseInt(message.getHeight());
+                        Log.e("ffffffffffff",(w/h)+" mm");
+                        Log.e("ffffffffffff",Integer.parseInt(message.getWidth()) +" w");
+                        Log.e("ffffffffffff",Integer.parseInt(message.getHeight())+" h ");
+                        mimageView.getLayoutParams().height = (Integer.parseInt(message.getWidth()) / Integer.parseInt(message.getHeight()) * 250 );
+                        mimageView.requestLayout();
+                    }
                     Picasso.get().load(message.getFile_link()).into(mimageView);
                 }else {
                     mAttachs.setVisibility(View.VISIBLE);
@@ -172,6 +181,11 @@ public class MyMessageDetailAdapter extends RecyclerView.Adapter {
                 if (aBoolean){
                     mAttachs.setVisibility(View.GONE);
                     mimageView.setVisibility(View.VISIBLE);
+                    if (!(message.getWidth().equals("0")&& message.getHeight().equals("0"))){
+                       // Log.e("ffffffffffff",Integer.parseInt(message.getWidth()) / Integer.parseInt(message.getHeight()) * 250+" ");
+                        mimageView.getLayoutParams().height = (Integer.parseInt(message.getWidth()) / Integer.parseInt(message.getHeight()) * 250 );
+                        mimageView.requestLayout();
+                    }
                     Picasso.get().load(message.getFile_link()).into(mimageView);
                 }else {
                     mAttachs.setVisibility(View.VISIBLE);

@@ -1,8 +1,12 @@
 package com.smm.sapp.sproject.Fragments;
 
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -25,6 +29,7 @@ import com.smm.sapp.sproject.Adapters.MyMessageAdapter;
 import com.smm.sapp.sproject.Adapters.MyMessageDetailAdapter;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
+import com.smm.sapp.sproject.HelperClass.PathUtil;
 import com.smm.sapp.sproject.Models.MessageDetails;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
@@ -38,6 +43,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,6 +53,8 @@ import hani.momanii.supernova_emoji_library.Helper.EmojiconEditText;
 import me.anwarshahriar.calligrapher.Calligrapher;
 import okhttp3.Call;
 import okhttp3.Response;
+
+import static android.app.Activity.RESULT_OK;
 
 
 /**
@@ -67,6 +75,7 @@ public class MessageDitailsFragment extends Fragment implements View.OnClickList
     private String filePath, fileName;
     TextView attchs_name;
     int current_page, total_pages, flag;
+    int w,h;
 
     public MessageDitailsFragment() {
         // Required empty public constructor
@@ -117,7 +126,8 @@ public class MessageDitailsFragment extends Fragment implements View.OnClickList
                 sendNewMessageRequest();
                 break;
             case R.id.other:
-                fileBrowse();
+                Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(pickPhoto, 1);//one can be replaced with any action code
                 break;
         }
     }
@@ -224,6 +234,9 @@ public class MessageDitailsFragment extends Fragment implements View.OnClickList
         stringMap.put("token", ConstantInterFace.USER.getToken());
         stringMap.put("msg", mMessageEx.getText().toString());
         stringMap.put("seconed_id", userId);
+        stringMap.put("width", String.valueOf(w));
+        stringMap.put("height", String.valueOf(h));
+
         myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/sendmsg", stringMap, filePath, "file_link", new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -273,5 +286,31 @@ public class MessageDitailsFragment extends Fragment implements View.OnClickList
             getAConversationRequest(current_page + 1);
         }
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                Uri selectedImage = data.getData();
+                try {
+                    filePath = PathUtil.getPath(getActivity(), selectedImage);
+                    //fileName = pathFile.getName();
+                    attchs_name.setText(filePath);
+                    attchs_name.setVisibility(View.VISIBLE);
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
+                    w = bitmap.getWidth();
+                    h = bitmap.getHeight();
+
+                   // adapter.notifyDataSetChanged();
+                } catch (URISyntaxException e) {
+                    e.printStackTrace();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }

@@ -6,11 +6,15 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -37,6 +41,7 @@ import com.smm.sapp.sproject.Adapters.MyMessageDetailAdapter;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
+import com.smm.sapp.sproject.HelperClass.PathUtil;
 import com.smm.sapp.sproject.Models.MessageDetails;
 import com.smm.sapp.sproject.Models.OfferModel;
 import com.smm.sapp.sproject.Models.User;
@@ -49,7 +54,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -62,6 +69,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import me.anwarshahriar.calligrapher.Calligrapher;
 import okhttp3.Call;
 import okhttp3.Response;
+
+import static android.app.Activity.RESULT_OK;
 
 
 /**
@@ -89,7 +98,8 @@ public class UnderwayFragment extends Fragment implements  SwipeRefreshLayout.On
     ImageView ic_back, ic_dots;
     User user;
     OfferModel model;
-
+    int w,h;
+    private String filePath, fileName;
     SwipeRefreshLayout mSwipeRefreshLayout;
     int current_page, total_pages, flag;
 
@@ -163,6 +173,8 @@ public class UnderwayFragment extends Fragment implements  SwipeRefreshLayout.On
             }
         });
 
+
+
         ic_dots.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -174,6 +186,14 @@ public class UnderwayFragment extends Fragment implements  SwipeRefreshLayout.On
             @Override
             public void onClick(View v) {
                 sendNewMessageRequest();
+            }
+        });
+
+        mOther.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(pickPhoto, 1);//one can be replaced with any action code
             }
         });
         Bundle bundle = getArguments();
@@ -690,6 +710,8 @@ public class UnderwayFragment extends Fragment implements  SwipeRefreshLayout.On
         stringMap.put("token", ConstantInterFace.USER.getToken());
         stringMap.put("msg", mMessageEx.getText().toString());
         stringMap.put("seconed_id", user.getId() + "");
+        stringMap.put("width", String.valueOf(w));
+        stringMap.put("height", String.valueOf(h));
         myRequest.PostCall("http://smm.smmim.com/waell/public/api/sendmsg", stringMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -736,6 +758,29 @@ public class UnderwayFragment extends Fragment implements  SwipeRefreshLayout.On
             mSwipeRefreshLayout.setRefreshing(false);
         }else {
             getAConversationRequest(current_page + 1);
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                Uri selectedImage = data.getData();
+                try {
+                    filePath = PathUtil.getPath(getActivity(), selectedImage);
+                    //fileName = pathFile.getName();
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
+                    w = bitmap.getWidth();
+                    h = bitmap.getHeight();
+                  //  adapter.notifyDataSetChanged();
+                } catch (URISyntaxException e) {
+                    e.printStackTrace();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }
