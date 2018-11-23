@@ -44,6 +44,8 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
     int pwork_id;
     String name;
     String projectType;
+    Boolean clicked = false;
+
 
     public PortfolioAdapter(Context context, List<PortfolioModel> list) {
         this.context = context;
@@ -64,7 +66,7 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PortfolioHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final PortfolioHolder holder, final int position) {
 
         pwork_id = list.get(position).getId();
 
@@ -130,14 +132,22 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
 
 
             }
+
         });
 
         holder.fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // if (ConstantInterFace.IS_USER_FAVORITE = false) {
+                if (clicked) {
+                    clicked = false;
+                    ConstantInterFace.IS_WORK_FAVORITE = false;
+                    holder.fav.setImageResource(R.drawable.ic_favorite_solid);
+                } else {
+                    clicked = true;
+                    ConstantInterFace.IS_WORK_FAVORITE = true;
+                    holder.fav.setImageResource(R.drawable.ic_favorite_small);
+                }
                 addTofav();
-                // }
             }
         });
 
@@ -176,7 +186,6 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
                 final String success = statusObj.getString("success");
                 final String message = statusObj.getString("message");
 
-
                 new AsyncTask<Void, Void, Void>() {
                     @Override
                     protected Void doInBackground(Void... voids) {
@@ -187,11 +196,11 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
                     protected void onPostExecute(Void aVoid) {
                         super.onPostExecute(aVoid);
                         if (success.equals("true") && message.equals("like Returned")) {
-                            ConstantInterFace.IS_USER_FAVORITE = true;
+                            ConstantInterFace.IS_WORK_FAVORITE = true;
                             Toast.makeText(context, "تمت الاضافة للمفضلة", Toast.LENGTH_LONG).show();
 
                         } else if (success.equals("true") && message.equals("dislike Returned")) {
-                            ConstantInterFace.IS_USER_FAVORITE = false;
+                            ConstantInterFace.IS_WORK_FAVORITE = false;
                             Toast.makeText(context, "تم الحذف من المفضلة", Toast.LENGTH_LONG).show();
 
                         }
@@ -207,8 +216,7 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
         return list.size();
     }
 
-    public class PortfolioHolder extends RecyclerView.ViewHolder {
-
+    public class PortfolioHolder extends RecyclerView.ViewHolder{
 
         ImageView img, fav;
         TextView tv_name, tv_like, tv_show, tv_specialization, tv_addProject;

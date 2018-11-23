@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,7 +58,6 @@ public class PortfolioFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_portfolio, container, false);
     }
 
@@ -81,7 +79,6 @@ public class PortfolioFragment extends Fragment {
             getPworks("?i_current_page=", 1);
 
         }
-
 
         ic_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -415,19 +412,17 @@ public class PortfolioFragment extends Fragment {
                                     //two are visible
                                     tv_next.setVisibility(View.VISIBLE);
                                     tv_back.setVisibility(View.VISIBLE);
-                                    Log.e("qqqqq", "1");
 
                                 } else if (total_pages == current_page && current_page != 1) {
                                     //back visible, next gone
                                     tv_next.setVisibility(View.GONE);
                                     tv_back.setVisibility(View.VISIBLE);
-                                    Log.e("qqqqq", "2");
 
                                 } else if (total_pages > current_page && current_page == 1) {
                                     //next visible, back gone
                                     tv_next.setVisibility(View.VISIBLE);
                                     tv_back.setVisibility(View.GONE);
-                                    Log.e("qqqqq", "3");
+
                                 } else if (total_pages == 1 || total_pages == 0) {
                                     //two are gone
                                     tv_next.setVisibility(View.GONE);

@@ -55,7 +55,11 @@ public class RegisterFragment extends Fragment {
         tv_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getPhoneVerifyRequest();
+                if(et_mobile.getText().length()<3){
+                    Toast.makeText(getActivity(),"لا يمكن ادخال اقل من 3 ارقام",Toast.LENGTH_LONG).show();
+                }else {
+                    getPhoneVerifyRequest();
+                }
             }
         });
 

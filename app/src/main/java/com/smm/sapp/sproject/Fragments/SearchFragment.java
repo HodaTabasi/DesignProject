@@ -35,7 +35,9 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import me.anwarshahriar.calligrapher.Calligrapher;
 import okhttp3.Call;
@@ -100,7 +102,7 @@ public class SearchFragment extends Fragment {
         initView();
         setBottomBar();
 
-        getWorkers("?i_current_page=", 1);
+        getWorkers("&i_current_page=", 1);
 
         ic_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,7 +115,7 @@ public class SearchFragment extends Fragment {
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     s_search = textView.getText().toString();
-                    getWorkers("?name=" + s_search + "&i_current_page=", 1);
+                    getWorkers("&name=" + s_search + "&i_current_page=", 1);
 
                     InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(et_search.getWindowToken(), 0);
@@ -161,7 +163,7 @@ public class SearchFragment extends Fragment {
                 tv_wall.setBackgroundResource(R.drawable.account_shape);
                 tv_wall.setTextColor(Color.parseColor("#000000"));
 
-                getWorkers("?job_type=arch&i_current_page=", 1);
+                getWorkers("&job_type=arch&i_current_page=", 1);
 
             }
         });
@@ -187,7 +189,7 @@ public class SearchFragment extends Fragment {
                 tv_wall.setBackgroundResource(R.drawable.account_shape);
                 tv_wall.setTextColor(Color.parseColor("#000000"));
 
-                getWorkers("?job_type=inter&i_current_page=", 1);
+                getWorkers("&job_type=inter&i_current_page=", 1);
             }
         });
 
@@ -212,7 +214,7 @@ public class SearchFragment extends Fragment {
                 tv_wall.setBackgroundResource(R.drawable.account_shape);
                 tv_wall.setTextColor(Color.parseColor("#000000"));
 
-                getWorkers("?job_type=graphic&i_current_page=", 1);
+                getWorkers("&job_type=graphic&i_current_page=", 1);
             }
         });
 
@@ -236,7 +238,7 @@ public class SearchFragment extends Fragment {
                 tv_wall.setBackgroundResource(R.drawable.account_shape);
                 tv_wall.setTextColor(Color.parseColor("#000000"));
 
-                getWorkers("?job_type=moshen&i_current_page=", 1);
+                getWorkers("&job_type=moshen&i_current_page=", 1);
             }
         });
 
@@ -261,7 +263,7 @@ public class SearchFragment extends Fragment {
                 tv_graphic.setBackgroundResource(R.drawable.account_shape);
                 tv_graphic.setTextColor(Color.parseColor("#000000"));
 
-                getWorkers("?job_type=wall&i_current_page=", 1);
+                getWorkers("&job_type=wall&i_current_page=", 1);
             }
         });
 
@@ -269,7 +271,7 @@ public class SearchFragment extends Fragment {
         mRattingDesigner.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean b) {
-                getWorkers("?rate=" + String.valueOf(rating) + "&i_current_page=", 1);
+                getWorkers("&rate=" + String.valueOf(rating) + "&i_current_page=", 1);
             }
         });
 
@@ -279,17 +281,17 @@ public class SearchFragment extends Fragment {
                 setBottomBar();
                 current_page++;
                 if (flag == 1) {
-                    getWorkers("?job_type=arch&i_current_page=", current_page);
+                    getWorkers("&job_type=arch&i_current_page=", current_page);
                 } else if (flag == 2) {
-                    getWorkers("?job_type=inter&i_current_page=", current_page);
+                    getWorkers("&job_type=inter&i_current_page=", current_page);
                 } else if (flag == 3) {
-                    getWorkers("?job_type=graphic&i_current_page=", current_page);
+                    getWorkers("&job_type=graphic&i_current_page=", current_page);
                 } else if (flag == 4) {
-                    getWorkers("?job_type=moshen&i_current_page=", current_page);
+                    getWorkers("&job_type=moshen&i_current_page=", current_page);
                 } else if (flag == 5) {
-                    getWorkers("?job_type=wall&i_current_page=", current_page);
+                    getWorkers("&job_type=wall&i_current_page=", current_page);
                 } else {
-                    getWorkers("?i_current_page=", current_page);
+                    getWorkers("&i_current_page=", current_page);
                 }
             }
         });
@@ -300,17 +302,17 @@ public class SearchFragment extends Fragment {
                 setBottomBar();
                 current_page--;
                 if (flag == 1) {
-                    getWorkers("?job_type=arch&i_current_page=", current_page);
+                    getWorkers("&job_type=arch&i_current_page=", current_page);
                 } else if (flag == 2) {
-                    getWorkers("?job_type=inter&i_current_page=", current_page);
+                    getWorkers("&job_type=inter&i_current_page=", current_page);
                 } else if (flag == 3) {
-                    getWorkers("?job_type=graphic&i_current_page=", current_page);
+                    getWorkers("&job_type=graphic&i_current_page=", current_page);
                 } else if (flag == 4) {
-                    getWorkers("?job_type=moshen&i_current_page=", current_page);
+                    getWorkers("&job_type=moshen&i_current_page=", current_page);
                 } else if (flag == 5) {
-                    getWorkers("?job_type=wall&i_current_page=", current_page);
+                    getWorkers("&job_type=wall&i_current_page=", current_page);
                 } else {
-                    getWorkers("?i_current_page=", current_page);
+                    getWorkers("&i_current_page=", current_page);
                 }
             }
         });
@@ -319,7 +321,7 @@ public class SearchFragment extends Fragment {
     private void getWorkers(String URL, int current) {
         MyProgressDialog.showDialog(getContext());
         MyRequest myRequest = new MyRequest();
-        myRequest.GetCall("http://smm.smmim.com/waell/public/api/searchworkers" + URL + current, new OkHttpCallback() {
+        myRequest.GetCall("http://smm.smmim.com/waell/public/api/searchworkers?token=" + ConstantInterFace.USER.getToken() + URL + current, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
@@ -354,6 +356,7 @@ public class SearchFragment extends Fragment {
                                         if (profilesList.get(i).getName().equals(ConstantInterFace.USER.getName())) {
                                             profilesList.remove(i);
                                         }
+
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
@@ -378,19 +381,17 @@ public class SearchFragment extends Fragment {
                                 //two are visible
                                 tv_next.setVisibility(View.VISIBLE);
                                 tv_back.setVisibility(View.VISIBLE);
-                                Log.e("qqqqq", "1");
 
                             } else if (total_pages == current_page && current_page != 1) {
                                 //back visible, next gone
                                 tv_next.setVisibility(View.GONE);
                                 tv_back.setVisibility(View.VISIBLE);
-                                Log.e("qqqqq", "2");
 
                             } else if (total_pages > current_page && current_page == 1) {
                                 //next visible, back gone
                                 tv_next.setVisibility(View.VISIBLE);
                                 tv_back.setVisibility(View.GONE);
-                                Log.e("qqqqq", "3");
+
                             } else if (total_pages == 1 || total_pages == 0) {
                                 //two are gone
                                 tv_next.setVisibility(View.GONE);

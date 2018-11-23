@@ -3,7 +3,7 @@ package com.smm.sapp.sproject.Models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class User implements Parcelable{
+public class User implements Parcelable {
 
     /**
      * id : 3
@@ -53,6 +53,8 @@ public class User implements Parcelable{
     private String rate;
 
     private String token;
+    private String liked;
+
 
     protected User(Parcel in) {
         id = in.readInt();
@@ -77,6 +79,7 @@ public class User implements Parcelable{
         updated_at = in.readString();
         token = in.readString();
         rate = in.readString();
+        liked = in.readString();
 
     }
 
@@ -91,6 +94,14 @@ public class User implements Parcelable{
             return new User[size];
         }
     };
+
+    public String getLiked() {
+        return liked;
+    }
+
+    public void setLiked(String liked) {
+        this.liked = liked;
+    }
 
     public String getRate() {
         return rate;
@@ -305,6 +316,7 @@ public class User implements Parcelable{
         dest.writeString(updated_at);
         dest.writeString(token);
         dest.writeString(rate);
+        dest.writeString(liked);
 
     }
 }

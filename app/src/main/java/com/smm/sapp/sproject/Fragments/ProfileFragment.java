@@ -316,10 +316,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void setWorkerProfileData() {
-
         Log.e("qqqqqq", "qqqqq");
-
-
         try {
             if (bu_type.equals("worker")) {
                 tv_worker.setBackground(getResources().getDrawable(R.drawable.solid_account_shape));

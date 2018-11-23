@@ -2,9 +2,12 @@ package com.smm.sapp.sproject.Adapters;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -44,6 +47,8 @@ public class DesignProfileAdapter extends RecyclerView.Adapter<DesignProfileAdap
     Context context;
     List<User> profiles;
     int worker_id;
+    Boolean flag = false;
+
 
     public DesignProfileAdapter(Context context, List<User> profiles) {
         this.context = context;
@@ -59,9 +64,8 @@ public class DesignProfileAdapter extends RecyclerView.Adapter<DesignProfileAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DesignProfileVH holder, final int position) {
+    public void onBindViewHolder(@NonNull final DesignProfileVH holder, final int position) {
 
-        Log.e("zzzz", profiles.size() + "");
         worker_id = profiles.get(position).getId();
 
         if (profiles.get(position).getName() != null) {
@@ -81,11 +85,62 @@ public class DesignProfileAdapter extends RecyclerView.Adapter<DesignProfileAdap
             }
         }
         holder.rate.setRating(Float.valueOf(profiles.get(position).getRate()));
-        Log.e("fffds", profiles.get(position).getRate() + " ");
 
-        if (profiles.get(position).getPhoto_link() != null){
+        if (profiles.get(position).getPhoto_link() != null) {
             Picasso.get().load(profiles.get(position).getPhoto_link()).into(holder.profileImg);
         }
+
+
+        if (profiles.get(position).getLiked().equals("0")) {
+            Drawable img = context.getResources().getDrawable(R.drawable.ic_favorite_white);
+            holder.addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img, null);
+        } else {
+            Drawable img = context.getResources().getDrawable(R.drawable.ic_favorite_solid);
+            holder.addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img, null);
+        }
+
+
+        holder.addToFav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                if (profiles.get(position).getLiked().equals("1")) {
+//                    Drawable img = context.getResources().getDrawable(R.drawable.ic_favorite_white);
+//                    holder.addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img, null);
+                    Boolean likedFlag = addTofav();
+                    if (likedFlag) {
+                        Drawable img1 = context.getResources().getDrawable(R.drawable.ic_favorite_solid);
+                        holder.addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img1, null);
+                    } else {
+                        Drawable img2 = context.getResources().getDrawable(R.drawable.ic_favorite_white);
+                        holder.addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img2, null);
+                    }
+
+
+//                } else if (profiles.get(position).getLiked().equals("0")) {
+//                    Drawable img = context.getResources().getDrawable(R.drawable.ic_favorite_solid);
+//                    holder.addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img, null);
+//                    Boolean likedFlag = addTofav();
+//                    if (likedFlag) {
+//                        Drawable img1 = context.getResources().getDrawable(R.drawable.ic_favorite_solid);
+//                        holder.addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img1, null);
+//                    } else {
+//                        Drawable img2 = context.getResources().getDrawable(R.drawable.ic_favorite_white);
+//                        holder.addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img2, null);
+//                    }
+//                }
+
+//                Boolean likedFlag = addTofav();
+//                if (!likedFlag){
+//                    Drawable img = context.getResources().getDrawable(R.drawable.ic_favorite_solid);
+//                    holder.addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img, null);
+//                }else {
+//                    Drawable img = context.getResources().getDrawable(R.drawable.ic_favorite_white);
+//                    holder.addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img, null);
+//                }
+
+            }
+        });
+
 
         holder.ChooeseMe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,18 +148,12 @@ public class DesignProfileAdapter extends RecyclerView.Adapter<DesignProfileAdap
 
             }
         });
-        holder.addToFav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                if (ConstantInterFace.IS_USER_FAVORITE = false) {
-                addTofav();
-//                }
-            }
-        });
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                Log.e("ppppp", profiles.get(position).getId() + "");
                 AccountSearchFragment fragment = new AccountSearchFragment();
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("worker", profiles.get(position));
@@ -116,7 +165,7 @@ public class DesignProfileAdapter extends RecyclerView.Adapter<DesignProfileAdap
 
     }
 
-    private void addTofav() {
+    private boolean addTofav() {
         MyProgressDialog.showDialog(context);
         MyRequest myRequest = new MyRequest();
         Map<String, String> map = new HashMap<>();
@@ -160,11 +209,13 @@ public class DesignProfileAdapter extends RecyclerView.Adapter<DesignProfileAdap
                     protected void onPostExecute(Void aVoid) {
                         super.onPostExecute(aVoid);
                         if (success.equals("true") && message.equals("like Returned")) {
-//                            ConstantInterFace.IS_USER_FAVORITE = true;
+//                            ConstantInterFace.IS_WORK_FAVORITE = true;
+                            flag = true;
                             Toast.makeText(context, "تمت الاضافة للمفضلة", Toast.LENGTH_LONG).show();
 
                         } else if (success.equals("true") && message.equals("dislike Returned")) {
-//                            ConstantInterFace.IS_USER_FAVORITE = false;
+//                            ConstantInterFace.IS_WORK_FAVORITE = false;
+                            flag = false;
                             Toast.makeText(context, "تم الحذف من المفضلة", Toast.LENGTH_LONG).show();
 
                         }
@@ -173,6 +224,7 @@ public class DesignProfileAdapter extends RecyclerView.Adapter<DesignProfileAdap
 
             }
         });
+        return flag;
     }
 
     @Override

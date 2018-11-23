@@ -71,7 +71,6 @@ public class MainFragment extends Fragment {
     ImageView img_notification, img_edit;
     String refreshedToken;
     RatingBar ratting_designer;
-
     UserModel userModel;
     private static final int REQUEST_CODE = 1;
 
@@ -112,11 +111,13 @@ public class MainFragment extends Fragment {
             //registered user
             img_user.setImageResource(0);
             getProfileData();
-            Log.e("ttttt","1");
+            Log.e("ttttt","completed");
 
         } else if (ConstantInterFace.USER.getPhoto_link() == null &&
                 ConstantInterFace.USER.getName() == null &&
                 ConstantInterFace.USER.getJob_type() == null) {
+
+            Log.e("ttttt","notcompleted");
 
             ConstantInterFace.IS_USER_COMPLETEED = false;
             img_edit.setImageResource(R.drawable.ic_edit_red);
