@@ -2,7 +2,6 @@ package com.smm.sapp.sproject.Adapters;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -70,7 +69,8 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
     @Override
     public void onBindViewHolder(@NonNull final PortfolioHolder holder, final int position) {
 
-        pwork_id = list.get(position).getId();
+        //pwork_id = list.get(position).getId();
+        Log.e("ffffffffff",pwork_id +" ");
 
         if (name != null) {
             StringBuilder s_name = new StringBuilder(name);
@@ -79,18 +79,18 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
             }
             holder.tv_name.setText(s_name);
         } else {
-            if (list.get(position).getUser().getName() != null) {
+            if (list.get(position).getUser().getName() != null){
                 StringBuilder s_name = new StringBuilder(list.get(position).getUser().getName());
                 for (int i = 1; i < s_name.length() - 1; i++) {
                     s_name.setCharAt(i, '*');
                 }
                 holder.tv_name.setText(s_name);
-            } else
+            }else
                 holder.tv_name.setText(" ");
         }
 
-        if (list.get(position).getViews() != null)
-            holder.tv_show.setText(list.get(position).getViews());
+        if(list.get(position).getViews() != null)
+        holder.tv_show.setText(list.get(position).getViews());
         holder.tv_like.setText(String.valueOf(list.get(position).getLikes()));
 
         if (list.get(position).getType().equals("wall")) {
@@ -172,15 +172,15 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
 //                    addTofav();
 //
 //                }
-                addTofav();
+                addTofav(list.get(position).getId());
 
             }
         });
 
     }
 
-    private void addTofav() {
-        Log.e("qqqq", String.valueOf(pwork_id));
+    private void addTofav(int id) {
+        Log.e("ffffffffffff",id+" fff");
         MyProgressDialog.showDialog(context);
         MyRequest myRequest = new MyRequest();
         Map<String, String> map = new HashMap<>();
@@ -213,6 +213,7 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
                 final String success = statusObj.getString("success");
                 final String message = statusObj.getString("message");
 
+
                 new AsyncTask<Void, Void, Void>() {
                     @Override
                     protected Void doInBackground(Void... voids) {
@@ -222,12 +223,12 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
                     @Override
                     protected void onPostExecute(Void aVoid) {
                         super.onPostExecute(aVoid);
-                        if (message.equals("like Returned")) {
-//                            ConstantInterFace.IS_WORK_FAVORITE = true;
+                        if (success.equals("true") && message.equals("like Returned")) {
+                            ConstantInterFace.IS_USER_FAVORITE = true;
                             Toast.makeText(context, "تمت الاضافة للمفضلة", Toast.LENGTH_LONG).show();
 
-                        } else if (message.equals("dislike Returned")) {
-//                            ConstantInterFace.IS_WORK_FAVORITE = false;
+                        } else if (success.equals("true") && message.equals("dislike Returned")) {
+                            ConstantInterFace.IS_USER_FAVORITE = false;
                             Toast.makeText(context, "تم الحذف من المفضلة", Toast.LENGTH_LONG).show();
 
                         }
@@ -245,6 +246,7 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
 
     public class PortfolioHolder extends RecyclerView.ViewHolder {
 
+
         ImageView img, fav;
         TextView tv_name, tv_like, tv_show, tv_specialization, tv_addProject;
 
@@ -259,7 +261,7 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
             tv_addProject = itemView.findViewById(R.id.tv_addProject);
 
             if (ConstantInterFace.USER.getType().equals("worker"))
-                tv_addProject.setVisibility(View.GONE);
+                tv_addProject.setVisibility(View.INVISIBLE);
             else
                 tv_addProject.setVisibility(View.VISIBLE);
 
