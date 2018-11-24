@@ -16,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.smm.sapp.sproject.ConstantInterFace;
-import com.smm.sapp.sproject.Fragments.AddNewWork2Fragment;
 import com.smm.sapp.sproject.Fragments.AddProjectFragment;
 import com.smm.sapp.sproject.Fragments.PortfolioDescFragment;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
@@ -42,10 +41,10 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
 
     Context context;
     List<PortfolioModel> list;
-    int pwork_id;
     String name;
     String projectType;
     Boolean clicked = false;
+    Boolean flag = false;
 
 
     public PortfolioAdapter(Context context, List<PortfolioModel> list) {
@@ -69,9 +68,6 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
     @Override
     public void onBindViewHolder(@NonNull final PortfolioHolder holder, final int position) {
 
-        //pwork_id = list.get(position).getId();
-        Log.e("ffffffffff",pwork_id +" ");
-
         if (name != null) {
             StringBuilder s_name = new StringBuilder(name);
             for (int i = 1; i < s_name.length() - 1; i++) {
@@ -79,18 +75,18 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
             }
             holder.tv_name.setText(s_name);
         } else {
-            if (list.get(position).getUser().getName() != null){
+            if (list.get(position).getUser().getName() != null) {
                 StringBuilder s_name = new StringBuilder(list.get(position).getUser().getName());
                 for (int i = 1; i < s_name.length() - 1; i++) {
                     s_name.setCharAt(i, '*');
                 }
                 holder.tv_name.setText(s_name);
-            }else
+            } else
                 holder.tv_name.setText(" ");
         }
 
-        if(list.get(position).getViews() != null)
-        holder.tv_show.setText(list.get(position).getViews());
+        if (list.get(position).getViews() != null)
+            holder.tv_show.setText(list.get(position).getViews());
         holder.tv_like.setText(String.valueOf(list.get(position).getLikes()));
 
         if (list.get(position).getType().equals("wall")) {
@@ -143,49 +139,59 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
         });
 
         if (list.get(position).getLiked().equals("0")) {
-            holder.fav.setImageResource(R.drawable.ic_favorite_small);
+            holder.fav.setImageResource(R.drawable.ic_favorite_black);
         } else {
-            holder.fav.setImageResource(R.drawable.ic_favorite_solid);
+            holder.fav.setImageResource(R.drawable.ic_favorite_red);
         }
 
         holder.fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-//                if (holder.fav.getDrawable() == context.getResources().getDrawable(R.drawable.ic_favorite_small)) {
-//                    holder.fav.setImageResource(R.drawable.ic_favorite_solid);
+//                if (holder.fav.getDrawable() == context.getResources().getDrawable(R.drawable.ic_favorite_black)) {
+//                    holder.fav.setImageResource(R.drawable.ic_favorite_red);
+//                    Boolean likedFlag = addTofav(list.get(position).getId());
 //
-//                } else if (holder.fav.getDrawable() == context.getResources().getDrawable(R.drawable.ic_favorite_solid)) {
-//                    holder.fav.setImageResource(R.drawable.ic_favorite_small);
+//
+//                } else if (holder.fav.getDrawable() == context.getResources().getDrawable(R.drawable.ic_favorite_red)) {
+//                    holder.fav.setImageResource(R.drawable.ic_favorite_black);
+//                    Boolean likedFlag = addTofav(list.get(position).getId());
+//
 //                }
+                Boolean likedFlag = addTofav(list.get(position).getId());
+                Log.e("qqqqq", likedFlag + "");
+                if (likedFlag) {
+                    holder.fav.setImageResource(R.drawable.ic_favorite_red);
+
+                } else {
+                    holder.fav.setImageResource(R.drawable.ic_favorite_black);
+
+                }
 
 //                if (clicked) {
 //                    clicked = false;
-////                    ConstantInterFace.IS_WORK_FAVORITE = false;
-//                    holder.fav.setImageResource(R.drawable.ic_favorite_solid);
-//                    addTofav();
+//                    holder.fav.setImageResource(R.drawable.ic_favorite_red);
+//                    addTofav(list.get(position).getId());
 //
 //                } else {
 //                    clicked = true;
-////                    ConstantInterFace.IS_WORK_FAVORITE = true;
-//                    holder.fav.setImageResource(R.drawable.ic_favorite_small);
-//                    addTofav();
-//
+//                    holder.fav.setImageResource(R.drawable.ic_favorite_black);
+//                    addTofav(list.get(position).getId());
 //                }
-                addTofav(list.get(position).getId());
+                //addTofav(list.get(position).getId());
 
             }
         });
 
     }
 
-    private void addTofav(int id) {
-        Log.e("ffffffffffff",id+" fff");
+    private boolean addTofav(int id) {
+        Log.e("ffffffffffff", id + " fff");
         MyProgressDialog.showDialog(context);
         MyRequest myRequest = new MyRequest();
         Map<String, String> map = new HashMap<>();
         map.put("token", ConstantInterFace.USER.getToken());
-        map.put("target_id", String.valueOf(pwork_id));
+        map.put("target_id", String.valueOf(id));
         map.put("target_type", "pwork");
         myRequest.PostCall("http://smm.smmim.com/waell/public/api/likedislike", map, new OkHttpCallback() {
             @Override
@@ -224,11 +230,11 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
                     protected void onPostExecute(Void aVoid) {
                         super.onPostExecute(aVoid);
                         if (success.equals("true") && message.equals("like Returned")) {
-                            ConstantInterFace.IS_USER_FAVORITE = true;
+                            flag = true;
                             Toast.makeText(context, "تمت الاضافة للمفضلة", Toast.LENGTH_LONG).show();
 
                         } else if (success.equals("true") && message.equals("dislike Returned")) {
-                            ConstantInterFace.IS_USER_FAVORITE = false;
+                            flag = false;
                             Toast.makeText(context, "تم الحذف من المفضلة", Toast.LENGTH_LONG).show();
 
                         }
@@ -237,6 +243,7 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
 
             }
         });
+        return flag;
     }
 
     @Override
@@ -261,7 +268,7 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
             tv_addProject = itemView.findViewById(R.id.tv_addProject);
 
             if (ConstantInterFace.USER.getType().equals("worker"))
-                tv_addProject.setVisibility(View.INVISIBLE);
+                tv_addProject.setVisibility(View.GONE);
             else
                 tv_addProject.setVisibility(View.VISIBLE);
 

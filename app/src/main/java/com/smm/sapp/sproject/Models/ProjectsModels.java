@@ -27,6 +27,7 @@ public class ProjectsModels implements Parcelable {
     private List<OfferModel> offers;
     private List<PhotoModel> photos;
     private List<Attachments> similars;
+    private String liked;
 
 
     @SerializedName("private")
@@ -47,6 +48,8 @@ public class ProjectsModels implements Parcelable {
         user = in.readParcelable(User.class.getClassLoader());
         offers = in.createTypedArrayList(OfferModel.CREATOR);
         Private = in.readString();
+        liked = in.readString();
+
     }
 
     @Override
@@ -65,6 +68,8 @@ public class ProjectsModels implements Parcelable {
         dest.writeParcelable(user, flags);
         dest.writeTypedList(offers);
         dest.writeString(Private);
+        dest.writeString(liked);
+
     }
 
     public static final Creator<ProjectsModels> CREATOR = new Creator<ProjectsModels>() {
@@ -79,12 +84,20 @@ public class ProjectsModels implements Parcelable {
         }
     };
 
-    public String getPrivate()
-    {
+
+    public String getLiked() {
+        return liked;
+    }
+
+    public void setLiked(String liked) {
+        this.liked = liked;
+    }
+
+    public String getPrivate() {
         return Private;
     }
-    public void setPrivate(String Private)
-    {
+
+    public void setPrivate(String Private) {
         this.Private = Private;
     }
 

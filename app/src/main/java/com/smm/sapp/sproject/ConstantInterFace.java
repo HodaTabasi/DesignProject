@@ -12,8 +12,6 @@ public class ConstantInterFace {
     public static User USER;
     public static Boolean IS_REGISTER = false;
     public static TextView tv_msgs, tv_projects, tv_home, tv_portfolio, tv_profile;
-    public static Boolean IS_WORK_FAVORITE = false;
-
 
     public static Boolean IS_ABOUT_OPENED = false;
     public static Boolean IS_QUES_OPENED = false;
@@ -35,6 +33,6 @@ public class ConstantInterFace {
 
     public static int DELEIVER_PROJECT = 0;
     public static int DELEIVER_CLIENT_PROJECT = 0;
-    public static String[] array = new String[]{"","500-1000", "1000-2000", "2000-3000", "3000-4000", "4000-5000", "5000-6500", "6500-8000", "اكثر من 8000"};
+    public static String[] array = new String[]{"", "500-1000", "1000-2000", "2000-3000", "3000-4000", "4000-5000", "5000-6500", "6500-8000", "اكثر من 8000"};
 
 }

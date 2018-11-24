@@ -20,12 +20,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.smm.sapp.sproject.ConstantInterFace;
-import com.smm.sapp.sproject.Fragments.AddNewWork2Fragment;
 import com.smm.sapp.sproject.Fragments.AddProjectFragment;
 import com.smm.sapp.sproject.Fragments.ViewProjectFragment;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
-import com.smm.sapp.sproject.HelperClass.TimeAgo;
 import com.smm.sapp.sproject.Models.ProjectsModels;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
@@ -42,7 +40,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
 import okhttp3.Response;
@@ -75,7 +72,7 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
 
         try {
             String s = putDateTime(projectsList.get(position).getCreated_at());
-            holder.tv_time.setText("  قبل  "+ s +" يوما ");
+            holder.tv_time.setText("  قبل  " + s + " يوما ");
 
         } catch (ParseException e) {
             e.printStackTrace();
@@ -114,14 +111,14 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
     }
 
     private String putDateTime(String created_at) throws ParseException {
-        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss",new Locale("en"));
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", new Locale("en"));
         Date date = dt.parse(created_at);
         long mills = System.currentTimeMillis() - date.getTime();
 
-        int hours = (int) (mills/(1000 * 60 * 60));
-        int mins = (int) (mills/(1000*60)) % 60;
+        int hours = (int) (mills / (1000 * 60 * 60));
+        int mins = (int) (mills / (1000 * 60)) % 60;
 
-          int days = (int) (mills / (1000*60*60*24));
+        int days = (int) (mills / (1000 * 60 * 60 * 24));
 //        String diff = hours + ":" + mins; // updated value every1 second
 
 
@@ -137,12 +134,13 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
         View view = inflater.inflate(R.layout.popup_menu, null);
 
         TextView new_project = view.findViewById(R.id.new_project);
-        ImageView tt = view.findViewById(R.id.tt);
+        ImageView img_addProject = view.findViewById(R.id.img_addProject);
         TextView add_fav = view.findViewById(R.id.add_fav);
+        ImageView img_fav = view.findViewById(R.id.img_fav);
         TextView report = view.findViewById(R.id.report);
-        if (ConstantInterFace.USER.getType().equals("worker")){
+        if (ConstantInterFace.USER.getType().equals("worker")) {
             new_project.setVisibility(View.GONE);
-            tt.setVisibility(View.GONE);
+            img_addProject.setVisibility(View.GONE);
         }
 
         Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "JFFlatregular.ttf");
@@ -152,6 +150,15 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
 
         mypopupWindow = new PopupWindow(view, RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT, true);
         mypopupWindow.showAsDropDown(v);
+
+
+        if (projectsModels.getLiked().equals("0")) {
+            img_fav.setImageResource(R.drawable.ic_favorite_black);
+            add_fav.setText("أضف الى المفضلة");
+        } else {
+            img_fav.setImageResource(R.drawable.ic_favorite_red);
+            add_fav.setText("احذف من المفضلة");
+        }
 
         new_project.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,12 +172,12 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
 //                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment,true);
 ////                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AddNewWork2Fragment(),true);
 //                }else {
-                    AddProjectFragment fragment = new AddProjectFragment();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("type",projectsModels.getType());
-                    Log.e("ffd",projectsModels.getType());
-                    fragment.setArguments(bundle);
-                    FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment,true);
+                AddProjectFragment fragment = new AddProjectFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("type", projectsModels.getType());
+                Log.e("ffd", projectsModels.getType());
+                fragment.setArguments(bundle);
+                FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
                 //}
                 ConstantInterFace.tv_home.setBackgroundResource(0);
                 ConstantInterFace.tv_msgs.setBackgroundResource(0);
@@ -184,12 +191,6 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
             public void onClick(View view) {
                 mypopupWindow.dismiss();
                 addToFav(projectsModels.getId());
-//                FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AddProjectFragment(), true);
-//                ConstantInterFace.tv_home.setBackgroundResource(0);
-//                ConstantInterFace.tv_msgs.setBackgroundResource(0);
-//                ConstantInterFace.tv_profile.setBackgroundResource(0);
-//                ConstantInterFace.tv_projects.setBackgroundResource(0);
-//                ConstantInterFace.tv_portfolio.setBackgroundResource(0);
             }
         });
 
@@ -198,12 +199,6 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
             public void onClick(View view) {
                 mypopupWindow.dismiss();
                 Reportcontent(projectsModels.getId());
-//                FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, new AddProjectFragment(), true);
-//                ConstantInterFace.tv_home.setBackgroundResource(0);
-//                ConstantInterFace.tv_msgs.setBackgroundResource(0);
-//                ConstantInterFace.tv_profile.setBackgroundResource(0);
-//                ConstantInterFace.tv_projects.setBackgroundResource(0);
-//                ConstantInterFace.tv_portfolio.setBackgroundResource(0);
             }
         });
     }

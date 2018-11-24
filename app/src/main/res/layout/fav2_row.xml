@@ -116,7 +116,7 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/report_layout_shap"
                 android:padding="@dimen/_3sdp"
-                android:src="@drawable/ic_favorite_small" />
+                android:src="@drawable/ic_favorite_black" />
         </LinearLayout>
 
     </LinearLayout>

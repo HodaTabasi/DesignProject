@@ -74,7 +74,7 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
         super.onActivityCreated(savedInstanceState);
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JFFlatregular.ttf", true);
-        getProjects("getallprojects?i_current_page=", 1);
+        getProjects("getallprojects?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", 1);
         initView();
         setBottomBar();
         setListener();
@@ -238,7 +238,7 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
                 mInButton.setBackgroundResource(R.drawable.account_shape);
 
                 setBottomBar();
-                getProjects("getallprojectsmoshen?i_current_page=", 1);
+                getProjects("getallprojectsmoshen?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", 1);
                 break;
 
             case R.id.gh_button:
@@ -256,7 +256,7 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
                 mInButton.setBackgroundResource(R.drawable.account_shape);
 
                 setBottomBar();
-                getProjects("getallprojectsgraphic?i_current_page=", 1);
+                getProjects("getallprojectsgraphic?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", 1);
                 break;
 
             case R.id.wall_button:
@@ -274,7 +274,7 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
                 mInButton.setBackgroundResource(R.drawable.account_shape);
 
                 setBottomBar();
-                getProjects("getallprojectswall?i_current_page=", 1);
+                getProjects("getallprojectswall?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", 1);
                 break;
 
             case R.id.arch_button:
@@ -292,7 +292,7 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
                 mInButton.setBackgroundResource(R.drawable.account_shape);
 
                 setBottomBar();
-                getProjects("getallprojectsarch?i_current_page=", 1);
+                getProjects("getallprojectsarch?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", 1);
                 break;
 
             case R.id.in_button:
@@ -310,7 +310,7 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
                 mArchButton.setBackgroundResource(R.drawable.account_shape);
 
                 setBottomBar();
-                getProjects("getallprojectsinter?i_current_page=", 1);
+                getProjects("getallprojectsinter?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", 1);
                 break;
 
             case R.id.tv_next:
@@ -318,17 +318,17 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
                 current_page++;
 
                 if (flag == 1) {
-                    getProjects("getallprojectsmoshen?i_current_page=", current_page);
+                    getProjects("getallprojectsmoshen?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", current_page);
                 } else if (flag == 2) {
-                    getProjects("getallprojectsgraphic?i_current_page=", current_page);
+                    getProjects("getallprojectsgraphic?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", current_page);
                 } else if (flag == 3) {
-                    getProjects("getallprojectswall?i_current_page=", current_page);
+                    getProjects("getallprojectswall?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", current_page);
                 } else if (flag == 4) {
-                    getProjects("getallprojectsarch?i_current_page=", current_page);
+                    getProjects("getallprojectsarch?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", current_page);
                 } else if (flag == 5) {
-                    getProjects("getallprojectsinter?i_current_page=", current_page);
+                    getProjects("getallprojectsinter?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", current_page);
                 } else {
-                    getProjects("getallprojects?i_current_page=", current_page);
+                    getProjects("getallprojects?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", current_page);
                 }
                 break;
 
@@ -337,17 +337,17 @@ public class BrowseProjectsFragment extends Fragment implements View.OnClickList
                 current_page--;
 
                 if (flag == 1) {
-                    getProjects("getallprojectsmoshen?i_current_page=", current_page);
+                    getProjects("getallprojectsmoshen?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", current_page);
                 } else if (flag == 2) {
-                    getProjects("getallprojectsgraphic?i_current_page=", current_page);
+                    getProjects("getallprojectsgraphic?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", current_page);
                 } else if (flag == 3) {
-                    getProjects("getallprojectswall?i_current_page=", current_page);
+                    getProjects("getallprojectswall?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", current_page);
                 } else if (flag == 4) {
-                    getProjects("getallprojectsarch?i_current_page=", current_page);
+                    getProjects("getallprojectsarch?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", current_page);
                 } else if (flag == 5) {
-                    getProjects("getallprojectsinter?i_current_page=", current_page);
+                    getProjects("getallprojectsinter?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", current_page);
                 } else {
-                    getProjects("getallprojects?i_current_page=", current_page);
+                    getProjects("getallprojects?token=" + ConstantInterFace.USER.getToken() + "&i_current_page=", current_page);
                 }
                 break;
         }

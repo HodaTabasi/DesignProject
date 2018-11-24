@@ -4,27 +4,22 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.Fragments.AccountSearchFragment;
-import com.smm.sapp.sproject.Fragments.PortfolioDescFragment;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
-import com.smm.sapp.sproject.Models.DesignProfile;
 import com.smm.sapp.sproject.Models.User;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
@@ -95,7 +90,7 @@ public class DesignProfileAdapter extends RecyclerView.Adapter<DesignProfileAdap
             Drawable img = context.getResources().getDrawable(R.drawable.ic_favorite_white);
             holder.addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img, null);
         } else {
-            Drawable img = context.getResources().getDrawable(R.drawable.ic_favorite_solid);
+            Drawable img = context.getResources().getDrawable(R.drawable.ic_favorite_red);
             holder.addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img, null);
         }
 
@@ -103,44 +98,25 @@ public class DesignProfileAdapter extends RecyclerView.Adapter<DesignProfileAdap
         holder.addToFav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (profiles.get(position).getLiked().equals("1")) {
-                    Drawable img = context.getResources().getDrawable(R.drawable.ic_favorite_white);
-                    holder.addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img, null);
-//                Boolean likedFlag = false;
-//                likedFlag = addTofav();
-//                Log.e("fffffffff", likedFlag + "");
-//                if (likedFlag) {
-//                    Drawable img1 = context.getResources().getDrawable(R.drawable.ic_favorite_solid);
-//                    holder.addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img1, null);
-//                } else {
-//                    Drawable img2 = context.getResources().getDrawable(R.drawable.ic_favorite_white);
-//                    holder.addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img2, null);
-//                }
-
-
-                } else if (profiles.get(position).getLiked().equals("0")) {
-                    Drawable img = context.getResources().getDrawable(R.drawable.ic_favorite_solid);
-                    holder.addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img, null);
-                }
-//                    Boolean likedFlag = addTofav();
-//                    if (likedFlag) {
-//                        Drawable img1 = context.getResources().getDrawable(R.drawable.ic_favorite_solid);
-//                        holder.addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img1, null);
-//                    } else {
-//                        Drawable img2 = context.getResources().getDrawable(R.drawable.ic_favorite_white);
-//                        holder.addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img2, null);
-//                    }
-//                }
-
-//                Boolean likedFlag = addTofav();
-//                if (!likedFlag){
-//                    Drawable img = context.getResources().getDrawable(R.drawable.ic_favorite_solid);
-//                    holder.addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img, null);
-//                }else {
+//                if (profiles.get(position).getLiked().equals("1")) {
 //                    Drawable img = context.getResources().getDrawable(R.drawable.ic_favorite_white);
 //                    holder.addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img, null);
-//                }
 
+                    Boolean likedFlag = addTofav(profiles.get(position).getId());
+                    Log.e("fffffffff", likedFlag + "");
+                    if (likedFlag) {
+                        Drawable img1 = context.getResources().getDrawable(R.drawable.ic_favorite_red);
+                        holder.addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img1, null);
+                    } else {
+                        Drawable img2 = context.getResources().getDrawable(R.drawable.ic_favorite_white);
+                        holder.addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img2, null);
+                    }
+
+
+//                } else if (profiles.get(position).getLiked().equals("0")) {
+//                    Drawable img = context.getResources().getDrawable(R.drawable.ic_favorite_red);
+//                    holder.addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img, null);
+//                }
             }
         });
 
@@ -168,12 +144,12 @@ public class DesignProfileAdapter extends RecyclerView.Adapter<DesignProfileAdap
 
     }
 
-    private boolean addTofav() {
+    private boolean addTofav(int id) {
         MyProgressDialog.showDialog(context);
         MyRequest myRequest = new MyRequest();
         Map<String, String> map = new HashMap<>();
         map.put("token", ConstantInterFace.USER.getToken());
-        map.put("target_id", String.valueOf(worker_id));
+        map.put("target_id", String.valueOf(id));
         map.put("target_type", "user");
         myRequest.PostCall("http://smm.smmim.com/waell/public/api/likedislike", map, new OkHttpCallback() {
             @Override
