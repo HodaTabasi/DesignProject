@@ -101,7 +101,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/_4sdp"
-                android:layout_weight="2"
+                android:layout_weight="2.5"
                 android:background="@drawable/blue_shape"
                 android:gravity="center"
                 android:padding="@dimen/_4sdp"
@@ -111,9 +111,8 @@
 
             <ImageView
                 android:id="@+id/tv_fav"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
                 android:background="@drawable/report_layout_shap"
                 android:padding="@dimen/_3sdp"
                 android:src="@drawable/ic_favorite_black" />

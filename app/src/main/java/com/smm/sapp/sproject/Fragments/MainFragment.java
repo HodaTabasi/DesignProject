@@ -460,8 +460,6 @@ public class MainFragment extends Fragment {
                     getSnack();
                 }
             });
-
-
         }
 
         tv_about.setOnClickListener(new View.OnClickListener() {
