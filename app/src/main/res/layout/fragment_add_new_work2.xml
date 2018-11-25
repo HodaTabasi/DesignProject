@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:drawablePadding="@dimen/_5sdp"
-            android:drawableRight="@drawable/ic_gallary"
+            android:drawableRight="@drawable/gallary"
             android:drawableTint="@color/white"
             android:gravity="center"
             android:text="معرض اعمالي"

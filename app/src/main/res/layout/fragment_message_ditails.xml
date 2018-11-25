@@ -80,7 +80,7 @@
             android:layout_height="25dp"
             android:layout_gravity="center"
             android:layout_weight="0.8"
-            android:src="@drawable/pepo" />
+            android:src="@drawable/gallary" />
 
         <RelativeLayout
             android:layout_width="0dp"

@@ -2,13 +2,16 @@ package com.smm.sapp.sproject.Fragments;
 
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -63,7 +66,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
     private EditText mGhType;
     private EditText mProjectNameGh;
     private EditText mAboutActivity;
-    private ImageView mGhUploadImageLike, mGhUploadImageLike1;
+    private ImageView mGhUploadImageLike1;
     private TextView mInnovation;
     private TextView mDevelop;
     private TextView mAskForDesign;
@@ -90,7 +93,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
     ProjectPhotoAdapter adapter;
 
     MySpinnerAdapter adapter3;
-    Bundle bundle ;
+    Bundle bundle;
     String projectId;
     Boolean flag = false;
 
@@ -111,7 +114,6 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
         mGhType = getView().findViewById(R.id.gh_type);
         mProjectNameGh = getView().findViewById(R.id.project_name_gh);
         mAboutActivity = getView().findViewById(R.id.about_activity);
-        mGhUploadImageLike = getView().findViewById(R.id.gh_upload_image_like);
         mGhUploadImageLike1 = getView().findViewById(R.id.gh_upload_image_like1);
         mInnovation = getView().findViewById(R.id.innovation);
         mDevelop = getView().findViewById(R.id.develop);
@@ -147,7 +149,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
         if (!getArguments().isEmpty()) {
             bundle = getArguments();
             ProjectsModels models = bundle.getParcelable("object");
-            flag = bundle.getBoolean("flag",false);
+            flag = bundle.getBoolean("flag", false);
             mGhType.setText(models.getName());
             mProjectNameGh.setText(models.getName());
             mAboutActivity.setText(models.getAddtion_info().getAbout());
@@ -155,23 +157,23 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
             st_balance = Integer.parseInt(models.getBalance());
             mProjectDeitailsGh.setText(models.getDescr());
             projectId = String.valueOf(models.getId());
-            Log.e("eeeee",projectId+"");
+            Log.e("eeeee", projectId + "");
 
-            if (models.getAddtion_info().getNewp().equals("1")){
+            if (models.getAddtion_info().getNewp().equals("1")) {
                 savedValue1 = "1";
                 mYes.setTextColor(Color.parseColor("#65bafb"));
                 mNo.setTextColor(Color.parseColor("#000000"));
-            }else {
+            } else {
                 savedValue1 = "0";
                 mYes.setTextColor(Color.parseColor("#000000"));
                 mNo.setTextColor(Color.parseColor("#65bafb"));
             }
 
-            if (models.getAddtion_info().getD_type().equals("develop")){
+            if (models.getAddtion_info().getD_type().equals("develop")) {
                 savedValue2 = "develop";
                 mDevelop.setTextColor(Color.parseColor("#65bafb"));
                 mInnovation.setTextColor(Color.parseColor("#000000"));
-            }else {
+            } else {
                 savedValue2 = "innovation";
                 mInnovation.setTextColor(Color.parseColor("#65bafb"));
                 mDevelop.setTextColor(Color.parseColor("#000000"));
@@ -200,18 +202,8 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
                         Log.e("ddddd", " " + s);
                         attachMap.put("photos[" + (i++) + "]", s);
                     }
-                    sendGraphicRequest("projectmakegraphic","projectupdategraphic");
+                    sendGraphicRequest("projectmakegraphic", "projectupdategraphic");
                 }
-            }
-        });
-
-        mGhUploadImageLike.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mGhUploadImageLike.setVisibility(View.GONE);
-                lien.setVisibility(View.VISIBLE);
-                Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(pickPhoto, 1);//one can be replaced with any action code
             }
         });
 
@@ -219,7 +211,15 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(pickPhoto, 2);//one can be replaced with any action code
+                try {
+                    if (ActivityCompat.checkSelfPermission(getActivity(), android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(getActivity(), new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                    } else {
+                        startActivityForResult(pickPhoto, 2);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -276,14 +276,14 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
         String url;
         final String success;
 
-        if (flag){
+        if (flag) {
             url = update;
             map.put("project_id", projectId);
-            Log.e("ffgedsfd",url);
+            Log.e("ffgedsfd", url);
             success = "تمت التعديل نجاح قيد المراجعة من الادارة";
-        }else {
+        } else {
             url = make;
-            Log.e("ffgedsfd",url);
+            Log.e("ffgedsfd", url);
             success = "تمت الاضافة نجاح قيد المراجعة من الادارة";
         }
         map.put("token", ConstantInterFace.USER.getToken());
@@ -295,7 +295,7 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
         map.put("balance", String.valueOf(st_balance));
         map.put("descr", mProjectDeitailsGh.getText().toString());
 
-        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/"+url, map, attachMap, new OkHttpCallback() {
+        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/" + url, map, attachMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
@@ -394,6 +394,22 @@ public class ProjectDitailesGraphicsFragment extends Fragment {
 
     private void setBalance(int st_balance) {
         this.st_balance = st_balance;
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case 2:
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Intent galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(galleryIntent, 2);
+                } else {
+                    //do something like displaying a message that he didn`t allow the app to access gallery and you wont be able to let him select from gallery
+                }
+                break;
+        }
     }
 
     @Override
