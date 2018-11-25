@@ -34,6 +34,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="قبل يومين "
+                android:gravity="right"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:layout_marginRight="@dimen/_2sdp"
                 android:textColor="@color/textGray"
                 android:textSize="12dp" />
 

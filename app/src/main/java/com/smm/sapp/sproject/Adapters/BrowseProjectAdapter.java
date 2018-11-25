@@ -73,14 +73,29 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
         holder.tv_description.setText(projectsList.get(position).getName());
         holder.tv_name.setText(projectsList.get(position).getUser().getName());
         holder.tv_proposals.setText(projectsList.get(position).getOffers().size() + " عرض ");
-
         try {
-            String s = putDateTime(projectsList.get(position).getCreated_at());
-            holder.tv_time.setText("  قبل  " + s + " يوما ");
+            int minuts = putDateTime(projectsList.get(position).getCreated_at());
+            int hours = (int) ((1.0 / 60) * minuts);
+            int days = (int) ((1.0 / 1440) * minuts);
 
+            Log.e("wwwwww", minuts + "ppp" + hours + "ppp" + days);
+
+            if (minuts == 0) {
+                //seconds
+                holder.tv_time.setText("قبل ثواني");
+            } else if (minuts > 0 && minuts <= 59) {
+                //minuts
+                holder.tv_time.setText("قبل " + minuts + " دقيقة ");
+            } else if (minuts >= 60 && hours < 24) {
+                //hours
+                holder.tv_time.setText(hours + " ساعة ");
+            } else if (hours >= 24) {
+                //days
+                holder.tv_time.setText(days + " يوم ");
+
+            }
         } catch (ParseException e) {
             e.printStackTrace();
-
         }
 
 
@@ -112,21 +127,19 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
         }
     }
 
-    private String putDateTime(String created_at) throws ParseException {
+    private int putDateTime(String created_at) throws ParseException {
         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", new Locale("en"));
         Date date = dt.parse(created_at);
         long mills = System.currentTimeMillis() - date.getTime();
 
         int hours = (int) (mills / (1000 * 60 * 60));
-        int mins = (int) (mills / (1000 * 60)) % 60;
-
+//        int mins = (int) (mills / (1000 * 60)) % 60;
+        int mins = hours * 60;
         int days = (int) (mills / (1000 * 60 * 60 * 24));
-//        String diff = hours + ":" + mins; // updated value every1 second
 
+        Log.e("qqqqqqq", hours + "" + mins + "" + days + "");
 
-//        hours = (hours < 0 ? -hours : hours);
-//        Log.i("======= Hours"," :: "+hours);
-        return days + " ";
+        return mins;
     }
 
     @SuppressLint("RestrictedApi")
