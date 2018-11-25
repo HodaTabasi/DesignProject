@@ -4,10 +4,13 @@ package com.smm.sapp.sproject.Fragments;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -70,9 +73,9 @@ public class ProjectDetailsInterFragment extends Fragment {
     private EditText mProjectDetailes;
     private TextView mAttachmentIn;
     private Button mSendIn;
-    private Spinner sp_chooese_style, sp_city,sp_balance;
+    private Spinner sp_chooese_style, sp_city, sp_balance;
     String st_style, st_city;
-    int  st_balance = 1;
+    int st_balance = 1;
 
     private static final int ERROR_DIALOG_REQUEST = 9001;
     private static final int REQUEST_CODE = 1;
@@ -84,7 +87,7 @@ public class ProjectDetailsInterFragment extends Fragment {
     MySpinnerAdapter adapter1;
     MySpinnerAdapter adapter2;
     MySpinnerAdapter adapter3;
-    Bundle bundle ;
+    Bundle bundle;
     String projectId;
     Boolean flag = false;
 
@@ -118,22 +121,22 @@ public class ProjectDetailsInterFragment extends Fragment {
         if (!getArguments().isEmpty()) {
             bundle = getArguments();
             ProjectsModels models = bundle.getParcelable("object");
-            flag = bundle.getBoolean("flag",false);
+            flag = bundle.getBoolean("flag", false);
             mInType.setText(models.getName());
             mArea2.setText(models.getAddtion_info().getArea());
             sp_city.setSelection(adapter2.getPosition(models.getAddtion_info().getCity()));
-            st_city =models.getAddtion_info().getCity();
+            st_city = models.getAddtion_info().getCity();
             sp_balance.setSelection(adapter3.getPosition(ConstantInterFace.array[Integer.parseInt(models.getBalance())]));
             st_balance = Integer.parseInt(models.getBalance());
             sp_chooese_style.setSelection(adapter1.getPosition(models.getAddtion_info().getStyle()));
             st_style = models.getAddtion_info().getStyle();
             mProjectDetailes.setText(models.getDescr());
             mMap.setText("خط الطول = " + models.getAddtion_info().getLng() + "\n" + "خط العرض = " + models.getAddtion_info().getLat());
-            s_lat =  models.getAddtion_info().getLat();
+            s_lat = models.getAddtion_info().getLat();
             s_lng = models.getAddtion_info().getLng();
             mDesignColor.setText(models.getAddtion_info().getColors());
             projectId = String.valueOf(models.getId());
-            Log.e("eeeee",projectId+"");
+            Log.e("eeeee", projectId + "");
         }
 
         mSendIn.setOnClickListener(new View.OnClickListener() {
@@ -141,11 +144,11 @@ public class ProjectDetailsInterFragment extends Fragment {
             public void onClick(View view) {
                 if (mInType.getText().toString().matches("") || st_style.matches("") || mDesignColor.getText().toString().matches("")
                         || mArea2.getText().toString().matches("") || st_city.matches("") || mMap.getText().toString().matches("")
-                         || mProjectDetailes.getText().toString().matches("")) {
+                        || mProjectDetailes.getText().toString().matches("")) {
                     Toast.makeText(getContext(), "يجب تعبئة جميع الحقول", Toast.LENGTH_LONG).show();
 
                 } else {
-                    sendInterDesignRequest("projectmakeinter","projectupdateinter");
+                    sendInterDesignRequest("projectmakeinter", "projectupdateinter");
                 }
             }
         });
@@ -158,8 +161,6 @@ public class ProjectDetailsInterFragment extends Fragment {
                 getFragmentManager().popBackStack();
             }
         });
-
-
 
 
     }
@@ -369,14 +370,14 @@ public class ProjectDetailsInterFragment extends Fragment {
         String url;
         final String success;
 
-        if (flag){
+        if (flag) {
             url = update;
             map.put("project_id", projectId);
-            Log.e("ffgedsfd",url);
+            Log.e("ffgedsfd", url);
             success = "تمت التعديل نجاح قيد المراجعة من الادارة";
-        }else {
+        } else {
             url = make;
-            Log.e("ffgedsfd",url);
+            Log.e("ffgedsfd", url);
             success = "تمت الاضافة نجاح قيد المراجعة من الادارة";
         }
 
@@ -391,11 +392,11 @@ public class ProjectDetailsInterFragment extends Fragment {
         map.put("balance", String.valueOf(st_balance));
         map.put("descr", mProjectDetailes.getText().toString());
 
-        Log.e("qqqqq",st_city);
-        Log.e("qqqqq",st_style);
-        Log.e("qqqqq",st_balance+" gh");
+        Log.e("qqqqq", st_city);
+        Log.e("qqqqq", st_style);
+        Log.e("qqqqq", st_balance + " gh");
 
-        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/"+url, map, attachMap, new OkHttpCallback() {
+        myRequest.PostCallWithAttachment("http://smm.smmim.com/waell/public/api/" + url, map, attachMap, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 MyProgressDialog.dismissDialog();
@@ -461,7 +462,15 @@ public class ProjectDetailsInterFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(pickPhoto, 2);//one can be replaced with any action code
+                try {
+                    if (ActivityCompat.checkSelfPermission(getActivity(), android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(getActivity(), new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                    } else {
+                        startActivityForResult(pickPhoto, 2);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -469,7 +478,15 @@ public class ProjectDetailsInterFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(pickPhoto, 3);//one can be replaced with any action code
+                try {
+                    if (ActivityCompat.checkSelfPermission(getActivity(), android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(getActivity(), new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                    } else {
+                        startActivityForResult(pickPhoto, 3);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
         mAttachmentIn.setOnClickListener(new View.OnClickListener() {
@@ -495,6 +512,31 @@ public class ProjectDetailsInterFragment extends Fragment {
                 })
                 .build()
                 .show();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case 2:
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Intent galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(galleryIntent, 2);
+                } else {
+                    //do something like displaying a message that he didn`t allow the app to access gallery and you wont be able to let him select from gallery
+                }
+                break;
+
+            case 3:
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Intent galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(galleryIntent, 3);
+                } else {
+                    //do something like displaying a message that he didn`t allow the app to access gallery and you wont be able to let him select from gallery
+                }
+                break;
+        }
     }
 
     @Override

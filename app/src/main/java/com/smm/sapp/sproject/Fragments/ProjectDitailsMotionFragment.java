@@ -2,12 +2,15 @@ package com.smm.sapp.sproject.Fragments;
 
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -53,10 +56,6 @@ import okhttp3.Response;
 
 import static android.app.Activity.RESULT_OK;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class ProjectDitailsMotionFragment extends Fragment {
 
 
@@ -140,7 +139,7 @@ public class ProjectDitailsMotionFragment extends Fragment {
             st_balance = Integer.parseInt(models.getBalance());
             mProjectDetiailsMotion.setText(models.getDescr());
             projectId = String.valueOf(models.getId());
-            Log.e("eeeee",projectId+"");
+            Log.e("eeeee", projectId + "");
 
         }
 
@@ -175,7 +174,15 @@ public class ProjectDitailsMotionFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(pickPhoto, 1);//one can be replaced with any action code
+                try {
+                    if (ActivityCompat.checkSelfPermission(getActivity(), android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(getActivity(), new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                    } else {
+                        startActivityForResult(pickPhoto, 1);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
         mAttachmentMotion.setOnClickListener(new View.OnClickListener() {
@@ -310,6 +317,21 @@ public class ProjectDitailsMotionFragment extends Fragment {
 
     private void setBalance(int st_balance) {
         this.st_balance = st_balance;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case 1:
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Intent galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(galleryIntent, 1);
+                } else {
+                    //do something like displaying a message that he didn`t allow the app to access gallery and you wont be able to let him select from gallery
+                }
+                break;
+        }
     }
 
     @Override

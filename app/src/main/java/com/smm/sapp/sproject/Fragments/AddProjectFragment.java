@@ -66,7 +66,6 @@ public class AddProjectFragment extends Fragment implements View.OnClickListener
         if (!getArguments().isEmpty()) {
             Bundle bundle = getArguments();
             type = bundle.getString("type");
-            Log.e("eeeeeeeee", type);
 
             if (type.equals("wall")) {
                 ProjectDitailsPaintingWallFragment fragment = new ProjectDitailsPaintingWallFragment();
