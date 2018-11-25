@@ -1,5 +1,6 @@
 package com.smm.sapp.sproject.Adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -111,20 +112,12 @@ public class AddNewPworkAdapter extends RecyclerView.Adapter<AddNewPworkAdapter.
         myRequest.PostCall("http://smm.smmim.com/waell/public/api/deletepwork", map, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                MyProgressDialog.dismissDialog();
-                new AsyncTask<Void, Void, Void>() {
-                    @Override
-                    protected Void doInBackground(Void... voids) {
-                        return null;
-                    }
-
-                    @Override
-                    protected void onPostExecute(Void aVoid) {
-                        super.onPostExecute(aVoid);
+                ((Activity)context).runOnUiThread(new Runnable() {
+                    public void run() {
+                        MyProgressDialog.dismissDialog();
                         Toast.makeText(context, "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
                     }
-                }.execute();
-
+                });
             }
 
             @Override
@@ -133,15 +126,9 @@ public class AddNewPworkAdapter extends RecyclerView.Adapter<AddNewPworkAdapter.
                 JSONObject jsonObject = new JSONObject(response.body().string());
                 JSONObject statusobj = jsonObject.getJSONObject("status");
                 final String success = statusobj.getString("success");
-                new AsyncTask<Void, Void, Void>() {
-                    @Override
-                    protected Void doInBackground(Void... voids) {
-                        return null;
-                    }
 
-                    @Override
-                    protected void onPostExecute(Void aVoid) {
-                        super.onPostExecute(aVoid);
+                ((Activity)context).runOnUiThread(new Runnable() {
+                    public void run() {
                         notifyDataSetChanged();
 
                         if (success.equals("true")) {
@@ -153,8 +140,7 @@ public class AddNewPworkAdapter extends RecyclerView.Adapter<AddNewPworkAdapter.
                             Toast.makeText(context, "لم يتم الحذف", Toast.LENGTH_LONG).show();
                         }
                     }
-                }.execute();
-
+                });
             }
         });
 

@@ -1,5 +1,6 @@
 package com.smm.sapp.sproject.Adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -42,7 +43,6 @@ public class DesignProfileAdapter extends RecyclerView.Adapter<DesignProfileAdap
     Context context;
     List<User> profiles;
     int worker_id;
-    Boolean flag = false;
 
 
     public DesignProfileAdapter(Context context, List<User> profiles) {
@@ -98,25 +98,7 @@ public class DesignProfileAdapter extends RecyclerView.Adapter<DesignProfileAdap
         holder.addToFav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if (profiles.get(position).getLiked().equals("1")) {
-//                    Drawable img = context.getResources().getDrawable(R.drawable.ic_favorite_white);
-//                    holder.addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img, null);
-
-                    Boolean likedFlag = addTofav(profiles.get(position).getId());
-                    Log.e("fffffffff", likedFlag + "");
-                    if (likedFlag) {
-                        Drawable img1 = context.getResources().getDrawable(R.drawable.ic_favorite_red);
-                        holder.addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img1, null);
-                    } else {
-                        Drawable img2 = context.getResources().getDrawable(R.drawable.ic_favorite_white);
-                        holder.addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img2, null);
-                    }
-
-
-//                } else if (profiles.get(position).getLiked().equals("0")) {
-//                    Drawable img = context.getResources().getDrawable(R.drawable.ic_favorite_red);
-//                    holder.addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img, null);
-//                }
+                addTofav(profiles.get(position).getId(),holder.addToFav);
             }
         });
 
@@ -144,7 +126,7 @@ public class DesignProfileAdapter extends RecyclerView.Adapter<DesignProfileAdap
 
     }
 
-    private boolean addTofav(int id) {
+    private void addTofav(int id, final TextView addToFav) {
         MyProgressDialog.showDialog(context);
         MyRequest myRequest = new MyRequest();
         Map<String, String> map = new HashMap<>();
@@ -154,19 +136,12 @@ public class DesignProfileAdapter extends RecyclerView.Adapter<DesignProfileAdap
         myRequest.PostCall("http://smm.smmim.com/waell/public/api/likedislike", map, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, final IOException e) {
-                MyProgressDialog.dismissDialog();
-                new AsyncTask<Void, Void, Void>() {
-                    @Override
-                    protected Void doInBackground(Void... voids) {
-                        return null;
-                    }
-
-                    @Override
-                    protected void onPostExecute(Void aVoid) {
-                        super.onPostExecute(aVoid);
+                ((Activity)context).runOnUiThread(new Runnable() {
+                    public void run() {
+                        MyProgressDialog.dismissDialog();
                         Toast.makeText(context, "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
                     }
-                }.execute();
+                });
             }
 
             @Override
@@ -174,34 +149,30 @@ public class DesignProfileAdapter extends RecyclerView.Adapter<DesignProfileAdap
                 MyProgressDialog.dismissDialog();
                 final JSONObject object = new JSONObject(response.body().string());
                 JSONObject statusObj = object.getJSONObject("status");
-                final String success = statusObj.getString("success");
+                final Boolean success = statusObj.getBoolean("success");
                 final String message = statusObj.getString("message");
-
-
-                new AsyncTask<Void, Void, Void>() {
-                    @Override
-                    protected Void doInBackground(Void... voids) {
-                        return null;
-                    }
-
-                    @Override
-                    protected void onPostExecute(Void aVoid) {
-                        super.onPostExecute(aVoid);
-                        if (message.equals("like Returned")) {
-                            flag = true;
-                            Toast.makeText(context, "تمت الاضافة للمفضلة", Toast.LENGTH_LONG).show();
-
-                        } else if (message.equals("dislike Returned")) {
-                            flag = false;
-                            Toast.makeText(context, "تم الحذف من المفضلة", Toast.LENGTH_LONG).show();
-
+                ((Activity)context).runOnUiThread(new Runnable() {
+                    public void run() {
+                        MyProgressDialog.dismissDialog();
+                        if (success){
+                            if (message.equals("like Returned")) {
+                                Toast.makeText(context, "تمت الاضافة للمفضلة" , Toast.LENGTH_LONG).show();
+                                Drawable img1 = context.getResources().getDrawable(R.drawable.ic_favorite_red);
+                                addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img1, null);
+                            } else if (message.equals("dislike Returned")) {
+                                Toast.makeText(context, "تم الحذف من المفضلة" , Toast.LENGTH_LONG).show();
+                                Drawable img2 = context.getResources().getDrawable(R.drawable.ic_favorite_white);
+                                addToFav.setCompoundDrawablesWithIntrinsicBounds(null, null, img2, null);
+                            }
+                        }else {
+                            Toast.makeText(context, "حصل خطا ما", Toast.LENGTH_LONG).show();
                         }
                     }
-                }.execute();
+                });
 
             }
         });
-        return flag;
+
     }
 
     @Override

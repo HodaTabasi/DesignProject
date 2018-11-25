@@ -1,5 +1,6 @@
 package com.smm.sapp.sproject.Adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
@@ -43,8 +44,6 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
     List<PortfolioModel> list;
     String name;
     String projectType;
-    Boolean clicked = false;
-    Boolean flag = false;
 
 
     public PortfolioAdapter(Context context, List<PortfolioModel> list) {
@@ -132,10 +131,7 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
                     fragment.setArguments(bundle);
                     FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.container_activity, fragment, true);
                 }
-
-
             }
-
         });
 
         if (list.get(position).getLiked().equals("0")) {
@@ -147,45 +143,12 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
         holder.fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-//                if (holder.fav.getDrawable() == context.getResources().getDrawable(R.drawable.ic_favorite_black)) {
-//                    holder.fav.setImageResource(R.drawable.ic_favorite_red);
-//                    Boolean likedFlag = addTofav(list.get(position).getId());
-//
-//
-//                } else if (holder.fav.getDrawable() == context.getResources().getDrawable(R.drawable.ic_favorite_red)) {
-//                    holder.fav.setImageResource(R.drawable.ic_favorite_black);
-//                    Boolean likedFlag = addTofav(list.get(position).getId());
-//
-//                }
-                Boolean likedFlag = addTofav(list.get(position).getId());
-                Log.e("qqqqq", likedFlag + "");
-                if (likedFlag) {
-                    holder.fav.setImageResource(R.drawable.ic_favorite_red);
-
-                } else {
-                    holder.fav.setImageResource(R.drawable.ic_favorite_black);
-
-                }
-
-//                if (clicked) {
-//                    clicked = false;
-//                    holder.fav.setImageResource(R.drawable.ic_favorite_red);
-//                    addTofav(list.get(position).getId());
-//
-//                } else {
-//                    clicked = true;
-//                    holder.fav.setImageResource(R.drawable.ic_favorite_black);
-//                    addTofav(list.get(position).getId());
-//                }
-                //addTofav(list.get(position).getId());
-
+                addTofav(list.get(position).getId(),holder.fav);
             }
         });
-
     }
 
-    private boolean addTofav(int id) {
+    private void addTofav(int id, final ImageView holder) {
         Log.e("ffffffffffff", id + " fff");
         MyProgressDialog.showDialog(context);
         MyRequest myRequest = new MyRequest();
@@ -196,19 +159,12 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
         myRequest.PostCall("http://smm.smmim.com/waell/public/api/likedislike", map, new OkHttpCallback() {
             @Override
             public void onFailure(Call call, final IOException e) {
-                MyProgressDialog.dismissDialog();
-                new AsyncTask<Void, Void, Void>() {
-                    @Override
-                    protected Void doInBackground(Void... voids) {
-                        return null;
-                    }
-
-                    @Override
-                    protected void onPostExecute(Void aVoid) {
-                        super.onPostExecute(aVoid);
+                ((Activity)context).runOnUiThread(new Runnable() {
+                    public void run() {
+                        MyProgressDialog.dismissDialog();
                         Toast.makeText(context, "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_LONG).show();
                     }
-                }.execute();
+                });
             }
 
             @Override
@@ -216,34 +172,26 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
                 MyProgressDialog.dismissDialog();
                 final JSONObject object = new JSONObject(response.body().string());
                 JSONObject statusObj = object.getJSONObject("status");
-                final String success = statusObj.getString("success");
+                final Boolean success = statusObj.getBoolean("success");
                 final String message = statusObj.getString("message");
-
-
-                new AsyncTask<Void, Void, Void>() {
-                    @Override
-                    protected Void doInBackground(Void... voids) {
-                        return null;
-                    }
-
-                    @Override
-                    protected void onPostExecute(Void aVoid) {
-                        super.onPostExecute(aVoid);
-                        if (success.equals("true") && message.equals("like Returned")) {
-                            flag = true;
-                            Toast.makeText(context, "تمت الاضافة للمفضلة", Toast.LENGTH_LONG).show();
-
-                        } else if (success.equals("true") && message.equals("dislike Returned")) {
-                            flag = false;
-                            Toast.makeText(context, "تم الحذف من المفضلة", Toast.LENGTH_LONG).show();
-
+                ((Activity)context).runOnUiThread(new Runnable() {
+                    public void run() {
+                        MyProgressDialog.dismissDialog();
+                        if (success){
+                            if (message.equals("like Returned")) {
+                                Toast.makeText(context, "تمت الاضافة للمفضلة" , Toast.LENGTH_LONG).show();
+                                holder.setImageResource(R.drawable.ic_favorite_red);
+                            } else if (message.equals("dislike Returned")) {
+                                Toast.makeText(context, "تم الحذف من المفضلة" , Toast.LENGTH_LONG).show();
+                                holder.setImageResource(R.drawable.ic_favorite_black);
+                            }
+                        }else {
+                            Toast.makeText(context, "حصل خطا ما", Toast.LENGTH_LONG).show();
                         }
                     }
-                }.execute();
-
+                });
             }
         });
-        return flag;
     }
 
     @Override

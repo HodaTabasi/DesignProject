@@ -51,6 +51,10 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
     private Context context;
     private List<ProjectsModels> projectsList;
     PopupWindow mypopupWindow;
+    View view;
+    ImageView img_fav;
+    TextView add_fav;
+    String isLiked ;
 
     public BrowseProjectAdapter(Context context, List<ProjectsModels> projectsList) {
         this.context = context;
@@ -94,7 +98,7 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
             holder.linear_setting.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPopUpMenu(v, projectsList.get(position));
+                   showPopUpMenu(v, projectsList.get(position),position);
                 }
             });
         }
@@ -106,8 +110,6 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
         } else if (position == 0) {
             holder.view.setVisibility(View.VISIBLE);
         }
-
-
     }
 
     private String putDateTime(String created_at) throws ParseException {
@@ -128,16 +130,16 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
     }
 
     @SuppressLint("RestrictedApi")
-    private void showPopUpMenu(View v, final ProjectsModels projectsModels) {
-
+    private void showPopUpMenu(final View v, final ProjectsModels projectsModels, final int position) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.popup_menu, null);
+        view = inflater.inflate(R.layout.popup_menu, null);
 
         TextView new_project = view.findViewById(R.id.new_project);
         ImageView img_addProject = view.findViewById(R.id.img_addProject);
-        TextView add_fav = view.findViewById(R.id.add_fav);
-        ImageView img_fav = view.findViewById(R.id.img_fav);
+        add_fav = view.findViewById(R.id.add_fav);
+        img_fav = view.findViewById(R.id.img_fav);
         TextView report = view.findViewById(R.id.report);
+
         if (ConstantInterFace.USER.getType().equals("worker")) {
             new_project.setVisibility(View.GONE);
             img_addProject.setVisibility(View.GONE);
@@ -150,15 +152,6 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
 
         mypopupWindow = new PopupWindow(view, RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT, true);
         mypopupWindow.showAsDropDown(v);
-
-
-        if (projectsModels.getLiked().equals("0")) {
-            img_fav.setImageResource(R.drawable.ic_favorite_black);
-            add_fav.setText("أضف الى المفضلة");
-        } else {
-            img_fav.setImageResource(R.drawable.ic_favorite_red);
-            add_fav.setText("احذف من المفضلة");
-        }
 
         new_project.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -186,11 +179,20 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
                 ConstantInterFace.tv_portfolio.setBackgroundResource(0);
             }
         });
+
+        if (projectsModels.getLiked().equals("0")) {
+            img_fav.setImageResource(R.drawable.ic_favorite_black);
+            add_fav.setText("أضف الى المفضلة");
+        } else {
+            img_fav.setImageResource(R.drawable.ic_favorite_red);
+            add_fav.setText("احذف من المفضلة");
+        }
+
         add_fav.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view1) {
                 mypopupWindow.dismiss();
-                addToFav(projectsModels.getId());
+                 addToFav(projectsModels.getId(),position);
             }
         });
 
@@ -201,6 +203,7 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
                 Reportcontent(projectsModels.getId());
             }
         });
+
     }
 
     private void Reportcontent(int id) {
@@ -241,7 +244,7 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
         });
     }
 
-    private void addToFav(int id) {
+    private void addToFav(int id, final int position) {
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(context);
         Map<String, String> stringMap = new HashMap<>();
@@ -263,19 +266,23 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
                     @Override
                     public void run() {
                         try {
-                            if (object.getBoolean("success") && object.getString("message").equals("like Returned")) {
-                                Toast.makeText(context, "تم الاضافة للمفضلة", Toast.LENGTH_SHORT).show();
-                            } else if (object.getBoolean("success") && object.getString("message").equals("dislike Returned")) {
-                                Toast.makeText(context, "تم الحذف من المفضلة", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(context, " " + object.getString("message"), Toast.LENGTH_SHORT).show();
+                            if (object.getBoolean("success")){
+                                if (object.getString("message").equals("like Returned")) {
+                                    Toast.makeText(context, "تمت الاضافة للمفضلة" , Toast.LENGTH_LONG).show();
+                                    projectsList.get(position).setLiked("1");
+                                } else if (object.getString("message").equals("dislike Returned")) {
+                                    Toast.makeText(context, "تم الحذف من المفضلة" , Toast.LENGTH_LONG).show();
+                                    projectsList.get(position).setLiked("0");
+                                }
+                            }else {
+                                Toast.makeText(context, "حصل خطا ما", Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+                        mypopupWindow.update();
                     }
                 });
-
             }
         });
     }
