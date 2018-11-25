@@ -43,7 +43,7 @@
 
         <ImageView
             android:id="@+id/image_message"
-            android:layout_width="250dp"
+            android:layout_width="350dp"
             android:layout_height="200dp"
             android:src="@drawable/img1"
             android:visibility="gone" />

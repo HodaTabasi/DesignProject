@@ -121,12 +121,9 @@ public class MyMessageDetailAdapter extends RecyclerView.Adapter {
                     mAttachs.setVisibility(View.GONE);
                     mimageView.setVisibility(View.VISIBLE);
                     if (!(message.getWidth().equals("0")&& message.getHeight().equals("0"))){
-                        int w =Integer.parseInt(message.getWidth());
-                        int h =Integer.parseInt(message.getHeight());
-                        Log.e("ffffffffffff",(w/h)+" mm");
-                        Log.e("ffffffffffff",Integer.parseInt(message.getWidth()) +" w");
-                        Log.e("ffffffffffff",Integer.parseInt(message.getHeight())+" h ");
-                        mimageView.getLayoutParams().height = (Integer.parseInt(message.getWidth()) / Integer.parseInt(message.getHeight()) * 250 );
+                        double w =Double.parseDouble(message.getWidth());
+                        double h =Double.parseDouble(message.getHeight());
+                        mimageView.getLayoutParams().height = (int) ((w / h) * 350);
                         mimageView.requestLayout();
                     }
                     Picasso.get().load(message.getFile_link()).into(mimageView);
