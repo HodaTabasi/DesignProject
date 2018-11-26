@@ -105,8 +105,7 @@
                 android:layout_margin="8dp"
                 android:id="@+id/pr_ditails"
                 android:background="@drawable/report_layout_shap"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"

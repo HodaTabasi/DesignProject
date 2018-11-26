@@ -1,5 +1,6 @@
 package com.smm.sapp.sproject.Fragments;
 
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Environment;
@@ -454,13 +455,14 @@ public class ViewProjectFragment extends Fragment {
 
     private void fileBrowse() {
         new ChooserDialog().with(getContext())
-                .withFilter(false, false, "pdf", "docx", "xlsx")
+                .withFilter(false, false, "pdf", "docx", "xlsx","txt")
                 .withStartFile(Environment.getExternalStorageDirectory().getPath())
                 .withChosenListener(new ChooserDialog.Result() {
                     @Override
                     public void onChoosePath(String path, File pathFile) {
                         filePath = path;
-                        // mAttchP.setText(path);
+                         mAttchP.setBackgroundColor(Color.BLUE);
+                         mAttchP.setTextColor(Color.WHITE);
                         Toast.makeText(getContext(), "تم ارفاق الملف", Toast.LENGTH_LONG).show();
                     }
                 })
