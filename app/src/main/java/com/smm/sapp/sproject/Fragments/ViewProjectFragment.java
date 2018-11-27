@@ -87,7 +87,7 @@ public class ViewProjectFragment extends Fragment {
     //    ImageView ic_back;
     TextView back_two;
     OfferModel model;
-
+    String Type;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -116,6 +116,7 @@ public class ViewProjectFragment extends Fragment {
         bundle = getArguments();
         if (bundle.getBoolean("flag")) {
             model = bundle.getParcelable("object");
+            Type = model.getProject().getType();
             mBalanceP.setText(model.getBalance());
             mProposalP.setText(model.getDescr());
             mDurP.setText(model.getDur());
@@ -195,7 +196,7 @@ public class ViewProjectFragment extends Fragment {
                 if (s.length() != 0) {
                     double b = Double.parseDouble(mBalanceP.getText().toString());
                     double total;
-                    if (models.getType().equals("inter") || models.getType().equals("arch"))
+                    if (Type.equals("inter") || Type.equals("arch"))
                          total = b * 0.95;
                     else
                          total = b * 0.90;
@@ -273,6 +274,7 @@ public class ViewProjectFragment extends Fragment {
 
     private void putData() {
         models = bundle.getParcelable("theProject");
+        Type = models.getType();
         mUserName.setText(models.getUser().getName());
         mUserType.setText(models.getUser().getType());
         Picasso.get().load(models.getUser().getPhoto_link()).into(mUserPhoto);
@@ -345,6 +347,7 @@ public class ViewProjectFragment extends Fragment {
         } else if (likeModels.getType().equals("wall")) {
             mPType.setText("تصميم جداري");
         }
+        Type = likeModels.getType();
 
         if (likeModels.getProject() != null) {
             mPStyle.setText(likeModels.getProject().getStyle());

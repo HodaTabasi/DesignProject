@@ -237,8 +237,8 @@ public class LikesDesignAdapter extends RecyclerView.Adapter<LikesDesignAdapter.
                 d_layout_fav = itemView.findViewById(R.id.d_layout_fav);
                 d_layout_fav.setVisibility(View.GONE);
 
-                if (ConstantInterFace.USER.getType().equals("worker"))
-                    Toast.makeText(context, "انت مصمم غير مخول لك هذا الخيار", Toast.LENGTH_SHORT).show();
+//                if (ConstantInterFace.USER.getType().equals("worker"))
+//                    Toast.makeText(context, "انت مصمم غير مخول لك هذا الخيار", Toast.LENGTH_SHORT).show();
 
                 d_layout_name.setTypeface(custom_font);
                 d_layout_specialty.setTypeface(custom_font);
