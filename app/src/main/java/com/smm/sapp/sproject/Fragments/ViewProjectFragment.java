@@ -386,7 +386,7 @@ public class ViewProjectFragment extends Fragment {
                             if (object.getBoolean("success")) {
                                 Gson gson = new Gson();
                                 OfferModel model = gson.fromJson(jsonObject.getJSONObject("offer").toString(), OfferModel.class);
-                                Toast.makeText(getActivity(), "م تعديل العرض بنجاح" , Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "تم تعديل العرض بنجاح" , Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(getActivity(), "" + object.getString("error"), Toast.LENGTH_SHORT).show();
                             }

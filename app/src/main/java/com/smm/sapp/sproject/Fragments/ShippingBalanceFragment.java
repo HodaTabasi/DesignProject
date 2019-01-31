@@ -280,6 +280,7 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
                 MyProgressDialog.dismissDialog();
                 JSONObject jsonObject = new JSONObject(response.body().string());
                 final JSONObject object = jsonObject.getJSONObject("status");
+                Log.e("cdsfsdkfheofj",jsonObject.toString() + " بليبسب");
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -287,8 +288,9 @@ public class ShippingBalanceFragment extends Fragment implements View.OnClickLis
                             if (object.getBoolean("success")) {
                                 MyProgressDialog.DoneDialog(getContext(), " المبلغ  " + balance.getText().toString(), "تم شحن حسابك ");
                             } else {
-                                Toast.makeText(getContext(), "حصل خطا ما", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "حصل خطا ما ", Toast.LENGTH_SHORT).show();
                             }
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

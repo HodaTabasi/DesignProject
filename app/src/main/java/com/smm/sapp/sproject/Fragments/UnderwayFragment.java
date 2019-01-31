@@ -447,7 +447,7 @@ public class UnderwayFragment extends Fragment implements  SwipeRefreshLayout.On
                                 Toast.makeText(getActivity(), "تم تسليم المشروع بنجاح", Toast.LENGTH_SHORT).show();
                             } else {
                                 ConstantInterFace.DELEIVER_PROJECT = 0;
-                                Log.e("eeeeee", object.getString("error"));
+                                Log.e("eeeeee", object.toString()+ "  " + model.getId() +" " + " " + ConstantInterFace.USER.getToken());
                                 Toast.makeText(getActivity(), "لم يتم التسليم", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
@@ -591,6 +591,12 @@ public class UnderwayFragment extends Fragment implements  SwipeRefreshLayout.On
 
                                 rate_dialog.show();
 
+                            }else {
+
+                                if (statusObj.getString("error").equals("please charge your credit to match offer total")){
+                                    Toast.makeText(getContext(), "يرجى شحن رصيدك لمطابقة المبلغ في المشروع", Toast.LENGTH_SHORT).show();
+                                }else
+                                    Toast.makeText(getContext(), "لم يتم التسليم", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -638,8 +644,10 @@ public class UnderwayFragment extends Fragment implements  SwipeRefreshLayout.On
                         try {
                             if (statusObj.getBoolean("success")) {
                                 Toast.makeText(getActivity(), "تم التقييم بنجاح", Toast.LENGTH_LONG).show();
+                                FragmentsUtil.replaceFragment((FragmentActivity) getContext(),R.id.container_activity,new AccountFragment());
+
                             } else {
-                                Log.e("eeeeee", object.getString("error"));
+                                Log.e("eeeeee", object.toString());
                                 Toast.makeText(getActivity(), "لم يتم ارسال التقييم", Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {

@@ -241,9 +241,10 @@ public class MainFragment extends Fragment {
         tv_proposals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (ConstantInterFace.USER.getType().equals("client"))
-                    FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new MyProjectFragment(), true);
-                else {
+                if (ConstantInterFace.USER.getType().equals("client")){
+                FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, new MyProjectFragment(), true);
+            } else {
+
                     MyOffersFragment fragment = new MyOffersFragment();
                     Bundle bundle = new Bundle();
                     bundle.putBoolean("isUpdated", true);
@@ -398,6 +399,11 @@ public class MainFragment extends Fragment {
 
         setBottomBar();
         init(getView());
+
+        if (ConstantInterFace.USER.getType().equals("client"))
+            tv_proposals.setText("مشاريعي");
+         else
+            tv_proposals.setText("عروضي");
 
         //registered user
         if (!ConstantInterFace.IS_REGISTER) {
@@ -594,38 +600,23 @@ public class MainFragment extends Fragment {
                 final Gson gson = new Gson();
 //                userModel = gson.fromJson(jsonObject.getJSONObject("user").toString(), UserModel.class);
 
-
-                if (statusobj.getBoolean("success")) {
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-//                            ConstantInterFace.USER.setPhoto_link(userModel.getPhoto_link());
-                            try {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            if (statusobj.getBoolean("success")) {
                                 ConstantInterFace.USER = gson.fromJson(jsonObject.getJSONObject("user").toString(), User.class);
                                 Picasso.get().load(ConstantInterFace.USER.getPhoto_link()).into(img_user);
                                 SharedPreferencesApp.getInstance(getContext()).updateObject(ConstantInterFace.USER);
                                 Toast.makeText(getActivity(), "تم اضافة الصورة بنجاح", Toast.LENGTH_LONG).show();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-
-                        }
-                    });
-                } else {
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-
-                            try {
+                            }else {
                                 Toast.makeText(getActivity(), "لم يتم الاضافة" , Toast.LENGTH_LONG).show();
                                 Log.e("fffdec",statusobj.getString("error") + "  /  " + filePath);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
                             }
-
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-                    });
-                }
+                    }});
             }
         });
     }

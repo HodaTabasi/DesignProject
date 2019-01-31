@@ -795,7 +795,7 @@
                             android:background="@drawable/dark_blue_shap"
                             android:gravity="center"
                             android:padding="5dp"
-                            android:text="اضف عرضك"
+                            android:text="اضافة عرض"
                             android:textColor="@color/white"
                             android:textSize="@dimen/_12sdp" />
                     </LinearLayout>

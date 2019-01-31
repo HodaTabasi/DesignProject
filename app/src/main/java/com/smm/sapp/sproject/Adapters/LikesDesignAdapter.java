@@ -96,7 +96,7 @@ public class LikesDesignAdapter extends RecyclerView.Adapter<LikesDesignAdapter.
             try {
                 holder.tv2.setText(likes.getProject().getName());
                 holder.tv_name.setText(likes.getProject().getUser().getName());
-                holder.tv_money.setText(likes.getProject().getBalance());
+                holder.tv_money.setText(ConstantInterFace.array[Integer.parseInt(likes.getProject().getBalance())]);
                 //holder.tv_calender.setText(likes.getProject().getName());
                 String created_at = likes.getCreated_at();
                 String[] s = created_at.split(" ");

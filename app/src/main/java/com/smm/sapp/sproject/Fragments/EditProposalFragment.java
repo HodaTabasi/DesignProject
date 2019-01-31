@@ -1,5 +1,8 @@
 package com.smm.sapp.sproject.Fragments;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -7,6 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -191,7 +196,31 @@ public class EditProposalFragment extends Fragment {
                     public void run() {
                         try {
                             if (statusObject.getString("error").equals("please charge your balance  5% of the project")) {
-                                Toast.makeText(getActivity(), "يجب عليك شحن رصيدك بنسبة 5% من المشروع", Toast.LENGTH_SHORT).show();
+                                final Dialog dialog = new Dialog(getContext());
+                                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //before
+                                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                dialog.setContentView(R.layout.dialog_add_project_place);
+                                TextView qq = dialog.findViewById(R.id.qq);
+                                Button charge = dialog.findViewById(R.id.dialog_add_bookmark_add_btn);
+                                Button cancel = dialog.findViewById(R.id.dialog_add_bookmark_cancel_btn);
+
+                                qq.setText("يجب عليك شحن رصيدك بنسبة 5% من العرض الذي يساوي " + model.getBalance());
+                                charge.setText("اشحن الان");
+                                cancel.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        dialog.dismiss();
+                                    }
+                                });
+
+                                charge.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        dialog.dismiss();
+                                        FragmentsUtil.replaceFragment(getActivity(),R.id.container_activity,new ShippingBalanceFragment(),true);
+                                    }
+                                });
+                                dialog.show();
                             } else if (statusObject.getBoolean("success")) {
                                 Toast.makeText(getActivity(), "تم اعتماد العرض", Toast.LENGTH_LONG).show();
                             } else {

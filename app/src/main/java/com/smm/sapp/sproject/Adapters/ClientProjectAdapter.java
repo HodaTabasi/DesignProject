@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.Fragments.EditProposalFragment;
 import com.smm.sapp.sproject.Fragments.MyOffersFragment;
 import com.smm.sapp.sproject.Fragments.ProjectDetailsArchFragment;
@@ -51,10 +52,12 @@ public class ClientProjectAdapter extends RecyclerView.Adapter<ClientProjectAdap
         String[] s = created_at.split(" ");
         holder.calender.setText(s[0]);
         holder.name.setText(projectsModels.getUser().getName());
-        holder.money.setText(projectsModels.getBalance() + " ريال سعودي ");
+
+        holder.money.setText(ConstantInterFace.array[Integer.parseInt(projectsModels.getBalance())] + " ريال سعودي ");
         holder.body.setText(projectsModels.getName());
 
         Log.e("uuuuu",projectsModels.getUser().getName());
+        holder.tv_day.setVisibility(View.GONE);
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

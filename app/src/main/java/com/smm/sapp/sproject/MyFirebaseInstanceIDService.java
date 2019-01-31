@@ -67,6 +67,8 @@ public class MyFirebaseInstanceIDService extends FirebaseMessagingService {
                     String declineMessage = remoteMessage.getData().get("decline_message");
                     sendRejectProjectNotification(name,type,id,declineMessage);
                     break;
+                case "تم قبول طلب الشحن":
+                    break;
                 default:
                     sendNotification();
                         break;
