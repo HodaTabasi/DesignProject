@@ -41,7 +41,6 @@ public class ImageAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         ImageView imageView = new ImageView(context);
-        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
         Toast.makeText(context, photoModels.isEmpty() + " ", Toast.LENGTH_SHORT).show();
         if (photoModels.isEmpty()) {
             imageView.setImageResource(R.drawable.noimage);
