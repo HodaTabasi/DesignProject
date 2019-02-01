@@ -25,8 +25,6 @@ import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.Models.OfferModel;
-import com.smm.sapp.sproject.Models.ProjectsModels;
-import com.smm.sapp.sproject.Models.User;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;
 import com.smm.sapp.sproject.R;
@@ -36,7 +34,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -295,14 +297,17 @@ public class EditProposalFragment extends Fragment {
         mEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (model.getApproved().equals("0") && model.getFinished().equals("0")) {
+                if ((model.getApproved().equals("1") && model.getFinished().equals("0"))) {
+
                     ViewProjectFragment fragment = new ViewProjectFragment();
                     Bundle bundle = new Bundle();
                     bundle.putParcelable("object", model);
                     bundle.putBoolean("flag", true);
                     fragment.setArguments(bundle);
                     FragmentsUtil.replaceFragment(getActivity(), R.id.container_activity, fragment, true);
-                } else
+                } else if (getTime(model.getCreated_at())){
+                    Toast.makeText(getContext(), "لا يمكن التعديل على هذا العرض ", Toast.LENGTH_SHORT).show();
+                }else
                     Toast.makeText(getContext(), "لا يمكن التعديل على هذا العرض ", Toast.LENGTH_SHORT).show();
             }
         });
@@ -370,5 +375,48 @@ public class EditProposalFragment extends Fragment {
                 }
             }
         });
+    }
+
+    private boolean getTime(String created_at){
+        try {
+            int minuts = putDateTime(created_at);
+            int hours = (int) ((1.0 / 60) * minuts);
+            int days = (int) ((1.0 / 1440) * minuts);
+
+            Log.e("wwwwww", minuts + " ppp " + hours + " ppp " + days);
+
+            if (minuts == 0) {
+                //seconds
+                return false;
+            } else if (minuts > 0 && minuts <= 59) {
+                //minuts
+                if (minuts >= 15)
+                    return true;
+            } else if (minuts >= 60 && hours < 24) {
+                //hours
+                return false;
+            } else if (hours >= 24) {
+                //days
+                return false;
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    private int putDateTime(String created_at) throws ParseException {
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", new Locale("en"));
+        Date date = dt.parse(created_at);
+        long mills = System.currentTimeMillis() - date.getTime();
+
+        int hours = (int) (mills / (1000 * 60 * 60));
+//        int mins = (int) (mills / (1000 * 60)) % 60;
+        int mins = hours * 60;
+        int days = (int) (mills / (1000 * 60 * 60 * 24));
+
+        Log.e("qqqqqqq", hours + "" + mins + "" + days + "");
+
+        return mins;
     }
 }

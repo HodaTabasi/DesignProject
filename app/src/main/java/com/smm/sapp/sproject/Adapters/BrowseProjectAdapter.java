@@ -137,7 +137,7 @@ public class BrowseProjectAdapter extends RecyclerView.Adapter<BrowseProjectAdap
         int mins = hours * 60;
         int days = (int) (mills / (1000 * 60 * 60 * 24));
 
-        Log.e("qqqqqqq", hours + "" + mins + "" + days + "");
+        Log.e("qqqqqqq", hours + " , " + mins + " , " + days + " , ");
 
         return mins;
     }

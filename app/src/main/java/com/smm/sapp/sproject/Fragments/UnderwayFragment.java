@@ -445,6 +445,60 @@ public class UnderwayFragment extends Fragment implements  SwipeRefreshLayout.On
                             if (object.getBoolean("success")) {
                                 ConstantInterFace.DELEIVER_PROJECT = 1;
                                 Toast.makeText(getActivity(), "تم تسليم المشروع بنجاح", Toast.LENGTH_SHORT).show();
+                                final Dialog rate_dialog = new Dialog(getContext());
+                                rate_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //before
+                                rate_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                rate_dialog.setContentView(R.layout.feedback_dialog);
+
+                                final EditText et_comment = rate_dialog.findViewById(R.id.et_comment);
+                                final RatingBar rate1 = rate_dialog.findViewById(R.id.rate1);
+                                final RatingBar rate2 = rate_dialog.findViewById(R.id.rate2);
+                                final RatingBar rate3 = rate_dialog.findViewById(R.id.rate3);
+                                final RatingBar rate4 = rate_dialog.findViewById(R.id.rate4);
+                                final RatingBar rate5 = rate_dialog.findViewById(R.id.rate5);
+                                TextView tv1 = rate_dialog.findViewById(R.id.tv1);
+                                TextView tv2 = rate_dialog.findViewById(R.id.tv2);
+                                TextView tv3 = rate_dialog.findViewById(R.id.tv3);
+                                TextView tv4 = rate_dialog.findViewById(R.id.tv4);
+                                TextView tv5 = rate_dialog.findViewById(R.id.tv5);
+                                TextView tv6 = rate_dialog.findViewById(R.id.tv6);
+                                TextView cancel_rate = rate_dialog.findViewById(R.id.cancel_rate);
+                                TextView send_rate = rate_dialog.findViewById(R.id.send_rate);
+
+                                Typeface custom_font = Typeface.createFromAsset(getActivity().getAssets(), "JFFlatregular.ttf");
+                                et_comment.setTypeface(custom_font);
+                                tv1.setTypeface(custom_font);
+                                tv2.setTypeface(custom_font);
+                                tv3.setTypeface(custom_font);
+                                tv4.setTypeface(custom_font);
+                                tv5.setTypeface(custom_font);
+                                tv6.setTypeface(custom_font);
+                                cancel_rate.setTypeface(custom_font);
+                                send_rate.setTypeface(custom_font);
+
+                                cancel_rate.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        rate_dialog.dismiss();
+                                    }
+                                });
+
+                                send_rate.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        final String s_comment = et_comment.getText().toString();
+                                        final Float f_rate = rate1.getRating();
+                                        final Float f_rate2 = rate2.getRating();
+                                        final Float f_rate3 = rate3.getRating();
+                                        final Float f_rate4 = rate4.getRating();
+                                        final Float f_rate5 = rate5.getRating();
+                                        rate_dialog.dismiss();
+                                        sendRateRequest(s_comment, f_rate, f_rate2, f_rate3, f_rate4, f_rate5,model.getProject().getUser().getId());
+                                    }
+                                });
+
+                                rate_dialog.show();
+
                             } else {
                                 ConstantInterFace.DELEIVER_PROJECT = 0;
                                 Log.e("eeeeee", object.toString()+ "  " + model.getId() +" " + " " + ConstantInterFace.USER.getToken());
@@ -458,50 +512,6 @@ public class UnderwayFragment extends Fragment implements  SwipeRefreshLayout.On
             }
         });
 
-    }
-
-    private void reportRequest() {
-        MyRequest myRequest = new MyRequest();
-        MyProgressDialog.showDialog(getActivity());
-        Map<String, String> stringMap = new HashMap<>();
-        stringMap.put("token", ConstantInterFace.USER.getToken());
-        stringMap.put("target_type", "offer");
-        stringMap.put("target_id", model.getId() + "");
-        stringMap.put("message", "هذا المحتوى غير ملائم للنشر في المشروع");
-        myRequest.PostCall("http://smm.smmim.com/waell/public/api/report", stringMap, new OkHttpCallback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                MyProgressDialog.dismissDialog();
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(getActivity(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException, JSONException {
-                MyProgressDialog.dismissDialog();
-                JSONObject jsonObject = new JSONObject(response.body().string());
-                final JSONObject object = jsonObject.getJSONObject("status");
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            if (object.getBoolean("success")) {
-                                Toast.makeText(getActivity(), "تم ارسال التبليغ", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(getActivity(), " " + object.getString("message"), Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-
-            }
-        });
     }
 
     private void delieverClientProject() {
@@ -585,7 +595,7 @@ public class UnderwayFragment extends Fragment implements  SwipeRefreshLayout.On
                                         final Float f_rate4 = rate4.getRating();
                                         final Float f_rate5 = rate5.getRating();
                                         rate_dialog.dismiss();
-                                        sendRateRequest(s_comment, f_rate, f_rate2, f_rate3, f_rate4, f_rate5);
+                                        sendRateRequest(s_comment, f_rate, f_rate2, f_rate3, f_rate4, f_rate5,user.getId());
                                     }
                                 });
 
@@ -607,7 +617,7 @@ public class UnderwayFragment extends Fragment implements  SwipeRefreshLayout.On
         });
     }
 
-    private void sendRateRequest(String comment, Float rate, Float rate2, Float rate3, Float rate4, Float rate5) {
+    private void sendRateRequest(String comment, Float rate, Float rate2, Float rate3, Float rate4, Float rate5,int usetId) {
         Log.e("yyyy", comment + rate + rate2 + rate3 + rate4 + rate5 + "");
         MyRequest myRequest = new MyRequest();
         MyProgressDialog.showDialog(getContext());
@@ -619,7 +629,7 @@ public class UnderwayFragment extends Fragment implements  SwipeRefreshLayout.On
         stringMap.put("rate3", String.valueOf(rate3));
         stringMap.put("rate4", String.valueOf(rate4));
         stringMap.put("rate5", String.valueOf(rate5));
-        stringMap.put("target_id", user.getId() + "");
+        stringMap.put("target_id", usetId +"");
         stringMap.put("target_type", "user");
         myRequest.PostCall("http://smm.smmim.com/waell/public/api/comment", stringMap, new OkHttpCallback() {
             @Override
@@ -658,6 +668,50 @@ public class UnderwayFragment extends Fragment implements  SwipeRefreshLayout.On
             }
         });
 
+    }
+
+    private void reportRequest() {
+        MyRequest myRequest = new MyRequest();
+        MyProgressDialog.showDialog(getActivity());
+        Map<String, String> stringMap = new HashMap<>();
+        stringMap.put("token", ConstantInterFace.USER.getToken());
+        stringMap.put("target_type", "offer");
+        stringMap.put("target_id", model.getId() + "");
+        stringMap.put("message", "هذا المحتوى غير ملائم للنشر في المشروع");
+        myRequest.PostCall("http://smm.smmim.com/waell/public/api/report", stringMap, new OkHttpCallback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                MyProgressDialog.dismissDialog();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getActivity(), "تأكد من اتصالك بشبكة الانترنت", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException, JSONException {
+                MyProgressDialog.dismissDialog();
+                JSONObject jsonObject = new JSONObject(response.body().string());
+                final JSONObject object = jsonObject.getJSONObject("status");
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            if (object.getBoolean("success")) {
+                                Toast.makeText(getActivity(), "تم ارسال التبليغ", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getActivity(), " " + object.getString("message"), Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+            }
+        });
     }
 
     private void getAConversationRequest(int current) {

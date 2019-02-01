@@ -527,7 +527,7 @@
                 android:background="@drawable/report_layout_shap"
                 android:gravity="center"
                 android:padding="8dp"
-                android:text="اضف عرض"
+                android:text="اضافة عرض"
                 android:textColor="@color/blue"
                 android:textSize="@dimen/_12sdp"
                 android:visibility="visible" />
