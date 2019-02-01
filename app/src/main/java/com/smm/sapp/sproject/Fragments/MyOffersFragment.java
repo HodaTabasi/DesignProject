@@ -1,6 +1,7 @@
 package com.smm.sapp.sproject.Fragments;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -208,18 +209,26 @@ public class MyOffersFragment extends Fragment implements View.OnClickListener {
         switch (id) {
             case R.id.all_offer_excluded:
                 titles.setText("العروض المستبعدة");
+                titles.setBackgroundResource(R.drawable.red_shap);
+                titles.setTextColor(Color.WHITE);
                 mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels2, 2));
                 break;
             case R.id.all_offer_done:
                 titles.setText("العروض المكتملة");
+                titles.setBackgroundResource(R.drawable.green_shap);
+                titles.setTextColor(Color.WHITE);
                 mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels3, 3));
                 break;
             case R.id.all_offer_underway:
                 titles.setText("العروض قيد التنفيذ");
+                titles.setBackgroundResource(R.drawable.dark_blue_shap);
+                titles.setTextColor(Color.WHITE);
                 mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels1, 4));
                 break;
             case R.id.all_offer_wait:
                 titles.setText("العروض بانتظار الموافقة");
+                titles.setBackgroundResource(R.drawable.yeallow_shap);
+                titles.setTextColor(Color.WHITE);
                 mAllOfferRes.setAdapter(new WorkerOfferAdapter(getContext(), offerModels, 1));
                 break;
             case R.id.ic_back:

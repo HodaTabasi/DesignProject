@@ -375,18 +375,24 @@ public class MyProjectFragment extends Fragment implements View.OnClickListener 
             case R.id.my_project_excluded:
                 flag = 1;
                 tv_projects.setText("مشاريع قيد الموافقة");
+                tv_projects.setBackgroundResource(R.drawable.yeallow_shap);
+                tv_projects.setTextColor(Color.WHITE);
                 getProjects("myprojects?token=" + ConstantInterFace.USER.getToken() + "&status=0", 1);
 //                mMyProjectRes.setAdapter(new ClientProjectAdapter(getContext(), arrayList));
                 break;
             case R.id.my_project_done:
                 flag = 2;
                 tv_projects.setText("مشاريع مكتملة");
+                tv_projects.setBackgroundResource(R.drawable.green_shap);
+                tv_projects.setTextColor(Color.WHITE);
                 getProjects("myprojects?token=" + ConstantInterFace.USER.getToken() + "&status=2", 1);
 //                mMyProjectRes.setAdapter(new ClientProjectAdapter(getContext(), arrayList2));
                 break;
             case R.id.my_project_underway:
                 flag = 3;
                 tv_projects.setText("مشاريع قيد التنفيذ");
+                tv_projects.setBackgroundResource(R.drawable.dark_blue_shap);
+                tv_projects.setTextColor(Color.WHITE);
                 getProjects("myprojects?token=" + ConstantInterFace.USER.getToken() + "&status=1", 1);
 //                mMyProjectRes.setAdapter(new ClientProjectAdapter(getContext(), arrayList1));
                 break;

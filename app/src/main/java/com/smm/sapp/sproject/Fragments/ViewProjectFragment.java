@@ -1,12 +1,15 @@
 package com.smm.sapp.sproject.Fragments;
 
+import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -15,6 +18,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -23,12 +28,12 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.obsez.android.lib.filechooser.ChooserDialog;
+import com.smm.sapp.sproject.Adapters.ImageAdapter;
 import com.smm.sapp.sproject.Adapters.ProjectAttachmentAdapter;
-import com.smm.sapp.sproject.Adapters.ProjectPhotoAdapter;
 import com.smm.sapp.sproject.ConstantInterFace;
-import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.Models.OfferModel;
+import com.smm.sapp.sproject.Models.PhotoModel;
 import com.smm.sapp.sproject.Models.ProjectsLikeModels;
 import com.smm.sapp.sproject.Models.ProjectsModels;
 import com.smm.sapp.sproject.MyRequest;
@@ -42,6 +47,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -60,8 +66,8 @@ public class ViewProjectFragment extends Fragment {
     private TextView mPStyle;
     private TextView mPColors;
     private TextView mPCity;
-    private RecyclerView mPDesignYouLike;
-    private RecyclerView mPProjectPhoto;
+    private Button mPDesignYouLike;
+    private Button mPProjectPhoto;
     private TextView mPArea;
     private TextView mPBalance;
     private TextView mPBio;
@@ -182,6 +188,20 @@ public class ViewProjectFragment extends Fragment {
             }
         });
 
+        mPDesignYouLike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog(models.getPhotos());
+            }
+        });
+
+        mPProjectPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog(models.getPhotos());
+            }
+        });
+
     }
 
     private void addOnClickListener() {
@@ -249,8 +269,8 @@ public class ViewProjectFragment extends Fragment {
         mPStyle = (TextView) view.findViewById(R.id.p_style);
         mPColors = (TextView) view.findViewById(R.id.p_colors);
         mPCity = (TextView) view.findViewById(R.id.p_city);
-        mPDesignYouLike = (RecyclerView) view.findViewById(R.id.p_design_you_like);
-        mPProjectPhoto = (RecyclerView) view.findViewById(R.id.p_project_photo);
+        mPDesignYouLike = (Button) view.findViewById(R.id.p_design_you_like);
+        mPProjectPhoto = (Button) view.findViewById(R.id.p_project_photo);
         mPArea = (TextView) view.findViewById(R.id.p_area);
         mPBalance = (TextView) view.findViewById(R.id.p_balance);
         mPBio = (TextView) view.findViewById(R.id.p_bio);
@@ -302,9 +322,9 @@ public class ViewProjectFragment extends Fragment {
         mPBalance.setText(ConstantInterFace.array[Integer.parseInt(models.getBalance())]);
         mPBio.setText(models.getDescr());
 
-        mPProjectPhoto.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        ProjectPhotoAdapter adapter = new ProjectPhotoAdapter(getContext(), R.layout.layout_item_photos, models.getPhotos());
-        mPProjectPhoto.setAdapter(adapter);
+//        mPProjectPhoto.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+//        ProjectPhotoAdapter adapter = new ProjectPhotoAdapter(getContext(), R.layout.layout_item_photos, models.getPhotos());
+//        mPProjectPhoto.setAdapter(adapter);
 
 //        mPProjectPhoto.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
 //        ProjectPhotoAdapter adapter1 = new ProjectPhotoAdapter(getContext(),R.layout.layout_item_photos,models.getSimilars());
@@ -313,6 +333,7 @@ public class ViewProjectFragment extends Fragment {
         mPAttachment.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         ProjectAttachmentAdapter adapter2 = new ProjectAttachmentAdapter(getContext(), R.layout.layout_item_attachment, models.getAttachs());
         mPAttachment.setAdapter(adapter2);
+
 // عرض الاوفر للمستخدم لو كان مقدم
         if (models.getOffers().size() != 0){
             for(OfferModel s: models.getOffers()){
@@ -326,6 +347,17 @@ public class ViewProjectFragment extends Fragment {
                 }
             }
         }
+    }
+    private void showDialog(List<PhotoModel> photos){
+        final Dialog dialog = new Dialog(getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //before
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setContentView(R.layout.dialog_view_pager);
+
+        ViewPager viewPager = dialog.findViewById(R.id.viewPager);
+        ImageAdapter adapter = new ImageAdapter(getContext(),photos);
+        viewPager.setAdapter(adapter);
+        dialog.show();
     }
 
     private void putLikeData(){
