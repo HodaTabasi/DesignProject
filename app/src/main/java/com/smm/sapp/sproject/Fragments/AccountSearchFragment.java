@@ -61,8 +61,7 @@ public class AccountSearchFragment extends Fragment {
     int rate;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_search_account, container, false);
         ic_back = view.findViewById(R.id.ic_back);

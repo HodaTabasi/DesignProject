@@ -223,7 +223,6 @@ public class AddProposalFragment extends Fragment {
                         Toast.makeText(getContext(), "FOLDER: " + path, Toast.LENGTH_SHORT).show();
                         filePath = path;
                         mAttchP.setText(path);
-
                     }
                 })
                 .build()

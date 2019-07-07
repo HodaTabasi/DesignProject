@@ -306,6 +306,7 @@ public class UnderwayFragment extends Fragment implements  SwipeRefreshLayout.On
         TextView report = view.findViewById(R.id.report);
         TextView edit_offer = view.findViewById(R.id.edit_offer);
 
+
         Typeface custom_font = Typeface.createFromAsset(getActivity().getAssets(), "JFFlatregular.ttf");
         deliever_proj.setTypeface(custom_font);
         report.setTypeface(custom_font);
