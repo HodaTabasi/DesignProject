@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_3sdp"
+    android:background="@drawable/report_layout_shap"
+    android:layoutDirection="ltr">
+
+    <LinearLayout
+        android:id="@+id/l1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="end"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:gravity="center_vertical">
+
+        <RatingBar
+            android:id="@+id/rate1"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:numStars="5"
+            android:progressTint="#fed42d"
+            android:isIndicator="false"
+            android:rotationY="180"
+            android:stepSize="1"
+            />
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_weight="0.5"
+            android:text="التواصل والمتابعة"
+            android:textColor="@color/textGray"
+            android:textSize="@dimen/_10sdp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/l2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/l1"
+        android:layout_gravity="end"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:gravity="center_vertical">
+
+        <RatingBar
+            android:id="@+id/rate2"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:numStars="5"
+            android:progressTint="#fed42d"
+            android:isIndicator="false"
+            android:rotationY="180"
+            android:stepSize="1" />
+
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_weight="0.5"
+            android:text="جودة العمل"
+            android:textColor="@color/textGray"
+            android:textSize="@dimen/_10sdp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/l3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/l2"
+        android:layout_gravity="end"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:gravity="center_vertical">
+
+        <RatingBar
+            android:id="@+id/rate3"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:numStars="5"
+            android:isIndicator="false"
+            android:progressTint="#fed42d"
+            android:rotationY="180"
+            android:stepSize="1" />
+
+        <TextView
+            android:id="@+id/tv3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_weight="0.5"
+            android:text="الخبرة بمجال المشروع"
+            android:textColor="@color/textGray"
+            android:textSize="@dimen/_10sdp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/l4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/l3"
+        android:layout_gravity="end"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:gravity="center_vertical">
+
+        <RatingBar
+            android:id="@+id/rate4"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:numStars="5"
+            android:progressTint="#fed42d"
+            android:isIndicator="false"
+            android:rotationY="180"
+            android:stepSize="1" />
+
+        <TextView
+            android:id="@+id/tv4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_weight="0.5"
+            android:text="التسليم بالوقت المحدد"
+            android:textColor="@color/textGray"
+            android:textSize="@dimen/_10sdp" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/l5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/l4"
+        android:layout_gravity="end"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:gravity="center_vertical">
+
+        <RatingBar
+            android:id="@+id/rate5"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:numStars="5"
+            android:progressTint="#fed42d"
+            android:isIndicator="false"
+            android:rotationY="180"
+            android:stepSize="1" />
+
+        <TextView
+            android:id="@+id/tv5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_weight="0.5"
+            android:text="التعامل مرة أخرى"
+            android:textColor="@color/textGray"
+            android:textSize="@dimen/_10sdp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/l5"
+        android:layout_gravity="end"
+        android:layout_marginEnd="@dimen/_21sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:text="التعليق"
+        android:textColor="@color/textGray"
+        android:textSize="@dimen/_10sdp" />
+
+    <EditText
+        android:id="@+id/et_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/tv6"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:background="@drawable/report_layout_shap"
+        android:gravity="clip_vertical"
+        android:padding="@dimen/_5sdp"
+        android:textColor="@color/gray1"
+        android:textDirection="rtl"
+        android:textSize="@dimen/_10sdp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_comment"
+        android:layout_gravity="end"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/cancel_rate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_weight="1"
+            android:background="@drawable/red_shap"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:text="إلغاء"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_10sdp" />
+
+        <TextView
+            android:id="@+id/send_rate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_weight="1"
+            android:background="@drawable/green_shap"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:text="إرسال التقييم"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_10sdp" />
+    </LinearLayout>
+
+</RelativeLayout>

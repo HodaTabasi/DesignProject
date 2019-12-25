@@ -1,16 +1,12 @@
 package com.smm.sapp.sproject.Activities;
 
 import android.app.Dialog;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.provider.SyncStateContract;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -19,7 +15,6 @@ import android.widget.TextView;
 
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.Fragments.AccountFragment;
-import com.smm.sapp.sproject.Fragments.AddNewWork2Fragment;
 import com.smm.sapp.sproject.Fragments.BrowseProjectsFragment;
 import com.smm.sapp.sproject.Fragments.EditProposalFragment;
 import com.smm.sapp.sproject.Fragments.MainFragment;
@@ -27,12 +22,10 @@ import com.smm.sapp.sproject.Fragments.MessageDitailsFragment;
 import com.smm.sapp.sproject.Fragments.MyProjectFragment;
 import com.smm.sapp.sproject.Fragments.NotificationFragment;
 import com.smm.sapp.sproject.Fragments.PortfolioFragment;
-import com.smm.sapp.sproject.Fragments.RegisterFragment;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.Fragments.MyMessageFragment;
 import com.smm.sapp.sproject.Models.NotificationPayLoad;
 import com.smm.sapp.sproject.Models.OfferModel;
-import com.smm.sapp.sproject.MyNotificationManager;
 import com.smm.sapp.sproject.R;
 
 import me.anwarshahriar.calligrapher.Calligrapher;

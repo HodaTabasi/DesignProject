@@ -9,10 +9,10 @@ import android.graphics.Typeface;
 import android.graphics.drawable.LayerDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
+import androidx.annotation.Nullable;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,15 +24,12 @@ import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.smm.sapp.sproject.Activities.RegistrationActivity;
-import com.smm.sapp.sproject.Adapters.NotificationAdapter;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.HelperClass.PathUtil;
 import com.smm.sapp.sproject.HelperClass.SharedPreferencesApp;
-import com.smm.sapp.sproject.Models.NotificationsModels;
 import com.smm.sapp.sproject.Models.User;
 import com.smm.sapp.sproject.Models.UserModel;
 import com.smm.sapp.sproject.MyRequest;
@@ -45,7 +42,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,8 +49,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import me.anwarshahriar.calligrapher.Calligrapher;
 import okhttp3.Call;
 import okhttp3.Response;
-
-import static android.app.Activity.RESULT_OK;
 
 public class MainFragment extends Fragment {
     CircleImageView img_user;

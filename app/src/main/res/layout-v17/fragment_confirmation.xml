@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:layoutDirection="ltr"
+    android:orientation="vertical"
+    tools:context=".Fragments.ConfirmationFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:text="رمز التحقق"
+        android:textColor="@color/textGray"
+        android:textSize="@dimen/_16sdp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="تم ارسال رمز التحقق الى جوالك "
+        android:textColor="@color/gray1"
+        android:textSize="@dimen/_12sdp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="الرجاء ارسال رمز التحقق"
+        android:textColor="@color/gray1"
+        android:textSize="@dimen/_12sdp" />
+
+    <com.bigbangbutton.editcodeview.EditCodeView
+        android:id="@+id/edit_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:paddingBottom="@dimen/_5sdp" />
+
+    <TextView
+        android:id="@+id/resend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="@dimen/_80sdp"
+        android:layout_marginTop="5dp"
+        android:text="اعادة إرسال"
+        android:textColor="@color/gray1"
+        android:textSize="@dimen/_10sdp" />
+
+    <TextView
+        android:id="@+id/tv_confirm"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:background="@drawable/report_layout_shap"
+        android:gravity="center"
+        android:padding="@dimen/_5sdp"
+        android:text="التحقق"
+        android:textColor="@color/textGray"
+        android:textSize="@dimen/_12sdp" />
+
+
+</LinearLayout>

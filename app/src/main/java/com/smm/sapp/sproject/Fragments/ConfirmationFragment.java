@@ -2,8 +2,8 @@ package com.smm.sapp.sproject.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +15,6 @@ import com.bigbangbutton.editcodeview.EditCodeView;
 import com.google.gson.Gson;
 import com.smm.sapp.sproject.Activities.ContainerActivity;
 import com.smm.sapp.sproject.ConstantInterFace;
-import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
 import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.HelperClass.SharedPreferencesApp;
 import com.smm.sapp.sproject.Models.User;

@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="ltr"
+    android:background="@color/white"
+    tools:context=".Fragments.ProjectDitailesGraphicsFragment">
+
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_60sdp"
+            android:background="#09102D" />
+
+        <TextView
+            android:id="@+id/tv_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawablePadding="@dimen/_10sdp"
+            android:drawableEnd="@drawable/ic_add_toolbar"
+            android:gravity="center"
+            android:text="اضف مشروع"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16sdp" />
+
+        <ImageView
+            android:id="@+id/ic_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:padding="8dp"
+            android:src="@drawable/ic_arrow" />
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8sdp"
+                android:background="@drawable/blue_shape"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/name_graphics"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="تصاميم الجرافيكس"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_12sdp" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@+id/name_graphics"
+                    android:layout_toRightOf="@+id/name_graphics"
+                    android:src="@drawable/graphique"
+                    android:tint="@android:color/white" />
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/gh_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/account_shape"
+                android:gravity="center"
+                android:hint="تصميم هوية بصرية - تصميم شعار"
+                android:padding="3dp"
+                android:textColor="@color/textGray"
+                android:textColorHint="@color/gray"
+                android:textSize="@dimen/_12sdp" />
+
+            <EditText
+                android:id="@+id/project_name_gh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/account_shape"
+                android:gravity="center"
+                android:hint="اسم المشروع"
+                android:padding="3dp"
+                android:textColor="@color/textGray"
+                android:textColorHint="@color/gray"
+                android:textSize="@dimen/_12sdp" />
+
+            <EditText
+                android:id="@+id/about_activity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/account_shape"
+                android:gravity="center"
+                android:hint="عن النشاط و الخدمات"
+                android:padding="3dp"
+                android:textColor="@color/textGray"
+                android:textColorHint="@color/gray"
+                android:textSize="@dimen/_12sdp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="start"
+                android:text="ارفع صورة لتصاميم اعجبتك"
+                android:textAlignment="textStart"
+                android:textColor="@color/gray1"
+                android:textSize="@dimen/_10sdp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/lien"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/account_shape"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:visibility="visible">
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rec_P"
+                        android:layout_width="0dp"
+                        android:layout_marginEnd="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_weight="4"
+                        android:layoutDirection="rtl"
+                        android:layout_height="@dimen/_53sdp" />
+
+                    <ImageView
+                        android:id="@+id/gh_upload_image_like1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        android:padding="@dimen/_5sdp"
+                        android:src="@drawable/add" />
+
+                </LinearLayout>
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/account_shape">
+
+                    <TextView
+                        android:id="@+id/innovation"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.8"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="ابتكار"
+                        android:layout_margin="1dp"
+                        android:textColor="@color/textGray"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <View
+                        android:layout_width="1.5dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/gray_icon" />
+
+                    <TextView
+                        android:id="@+id/develop"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.8"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="تطوير"
+                        android:textColor="@color/textGray"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <View
+                        android:layout_width="1.5dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/gray_icon" />
+
+                    <TextView
+                        android:id="@+id/ask_for_design"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.5"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="طلب تصميم"
+                        android:textColor="@color/textGray"
+                        android:textSize="@dimen/_10sdp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/account_shape">
+
+                    <TextView
+                        android:id="@+id/no"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.4"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="لا"
+                        android:textColor="@color/textGray"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <View
+                        android:layout_width="1.5dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/gray_icon" />
+
+                    <TextView
+                        android:id="@+id/yes"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.7"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="نعم"
+                        android:textColor="@color/textGray"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <View
+                        android:layout_width="1.5dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/gray_icon" />
+
+                    <TextView
+                        android:id="@+id/new_project"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.6"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="المشروع جديد"
+                        android:textColor="@color/textGray"
+                        android:textSize="@dimen/_10sdp" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/account_shape"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/sp_chooese_balance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/textGray"
+                    android:textSize="@dimen/_12sdp" />
+
+
+                <TextView
+                    android:id="@+id/chooese_balance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:text="اختر الميزانية "
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/_12sdp" />
+            </LinearLayout>
+            <!--<EditText-->
+                <!--android:id="@+id/gh_balance"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="8dp"-->
+                <!--android:layout_marginEnd="8dp"-->
+                <!--android:layout_marginStart="8dp"-->
+                <!--android:background="@drawable/account_shape"-->
+                <!--android:gravity="center"-->
+                <!--android:hint="الميزانية"-->
+                <!--android:padding="3dp"-->
+                <!--android:inputType="number"-->
+                <!--android:textColor="@color/textGray"-->
+                <!--android:textColorHint="@color/gray"-->
+                <!--android:textSize="14sp" />-->
+
+            <EditText
+                android:id="@+id/project_deitails_gh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/account_shape"
+                android:gravity="center"
+                android:hint="تفاصيل عن المشروع"
+                android:padding="3dp"
+                android:textColor="@color/textGray"
+                android:textColorHint="@color/gray"
+                android:textSize="@dimen/_12sdp" />
+
+            <TextView
+                android:id="@+id/gh_attachment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/account_shape"
+                android:drawableEnd="@drawable/upload"
+                android:drawablePadding="8dp"
+                android:drawableEnd="@drawable/upload"
+                android:padding="8dp"
+                android:text="المرفقات"
+                android:textColor="@color/textGray"
+                android:textSize="@dimen/_12sdp" />
+
+            <Button
+                android:id="@+id/send_gh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/blue_shape"
+                android:text="ارسل الطلب"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_12sdp" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

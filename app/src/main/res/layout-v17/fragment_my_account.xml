@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="ltr"
+    tools:context=".Fragments.MyAccountFragment">
+
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_60sdp"
+            android:background="#09102D" />
+
+        <TextView
+            android:id="@+id/tv_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawablePadding="@dimen/_10sdp"
+            android:drawableEnd="@drawable/ic_my_budget_toolbar"
+            android:drawableTint="@color/white"
+            android:gravity="center"
+            android:text="رصيدي"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16sdp" />
+
+        <ImageView
+            android:id="@+id/ic_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/ic_arrow" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <LinearLayout
+            android:id="@+id/linear1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/report"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_reports"
+                android:gravity="center"
+                android:padding="@dimen/_30sdp"
+                android:text="التقارير "
+                android:textColor="@color/textGray"
+                android:textSize="@dimen/_12sdp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/gray_icon" />
+
+            <TextView
+                android:id="@+id/current_account"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_current_budget"
+                android:gravity="center"
+                android:padding="@dimen/_30sdp"
+                android:text="رصيدي الحالي"
+                android:textColor="@color/textGray"
+                android:textSize="@dimen/_12sdp" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/linear1"
+            android:background="@color/gray_icon" />
+
+        <LinearLayout
+            android:id="@+id/linear2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/recharge_balance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_charge"
+                android:gravity="center"
+                android:padding="@dimen/_30sdp"
+                android:text="شحن رصيد"
+                android:textColor="@color/textGray"
+                android:textSize="@dimen/_12sdp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/gray_icon" />
+
+
+            <TextView
+                android:id="@+id/drop_balance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_withdraw"
+                android:gravity="center"
+                android:padding="@dimen/_30sdp"
+                android:text="سحب رصيد"
+                android:textColor="@color/textGray"
+                android:textSize="@dimen/_12sdp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</RelativeLayout>

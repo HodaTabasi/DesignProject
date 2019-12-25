@@ -1,6 +1,5 @@
 package com.smm.sapp.sproject.HelperClass;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -8,8 +7,8 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
-import android.support.v7.app.AlertDialog;
-import android.view.View;
+import androidx.appcompat.app.AlertDialog;
+
 import android.view.Window;
 import android.widget.TextView;
 

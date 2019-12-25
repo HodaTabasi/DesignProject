@@ -2,7 +2,7 @@ package com.smm.sapp.sproject.Activities;
 
 import android.content.Intent;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.animation.Animation;
@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.smm.sapp.sproject.ConstantInterFace;
-import com.smm.sapp.sproject.HelperClass.MyProgressDialog;
 import com.smm.sapp.sproject.HelperClass.SharedPreferencesApp;
 import com.smm.sapp.sproject.Models.NotificationsModels;
 import com.smm.sapp.sproject.Models.User;

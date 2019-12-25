@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="135dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="@drawable/report_layout_shap"
+    android:layout_gravity="center|top"
+    android:layoutDirection="ltr"
+    android:orientation="vertical">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/d_layout_profile_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:src="@drawable/img_user"
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="1dp" />
+
+    <TextView
+        android:id="@+id/d_layout_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/account_shape"
+        android:gravity="center"
+        android:padding="5dp"
+        android:hint="الاسم"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/_10sdp" />
+
+    <RatingBar
+        android:id="@+id/d_layout_rate"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_margin="8dp"
+        android:numStars="5"
+        android:progressTint="#fed42d"
+        android:rotationY="180"
+        android:stepSize="1.0"
+        android:gravity="center"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/d_layout_specialty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/account_shape"
+        android:gravity="center"
+        android:padding="5dp"
+        android:hint="التخصص"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/_10sdp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:id="@+id/chooses_me"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:layout_weight="1.1"
+            android:background="@drawable/blue_shape"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="اختارني للعمل"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_8sdp" />
+
+        <TextView
+            android:id="@+id/d_layout_fav"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/blue_shape"
+            android:drawablePadding="2dp"
+            android:drawableEnd="@drawable/ic_favorite_white"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:text="مفضلة"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_8sdp" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

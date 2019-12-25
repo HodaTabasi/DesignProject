@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/tv_skill1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:background="@drawable/blue_shape"
+        android:paddingBottom="2dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="2dp"
+        android:text="رسم"
+        android:textColor="@color/white"
+        android:textSize="12sp" />
+
+    <!--<TextView-->
+        <!--android:id="@+id/tv_skill2"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="3dp"-->
+        <!--android:background="@drawable/blue_shape"-->
+        <!--android:paddingBottom="2dp"-->
+        <!--android:paddingLeft="8dp"-->
+        <!--android:paddingRight="8dp"-->
+        <!--android:paddingTop="2dp"-->
+        <!--android:text="رسم"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:textSize="12sp" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/tv_skill3"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="3dp"-->
+        <!--android:background="@drawable/blue_shape"-->
+        <!--android:paddingBottom="2dp"-->
+        <!--android:paddingLeft="8dp"-->
+        <!--android:paddingRight="8dp"-->
+        <!--android:paddingTop="2dp"-->
+        <!--android:text="رسم"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:textSize="12sp" />-->
+
+
+</LinearLayout>

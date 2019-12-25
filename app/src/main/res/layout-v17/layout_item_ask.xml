@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/blue_shape"
+        android:paddingBottom="5dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="11dp"
+        android:paddingTop="5dp"
+        android:text="نبذة عن صمم "
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/report_layout_shap"
+        android:text="اختر الاستايلاختر الاستايلاختر الاستايلاختر الاستايلاختر الاستا"
+        android:textColor="@color/textGray"
+        android:textSize="14sp" />
+
+
+</LinearLayout>

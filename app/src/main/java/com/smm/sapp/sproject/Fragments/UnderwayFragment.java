@@ -15,12 +15,12 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -446,6 +446,7 @@ public class UnderwayFragment extends Fragment implements  SwipeRefreshLayout.On
                             if (object.getBoolean("success")) {
                                 ConstantInterFace.DELEIVER_PROJECT = 1;
                                 Toast.makeText(getActivity(), "تم تسليم المشروع بنجاح", Toast.LENGTH_SHORT).show();
+
                                 final Dialog rate_dialog = new Dialog(getContext());
                                 rate_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //before
                                 rate_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

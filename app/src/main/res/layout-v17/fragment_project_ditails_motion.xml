@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="ltr"
+    android:background="@color/white"
+    tools:context=".Fragments.ProjectDitailsMotionFragment">
+
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_60sdp"
+            android:background="#09102D" />
+
+        <TextView
+            android:id="@+id/tv_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawablePadding="@dimen/_10sdp"
+            android:drawableEnd="@drawable/ic_add_toolbar"
+            android:gravity="center"
+            android:text="اضف مشروع"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16sdp" />
+
+        <ImageView
+            android:id="@+id/ic_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/ic_arrow" />
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/blue_shape"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/name_m"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="تصاميم الموشن"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_12sdp" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@+id/name_m"
+                    android:layout_toRightOf="@+id/name_m"
+                    android:src="@drawable/motion"
+                    android:tint="@android:color/white" />
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/motion_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/account_shape"
+                android:gravity="center"
+                android:hint="انفوجرافيك - تصميم فيديو"
+                android:padding="3dp"
+                android:textColor="@color/textGray"
+                android:textColorHint="@color/gray"
+                android:textSize="@dimen/_12sdp" />
+
+            <EditText
+                android:id="@+id/project_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/account_shape"
+                android:gravity="center"
+                android:hint="اسم المشروع"
+                android:padding="3dp"
+                android:textColor="@color/textGray"
+                android:textColorHint="@color/gray"
+                android:textSize="@dimen/_12sdp" />
+
+            <EditText
+                android:id="@+id/project_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/account_shape"
+                android:gravity="center"
+                android:hint=" مدة الفيديو"
+                android:padding="3dp"
+                android:inputType="number"
+                android:textColor="@color/textGray"
+                android:textColorHint="@color/gray"
+                android:textSize="@dimen/_12sdp" />
+
+            <EditText
+                android:id="@+id/about_activity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/account_shape"
+                android:gravity="center"
+                android:hint="عن النشاط والخدمات"
+                android:padding="3dp"
+                android:textColor="@color/textGray"
+                android:textColorHint="@color/gray"
+                android:textSize="@dimen/_12sdp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="start"
+                android:text="ارفع صورة لتصاميم اعجبتك"
+                android:textAlignment="textStart"
+                android:textColor="@color/gray1"
+                android:textSize="@dimen/_10sdp" />
+
+            <LinearLayout
+                android:id="@+id/lien"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:background="@drawable/account_shape"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:visibility="visible">
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rec_P"
+                    android:layout_width="0dp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_weight="4"
+                    android:layoutDirection="rtl"
+                    android:layout_height="@dimen/_53sdp">
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <ImageView
+                    android:id="@+id/motion_like_image"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/add" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/account_shape"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/sp_chooese_balance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/textGray"
+                    android:textSize="14sp" />
+
+
+                <TextView
+                    android:id="@+id/chooese_balance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:text="اختر الميزانية "
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/_12sdp" />
+            </LinearLayout>
+            <!--<EditText-->
+                <!--android:id="@+id/motion_balance"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="8dp"-->
+                <!--android:layout_marginEnd="8dp"-->
+                <!--android:layout_marginStart="8dp"-->
+                <!--android:background="@drawable/account_shape"-->
+                <!--android:gravity="center"-->
+                <!--android:hint="الميزانية"-->
+                <!--android:padding="3dp"-->
+                <!--android:inputType="number"-->
+                <!--android:textColor="@color/textGray"-->
+                <!--android:textColorHint="@color/gray"-->
+                <!--android:textSize="14sp" />-->
+
+            <EditText
+                android:id="@+id/project_detiails_motion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/account_shape"
+                android:gravity="center"
+                android:hint="تفاصيل عن المشروع"
+                android:padding="3dp"
+                android:textColor="@color/textGray"
+                android:textColorHint="@color/gray"
+                android:textSize="@dimen/_12sdp" />
+
+            <TextView
+                android:id="@+id/attachment_motion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/account_shape"
+                android:drawableEnd="@drawable/upload"
+                android:drawablePadding="8dp"
+                android:drawableEnd="@drawable/upload"
+                android:padding="8dp"
+                android:text="المرفقات"
+                android:textColor="@color/textGray"
+                android:textSize="@dimen/_12sdp" />
+
+            <Button
+                android:id="@+id/send_motion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/blue_shape"
+                android:text="ارسل الطلب"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_12sdp" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

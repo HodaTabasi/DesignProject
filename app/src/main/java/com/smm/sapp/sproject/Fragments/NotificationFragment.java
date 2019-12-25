@@ -1,14 +1,12 @@
 package com.smm.sapp.sproject.Fragments;
 
 
-import android.app.Notification;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,11 +16,8 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.smm.sapp.sproject.Activities.ContainerActivity;
-import com.smm.sapp.sproject.Activities.SplashActivity;
 import com.smm.sapp.sproject.Adapters.NotificationAdapter;
 import com.smm.sapp.sproject.ConstantInterFace;
-import com.smm.sapp.sproject.Models.Notifications;
 import com.smm.sapp.sproject.Models.NotificationsModels;
 import com.smm.sapp.sproject.MyRequest;
 import com.smm.sapp.sproject.OkHttpCallback;

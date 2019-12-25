@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:layoutDirection="ltr"
+    android:orientation="vertical"
+    tools:context=".Fragments.RegisterFragment">
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/report_layout_shap"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="تسجيل الدخول"
+        android:textColor="@color/textGray"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/reg1"
+        android:textColor="@color/gray1"
+        android:textSize="12sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:text="@string/reg2"
+        android:textColor="@color/gray1"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/mobile"
+                android:textColor="@color/gray1"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/et_mobile"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/report_layout_shap"
+                android:gravity="center_horizontal"
+                android:inputType="number"
+                android:padding="5dp"
+                android:text="0592414345"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/country"
+                android:textColor="@color/gray1"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/et_country"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/report_layout_shap"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="فلسطين"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_next"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/report_layout_shap"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/next"
+        android:textColor="@color/textGray"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_skip"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/report_layout_shap"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/notNow"
+        android:textColor="@color/textGray"
+        android:textSize="14sp" />
+
+</LinearLayout>

@@ -3,11 +3,10 @@ package com.smm.sapp.sproject.Adapters;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.graphics.Typeface;
-import android.media.Image;
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,14 +19,9 @@ import com.smm.sapp.sproject.Models.MessageDetails;
 import com.smm.sapp.sproject.R;
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import hani.momanii.supernova_emoji_library.Helper.EmojiconEditText;
-import hani.momanii.supernova_emoji_library.Helper.EmojiconTextView;
 
 public class MyMessageDetailAdapter extends RecyclerView.Adapter {
 

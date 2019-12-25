@@ -3,9 +3,9 @@ package com.smm.sapp.sproject.Adapters;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +13,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.smm.sapp.sproject.Activities.ContainerActivity;
 import com.smm.sapp.sproject.ConstantInterFace;
 import com.smm.sapp.sproject.Fragments.AccountFragment;
 import com.smm.sapp.sproject.Fragments.MessageDitailsFragment;
 import com.smm.sapp.sproject.Fragments.MyOffersFragment;
 import com.smm.sapp.sproject.Fragments.MyProjectFragment;
 import com.smm.sapp.sproject.HelperClass.FragmentsUtil;
-import com.smm.sapp.sproject.Models.Notifications;
 import com.smm.sapp.sproject.Models.NotificationsModels;
 import com.smm.sapp.sproject.R;
 
