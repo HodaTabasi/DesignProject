@@ -147,8 +147,6 @@
                         android:layout_marginBottom="8dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginStart="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginStart="8dp"
                         android:background="@drawable/white_shap"
                         android:orientation="vertical">
 
@@ -450,8 +448,6 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/title1"
                         android:layout_marginBottom="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginStart="8dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginStart="8dp"
                         android:background="@drawable/white_shap"

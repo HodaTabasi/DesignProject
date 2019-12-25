@@ -70,7 +70,6 @@
                     android:layout_height="match_parent"
                     android:layout_marginEnd="@dimen/_8sdp"
                     android:layout_marginLeft="@dimen/_8sdp"
-                    android:layout_marginEnd="@dimen/_8sdp"
                     android:layout_marginStart="@dimen/_8sdp"
                     android:orientation="vertical"
                     android:visibility="visible">
@@ -87,7 +86,6 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/_8sdp"
-                            android:layout_marginEnd="@dimen/_8sdp"
                             android:layout_weight="1"
                             android:background="@drawable/red_shap"
                             android:gravity="center"
@@ -100,7 +98,6 @@
                             android:id="@+id/my_project_underway"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/_8sdp"
                             android:layout_marginEnd="@dimen/_8sdp"
                             android:layout_weight="1"
                             android:background="@drawable/dark_blue_shap"

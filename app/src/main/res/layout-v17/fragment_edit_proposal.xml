@@ -73,8 +73,6 @@
             android:padding="@dimen/_5sdp"
             android:paddingEnd="@dimen/_8sdp"
             android:paddingStart="@dimen/_8sdp"
-            android:paddingEnd="@dimen/_8sdp"
-            android:paddingStart="@dimen/_8sdp"
             android:hint="الاسم"
             android:textColor="@color/textGray"
             android:textSize="@dimen/_10sdp" />

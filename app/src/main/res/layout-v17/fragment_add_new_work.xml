@@ -75,7 +75,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_8sdp"
                 android:layout_marginLeft="@dimen/_8sdp"
-                android:layout_marginEnd="@dimen/_8sdp"
                 android:layout_marginStart="@dimen/_8sdp"
                 android:background="@drawable/report_layout_shap"
                 android:orientation="vertical">
